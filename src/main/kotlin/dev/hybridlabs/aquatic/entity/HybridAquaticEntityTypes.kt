@@ -354,13 +354,6 @@ object HybridAquaticEntityTypes {
         LobsterEntity.createMobAttributes()
     )
 
-    val MANTIS_SHRIMP = registerCritter(
-        "mantis_shrimp",
-        ::MantisShrimpEntity,
-        EntityDimensions.fixed(0.5f, 0.5f),
-        MantisShrimpEntity.createMobAttributes()
-    )
-
     val SHRIMP = registerCritter(
         "shrimp",
         ::ShrimpEntity,
@@ -387,13 +380,6 @@ object HybridAquaticEntityTypes {
         ::YetiCrabEntity,
         EntityDimensions.fixed(0.5f, 0.5f),
         YetiCrabEntity.createMobAttributes()
-    )
-
-    val KARKINOS = registerCritter(
-        "karkinos",
-        ::KarkinosEntity,
-        EntityDimensions.fixed(2.25f, 1.25f),
-        KarkinosEntity.createMobAttributes()
     )
 
 

@@ -60,10 +60,6 @@ object HybridAquaticBlocks {
         .drops(Identifier(HybridAquatic.MOD_ID, "blocks/giant_clam"))
     ))
 
-    val CRAB_POT = register("crab_pot", CrabPotBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)
-        .hardness(0.75F)
-    ))
-
     val BUOY = register("buoy", BuoyBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)
         .nonOpaque()
         .luminance(15)

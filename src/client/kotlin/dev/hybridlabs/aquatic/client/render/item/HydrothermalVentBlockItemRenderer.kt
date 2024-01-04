@@ -2,10 +2,7 @@ package dev.hybridlabs.aquatic.client.render.item
 
 import dev.hybridlabs.aquatic.HybridAquaticClient
 import dev.hybridlabs.aquatic.block.HybridAquaticBlocks
-import dev.hybridlabs.aquatic.block.entity.BuoyBlockEntity
-import dev.hybridlabs.aquatic.block.entity.CrabPotBlockEntity
 import dev.hybridlabs.aquatic.block.entity.HydrothermalVentBlockEntity
-import dev.hybridlabs.aquatic.client.render.block.entity.BuoyBlockEntityRenderer
 import dev.hybridlabs.aquatic.client.render.block.entity.HydrothermalVentBlockEntityRenderer
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry.DynamicItemRenderer
 import net.minecraft.client.render.VertexConsumerProvider

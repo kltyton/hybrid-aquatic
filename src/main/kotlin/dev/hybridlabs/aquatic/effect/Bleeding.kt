@@ -11,9 +11,9 @@ class Bleeding : StatusEffect(StatusEffectCategory.HARMFUL, 0xee4049) {
     }
 
     override fun applyUpdateEffect(entity: LivingEntity, amplifier: Int) {
-        val targetHealth = entity.maxHealth / 2.0f
+        val targetHealth = entity.maxHealth / 0.3f
         if (entity.health > targetHealth) {
-            entity.health = maxOf(entity.health - 2.0f, targetHealth)
+            entity.health = maxOf(entity.health - 0.3f, targetHealth)
         }
     }
 }

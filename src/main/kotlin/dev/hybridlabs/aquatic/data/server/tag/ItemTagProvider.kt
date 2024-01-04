@@ -20,6 +20,7 @@ class ItemTagProvider(output: FabricDataOutput, registriesFuture: CompletableFut
         ).forEach { item ->
             getOrCreateTagBuilder(HybridAquaticItemTags.LURE_ITEMS).add(item)
         }
+
         listOf(
             HybridAquaticItems.LIONFISH,
             HybridAquaticItems.ROCKFISH,
@@ -32,15 +33,18 @@ class ItemTagProvider(output: FabricDataOutput, registriesFuture: CompletableFut
             HybridAquaticItems.CLOWNFISH,
             HybridAquaticItems.UNICORN_FISH,
             HybridAquaticItems.COWFISH,
-            HybridAquaticItems.TRIGGERFISH,
             HybridAquaticItems.TIGER_BARB,
             HybridAquaticItems.OSCAR,
         ).forEach { item ->
             getOrCreateTagBuilder(HybridAquaticItemTags.SMALL_FISH).add(item)
         }
+
         listOf(
             HybridAquaticItems.YELLOWFIN_TUNA,
-            HybridAquaticItems.MAHI_MAHI
+            HybridAquaticItems.MAHI_MAHI,
+            HybridAquaticItems.OPAH,
+            HybridAquaticItems.MORAY_EEL,
+            HybridAquaticItems.TRIGGERFISH,
         ).forEach { item ->
             getOrCreateTagBuilder(HybridAquaticItemTags.MEDIUM_FISH).add(item)
         }

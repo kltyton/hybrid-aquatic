@@ -66,7 +66,6 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             HybridAquaticBlocks.TUBE_SPONGE to "Tube Sponge",
             HybridAquaticBlocks.CRATE to "Crate",
             HybridAquaticBlocks.BUOY to "Buoy",
-            HybridAquaticBlocks.CRAB_POT to "Crab Pot",
             HybridAquaticBlocks.HYDROTHERMAL_VENT to "Hydrothermal Vent",
             HybridAquaticBlocks.GIANT_CLAM to "Giant Clam",
         ).forEach { (block, translation) ->
@@ -118,7 +117,6 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
         // effects
         mapOf(
             HybridAquaticStatusEffects.BLEEDING to "Bleeding",
-            HybridAquaticStatusEffects.THALASSOPHOBIA to "Thalassophobia"
         ).forEach { (effect, translation) ->
             val identifier = Registries.STATUS_EFFECT.getId(effect)
             builder.add("effect.${identifier?.namespace}.${identifier?.path}", translation)
@@ -215,7 +213,6 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             HybridAquaticEntityTypes.HORSESHOE_CRAB to "Horseshoe Crab",
             HybridAquaticEntityTypes.GIANT_ISOPOD to "Giant Isopod",
             HybridAquaticEntityTypes.SHRIMP to "Shrimp",
-            HybridAquaticEntityTypes.MANTIS_SHRIMP to "Mantis Shrimp",
             HybridAquaticEntityTypes.CRAYFISH to "Crayfish",
             HybridAquaticEntityTypes.LOBSTER to "Lobster",
             HybridAquaticEntityTypes.NUDIBRANCH to "Nudibranch",
@@ -232,7 +229,6 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             HybridAquaticEntityTypes.LIONS_MANE_JELLYFISH to "Lion's Mane Jellyfish",
             HybridAquaticEntityTypes.ATOLLA_JELLYFISH to "Atolla Jellyfish",
             HybridAquaticEntityTypes.BLUE_JELLYFISH to "Blue Jellyfish",
-            HybridAquaticEntityTypes.KARKINOS to "Karkinos",
         )
 
         // verify display name list is valid

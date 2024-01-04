@@ -90,7 +90,6 @@ object HybridAquaticItemGroups {
             entries.add(HybridAquaticItems.FISHING_NET)
 
             entries.add(HybridAquaticItems.BUOY)
-            entries.add(HybridAquaticItems.CRAB_POT)
             entries.add(HybridAquaticItems.HYDROTHERMAL_VENT)
             entries.add(HybridAquaticItems.TUBE_SPONGE)
             entries.add(HybridAquaticItems.GIANT_CLAM)

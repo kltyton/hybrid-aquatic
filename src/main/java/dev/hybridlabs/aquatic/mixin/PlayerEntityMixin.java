@@ -1,19 +1,14 @@
 package dev.hybridlabs.aquatic.mixin;
 
 import dev.hybridlabs.aquatic.access.CustomPlayerEntityData;
-import dev.hybridlabs.aquatic.effect.HybridAquaticStatusEffects;
 import dev.hybridlabs.aquatic.entity.shark.HybridAquaticSharkEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.registry.tag.BiomeTags;
-import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -61,24 +56,6 @@ public abstract class PlayerEntityMixin implements CustomPlayerEntityData {
         if (object.isTouchingWater()) {
             LivingEntity foundEntity = object.getWorld().getClosestEntity(HybridAquaticSharkEntity.class, TargetPredicate.createNonAttackable().setBaseMaxDistance(32).setPredicate(Entity::isSubmergedInWater), object, object.getX(), object.getEyeY(), object.getZ(), object.getBoundingBox().expand(16));
             if (foundEntity != null) hybrid_aquatic$setHurtTime(200);
-        }
-    }
-
-    @Inject(method = "tick", at = @At("TAIL"))
-    private void tickDownCustomHurtTime(CallbackInfo ci) {
-        int cHurtTime = hybrid_aquatic$getHurtTime();
-        if (cHurtTime > 0) {
-            hybrid_aquatic$setHurtTime(cHurtTime - 1);
-        }
-
-        var player = (PlayerEntity)(Object)this;
-        var world = player.getWorld();
-        if(!world.isClient) {
-            if (world.isRaining() &&
-                    world.getBiome(player.getBlockPos()).isIn(BiomeTags.IS_OCEAN) &&
-                    (player.getY() > world.getSeaLevel() && player.getY() < world.getSeaLevel() + 12)) {
-                player.addStatusEffect(new StatusEffectInstance(HybridAquaticStatusEffects.INSTANCE.getTHALASSOPHOBIA(), 2, 1));
-            }
         }
     }
 }

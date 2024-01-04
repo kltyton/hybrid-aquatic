@@ -9,7 +9,10 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings
 import net.minecraft.block.Block
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.mob.MobEntity
-import net.minecraft.item.*
+import net.minecraft.item.BlockItem
+import net.minecraft.item.FoodComponent
+import net.minecraft.item.Item
+import net.minecraft.item.SpawnEggItem
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.util.Identifier
@@ -17,7 +20,6 @@ import net.minecraft.util.Identifier
 object HybridAquaticItems {
     val ANEMONE = registerBlockItem("anemone", HybridAquaticBlocks.ANEMONE)
     val BUOY = registerPlaceableInWaterBlockItem("buoy", HybridAquaticBlocks.BUOY)
-    val CRAB_POT = registerBlockItem("crab_pot", HybridAquaticBlocks.CRAB_POT)
     val HYDROTHERMAL_VENT = registerBlockItem("hydrothermal_vent", HybridAquaticBlocks.HYDROTHERMAL_VENT)
     val MESSAGE_IN_A_BOTTLE = register("message_in_a_bottle", MessageInABottleItem(FabricItemSettings()))
 
@@ -415,22 +417,21 @@ object HybridAquaticItems {
     val SEA_NETTLE_SPAWN_EGG = registerSpawnEgg("sea_nettle_spawn_egg", HybridAquaticEntityTypes.SEA_NETTLE, 0xf7bc78, 0x76435f)
 
     // crab spawn eggs
-    val COCONUT_CRAB_SPAWN_EGG = registerSpawnEgg("coconut_crab_spawn_egg", HybridAquaticEntityTypes.COCONUT_CRAB, 0xedab50, 0x8a4836)
-    val CRAB_SPAWN_EGG = registerSpawnEgg("crab_spawn_egg", HybridAquaticEntityTypes.CRAB, 0xb85249, 0xf1e4db)
-    val CRAYFISH_SPAWN_EGG = registerSpawnEgg("crayfish_spawn_egg", HybridAquaticEntityTypes.CRAYFISH, 0xedab50, 0x8a4836)
-    val FIDDLER_CRAB_SPAWN_EGG = registerSpawnEgg("fiddler_crab_spawn_egg", HybridAquaticEntityTypes.FIDDLER_CRAB, 0xcf552f, 0xe2dea8)
-    val FLOWER_CRAB_SPAWN_EGG = registerSpawnEgg("flower_crab_spawn_egg", HybridAquaticEntityTypes.FLOWER_CRAB, 0xedab50, 0x8a4836)
-    val GHOST_CRAB_SPAWN_EGG = registerSpawnEgg("ghost_crab_spawn_egg", HybridAquaticEntityTypes.GHOST_CRAB, 0xedab50, 0x8a4836)
-    val GIANT_ISOPOD_SPAWN_EGG = registerSpawnEgg("giant_isopod_spawn_egg", HybridAquaticEntityTypes.GIANT_ISOPOD, 0xedab50, 0x8a4836)
-    val HERMIT_CRAB_SPAWN_EGG = registerSpawnEgg("hermit_crab_spawn_egg", HybridAquaticEntityTypes.HERMIT_CRAB, 0xedab50, 0x8a4836)
-    val HORSESHOE_CRAB_SPAWN_EGG = registerSpawnEgg("horseshoe_crab_spawn_egg", HybridAquaticEntityTypes.HORSESHOE_CRAB, 0xedab50, 0x8a4836)
-    val LIGHTFOOT_CRAB_SPAWN_EGG = registerSpawnEgg("lightfoot_crab_spawn_egg", HybridAquaticEntityTypes.LIGHTFOOT_CRAB, 0xedab50, 0x8a4836)
-    val LOBSTER_SPAWN_EGG = registerSpawnEgg("lobster_spawn_egg", HybridAquaticEntityTypes.LOBSTER, 0xedab50, 0x8a4836)
-    val MANTIS_SHRIMP_SPAWN_EGG = registerSpawnEgg("mantis_shrimp_spawn_egg", HybridAquaticEntityTypes.MANTIS_SHRIMP, 0xedab50, 0x8a4836)
-    val SHRIMP_SPAWN_EGG = registerSpawnEgg("shrimp_spawn_egg", HybridAquaticEntityTypes.SHRIMP, 0xedab50, 0x8a4836)  // Note: Corrected typo in entity type
-    val SPIDER_CRAB_SPAWN_EGG = registerSpawnEgg("spider_crab_spawn_egg", HybridAquaticEntityTypes.SPIDER_CRAB, 0xedab50, 0x8a4836)
-    val VAMPIRE_CRAB_SPAWN_EGG = registerSpawnEgg("vampire_crab_spawn_egg", HybridAquaticEntityTypes.VAMPIRE_CRAB, 0xedab50, 0x8a4836)
-    val YETI_CRAB_SPAWN_EGG = registerSpawnEgg("yeti_crab_spawn_egg", HybridAquaticEntityTypes.YETI_CRAB, 0xedab50, 0x8a4836)
+    val COCONUT_CRAB_SPAWN_EGG = registerSpawnEgg("coconut_crab_spawn_egg", HybridAquaticEntityTypes.COCONUT_CRAB, 0x3e2d25, 0x3c546d)
+    val CRAB_SPAWN_EGG = registerSpawnEgg("crab_spawn_egg", HybridAquaticEntityTypes.CRAB, 0x81353f, 0xeecfce)
+    val CRAYFISH_SPAWN_EGG = registerSpawnEgg("crayfish_spawn_egg", HybridAquaticEntityTypes.CRAYFISH, 0x697152, 0x7c4452)
+    val FIDDLER_CRAB_SPAWN_EGG = registerSpawnEgg("fiddler_crab_spawn_egg", HybridAquaticEntityTypes.FIDDLER_CRAB, 0x80366b, 0xf39949)
+    val FLOWER_CRAB_SPAWN_EGG = registerSpawnEgg("flower_crab_spawn_egg", HybridAquaticEntityTypes.FLOWER_CRAB, 0x9b8a6e, 0x20a094)
+    val GHOST_CRAB_SPAWN_EGG = registerSpawnEgg("ghost_crab_spawn_egg", HybridAquaticEntityTypes.GHOST_CRAB, 0xf2be69, 0xf5fcd9)
+    val GIANT_ISOPOD_SPAWN_EGG = registerSpawnEgg("giant_isopod_spawn_egg", HybridAquaticEntityTypes.GIANT_ISOPOD, 0xe6d3d6, 0x3c2236)
+    val HERMIT_CRAB_SPAWN_EGG = registerSpawnEgg("hermit_crab_spawn_egg", HybridAquaticEntityTypes.HERMIT_CRAB, 0xe97b13, 0xf2a65e)
+    val HORSESHOE_CRAB_SPAWN_EGG = registerSpawnEgg("horseshoe_crab_spawn_egg", HybridAquaticEntityTypes.HORSESHOE_CRAB, 0x6e6b55, 0x403b31)
+    val LIGHTFOOT_CRAB_SPAWN_EGG = registerSpawnEgg("lightfoot_crab_spawn_egg", HybridAquaticEntityTypes.LIGHTFOOT_CRAB, 0xb0305c, 0xff8c41)
+    val LOBSTER_SPAWN_EGG = registerSpawnEgg("lobster_spawn_egg", HybridAquaticEntityTypes.LOBSTER, 0x421b2f, 0x8a4836)
+    val SHRIMP_SPAWN_EGG = registerSpawnEgg("shrimp_spawn_egg", HybridAquaticEntityTypes.SHRIMP, 0xeb564b, 0xff9166)
+    val SPIDER_CRAB_SPAWN_EGG = registerSpawnEgg("spider_crab_spawn_egg", HybridAquaticEntityTypes.SPIDER_CRAB, 0x9d3e41, 0xc6836f)
+    val VAMPIRE_CRAB_SPAWN_EGG = registerSpawnEgg("vampire_crab_spawn_egg", HybridAquaticEntityTypes.VAMPIRE_CRAB, 0x322947, 0x752053)
+    val YETI_CRAB_SPAWN_EGG = registerSpawnEgg("yeti_crab_spawn_egg", HybridAquaticEntityTypes.YETI_CRAB, 0xfff4dd, 0xffd16b)
 
     //critter spawn eggs
     val NUDIBRANCH_SPAWN_EGG = registerSpawnEgg("nudibranch_spawn_egg", HybridAquaticEntityTypes.NUDIBRANCH, 0xf7be47, 0xb853a3)

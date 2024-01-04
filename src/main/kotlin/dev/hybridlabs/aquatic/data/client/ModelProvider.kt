@@ -41,7 +41,6 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
             HybridAquaticBlocks.MESSAGE_IN_A_BOTTLE to (Blocks.GLASS to TEMPLATE_MESSAGE_IN_A_BOTTLE),
             HybridAquaticBlocks.BUOY to (HybridAquaticBlocks.BUOY to TEMPLATE_BUOY),
             HybridAquaticBlocks.HYDROTHERMAL_VENT to (HybridAquaticBlocks.HYDROTHERMAL_VENT to TEMPLATE_HYDROTHERMAL_VENT),
-            HybridAquaticBlocks.CRAB_POT to (HybridAquaticBlocks.CRAB_POT to TEMPLATE_CRAB_POT),
             HybridAquaticBlocks.GIANT_CLAM to (HybridAquaticBlocks.GIANT_CLAM to TEMPLATE_GIANT_CLAM)
         ).forEach { (block, info) ->
             val (particleBlock, template) = info

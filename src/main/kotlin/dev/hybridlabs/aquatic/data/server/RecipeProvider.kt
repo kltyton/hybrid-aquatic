@@ -37,15 +37,6 @@ class RecipeProvider(output: FabricDataOutput) : FabricRecipeProvider(output) {
             .criterion("has_lantern", InventoryChangedCriterion.Conditions.items(Items.LANTERN))
             .offerTo(exporter)
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, HybridAquaticItems.CRAB_POT)
-            .pattern("WWW")
-            .pattern("III")
-            .pattern("WWW")
-            .input('I', Items.IRON_BARS)
-            .input('W', ItemTags.PLANKS)
-            .criterion("has_crab_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.CRAB_CLAW))
-            .offerTo(exporter)
-
         // hook recipes
         ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, HybridAquaticItems.BARBED_HOOK)
             .pattern("N  ")

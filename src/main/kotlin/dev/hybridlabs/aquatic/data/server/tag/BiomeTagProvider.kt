@@ -146,10 +146,6 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             BiomeKeys.LUKEWARM_OCEAN,
         )
 
-        getOrCreateTagBuilder(HybridAquaticBiomeTags.MANTIS_SHRIMP_SPAWN_BIOMES).add(
-            BiomeKeys.WARM_OCEAN,
-        )
-
         getOrCreateTagBuilder(HybridAquaticBiomeTags.CRAYFISH_SPAWN_BIOMES).add(
             BiomeKeys.SWAMP,
             BiomeKeys.MANGROVE_SWAMP,

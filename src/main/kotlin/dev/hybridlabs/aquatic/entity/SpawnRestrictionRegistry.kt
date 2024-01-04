@@ -88,7 +88,6 @@ object SpawnRestrictionRegistry {
         setOf(
             HybridAquaticEntityTypes.GIANT_ISOPOD,
             HybridAquaticEntityTypes.SHRIMP,
-            HybridAquaticEntityTypes.MANTIS_SHRIMP,
             HybridAquaticEntityTypes.CRAYFISH,
             HybridAquaticEntityTypes.LOBSTER,
             HybridAquaticEntityTypes.STARFISH,

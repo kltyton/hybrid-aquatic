@@ -110,9 +110,6 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
         getOrCreateTagBuilder(HybridAquaticEntityTags.SQUID_PREY)
             .addTag(HybridAquaticEntityTags.SHRIMP)
 
-        getOrCreateTagBuilder(HybridAquaticEntityTags.MANTIS_SHRIMP_PREY)
-            .addTag(HybridAquaticEntityTags.CRAB)
-
         // fishes
         getOrCreateTagBuilder(HybridAquaticEntityTags.FISHES)
             .add(
@@ -186,7 +183,6 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
         getOrCreateTagBuilder(HybridAquaticEntityTags.SHRIMP)
             .add(
                 HybridAquaticEntityTypes.SHRIMP,
-                HybridAquaticEntityTypes.MANTIS_SHRIMP,
                 HybridAquaticEntityTypes.CRAYFISH,
                 HybridAquaticEntityTypes.LOBSTER
         )
