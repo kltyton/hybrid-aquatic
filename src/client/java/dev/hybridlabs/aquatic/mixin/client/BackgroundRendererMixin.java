@@ -1,28 +1,18 @@
 package dev.hybridlabs.aquatic.mixin.client;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import dev.hybridlabs.aquatic.fog.ThalassophobiaFogModifier;
 import dev.hybridlabs.aquatic.utils.MeasurementUtils;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.render.BackgroundRenderer;
-import net.minecraft.client.render.BackgroundRenderer.BlindnessFogModifier;
-import net.minecraft.client.render.BackgroundRenderer.DarknessFogModifier;
 import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.CameraSubmersionType;
 import net.minecraft.client.render.FogShape;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.tag.BiomeTags;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
-import dev.hybridlabs.aquatic.effect.HybridAquaticStatusEffects;
 import org.spongepowered.asm.mixin.*;
-import org.spongepowered.asm.mixin.gen.Accessor;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -36,13 +26,6 @@ public class BackgroundRendererMixin {
     @Shadow private static float red, green, blue;
     @Mutable @Final @Shadow private static List<BackgroundRenderer.StatusEffectFogModifier> FOG_MODIFIERS;
 
-    @Inject(method = "<clinit>", at = @At("TAIL"))
-    private static void hybrid$initInject(CallbackInfo ci) {
-        List<BackgroundRenderer.StatusEffectFogModifier> tempList = FOG_MODIFIERS;
-        tempList.add(new ThalassophobiaFogModifier());
-        FOG_MODIFIERS = tempList;
-        System.out.println(FOG_MODIFIERS);
-    }
 
 //    @Inject(method = "render", at=@At(value = "INVOKE", target = "Lcom/mojang/blaze3d/systems/RenderSystem;clearColor(FFFF)V"), locals = LocalCapture.CAPTURE_FAILHARD)
 //    private static void hybrid$fogColor(Camera camera, float tickDelta, ClientWorld world, int viewDistance, float skyDarkness, CallbackInfo ci, CameraSubmersionType cameraSubmersionType, Entity entity) {

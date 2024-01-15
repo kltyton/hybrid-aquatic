@@ -57,6 +57,7 @@ object HybridAquaticEntityRenderers {
     //endregion
 
     //region critters
+    val KARKINOS = EntityRendererRegistry.register(HybridAquaticEntityTypes.KARKINOS, ::KarkinosEntityRenderer)
     val CRAB = EntityRendererRegistry.register(HybridAquaticEntityTypes.CRAB, ::CrabEntityRenderer)
     val FIDDLER_CRAB = EntityRendererRegistry.register(HybridAquaticEntityTypes.FIDDLER_CRAB, ::FiddlerCrabEntityRenderer)
     val GHOST_CRAB = EntityRendererRegistry.register(HybridAquaticEntityTypes.GHOST_CRAB, ::GhostCrabEntityRenderer)
