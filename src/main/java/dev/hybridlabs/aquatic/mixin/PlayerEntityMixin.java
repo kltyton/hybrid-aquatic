@@ -42,13 +42,13 @@ public abstract class PlayerEntityMixin implements CustomPlayerEntityData {
 
     // Sets haHurtTime to 200 if player got hurt near shark
     @Inject(
-            method = "damage",
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lnet/minecraft/entity/player/PlayerEntity;getWorld()Lnet/minecraft/world/World;",
-                    ordinal = 0,
-                    shift = At.Shift.BEFORE
-            )
+        method = "damage",
+        at = @At(
+            value = "INVOKE",
+            target = "Lnet/minecraft/entity/player/PlayerEntity;getWorld()Lnet/minecraft/world/World;",
+            ordinal = 0,
+            shift = At.Shift.BEFORE
+        )
     )
     private void setCustomHurtTimeOnDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
         PlayerEntity object = ((PlayerEntity) (Object) this);
