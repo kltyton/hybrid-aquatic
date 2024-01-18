@@ -8,9 +8,11 @@ import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
+import net.minecraft.item.ItemUsageContext
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.util.ActionResult
 import net.minecraft.util.Hand
+import net.minecraft.world.World
 import java.util.*
 
 class FishingNetItem(settings: Settings?): Item(settings) {
@@ -24,6 +26,28 @@ class FishingNetItem(settings: Settings?): Item(settings) {
             return ActionResult.SUCCESS
         }
         return super.useOnEntity(stack, user, entity, hand)
+    }
+
+    override fun useOnBlock(context: ItemUsageContext): ActionResult {
+        val world: World = context.world
+
+        if (!world.isClient) {
+            val nbtCopy = context.stack.nbt?.copy() ?: return super.useOnBlock(context)
+
+            val optionalEntity = getEntityFromNBT(nbtCopy)
+            //val blockEntity = context.world.getBlockEntity(context.blockPos)
+
+            if (optionalEntity.isPresent) {
+                val entity = optionalEntity.get().create(context.world) ?: return ActionResult.FAIL
+                entity.readNbt(context.stack.nbt?.getCompound(ENTITY_KEY))
+                context.stack.nbt?.remove(ENTITY_KEY)
+
+                entity.setPosition(context.hitPos)
+                world.spawnEntity(entity)
+                return ActionResult.SUCCESS
+            }
+        }
+        return super.useOnBlock(context)
     }
 
     override fun getTooltipData(stack: ItemStack): Optional<TooltipData> {
