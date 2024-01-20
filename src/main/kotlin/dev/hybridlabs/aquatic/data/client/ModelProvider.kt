@@ -61,6 +61,10 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
     override fun generateItemModels(generator: ItemModelGenerator) {
         setOf(
             HybridAquaticItems.CRAB_CLAW,
+            HybridAquaticItems.FIDDLER_CRAB_CLAW,
+            HybridAquaticItems.VAMPIRE_CRAB_CLAW,
+            HybridAquaticItems.FLOWER_CRAB_CLAW,
+            HybridAquaticItems.GHOST_CRAB_CLAW,
             HybridAquaticItems.CRAB_MEAT,
             HybridAquaticItems.COOKED_CRAB_MEAT,
             HybridAquaticItems.FISH_MEAT,
