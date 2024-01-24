@@ -38,6 +38,7 @@ object HybridAquaticItems {
     val VAMPIRE_CRAB_CLAW = register("vampire_crab_claw", Item(FabricItemSettings()))
     val FLOWER_CRAB_CLAW = register("flower_crab_claw", Item(FabricItemSettings()))
     val GHOST_CRAB_CLAW = register("ghost_crab_claw", Item(FabricItemSettings()))
+    val SPIDER_CRAB_CLAW = register("spider_crab_claw", Item(FabricItemSettings()))
 
     // food items
     val COOKED_CRAB_MEAT = register("cooked_crab_meat",
@@ -53,6 +54,30 @@ object HybridAquaticItems {
         )
     )
     val CRAB_MEAT = register("crab_meat",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(2)
+                        .saturationModifier(0.8F)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+    val COOKED_SHRIMP = register("cooked_shrimp",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(6)
+                        .saturationModifier(0.8F)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+    val SHRIMP = register("shrimp",
         Item(
             FabricItemSettings()
                 .food(

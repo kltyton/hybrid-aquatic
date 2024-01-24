@@ -72,7 +72,7 @@ class EntityTypeLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTa
             pool(
                 LootPool.builder()
                     .with(
-                        ItemEntry.builder(HybridAquaticItems.CRAB_CLAW)
+                        ItemEntry.builder(HybridAquaticItems.SPIDER_CRAB_CLAW)
                             .apply(FurnaceSmeltLootFunction.builder().conditionally(EntityPropertiesLootCondition.builder(LootContext.EntityTarget.THIS, NEEDS_ENTITY_ON_FIRE)))
                             .apply(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0F, 1.0F)))
                             .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0F, 2.0F)))
@@ -172,6 +172,18 @@ class EntityTypeLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTa
                             .apply(FurnaceSmeltLootFunction.builder().conditionally(EntityPropertiesLootCondition.builder(LootContext.EntityTarget.THIS, NEEDS_ENTITY_ON_FIRE)))
                             .apply(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0F, 1.0F)))
                             .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0F, 2.0F)))
+                    )
+            )
+        }
+
+        export(exporter, HybridAquaticEntityTypes.SHRIMP) {
+            pool(
+                LootPool.builder()
+                    .with(
+                        ItemEntry.builder(HybridAquaticItems.SHRIMP)
+                            .apply(FurnaceSmeltLootFunction.builder().conditionally(EntityPropertiesLootCondition.builder(LootContext.EntityTarget.THIS, NEEDS_ENTITY_ON_FIRE)))
+                            .apply(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0F, 1.0F)))
+                            .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0F, 1.0F)))
                     )
             )
         }

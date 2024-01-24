@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "hybrid-aquatic:crab_claw",
+    "hybrid-aquatic:ghost_crab_claw",
+    "hybrid-aquatic:flower_crab_claw",
+    "hybrid-aquatic:spider_crab_claw",
+    "hybrid-aquatic:vampire_crab_claw",
+    "hybrid-aquatic:fiddler_crab_claw"
+  ]
+}

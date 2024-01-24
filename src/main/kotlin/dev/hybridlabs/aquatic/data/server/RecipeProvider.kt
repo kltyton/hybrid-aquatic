@@ -73,7 +73,7 @@ class RecipeProvider(output: FabricDataOutput) : FabricRecipeProvider(output) {
 
         // food items
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, HybridAquaticItems.CRAB_MEAT)
-            .input(HybridAquaticItems.CRAB_CLAW)
+            .input(HybridAquaticItemTags.CLAW)
             .criterion("has_crab_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.CRAB_CLAW))
             .offerTo(exporter)
 
@@ -89,6 +89,7 @@ class RecipeProvider(output: FabricDataOutput) : FabricRecipeProvider(output) {
 
         // cooking recipes
         offerCookingRecipes(exporter, HybridAquaticItems.CRAB_MEAT, HybridAquaticItems.COOKED_CRAB_MEAT, 0.15f)
+        offerCookingRecipes(exporter, HybridAquaticItems.SHRIMP, HybridAquaticItems.COOKED_SHRIMP, 0.15f)
         offerCookingRecipes(exporter, HybridAquaticItems.FISH_MEAT, HybridAquaticItems.COOKED_FISH_MEAT, 0.15f)
         offerCookingRecipes(exporter, HybridAquaticItems.SMALL_FISH_MEAT, HybridAquaticItems.COOKED_SMALL_FISH_MEAT, 0.15f)
         offerCookingRecipes(exporter, HybridAquaticItems.TENTACLE, HybridAquaticItems.COOKED_TENTACLE, 0.15f)

@@ -14,6 +14,7 @@ object HybridAquaticItemTags {
     val PLUSHIES = create("plushies")
     val SMALL_FISH = create("small_fish")
     val MEDIUM_FISH = create("medium_fish")
+    val CLAW = create("claw")
 
     val IRON_TOOLS = createConventional("iron_tools")
 

@@ -3,7 +3,7 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "hybrid-aquatic:crab_claw"
+      "tag": "hybrid-aquatic:claw"
     }
   ],
   "result": {
