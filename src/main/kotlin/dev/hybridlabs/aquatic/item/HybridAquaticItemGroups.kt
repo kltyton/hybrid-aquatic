@@ -76,6 +76,7 @@ object HybridAquaticItemGroups {
             entries.add(HybridAquaticItems.OSCAR)
 
             // miscellaneous items
+            entries.add(HybridAquaticItems.LOBSTER_CLAW)
             entries.add(HybridAquaticItems.CRAB_CLAW)
             entries.add(HybridAquaticItems.FIDDLER_CRAB_CLAW)
             entries.add(HybridAquaticItems.VAMPIRE_CRAB_CLAW)

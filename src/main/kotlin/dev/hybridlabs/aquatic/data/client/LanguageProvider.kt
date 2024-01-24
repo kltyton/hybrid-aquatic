@@ -102,6 +102,7 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             HybridAquaticItems.OSCAR to "Oscar",
             HybridAquaticItems.TRIGGERFISH to "Triggerfish",
             HybridAquaticItems.COWFISH to "Cowfish",
+            HybridAquaticItems.LOBSTER_CLAW to "Lobster Claw",
             HybridAquaticItems.CRAB_CLAW to "Crab Claw",
             HybridAquaticItems.FIDDLER_CRAB_CLAW to "Fiddler Crab Claw",
             HybridAquaticItems.GHOST_CRAB_CLAW to "Ghost Crab Claw",
