@@ -62,7 +62,8 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
         setOf(
             HybridAquaticItems.RAW_CRAYFISH,
             HybridAquaticItems.LOBSTER_CLAW,
-            HybridAquaticItems.CRAB_CLAW,
+            HybridAquaticItems.DUNGENESS_CRAB_CLAW,
+            HybridAquaticItems.COCONUT_CRAB_CLAW,
             HybridAquaticItems.FIDDLER_CRAB_CLAW,
             HybridAquaticItems.VAMPIRE_CRAB_CLAW,
             HybridAquaticItems.FLOWER_CRAB_CLAW,

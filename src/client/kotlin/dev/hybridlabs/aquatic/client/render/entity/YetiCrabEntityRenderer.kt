@@ -1,8 +1,5 @@
 package dev.hybridlabs.aquatic.client.render.entity
 
-import dev.hybridlabs.aquatic.client.model.entity.CrabEntityModel
-import dev.hybridlabs.aquatic.client.model.entity.GhostCrabEntityModel
-import dev.hybridlabs.aquatic.client.model.entity.SpiderCrabEntityModel
 import dev.hybridlabs.aquatic.client.model.entity.YetiCrabEntityModel
 import dev.hybridlabs.aquatic.entity.critter.HybridAquaticCritterEntity
 import net.minecraft.client.render.VertexConsumerProvider

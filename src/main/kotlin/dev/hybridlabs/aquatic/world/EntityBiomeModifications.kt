@@ -81,7 +81,7 @@ object EntityBiomeModifications {
         addShark(HybridAquaticEntityTypes.BASKING_SHARK, HybridAquaticBiomeTags.BASKING_SHARK_SPAWN_BIOMES, 5, 1, 1)
 
         // critters
-        addCritter(HybridAquaticEntityTypes.CRAB, HybridAquaticBiomeTags.CRAB_SPAWN_BIOMES, 10, 1, 2)
+        addCritter(HybridAquaticEntityTypes.DUNGENESS_CRAB, HybridAquaticBiomeTags.CRAB_SPAWN_BIOMES, 10, 1, 2)
         addCritter(HybridAquaticEntityTypes.HERMIT_CRAB, HybridAquaticBiomeTags.HERMIT_CRAB_SPAWN_BIOMES, 10, 1, 2)
         addCritter(HybridAquaticEntityTypes.FIDDLER_CRAB, HybridAquaticBiomeTags.FIDDLER_CRAB_SPAWN_BIOMES, 7, 1, 2)
         addCritter(HybridAquaticEntityTypes.GHOST_CRAB, HybridAquaticBiomeTags.GHOST_CRAB_SPAWN_BIOMES, 7, 1, 2)
