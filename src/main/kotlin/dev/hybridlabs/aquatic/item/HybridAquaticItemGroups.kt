@@ -87,6 +87,8 @@ object HybridAquaticItemGroups {
             entries.add(HybridAquaticItems.VAMPIRE_CRAB_CLAW)
             entries.add(HybridAquaticItems.FLOWER_CRAB_CLAW)
             entries.add(HybridAquaticItems.GHOST_CRAB_CLAW)
+            entries.add(HybridAquaticItems.LIGHTFOOT_CRAB_CLAW)
+            entries.add(HybridAquaticItems.YETI_CRAB_CLAW)
             entries.add(HybridAquaticItems.SPIDER_CRAB_CLAW)
             entries.add(HybridAquaticItems.GLOW_SLIME)
             entries.add(HybridAquaticItems.SHARK_TOOTH)

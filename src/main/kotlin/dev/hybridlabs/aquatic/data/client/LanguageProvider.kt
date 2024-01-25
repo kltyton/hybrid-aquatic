@@ -110,6 +110,8 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             HybridAquaticItems.DUNGENESS_CRAB_CLAW to "Dungeness Crab Claw",
             HybridAquaticItems.COCONUT_CRAB_CLAW to "Coconut Crab Claw",
             HybridAquaticItems.FIDDLER_CRAB_CLAW to "Fiddler Crab Claw",
+            HybridAquaticItems.YETI_CRAB_CLAW to "Yeti Crab Claw",
+            HybridAquaticItems.LIGHTFOOT_CRAB_CLAW to "Lightfoot Crab Claw",
             HybridAquaticItems.GHOST_CRAB_CLAW to "Ghost Crab Claw",
             HybridAquaticItems.FLOWER_CRAB_CLAW to "Flower Crab Claw",
             HybridAquaticItems.VAMPIRE_CRAB_CLAW to "Vampire Crab Claw",

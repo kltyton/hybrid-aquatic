@@ -43,6 +43,8 @@ object HybridAquaticItems {
     val GHOST_CRAB_CLAW = register("ghost_crab_claw", Item(FabricItemSettings()))
     val SPIDER_CRAB_CLAW = register("spider_crab_claw", Item(FabricItemSettings()))
     val COCONUT_CRAB_CLAW = register("coconut_crab_claw", Item(FabricItemSettings()))
+    val YETI_CRAB_CLAW = register("yeti_crab_claw", Item(FabricItemSettings()))
+    val LIGHTFOOT_CRAB_CLAW = register("lightfoot_crab_claw", Item(FabricItemSettings()))
 
     // food items
     val COOKED_CRAB = register("cooked_crab",

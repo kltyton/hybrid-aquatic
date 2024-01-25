@@ -57,6 +57,8 @@ class ItemTagProvider(output: FabricDataOutput, registriesFuture: CompletableFut
             HybridAquaticItems.VAMPIRE_CRAB_CLAW,
             HybridAquaticItems.FIDDLER_CRAB_CLAW,
             HybridAquaticItems.COCONUT_CRAB_CLAW,
+            HybridAquaticItems.YETI_CRAB_CLAW,
+            HybridAquaticItems.LIGHTFOOT_CRAB_CLAW,
         ).forEach { item ->
             getOrCreateTagBuilder(HybridAquaticItemTags.CRAB_CLAW).add(item)
         }

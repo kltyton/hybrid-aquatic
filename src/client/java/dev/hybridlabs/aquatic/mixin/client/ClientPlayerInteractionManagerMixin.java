@@ -27,7 +27,7 @@ public class ClientPlayerInteractionManagerMixin {
         if(client.player == null) return original;
         ItemStack offhandItem = client.player.getOffHandStack();
         
-        return (!offhandItem.isEmpty() & offhandItem.getItem().equals(HybridAquaticItems.INSTANCE.getCRAB_CLAW())) ? 5.0f : original;
+        return (!offhandItem.isEmpty() & offhandItem.getItem().equals(HybridAquaticItems.INSTANCE.getDUNGENESS_CRAB_CLAW())) ? 5.0f : original;
     }
     
     @ModifyReturnValue(
@@ -38,6 +38,6 @@ public class ClientPlayerInteractionManagerMixin {
         if(client.player == null) return original;
         ItemStack offhandItem = client.player.getOffHandStack();
         
-        return original || (!offhandItem.isEmpty() & offhandItem.getItem().equals(HybridAquaticItems.INSTANCE.getCRAB_CLAW()));
+        return original || (!offhandItem.isEmpty() & offhandItem.getItem().equals(HybridAquaticItems.INSTANCE.getDUNGENESS_CRAB_CLAW()));
     }
 }
