@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_shrimp": {
+    "has_raw_shrimp": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hybrid-aquatic:shrimp"
+              "hybrid-aquatic:raw_shrimp"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_shrimp",
+      "has_raw_shrimp",
       "has_the_recipe"
     ]
   ],

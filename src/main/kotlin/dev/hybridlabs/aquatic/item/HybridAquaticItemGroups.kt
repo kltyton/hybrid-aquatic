@@ -21,9 +21,6 @@ object HybridAquaticItemGroups {
         .displayName(Text.translatable("itemGroup.${HybridAquatic.MOD_ID}"))
         .icon { ItemStack(HybridAquaticItems.ANEMONE) }
         .entries { _, entries ->
-            // anemone
-            entries.add(HybridAquaticBlocks.ANEMONE)
-
             // message in a bottle variants
             MessageInABottleBlock.Variant.entries.forEach { variant ->
                 val blockEntity = MessageInABottleBlockEntity(BlockPos.ORIGIN, HybridAquaticBlocks.MESSAGE_IN_A_BOTTLE.defaultState)
@@ -32,7 +29,13 @@ object HybridAquaticItemGroups {
                 entries.add(stack)
             }
 
-            // plushies
+            // blocks
+            entries.add(HybridAquaticBlocks.CRATE)
+            entries.add(HybridAquaticItems.BUOY)
+            entries.add(HybridAquaticItems.HYDROTHERMAL_VENT)
+            entries.add(HybridAquaticItems.TUBE_SPONGE)
+            entries.add(HybridAquaticItems.GIANT_CLAM)
+            entries.add(HybridAquaticBlocks.ANEMONE)
             entries.add(HybridAquaticBlocks.BASKING_SHARK_PLUSHIE)
             entries.add(HybridAquaticBlocks.BULL_SHARK_PLUSHIE)
             entries.add(HybridAquaticBlocks.FRILLED_SHARK_PLUSHIE)
@@ -42,38 +45,39 @@ object HybridAquaticItemGroups {
             entries.add(HybridAquaticBlocks.TIGER_SHARK_PLUSHIE)
             entries.add(HybridAquaticBlocks.WHALE_SHARK_PLUSHIE)
 
-            // crates
-            entries.add(HybridAquaticBlocks.CRATE)
-
             // food items
-            entries.add(HybridAquaticItems.FISH_MEAT)
+            entries.add(HybridAquaticItems.RAW_FISH_MEAT)
             entries.add(HybridAquaticItems.COOKED_FISH_MEAT)
-            entries.add(HybridAquaticItems.SMALL_FISH_MEAT)
-            entries.add(HybridAquaticItems.COOKED_SMALL_FISH_MEAT)
-            entries.add(HybridAquaticItems.TENTACLE)
+            entries.add(HybridAquaticItems.RAW_FISH_STEAK)
+            entries.add(HybridAquaticItems.COOKED_FISH_STEAK)
+            entries.add(HybridAquaticItems.RAW_TENTACLE)
             entries.add(HybridAquaticItems.COOKED_TENTACLE)
-            entries.add(HybridAquaticItems.CRAB_MEAT)
-            entries.add(HybridAquaticItems.COOKED_CRAB_MEAT)
-            entries.add(HybridAquaticItems.SHRIMP)
+            entries.add(HybridAquaticItems.RAW_CRAB)
+            entries.add(HybridAquaticItems.COOKED_CRAB)
+            entries.add(HybridAquaticItems.RAW_LOBSTER)
+            entries.add(HybridAquaticItems.COOKED_LOBSTER)
+            entries.add(HybridAquaticItems.RAW_SHRIMP)
             entries.add(HybridAquaticItems.COOKED_SHRIMP)
+            entries.add(HybridAquaticItems.RAW_CRAYFISH)
+            entries.add(HybridAquaticItems.COOKED_CRAYFISH)
+            entries.add(HybridAquaticItems.TIGER_BARB)
+            entries.add(HybridAquaticItems.OSCAR)
+            entries.add(HybridAquaticItems.COWFISH)
+            entries.add(HybridAquaticItems.UNICORN_FISH)
             entries.add(HybridAquaticItems.LIONFISH)
-            entries.add(HybridAquaticItems.MAHI_MAHI)
-            entries.add(HybridAquaticItems.YELLOWFIN_TUNA)
-            entries.add(HybridAquaticItems.OPAH)
-            entries.add(HybridAquaticItems.ROCKFISH)
             entries.add(HybridAquaticItems.BLUE_SPOTTED_STINGRAY)
-            entries.add(HybridAquaticItems.MORAY_EEL)
-            entries.add(HybridAquaticItems.NEEDLEFISH)
             entries.add(HybridAquaticItems.PIRANHA)
             entries.add(HybridAquaticItems.ANGLERFISH)
             entries.add(HybridAquaticItems.BARRELEYE)
             entries.add(HybridAquaticItems.BLUE_TANG)
             entries.add(HybridAquaticItems.CLOWNFISH)
-            entries.add(HybridAquaticItems.UNICORN_FISH)
-            entries.add(HybridAquaticItems.COWFISH)
+            entries.add(HybridAquaticItems.NEEDLEFISH)
+            entries.add(HybridAquaticItems.MORAY_EEL)
             entries.add(HybridAquaticItems.TRIGGERFISH)
-            entries.add(HybridAquaticItems.TIGER_BARB)
-            entries.add(HybridAquaticItems.OSCAR)
+            entries.add(HybridAquaticItems.OPAH)
+            entries.add(HybridAquaticItems.ROCKFISH)
+            entries.add(HybridAquaticItems.MAHI_MAHI)
+            entries.add(HybridAquaticItems.YELLOWFIN_TUNA)
 
             // miscellaneous items
             entries.add(HybridAquaticItems.LOBSTER_CLAW)
@@ -97,10 +101,6 @@ object HybridAquaticItemGroups {
             // fishing net
             entries.add(HybridAquaticItems.FISHING_NET)
 
-            entries.add(HybridAquaticItems.BUOY)
-            entries.add(HybridAquaticItems.HYDROTHERMAL_VENT)
-            entries.add(HybridAquaticItems.TUBE_SPONGE)
-            entries.add(HybridAquaticItems.GIANT_CLAM)
 
             // spawn eggs
             Registries.ITEM.forEach { item ->

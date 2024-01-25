@@ -40,7 +40,7 @@
               "function": "minecraft:looting_enchant"
             }
           ],
-          "name": "hybrid-aquatic:tentacle"
+          "name": "hybrid-aquatic:raw_tentacle"
         }
       ],
       "rolls": 1.0

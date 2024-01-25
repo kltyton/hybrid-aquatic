@@ -33,6 +33,8 @@ object HybridAquaticItems {
     val PEARL = register("pearl", Item(FabricItemSettings()))
     val BLACK_PEARL = register("black_pearl", Item(FabricItemSettings()))
 
+    val RAW_SHRIMP = register("raw_shrimp", Item(FabricItemSettings()))
+    val RAW_CRAYFISH = register("raw_crayfish", Item(FabricItemSettings()))
     val LOBSTER_CLAW = register("lobster_claw", Item(FabricItemSettings()))
     val CRAB_CLAW = register("crab_claw", Item(FabricItemSettings()))
     val FIDDLER_CRAB_CLAW = register("fiddler_crab_claw", Item(FabricItemSettings()))
@@ -42,7 +44,7 @@ object HybridAquaticItems {
     val SPIDER_CRAB_CLAW = register("spider_crab_claw", Item(FabricItemSettings()))
 
     // food items
-    val COOKED_CRAB_MEAT = register("cooked_crab_meat",
+    val COOKED_CRAB = register("cooked_crab",
         Item(
             FabricItemSettings()
                 .food(
@@ -54,7 +56,19 @@ object HybridAquaticItems {
                 )
         )
     )
-    val CRAB_MEAT = register("crab_meat",
+    val RAW_CRAB = register("raw_crab",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(2)
+                        .saturationModifier(0.8F)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+    val RAW_LOBSTER = register("raw_lobster",
         Item(
             FabricItemSettings()
                 .food(
@@ -78,19 +92,19 @@ object HybridAquaticItems {
                 )
         )
     )
-    val SHRIMP = register("shrimp",
+    val COOKED_CRAYFISH = register("cooked_crayfish",
         Item(
             FabricItemSettings()
                 .food(
                     FoodComponent.Builder()
-                        .hunger(2)
+                        .hunger(6)
                         .saturationModifier(0.8F)
                         .meat()
                         .build()
                 )
         )
     )
-    val COOKED_FISH_MEAT = register("cooked_fish_meat",
+    val COOKED_LOBSTER = register("cooked_lobster",
         Item(
             FabricItemSettings()
                 .food(
@@ -102,7 +116,19 @@ object HybridAquaticItems {
                 )
         )
     )
-    val FISH_MEAT = register("fish_meat",
+    val COOKED_FISH_STEAK = register("cooked_fish_steak",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(8)
+                        .saturationModifier(0.8F)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+    val RAW_FISH_STEAK = register("raw_fish_steak",
         Item(
             FabricItemSettings()
                 .food(
@@ -114,7 +140,7 @@ object HybridAquaticItems {
                 )
         )
     )
-    val COOKED_SMALL_FISH_MEAT = register("cooked_small_fish_meat",
+    val COOKED_FISH_MEAT = register("cooked_fish_meat",
         Item(
             FabricItemSettings()
                 .food(
@@ -126,7 +152,7 @@ object HybridAquaticItems {
                 )
         )
     )
-    val SMALL_FISH_MEAT = register("small_fish_meat",
+    val RAW_FISH_MEAT = register("raw_fish_meat",
         Item(
             FabricItemSettings()
                 .food(
@@ -150,7 +176,7 @@ object HybridAquaticItems {
                 )
         )
     )
-    val TENTACLE = register("tentacle",
+    val RAW_TENTACLE = register("raw_tentacle",
         Item(
             FabricItemSettings()
                 .food(

@@ -57,7 +57,7 @@ class ItemTagProvider(output: FabricDataOutput, registriesFuture: CompletableFut
             HybridAquaticItems.VAMPIRE_CRAB_CLAW,
             HybridAquaticItems.FIDDLER_CRAB_CLAW,
         ).forEach { item ->
-            getOrCreateTagBuilder(HybridAquaticItemTags.CLAW).add(item)
+            getOrCreateTagBuilder(HybridAquaticItemTags.CRAB_CLAW).add(item)
         }
 
         // plushies

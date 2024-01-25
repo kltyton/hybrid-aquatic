@@ -72,27 +72,34 @@ class RecipeProvider(output: FabricDataOutput) : FabricRecipeProvider(output) {
             .offerTo(exporter)
 
         // food items
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, HybridAquaticItems.CRAB_MEAT)
-            .input(HybridAquaticItemTags.CLAW)
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, HybridAquaticItems.RAW_CRAB)
+            .input(HybridAquaticItemTags.CRAB_CLAW)
             .criterion("has_crab_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.CRAB_CLAW))
             .offerTo(exporter)
 
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, HybridAquaticItems.SMALL_FISH_MEAT, 1)
-            .input(HybridAquaticItemTags.SMALL_FISH)
-            .criterion("has_fish_meat", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.SMALL_FISH_MEAT))
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, HybridAquaticItems.RAW_LOBSTER)
+            .input(HybridAquaticItems.LOBSTER_CLAW)
+            .criterion("has_lobster_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.LOBSTER_CLAW))
             .offerTo(exporter)
 
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, HybridAquaticItems.FISH_MEAT, 1)
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, HybridAquaticItems.RAW_FISH_MEAT, 1)
+            .input(HybridAquaticItemTags.SMALL_FISH)
+            .criterion("has_fish_meat", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.RAW_FISH_MEAT))
+            .offerTo(exporter)
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, HybridAquaticItems.RAW_FISH_STEAK, 1)
             .input(HybridAquaticItemTags.MEDIUM_FISH)
-            .criterion("has_fish_meat", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.FISH_MEAT))
+            .criterion("has_fish_meat", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.RAW_FISH_STEAK))
             .offerTo(exporter)
 
         // cooking recipes
-        offerCookingRecipes(exporter, HybridAquaticItems.CRAB_MEAT, HybridAquaticItems.COOKED_CRAB_MEAT, 0.15f)
-        offerCookingRecipes(exporter, HybridAquaticItems.SHRIMP, HybridAquaticItems.COOKED_SHRIMP, 0.15f)
-        offerCookingRecipes(exporter, HybridAquaticItems.FISH_MEAT, HybridAquaticItems.COOKED_FISH_MEAT, 0.15f)
-        offerCookingRecipes(exporter, HybridAquaticItems.SMALL_FISH_MEAT, HybridAquaticItems.COOKED_SMALL_FISH_MEAT, 0.15f)
-        offerCookingRecipes(exporter, HybridAquaticItems.TENTACLE, HybridAquaticItems.COOKED_TENTACLE, 0.15f)
+        offerCookingRecipes(exporter, HybridAquaticItems.RAW_CRAB, HybridAquaticItems.COOKED_CRAB, 0.15f)
+        offerCookingRecipes(exporter, HybridAquaticItems.RAW_SHRIMP, HybridAquaticItems.COOKED_SHRIMP, 0.15f)
+        offerCookingRecipes(exporter, HybridAquaticItems.RAW_CRAYFISH, HybridAquaticItems.COOKED_CRAYFISH, 0.15f)
+        offerCookingRecipes(exporter, HybridAquaticItems.RAW_LOBSTER, HybridAquaticItems.COOKED_LOBSTER, 0.15f)
+        offerCookingRecipes(exporter, HybridAquaticItems.RAW_FISH_STEAK, HybridAquaticItems.COOKED_FISH_STEAK, 0.15f)
+        offerCookingRecipes(exporter, HybridAquaticItems.RAW_FISH_MEAT, HybridAquaticItems.COOKED_FISH_MEAT, 0.15f)
+        offerCookingRecipes(exporter, HybridAquaticItems.RAW_TENTACLE, HybridAquaticItems.COOKED_TENTACLE, 0.15f)
     }
     private fun offerCookingRecipes(
         exporter: Consumer<RecipeJsonProvider>,

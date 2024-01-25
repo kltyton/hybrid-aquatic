@@ -60,6 +60,7 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
 
     override fun generateItemModels(generator: ItemModelGenerator) {
         setOf(
+            HybridAquaticItems.RAW_CRAYFISH,
             HybridAquaticItems.LOBSTER_CLAW,
             HybridAquaticItems.CRAB_CLAW,
             HybridAquaticItems.FIDDLER_CRAB_CLAW,
@@ -67,15 +68,18 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
             HybridAquaticItems.FLOWER_CRAB_CLAW,
             HybridAquaticItems.GHOST_CRAB_CLAW,
             HybridAquaticItems.SPIDER_CRAB_CLAW,
-            HybridAquaticItems.CRAB_MEAT,
-            HybridAquaticItems.COOKED_CRAB_MEAT,
-            HybridAquaticItems.SHRIMP,
+            HybridAquaticItems.RAW_CRAB,
+            HybridAquaticItems.COOKED_CRAB,
+            HybridAquaticItems.RAW_SHRIMP,
             HybridAquaticItems.COOKED_SHRIMP,
-            HybridAquaticItems.FISH_MEAT,
+            HybridAquaticItems.COOKED_CRAYFISH,
+            HybridAquaticItems.RAW_LOBSTER,
+            HybridAquaticItems.COOKED_LOBSTER,
+            HybridAquaticItems.RAW_FISH_STEAK,
+            HybridAquaticItems.COOKED_FISH_STEAK,
+            HybridAquaticItems.RAW_FISH_MEAT,
             HybridAquaticItems.COOKED_FISH_MEAT,
-            HybridAquaticItems.SMALL_FISH_MEAT,
-            HybridAquaticItems.COOKED_SMALL_FISH_MEAT,
-            HybridAquaticItems.TENTACLE,
+            HybridAquaticItems.RAW_TENTACLE,
             HybridAquaticItems.COOKED_TENTACLE,
             HybridAquaticItems.GLOW_SLIME,
             HybridAquaticItems.SHARK_TOOTH,
@@ -117,7 +121,6 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
         private val TEMPLATE_HYDROTHERMAL_VENT = Identifier(HybridAquatic.MOD_ID, "item/template_hydrothermal_vent")
         private val TEMPLATE_MESSAGE_IN_A_BOTTLE = Identifier(HybridAquatic.MOD_ID, "item/template_message_in_a_bottle")
         private val TEMPLATE_PLUSHIE = Identifier(HybridAquatic.MOD_ID, "item/template_plushie")
-        private val TEMPLATE_CRAB_POT = Identifier(HybridAquatic.MOD_ID, "item/template_crab_pot")
         private val TEMPLATE_GIANT_CLAM = Identifier(HybridAquatic.MOD_ID, "item/template_giant_clam")
     }
 }
