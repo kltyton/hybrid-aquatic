@@ -345,6 +345,7 @@ open class HybridAquaticSharkEntity(
     override fun chooseRandomAngerTime() {
         setAngerTime(ANGER_TIME_RANGE.get(random))
     }
+
     var size: Int
         get() = dataTracker.get(SHARK_SIZE)
         set(size) {

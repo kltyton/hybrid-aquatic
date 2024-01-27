@@ -16,7 +16,6 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 @Mixin(ClientPlayerInteractionManager.class)
 public class ClientPlayerInteractionManagerMixin {
     @Shadow @Final private MinecraftClient client;
-    
     @Shadow @Final private static Logger LOGGER;
     
     @ModifyConstant(
