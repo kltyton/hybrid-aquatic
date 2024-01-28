@@ -14,10 +14,13 @@ import net.minecraft.entity.data.DataTracker
 import net.minecraft.entity.data.TrackedData
 import net.minecraft.entity.data.TrackedDataHandlerRegistry
 import net.minecraft.entity.mob.Angerable
+import net.minecraft.entity.mob.MobEntity
 import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.world.Difficulty
 import net.minecraft.world.World
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import software.bernie.geckolib.core.animatable.GeoAnimatable
 import software.bernie.geckolib.core.animation.AnimationState
 import software.bernie.geckolib.core.`object`.PlayState
@@ -27,12 +30,14 @@ class KarkinosEntity(entityType: EntityType<out HybridAquaticCritterEntity>, wor
     HybridAquaticCrabEntity(entityType, world), Angerable {
 
     private var flipTimer: Int = 0
-    private val flipDuration: Int = 10
+    private val flipDuration: Int = 40
     private var angerTime = 0
     private var angryAt: UUID? = null
-    private var isFlipped: Boolean
+    var isFlipped: Boolean
         get() = dataTracker.get(FLIPPED)
         set(bool) = dataTracker.set(FLIPPED, bool)
+
+    private var LOGGER: Logger = LoggerFactory.getLogger("karkinos")
 
     override fun initDataTracker() {
         super.initDataTracker()
@@ -40,8 +45,8 @@ class KarkinosEntity(entityType: EntityType<out HybridAquaticCritterEntity>, wor
     }
 
     override fun initGoals() {
-        goalSelector.add(1, AttackGoal(this))
-        goalSelector.add(1, WanderAroundGoal(this, 0.4))
+        goalSelector.add(1, KarkinosAttackGoal(this))
+        goalSelector.add(1, KarkinosWanderAroundGoal(this, 0.4))
         goalSelector.add(4, LookAroundGoal(this))
         goalSelector.add(5, LookAtEntityGoal(this, PlayerEntity::class.java, 6.0f))
 
@@ -56,8 +61,12 @@ class KarkinosEntity(entityType: EntityType<out HybridAquaticCritterEntity>, wor
 
     override fun tick() {
         super.tick()
+        if(world.isClient) LOGGER.info("[C] Flipped: $isFlipped, $flipTimer")
+        else LOGGER.info("[S] Flipped: $isFlipped, $flipTimer")
 
-        if (isFlipped) {
+        if (!world.isClient && isFlipped) {
+            target = null
+
             flipTimer--
             attributes.getCustomInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED)?.baseValue = 0.0
 
@@ -144,5 +153,17 @@ class KarkinosEntity(entityType: EntityType<out HybridAquaticCritterEntity>, wor
         }
 
         val FLIPPED: TrackedData<Boolean> = DataTracker.registerData(KarkinosEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
+    }
+
+    class KarkinosAttackGoal(private val karkinos: KarkinosEntity) : AttackGoal(karkinos) {
+        override fun shouldContinue(): Boolean {
+            return !karkinos.isFlipped && super.shouldContinue()
+        }
+    }
+
+    class KarkinosWanderAroundGoal(private val karkinos: KarkinosEntity, speed: Double) : WanderAroundGoal(karkinos, speed) {
+        override fun shouldContinue(): Boolean {
+            return !karkinos.isFlipped && super.shouldContinue()
+        }
     }
 }
