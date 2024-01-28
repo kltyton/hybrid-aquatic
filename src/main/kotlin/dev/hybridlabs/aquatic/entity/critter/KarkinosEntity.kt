@@ -15,8 +15,6 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.world.Difficulty
 import net.minecraft.world.World
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
 import software.bernie.geckolib.core.animatable.GeoAnimatable
 import software.bernie.geckolib.core.animation.AnimationState
 import software.bernie.geckolib.core.`object`.PlayState
@@ -27,13 +25,13 @@ class KarkinosEntity(entityType: EntityType<out HybridAquaticCritterEntity>, wor
 
     private var isFlipped: Boolean = false
     private var flipTimer: Int = 0
-    private var LOGGER: Logger = LoggerFactory.getLogger("test")
+    private val flipDuration: Int = 10
     private var angerTime = 0
     private var angryAt: UUID? = null
 
     override fun initGoals() {
         goalSelector.add(1, AttackGoal(this))
-        goalSelector.add(1, WanderAroundGoal(this, 0.5))
+        goalSelector.add(1, WanderAroundGoal(this, 0.4))
         goalSelector.add(4, LookAroundGoal(this))
         goalSelector.add(5, LookAtEntityGoal(this, PlayerEntity::class.java, 6.0f))
 
@@ -43,7 +41,20 @@ class KarkinosEntity(entityType: EntityType<out HybridAquaticCritterEntity>, wor
 
     private fun beFlipped() {
         isFlipped = true
-        flipTimer = 100
+        flipTimer = flipDuration
+    }
+
+    override fun tick() {
+        super.tick()
+
+        if (isFlipped) {
+            flipTimer--
+            attributes.getCustomInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED)?.baseValue = 0.0
+
+            if (flipTimer <= 0) {
+                isFlipped = false
+            }
+        }
     }
 
     override fun checkDespawn() {
@@ -116,10 +127,10 @@ class KarkinosEntity(entityType: EntityType<out HybridAquaticCritterEntity>, wor
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 100.0)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.6)
-                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 4.0)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.5)
+                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 5.0)
                 .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 32.0)
-                .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 100.0)
+                .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 10.0)
         }
     }
 }
