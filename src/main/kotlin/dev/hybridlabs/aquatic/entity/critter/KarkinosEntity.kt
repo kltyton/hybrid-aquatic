@@ -10,6 +10,9 @@ import net.minecraft.entity.attribute.EntityAttributes
 import net.minecraft.entity.damage.DamageSource
 import net.minecraft.entity.damage.DamageType
 import net.minecraft.entity.damage.DamageTypes
+import net.minecraft.entity.data.DataTracker
+import net.minecraft.entity.data.TrackedData
+import net.minecraft.entity.data.TrackedDataHandlerRegistry
 import net.minecraft.entity.mob.Angerable
 import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.entity.player.PlayerEntity
@@ -23,11 +26,18 @@ import java.util.*
 class KarkinosEntity(entityType: EntityType<out HybridAquaticCritterEntity>, world: World) :
     HybridAquaticCrabEntity(entityType, world), Angerable {
 
-    private var isFlipped: Boolean = false
     private var flipTimer: Int = 0
     private val flipDuration: Int = 10
     private var angerTime = 0
     private var angryAt: UUID? = null
+    private var isFlipped: Boolean
+        get() = dataTracker.get(FLIPPED)
+        set(bool) = dataTracker.set(FLIPPED, bool)
+
+    override fun initDataTracker() {
+        super.initDataTracker()
+        dataTracker.startTracking(FLIPPED, false)
+    }
 
     override fun initGoals() {
         goalSelector.add(1, AttackGoal(this))
@@ -132,5 +142,7 @@ class KarkinosEntity(entityType: EntityType<out HybridAquaticCritterEntity>, wor
                 .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 32.0)
                 .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 10.0)
         }
+
+        val FLIPPED: TrackedData<Boolean> = DataTracker.registerData(KarkinosEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
     }
 }

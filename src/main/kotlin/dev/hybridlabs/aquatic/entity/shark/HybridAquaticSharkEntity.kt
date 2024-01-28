@@ -92,6 +92,12 @@ open class HybridAquaticSharkEntity(
         set(attemptAttack) {
             dataTracker.set(ATTEMPT_ATTACK, attemptAttack)
         }
+    var size: Int
+        get() = dataTracker.get(SHARK_SIZE)
+        set(size) {
+            dataTracker.set(SHARK_SIZE, size)
+        }
+
     init {
         setPathfindingPenalty(PathNodeType.WATER, 0.0f)
         moveControl = AquaticMoveControl(this, 85, 10, 0.02F, 0.1F, true)
@@ -345,12 +351,6 @@ open class HybridAquaticSharkEntity(
     override fun chooseRandomAngerTime() {
         setAngerTime(ANGER_TIME_RANGE.get(random))
     }
-
-    var size: Int
-        get() = dataTracker.get(SHARK_SIZE)
-        set(size) {
-            dataTracker.set(SHARK_SIZE, size)
-        }
     //#endregion
 
     private fun getHungerValue(entityType: EntityType<*>): Int {
