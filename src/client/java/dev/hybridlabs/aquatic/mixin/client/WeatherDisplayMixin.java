@@ -114,15 +114,16 @@ public abstract class WeatherDisplayMixin implements SynchronousResourceReloader
                                 y = ((1.0F - x * x) * 0.5F + 0.5F) * f;
                                 mutable.set(o, t, n);
                                 int z = getLightmapCoordinates(world, mutable);
+                                float ae = ((1.0F - y * y) * 0.3F + 0.5F) * f;
 
                                 float seaLevelDist = Math.max(0.0f, (float) (world.getSeaLevel() - cameraY) / 128.0f);
                                 float lerpedAlpha = MathHelper.lerp(seaLevelDist, 0.0f, 1.0f);
                                 float clampedAlpha = MathHelper.clamp(y - lerpedAlpha, 0.0f, 1.0f);
 
-                                bufferBuilder.vertex((double)o - cameraX - d + 0.5, (double)s - cameraY, (double)n - cameraZ - e + 0.5).texture(0.0F, (float)r * 0.25F + h).color(1.0F, 1.0F, 1.0F, clampedAlpha).light(z).next();
-                                bufferBuilder.vertex((double)o - cameraX + d + 0.5, (double)s - cameraY, (double)n - cameraZ + e + 0.5).texture(1.0F, (float)r * 0.25F + h).color(1.0F, 1.0F, 1.0F, clampedAlpha).light(z).next();
-                                bufferBuilder.vertex((double)o - cameraX + d + 0.5, (double)r - cameraY, (double)n - cameraZ + e + 0.5).texture(1.0F, (float)s * 0.25F + h).color(1.0F, 1.0F, 1.0F, clampedAlpha).light(z).next();
-                                bufferBuilder.vertex((double)o - cameraX - d + 0.5, (double)r - cameraY, (double)n - cameraZ - e + 0.5).texture(0.0F, (float)s * 0.25F + h).color(1.0F, 1.0F, 1.0F, clampedAlpha).light(z).next();
+                                bufferBuilder.vertex((double)o - cameraX - d + 0.5, (double)s - cameraY, (double)n - cameraZ - e + 0.5).texture(0.0F, (float)r * 0.25F + h).color(1.0F, 1.0F, 1.0F, clampedAlpha * ae).light(z).next();
+                                bufferBuilder.vertex((double)o - cameraX + d + 0.5, (double)s - cameraY, (double)n - cameraZ + e + 0.5).texture(1.0F, (float)r * 0.25F + h).color(1.0F, 1.0F, 1.0F, clampedAlpha * ae).light(z).next();
+                                bufferBuilder.vertex((double)o - cameraX + d + 0.5, (double)r - cameraY, (double)n - cameraZ + e + 0.5).texture(1.0F, (float)s * 0.25F + h).color(1.0F, 1.0F, 1.0F, clampedAlpha * ae).light(z).next();
+                                bufferBuilder.vertex((double)o - cameraX - d + 0.5, (double)r - cameraY, (double)n - cameraZ - e + 0.5).texture(0.0F, (float)s * 0.25F + h).color(1.0F, 1.0F, 1.0F, clampedAlpha * ae).light(z).next();
                             }
                         }
                     }
