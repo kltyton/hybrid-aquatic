@@ -98,7 +98,7 @@ object SpawnRestrictionRegistry {
 
         // crabs
         setOf(
-            HybridAquaticEntityTypes.CRAB,
+            HybridAquaticEntityTypes.DUNGENESS_CRAB,
             HybridAquaticEntityTypes.FIDDLER_CRAB,
             HybridAquaticEntityTypes.HERMIT_CRAB,
             HybridAquaticEntityTypes.GHOST_CRAB,

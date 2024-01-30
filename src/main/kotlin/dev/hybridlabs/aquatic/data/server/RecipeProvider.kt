@@ -74,7 +74,7 @@ class RecipeProvider(output: FabricDataOutput) : FabricRecipeProvider(output) {
         // food items
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, HybridAquaticItems.RAW_CRAB)
             .input(HybridAquaticItemTags.CRAB_CLAW)
-            .criterion("has_crab_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.CRAB_CLAW))
+            .criterion("has_crab_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.DUNGENESS_CRAB_CLAW))
             .offerTo(exporter)
 
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, HybridAquaticItems.RAW_LOBSTER)

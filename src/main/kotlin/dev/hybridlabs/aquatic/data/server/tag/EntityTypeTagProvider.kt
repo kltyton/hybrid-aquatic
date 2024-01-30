@@ -33,7 +33,7 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
                 HybridAquaticEntityTypes.DISCUS,
                 HybridAquaticEntityTypes.GOURAMI,
                 HybridAquaticEntityTypes.CUTTLEFISH,
-                HybridAquaticEntityTypes.CRAB,
+                HybridAquaticEntityTypes.DUNGENESS_CRAB,
                 HybridAquaticEntityTypes.FIDDLER_CRAB,
                 HybridAquaticEntityTypes.HERMIT_CRAB,
                 HybridAquaticEntityTypes.BLUE_SPOTTED_STINGRAY,
@@ -169,7 +169,7 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
         // critters
         getOrCreateTagBuilder(HybridAquaticEntityTags.CRAB)
             .add(
-                HybridAquaticEntityTypes.CRAB,
+                HybridAquaticEntityTypes.DUNGENESS_CRAB,
                 HybridAquaticEntityTypes.FIDDLER_CRAB,
                 HybridAquaticEntityTypes.HERMIT_CRAB,
                 HybridAquaticEntityTypes.GHOST_CRAB,

@@ -22,6 +22,6 @@ class KarkinosEntityRenderer(context: Context) : GeoEntityRenderer<HybridAquatic
     }
 
     override fun getMotionAnimThreshold(animatable: HybridAquaticCritterEntity?): Float {
-        return 0.0025f
+        return 0.025f
     }
 }

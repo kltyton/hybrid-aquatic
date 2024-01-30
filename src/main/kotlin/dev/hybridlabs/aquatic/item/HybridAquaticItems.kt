@@ -36,12 +36,15 @@ object HybridAquaticItems {
     val RAW_SHRIMP = register("raw_shrimp", Item(FabricItemSettings()))
     val RAW_CRAYFISH = register("raw_crayfish", Item(FabricItemSettings()))
     val LOBSTER_CLAW = register("lobster_claw", Item(FabricItemSettings()))
-    val CRAB_CLAW = register("crab_claw", Item(FabricItemSettings()))
+    val DUNGENESS_CRAB_CLAW = register("dungeness_crab_claw", Item(FabricItemSettings()))
     val FIDDLER_CRAB_CLAW = register("fiddler_crab_claw", Item(FabricItemSettings()))
     val VAMPIRE_CRAB_CLAW = register("vampire_crab_claw", Item(FabricItemSettings()))
     val FLOWER_CRAB_CLAW = register("flower_crab_claw", Item(FabricItemSettings()))
     val GHOST_CRAB_CLAW = register("ghost_crab_claw", Item(FabricItemSettings()))
     val SPIDER_CRAB_CLAW = register("spider_crab_claw", Item(FabricItemSettings()))
+    val COCONUT_CRAB_CLAW = register("coconut_crab_claw", Item(FabricItemSettings()))
+    val YETI_CRAB_CLAW = register("yeti_crab_claw", Item(FabricItemSettings()))
+    val LIGHTFOOT_CRAB_CLAW = register("lightfoot_crab_claw", Item(FabricItemSettings()))
 
     // food items
     val COOKED_CRAB = register("cooked_crab",
@@ -474,7 +477,7 @@ object HybridAquaticItems {
 
     // crab spawn eggs
     val COCONUT_CRAB_SPAWN_EGG = registerSpawnEgg("coconut_crab_spawn_egg", HybridAquaticEntityTypes.COCONUT_CRAB, 0x3e2d25, 0x3c546d)
-    val CRAB_SPAWN_EGG = registerSpawnEgg("crab_spawn_egg", HybridAquaticEntityTypes.CRAB, 0x81353f, 0xeecfce)
+    val DUNGENESS_CRAB_SPAWN_EGG = registerSpawnEgg("dungeness_crab_spawn_egg", HybridAquaticEntityTypes.DUNGENESS_CRAB, 0x81353f, 0xeecfce)
     val CRAYFISH_SPAWN_EGG = registerSpawnEgg("crayfish_spawn_egg", HybridAquaticEntityTypes.CRAYFISH, 0x697152, 0x7c4452)
     val FIDDLER_CRAB_SPAWN_EGG = registerSpawnEgg("fiddler_crab_spawn_egg", HybridAquaticEntityTypes.FIDDLER_CRAB, 0x80366b, 0xf39949)
     val FLOWER_CRAB_SPAWN_EGG = registerSpawnEgg("flower_crab_spawn_egg", HybridAquaticEntityTypes.FLOWER_CRAB, 0x9b8a6e, 0x20a094)
