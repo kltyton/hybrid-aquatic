@@ -1,6 +1,5 @@
 package dev.hybridlabs.aquatic.entity.critter
 
-import dev.hybridlabs.aquatic.entity.shark.HybridAquaticSharkEntity
 import net.minecraft.enchantment.EnchantmentHelper
 import net.minecraft.enchantment.Enchantments
 import net.minecraft.entity.EntityType
@@ -14,7 +13,6 @@ import net.minecraft.entity.data.DataTracker
 import net.minecraft.entity.data.TrackedData
 import net.minecraft.entity.data.TrackedDataHandlerRegistry
 import net.minecraft.entity.mob.Angerable
-import net.minecraft.entity.mob.MobEntity
 import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.world.Difficulty
@@ -61,8 +59,6 @@ class KarkinosEntity(entityType: EntityType<out HybridAquaticCritterEntity>, wor
 
     override fun tick() {
         super.tick()
-        if(world.isClient) LOGGER.info("[C] Flipped: $isFlipped, $flipTimer")
-        else LOGGER.info("[S] Flipped: $isFlipped, $flipTimer")
 
         if (!world.isClient && isFlipped) {
             target = null
@@ -139,7 +135,7 @@ class KarkinosEntity(entityType: EntityType<out HybridAquaticCritterEntity>, wor
     }
 
     override fun chooseRandomAngerTime() {
-        setAngerTime(HybridAquaticSharkEntity.ANGER_TIME_RANGE.get(random))
+        setAngerTime(random.nextInt(10))
     }
 
     companion object {
