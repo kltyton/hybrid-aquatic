@@ -86,9 +86,11 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
         )
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.GHOST_CRAB_SPAWN_BIOMES).add(
+            BiomeKeys.OCEAN,
             BiomeKeys.WARM_OCEAN,
             BiomeKeys.LUKEWARM_OCEAN,
-            BiomeKeys.BEACH
+            BiomeKeys.BEACH,
+            BiomeKeys.STONY_SHORE,
         )
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.LIGHTFOOT_CRAB_SPAWN_BIOMES).add(
@@ -109,6 +111,8 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
         getOrCreateTagBuilder(HybridAquaticBiomeTags.VAMPIRE_CRAB_SPAWN_BIOMES).add(
             BiomeKeys.JUNGLE,
             BiomeKeys.BAMBOO_JUNGLE,
+            BiomeKeys.SPARSE_JUNGLE,
+            BiomeKeys.SWAMP,
             BiomeKeys.MANGROVE_SWAMP
         )
 
@@ -348,6 +352,7 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
         getOrCreateTagBuilder(HybridAquaticBiomeTags.OARFISH_SPAWN_BIOMES).add(
             BiomeKeys.DEEP_OCEAN,
             BiomeKeys.DEEP_LUKEWARM_OCEAN,
+            BiomeKeys.DEEP_COLD_OCEAN,
         )
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.OPAH_SPAWN_BIOMES).add(

@@ -197,7 +197,7 @@ object HybridAquaticItems {
             FabricItemSettings()
                 .food(
                     FoodComponent.Builder()
-                        .hunger(2)
+                        .hunger(1)
                         .saturationModifier(0.4F)
                         .meat()
                         .build()
@@ -209,7 +209,7 @@ object HybridAquaticItems {
             FabricItemSettings()
                 .food(
                     FoodComponent.Builder()
-                        .hunger(2)
+                        .hunger(3)
                         .saturationModifier(0.4F)
                         .meat()
                         .build()
@@ -221,7 +221,7 @@ object HybridAquaticItems {
             FabricItemSettings()
                 .food(
                     FoodComponent.Builder()
-                        .hunger(2)
+                        .hunger(3)
                         .saturationModifier(0.4F)
                         .meat()
                         .build()
@@ -233,7 +233,7 @@ object HybridAquaticItems {
             FabricItemSettings()
                 .food(
                     FoodComponent.Builder()
-                        .hunger(2)
+                        .hunger(3)
                         .saturationModifier(0.4F)
                         .meat()
                         .build()
@@ -245,7 +245,7 @@ object HybridAquaticItems {
             FabricItemSettings()
                 .food(
                     FoodComponent.Builder()
-                        .hunger(2)
+                        .hunger(1)
                         .saturationModifier(0.4F)
                         .meat()
                         .build()
@@ -257,7 +257,7 @@ object HybridAquaticItems {
             FabricItemSettings()
                 .food(
                     FoodComponent.Builder()
-                        .hunger(2)
+                        .hunger(1)
                         .saturationModifier(0.4F)
                         .meat()
                         .build()
@@ -269,7 +269,7 @@ object HybridAquaticItems {
             FabricItemSettings()
                 .food(
                     FoodComponent.Builder()
-                        .hunger(2)
+                        .hunger(3)
                         .saturationModifier(0.4F)
                         .meat()
                         .build()
@@ -281,7 +281,7 @@ object HybridAquaticItems {
             FabricItemSettings()
                 .food(
                     FoodComponent.Builder()
-                        .hunger(2)
+                        .hunger(1)
                         .saturationModifier(0.4F)
                         .meat()
                         .build()
@@ -293,7 +293,7 @@ object HybridAquaticItems {
             FabricItemSettings()
                 .food(
                     FoodComponent.Builder()
-                        .hunger(2)
+                        .hunger(1)
                         .saturationModifier(0.4F)
                         .meat()
                         .build()
@@ -305,7 +305,7 @@ object HybridAquaticItems {
             FabricItemSettings()
                 .food(
                     FoodComponent.Builder()
-                        .hunger(2)
+                        .hunger(1)
                         .saturationModifier(0.4F)
                         .meat()
                         .build()
@@ -317,7 +317,7 @@ object HybridAquaticItems {
             FabricItemSettings()
                 .food(
                     FoodComponent.Builder()
-                        .hunger(2)
+                        .hunger(1)
                         .saturationModifier(0.4F)
                         .meat()
                         .build()
@@ -329,7 +329,7 @@ object HybridAquaticItems {
             FabricItemSettings()
                 .food(
                     FoodComponent.Builder()
-                        .hunger(2)
+                        .hunger(1)
                         .saturationModifier(0.4F)
                         .meat()
                         .build()
@@ -341,7 +341,7 @@ object HybridAquaticItems {
             FabricItemSettings()
                 .food(
                     FoodComponent.Builder()
-                        .hunger(2)
+                        .hunger(1)
                         .saturationModifier(0.4F)
                         .meat()
                         .build()
@@ -353,7 +353,7 @@ object HybridAquaticItems {
             FabricItemSettings()
                 .food(
                     FoodComponent.Builder()
-                        .hunger(2)
+                        .hunger(1)
                         .saturationModifier(0.4F)
                         .meat()
                         .build()
@@ -365,7 +365,7 @@ object HybridAquaticItems {
             FabricItemSettings()
                 .food(
                     FoodComponent.Builder()
-                        .hunger(2)
+                        .hunger(1)
                         .saturationModifier(0.4F)
                         .meat()
                         .build()
@@ -377,7 +377,7 @@ object HybridAquaticItems {
             FabricItemSettings()
                 .food(
                     FoodComponent.Builder()
-                        .hunger(2)
+                        .hunger(3)
                         .saturationModifier(0.4F)
                         .meat()
                         .build()
@@ -389,7 +389,7 @@ object HybridAquaticItems {
             FabricItemSettings()
                 .food(
                     FoodComponent.Builder()
-                        .hunger(2)
+                        .hunger(1)
                         .saturationModifier(0.4F)
                         .meat()
                         .build()
@@ -401,7 +401,7 @@ object HybridAquaticItems {
             FabricItemSettings()
                 .food(
                     FoodComponent.Builder()
-                        .hunger(2)
+                        .hunger(1)
                         .saturationModifier(0.4F)
                         .meat()
                         .build()

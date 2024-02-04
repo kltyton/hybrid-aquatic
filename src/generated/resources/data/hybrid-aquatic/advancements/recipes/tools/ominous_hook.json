@@ -1,6 +1,18 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
+    "has_barbed_hook": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hybrid-aquatic:barbed_hook"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_coconut_crab_claw": {
       "conditions": {
         "items": [
@@ -73,18 +85,6 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_lobster_claw": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "hybrid-aquatic:lobster_claw"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "has_spider_crab_claw": {
       "conditions": {
         "items": [
@@ -99,7 +99,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "hybrid-aquatic:raw_lobster"
+        "recipe": "hybrid-aquatic:ominous_hook"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -130,7 +130,7 @@
   },
   "requirements": [
     [
-      "has_lobster_claw",
+      "has_barbed_hook",
       "has_dungeness_crab_claw",
       "has_coconut_crab_claw",
       "has_spider_crab_claw",
@@ -145,7 +145,7 @@
   ],
   "rewards": {
     "recipes": [
-      "hybrid-aquatic:raw_lobster"
+      "hybrid-aquatic:ominous_hook"
     ]
   },
   "sends_telemetry_event": false
