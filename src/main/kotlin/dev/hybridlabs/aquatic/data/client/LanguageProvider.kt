@@ -124,7 +124,9 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             HybridAquaticItems.BARBED_HOOK to "Barbed Hook",
             HybridAquaticItems.GLOWING_HOOK to "Glowing Hook",
             HybridAquaticItems.MAGNETIC_HOOK to "Magnetic Hook",
+            HybridAquaticItems.OMINOUS_HOOK to "Ominous Hook",
             HybridAquaticItems.FISHING_NET to "Fishing Net",
+            HybridAquaticItems.KARKINOS_CLAW to "Karkinos Claw",
         ).forEach { (item, translation) ->
             builder.add(item, translation)
         }
@@ -143,6 +145,7 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             HybridAquaticItems.BARBED_HOOK.translationKey to "Increases fishing speed during the day",
             HybridAquaticItems.GLOWING_HOOK.translationKey to "Increases fishing speed at night",
             HybridAquaticItems.MAGNETIC_HOOK.translationKey to "Increases treasure chance",
+            HybridAquaticItems.OMINOUS_HOOK.translationKey to "Summons Karkinos",
             HybridAquaticBlocks.CRATE.translationKey to "Break with an axe to open",
             HybridAquaticItems.FISHING_NET.translationKey to "Stored Entity: %s"
         ).forEach { (itemTranslationKey, translation) ->

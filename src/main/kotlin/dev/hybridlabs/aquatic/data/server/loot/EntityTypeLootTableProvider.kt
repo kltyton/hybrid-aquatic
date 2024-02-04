@@ -44,6 +44,18 @@ class EntityTypeLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTa
             )
         }
         //crustaceans
+
+        export(exporter, HybridAquaticEntityTypes.KARKINOS) {
+            pool(
+                LootPool.builder()
+                    .with(
+                        ItemEntry.builder(HybridAquaticItems.KARKINOS_CLAW)
+                            .apply(FurnaceSmeltLootFunction.builder().conditionally(EntityPropertiesLootCondition.builder(LootContext.EntityTarget.THIS, NEEDS_ENTITY_ON_FIRE)))
+                            .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0F, 1.0F)))
+                    )
+            )
+        }
+
         export(exporter, HybridAquaticEntityTypes.DUNGENESS_CRAB) {
             pool(
                 LootPool.builder()

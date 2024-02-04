@@ -111,6 +111,7 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
             HybridAquaticItems.BARBED_HOOK,
             HybridAquaticItems.GLOWING_HOOK,
             HybridAquaticItems.MAGNETIC_HOOK,
+            HybridAquaticItems.OMINOUS_HOOK,
             HybridAquaticItems.FISHING_NET
         ).forEach { item ->
             generator.register(item, Models.GENERATED)
