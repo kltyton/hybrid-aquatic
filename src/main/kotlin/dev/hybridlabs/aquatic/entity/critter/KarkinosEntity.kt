@@ -6,6 +6,8 @@ import net.minecraft.entity.EntityType
 import net.minecraft.entity.ai.goal.*
 import net.minecraft.entity.attribute.DefaultAttributeContainer
 import net.minecraft.entity.attribute.EntityAttributes
+import net.minecraft.entity.boss.BossBar
+import net.minecraft.entity.boss.ServerBossBar
 import net.minecraft.entity.damage.DamageSource
 import net.minecraft.entity.damage.DamageType
 import net.minecraft.entity.damage.DamageTypes
@@ -15,6 +17,9 @@ import net.minecraft.entity.data.TrackedDataHandlerRegistry
 import net.minecraft.entity.mob.Angerable
 import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.entity.player.PlayerEntity
+import net.minecraft.nbt.NbtCompound
+import net.minecraft.server.network.ServerPlayerEntity
+import net.minecraft.text.Text
 import net.minecraft.world.Difficulty
 import net.minecraft.world.World
 import org.slf4j.Logger
@@ -31,6 +36,7 @@ class KarkinosEntity(entityType: EntityType<out HybridAquaticCritterEntity>, wor
     private val flipDuration: Int = 40
     private var angerTime = 0
     private var angryAt: UUID? = null
+    var bossBar: ServerBossBar = ServerBossBar(displayName, BossBar.Color.RED, BossBar.Style.PROGRESS)
     var isFlipped: Boolean
         get() = dataTracker.get(FLIPPED)
         set(bool) = dataTracker.set(FLIPPED, bool)
@@ -57,9 +63,7 @@ class KarkinosEntity(entityType: EntityType<out HybridAquaticCritterEntity>, wor
         flipTimer = flipDuration
     }
 
-    override fun tick() {
-        super.tick()
-
+    override fun mobTick() {
         if (!world.isClient && isFlipped) {
             target = null
 
@@ -70,6 +74,20 @@ class KarkinosEntity(entityType: EntityType<out HybridAquaticCritterEntity>, wor
                 isFlipped = false
             }
         }
+
+        bossBar.percent = health / maxHealth
+
+        super.mobTick()
+    }
+
+    override fun onStartedTrackingBy(player: ServerPlayerEntity) {
+        super.onStartedTrackingBy(player)
+        bossBar.addPlayer(player)
+    }
+
+    override fun onStoppedTrackingBy(player: ServerPlayerEntity) {
+        super.onStoppedTrackingBy(player)
+        bossBar.removePlayer(player)
     }
 
     override fun checkDespawn() {
@@ -136,6 +154,18 @@ class KarkinosEntity(entityType: EntityType<out HybridAquaticCritterEntity>, wor
 
     override fun chooseRandomAngerTime() {
         setAngerTime(random.nextInt(10))
+    }
+
+    override fun readCustomDataFromNbt(nbt: NbtCompound) {
+        if (hasCustomName()) {
+            bossBar.name = this.displayName
+        }
+        super.readCustomDataFromNbt(nbt)
+    }
+
+    override fun setCustomName(name: Text?) {
+        super.setCustomName(name)
+        bossBar.name = this.displayName
     }
 
     companion object {
