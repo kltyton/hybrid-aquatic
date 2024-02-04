@@ -50,8 +50,6 @@ open class HybridAquaticCrabEntity(type: EntityType<out HybridAquaticCritterEnti
             if (isDigging) {
                 this.movementSpeed = 0.0F
             }
-        } else {
-            this.movementSpeed = movementSpeed.toDouble().toFloat()
         }
 
         super.mobTick()
