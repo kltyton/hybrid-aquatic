@@ -512,6 +512,7 @@ object HybridAquaticItems {
     val BARBED_HOOK = register("barbed_hook", HookItem(Item.Settings().maxDamage(32)))
     val GLOWING_HOOK = register("glowing_hook", HookItem(Item.Settings().maxDamage(32)))
     val MAGNETIC_HOOK = register("magnetic_hook", HookItem(Item.Settings().maxDamage(8)))
+    val OMINOUS_HOOK = register("ominous_hook", HookItem(Item.Settings().maxDamage(1)))
 
     private fun register(id: String, item: Item): Item {
         return Registry.register(Registries.ITEM, Identifier(HybridAquatic.MOD_ID, id), item)
