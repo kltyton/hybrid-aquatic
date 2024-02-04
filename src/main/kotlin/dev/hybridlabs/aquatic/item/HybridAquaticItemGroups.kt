@@ -90,6 +90,7 @@ object HybridAquaticItemGroups {
             entries.add(HybridAquaticItems.LIGHTFOOT_CRAB_CLAW)
             entries.add(HybridAquaticItems.YETI_CRAB_CLAW)
             entries.add(HybridAquaticItems.SPIDER_CRAB_CLAW)
+            entries.add(HybridAquaticItems.KARKINOS_CRAB_CLAW)
             entries.add(HybridAquaticItems.GLOW_SLIME)
             entries.add(HybridAquaticItems.SHARK_TOOTH)
             entries.add(HybridAquaticItems.PEARL)
