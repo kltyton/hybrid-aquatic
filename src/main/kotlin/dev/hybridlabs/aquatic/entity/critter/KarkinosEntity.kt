@@ -36,7 +36,7 @@ class KarkinosEntity(entityType: EntityType<out HybridAquaticCritterEntity>, wor
     private val flipDuration: Int = 40
     private var angerTime = 0
     private var angryAt: UUID? = null
-    var bossBar: ServerBossBar = ServerBossBar(displayName, BossBar.Color.RED, BossBar.Style.PROGRESS)
+    var bossBar: ServerBossBar = ServerBossBar(displayName, BossBar.Color.RED, BossBar.Style.NOTCHED_10)
     var isFlipped: Boolean
         get() = dataTracker.get(FLIPPED)
         set(bool) = dataTracker.set(FLIPPED, bool)
@@ -69,6 +69,8 @@ class KarkinosEntity(entityType: EntityType<out HybridAquaticCritterEntity>, wor
 
             flipTimer--
             attributes.getCustomInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED)?.baseValue = 0.0
+            attributes.getCustomInstance(EntityAttributes.GENERIC_ARMOR_TOUGHNESS)?.baseValue = 0.0
+            attributes.getCustomInstance(EntityAttributes.GENERIC_ARMOR)?.baseValue = 0.0
 
             if (flipTimer <= 0) {
                 isFlipped = false
@@ -176,6 +178,8 @@ class KarkinosEntity(entityType: EntityType<out HybridAquaticCritterEntity>, wor
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 5.0)
                 .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 32.0)
                 .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 10.0)
+                .add(EntityAttributes.GENERIC_ARMOR_TOUGHNESS, 5.0)
+                .add(EntityAttributes.GENERIC_ARMOR, 8.0)
         }
 
         val FLIPPED: TrackedData<Boolean> = DataTracker.registerData(KarkinosEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
