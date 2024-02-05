@@ -3,6 +3,8 @@ package dev.hybridlabs.aquatic.mixin;
 import dev.hybridlabs.aquatic.access.CustomFishingBobberEntityData;
 import dev.hybridlabs.aquatic.enchantment.HybridAquaticEnchantments;
 import dev.hybridlabs.aquatic.enchantment.LiveCatchEnchantment;
+import dev.hybridlabs.aquatic.entity.HybridAquaticEntityTypes;
+import dev.hybridlabs.aquatic.entity.critter.KarkinosEntity;
 import dev.hybridlabs.aquatic.item.HybridAquaticItems;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -26,6 +28,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
@@ -43,6 +46,8 @@ import java.util.List;
 @Mixin(FishingBobberEntity.class)
 public abstract class FishingBobberEntityMixin extends ProjectileEntity implements CustomFishingBobberEntityData {
     @Shadow private int waitCountdown;
+
+    @Shadow @Nullable public abstract PlayerEntity getPlayerOwner();
 
     public FishingBobberEntityMixin(EntityType<? extends ProjectileEntity> entityType, World world) {
         super(entityType, world);
@@ -191,6 +196,35 @@ public abstract class FishingBobberEntityMixin extends ProjectileEntity implemen
         }
 
         return instance.spawnEntity(entity);
+    }
+
+    // Whenever we may want to replace entities we use this. This will make sure not to spawn any unwanted entities when we reel in the hook.
+    @Inject(
+            method = "use",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/loot/LootTable;generateLoot(Lnet/minecraft/loot/context/LootContextParameterSet;)Lit/unimi/dsi/fastutil/objects/ObjectArrayList;"
+            ), cancellable = true
+    )
+    private void onHookReelEntity(ItemStack usedItem, CallbackInfoReturnable<Integer> cir) {
+        if(!lureItemStack.isEmpty()) {
+            if(lureItemStack.isOf(HybridAquaticItems.INSTANCE.getOMINOUS_HOOK()) && getPlayerOwner() != null) {
+                var karkinos = HybridAquaticEntityTypes.INSTANCE.getKARKINOS().create(getWorld());
+                getWorld().spawnEntity(karkinos);
+                karkinos.setPosition(getPos().subtract(0,1,0));
+
+                var playerPos = getPlayerOwner().getPos();
+                var karkinosPos = karkinos.getPos();
+
+                var velocity = playerPos.subtract(karkinosPos);
+                velocity.multiply(1.015,1.015,1.015); // Tweak these to your hearts content mystic
+
+                karkinos.setVelocity(velocity);
+
+                this.discard();
+                cir.cancel();
+            }
+        }
     }
 
     // Returns lure back on a successful fishing attempt
