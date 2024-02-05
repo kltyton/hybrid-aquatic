@@ -47,8 +47,6 @@ import java.util.List;
 public abstract class FishingBobberEntityMixin extends ProjectileEntity implements CustomFishingBobberEntityData {
     @Shadow private int waitCountdown;
 
-    @Shadow @Nullable public abstract PlayerEntity getPlayerOwner();
-
     public FishingBobberEntityMixin(EntityType<? extends ProjectileEntity> entityType, World world) {
         super(entityType, world);
     }
@@ -98,7 +96,6 @@ public abstract class FishingBobberEntityMixin extends ProjectileEntity implemen
     // Gets objects for the functions below
     @Unique
     ItemStack usedItem;
-
     @Unique
     PlayerEntity usedPlayer;
 
@@ -201,28 +198,33 @@ public abstract class FishingBobberEntityMixin extends ProjectileEntity implemen
     // Whenever we may want to replace entities we use this. This will make sure not to spawn any unwanted entities when we reel in the hook.
     @Inject(
             method = "use",
+            cancellable = true,
             at = @At(
                     value = "INVOKE",
-                    target = "Lnet/minecraft/loot/LootTable;generateLoot(Lnet/minecraft/loot/context/LootContextParameterSet;)Lit/unimi/dsi/fastutil/objects/ObjectArrayList;"
-            ), cancellable = true
+                    target = "Lnet/minecraft/entity/projectile/FishingBobberEntity;getWorld()Lnet/minecraft/world/World;",
+                    ordinal = 2
+            )
     )
     private void onHookReelEntity(ItemStack usedItem, CallbackInfoReturnable<Integer> cir) {
-        if(!lureItemStack.isEmpty()) {
-            if(lureItemStack.isOf(HybridAquaticItems.INSTANCE.getOMINOUS_HOOK()) && getPlayerOwner() != null) {
-                var karkinos = HybridAquaticEntityTypes.INSTANCE.getKARKINOS().create(getWorld());
-                getWorld().spawnEntity(karkinos);
-                karkinos.setPosition(getPos().subtract(0,1,0));
-
-                var playerPos = getPlayerOwner().getPos();
-                var karkinosPos = karkinos.getPos();
-
-                var velocity = playerPos.subtract(karkinosPos);
-                velocity.multiply(1.015,1.015,1.015); // Tweak these to your hearts content mystic
-
-                karkinos.setVelocity(velocity);
-
-                this.discard();
-                cir.cancel();
+        if(this.getWorld() instanceof ServerWorld serverWorld) {
+            if (!lureItemStack.isEmpty() && lureItemStack.isOf(HybridAquaticItems.INSTANCE.getOMINOUS_HOOK())) {
+                try {
+                    var karkinosType = HybridAquaticEntityTypes.INSTANCE.getKARKINOS();
+                    var karkinos = karkinosType.spawn(serverWorld, getBlockPos().add(0, -1, 0), SpawnReason.MOB_SUMMONED);
+                    if(karkinos == null) return;
+                    
+                    var playerPos = usedPlayer.getPos();
+                    var karkinosPos = karkinos.getPos();
+                    
+                    var velocity = playerPos.subtract(karkinosPos);
+                    velocity.multiply(1.015, 1.015, 1.015); // Tweak these to your hearts content mystic
+                    
+                    karkinos.setVelocity(velocity);
+                    
+                } finally {
+                    this.discard();
+                    cir.setReturnValue(1);
+                }
             }
         }
     }
