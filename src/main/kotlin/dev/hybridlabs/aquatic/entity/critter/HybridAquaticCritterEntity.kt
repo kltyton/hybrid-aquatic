@@ -1,7 +1,6 @@
 package dev.hybridlabs.aquatic.entity.critter
 
 import dev.hybridlabs.aquatic.entity.fish.HybridAquaticFishEntity
-import net.minecraft.block.Blocks
 import net.minecraft.entity.EntityData
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.SpawnReason

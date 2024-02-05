@@ -27,7 +27,7 @@ class RecipeProvider(output: FabricDataOutput) : FabricRecipeProvider(output) {
             .criterion("has_sponge_chunk", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.SPONGE_CHUNK))
             .offerTo(exporter)
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, HybridAquaticItems.BUOY)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, HybridAquaticItems.BUOY,2)
             .pattern(" L ")
             .pattern(" S ")
             .pattern(" W ")
@@ -94,7 +94,7 @@ class RecipeProvider(output: FabricDataOutput) : FabricRecipeProvider(output) {
             .offerTo(exporter)
 
         // food items
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, HybridAquaticItems.RAW_CRAB)
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, HybridAquaticItems.RAW_CRAB,1)
             .input(HybridAquaticItemTags.CRAB_CLAW)
             .criterion("has_dungeness_crab_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.DUNGENESS_CRAB_CLAW))
             .criterion("has_coconut_crab_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.COCONUT_CRAB_CLAW))
@@ -108,7 +108,7 @@ class RecipeProvider(output: FabricDataOutput) : FabricRecipeProvider(output) {
             .criterion("has_lobster_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.LOBSTER_CLAW))
             .offerTo(exporter)
 
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, HybridAquaticItems.RAW_LOBSTER)
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, HybridAquaticItems.RAW_LOBSTER,1)
             .input(HybridAquaticItems.LOBSTER_CLAW)
             .criterion("has_lobster_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.LOBSTER_CLAW))
             .criterion("has_dungeness_crab_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.DUNGENESS_CRAB_CLAW))

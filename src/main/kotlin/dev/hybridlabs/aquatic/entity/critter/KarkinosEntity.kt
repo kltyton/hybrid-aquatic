@@ -22,8 +22,6 @@ import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.text.Text
 import net.minecraft.world.Difficulty
 import net.minecraft.world.World
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
 import software.bernie.geckolib.core.animatable.GeoAnimatable
 import software.bernie.geckolib.core.animation.AnimationState
 import software.bernie.geckolib.core.`object`.PlayState
@@ -32,16 +30,18 @@ import java.util.*
 class KarkinosEntity(entityType: EntityType<out HybridAquaticCritterEntity>, world: World) :
     HybridAquaticCrabEntity(entityType, world), Angerable {
 
+    init {
+        stepHeight = 2.0F
+    }
+
     private var flipTimer: Int = 0
     private val flipDuration: Int = 40
     private var angerTime = 0
     private var angryAt: UUID? = null
-    var bossBar: ServerBossBar = ServerBossBar(displayName, BossBar.Color.RED, BossBar.Style.NOTCHED_10)
+    private var bossBar: ServerBossBar = ServerBossBar(displayName, BossBar.Color.RED, BossBar.Style.NOTCHED_10)
     var isFlipped: Boolean
         get() = dataTracker.get(FLIPPED)
         set(bool) = dataTracker.set(FLIPPED, bool)
-
-    private var LOGGER: Logger = LoggerFactory.getLogger("karkinos")
 
     override fun initDataTracker() {
         super.initDataTracker()
@@ -53,6 +53,8 @@ class KarkinosEntity(entityType: EntityType<out HybridAquaticCritterEntity>, wor
         goalSelector.add(1, KarkinosWanderAroundGoal(this, 0.4))
         goalSelector.add(4, LookAroundGoal(this))
         goalSelector.add(5, LookAtEntityGoal(this, PlayerEntity::class.java, 6.0f))
+        goalSelector.add(7, PounceAtTargetGoal(this, 0.3f))
+
 
         targetSelector.add(2, ActiveTargetGoal(this, PlayerEntity::class.java, 10, true, true, null))
         targetSelector.add(3, UniversalAngerGoal(this, false))
