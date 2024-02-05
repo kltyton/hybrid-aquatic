@@ -53,8 +53,6 @@ class KarkinosEntity(entityType: EntityType<out HybridAquaticCritterEntity>, wor
         goalSelector.add(1, KarkinosWanderAroundGoal(this, 0.4))
         goalSelector.add(4, LookAroundGoal(this))
         goalSelector.add(5, LookAtEntityGoal(this, PlayerEntity::class.java, 6.0f))
-        goalSelector.add(7, PounceAtTargetGoal(this, 0.3f))
-
 
         targetSelector.add(2, ActiveTargetGoal(this, PlayerEntity::class.java, 10, true, true, null))
         targetSelector.add(3, UniversalAngerGoal(this, false))
@@ -176,9 +174,9 @@ class KarkinosEntity(entityType: EntityType<out HybridAquaticCritterEntity>, wor
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 100.0)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.5)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.4)
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 5.0)
-                .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 32.0)
+                .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 24.0)
                 .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 10.0)
                 .add(EntityAttributes.GENERIC_ARMOR_TOUGHNESS, 5.0)
                 .add(EntityAttributes.GENERIC_ARMOR, 8.0)
