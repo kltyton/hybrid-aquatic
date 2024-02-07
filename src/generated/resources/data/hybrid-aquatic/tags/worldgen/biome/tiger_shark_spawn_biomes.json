@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "minecraft:deep_ocean",
-    "minecraft:deep_lukewarm_ocean"
+    "minecraft:deep_lukewarm_ocean",
+    "minecraft:ocean",
+    "minecraft:lukewarm_ocean"
   ]
 }

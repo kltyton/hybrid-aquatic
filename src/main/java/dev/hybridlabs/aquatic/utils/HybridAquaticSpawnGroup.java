@@ -3,11 +3,11 @@ package dev.hybridlabs.aquatic.utils;
 import net.minecraft.entity.SpawnGroup;
 
 public enum HybridAquaticSpawnGroup {
-    FISH("ha_fish", 9, true, false, 32),
-    FISH_UNDERGROUND("ha_fish_underground", 6, true, false, 32),
-    JELLY("ha_jelly", 3, false, false, 32),
-    SHARK("ha_shark", 3, false, false, 32),
-    CRITTER("ha_critter", 6, true, false, 32);
+    FISH("ha_fish", 5, true, false, 64),
+    FISH_UNDERGROUND("ha_fish_underground", 5, true, false, 64),
+    JELLY("ha_jelly", 5, false, false, 64),
+    SHARK("ha_shark", 5, true, true, 128),
+    CRITTER("ha_critter", 5, true, false, 64);
 
     public SpawnGroup spawnGroup;
     public final String name;

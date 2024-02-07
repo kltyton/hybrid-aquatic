@@ -149,7 +149,8 @@ open class HybridAquaticFishEntity(
         if (isSubmergedInWater) {
             event.controller.setAnimation(SWIM_ANIMATION)
             return PlayState.CONTINUE
-        } else if (shouldFlopOnLand()) {
+
+        } else if (!isSubmergedInWater) {
             event.controller.setAnimation(FLOP_ANIMATION)
             return PlayState.CONTINUE
         }

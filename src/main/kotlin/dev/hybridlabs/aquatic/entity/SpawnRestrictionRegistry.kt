@@ -54,6 +54,7 @@ object SpawnRestrictionRegistry {
         setOf(
             HybridAquaticEntityTypes.ANGLERFISH,
             HybridAquaticEntityTypes.DRAGONFISH,
+            HybridAquaticEntityTypes.UMBRELLA_OCTOPUS,
             HybridAquaticEntityTypes.BARRELEYE,
             HybridAquaticEntityTypes.NAUTILUS,
             HybridAquaticEntityTypes.SEA_ANGEL,

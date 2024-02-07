@@ -86,6 +86,13 @@ object HybridAquaticEntityTypes {
         DragonfishEntity.createMobAttributes()
     )
 
+    val UMBRELLA_OCTOPUS = registerFishUnderground(
+        "umbrella_octopus",
+        ::UmbrellaOctopusEntity,
+        EntityDimensions.fixed(0.5f, 0.5f),
+        UmbrellaOctopusEntity.createMobAttributes()
+    )
+
     val FIREFLY_SQUID = registerFish(
         "firefly_squid",
         ::FireflySquidEntity,
@@ -100,7 +107,7 @@ object HybridAquaticEntityTypes {
         FlashlightFishEntity.createMobAttributes()
     )
 
-    val GLOWING_SUCKER_OCTOPUS = registerFish(
+    val GLOWING_SUCKER_OCTOPUS = registerFishUnderground(
         "glowing_sucker_octopus",
         ::GlowingSuckerOctopusEntity,
         EntityDimensions.fixed(0.5f, 0.6f),
