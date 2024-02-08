@@ -1,12 +1,20 @@
 package dev.hybridlabs.aquatic.mixin.client;
 
+import dev.hybridlabs.aquatic.effect.HybridAquaticStatusEffects;
+import dev.hybridlabs.aquatic.fog.ClarityFogModifier;
 import dev.hybridlabs.aquatic.utils.MeasurementUtils;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.render.BackgroundRenderer;
 import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.CameraSubmersionType;
 import net.minecraft.client.render.FogShape;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.tag.BiomeTags;
 import net.minecraft.util.math.MathHelper;
@@ -68,48 +76,41 @@ public class BackgroundRendererMixin {
 
         if (entity instanceof ClientPlayerEntity clientPlayerEntity) {
             World world = clientPlayerEntity.getWorld();
+            StatusEffectInstance clarityEffect = clientPlayerEntity.getStatusEffect(HybridAquaticStatusEffects.INSTANCE.getCLARITY());
+            if (clarityEffect != null) {
+                new ClarityFogModifier().applyStartEndModifier(fogData, clientPlayerEntity, clarityEffect, viewDistance, tickDelta);
+            } else {
 
-            switch (cameraSubmersionType) {
-                case LAVA, POWDER_SNOW -> {
-                }
-                case WATER -> {
-                    fogData.fogStart = -8.0F;
-                    int topY = world.getSeaLevel();
-                    float fogStep = (float) (topY - camera.getPos().y) / 32.0f;
-                    fogData.fogEnd = MathHelper.lerp(fogStep, 80.0f, 12.0f);
-                    fogData.fogEnd *= Math.max(0.25F, clientPlayerEntity.getUnderwaterVisibility());
-                    RegistryEntry<Biome> registryEntry = world.getBiome(clientPlayerEntity.getBlockPos());
-                    if (registryEntry.isIn(BiomeTags.HAS_CLOSER_WATER_FOG)) {
-                        fogData.fogEnd *= 1.0F;
+                switch (cameraSubmersionType) {
+                    case LAVA, POWDER_SNOW -> {
                     }
+                    case WATER -> {
+                        fogData.fogStart = -8.0F;
+                        int topY = world.getSeaLevel();
+                        float fogStep = (float) (topY - camera.getPos().y) / 32.0f;
+                        fogData.fogEnd = MathHelper.lerp(fogStep, 80.0f, 12.0f);
+                        fogData.fogEnd *= Math.max(0.25F, clientPlayerEntity.getUnderwaterVisibility());
+                        RegistryEntry<Biome> registryEntry = world.getBiome(clientPlayerEntity.getBlockPos());
+                        if (registryEntry.isIn(BiomeTags.HAS_CLOSER_WATER_FOG)) {
+                            fogData.fogEnd *= 1.0F;
+                        }
 
-                    if (fogData.fogEnd > viewDistance) {
-                        fogData.fogEnd = viewDistance;
-                        fogData.fogShape = FogShape.SPHERE;
+                        if (fogData.fogEnd > viewDistance) {
+                            fogData.fogEnd = viewDistance;
+                            fogData.fogShape = FogShape.SPHERE;
+                        }
+                        fogData.fogEnd = Math.max(fogData.fogEnd, 12.0f);
                     }
-                    fogData.fogEnd = Math.max(fogData.fogEnd, 12.0f);
-                }
-                case NONE -> {
-                    RegistryEntry<Biome> biomeEntry = world.getBiome(entity.getBlockPos());
+                    case NONE -> {
+                        RegistryEntry<Biome> biomeEntry = world.getBiome(entity.getBlockPos());
 
-                    if (biomeEntry.isIn(BiomeTags.IS_OCEAN) && (world.isRaining() || world.isNight())) {
-                        fogData.fogStart = -0.8f;
-                        fogData.fogEnd = MeasurementUtils.Block(16);
+                        if (biomeEntry.isIn(BiomeTags.IS_OCEAN) && (world.isRaining() || world.isNight())) {
+                            fogData.fogStart = -0.8f;
+                            fogData.fogEnd = MeasurementUtils.Block(16);
+                        }
                     }
                 }
             }
-
         }
-    }
-
-    /**
-     *
-     * @param height
-     * @param gradientBegin
-     * @param gradientEnd
-     * @return
-     */
-    @Unique private float getSeaLevelGradient(float height, float gradientBegin, float gradientEnd) {
-        return 1.0f;
     }
 }

@@ -42,7 +42,6 @@ class BuoyBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(HybridAqua
     }
 
     companion object {
-        val BOB_ANIMATION: RawAnimation = RawAnimation.begin().thenLoop("water_bob")
         val FLOAT_ANIMATION: RawAnimation = RawAnimation.begin().then("float", Animation.LoopType.LOOP)
     }
 }

@@ -1,5 +1,6 @@
 package dev.hybridlabs.aquatic.entity.critter
 
+import dev.hybridlabs.aquatic.entity.HybridAquaticEntityTypes
 import net.minecraft.block.Blocks
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.LivingEntity
@@ -18,6 +19,7 @@ class SeaUrchinEntity(entityType: EntityType<out SeaUrchinEntity>, world: World)
     HybridAquaticCritterEntity(entityType, world, 4) {
 
     private var timeUntilNextBreak = 0
+    private var spawnUrchinOnNextBreak = false
 
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
@@ -86,6 +88,14 @@ class SeaUrchinEntity(entityType: EntityType<out SeaUrchinEntity>, world: World)
         val posUnderneath = BlockPos(this.x.toInt(), (this.y+1).toInt(), this.z.toInt())
         if (world.getBlockState(posUnderneath).isOf(Blocks.KELP_PLANT)) {
             world.setBlockState(posUnderneath, Blocks.AIR.defaultState)
+            if (spawnUrchinOnNextBreak) {
+                val newUrchin = HybridAquaticEntityTypes.SEA_URCHIN.create(world)
+                newUrchin?.refreshPositionAndAngles(this.x, this.y, this.z, this.yaw, 0.0f)
+                world.spawnEntity(newUrchin)
+                spawnUrchinOnNextBreak = false
+            } else {
+                spawnUrchinOnNextBreak = true
+            }
         }
     }
 
