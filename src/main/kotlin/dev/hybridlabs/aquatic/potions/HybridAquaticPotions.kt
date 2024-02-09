@@ -20,11 +20,19 @@ object HybridAquaticPotions {
         Potions.AWKWARD,
         HybridAquaticItems.GLOW_SLIME
     )
+
     val CLARITY_POTION = registerPotionWithRecipe(
         "clarity",
         Potion(StatusEffectInstance(HybridAquaticStatusEffects.CLARITY, 3600, 0)),
         Potions.AWKWARD,
         HybridAquaticItems.PEARL
+    )
+
+    val THALASSOPHOBIA_POTION = registerPotionWithRecipe(
+        "thalassophobia",
+        Potion(StatusEffectInstance(HybridAquaticStatusEffects.THALASSOPHOBIA, 3600, 0)),
+        Potions.AWKWARD,
+        HybridAquaticItems.BLACK_PEARL
     )
 
     private fun registerPotionWithRecipe(id: String, potion: Potion, inputPotion: Potion, ingredient: Item): Potion {

@@ -2,25 +2,24 @@ package dev.hybridlabs.aquatic.mixin.client;
 
 import dev.hybridlabs.aquatic.effect.HybridAquaticStatusEffects;
 import dev.hybridlabs.aquatic.fog.ClarityFogModifier;
+import dev.hybridlabs.aquatic.fog.ThalassophobiaFogModifier;
 import dev.hybridlabs.aquatic.utils.MeasurementUtils;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.render.BackgroundRenderer;
 import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.CameraSubmersionType;
 import net.minecraft.client.render.FogShape;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.tag.BiomeTags;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
-import org.spongepowered.asm.mixin.*;
+import org.spongepowered.asm.mixin.Final;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Mutable;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -31,8 +30,12 @@ import java.util.List;
 @Mixin(BackgroundRenderer.class)
 public class BackgroundRendererMixin {
 
-    @Shadow private static float red, green, blue;
-    @Mutable @Final @Shadow private static List<BackgroundRenderer.StatusEffectFogModifier> FOG_MODIFIERS;
+    @Shadow
+    private static float red, green, blue;
+    @Mutable
+    @Final
+    @Shadow
+    private static List<BackgroundRenderer.StatusEffectFogModifier> FOG_MODIFIERS;
 
 
 //    @Inject(method = "render", at=@At(value = "INVOKE", target = "Lcom/mojang/blaze3d/systems/RenderSystem;clearColor(FFFF)V"), locals = LocalCapture.CAPTURE_FAILHARD)
@@ -77,14 +80,17 @@ public class BackgroundRendererMixin {
         if (entity instanceof ClientPlayerEntity clientPlayerEntity) {
             World world = clientPlayerEntity.getWorld();
             StatusEffectInstance clarityEffect = clientPlayerEntity.getStatusEffect(HybridAquaticStatusEffects.INSTANCE.getCLARITY());
+            StatusEffectInstance thalassophobiaEffect = clientPlayerEntity.getStatusEffect(HybridAquaticStatusEffects.INSTANCE.getTHALASSOPHOBIA());
+
             if (clarityEffect != null) {
                 new ClarityFogModifier().applyStartEndModifier(fogData, clientPlayerEntity, clarityEffect, viewDistance, tickDelta);
+            } else if (thalassophobiaEffect != null) {
+                new ThalassophobiaFogModifier().applyStartEndModifier(fogData, clientPlayerEntity, thalassophobiaEffect, viewDistance, tickDelta);
             } else {
-
                 switch (cameraSubmersionType) {
                     case LAVA, POWDER_SNOW -> {
                     }
-                    case WATER -> {
+                    case WATER, NONE -> {
                         fogData.fogStart = -8.0F;
                         int topY = world.getSeaLevel();
                         float fogStep = (float) (topY - camera.getPos().y) / 32.0f;
@@ -100,14 +106,6 @@ public class BackgroundRendererMixin {
                             fogData.fogShape = FogShape.SPHERE;
                         }
                         fogData.fogEnd = Math.max(fogData.fogEnd, 12.0f);
-                    }
-                    case NONE -> {
-                        RegistryEntry<Biome> biomeEntry = world.getBiome(entity.getBlockPos());
-
-                        if (biomeEntry.isIn(BiomeTags.IS_OCEAN) && (world.isRaining() || world.isNight())) {
-                            fogData.fogStart = -0.8f;
-                            fogData.fogEnd = MeasurementUtils.Block(16);
-                        }
                     }
                 }
             }
