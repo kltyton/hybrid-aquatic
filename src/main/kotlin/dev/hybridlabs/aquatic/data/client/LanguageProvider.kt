@@ -127,6 +127,7 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             HybridAquaticItems.OMINOUS_HOOK to "Ominous Hook",
             HybridAquaticItems.FISHING_NET to "Fishing Net",
             HybridAquaticItems.KARKINOS_CLAW to "Karkinos Claw",
+            HybridAquaticItems.DIVING_HELMET to "Diving Helmet",
         ).forEach { (item, translation) ->
             builder.add(item, translation)
         }

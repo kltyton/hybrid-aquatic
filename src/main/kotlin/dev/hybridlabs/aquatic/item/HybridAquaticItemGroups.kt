@@ -106,6 +106,8 @@ object HybridAquaticItemGroups {
             // fishing net
             entries.add(HybridAquaticItems.FISHING_NET)
 
+            entries.add(HybridAquaticItems.DIVING_HELMET)
+
 
             // spawn eggs
             Registries.ITEM.forEach { item ->
