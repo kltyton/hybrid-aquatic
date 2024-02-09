@@ -1,6 +1,7 @@
 package dev.hybridlabs.aquatic.potions
 
 import dev.hybridlabs.aquatic.HybridAquatic
+import dev.hybridlabs.aquatic.effect.HybridAquaticStatusEffects
 import dev.hybridlabs.aquatic.item.HybridAquaticItems
 import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.entity.effect.StatusEffects
@@ -18,6 +19,12 @@ object HybridAquaticPotions {
         Potion(StatusEffectInstance(StatusEffects.GLOWING, 3600, 0)),
         Potions.AWKWARD,
         HybridAquaticItems.GLOW_SLIME
+    )
+    val CLARITY_POTION = registerPotionWithRecipe(
+        "clarity",
+        Potion(StatusEffectInstance(HybridAquaticStatusEffects.CLARITY, 3600, 0)),
+        Potions.AWKWARD,
+        HybridAquaticItems.PEARL
     )
 
     private fun registerPotionWithRecipe(id: String, potion: Potion, inputPotion: Potion, ingredient: Item): Potion {

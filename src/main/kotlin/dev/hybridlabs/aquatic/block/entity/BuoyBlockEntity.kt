@@ -3,10 +3,7 @@ package dev.hybridlabs.aquatic.block.entity
 import dev.hybridlabs.aquatic.effect.HybridAquaticStatusEffects
 import net.minecraft.block.BlockState
 import net.minecraft.block.entity.BlockEntity
-import net.minecraft.entity.effect.StatusEffect
 import net.minecraft.entity.effect.StatusEffectInstance
-import net.minecraft.entity.effect.StatusEffects
-import net.minecraft.entity.effect.StatusEffects.ABSORPTION
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Box
@@ -50,17 +47,29 @@ class BuoyBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(HybridAqua
         return RenderUtils.getCurrentTick()
     }
 
+    private fun givePlayersEffects(world: World, pos: BlockPos) {
+        val j = 12
+
+        val box = Box(
+            pos.x.toDouble(), pos.y.toDouble(), pos.z.toDouble(),
+            (pos.x + 1).toDouble(), (pos.y + 1).toDouble(), (pos.z + 1).toDouble()
+        ).expand(j.toDouble()).stretch(0.0, world.height.toDouble(), 0.0)
+
+        val list = world.getNonSpectatingEntities(PlayerEntity::class.java, box)
+        if (list.isNotEmpty()) {
+            for (entity in list) {
+                if (pos.isWithinDistance(entity.blockPos, j.toDouble())) {
+                    entity.addStatusEffect(StatusEffectInstance(HybridAquaticStatusEffects.CLARITY, 200, 0, true, false))
+                }
+            }
+        }
+    }
+
     companion object {
         val FLOAT_ANIMATION: RawAnimation = RawAnimation.begin().then("float", Animation.LoopType.LOOP)
 
         fun tick(world: World, pos: BlockPos, state: BlockState, blockEntity: BuoyBlockEntity) {
-            for (entitiesByClass in world.getEntitiesByClass(
-                PlayerEntity::class.java,
-                Box(pos.x - 6.0, pos.y - 6.0, pos.z - 6.0, pos.x + 6.0, pos.y + 6.0, pos.z + 6.0)
-            ) { true }) {
-                val effect = StatusEffectInstance(HybridAquaticStatusEffects.CLARITY, 16, 1)
-                entitiesByClass.addStatusEffect(effect)
-            }
+            blockEntity.givePlayersEffects(world, pos)
         }
     }
 }

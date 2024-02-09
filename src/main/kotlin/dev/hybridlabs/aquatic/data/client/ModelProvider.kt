@@ -113,7 +113,6 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
             HybridAquaticItems.MAGNETIC_HOOK,
             HybridAquaticItems.OMINOUS_HOOK,
             HybridAquaticItems.FISHING_NET,
-
             HybridAquaticItems.DIVING_HELMET
 
         ).forEach { item ->
