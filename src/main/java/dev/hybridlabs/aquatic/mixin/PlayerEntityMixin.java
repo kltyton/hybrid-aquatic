@@ -72,7 +72,10 @@ public abstract class PlayerEntityMixin implements CustomPlayerEntityData {
         var world = player.getWorld();
         if(!world.isClient) {
             if (world.getBiome(player.getBlockPos()).isIn(BiomeTags.IS_OCEAN) && world.isNight() && player.isSubmergedInWater()) {
-                player.addStatusEffect(new StatusEffectInstance(HybridAquaticStatusEffects.INSTANCE.getTHALASSOPHOBIA(), 100, 0, true, false));
+                StatusEffectInstance clarityEffect = player.getStatusEffect(HybridAquaticStatusEffects.INSTANCE.getCLARITY());
+                if (clarityEffect == null) {
+                    player.addStatusEffect(new StatusEffectInstance(HybridAquaticStatusEffects.INSTANCE.getTHALASSOPHOBIA(), 100, 0, true, false));
+                }
             }
         }
     }
