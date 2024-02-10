@@ -22,6 +22,12 @@
 				},
 				"dorsal_fin": {
 					"rotation": [0, 0, "Math.cos(query.anim_time * 90)*7.5"]
+				},
+				"left_pelvic_fin": {
+					"rotation": ["Math.cos(query.anim_time * 90)*5", 0, "Math.cos(query.anim_time * 90)*5"]
+				},
+				"right_pelvic_fin": {
+					"rotation": ["Math.cos(query.anim_time * 90)*5 ", 0, "Math.cos(query.anim_time * 90)*5"]
 				}
 			}
 		},

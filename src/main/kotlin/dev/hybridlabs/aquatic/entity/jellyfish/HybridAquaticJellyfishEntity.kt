@@ -1,7 +1,9 @@
 package dev.hybridlabs.aquatic.entity.jellyfish
 
+import dev.hybridlabs.aquatic.entity.fish.HybridAquaticFishEntity
 import net.minecraft.entity.*
 import net.minecraft.entity.ai.TargetPredicate
+import net.minecraft.entity.ai.control.YawAdjustingLookControl
 import net.minecraft.entity.ai.goal.LookAroundGoal
 import net.minecraft.entity.ai.pathing.EntityNavigation
 import net.minecraft.entity.ai.pathing.SwimNavigation
@@ -32,6 +34,10 @@ import kotlin.math.abs
 @Suppress("LeakingThis")
 open class HybridAquaticJellyfishEntity(type: EntityType<out HybridAquaticJellyfishEntity>, world: World, private val variantCount: Int = 1) : WaterCreatureEntity(type, world), GeoEntity {
     private val factory = GeckoLibUtil.createInstanceCache(this)
+
+    init {
+        lookControl = YawAdjustingLookControl(this, 180)
+    }
 
     override fun initGoals() {
         super.initGoals()
@@ -67,6 +73,11 @@ open class HybridAquaticJellyfishEntity(type: EntityType<out HybridAquaticJellyf
             return
         }
 
+        if (isFallFlying && !isSubmergedInWater) {
+            remove(RemovalReason.DISCARDED)
+            return
+        }
+
         if (isWet) {
             moistness = getMaxMoistness()
         } else {
@@ -77,21 +88,19 @@ open class HybridAquaticJellyfishEntity(type: EntityType<out HybridAquaticJellyf
             }
         }
 
-        if (this.submergedInWater) {
-            if (this.y <= spawnedY) {
-                if (!world.getFluidState(this.blockPos.up(2)).isIn(FluidTags.WATER) &&
-                    !world.getFluidState(this.blockPos.up(4)).isIn(FluidTags.WATER) &&
-                    !world.getFluidState(this.blockPos.up(6)).isIn(FluidTags.WATER)) {
-                    spawnedY = this.y.toInt() - 6
-                    return
-                }
-
-                val randomOffset = this.random.nextDouble() * 0.25
-                this.setVelocity(0.0, 0.6 + randomOffset, 0.0)
+        if (this.y <= spawnedY) {
+            if (!world.getFluidState(this.blockPos.up(2)).isIn(FluidTags.WATER) &&
+                !world.getFluidState(this.blockPos.up(4)).isIn(FluidTags.WATER) &&
+                !world.getFluidState(this.blockPos.up(6)).isIn(FluidTags.WATER)) {
+                spawnedY = this.y.toInt() - 6
+                return
             }
 
-            if (abs(this.velocity.length()) <= 0.01 && !world.getFluidState(this.blockPos.down()).isIn(FluidTags.WATER)) spawnedY = this.y.toInt()
+            val randomOffset = this.random.nextDouble() * 0.25
+            this.setVelocity(0.0, 0.6 + randomOffset, 0.0)
         }
+
+        if (abs(this.velocity.length()) <= 0.01 && !world.getFluidState(this.blockPos.down()).isIn(FluidTags.WATER)) spawnedY = this.y.toInt()
     }
 
     override fun tickWaterBreathingAir(air: Int) {}
