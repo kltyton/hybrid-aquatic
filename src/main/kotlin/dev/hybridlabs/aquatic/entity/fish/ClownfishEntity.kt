@@ -16,7 +16,6 @@ class ClownfishEntity(entityType: EntityType<out ClownfishEntity>, world: World)
 
     override fun initGoals() {
         goalSelector.add(2, GoalHideInAnemone(this))
-        goalSelector.add(3, GoalStayNearAnemone(this))
         super.initGoals()
     }
 
@@ -80,71 +79,11 @@ class ClownfishEntity(entityType: EntityType<out ClownfishEntity>, world: World)
         }
     }
 
-    class GoalStayNearAnemone(private val clownfish: ClownfishEntity) : Goal() {
-        private var targetAnemonePos: BlockPos? = null
-
-        init {
-            controls = EnumSet.of(Control.MOVE)
-        }
-
-        override fun canStart(): Boolean {
-            return true
-        }
-
-        override fun start() {
-            findNearestAnemone()?.let { nearestAnemonePos ->
-                targetAnemonePos = nearestAnemonePos
-            }
-        }
-
-        override fun shouldContinue(): Boolean {
-            return targetAnemonePos != null && clownfish.isAlive
-        }
-
-        override fun tick() {
-            targetAnemonePos?.let { pos ->
-                val distanceSq = clownfish.squaredDistanceTo(pos.x.toDouble(), pos.y.toDouble(), pos.z.toDouble())
-
-                if (distanceSq > 25.0) {
-                    clownfish.navigation.startMovingTo(
-                        pos.x.toDouble(),
-                        pos.y.toDouble(),
-                        pos.z.toDouble(),
-                        1.0
-                    )
-                } else {
-                    clownfish.navigation.stop()
-                }
-            }
-        }
-
-        override fun stop() {
-            targetAnemonePos = null
-            clownfish.navigation.stop()
-        }
-
-        private fun findNearestAnemone(): BlockPos? {
-            val currentPos = clownfish.blockPos
-            for (i in -8..8) {
-                for (j in -8..8) {
-                    for (k in -8..8) {
-                        val checkPos = currentPos.add(i, j, k)
-                        val block = clownfish.world.getBlockState(checkPos).block
-                        if (block === ANEMONE) {
-                            return checkPos
-                        }
-                    }
-                }
-            }
-            return null
-        }
-    }
-
     companion object {
         fun createClownfishAttributes(): DefaultAttributeContainer.Builder {
             return createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 4.0)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.8)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.6)
         }
     }
 

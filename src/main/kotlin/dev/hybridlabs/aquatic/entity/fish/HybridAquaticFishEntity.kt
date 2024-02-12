@@ -15,6 +15,7 @@ import net.minecraft.entity.data.DataTracker
 import net.minecraft.entity.data.TrackedData
 import net.minecraft.entity.data.TrackedDataHandlerRegistry
 import net.minecraft.entity.mob.WaterCreatureEntity
+import net.minecraft.entity.passive.FishEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.particle.ParticleTypes
@@ -48,12 +49,12 @@ open class HybridAquaticFishEntity(
 
     override fun initGoals() {
         super.initGoals()
-        goalSelector.add(1, EscapeDangerGoal(this, 1.1))
-        goalSelector.add(0, MoveIntoWaterGoal(this))
+        goalSelector.add(1, SwimToRandomPlaceGoal(this, 1.0, 40,))
+        goalSelector.add(1, EscapeDangerGoal(this, 1.25))
+        goalSelector.add(2, MoveIntoWaterGoal(this))
         goalSelector.add(2, SwimAroundGoal(this, 0.50, 6))
-        goalSelector.add(5, LookAtEntityGoal(this, PlayerEntity::class.java, 12.0f))
-        goalSelector.add(4, LookAroundGoal(this))
-        goalSelector.add(1, FleeEntityGoal(this, HybridAquaticSharkEntity::class.java, 10.0f, 1.3, 1.5))
+        goalSelector.add(1, FleeEntityGoal(this, HybridAquaticSharkEntity::class.java, 8.0f, 1.2, 1.0))
+        goalSelector.add(1, FleeEntityGoal(this, PlayerEntity::class.java, 5.0f, 1.2, 1.0))
     }
 
     override fun initDataTracker() {
@@ -169,7 +170,7 @@ open class HybridAquaticFishEntity(
         return !hasCustomName()
     }
     override fun getLimitPerChunk(): Int {
-        return 6
+        return 8
     }
     open val flopSound: SoundEvent = SoundEvents.ENTITY_PUFFER_FISH_FLOP
     override fun getHurtSound(source: DamageSource): SoundEvent {
@@ -189,7 +190,7 @@ open class HybridAquaticFishEntity(
     }
 
     override fun getSwimSound(): SoundEvent {
-        return SoundEvents.ENTITY_DOLPHIN_SWIM
+        return SoundEvents.ENTITY_FISH_SWIM
     }
 
     override fun createNavigation(world: World): EntityNavigation {
@@ -250,7 +251,7 @@ open class HybridAquaticFishEntity(
 
     init {
         moveControl = FishMoveControl(this)
-        lookControl = YawAdjustingLookControl(this, 15)
+        lookControl = YawAdjustingLookControl(this, 5)
     }
 
     override fun tickMovement() {
