@@ -106,7 +106,11 @@ class GiantClamBlock(settings: Settings) : PlantBlock(settings), BlockEntityProv
             if (blockEntity is GiantClamBlockEntity && blockEntity.pearlCooldown == 0) {
                 blockEntity.pearlCooldown = world.random.nextBetween(1200, 6000)
 
-                dropStack(world, pos, ItemStack(HybridAquaticItems.PEARL, 1))
+                if (world.random.nextInt(4) == 0) {
+                    dropStack(world, pos, ItemStack(HybridAquaticItems.BLACK_PEARL, 1))
+                } else {
+                    dropStack(world, pos, ItemStack(HybridAquaticItems.PEARL, 1))
+                }
                 world.playSound(
                     null,
                     pos,
