@@ -21,6 +21,6 @@ class SeaUrchinEntityRenderer(context: Context) : GeoEntityRenderer<HybridAquati
         super.render(entity, entityYaw, partialTick, poseStack, bufferSource, packedLight)
     }
     override fun getMotionAnimThreshold(animatable: HybridAquaticCritterEntity?): Float {
-        return 0.0025f
+        return 0.001f
     }
 }
