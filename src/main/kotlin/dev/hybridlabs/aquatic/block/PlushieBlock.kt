@@ -24,8 +24,7 @@ class PlushieBlock(variant: Variant, val particleBlock: Block, settings: Setting
         HAMMERHEAD_SHARK("hammerhead_shark"),
         THRESHER_SHARK("thresher_shark"),
         TIGER_SHARK("tiger_shark"),
-        WHALE_SHARK("whale_shark"),
-        CRAB("crab");
+        WHALE_SHARK("whale_shark");
 
         val textureLocation: Identifier by lazy { Identifier(HybridAquatic.MOD_ID, "textures/entity/block/plushie/${id}_plushie.png") }
 
