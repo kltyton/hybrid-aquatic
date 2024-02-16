@@ -1,6 +1,5 @@
 package dev.hybridlabs.aquatic.entity.jellyfish
 
-import dev.hybridlabs.aquatic.entity.fish.HybridAquaticFishEntity
 import net.minecraft.entity.*
 import net.minecraft.entity.ai.TargetPredicate
 import net.minecraft.entity.ai.control.YawAdjustingLookControl
@@ -131,6 +130,10 @@ open class HybridAquaticJellyfishEntity(type: EntityType<out HybridAquaticJellyf
             event.controller.setAnimation(BOB_ANIMATION)
             return PlayState.CONTINUE
         }
+        if (!isSubmergedInWater && isOnGround) {
+            event.controller.setAnimation(FLOP_ANIMATION)
+            return PlayState.CONTINUE
+        }
         return PlayState.STOP
     }
     protected open fun getMinSize() : Int {
@@ -226,6 +229,7 @@ open class HybridAquaticJellyfishEntity(type: EntityType<out HybridAquaticJellyf
         val JELLYFISH_SIZE: TrackedData<Int> = DataTracker.registerData(HybridAquaticJellyfishEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
 
         val BOB_ANIMATION: RawAnimation = RawAnimation.begin().then("bob", Animation.LoopType.LOOP)
+        val FLOP_ANIMATION: RawAnimation = RawAnimation.begin().then("flop", Animation.LoopType.LOOP)
 
         val CLOSE_PLAYER_PREDICATE: TargetPredicate = TargetPredicate.createNonAttackable().setBaseMaxDistance(10.0).ignoreVisibility()
 
@@ -252,6 +256,5 @@ open class HybridAquaticJellyfishEntity(type: EntityType<out HybridAquaticJellyf
         const val SPAWNED_ON_Y_KEY = "Spawned_on_Y"
         const val VARIANT_KEY = "Variant"
         const val JELLYFISH_SIZE_KEY = "JellyfishSize"
-
     }
 }
