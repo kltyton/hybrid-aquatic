@@ -2,13 +2,25 @@ package dev.hybridlabs.aquatic
 
 import dev.hybridlabs.aquatic.block.HybridAquaticBlocks
 import dev.hybridlabs.aquatic.block.entity.HybridAquaticBlockEntityTypes
+import dev.hybridlabs.aquatic.client.GeoRenderProviderStorage
 import dev.hybridlabs.aquatic.client.item.tooltip.FishingNetTooltip
 import dev.hybridlabs.aquatic.client.model.HybridAquaticEntityModelLayers
 import dev.hybridlabs.aquatic.client.network.HybridAquaticClientNetworking
-import dev.hybridlabs.aquatic.client.render.block.entity.*
+import dev.hybridlabs.aquatic.client.render.armor.DivingArmorRenderer
+import dev.hybridlabs.aquatic.client.render.block.entity.AnemoneBlockEntityRenderer
+import dev.hybridlabs.aquatic.client.render.block.entity.BuoyBlockEntityRenderer
+import dev.hybridlabs.aquatic.client.render.block.entity.GiantClamBlockEntityRenderer
+import dev.hybridlabs.aquatic.client.render.block.entity.HydrothermalVentBlockEntityRenderer
+import dev.hybridlabs.aquatic.client.render.block.entity.MessageInABottleBlockEntityRenderer
+import dev.hybridlabs.aquatic.client.render.block.entity.TubeSpongeBlockEntityRenderer
 import dev.hybridlabs.aquatic.client.render.entity.HybridAquaticEntityRenderers
 import dev.hybridlabs.aquatic.client.render.hud.FishingNetHUDRenderer
-import dev.hybridlabs.aquatic.client.render.item.*
+import dev.hybridlabs.aquatic.client.render.item.AnemoneBlockItemRenderer
+import dev.hybridlabs.aquatic.client.render.item.BuoyBlockItemRenderer
+import dev.hybridlabs.aquatic.client.render.item.GiantClamBlockItemRenderer
+import dev.hybridlabs.aquatic.client.render.item.HydrothermalVentBlockItemRenderer
+import dev.hybridlabs.aquatic.client.render.item.MessageInABottleBlockItemRenderer
+import dev.hybridlabs.aquatic.client.render.item.TubeSpongeBlockItemRenderer
 import dev.hybridlabs.aquatic.item.HybridAquaticItems
 import net.fabricmc.api.ClientModInitializer
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap
@@ -19,6 +31,12 @@ import net.minecraft.client.MinecraftClient
 import net.minecraft.client.render.RenderLayer
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory
+import net.minecraft.client.render.entity.model.BipedEntityModel
+import net.minecraft.entity.EquipmentSlot
+import net.minecraft.entity.LivingEntity
+import net.minecraft.item.ItemStack
+import software.bernie.geckolib.animatable.client.RenderProvider
+import software.bernie.geckolib.renderer.GeoArmorRenderer
 
 object HybridAquaticClient : ClientModInitializer {
     override fun onInitializeClient() {
@@ -32,6 +50,29 @@ object HybridAquaticClient : ClientModInitializer {
         registerWeatherRenderers()
         registerTooltips()
         registerHudAddons()
+        registerGeoRenderers()
+    }
+
+    private fun registerGeoRenderers() {
+        GeoRenderProviderStorage.divingArmorRenderProvider = createBasicRenderProvider(::DivingArmorRenderer)
+    }
+
+    private fun createBasicRenderProvider(rendererProvider: () -> GeoArmorRenderer<*>): () -> RenderProvider {
+        return {
+            object : RenderProvider {
+                private val renderer: GeoArmorRenderer<*> by lazy(rendererProvider)
+
+                override fun getHumanoidArmorModel(
+                    livingEntity: LivingEntity,
+                    itemStack: ItemStack,
+                    equipmentSlot: EquipmentSlot,
+                    original: BipedEntityModel<LivingEntity>
+                ): BipedEntityModel<LivingEntity> {
+                    renderer.prepForRender(livingEntity, itemStack, equipmentSlot, original)
+                    return renderer
+                }
+            }
+        }
     }
 
     private fun registerWeatherRenderers() {
