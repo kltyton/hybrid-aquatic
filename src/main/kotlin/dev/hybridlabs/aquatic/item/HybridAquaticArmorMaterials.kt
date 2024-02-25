@@ -10,7 +10,7 @@ import net.minecraft.sound.SoundEvents
 import java.util.function.Supplier
 
 enum class HybridAquaticArmorMaterials(
-    private val nameOverride: String?,
+    private val id: String,
     private val durabilityMultiplier: Int,
     private val protectionAmounts: IntArray,
     private val enchantability: Int,
@@ -47,7 +47,7 @@ enum class HybridAquaticArmorMaterials(
     }
 
     override fun getName(): String {
-        return HybridAquatic.MOD_ID + ":" + this.name
+        return HybridAquatic.MOD_ID + ":" + this.id
     }
 
     override fun getToughness(): Float {
