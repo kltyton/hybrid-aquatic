@@ -21,6 +21,9 @@ import net.minecraft.util.Identifier
 object HybridAquaticItems {
 
     val DIVING_HELMET: Item = register("diving_helmet", DivingArmorItem(HybridAquaticArmorMaterials.DIVING, ArmorItem.Type.HELMET, FabricItemSettings().maxCount(1)))
+    val DIVING_SUIT: Item = register("diving_suit", DivingArmorItem(HybridAquaticArmorMaterials.DIVING, ArmorItem.Type.CHESTPLATE, FabricItemSettings().maxCount(1)))
+    val DIVING_LEGGINGS: Item = register("diving_leggings", DivingArmorItem(HybridAquaticArmorMaterials.DIVING, ArmorItem.Type.LEGGINGS, FabricItemSettings().maxCount(1)))
+    val DIVING_BOOTS: Item = register("diving_boots", DivingArmorItem(HybridAquaticArmorMaterials.DIVING, ArmorItem.Type.BOOTS, FabricItemSettings().maxCount(1)))
 
     val ANEMONE = registerBlockItem("anemone", HybridAquaticBlocks.ANEMONE)
     val BUOY = registerPlaceableInWaterBlockItem("buoy", HybridAquaticBlocks.BUOY)

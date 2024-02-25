@@ -107,6 +107,9 @@ object HybridAquaticItemGroups {
             entries.add(HybridAquaticItems.FISHING_NET)
 
             entries.add(HybridAquaticItems.DIVING_HELMET)
+            entries.add(HybridAquaticItems.DIVING_SUIT)
+            entries.add(HybridAquaticItems.DIVING_LEGGINGS)
+            entries.add(HybridAquaticItems.DIVING_BOOTS)
 
 
             // spawn eggs
