@@ -14,6 +14,7 @@ class BaskingSharkEntity(entityType: EntityType<out BaskingSharkEntity>, world: 
             return WaterCreatureEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 40.0)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.8)
+                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 3.0)
                 .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 100.0)
 
         }
