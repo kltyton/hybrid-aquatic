@@ -24,6 +24,18 @@ enum class HybridAquaticArmorMaterials(
             Ingredient.ofItems(
                 Items.COPPER_INGOT
             )
+        }),
+    MANGLERFISH("manglerfish", 30, intArrayOf(4, 9, 7, 4), 20,
+        SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 2.5f, 0.2f, Supplier<Ingredient> {
+            Ingredient.ofItems(
+                HybridAquaticItems.GLOW_SLIME
+            )
+        }),
+    TURTLE("turtle", 30, intArrayOf(4, 9, 7, 4), 20,
+        SoundEvents.ITEM_ARMOR_EQUIP_TURTLE, 2.5f, 0.2f, Supplier<Ingredient> {
+            Ingredient.ofItems(
+                Items.SCUTE
+            )
         });
 
     override fun getDurability(type: ArmorItem.Type): Int {

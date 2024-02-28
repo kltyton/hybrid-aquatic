@@ -9,6 +9,7 @@ import dev.hybridlabs.aquatic.block.entity.MessageInABottleBlockEntity
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup
 import net.minecraft.item.ItemGroup
 import net.minecraft.item.ItemStack
+import net.minecraft.item.Items
 import net.minecraft.item.SpawnEggItem
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
@@ -110,6 +111,12 @@ object HybridAquaticItemGroups {
             entries.add(HybridAquaticItems.DIVING_SUIT)
             entries.add(HybridAquaticItems.DIVING_LEGGINGS)
             entries.add(HybridAquaticItems.DIVING_BOOTS)
+            entries.add(HybridAquaticItems.MANGLERFISH_LURE)
+            entries.add(HybridAquaticItems.MANGLERFISH_FIN)
+            entries.add(Items.TURTLE_HELMET)
+            entries.add(HybridAquaticItems.TURTLE_CHESTPLATE)
+            entries.add(HybridAquaticItems.TURTLE_LEGGINGS)
+            entries.add(HybridAquaticItems.TURTLE_BOOTS)
 
 
             // spawn eggs

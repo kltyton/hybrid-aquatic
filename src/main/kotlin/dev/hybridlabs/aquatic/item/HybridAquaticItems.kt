@@ -24,6 +24,11 @@ object HybridAquaticItems {
     val DIVING_SUIT: Item = register("diving_suit", DivingArmorItem(HybridAquaticArmorMaterials.DIVING, ArmorItem.Type.CHESTPLATE, FabricItemSettings().maxCount(1)))
     val DIVING_LEGGINGS: Item = register("diving_leggings", DivingArmorItem(HybridAquaticArmorMaterials.DIVING, ArmorItem.Type.LEGGINGS, FabricItemSettings().maxCount(1)))
     val DIVING_BOOTS: Item = register("diving_boots", DivingArmorItem(HybridAquaticArmorMaterials.DIVING, ArmorItem.Type.BOOTS, FabricItemSettings().maxCount(1)))
+    val TURTLE_CHESTPLATE: Item = register("turtle_chestplate", TurtleArmorItem(HybridAquaticArmorMaterials.TURTLE, ArmorItem.Type.CHESTPLATE, FabricItemSettings().maxCount(1)))
+    val TURTLE_LEGGINGS: Item = register("turtle_leggings", TurtleArmorItem(HybridAquaticArmorMaterials.TURTLE, ArmorItem.Type.LEGGINGS, FabricItemSettings().maxCount(1)))
+    val TURTLE_BOOTS: Item = register("turtle_boots", TurtleArmorItem(HybridAquaticArmorMaterials.TURTLE, ArmorItem.Type.BOOTS, FabricItemSettings().maxCount(1)))
+    val MANGLERFISH_LURE: Item = register("manglerfish_lure", ManglerfishArmorItem(HybridAquaticArmorMaterials.MANGLERFISH, ArmorItem.Type.HELMET, FabricItemSettings().maxCount(1)))
+    val MANGLERFISH_FIN: Item = register("manglerfish_fin", ManglerfishArmorItem(HybridAquaticArmorMaterials.MANGLERFISH, ArmorItem.Type.CHESTPLATE, FabricItemSettings().maxCount(1)))
 
     val ANEMONE = registerBlockItem("anemone", HybridAquaticBlocks.ANEMONE)
     val BUOY = registerPlaceableInWaterBlockItem("buoy", HybridAquaticBlocks.BUOY)
