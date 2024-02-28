@@ -25,8 +25,6 @@ object HybridAquaticItems {
     val DIVING_LEGGINGS: Item = register("diving_leggings", DivingArmorItem(HybridAquaticArmorMaterials.DIVING, ArmorItem.Type.LEGGINGS, FabricItemSettings().maxCount(1)))
     val DIVING_BOOTS: Item = register("diving_boots", DivingArmorItem(HybridAquaticArmorMaterials.DIVING, ArmorItem.Type.BOOTS, FabricItemSettings().maxCount(1)))
     val TURTLE_CHESTPLATE: Item = register("turtle_chestplate", TurtleArmorItem(HybridAquaticArmorMaterials.TURTLE, ArmorItem.Type.CHESTPLATE, FabricItemSettings().maxCount(1)))
-    val TURTLE_LEGGINGS: Item = register("turtle_leggings", TurtleArmorItem(HybridAquaticArmorMaterials.TURTLE, ArmorItem.Type.LEGGINGS, FabricItemSettings().maxCount(1)))
-    val TURTLE_BOOTS: Item = register("turtle_boots", TurtleArmorItem(HybridAquaticArmorMaterials.TURTLE, ArmorItem.Type.BOOTS, FabricItemSettings().maxCount(1)))
     val MANGLERFISH_LURE: Item = register("manglerfish_lure", ManglerfishArmorItem(HybridAquaticArmorMaterials.MANGLERFISH, ArmorItem.Type.HELMET, FabricItemSettings().maxCount(1)))
     val MANGLERFISH_FIN: Item = register("manglerfish_fin", ManglerfishArmorItem(HybridAquaticArmorMaterials.MANGLERFISH, ArmorItem.Type.CHESTPLATE, FabricItemSettings().maxCount(1)))
 
@@ -40,8 +38,6 @@ object HybridAquaticItems {
     val GLOW_SLIME = register("glow_slime", Item(FabricItemSettings()))
     val SHARK_TOOTH = register("shark_tooth", Item(FabricItemSettings()))
     val SPONGE_CHUNK = register("sponge_chunk", Item(FabricItemSettings()))
-
-    // pearls
     val PEARL = register("pearl", Item(FabricItemSettings()))
     val BLACK_PEARL = register("black_pearl", Item(FabricItemSettings()))
 

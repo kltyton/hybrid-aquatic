@@ -19,20 +19,20 @@ enum class HybridAquaticArmorMaterials(
     private val knockbackResistance: Float,
     private val repairIngredient: Supplier<Ingredient>
 ) : ArmorMaterial {
-    DIVING("diving", 25, intArrayOf(3, 8, 6, 3), 19,
-        SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 2f, 0.1f, Supplier<Ingredient> {
+    DIVING("diving", 15, intArrayOf(4, 4, 3, 2), 9,
+        SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 0.0f, 0.2f, Supplier<Ingredient> {
             Ingredient.ofItems(
                 Items.COPPER_INGOT
             )
         }),
-    MANGLERFISH("manglerfish", 30, intArrayOf(4, 9, 7, 4), 20,
-        SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 2.5f, 0.2f, Supplier<Ingredient> {
+    MANGLERFISH("manglerfish", 15, intArrayOf(1, 1, 1, 1), 15,
+        SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0f, 0.0f, Supplier<Ingredient> {
             Ingredient.ofItems(
                 HybridAquaticItems.GLOW_SLIME
             )
         }),
-    TURTLE("turtle", 30, intArrayOf(4, 9, 7, 4), 20,
-        SoundEvents.ITEM_ARMOR_EQUIP_TURTLE, 2.5f, 0.2f, Supplier<Ingredient> {
+    TURTLE("turtle", 25, intArrayOf(2, 6, 5, 2), 9,
+        SoundEvents.ITEM_ARMOR_EQUIP_TURTLE, 1.0f, 0.3f, Supplier<Ingredient> {
             Ingredient.ofItems(
                 Items.SCUTE
             )

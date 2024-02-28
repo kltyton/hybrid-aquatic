@@ -115,8 +115,6 @@ object HybridAquaticItemGroups {
             entries.add(HybridAquaticItems.MANGLERFISH_FIN)
             entries.add(Items.TURTLE_HELMET)
             entries.add(HybridAquaticItems.TURTLE_CHESTPLATE)
-            entries.add(HybridAquaticItems.TURTLE_LEGGINGS)
-            entries.add(HybridAquaticItems.TURTLE_BOOTS)
 
 
             // spawn eggs

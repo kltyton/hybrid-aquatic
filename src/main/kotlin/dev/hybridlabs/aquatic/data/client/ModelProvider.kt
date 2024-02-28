@@ -119,9 +119,7 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
             HybridAquaticItems.DIVING_BOOTS,
             HybridAquaticItems.MANGLERFISH_LURE,
             HybridAquaticItems.MANGLERFISH_FIN,
-            HybridAquaticItems.TURTLE_CHESTPLATE,
-            HybridAquaticItems.TURTLE_LEGGINGS,
-            HybridAquaticItems.TURTLE_BOOTS
+            HybridAquaticItems.TURTLE_CHESTPLATE
 
         ).forEach { item ->
             generator.register(item, Models.GENERATED)
