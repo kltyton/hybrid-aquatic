@@ -9,16 +9,18 @@ import net.minecraft.world.World
 
 class FrilledSharkEntity(entityType: EntityType<out FrilledSharkEntity>, world: World) :
     HybridAquaticSharkEntity(entityType, world, HybridAquaticEntityTags.FRILLED_SHARK_PREY, false, false, false, true) {
-        companion object {
-            fun createMobAttributes(): DefaultAttributeContainer.Builder {
-                return WaterCreatureEntity.createMobAttributes()
-                    .add(EntityAttributes.GENERIC_MAX_HEALTH, 24.0)
-                    .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.9)
-                    .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 4.0)
-                    .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 16.0)
 
-            }
+    companion object {
+        fun createMobAttributes(): DefaultAttributeContainer.Builder {
+            return WaterCreatureEntity.createMobAttributes()
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 24.0)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.9)
+                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 4.0)
+                .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 16.0)
+
         }
+    }
+
     override fun getMaxSize() : Int {
         return 5
     }
