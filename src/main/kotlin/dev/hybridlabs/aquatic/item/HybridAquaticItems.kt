@@ -27,6 +27,7 @@ object HybridAquaticItems {
     val TURTLE_CHESTPLATE: Item = register("turtle_chestplate", TurtleArmorItem(HybridAquaticArmorMaterials.TURTLE, ArmorItem.Type.CHESTPLATE, FabricItemSettings().maxCount(1)))
     val MANGLERFISH_LURE: Item = register("manglerfish_lure", ManglerfishArmorItem(HybridAquaticArmorMaterials.MANGLERFISH, ArmorItem.Type.HELMET, FabricItemSettings().maxCount(1)))
     val MANGLERFISH_FIN: Item = register("manglerfish_fin", ManglerfishArmorItem(HybridAquaticArmorMaterials.MANGLERFISH, ArmorItem.Type.CHESTPLATE, FabricItemSettings().maxCount(1)))
+    val EEL_SCARF: Item = register("eel_scarf", EelArmorItem(HybridAquaticArmorMaterials.EEL, ArmorItem.Type.CHESTPLATE, FabricItemSettings().maxCount(1)))
 
     val ANEMONE = registerBlockItem("anemone", HybridAquaticBlocks.ANEMONE)
     val BUOY = registerPlaceableInWaterBlockItem("buoy", HybridAquaticBlocks.BUOY)
@@ -36,6 +37,13 @@ object HybridAquaticItems {
     val FISHING_NET = register("fishing_net", FishingNetItem(FabricItemSettings().maxCount(1)))
 
     val GLOW_SLIME = register("glow_slime", Item(FabricItemSettings()))
+    val BLUE_JELLY = register("blue_jelly", Item(FabricItemSettings()))
+    val ORANGE_JELLY = register("orange_jelly", Item(FabricItemSettings()))
+    val PINK_JELLY = register("pink_jelly", Item(FabricItemSettings()))
+    val PURPLE_JELLY = register("purple_jelly", Item(FabricItemSettings()))
+    val RED_JELLY = register("red_jelly", Item(FabricItemSettings()))
+    val WHITE_JELLY = register("white_jelly", Item(FabricItemSettings()))
+    val YELLOW_JELLY = register("yellow_jelly", Item(FabricItemSettings()))
     val SHARK_TOOTH = register("shark_tooth", Item(FabricItemSettings()))
     val SPONGE_CHUNK = register("sponge_chunk", Item(FabricItemSettings()))
     val PEARL = register("pearl", Item(FabricItemSettings()))

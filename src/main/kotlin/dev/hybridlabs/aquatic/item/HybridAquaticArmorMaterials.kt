@@ -31,6 +31,12 @@ enum class HybridAquaticArmorMaterials(
                 HybridAquaticItems.GLOW_SLIME
             )
         }),
+    EEL("eel", 15, intArrayOf(1, 1, 1, 1), 15,
+        SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0f, 0.0f, Supplier<Ingredient> {
+            Ingredient.ofItems(
+                HybridAquaticItems.MORAY_EEL
+            )
+        }),
     TURTLE("turtle", 25, intArrayOf(2, 6, 5, 2), 9,
         SoundEvents.ITEM_ARMOR_EQUIP_TURTLE, 1.0f, 0.3f, Supplier<Ingredient> {
             Ingredient.ofItems(

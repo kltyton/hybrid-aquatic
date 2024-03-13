@@ -39,7 +39,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:slime_ball"
+          "name": "hybrid-aquatic:pink_jelly"
         }
       ],
       "rolls": 1.0

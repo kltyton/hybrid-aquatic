@@ -85,6 +85,13 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
             HybridAquaticItems.RAW_TENTACLE,
             HybridAquaticItems.COOKED_TENTACLE,
             HybridAquaticItems.GLOW_SLIME,
+            HybridAquaticItems.BLUE_JELLY,
+            HybridAquaticItems.WHITE_JELLY,
+            HybridAquaticItems.RED_JELLY,
+            HybridAquaticItems.PURPLE_JELLY,
+            HybridAquaticItems.YELLOW_JELLY,
+            HybridAquaticItems.ORANGE_JELLY,
+            HybridAquaticItems.PINK_JELLY,
             HybridAquaticItems.SHARK_TOOTH,
             HybridAquaticItems.SPONGE_CHUNK,
             HybridAquaticItems.PEARL,
@@ -119,7 +126,8 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
             HybridAquaticItems.DIVING_BOOTS,
             HybridAquaticItems.MANGLERFISH_LURE,
             HybridAquaticItems.MANGLERFISH_FIN,
-            HybridAquaticItems.TURTLE_CHESTPLATE
+            HybridAquaticItems.TURTLE_CHESTPLATE,
+            HybridAquaticItems.EEL_SCARF
 
         ).forEach { item ->
             generator.register(item, Models.GENERATED)

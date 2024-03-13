@@ -117,6 +117,13 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             HybridAquaticItems.VAMPIRE_CRAB_CLAW to "Vampire Crab Claw",
             HybridAquaticItems.SPIDER_CRAB_CLAW to "Spider Crab Claw",
             HybridAquaticItems.GLOW_SLIME to "Glow Slime",
+            HybridAquaticItems.PURPLE_JELLY to "Purple Jelly",
+            HybridAquaticItems.RED_JELLY to "Red Jelly",
+            HybridAquaticItems.BLUE_JELLY to "Blue Jelly",
+            HybridAquaticItems.WHITE_JELLY to "White Jelly",
+            HybridAquaticItems.YELLOW_JELLY to "Yellow Jelly",
+            HybridAquaticItems.ORANGE_JELLY to "Orange Jelly",
+            HybridAquaticItems.PINK_JELLY to "Pink Jelly",
             HybridAquaticItems.SHARK_TOOTH to "Shark Tooth",
             HybridAquaticItems.SPONGE_CHUNK to "Sponge Chunk",
             HybridAquaticItems.PEARL to "Pearl",
@@ -133,6 +140,7 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             HybridAquaticItems.DIVING_BOOTS to "Diving Boots",
             HybridAquaticItems.MANGLERFISH_LURE to "Manglerfish Lure",
             HybridAquaticItems.MANGLERFISH_FIN to "Manglerfish Fin",
+            HybridAquaticItems.EEL_SCARF to "Eel Scarf",
         ).forEach { (item, translation) ->
             builder.add(item, translation)
         }

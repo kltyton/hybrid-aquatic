@@ -15,4 +15,5 @@ object GeoRenderProviderStorage {
     lateinit var divingArmorRenderProvider: () -> RenderProvider
     lateinit var manglerfishArmorRenderProvider: () -> RenderProvider
     lateinit var turtleArmorRenderProvider: () -> RenderProvider
+    lateinit var eelArmorRenderProvider: () -> RenderProvider
 }
