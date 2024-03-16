@@ -36,18 +36,9 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             "dream" to "\"Dear reader,\nyour presence is proof that hope can survive the waves.\nKeep dreaming.\"",
             "fortune" to "\"In this bottle lies a wish for fortune and prosperity to find its way to you.\"",
             "sunshine" to "\"In this bottle, I send you rays of sunshine and a gentle breeze to brighten your day.\"",
-            "distant" to "\"Greetings from a distant land!\nI hope this message finds you well.\"",
-            "depths" to "\"Within the depths of this world, secrets lie buried.\nUnearth them, and unlock the secrets of a forgotten civilization\"",
-            "clownfish" to "\"Clownfish and sea anemones share a unique bond.\nThe clownfish finds protection within the anemone's tentacles, while providing it with food.\nWitness this symbiotic relationship up close.\"",
-            "vampire_squid" to "\"The elusive vampire squid, despite its name, does not suck blood.\nIt actually uses bioluminescent displays and webbed arms to navigate and catch prey in the deep sea.\nMarvel at this mysterious creature as you explore the depths.\"",
-            "turtle" to "\"Explore the depths and encounter the mesmerizing sea turtles!\nThese gentle creatures can navigate thousands of miles to return to their birthplace.\nWitness the miracle of their journey and marvel at their determination.\"",
-            "anglerfish" to "\"The anglerfish lures its prey with a bioluminescent appendage, dangling in the dark depths.\nVenture into the unknown and learn about the fascinating adaptations of deep-sea creatures.\"",
-            "corals" to "\"The vibrant colors of coral reefs are due to a symbiotic relationship between coral polyps and algae.\nDive into this underwater paradise and discover the intricate web of life thriving within.\"",
-            "polar_bear" to "\"Journey to the Arctic and witness the resilience of polar bears!\nThese magnificent creatures are perfectly adapted to survive in one of the harshest environments on Earth.\nLearn about their unique adaptations and the challenges they face in a changing climate\"",
-            "sea_cucumber" to "\"Sea cucumbers play a vital role in maintaining the health of the reef ecosystem.\nThese fascinating creatures help recycle nutrients and keep the reef clean by consuming decaying matter.\"",
-            "seahorse" to "\"Did you know that seahorses are one of the few species where the males give birth to their young?\nWitness this unique phenomenon as they release their tiny offspring into the sea.\"",
+            "monocarpet" to "\"I'm soft underfoot, a solo delight, \nA single expanse, in colors so bright. \nNo threads to weave, no fabric to set,\nGuess what I am, this one-piece asset.\"",
 
-            ).forEach { (id, translation) -> builder.add(SeaMessage(id).translationKey, translation) }
+        ).forEach { (id, translation) -> builder.add(SeaMessage(id).translationKey, translation) }
 
         // entities
         generateEntities(builder)
