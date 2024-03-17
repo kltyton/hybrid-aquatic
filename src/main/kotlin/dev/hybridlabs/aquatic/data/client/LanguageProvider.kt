@@ -36,7 +36,6 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             "dream" to "\"Dear reader,\nyour presence is proof that hope can survive the waves.\nKeep dreaming.\"",
             "fortune" to "\"In this bottle lies a wish for fortune and prosperity to find its way to you.\"",
             "sunshine" to "\"In this bottle, I send you rays of sunshine and a gentle breeze to brighten your day.\"",
-            "monocarpet" to "\"I'm soft underfoot, a solo delight, \nA single expanse, in colors so bright. \nNo threads to weave, no fabric to set,\nGuess what I am, this one-piece asset.\"",
 
         ).forEach { (id, translation) -> builder.add(SeaMessage(id).translationKey, translation) }
 
