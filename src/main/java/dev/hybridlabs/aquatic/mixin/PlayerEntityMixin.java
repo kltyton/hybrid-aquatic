@@ -72,6 +72,8 @@ public abstract class PlayerEntityMixin implements CustomPlayerEntityData {
         }
         // Call updateDivingHelmet method
         updateDivingHelmet();
+        //Call updateTurtleChestplate method
+        updateTurtleChestplate();
     }
 
     @Unique
@@ -81,6 +83,16 @@ public abstract class PlayerEntityMixin implements CustomPlayerEntityData {
         if (itemStack.isOf(HybridAquaticItems.INSTANCE.getDIVING_HELMET()) && player.isSubmergedIn(FluidTags.WATER)) {
             player.addStatusEffect(new StatusEffectInstance(HybridAquaticStatusEffects.INSTANCE.getCLARITY(), 200, 0, false, false, true));
             player.addStatusEffect(new StatusEffectInstance(StatusEffects.WATER_BREATHING, 200, 0, false, false, true));
+        }
+    }
+
+    @Unique
+    private void updateTurtleChestplate() {
+        var player = (PlayerEntity)(Object)this;
+        var itemStack = player.getEquippedStack(EquipmentSlot.CHEST);
+        if (itemStack.isOf(HybridAquaticItems.INSTANCE.getTURTLE_CHESTPLATE())) {
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 200, 1, false, false, true));
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 200, 0, false, false, true));
         }
     }
 }
