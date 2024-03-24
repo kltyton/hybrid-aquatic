@@ -28,6 +28,7 @@ object HybridAquaticItems {
     val MANGLERFISH_LURE: Item = register("manglerfish_lure", ManglerfishArmorItem(HybridAquaticArmorMaterials.MANGLERFISH, ArmorItem.Type.HELMET, FabricItemSettings().maxCount(1)))
     val MANGLERFISH_FIN: Item = register("manglerfish_fin", ManglerfishArmorItem(HybridAquaticArmorMaterials.MANGLERFISH, ArmorItem.Type.CHESTPLATE, FabricItemSettings().maxCount(1)))
     val EEL_SCARF: Item = register("eel_scarf", EelArmorItem(HybridAquaticArmorMaterials.EEL, ArmorItem.Type.CHESTPLATE, FabricItemSettings().maxCount(1)))
+    val MOON_JELLYFISH_HAT: Item = register("moon_jellyfish_hat", MoonJellyfishArmorItem(HybridAquaticArmorMaterials.MOONJELLYFISH, ArmorItem.Type.HELMET, FabricItemSettings().maxCount(1)))
 
     val ANEMONE = registerBlockItem("anemone", HybridAquaticBlocks.ANEMONE)
     val BUOY = registerPlaceableInWaterBlockItem("buoy", HybridAquaticBlocks.BUOY)

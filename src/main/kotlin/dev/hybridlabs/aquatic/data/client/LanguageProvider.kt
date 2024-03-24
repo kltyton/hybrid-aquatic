@@ -131,6 +131,8 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             HybridAquaticItems.MANGLERFISH_LURE to "Manglerfish Lure",
             HybridAquaticItems.MANGLERFISH_FIN to "Manglerfish Fin",
             HybridAquaticItems.EEL_SCARF to "Eel Scarf",
+            HybridAquaticItems.TURTLE_CHESTPLATE to "Turtle Chestplate",
+            HybridAquaticItems.MOON_JELLYFISH_HAT to "Moon Jellyfish Hat",
         ).forEach { (item, translation) ->
             builder.add(item, translation)
         }

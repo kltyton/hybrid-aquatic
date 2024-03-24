@@ -121,6 +121,7 @@ object HybridAquaticItemGroups {
             entries.add(HybridAquaticItems.MANGLERFISH_LURE)
             entries.add(HybridAquaticItems.MANGLERFISH_FIN)
             entries.add(HybridAquaticItems.EEL_SCARF)
+            entries.add(HybridAquaticItems.MOON_JELLYFISH_HAT)
             entries.add(Items.TURTLE_HELMET)
             entries.add(HybridAquaticItems.TURTLE_CHESTPLATE)
 

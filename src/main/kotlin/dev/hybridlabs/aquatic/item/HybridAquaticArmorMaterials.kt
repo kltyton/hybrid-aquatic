@@ -37,6 +37,12 @@ enum class HybridAquaticArmorMaterials(
                 HybridAquaticItems.MORAY_EEL
             )
         }),
+    MOONJELLYFISH("eel", 15, intArrayOf(1, 1, 1, 1), 15,
+        SoundEvents.BLOCK_SLIME_BLOCK_PLACE, 0.0f, 0.0f, Supplier<Ingredient> {
+            Ingredient.ofItems(
+                HybridAquaticItems.PINK_JELLY
+            )
+        }),
     TURTLE("turtle", 25, intArrayOf(2, 6, 5, 2), 9,
         SoundEvents.ITEM_ARMOR_EQUIP_TURTLE, 1.0f, 0.3f, Supplier<Ingredient> {
             Ingredient.ofItems(
