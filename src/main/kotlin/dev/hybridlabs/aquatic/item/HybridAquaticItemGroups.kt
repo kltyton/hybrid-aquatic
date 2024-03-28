@@ -32,6 +32,14 @@ object HybridAquaticItemGroups {
 
             // blocks
             entries.add(HybridAquaticBlocks.CRATE)
+            entries.add(HybridAquaticBlocks.OAK_CRATE)
+            entries.add(HybridAquaticBlocks.SPRUCE_CRATE)
+            entries.add(HybridAquaticBlocks.BIRCH_CRATE)
+            entries.add(HybridAquaticBlocks.DARK_OAK_CRATE)
+            entries.add(HybridAquaticBlocks.JUNGLE_CRATE)
+            entries.add(HybridAquaticBlocks.ACACIA_CRATE)
+            entries.add(HybridAquaticBlocks.MANGROVE_CRATE)
+            entries.add(HybridAquaticBlocks.CHERRY_CRATE)
             entries.add(HybridAquaticItems.BUOY)
             entries.add(HybridAquaticItems.HYDROTHERMAL_VENT)
             entries.add(HybridAquaticItems.TUBE_SPONGE)

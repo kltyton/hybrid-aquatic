@@ -49,6 +49,38 @@ object HybridAquaticBlocks {
         .hardness(0.75F)
     ))
 
+    val OAK_CRATE = register("oak_crate", CrateBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)
+        .hardness(0.75F)
+    ))
+
+    val SPRUCE_CRATE = register("spruce_crate", CrateBlock(FabricBlockSettings.copyOf(Blocks.SPRUCE_PLANKS)
+        .hardness(0.75F)
+    ))
+
+    val BIRCH_CRATE = register("birch_crate", CrateBlock(FabricBlockSettings.copyOf(Blocks.BIRCH_PLANKS)
+        .hardness(0.75F)
+    ))
+
+    val DARK_OAK_CRATE = register("dark_oak_crate", CrateBlock(FabricBlockSettings.copyOf(Blocks.DARK_OAK_PLANKS)
+        .hardness(0.75F)
+    ))
+
+    val ACACIA_CRATE = register("acacia_crate", CrateBlock(FabricBlockSettings.copyOf(Blocks.ACACIA_PLANKS)
+        .hardness(0.75F)
+    ))
+
+    val JUNGLE_CRATE = register("jungle_crate", CrateBlock(FabricBlockSettings.copyOf(Blocks.JUNGLE_PLANKS)
+        .hardness(0.75F)
+    ))
+
+    val MANGROVE_CRATE = register("mangrove_crate", CrateBlock(FabricBlockSettings.copyOf(Blocks.MANGROVE_PLANKS)
+        .hardness(0.75F)
+    ))
+
+    val CHERRY_CRATE = register("cherry_crate", CrateBlock(FabricBlockSettings.copyOf(Blocks.CHERRY_PLANKS)
+        .hardness(0.75F)
+    ))
+
     val TUBE_SPONGE = register("tube_sponge", TubeSpongeBlock(FabricBlockSettings.copyOf(Blocks.WET_SPONGE)
         .nonOpaque()
     ))

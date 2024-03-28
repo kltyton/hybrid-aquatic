@@ -54,6 +54,14 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
         // simple cubes
         setOf(
             HybridAquaticBlocks.CRATE,
+            HybridAquaticBlocks.OAK_CRATE,
+            HybridAquaticBlocks.SPRUCE_CRATE,
+            HybridAquaticBlocks.BIRCH_CRATE,
+            HybridAquaticBlocks.DARK_OAK_CRATE,
+            HybridAquaticBlocks.JUNGLE_CRATE,
+            HybridAquaticBlocks.ACACIA_CRATE,
+            HybridAquaticBlocks.MANGROVE_CRATE,
+            HybridAquaticBlocks.CHERRY_CRATE,
         ).forEach(generator::registerSimpleCubeAll)
     }
     }
