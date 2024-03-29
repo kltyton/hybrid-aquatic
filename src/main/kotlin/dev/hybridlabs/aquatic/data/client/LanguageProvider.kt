@@ -163,6 +163,14 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             HybridAquaticItems.MAGNETIC_HOOK.translationKey to "Increases treasure chance",
             HybridAquaticItems.OMINOUS_HOOK.translationKey to "Summons Karkinos",
             HybridAquaticBlocks.CRATE.translationKey to "Break with an axe to open",
+            HybridAquaticBlocks.OAK_CRATE.translationKey to "Break with an axe to open",
+            HybridAquaticBlocks.SPRUCE_CRATE.translationKey to "Break with an axe to open",
+            HybridAquaticBlocks.BIRCH_CRATE.translationKey to "Break with an axe to open",
+            HybridAquaticBlocks.DARK_OAK_CRATE.translationKey to "Break with an axe to open",
+            HybridAquaticBlocks.JUNGLE_CRATE.translationKey to "Break with an axe to open",
+            HybridAquaticBlocks.MANGROVE_CRATE.translationKey to "Break with an axe to open",
+            HybridAquaticBlocks.ACACIA_CRATE.translationKey to "Break with an axe to open",
+            HybridAquaticBlocks.CHERRY_CRATE.translationKey to "Break with an axe to open",
             HybridAquaticItems.FISHING_NET.translationKey to "Stored Entity: %s"
         ).forEach { (itemTranslationKey, translation) ->
             builder.add(itemTranslationKey.plus(".description"), translation)

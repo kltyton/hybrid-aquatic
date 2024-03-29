@@ -92,6 +92,97 @@ class BlockLootTableProvider(output: FabricDataOutput) : FabricBlockLootTablePro
             )
         }
 
+        addDrop(HybridAquaticBlocks.OAK_CRATE) { block ->
+            LootTable.builder().pool(
+                LootPool.builder().with(
+                    AlternativeEntry.builder(
+                        LootTableEntry.builder(HybridAquaticLootTables.OAK_CRATE_TREASURE_ID).conditionally(
+                            MatchToolLootCondition.builder(ItemPredicate.Builder.create().tag(ItemTags.AXES))
+                        ),
+                        ItemEntry.builder(block),
+                    )
+                )
+            )
+        }
+
+        addDrop(HybridAquaticBlocks.BIRCH_CRATE) { block ->
+            LootTable.builder().pool(
+                LootPool.builder().with(
+                    AlternativeEntry.builder(
+                        LootTableEntry.builder(HybridAquaticLootTables.BIRCH_CRATE_TREASURE_ID).conditionally(
+                            MatchToolLootCondition.builder(ItemPredicate.Builder.create().tag(ItemTags.AXES))
+                        ),
+                        ItemEntry.builder(block),
+                    )
+                )
+            )
+        }
+
+        addDrop(HybridAquaticBlocks.SPRUCE_CRATE) { block ->
+            LootTable.builder().pool(
+                LootPool.builder().with(
+                    AlternativeEntry.builder(
+                        LootTableEntry.builder(HybridAquaticLootTables.SPRUCE_CRATE_TREASURE_ID).conditionally(
+                            MatchToolLootCondition.builder(ItemPredicate.Builder.create().tag(ItemTags.AXES))
+                        ),
+                        ItemEntry.builder(block),
+                    )
+                )
+            )
+        }
+
+        addDrop(HybridAquaticBlocks.DARK_OAK_CRATE) { block ->
+            LootTable.builder().pool(
+                LootPool.builder().with(
+                    AlternativeEntry.builder(
+                        LootTableEntry.builder(HybridAquaticLootTables.DARK_OAK_CRATE_TREASURE_ID).conditionally(
+                            MatchToolLootCondition.builder(ItemPredicate.Builder.create().tag(ItemTags.AXES))
+                        ),
+                        ItemEntry.builder(block),
+                    )
+                )
+            )
+        }
+
+        addDrop(HybridAquaticBlocks.JUNGLE_CRATE) { block ->
+            LootTable.builder().pool(
+                LootPool.builder().with(
+                    AlternativeEntry.builder(
+                        LootTableEntry.builder(HybridAquaticLootTables.JUNGLE_CRATE_TREASURE_ID).conditionally(
+                            MatchToolLootCondition.builder(ItemPredicate.Builder.create().tag(ItemTags.AXES))
+                        ),
+                        ItemEntry.builder(block),
+                    )
+                )
+            )
+        }
+
+        addDrop(HybridAquaticBlocks.MANGROVE_CRATE) { block ->
+            LootTable.builder().pool(
+                LootPool.builder().with(
+                    AlternativeEntry.builder(
+                        LootTableEntry.builder(HybridAquaticLootTables.MANGROVE_CRATE_TREASURE_ID).conditionally(
+                            MatchToolLootCondition.builder(ItemPredicate.Builder.create().tag(ItemTags.AXES))
+                        ),
+                        ItemEntry.builder(block),
+                    )
+                )
+            )
+        }
+
+        addDrop(HybridAquaticBlocks.CHERRY_CRATE) { block ->
+            LootTable.builder().pool(
+                LootPool.builder().with(
+                    AlternativeEntry.builder(
+                        LootTableEntry.builder(HybridAquaticLootTables.CHERRY_CRATE_TREASURE_ID).conditionally(
+                            MatchToolLootCondition.builder(ItemPredicate.Builder.create().tag(ItemTags.AXES))
+                        ),
+                        ItemEntry.builder(block),
+                    )
+                )
+            )
+        }
+
         // generate remaining drops
         Registries.BLOCK
             .filter(filterHybridAquatic(Registries.BLOCK))
