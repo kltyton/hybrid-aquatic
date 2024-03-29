@@ -31,7 +31,7 @@ object HybridAquaticItemGroups {
             }
 
             // blocks
-            entries.add(HybridAquaticBlocks.CRATE)
+            entries.add(HybridAquaticBlocks.HYBRID_CRATE)
             entries.add(HybridAquaticBlocks.OAK_CRATE)
             entries.add(HybridAquaticBlocks.SPRUCE_CRATE)
             entries.add(HybridAquaticBlocks.BIRCH_CRATE)

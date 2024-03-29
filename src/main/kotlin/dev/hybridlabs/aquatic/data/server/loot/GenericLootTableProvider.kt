@@ -17,14 +17,130 @@ import java.util.function.BiConsumer
 class GenericLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTableProvider(output, LootContextTypes.GENERIC) {
     override fun accept(exporter: BiConsumer<Identifier, LootTable.Builder>) {
         exporter.accept(
-            HybridAquaticLootTables.CRATE_TREASURE_ID,
+            HybridAquaticLootTables.HYBRID_CRATE_TREASURE_ID,
             LootTable.builder()
-                .randomSequenceId(HybridAquaticLootTables.CRATE_TREASURE_ID)
+                .randomSequenceId(HybridAquaticLootTables.HYBRID_CRATE_TREASURE_ID)
                 .pool(
                     LootPool.builder()
                         .with(
-                            ItemEntry.builder(Items.COCOA_BEANS)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 8.0f)))
+                            ItemEntry.builder(HybridAquaticItems.EEL_SCARF)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.MOON_JELLYFISH_HAT)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.MANGLERFISH_FIN)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.MANGLERFISH_LURE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.DIVING_HELMET)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.DIVING_SUIT)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.DIVING_LEGGINGS)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.DIVING_BOOTS)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.FISHING_NET)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.GLOWING_HOOK)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.BARBED_HOOK)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.MAGNETIC_HOOK)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.THRESHER_SHARK_PLUSHIE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.GREAT_WHITE_SHARK_PLUSHIE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.TIGER_SHARK_PLUSHIE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.BULL_SHARK_PLUSHIE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.WHALE_SHARK_PLUSHIE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.BASKING_SHARK_PLUSHIE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.HAMMERHEAD_SHARK_PLUSHIE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.FRILLED_SHARK_PLUSHIE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.FLOWER_CRAB_CLAW)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.COCONUT_CRAB_CLAW)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.YETI_CRAB_CLAW)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.GHOST_CRAB_CLAW)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.SPIDER_CRAB_CLAW)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.FIDDLER_CRAB_CLAW)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.VAMPIRE_CRAB_CLAW)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.LIGHTFOOT_CRAB_CLAW)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.DUNGENESS_CRAB_CLAW)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.LOBSTER_CLAW)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
                         )
                 )
         )
@@ -74,6 +190,38 @@ class GenericLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
                             ItemEntry.builder(Items.AZURE_BLUET)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 8.0f)))
                         )
+                        .with(
+                            ItemEntry.builder(Items.IRON_HELMET)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_CHESTPLATE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_LEGGINGS)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_BOOTS)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_SWORD)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_AXE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_PICKAXE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.COOKED_BEEF)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
                 )
         )
 
@@ -111,6 +259,38 @@ class GenericLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
                             ItemEntry.builder(Items.SWEET_BERRIES)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 8.0f)))
                         )
+                        .with(
+                            ItemEntry.builder(Items.IRON_HELMET)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_CHESTPLATE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_LEGGINGS)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_BOOTS)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_SWORD)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_AXE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_PICKAXE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.COOKED_BEEF)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
                 )
         )
 
@@ -147,6 +327,87 @@ class GenericLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
                         .with(
                             ItemEntry.builder(Items.BROWN_MUSHROOM)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 8.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_HELMET)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_CHESTPLATE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_LEGGINGS)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_BOOTS)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_SWORD)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_AXE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_PICKAXE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.COOKED_RABBIT)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                )
+        )
+
+        exporter.accept(
+            HybridAquaticLootTables.ACACIA_CRATE_TREASURE_ID,
+            LootTable.builder()
+                .randomSequenceId(HybridAquaticLootTables.ACACIA_CRATE_TREASURE_ID)
+                .pool(
+                    LootPool.builder()
+                        .with(
+                            ItemEntry.builder(Items.ACACIA_SAPLING)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.ACACIA_LOG)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_HELMET)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_CHESTPLATE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_LEGGINGS)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_BOOTS)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_SWORD)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_AXE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_PICKAXE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.COOKED_PORKCHOP)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
                         )
                 )
         )
@@ -189,6 +450,38 @@ class GenericLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
                             ItemEntry.builder(Items.RED_MUSHROOM)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 8.0f)))
                         )
+                        .with(
+                            ItemEntry.builder(Items.IRON_HELMET)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_CHESTPLATE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_LEGGINGS)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_BOOTS)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_SWORD)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_AXE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_PICKAXE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.COOKED_BEEF)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
                 )
         )
 
@@ -217,6 +510,38 @@ class GenericLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
                         .with(
                             ItemEntry.builder(Items.MOSS_BLOCK)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 8.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_HELMET)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_CHESTPLATE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_LEGGINGS)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_BOOTS)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_SWORD)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_AXE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_PICKAXE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.TROPICAL_FISH)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
                         )
                 )
         )
@@ -275,6 +600,38 @@ class GenericLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
                         .with(
                             ItemEntry.builder(Items.MELON_SLICE)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 8.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_HELMET)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_CHESTPLATE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_LEGGINGS)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_BOOTS)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_SWORD)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_AXE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_PICKAXE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.COOKED_CHICKEN)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
                         )
                 )
         )

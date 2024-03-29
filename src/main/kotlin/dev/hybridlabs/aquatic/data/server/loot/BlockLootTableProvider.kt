@@ -79,11 +79,11 @@ class BlockLootTableProvider(output: FabricDataOutput) : FabricBlockLootTablePro
         }
 
         // crate
-        addDrop(HybridAquaticBlocks.CRATE) { block ->
+        addDrop(HybridAquaticBlocks.HYBRID_CRATE) { block ->
             LootTable.builder().pool(
                 LootPool.builder().with(
                     AlternativeEntry.builder(
-                        LootTableEntry.builder(HybridAquaticLootTables.CRATE_TREASURE_ID).conditionally(
+                        LootTableEntry.builder(HybridAquaticLootTables.HYBRID_CRATE_TREASURE_ID).conditionally(
                             MatchToolLootCondition.builder(ItemPredicate.Builder.create().tag(ItemTags.AXES))
                         ),
                         ItemEntry.builder(block),
@@ -136,6 +136,19 @@ class BlockLootTableProvider(output: FabricDataOutput) : FabricBlockLootTablePro
                 LootPool.builder().with(
                     AlternativeEntry.builder(
                         LootTableEntry.builder(HybridAquaticLootTables.DARK_OAK_CRATE_TREASURE_ID).conditionally(
+                            MatchToolLootCondition.builder(ItemPredicate.Builder.create().tag(ItemTags.AXES))
+                        ),
+                        ItemEntry.builder(block),
+                    )
+                )
+            )
+        }
+
+        addDrop(HybridAquaticBlocks.ACACIA_CRATE) { block ->
+            LootTable.builder().pool(
+                LootPool.builder().with(
+                    AlternativeEntry.builder(
+                        LootTableEntry.builder(HybridAquaticLootTables.ACACIA_CRATE_TREASURE_ID).conditionally(
                             MatchToolLootCondition.builder(ItemPredicate.Builder.create().tag(ItemTags.AXES))
                         ),
                         ItemEntry.builder(block),
