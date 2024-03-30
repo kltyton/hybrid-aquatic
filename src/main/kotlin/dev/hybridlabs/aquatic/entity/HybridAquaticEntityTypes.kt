@@ -525,7 +525,7 @@ object HybridAquaticEntityTypes {
     val FRILLED_SHARK = registerFishUnderground(
         "frilled_shark",
         ::FrilledSharkEntity,
-        EntityDimensions.fixed(1.5f, 1.0f),
+        EntityDimensions.fixed(1.5f, 0.5f),
         FrilledSharkEntity.createMobAttributes()
     )
 
