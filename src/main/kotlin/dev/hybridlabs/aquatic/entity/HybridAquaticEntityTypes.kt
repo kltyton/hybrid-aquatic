@@ -546,7 +546,7 @@ object HybridAquaticEntityTypes {
     val THRESHER_SHARK = registerShark(
         "thresher_shark",
         ::ThresherSharkEntity,
-        EntityDimensions.fixed(2.0f, 0.5f),
+        EntityDimensions.fixed(1.5f, 0.75f),
         ThresherSharkEntity.createMobAttributes()
     )
 
