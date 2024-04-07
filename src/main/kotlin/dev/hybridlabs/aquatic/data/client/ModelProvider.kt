@@ -8,7 +8,11 @@ import dev.hybridlabs.aquatic.item.HybridAquaticItems
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider
 import net.minecraft.block.Blocks
-import net.minecraft.data.client.*
+import net.minecraft.data.client.BlockStateModelGenerator
+import net.minecraft.data.client.ItemModelGenerator
+import net.minecraft.data.client.ModelIds
+import net.minecraft.data.client.Models
+import net.minecraft.data.client.TextureMap
 import net.minecraft.item.SpawnEggItem
 import net.minecraft.registry.Registries
 import net.minecraft.util.Identifier
@@ -63,6 +67,11 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
             HybridAquaticBlocks.MANGROVE_CRATE,
             HybridAquaticBlocks.CHERRY_CRATE,
         ).forEach(generator::registerSimpleCubeAll)
+        
+        // wood
+        registerLog(HybridAquaticBlocks.DRIFTWOOD_LOG).log(HybridAquaticBlocks.DRIFTWOOD_LOG).wood(HybridAquaticBlocks.DRIFTWOOD_WOOD)
+        registerLog(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_LOG).log(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_LOG).wood(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_WOOD)
+        registerHangingSign(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_LOG, HybridAquaticBlocks.DRIFTWOOD_HANGING_SIGN, HybridAquaticBlocks.DRIFTWOOD_WALL_HANGING_SIGN)
     }
     }
 
