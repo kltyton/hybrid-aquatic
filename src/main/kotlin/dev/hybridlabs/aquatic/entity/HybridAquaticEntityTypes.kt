@@ -553,7 +553,7 @@ object HybridAquaticEntityTypes {
     val TIGER_SHARK = registerShark(
         "tiger_shark",
         ::TigerSharkEntity,
-        EntityDimensions.fixed(2.0f, 1.5f),
+        EntityDimensions.fixed(1.75f, 1.0f),
         TigerSharkEntity.createMobAttributes()
     )
 

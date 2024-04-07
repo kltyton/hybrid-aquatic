@@ -3,9 +3,7 @@ package dev.hybridlabs.aquatic.block
 import com.google.common.collect.ImmutableSet
 import dev.hybridlabs.aquatic.HybridAquatic
 import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
-import net.minecraft.block.Block
-import net.minecraft.block.Blocks
-import net.minecraft.block.MapColor
+import net.minecraft.block.*
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.block.enums.Instrument
@@ -80,6 +78,25 @@ object HybridAquaticBlocks {
     val CHERRY_CRATE = register("cherry_crate", CrateBlock(FabricBlockSettings.copyOf(Blocks.CHERRY_PLANKS)
         .hardness(0.75F)
     ))
+
+    val DRIFTWOOD_PLANKS = register("driftwood_planks", Block(FabricBlockSettings.copyOf((Blocks.OAK_PLANKS)))
+    )
+    val DRIFTWOOD_STAIRS = register("driftwood_stairs", StairsBlock(DRIFTWOOD_PLANKS.defaultState, FabricBlockSettings.copyOf(Blocks.OAK_STAIRS))
+    )
+    val DRIFTWOOD_SLAB = register("driftwood_slab", SlabBlock(FabricBlockSettings.copyOf(Blocks.OAK_STAIRS))
+    )
+    val DRIFTWOOD_BUTTON = register("driftwood_button", ButtonBlock(FabricBlockSettings.copyOf(Blocks.OAK_BUTTON), BlockSetType.OAK, 10, true)
+    )
+    val DRIFTWOOD_PRESSURE_PLATE = register("driftwood_pressure_plate", PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copyOf(Blocks.OAK_PRESSURE_PLATE), BlockSetType.OAK)
+    )
+    val DRIFTWOOD_FENCE = register("driftwood_fence", FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE))
+    )
+    val DRIFTWOOD_FENCE_GATE = register("driftwood_fence_gate", FenceGateBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE), WoodType.OAK)
+    )
+    val DRIFTWOOD_DOOR = register("driftwood_door", DoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_DOOR), BlockSetType.OAK)
+    )
+    val DRIFTWOOD_TRAPDOOR = register("driftwood_trapdoor", TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_TRAPDOOR), BlockSetType.OAK)
+    )
 
     val TUBE_SPONGE = register("tube_sponge", TubeSpongeBlock(FabricBlockSettings.copyOf(Blocks.WET_SPONGE)
         .nonOpaque()

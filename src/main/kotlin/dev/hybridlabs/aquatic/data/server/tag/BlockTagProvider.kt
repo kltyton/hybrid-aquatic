@@ -1,5 +1,6 @@
 package dev.hybridlabs.aquatic.data.server.tag
 
+import dev.hybridlabs.aquatic.block.HybridAquaticBlocks
 import dev.hybridlabs.aquatic.block.PlushieBlock
 import dev.hybridlabs.aquatic.data.HybridAquaticDataGenerator.filterHybridAquatic
 import dev.hybridlabs.aquatic.tag.HybridAquaticBlockTags
@@ -8,6 +9,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider
 import net.minecraft.block.Blocks
 import net.minecraft.registry.Registries
 import net.minecraft.registry.RegistryWrapper
+import net.minecraft.registry.tag.BlockTags
 import java.util.concurrent.CompletableFuture
 
 class BlockTagProvider(output: FabricDataOutput, registriesFuture: CompletableFuture<RegistryWrapper.WrapperLookup>) : FabricTagProvider.BlockTagProvider(output, registriesFuture) {
@@ -50,6 +52,12 @@ class BlockTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             .add(Blocks.MUDDY_MANGROVE_ROOTS)
             .add(Blocks.MANGROVE_ROOTS)
             .add(Blocks.GRAVEL)
+
+        getOrCreateTagBuilder(BlockTags.FENCES)
+            .add(HybridAquaticBlocks.DRIFTWOOD_FENCE)
+
+        getOrCreateTagBuilder(BlockTags.FENCE_GATES)
+            .add(HybridAquaticBlocks.DRIFTWOOD_FENCE_GATE)
 
         // plushies
         Registries.BLOCK

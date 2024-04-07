@@ -66,6 +66,14 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             HybridAquaticBlocks.BUOY to "Buoy",
             HybridAquaticBlocks.HYDROTHERMAL_VENT to "Hydrothermal Vent",
             HybridAquaticBlocks.GIANT_CLAM to "Giant Clam",
+            HybridAquaticBlocks.DRIFTWOOD_PLANKS to "Driftwood Planks",
+            HybridAquaticBlocks.DRIFTWOOD_STAIRS to "Driftwood Stairs",
+            HybridAquaticBlocks.DRIFTWOOD_SLAB to "Driftwood Slab",
+            HybridAquaticBlocks.DRIFTWOOD_FENCE to "Driftwood Fence",
+            HybridAquaticBlocks.DRIFTWOOD_DOOR to "Driftwood Door",
+            HybridAquaticBlocks.DRIFTWOOD_TRAPDOOR to "Driftwood Trapdoor",
+            HybridAquaticBlocks.DRIFTWOOD_PRESSURE_PLATE to "Driftwood Pressure Plate",
+            HybridAquaticBlocks.DRIFTWOOD_BUTTON to "Driftwood Button",
         ).forEach { (block, translation) ->
             builder.add(block, translation)
         }

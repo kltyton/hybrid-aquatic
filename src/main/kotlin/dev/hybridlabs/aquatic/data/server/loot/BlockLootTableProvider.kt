@@ -33,6 +33,59 @@ class BlockLootTableProvider(output: FabricDataOutput) : FabricBlockLootTablePro
             )
         }
 
+        addDrop(HybridAquaticBlocks.DRIFTWOOD_PLANKS) { block ->
+            LootTable.builder().pool(
+                LootPool.builder()
+                    .with(ItemEntry.builder(block))
+            )
+        }
+
+        addDrop(HybridAquaticBlocks.DRIFTWOOD_STAIRS) { block ->
+            LootTable.builder().pool(
+                LootPool.builder()
+                    .with(ItemEntry.builder(block))
+            )
+        }
+
+        addDrop(HybridAquaticBlocks.DRIFTWOOD_SLAB, slabDrops(HybridAquaticBlocks.DRIFTWOOD_SLAB))
+
+
+        addDrop(HybridAquaticBlocks.DRIFTWOOD_FENCE) { block ->
+            LootTable.builder().pool(
+                LootPool.builder()
+                    .with(ItemEntry.builder(block))
+            )
+        }
+
+        addDrop(HybridAquaticBlocks.DRIFTWOOD_FENCE_GATE) { block ->
+            LootTable.builder().pool(
+                LootPool.builder()
+                    .with(ItemEntry.builder(block))
+            )
+        }
+
+        addDrop(HybridAquaticBlocks.DRIFTWOOD_DOOR, doorDrops(HybridAquaticBlocks.DRIFTWOOD_DOOR))
+
+        addDrop(HybridAquaticBlocks.DRIFTWOOD_TRAPDOOR) { block ->
+            LootTable.builder().pool(
+                LootPool.builder()
+                    .with(ItemEntry.builder(block))
+            )
+        }
+        addDrop(HybridAquaticBlocks.DRIFTWOOD_PRESSURE_PLATE) { block ->
+            LootTable.builder().pool(
+                LootPool.builder()
+                    .with(ItemEntry.builder(block))
+            )
+        }
+
+        addDrop(HybridAquaticBlocks.DRIFTWOOD_BUTTON) { block ->
+            LootTable.builder().pool(
+                LootPool.builder()
+                    .with(ItemEntry.builder(block))
+            )
+        }
+
         // living sponge
         addDrop(HybridAquaticBlocks.TUBE_SPONGE) { block ->
             LootTable.builder().pool(
