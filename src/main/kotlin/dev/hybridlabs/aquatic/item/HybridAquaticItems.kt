@@ -9,11 +9,7 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings
 import net.minecraft.block.Block
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.mob.MobEntity
-import net.minecraft.item.ArmorItem
-import net.minecraft.item.BlockItem
-import net.minecraft.item.FoodComponent
-import net.minecraft.item.Item
-import net.minecraft.item.SpawnEggItem
+import net.minecraft.item.*
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.util.Identifier
@@ -35,7 +31,7 @@ object HybridAquaticItems {
     val HYDROTHERMAL_VENT = registerBlockItem("hydrothermal_vent", HybridAquaticBlocks.HYDROTHERMAL_VENT)
     val MESSAGE_IN_A_BOTTLE = register("message_in_a_bottle", MessageInABottleItem(FabricItemSettings()))
 
-    val FISHING_NET = register("fishing_net", FishingNetItem(FabricItemSettings().maxCount(1).maxDamage(64)))
+    val FISHING_NET = register("fishing_net", FishingNetItem(FabricItemSettings().maxCount(1)))
     val GLOW_SLIME = register("glow_slime", Item(FabricItemSettings()))
     val BLUE_JELLY = register("blue_jelly", Item(FabricItemSettings()))
     val ORANGE_JELLY = register("orange_jelly", Item(FabricItemSettings()))

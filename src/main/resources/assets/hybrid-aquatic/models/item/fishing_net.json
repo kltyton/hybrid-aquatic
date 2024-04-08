@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 64],
 	"textures": {
-		"1": "hybrid-aquatic:item/fishing_net_3d"
+		"1": "hybrid-aquatic:item/fishing_net"
 	},
 	"elements": [
 		{
@@ -101,13 +101,13 @@
 			"translation": [4, 0, 0]
 		},
 		"gui": {
-			"rotation": [90, -45, 90],
-			"translation": [-3, -2.25, 0],
-			"scale": [0.75, 0.75, 0.75]
+			"rotation": [75, -45, 45],
+			"translation": [-3.25, -2.25, 0],
+			"scale": [0.7, 0.7, 0.7]
 		},
 		"fixed": {
-			"rotation": [90, 45, -90],
-			"translation": [4.25, -3, 0]
+			"rotation": [75, 45, -120],
+			"translation": [5, -4, 0]
 		}
 	},
 	"groups": [
