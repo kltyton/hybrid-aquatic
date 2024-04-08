@@ -31,6 +31,9 @@ object HybridAquaticItemGroups {
             }
 
             // blocks
+            entries.add(HybridAquaticBlocks.DRIFTWOOD_LOG)
+            entries.add(HybridAquaticBlocks.DRIFTWOOD_WOOD)
+            entries.add(HybridAquaticBlocks.DRIFTWOOD_PLANKS)
             entries.add(HybridAquaticBlocks.HYBRID_CRATE)
             entries.add(HybridAquaticBlocks.OAK_CRATE)
             entries.add(HybridAquaticBlocks.SPRUCE_CRATE)

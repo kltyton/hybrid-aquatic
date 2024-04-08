@@ -109,8 +109,8 @@ object HybridAquaticBlocks {
     val DRIFTWOOD_FENCE_GATE = register("driftwood_fence_gate", FenceGateBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE), HybridAquaticWoodTypes.DRIFTWOOD))
     val DRIFTWOOD_DOOR = register("driftwood_door", DoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_DOOR), BlockSetType.OAK))
     val DRIFTWOOD_TRAPDOOR = register("driftwood_trapdoor", TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_TRAPDOOR), BlockSetType.OAK))
-    val DRIFTWOOD_SIGN = register("driftwood_sign", SignBlock(FabricBlockSettings.copyOf(Blocks.OAK_TRAPDOOR), HybridAquaticWoodTypes.DRIFTWOOD))
-    val DRIFTWOOD_WALL_SIGN = register("driftwood_wall_sign", WallSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_TRAPDOOR), HybridAquaticWoodTypes.DRIFTWOOD))
+    val DRIFTWOOD_SIGN = register("driftwood_sign", SignBlock(FabricBlockSettings.copyOf(Blocks.OAK_SIGN), HybridAquaticWoodTypes.DRIFTWOOD))
+    val DRIFTWOOD_WALL_SIGN = register("driftwood_wall_sign", WallSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_HANGING_SIGN), HybridAquaticWoodTypes.DRIFTWOOD))
     val DRIFTWOOD_HANGING_SIGN = register("driftwood_hanging_sign", HangingSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_TRAPDOOR), HybridAquaticWoodTypes.DRIFTWOOD))
     val DRIFTWOOD_WALL_HANGING_SIGN = register("driftwood_wall_hanging_sign", WallHangingSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_TRAPDOOR), HybridAquaticWoodTypes.DRIFTWOOD))
 
