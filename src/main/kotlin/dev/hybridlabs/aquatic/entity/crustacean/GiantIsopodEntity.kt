@@ -1,13 +1,14 @@
-package dev.hybridlabs.aquatic.entity.critter
+package dev.hybridlabs.aquatic.entity.crustacean
 
+import dev.hybridlabs.aquatic.entity.critter.HybridAquaticCritterEntity
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.attribute.DefaultAttributeContainer
 import net.minecraft.entity.attribute.EntityAttributes
 import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
 
-class LightfootCrabEntity(entityType: EntityType<out HybridAquaticCritterEntity>, world: World) :
-    HybridAquaticCrabEntity(entityType, world) {
+class GiantIsopodEntity(entityType: EntityType<out HybridAquaticCritterEntity>, world: World) :
+    HybridAquaticCritterEntity(entityType, world) {
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()
@@ -17,7 +18,6 @@ class LightfootCrabEntity(entityType: EntityType<out HybridAquaticCritterEntity>
                 .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 16.0)
         }
     }
-
     override fun getMaxSize() : Int {
         return 5
     }

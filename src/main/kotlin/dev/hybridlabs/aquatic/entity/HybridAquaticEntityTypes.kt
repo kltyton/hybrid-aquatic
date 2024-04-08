@@ -2,6 +2,7 @@ package dev.hybridlabs.aquatic.entity
 
 import dev.hybridlabs.aquatic.HybridAquatic
 import dev.hybridlabs.aquatic.entity.critter.*
+import dev.hybridlabs.aquatic.entity.crustacean.*
 import dev.hybridlabs.aquatic.entity.fish.*
 import dev.hybridlabs.aquatic.entity.jellyfish.*
 import dev.hybridlabs.aquatic.entity.shark.*
@@ -55,7 +56,7 @@ object HybridAquaticEntityTypes {
         "clownfish",
         ::ClownfishEntity,
         EntityDimensions.fixed(0.4f, 0.35f),
-        ClownfishEntity.createClownfishAttributes()
+        ClownfishEntity.createMobAttributes()
     )
 
     val COWFISH = registerFish(

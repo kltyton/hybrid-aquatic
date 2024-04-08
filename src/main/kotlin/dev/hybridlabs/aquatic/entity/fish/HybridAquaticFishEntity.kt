@@ -251,7 +251,7 @@ open class HybridAquaticFishEntity(
 
     init {
         moveControl = FishMoveControl(this)
-        lookControl = YawAdjustingLookControl(this, 5)
+        lookControl = YawAdjustingLookControl(this, 20)
     }
 
     override fun tickMovement() {

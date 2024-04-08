@@ -1,5 +1,6 @@
-package dev.hybridlabs.aquatic.entity.critter
+package dev.hybridlabs.aquatic.entity.crustacean
 
+import dev.hybridlabs.aquatic.entity.critter.HybridAquaticCritterEntity
 import dev.hybridlabs.aquatic.tag.HybridAquaticBlockTags
 import net.minecraft.block.Blocks
 import net.minecraft.entity.EntityGroup

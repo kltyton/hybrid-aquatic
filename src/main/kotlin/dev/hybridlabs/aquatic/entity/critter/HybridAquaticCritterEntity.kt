@@ -96,12 +96,11 @@ open class HybridAquaticCritterEntity(type: EntityType<out HybridAquaticCritterE
     override fun tickWaterBreathingAir(air: Int) {}
 
     open fun <E : GeoAnimatable> predicate(event: AnimationState<E>): PlayState {
-        if (event.isMoving && isOnGround) {
+        if (event.isMoving) {
             event.controller.setAnimation(WALK_ANIMATION)
         } else {
             event.controller.setAnimation(IDLE_ANIMATION)
         }
-
         return PlayState.CONTINUE
     }
 
