@@ -14,7 +14,7 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
 
 class OpahEntity(entityType: EntityType<out OpahEntity>, world: World) :
-    HybridAquaticFishEntity(entityType, world, 1, HybridAquaticEntityTags.OPAH_PREY) {
+    HybridAquaticFishEntity(entityType, world, 1, HybridAquaticEntityTags.OPAH_PREY, HybridAquaticEntityTags.OPAH_PREDATOR) {
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

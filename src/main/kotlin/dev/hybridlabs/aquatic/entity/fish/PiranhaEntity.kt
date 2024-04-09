@@ -13,7 +13,7 @@ import net.minecraft.world.Difficulty
 import net.minecraft.world.World
 
 class PiranhaEntity(entityType: EntityType<out PiranhaEntity>, world: World) :
-    HybridAquaticSchoolingFishEntity(entityType, world, HybridAquaticEntityTags.PIRANHA_PREY) {
+    HybridAquaticSchoolingFishEntity(entityType, world, HybridAquaticEntityTags.PIRANHA_PREY, HybridAquaticEntityTags.PIRANHA_PREDATOR) {
 
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {

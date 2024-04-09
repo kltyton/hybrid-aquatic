@@ -19,7 +19,7 @@ import net.minecraft.registry.tag.DamageTypeTags
 import net.minecraft.world.World
 
 class BlueSpottedStingrayEntity(entityType: EntityType<out BlueSpottedStingrayEntity>, world: World) :
-    HybridAquaticFishEntity(entityType, world, 1, HybridAquaticEntityTags.STINGRAY_PREY) {
+    HybridAquaticFishEntity(entityType, world, 1, HybridAquaticEntityTags.STINGRAY_PREY, HybridAquaticEntityTags.STINGRAY_PREDATOR) {
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

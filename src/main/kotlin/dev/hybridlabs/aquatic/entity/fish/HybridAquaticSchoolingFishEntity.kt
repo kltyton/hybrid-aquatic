@@ -16,7 +16,8 @@ open class HybridAquaticSchoolingFishEntity(
     type: EntityType<out HybridAquaticFishEntity>,
     world: World,
     override val prey: TagKey<EntityType<*>>,
-) : HybridAquaticFishEntity(type, world, 1, HybridAquaticEntityTags.NONE) {
+    override val predator: TagKey<EntityType<*>>,
+) : HybridAquaticFishEntity(type, world, 1, HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
     private var leader: HybridAquaticSchoolingFishEntity? = null
     private var groupSize = 1
 

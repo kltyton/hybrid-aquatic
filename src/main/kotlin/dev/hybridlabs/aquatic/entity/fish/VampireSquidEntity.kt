@@ -11,7 +11,7 @@ import net.minecraft.sound.SoundEvents
 import net.minecraft.world.World
 
 class VampireSquidEntity(entityType: EntityType<out VampireSquidEntity>, world: World) :
-    HybridAquaticFishEntity(entityType, world, 1, HybridAquaticEntityTags.NONE) {
+    HybridAquaticFishEntity(entityType, world, 1, HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.FIREFLY_SQUID_PREDATOR) {
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

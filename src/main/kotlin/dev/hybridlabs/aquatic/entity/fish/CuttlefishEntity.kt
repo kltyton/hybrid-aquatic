@@ -17,7 +17,7 @@ import net.minecraft.sound.SoundEvents
 import net.minecraft.world.World
 
 class CuttlefishEntity(entityType: EntityType<out CuttlefishEntity>, world: World) :
-    HybridAquaticFishEntity(entityType, world, 1, HybridAquaticEntityTags.CUTTLEFISH_PREY) {
+    HybridAquaticFishEntity(entityType, world, 1, HybridAquaticEntityTags.CUTTLEFISH_PREY, HybridAquaticEntityTags.CUTTLEFISH_PREDATOR) {
 
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {

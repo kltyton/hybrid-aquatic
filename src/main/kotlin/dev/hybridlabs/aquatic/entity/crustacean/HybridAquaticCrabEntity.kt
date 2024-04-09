@@ -5,7 +5,9 @@ import dev.hybridlabs.aquatic.tag.HybridAquaticBlockTags
 import net.minecraft.block.Blocks
 import net.minecraft.entity.EntityGroup
 import net.minecraft.entity.EntityType
+import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.SpawnReason
+import net.minecraft.entity.ai.goal.MeleeAttackGoal
 import net.minecraft.entity.data.DataTracker
 import net.minecraft.entity.data.TrackedData
 import net.minecraft.entity.data.TrackedDataHandlerRegistry
@@ -26,6 +28,11 @@ open class HybridAquaticCrabEntity(type: EntityType<out HybridAquaticCritterEnti
     HybridAquaticCritterEntity(type, world, variantCount) {
     private var songSource: BlockPos? = null
     private var songPlaying: Boolean = false
+    private var attemptAttack: Boolean
+        get() = dataTracker.get(ATTEMPT_ATTACK)
+        set(attemptAttack) {
+            dataTracker.set(ATTEMPT_ATTACK, attemptAttack)
+        }
 
     var diggingCooldown: Int = 0
     var isDigging: Boolean
@@ -36,6 +43,7 @@ open class HybridAquaticCrabEntity(type: EntityType<out HybridAquaticCritterEnti
 
     override fun initDataTracker() {
         dataTracker.startTracking(IS_DIGGING, false)
+        dataTracker.startTracking(ATTEMPT_ATTACK, false)
         super.initDataTracker()
     }
 
@@ -66,7 +74,6 @@ open class HybridAquaticCrabEntity(type: EntityType<out HybridAquaticCritterEnti
             songPlaying = false
             songSource = null
         }
-
         super.tickMovement()
     }
 
@@ -94,11 +101,37 @@ open class HybridAquaticCrabEntity(type: EntityType<out HybridAquaticCritterEnti
         return super.predicate(event)
     }
 
+    internal open class AttackGoal(private val crab: HybridAquaticCrabEntity) : MeleeAttackGoal(crab, 0.4,true) {
+        override fun attack(target: LivingEntity, squaredDistance: Double) {
+            val d = getSquaredMaxAttackDistance(target)
+            if (squaredDistance <= d && this.isCooledDown) {
+                resetCooldown()
+                mob.tryAttack(target)
+                crab.attemptAttack = true
+            }
+        }
+
+        override fun getSquaredMaxAttackDistance(entity: LivingEntity): Double {
+            return (0.25f + entity.width).toDouble()
+        }
+
+        override fun start() {
+            super.start()
+            crab.attemptAttack = false
+        }
+
+        override fun stop() {
+            super.stop()
+            crab.attemptAttack = false
+        }
+    }
+
     companion object {
         val DANCE_ANIMATION: RawAnimation = RawAnimation.begin().then("dance", Animation.LoopType.LOOP)
         val DIGGING_ANIMATION: RawAnimation = RawAnimation.begin().then("dig", Animation.LoopType.LOOP)
         val HIDING_ANIMATION: RawAnimation = RawAnimation.begin().then("hide", Animation.LoopType.LOOP)
         val FLIPPED_ANIMATION: RawAnimation = RawAnimation.begin().then("flipped", Animation.LoopType.LOOP)
+        val ATTEMPT_ATTACK: TrackedData<Boolean> = DataTracker.registerData(HybridAquaticCrabEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
 
         fun canSpawn(
             type: EntityType<out WaterCreatureEntity?>?,

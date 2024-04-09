@@ -1,6 +1,5 @@
 package dev.hybridlabs.aquatic.entity.fish
 
-import dev.hybridlabs.aquatic.entity.shark.HybridAquaticSharkEntity
 import dev.hybridlabs.aquatic.tag.HybridAquaticEntityTags
 import net.minecraft.block.Blocks
 import net.minecraft.entity.*
@@ -17,7 +16,6 @@ import net.minecraft.entity.data.TrackedDataHandlerRegistry
 import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.nbt.NbtCompound
-import net.minecraft.particle.ParticleTypes
 import net.minecraft.registry.tag.FluidTags
 import net.minecraft.registry.tag.TagKey
 import net.minecraft.sound.SoundEvent
@@ -45,9 +43,10 @@ open class HybridAquaticFishEntity(
     world: World,
     private val variantCount: Int = 1,
     open val prey: TagKey<EntityType<*>>,
+    open val predator: TagKey<EntityType<*>>,
 ) : WaterCreatureEntity(type, world), GeoEntity {
     private val factory = GeckoLibUtil.createInstanceCache(this)
-    var hunger: Int
+    private var hunger: Int
         get() = dataTracker.get(HUNGER)
         set(hunger) {
             dataTracker.set(HUNGER, hunger)
@@ -64,10 +63,9 @@ open class HybridAquaticFishEntity(
         goalSelector.add(1, EscapeDangerGoal(this, 1.25))
         goalSelector.add(2, MoveIntoWaterGoal(this))
         goalSelector.add(2, SwimAroundGoal(this, 0.50, 6))
-        goalSelector.add(1, FleeEntityGoal(this, HybridAquaticSharkEntity::class.java, 8.0f, 1.2, 1.0))
-        goalSelector.add(1, FleeEntityGoal(this, PlayerEntity::class.java, 5.0f, 1.2, 1.0))
-        targetSelector.add(3, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) {
-            hunger <= 1200 && it.type.isIn(prey)})
+        goalSelector.add(1, FleeEntityGoal(this, LivingEntity::class.java, 8.0f, 1.2, 1.0) {it.type.isIn(predator)})
+        goalSelector.add(1, FleeEntityGoal(this, PlayerEntity::class.java, 5.0f, 1.0, 1.0))
+        targetSelector.add(3, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) {hunger <= 1200 && it.type.isIn(prey)})
     }
 
     override fun initDataTracker() {
@@ -109,32 +107,6 @@ open class HybridAquaticFishEntity(
             }
         }
 
-        if (world.isClient && isTouchingWater && isAttacking) {
-            val rotationVec = getRotationVec(0.0f)
-            val cosYaw = MathHelper.cos(yaw * MathHelper.RADIANS_PER_DEGREE) * 0.6f
-            val sinYaw = MathHelper.sin(yaw * MathHelper.RADIANS_PER_DEGREE) * 0.6f
-            val offsetY = 0.0f - random.nextFloat() * 0.7f
-            for (i in 0..1) {
-                world.addParticle(
-                    ParticleTypes.BUBBLE,
-                    x - rotationVec.x * offsetY + cosYaw,
-                    y - rotationVec.y,
-                    z - rotationVec.z * offsetY + sinYaw,
-                    0.0,
-                    0.0,
-                    0.0
-                )
-                world.addParticle(
-                    ParticleTypes.BUBBLE,
-                    x - rotationVec.x * offsetY - cosYaw,
-                    y - rotationVec.y,
-                    z - rotationVec.z * offsetY - sinYaw,
-                    0.0,
-                    0.0,
-                    0.0
-                )
-            }
-        }
     }
 
     private fun getHungerValue(entityType: EntityType<*>): Int {
@@ -358,7 +330,7 @@ open class HybridAquaticFishEntity(
         }
 
         override fun getSquaredMaxAttackDistance(entity: LivingEntity): Double {
-            return (7.0f + entity.width).toDouble()
+            return (1.0f + entity.width).toDouble()
         }
 
         override fun start() {

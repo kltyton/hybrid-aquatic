@@ -11,7 +11,7 @@ import net.minecraft.sound.SoundEvents
 import net.minecraft.world.World
 
 class GlowingSuckerOctopusEntity(entityType: EntityType<out GlowingSuckerOctopusEntity>, world: World) :
-    HybridAquaticFishEntity(entityType, world, 1, HybridAquaticEntityTags.OCTOPUS_PREY) {
+    HybridAquaticFishEntity(entityType, world, 1, HybridAquaticEntityTags.OCTOPUS_PREY, HybridAquaticEntityTags.OCTOPUS_PREDATOR) {
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

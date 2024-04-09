@@ -8,7 +8,7 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
 
 class FlashlightFishEntity(entityType: EntityType<out FlashlightFishEntity>, world: World) :
-    HybridAquaticSchoolingFishEntity(entityType, world, HybridAquaticEntityTags.NONE) {
+    HybridAquaticSchoolingFishEntity(entityType, world, HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

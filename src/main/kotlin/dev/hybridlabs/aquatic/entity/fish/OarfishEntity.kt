@@ -8,7 +8,7 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
 
 class OarfishEntity(entityType: EntityType<out OarfishEntity>, world: World) :
-    HybridAquaticFishEntity(entityType, world, 1, HybridAquaticEntityTags.OARFISH_PREY) {
+    HybridAquaticFishEntity(entityType, world, 1, HybridAquaticEntityTags.OARFISH_PREY, HybridAquaticEntityTags.OARFISH_PREDATOR) {
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

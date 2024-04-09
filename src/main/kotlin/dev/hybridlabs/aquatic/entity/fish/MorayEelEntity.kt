@@ -15,7 +15,7 @@ import net.minecraft.entity.passive.FishEntity
 import net.minecraft.world.World
 
 class MorayEelEntity(entityType: EntityType<out MorayEelEntity>, world: World) :
-    HybridAquaticFishEntity(entityType, world, 1, HybridAquaticEntityTags.MORAY_EEL_PREY) {
+    HybridAquaticFishEntity(entityType, world, 1, HybridAquaticEntityTags.MORAY_EEL_PREY, HybridAquaticEntityTags.MORAY_EEL_PREDATOR) {
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

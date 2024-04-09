@@ -11,7 +11,7 @@ import net.minecraft.sound.SoundEvents
 import net.minecraft.world.World
 
 class UmbrellaOctopusEntity(entityType: EntityType<out UmbrellaOctopusEntity>, world: World) :
-    HybridAquaticFishEntity(entityType, world, 6, HybridAquaticEntityTags.NONE) {
+    HybridAquaticFishEntity(entityType, world, 6, HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.OCTOPUS_PREDATOR) {
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

@@ -8,7 +8,7 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
 
 class BlueTangEntity(entityType: EntityType<out BlueTangEntity>, world: World) :
-    HybridAquaticFishEntity(entityType, world, 1, HybridAquaticEntityTags.NONE) {
+    HybridAquaticFishEntity(entityType, world, 1, HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.BLUE_TANG_PREDATOR) {
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

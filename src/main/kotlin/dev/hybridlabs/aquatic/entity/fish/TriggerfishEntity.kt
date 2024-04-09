@@ -14,7 +14,7 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
 
 class TriggerfishEntity(entityType: EntityType<out TriggerfishEntity>, world: World) :
-    HybridAquaticFishEntity(entityType, world, 2, HybridAquaticEntityTags.TRIGGERFISH_PREY) {
+    HybridAquaticFishEntity(entityType, world, 2, HybridAquaticEntityTags.TRIGGERFISH_PREY, HybridAquaticEntityTags.TRIGGERFISH_PREDATOR) {
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

@@ -186,7 +186,7 @@ class KarkinosEntity(entityType: EntityType<out HybridAquaticCritterEntity>, wor
         val FLIPPED: TrackedData<Boolean> = DataTracker.registerData(KarkinosEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
     }
 
-    class KarkinosAttackGoal(private val karkinos: KarkinosEntity) : AttackGoal(karkinos) {
+    private class KarkinosAttackGoal(private val karkinos: KarkinosEntity) : AttackGoal(karkinos) {
         override fun shouldContinue(): Boolean {
             return !karkinos.isFlipped && super.shouldContinue()
         }

@@ -8,7 +8,7 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
 
 class NeedlefishEntity(entityType: EntityType<out NeedlefishEntity>, world: World) :
-    HybridAquaticSchoolingFishEntity(entityType, world, HybridAquaticEntityTags.NEEDLEFISH_PREY) {
+    HybridAquaticSchoolingFishEntity(entityType, world, HybridAquaticEntityTags.NEEDLEFISH_PREY, HybridAquaticEntityTags.NEEDLEFISH_PREDATOR) {
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()
