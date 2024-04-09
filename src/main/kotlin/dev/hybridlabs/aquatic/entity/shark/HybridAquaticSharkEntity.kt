@@ -58,7 +58,7 @@ import software.bernie.geckolib.util.GeckoLibUtil
 import java.util.UUID
 
 
-@Suppress("LeakingThis")
+@Suppress("LeakingThis", "DEPRECATION")
 open class HybridAquaticSharkEntity(
     entityType: EntityType<out HybridAquaticSharkEntity>,
     world: World,
@@ -81,11 +81,6 @@ open class HybridAquaticSharkEntity(
         get() = dataTracker.get(HUNGER)
         set(hunger) {
             dataTracker.set(HUNGER, hunger)
-        }
-    private var isRushing: Boolean
-        get() = dataTracker.get(RUSHING)
-        set(rushing) {
-            dataTracker.set(RUSHING, rushing)
         }
     private var attemptAttack: Boolean
         get() = dataTracker.get(ATTEMPT_ATTACK)
@@ -116,9 +111,6 @@ open class HybridAquaticSharkEntity(
         val HUNGER: TrackedData<Int> =
             DataTracker.registerData(HybridAquaticSharkEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
 
-        val RUSHING: TrackedData<Boolean> =
-            DataTracker.registerData(HybridAquaticSharkEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
-
         val ATTEMPT_ATTACK: TrackedData<Boolean> =
             DataTracker.registerData(HybridAquaticSharkEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
 
@@ -127,7 +119,6 @@ open class HybridAquaticSharkEntity(
         val FLOP_ANIMATION: RawAnimation  = RawAnimation.begin().then("flop", Animation.LoopType.LOOP)
         val ATTACK_ANIMATION: RawAnimation  = RawAnimation.begin().then("attack", Animation.LoopType.LOOP)
         val SWIM_ANIMATION: RawAnimation  = RawAnimation.begin().then("swim", Animation.LoopType.LOOP)
-        val RUSH_ANIMATION: RawAnimation  = RawAnimation.begin().then("rush", Animation.LoopType.LOOP)
 
         fun canSpawn(
             type: EntityType<out WaterCreatureEntity>,
@@ -170,7 +161,6 @@ open class HybridAquaticSharkEntity(
         super.initDataTracker()
         dataTracker.startTracking(MOISTNESS, getMaxMoistness())
         dataTracker.startTracking(HUNGER, MAX_HUNGER)
-        dataTracker.startTracking(RUSHING, false)
         dataTracker.startTracking(ATTEMPT_ATTACK, false)
         dataTracker.startTracking(SHARK_SIZE, 0)
     }
@@ -216,7 +206,7 @@ open class HybridAquaticSharkEntity(
 
     override fun tickWaterBreathingAir(air: Int) {}
 
-    fun getMaxMoistness(): Int {
+    private fun getMaxMoistness(): Int {
         return 1200
     }
 
@@ -248,10 +238,7 @@ open class HybridAquaticSharkEntity(
             event.controller.setAnimation(ATTACK_ANIMATION)
 
         } else if (isSubmergedInWater) {
-            if (!isRushing)
                 event.controller.setAnimation(SWIM_ANIMATION)
-            else
-                event.controller.setAnimation(RUSH_ANIMATION)
         }
         return PlayState.CONTINUE
     }
@@ -305,10 +292,6 @@ open class HybridAquaticSharkEntity(
         return this.maxAir
     }
 
-    protected fun hasSelfControl(): Boolean {
-        return true
-    }
-
     override fun registerControllers(controllerRegistrar: AnimatableManager.ControllerRegistrar) {
         controllerRegistrar.add(
             AnimationController(
@@ -328,7 +311,7 @@ open class HybridAquaticSharkEntity(
         if (customName?.string == "friend")
             return false
 
-        return closePlayerAttack && player.squaredDistanceTo(this) <= 5 && !player.isCreative
+        return closePlayerAttack && player.squaredDistanceTo(this) <= 12 && !player.isCreative
     }
 
     //#region Angerable Implementation Details
@@ -378,26 +361,10 @@ open class HybridAquaticSharkEntity(
                 resetCooldown()
                 mob.tryAttack(target)
                 shark.isSprinting = false
-                shark.isRushing = false
                 shark.attemptAttack = true
 
                 if (target.health <= 0)
                     shark.eatFish(target.type)
-            }
-
-            else if (shark.random.nextFloat() < 0.25f) {
-                target.addStatusEffect(StatusEffectInstance(HybridAquaticStatusEffects.BLEEDING, 100, 0))
-
-                if (target.isBlocking && shark.random.nextFloat() < 0.5f) {
-                    val dropCount = shark.random.nextInt(2) + 1
-                    for (i in 0 until dropCount) {
-                        target.dropItem(HybridAquaticItems.SHARK_TOOTH, 1)
-                    }
-                }
-            } else if (squaredDistance > d * 5 && !shark.isRushing) {
-                shark.rushTargetPosition = target.pos
-                shark.isSprinting = true
-                shark.isRushing = true
             }
         }
 
@@ -417,7 +384,6 @@ open class HybridAquaticSharkEntity(
 
         companion object {
             private const val ORIGINAL_SPEED = 3.0
-            private const val SPEED_MULTIPLIER = 2.0
         }
     }
 }
