@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "hybrid-aquatic:lionfish",
+    "hybrid-aquatic:rockfish",
+    "hybrid-aquatic:cuttlefish",
+    "hybrid-aquatic:clownfish",
+    "hybrid-aquatic:blue_tang"
+  ]
+}
