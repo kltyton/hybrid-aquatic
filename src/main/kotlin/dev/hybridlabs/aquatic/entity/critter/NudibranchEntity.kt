@@ -8,6 +8,9 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.sound.SoundEvent
 import net.minecraft.sound.SoundEvents
 import net.minecraft.world.World
+import software.bernie.geckolib.core.animatable.GeoAnimatable
+import software.bernie.geckolib.core.animation.AnimationState
+import software.bernie.geckolib.core.`object`.PlayState
 
 class NudibranchEntity(entityType: EntityType<out NudibranchEntity>, world: World) :
     HybridAquaticCritterEntity(entityType, world, 9) {
@@ -18,6 +21,16 @@ class NudibranchEntity(entityType: EntityType<out NudibranchEntity>, world: Worl
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.2)
         }
     }
+
+    override fun <E : GeoAnimatable> predicate(event: AnimationState<E>): PlayState {
+        if (isSubmergedInWater) {
+            event.controller.setAnimation(WALK_ANIMATION)
+        } else {
+            event.controller.setAnimation(FLOP_ANIMATION)
+        }
+        return PlayState.CONTINUE
+    }
+
     override fun getHurtSound(source: DamageSource): SoundEvent {
         return SoundEvents.ENTITY_SLIME_HURT_SMALL
     }

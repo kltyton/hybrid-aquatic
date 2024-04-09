@@ -1,12 +1,13 @@
-package dev.hybridlabs.aquatic.client.render.entity.critter
+package dev.hybridlabs.aquatic.client.render.entity.crustacean
 
-import dev.hybridlabs.aquatic.client.model.entity.LobsterEntityModel
+import dev.hybridlabs.aquatic.client.model.entity.KarkinosEntityModel
+import dev.hybridlabs.aquatic.client.render.entity.critter.HybridAquaticCritterEntityRenderer
 import dev.hybridlabs.aquatic.entity.critter.HybridAquaticCritterEntity
 import net.minecraft.client.render.VertexConsumerProvider
 import net.minecraft.client.render.entity.EntityRendererFactory.Context
 import net.minecraft.client.util.math.MatrixStack
 
-class LobsterEntityRenderer(context: Context) : HybridAquaticCritterEntityRenderer<HybridAquaticCritterEntity>(context, LobsterEntityModel()) {
+class KarkinosEntityRenderer(context: Context) : HybridAquaticCritterEntityRenderer<HybridAquaticCritterEntity>(context, KarkinosEntityModel()) {
     override fun render(
         entity: HybridAquaticCritterEntity?,
         entityYaw: Float,

@@ -1,6 +1,7 @@
 package dev.hybridlabs.aquatic.client.render.entity
 
 import dev.hybridlabs.aquatic.client.render.entity.critter.*
+import dev.hybridlabs.aquatic.client.render.entity.crustacean.*
 import dev.hybridlabs.aquatic.client.render.entity.fish.*
 import dev.hybridlabs.aquatic.client.render.entity.jellyfish.*
 import dev.hybridlabs.aquatic.client.render.entity.shark.*

@@ -7,6 +7,6 @@ import software.bernie.geckolib.renderer.GeoEntityRenderer
 
 open class HybridAquaticCritterEntityRenderer<T: HybridAquaticCritterEntity>(context: EntityRendererFactory.Context, model: GeoModel<T>): GeoEntityRenderer<T>(context, model) {
     override fun getMotionAnimThreshold(animatable: T): Float {
-        return 0.0025f
+        return 0.025f
     }
 }

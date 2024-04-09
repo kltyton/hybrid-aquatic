@@ -1,5 +1,6 @@
 package dev.hybridlabs.aquatic.entity.critter
 
+import dev.hybridlabs.aquatic.entity.crustacean.HybridAquaticCrabEntity
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.attribute.DefaultAttributeContainer
 import net.minecraft.entity.attribute.EntityAttributes
@@ -8,6 +9,9 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.sound.SoundEvent
 import net.minecraft.sound.SoundEvents
 import net.minecraft.world.World
+import software.bernie.geckolib.core.animatable.GeoAnimatable
+import software.bernie.geckolib.core.animation.AnimationState
+import software.bernie.geckolib.core.`object`.PlayState
 
 class StarfishEntity(entityType: EntityType<out StarfishEntity>, world: World) :
     HybridAquaticCritterEntity(entityType, world, 7) {
@@ -39,6 +43,14 @@ class StarfishEntity(entityType: EntityType<out StarfishEntity>, world: World) :
     override fun getSwimSound(): SoundEvent {
         return SoundEvents.ENTITY_SLIME_SQUISH_SMALL
     }
+
+    override fun <E : GeoAnimatable> predicate(event: AnimationState<E>): PlayState {
+        if (isSubmergedInWater) {
+            event.controller.setAnimation(WALK_ANIMATION)
+        }
+        return PlayState.CONTINUE
+    }
+
     override fun tick() {
         super.tick()
         if (!isWet) {

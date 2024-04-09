@@ -14,6 +14,9 @@ import net.minecraft.sound.SoundEvent
 import net.minecraft.sound.SoundEvents
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
+import software.bernie.geckolib.core.animatable.GeoAnimatable
+import software.bernie.geckolib.core.animation.AnimationState
+import software.bernie.geckolib.core.`object`.PlayState
 
 class SeaUrchinEntity(entityType: EntityType<out SeaUrchinEntity>, world: World) :
     HybridAquaticCritterEntity(entityType, world, 4) {
@@ -28,6 +31,13 @@ class SeaUrchinEntity(entityType: EntityType<out SeaUrchinEntity>, world: World)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.2)
                 .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 100.0)
         }
+    }
+
+    override fun <E : GeoAnimatable> predicate(event: AnimationState<E>): PlayState {
+        if (isSubmergedInWater) {
+            event.controller.setAnimation(WALK_ANIMATION)
+        }
+        return PlayState.CONTINUE
     }
 
     override fun getHurtSound(source: DamageSource): SoundEvent {

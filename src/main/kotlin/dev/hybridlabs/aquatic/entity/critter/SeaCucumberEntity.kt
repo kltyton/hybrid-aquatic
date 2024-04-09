@@ -8,6 +8,9 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.sound.SoundEvent
 import net.minecraft.sound.SoundEvents
 import net.minecraft.world.World
+import software.bernie.geckolib.core.animatable.GeoAnimatable
+import software.bernie.geckolib.core.animation.AnimationState
+import software.bernie.geckolib.core.`object`.PlayState
 
 class SeaCucumberEntity(entityType: EntityType<out SeaCucumberEntity>, world: World) : HybridAquaticCritterEntity(entityType, world, 4) {
     companion object {
@@ -18,6 +21,14 @@ class SeaCucumberEntity(entityType: EntityType<out SeaCucumberEntity>, world: Wo
 
         }
     }
+
+    override fun <E : GeoAnimatable> predicate(event: AnimationState<E>): PlayState {
+        if (isSubmergedInWater) {
+            event.controller.setAnimation(WALK_ANIMATION)
+        }
+        return PlayState.CONTINUE
+    }
+
     override fun getHurtSound(source: DamageSource): SoundEvent {
         return SoundEvents.ENTITY_SLIME_HURT_SMALL
     }
