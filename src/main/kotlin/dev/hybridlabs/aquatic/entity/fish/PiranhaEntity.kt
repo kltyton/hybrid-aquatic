@@ -17,7 +17,6 @@ import net.minecraft.entity.data.TrackedDataHandlerRegistry
 import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.entity.mob.Angerable
 import net.minecraft.entity.mob.WaterCreatureEntity
-import net.minecraft.entity.passive.AnimalEntity
 import net.minecraft.entity.passive.ChickenEntity
 import net.minecraft.entity.passive.FishEntity
 import net.minecraft.entity.passive.RabbitEntity
