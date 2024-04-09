@@ -8,7 +8,7 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
 
 class TigerBarbEntity(entityType: EntityType<out TigerBarbEntity>, world: World) :
-    HybridAquaticSchoolingFishEntity(entityType, world, 1, HybridAquaticEntityTags.NONE) {
+    HybridAquaticSchoolingFishEntity(entityType, world, HybridAquaticEntityTags.NONE) {
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

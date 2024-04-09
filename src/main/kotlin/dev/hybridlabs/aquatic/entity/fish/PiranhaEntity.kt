@@ -1,24 +1,19 @@
 package dev.hybridlabs.aquatic.entity.fish
 
 import dev.hybridlabs.aquatic.effect.HybridAquaticStatusEffects
-import dev.hybridlabs.aquatic.entity.shark.HybridAquaticSharkEntity
 import dev.hybridlabs.aquatic.tag.HybridAquaticEntityTags
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.LivingEntity
-import net.minecraft.entity.ai.goal.RevengeGoal
-import net.minecraft.entity.ai.goal.UniversalAngerGoal
 import net.minecraft.entity.attribute.DefaultAttributeContainer
 import net.minecraft.entity.attribute.EntityAttributes
 import net.minecraft.entity.effect.StatusEffectInstance
-import net.minecraft.entity.mob.Angerable
 import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.Difficulty
 import net.minecraft.world.World
-import java.util.*
 
 class PiranhaEntity(entityType: EntityType<out PiranhaEntity>, world: World) :
-    HybridAquaticSchoolingFishEntity(entityType, world, 1, HybridAquaticEntityTags.PIRANHA_PREY) {
+    HybridAquaticSchoolingFishEntity(entityType, world, HybridAquaticEntityTags.PIRANHA_PREY) {
 
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {

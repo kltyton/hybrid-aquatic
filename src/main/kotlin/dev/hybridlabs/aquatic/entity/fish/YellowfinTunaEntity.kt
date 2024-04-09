@@ -8,7 +8,7 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
 
 class YellowfinTunaEntity(entityType: EntityType<out YellowfinTunaEntity>, world: World) :
-    HybridAquaticSchoolingFishEntity(entityType, world, 1, HybridAquaticEntityTags.TUNA_PREY) {
+    HybridAquaticSchoolingFishEntity(entityType, world, HybridAquaticEntityTags.TUNA_PREY) {
     override fun initGoals() {
         super.initGoals()
         goalSelector.add(5, FishJumpGoal(this, 10))

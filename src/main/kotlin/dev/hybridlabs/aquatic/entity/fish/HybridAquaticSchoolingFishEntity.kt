@@ -15,7 +15,6 @@ import java.util.stream.Stream
 open class HybridAquaticSchoolingFishEntity(
     type: EntityType<out HybridAquaticFishEntity>,
     world: World,
-    private val variantCount: Int = 1,
     override val prey: TagKey<EntityType<*>>,
 ) : HybridAquaticFishEntity(type, world, 1, HybridAquaticEntityTags.NONE) {
     private var leader: HybridAquaticSchoolingFishEntity? = null
