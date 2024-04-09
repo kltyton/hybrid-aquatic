@@ -19,7 +19,7 @@ class YellowfinTunaEntity(entityType: EntityType<out YellowfinTunaEntity>, world
             return WaterCreatureEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 8.0)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.8)
-                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 1.0)
+                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 4.0)
                 .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 12.0)
         }
     }
