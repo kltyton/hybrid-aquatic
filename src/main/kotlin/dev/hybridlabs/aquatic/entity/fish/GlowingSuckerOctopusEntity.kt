@@ -21,6 +21,11 @@ class GlowingSuckerOctopusEntity(entityType: EntityType<out GlowingSuckerOctopus
         }
     }
 
+    override fun initGoals() {
+        super.initGoals()
+        goalSelector.add(1, AttackGoal(this))
+    }
+
     override fun shouldFlopOnLand(): Boolean {
         return false
     }

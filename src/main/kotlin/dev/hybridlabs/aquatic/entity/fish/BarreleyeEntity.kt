@@ -15,7 +15,7 @@ class BarreleyeEntity(entityType: EntityType<out BarreleyeEntity>, world: World)
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 4.0)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.5)
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 2.0)
-                .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 20.0)
+                .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 12.0)
         }
     }
 

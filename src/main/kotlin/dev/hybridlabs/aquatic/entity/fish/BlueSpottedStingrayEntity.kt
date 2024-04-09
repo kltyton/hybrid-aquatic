@@ -28,35 +28,11 @@ class BlueSpottedStingrayEntity(entityType: EntityType<out BlueSpottedStingrayEn
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 1.0)
                 .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 12.0)
         }
-
-        val ATTEMPT_ATTACK: TrackedData<Boolean> =
-            DataTracker.registerData(BlueSpottedStingrayEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
     }
-
-    private var attemptAttack: Boolean
-        get() = dataTracker.get(ATTEMPT_ATTACK)
-        set(attemptAttack) {
-            dataTracker.set(ATTEMPT_ATTACK, attemptAttack)
-        }
 
     override fun initGoals() {
         super.initGoals()
         goalSelector.add(1, AttackGoal(this))
-    }
-    override fun initDataTracker() {
-        super.initDataTracker()
-        dataTracker.startTracking(ATTEMPT_ATTACK, false)
-    }
-
-    internal class AttackGoal(private val stingray: BlueSpottedStingrayEntity) : MeleeAttackGoal(stingray,0.8, true) {
-        override fun attack(target: LivingEntity, squaredDistance: Double) {
-            val d = getSquaredMaxAttackDistance(target)
-            if (squaredDistance <= d && this.isCooledDown) {
-                resetCooldown()
-                mob.tryAttack(target)
-                stingray.attemptAttack = true
-            }
-        }
     }
 
     override fun damage(source: DamageSource, amount: Float): Boolean {

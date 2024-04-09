@@ -8,7 +8,7 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
 
 class DragonfishEntity(entityType: EntityType<out DragonfishEntity>, world: World) :
-    HybridAquaticFishEntity(entityType, world, 1, HybridAquaticEntityTags.NONE) {
+    HybridAquaticFishEntity(entityType, world, 1, HybridAquaticEntityTags.DRAGONFISH_PREY) {
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()
@@ -16,8 +16,12 @@ class DragonfishEntity(entityType: EntityType<out DragonfishEntity>, world: Worl
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.5)
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 1.0)
                 .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 12.0)
-
         }
+    }
+
+    override fun initGoals() {
+        super.initGoals()
+        goalSelector.add(1, AttackGoal(this))
     }
 
     override fun getMaxSize(): Int {

@@ -8,15 +8,22 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
 
 class AnglerfishEntity(entityType: EntityType<out AnglerfishEntity>, world: World) :
-    HybridAquaticFishEntity(entityType, world, 1, HybridAquaticEntityTags.NONE) {
+    HybridAquaticFishEntity(entityType, world, 1, HybridAquaticEntityTags.ANGLERFISH_PREY) {
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 4.0)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.5)
+                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 1.0)
+                .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 12.0)
         }
-        
-    }override fun getMaxSize(): Int {
+    }
+
+    override fun initGoals() {
+        super.initGoals()
+        goalSelector.add(1, AttackGoal(this))
+    }
+    override fun getMaxSize(): Int {
         return 5
     }
 
