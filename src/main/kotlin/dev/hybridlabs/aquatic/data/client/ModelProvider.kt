@@ -16,6 +16,7 @@ import net.minecraft.data.client.TextureMap
 import net.minecraft.item.SpawnEggItem
 import net.minecraft.registry.Registries
 import net.minecraft.util.Identifier
+import net.minecraft.world.biome.Biome
 
 class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
     override fun generateBlockStateModels(generator: BlockStateModelGenerator) { generator.run {
@@ -66,14 +67,16 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
             HybridAquaticBlocks.ACACIA_CRATE,
             HybridAquaticBlocks.MANGROVE_CRATE,
             HybridAquaticBlocks.CHERRY_CRATE,
-            HybridAquaticBlocks.DRIFTWOOD_PLANKS
+            HybridAquaticBlocks.DRIFTWOOD_PLANKS,
         ).forEach(generator::registerSimpleCubeAll)
         
         // wood
         registerLog(HybridAquaticBlocks.DRIFTWOOD_LOG).log(HybridAquaticBlocks.DRIFTWOOD_LOG).wood(HybridAquaticBlocks.DRIFTWOOD_WOOD)
         registerLog(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_LOG).log(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_LOG).wood(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_WOOD)
         registerHangingSign(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_LOG, HybridAquaticBlocks.DRIFTWOOD_HANGING_SIGN, HybridAquaticBlocks.DRIFTWOOD_WALL_HANGING_SIGN)
-    }
+
+        //coral
+        }
     }
 
     override fun generateItemModels(generator: ItemModelGenerator) {

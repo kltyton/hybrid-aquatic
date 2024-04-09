@@ -35,7 +35,6 @@ class FishingNetItem(settings: Settings?): Item(settings) {
             val nbtCopy = context.stack.nbt?.copy() ?: return super.useOnBlock(context)
 
             val optionalEntity = getEntityFromNBT(nbtCopy)
-            //val blockEntity = context.world.getBlockEntity(context.blockPos)
 
             if (optionalEntity.isPresent) {
                 val entity = optionalEntity.get().create(context.world) ?: return ActionResult.FAIL

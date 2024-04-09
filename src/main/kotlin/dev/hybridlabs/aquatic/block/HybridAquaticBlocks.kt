@@ -4,23 +4,7 @@ import com.google.common.collect.ImmutableSet
 import dev.hybridlabs.aquatic.HybridAquatic
 import dev.hybridlabs.aquatic.block.wood.HybridAquaticWoodTypes
 import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
-import net.minecraft.block.Block
-import net.minecraft.block.BlockSetType
-import net.minecraft.block.Blocks
-import net.minecraft.block.ButtonBlock
-import net.minecraft.block.DoorBlock
-import net.minecraft.block.FenceBlock
-import net.minecraft.block.FenceGateBlock
-import net.minecraft.block.HangingSignBlock
-import net.minecraft.block.MapColor
-import net.minecraft.block.PillarBlock
-import net.minecraft.block.PressurePlateBlock
-import net.minecraft.block.SignBlock
-import net.minecraft.block.SlabBlock
-import net.minecraft.block.StairsBlock
-import net.minecraft.block.TrapdoorBlock
-import net.minecraft.block.WallHangingSignBlock
-import net.minecraft.block.WallSignBlock
+import net.minecraft.block.*
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.block.enums.Instrument
@@ -113,6 +97,15 @@ object HybridAquaticBlocks {
     val DRIFTWOOD_WALL_SIGN = register("driftwood_wall_sign", WallSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_HANGING_SIGN), HybridAquaticWoodTypes.DRIFTWOOD))
     val DRIFTWOOD_HANGING_SIGN = register("driftwood_hanging_sign", HangingSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_TRAPDOOR), HybridAquaticWoodTypes.DRIFTWOOD))
     val DRIFTWOOD_WALL_HANGING_SIGN = register("driftwood_wall_hanging_sign", WallHangingSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_TRAPDOOR), HybridAquaticWoodTypes.DRIFTWOOD))
+
+    val DEAD_LOPHELIA_CORAL_BLOCK = register("dead_lophelia_coral_block", DeadCoralBlock(FabricBlockSettings.copyOf(Blocks.DEAD_FIRE_CORAL_BLOCK)))
+    val LOPHELIA_CORAL_BLOCK = register("lophelia_coral_block", CoralBlockBlock(DEAD_LOPHELIA_CORAL_BLOCK, FabricBlockSettings.copyOf(Blocks.FIRE_CORAL_BLOCK)))
+    val DEAD_LOPHELIA_CORAL_FAN = register("dead_lophelia_coral_fan", DeadCoralFanBlock(FabricBlockSettings.copyOf(Blocks.DEAD_FIRE_CORAL_FAN)))
+    val LOPHELIA_CORAL_FAN = register("lophelia_coral_fan", CoralFanBlock(DEAD_LOPHELIA_CORAL_FAN, FabricBlockSettings.copyOf(Blocks.FIRE_CORAL_FAN)))
+    val DEAD_LOPHELIA_CORAL_WALL_FAN = register("dead_lophelia_coral_wall_fan", DeadCoralWallFanBlock(FabricBlockSettings.copyOf(Blocks.DEAD_FIRE_CORAL_WALL_FAN)))
+    val LOPHELIA_CORAL_WALL_FAN = register("lophelia_coral_wall_fan", CoralFanBlock(DEAD_LOPHELIA_CORAL_WALL_FAN, FabricBlockSettings.copyOf(Blocks.FIRE_CORAL_WALL_FAN)))
+    val DEAD_LOPHELIA_CORAL = register("dead_lophelia_coral", DeadCoralBlock(FabricBlockSettings.copyOf(Blocks.DEAD_FIRE_CORAL)))
+    val LOPHELIA_CORAL = register("lophelia_coral", CoralBlock(DEAD_LOPHELIA_CORAL, FabricBlockSettings.copyOf(Blocks.FIRE_CORAL)))
 
     val TUBE_SPONGE = register("tube_sponge", TubeSpongeBlock(FabricBlockSettings.copyOf(Blocks.WET_SPONGE)
         .nonOpaque()
