@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "hybrid-aquatic:firefly_squid"
+    "hybrid-aquatic:firefly_squid",
+    "minecraft:squid"
   ]
 }
