@@ -1,6 +1,5 @@
 package dev.hybridlabs.aquatic.entity.shark
 
-import dev.hybridlabs.aquatic.entity.fish.HybridAquaticFishEntity
 import dev.hybridlabs.aquatic.tag.HybridAquaticEntityTags
 import net.minecraft.block.Blocks
 import net.minecraft.entity.*
@@ -9,6 +8,7 @@ import net.minecraft.entity.ai.control.YawAdjustingLookControl
 import net.minecraft.entity.ai.goal.*
 import net.minecraft.entity.ai.pathing.PathNodeType
 import net.minecraft.entity.ai.pathing.SwimNavigation
+import net.minecraft.entity.attribute.EntityAttributes
 import net.minecraft.entity.damage.DamageSource
 import net.minecraft.entity.data.DataTracker
 import net.minecraft.entity.data.TrackedData
@@ -19,7 +19,6 @@ import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.registry.tag.FluidTags
 import net.minecraft.registry.tag.TagKey
-import net.minecraft.server.world.ServerWorld
 import net.minecraft.sound.SoundEvent
 import net.minecraft.sound.SoundEvents
 import net.minecraft.util.TimeHelper
@@ -53,7 +52,6 @@ open class HybridAquaticSharkEntity(
     private val factory = GeckoLibUtil.createInstanceCache(this)
     private var angerTime = 0
     private var angryAt: UUID? = null
-    private var rushTargetPosition: Vec3d? = null
     private var moistness: Int
         get() = dataTracker.get(MOISTNESS)
         set(moistness) {
@@ -77,8 +75,8 @@ open class HybridAquaticSharkEntity(
 
     init {
         setPathfindingPenalty(PathNodeType.WATER, 0.0f)
-        moveControl = AquaticMoveControl(this, 50, 10, 0.05F, 0.1F, true)
-        lookControl = YawAdjustingLookControl(this, 20)
+        moveControl = AquaticMoveControl(this, 85, 10, 0.05F, 0.1F, true)
+        lookControl = YawAdjustingLookControl(this, 10)
         navigation = SwimNavigation(this, world)
     }
     companion object {
@@ -88,8 +86,9 @@ open class HybridAquaticSharkEntity(
         val MOISTNESS: TrackedData<Int> =
             DataTracker.registerData(HybridAquaticSharkEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
 
-        const val MAX_HUNGER = 3000
+        const val MAX_HUNGER = 1200
         const val HUNGER_KEY = "Hunger"
+
         val HUNGER: TrackedData<Int> =
             DataTracker.registerData(HybridAquaticSharkEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
 
@@ -129,13 +128,9 @@ open class HybridAquaticSharkEntity(
         goalSelector.add(5, LookAtEntityGoal(this, PlayerEntity::class.java, 6.0f))
         if (!isPassive) {
             if (revengeAttack) targetSelector.add(1, RevengeGoal(this, *arrayOfNulls(0)).setGroupRevenge(*arrayOfNulls(0)))
-            targetSelector.add(2, ActiveTargetGoal(this, PlayerEntity::class.java, 10, true, true) { entity: LivingEntity ->
-                shouldAngerAt(entity) || shouldProximityAttack(entity as PlayerEntity)
-            })
+            targetSelector.add(2, ActiveTargetGoal(this, PlayerEntity::class.java, 10, true, true) { entity: LivingEntity -> shouldAngerAt(entity) || shouldProximityAttack(entity as PlayerEntity) })
             targetSelector.add(3, UniversalAngerGoal(this, false))
-            targetSelector.add(3, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) {
-                hunger <= 1200 && it.type.isIn(prey)
-            })
+            targetSelector.add(3, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) { hunger <= 100 && it.type.isIn(prey) })
         }
     }
 
@@ -174,15 +169,13 @@ open class HybridAquaticSharkEntity(
                 damage(this.damageSources.dryOut(), 1.0f)
             }
         }
-        if (!world.isClient) {
-            this.tickAngerLogic(world as ServerWorld, false)
 
-            rushTargetPosition?.let { targetPos ->
-                val velocityMod = targetPos.subtract(pos).normalize().multiply(1.0)
-                this.velocity = velocityMod
-                rushTargetPosition = null
-            }
+        if (isSprinting) {
+            attributes.getCustomInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED)?.baseValue = 1.5
+           } else {
+            attributes.getCustomInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED)?.baseValue
         }
+
         if (hunger > 0) hunger -= 1
     }
 
@@ -246,11 +239,11 @@ open class HybridAquaticSharkEntity(
 
     //#region SFX
     override fun getHurtSound(source: DamageSource): SoundEvent {
-        return SoundEvents.ENTITY_COD_HURT
+        return SoundEvents.ENTITY_HOSTILE_HURT
     }
 
     override fun getDeathSound(): SoundEvent {
-        return SoundEvents.ENTITY_COD_DEATH
+        return SoundEvents.ENTITY_HOSTILE_DEATH
     }
 
     override fun getAmbientSound(): SoundEvent {
@@ -263,6 +256,10 @@ open class HybridAquaticSharkEntity(
 
     override fun getSwimSound(): SoundEvent {
         return SoundEvents.ENTITY_DOLPHIN_SWIM
+    }
+
+    open fun getAttackSound(): SoundEvent {
+        return SoundEvents.ENTITY_PHANTOM_BITE
     }
 
     //#endregion
@@ -293,7 +290,7 @@ open class HybridAquaticSharkEntity(
         if (customName?.string == "friend")
             return false
 
-        return closePlayerAttack && player.squaredDistanceTo(this) <= 8 && !player.isCreative
+        return closePlayerAttack && player.squaredDistanceTo(this) <= 12 && !player.isCreative
     }
 
     //#region Angerable Implementation Details
@@ -326,7 +323,7 @@ open class HybridAquaticSharkEntity(
         else if (entityType.isIn(HybridAquaticEntityTags.MEDIUM_PREY))
             return 800
         else if (entityType.isIn(HybridAquaticEntityTags.LARGE_PREY))
-            return 1500
+            return 1200
 
         return 0
     }
@@ -335,15 +332,13 @@ open class HybridAquaticSharkEntity(
         hunger += getHungerValue(entityType)
     }
 
-
-
-    internal class AttackGoal(private val shark: HybridAquaticSharkEntity) : MeleeAttackGoal(shark, 1.25,true) {
+    internal class AttackGoal(private val shark: HybridAquaticSharkEntity) : MeleeAttackGoal(shark, 1.5,true) {
         override fun attack(target: LivingEntity, squaredDistance: Double) {
             val d = getSquaredMaxAttackDistance(target)
             if (squaredDistance <= d && this.isCooledDown) {
                 resetCooldown()
                 mob.tryAttack(target)
-                shark.isSprinting = false
+                shark.isSprinting = true
                 shark.attemptAttack = true
 
                 if (target.health <= 0)

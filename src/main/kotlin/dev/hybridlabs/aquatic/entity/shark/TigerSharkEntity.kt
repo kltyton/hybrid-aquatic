@@ -9,6 +9,7 @@ import net.minecraft.entity.attribute.DefaultAttributeContainer
 import net.minecraft.entity.attribute.EntityAttributes
 import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.entity.mob.WaterCreatureEntity
+import net.minecraft.sound.SoundEvents
 import net.minecraft.world.Difficulty
 import net.minecraft.world.World
 
@@ -37,6 +38,7 @@ class TigerSharkEntity(entityType: EntityType<out TigerSharkEntity>, world: Worl
 
                 if (i > 0) {
                     target.addStatusEffect(StatusEffectInstance(HybridAquaticStatusEffects.BLEEDING, i * 20, 0), this)
+                    playSound(SoundEvents.ENTITY_FOX_BITE,5.0F,-10.0F)
                 }
             }
 
