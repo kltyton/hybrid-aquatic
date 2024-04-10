@@ -9,6 +9,7 @@ import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.block.enums.Instrument
 import net.minecraft.block.piston.PistonBehavior
+import net.minecraft.particle.ParticleTypes.GLOW
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.sound.BlockSoundGroup
@@ -45,6 +46,10 @@ object HybridAquaticBlocks {
     val WHALE_SHARK_PLUSHIE = register("whale_shark_plushie", createPlushieBlock(PlushieBlock.Variant.WHALE_SHARK, Blocks.LIGHT_GRAY_WOOL))
 
     val HYBRID_CRATE = register("hybrid_crate", CrateBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)
+        .hardness(0.75F)
+    ))
+
+    val DRIFTWOOD_CRATE = register("driftwood_crate", CrateBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)
         .hardness(0.75F)
     ))
 
@@ -91,7 +96,7 @@ object HybridAquaticBlocks {
     val DRIFTWOOD_PRESSURE_PLATE = register("driftwood_pressure_plate", PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copyOf(Blocks.OAK_PRESSURE_PLATE), BlockSetType.OAK))
     val DRIFTWOOD_FENCE = register("driftwood_fence", FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE)))
     val DRIFTWOOD_FENCE_GATE = register("driftwood_fence_gate", FenceGateBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE), HybridAquaticWoodTypes.DRIFTWOOD))
-    val DRIFTWOOD_DOOR = register("driftwood_door", DoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_DOOR), BlockSetType.OAK))
+    val DRIFTWOOD_DOOR = register("driftwood_door", DoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_DOOR).nonOpaque(), BlockSetType.OAK))
     val DRIFTWOOD_TRAPDOOR = register("driftwood_trapdoor", TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_TRAPDOOR), BlockSetType.OAK))
     val DRIFTWOOD_SIGN = register("driftwood_sign", SignBlock(FabricBlockSettings.copyOf(Blocks.OAK_SIGN), HybridAquaticWoodTypes.DRIFTWOOD))
     val DRIFTWOOD_WALL_SIGN = register("driftwood_wall_sign", WallSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_HANGING_SIGN), HybridAquaticWoodTypes.DRIFTWOOD))
@@ -106,6 +111,9 @@ object HybridAquaticBlocks {
     val LOPHELIA_CORAL_WALL_FAN = register("lophelia_coral_wall_fan", CoralFanBlock(DEAD_LOPHELIA_CORAL_WALL_FAN, FabricBlockSettings.copyOf(Blocks.FIRE_CORAL_WALL_FAN)))
     val DEAD_LOPHELIA_CORAL = register("dead_lophelia_coral", DeadCoralBlock(FabricBlockSettings.copyOf(Blocks.DEAD_FIRE_CORAL)))
     val LOPHELIA_CORAL = register("lophelia_coral", CoralBlock(DEAD_LOPHELIA_CORAL, FabricBlockSettings.copyOf(Blocks.FIRE_CORAL)))
+
+    val GLOWSTICK = register("glowstick", GlowstickBlock(FabricBlockSettings.copyOf(Blocks.TORCH).noCollision().luminance(14).nonOpaque()))
+    val WALL_GLOWSTICK = register("wall_glowstick", WallTorchBlock(FabricBlockSettings.copyOf(Blocks.WALL_TORCH).noCollision().luminance(14).nonOpaque(), GLOW))
 
     val TUBE_SPONGE = register("tube_sponge", TubeSpongeBlock(FabricBlockSettings.copyOf(Blocks.WET_SPONGE)
         .nonOpaque()

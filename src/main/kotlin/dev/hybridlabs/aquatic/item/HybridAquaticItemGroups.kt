@@ -31,10 +31,18 @@ object HybridAquaticItemGroups {
             }
 
             // blocks
+            entries.add(HybridAquaticBlocks.GLOWSTICK)
             entries.add(HybridAquaticBlocks.DRIFTWOOD_LOG)
             entries.add(HybridAquaticBlocks.DRIFTWOOD_WOOD)
+            entries.add(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_LOG)
+            entries.add(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_WOOD)
             entries.add(HybridAquaticBlocks.DRIFTWOOD_PLANKS)
+            entries.add(HybridAquaticBlocks.DRIFTWOOD_STAIRS)
+            entries.add(HybridAquaticBlocks.DRIFTWOOD_SLAB)
+            entries.add(HybridAquaticBlocks.DRIFTWOOD_DOOR)
+            entries.add(HybridAquaticBlocks.DRIFTWOOD_TRAPDOOR)
             entries.add(HybridAquaticBlocks.HYBRID_CRATE)
+            entries.add(HybridAquaticBlocks.DRIFTWOOD_CRATE)
             entries.add(HybridAquaticBlocks.OAK_CRATE)
             entries.add(HybridAquaticBlocks.SPRUCE_CRATE)
             entries.add(HybridAquaticBlocks.BIRCH_CRATE)

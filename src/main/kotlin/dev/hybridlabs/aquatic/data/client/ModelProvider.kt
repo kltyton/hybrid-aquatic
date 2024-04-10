@@ -8,15 +8,10 @@ import dev.hybridlabs.aquatic.item.HybridAquaticItems
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider
 import net.minecraft.block.Blocks
-import net.minecraft.data.client.BlockStateModelGenerator
-import net.minecraft.data.client.ItemModelGenerator
-import net.minecraft.data.client.ModelIds
-import net.minecraft.data.client.Models
-import net.minecraft.data.client.TextureMap
+import net.minecraft.data.client.*
 import net.minecraft.item.SpawnEggItem
 import net.minecraft.registry.Registries
 import net.minecraft.util.Identifier
-import net.minecraft.world.biome.Biome
 
 class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
     override fun generateBlockStateModels(generator: BlockStateModelGenerator) { generator.run {
@@ -34,10 +29,10 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
         Registries.ITEM
             .filter(filterHybridAquatic(Registries.ITEM))
             .forEach { item ->
-            if (item is SpawnEggItem) {
-                registerParentedItemModel(item, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"))
+                if (item is SpawnEggItem) {
+                    registerParentedItemModel(item, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"))
+                }
             }
-        }
 
         // builtin
         mapOf(
@@ -59,6 +54,7 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
         // simple cubes
         setOf(
             HybridAquaticBlocks.HYBRID_CRATE,
+            HybridAquaticBlocks.DRIFTWOOD_CRATE,
             HybridAquaticBlocks.OAK_CRATE,
             HybridAquaticBlocks.SPRUCE_CRATE,
             HybridAquaticBlocks.BIRCH_CRATE,
@@ -69,13 +65,22 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
             HybridAquaticBlocks.CHERRY_CRATE,
             HybridAquaticBlocks.DRIFTWOOD_PLANKS,
         ).forEach(generator::registerSimpleCubeAll)
-        
-        // wood
-        registerLog(HybridAquaticBlocks.DRIFTWOOD_LOG).log(HybridAquaticBlocks.DRIFTWOOD_LOG).wood(HybridAquaticBlocks.DRIFTWOOD_WOOD)
-        registerLog(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_LOG).log(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_LOG).wood(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_WOOD)
-        registerHangingSign(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_LOG, HybridAquaticBlocks.DRIFTWOOD_HANGING_SIGN, HybridAquaticBlocks.DRIFTWOOD_WALL_HANGING_SIGN)
 
-        //coral
+        // wood
+
+        registerLog(HybridAquaticBlocks.DRIFTWOOD_LOG).log(HybridAquaticBlocks.DRIFTWOOD_LOG)
+            .wood(HybridAquaticBlocks.DRIFTWOOD_WOOD)
+        registerLog(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_LOG).log(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_LOG)
+            .wood(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_WOOD)
+        registerHangingSign(
+            HybridAquaticBlocks.STRIPPED_DRIFTWOOD_LOG,
+            HybridAquaticBlocks.DRIFTWOOD_HANGING_SIGN,
+            HybridAquaticBlocks.DRIFTWOOD_WALL_HANGING_SIGN
+        )
+        registerDoor(HybridAquaticBlocks.DRIFTWOOD_DOOR)
+        registerTrapdoor(HybridAquaticBlocks.DRIFTWOOD_TRAPDOOR)
+
+        registerTorch(HybridAquaticBlocks.GLOWSTICK, HybridAquaticBlocks.WALL_GLOWSTICK)
         }
     }
 

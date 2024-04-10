@@ -53,11 +53,17 @@ class BlockTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             .add(Blocks.MANGROVE_ROOTS)
             .add(Blocks.GRAVEL)
 
-        getOrCreateTagBuilder(BlockTags.FENCES)
+        getOrCreateTagBuilder(BlockTags.WOODEN_FENCES)
             .add(HybridAquaticBlocks.DRIFTWOOD_FENCE)
 
         getOrCreateTagBuilder(BlockTags.FENCE_GATES)
             .add(HybridAquaticBlocks.DRIFTWOOD_FENCE_GATE)
+
+        getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN)
+            .add(HybridAquaticBlocks.DRIFTWOOD_LOG)
+            .add(HybridAquaticBlocks.DRIFTWOOD_WOOD)
+            .add(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_LOG)
+            .add(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_WOOD)
 
         // plushies
         Registries.BLOCK

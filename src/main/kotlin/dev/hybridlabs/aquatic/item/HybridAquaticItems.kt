@@ -431,7 +431,9 @@ object HybridAquaticItems {
     val TIGER_SHARK_PLUSHIE = registerBlockItem("tiger_shark_plushie", HybridAquaticBlocks.TIGER_SHARK_PLUSHIE)
     val WHALE_SHARK_PLUSHIE = registerBlockItem("whale_shark_plushie", HybridAquaticBlocks.WHALE_SHARK_PLUSHIE)
 
+    val GLOWSTICK = registerBlockItem("glowstick", HybridAquaticBlocks.GLOWSTICK)
     val HYBRID_CRATE = registerBlockItem("hybrid_crate", HybridAquaticBlocks.HYBRID_CRATE)
+    val DRIFTWOOD_CRATE = registerBlockItem("driftwood_crate", HybridAquaticBlocks.DRIFTWOOD_CRATE)
     val OAK_CRATE = registerBlockItem("oak_crate", HybridAquaticBlocks.OAK_CRATE)
     val SPRUCE_CRATE = registerBlockItem("spruce_crate", HybridAquaticBlocks.SPRUCE_CRATE)
     val BIRCH_CRATE = registerBlockItem("birch_crate", HybridAquaticBlocks.BIRCH_CRATE)
@@ -448,6 +450,7 @@ object HybridAquaticItems {
     val STRIPPED_DRIFTWOOD_LOG = registerBlockItem("stripped_driftwood_log", HybridAquaticBlocks.STRIPPED_DRIFTWOOD_LOG)
     val STRIPPED_DRIFTWOOD_WOOD = registerBlockItem("stripped_driftwood_wood", HybridAquaticBlocks.STRIPPED_DRIFTWOOD_WOOD)
     val DRIFTWOOD_DOOR = registerBlockItem("driftwood_door", HybridAquaticBlocks.DRIFTWOOD_DOOR)
+    val DRIFTWOOD_TRAPDOOR = registerBlockItem("driftwood_trapdoor", HybridAquaticBlocks.DRIFTWOOD_TRAPDOOR)
     val DRIFTWOOD_SLAB = registerBlockItem("driftwood_slab", HybridAquaticBlocks.DRIFTWOOD_SLAB)
     val DRIFTWOOD_STAIRS = registerBlockItem("driftwood_stairs", HybridAquaticBlocks.DRIFTWOOD_STAIRS)
     val DRIFTWOOD_FENCE = registerBlockItem("driftwood_fence", HybridAquaticBlocks.DRIFTWOOD_FENCE)
