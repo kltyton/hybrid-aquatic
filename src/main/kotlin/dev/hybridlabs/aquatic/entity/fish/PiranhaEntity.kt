@@ -30,7 +30,6 @@ class PiranhaEntity(entityType: EntityType<out PiranhaEntity>, world: World) :
         goalSelector.add(1, AttackGoal(this))
     }
 
-
     override fun tryAttack(target: Entity?): Boolean {
         if (super.tryAttack(target)) {
             if (target is LivingEntity) {

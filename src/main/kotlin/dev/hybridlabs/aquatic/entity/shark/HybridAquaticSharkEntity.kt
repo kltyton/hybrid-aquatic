@@ -1,5 +1,6 @@
 package dev.hybridlabs.aquatic.entity.shark
 
+import dev.hybridlabs.aquatic.entity.fish.HybridAquaticFishEntity
 import dev.hybridlabs.aquatic.tag.HybridAquaticEntityTags
 import net.minecraft.block.Blocks
 import net.minecraft.entity.*
@@ -46,7 +47,6 @@ open class HybridAquaticSharkEntity(
     world: World,
     private val prey: TagKey<EntityType<*>>,
     private val isPassive: Boolean,
-    private val isCannibalistic: Boolean,
     private val closePlayerAttack: Boolean,
     private val revengeAttack: Boolean
 ) : WaterCreatureEntity(entityType, world), Angerable, GeoEntity {
@@ -96,7 +96,7 @@ open class HybridAquaticSharkEntity(
         val ATTEMPT_ATTACK: TrackedData<Boolean> =
             DataTracker.registerData(HybridAquaticSharkEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
 
-        val ANGER_TIME_RANGE: UniformIntProvider = TimeHelper.betweenSeconds(5, 10)
+        val ANGER_TIME_RANGE: UniformIntProvider = TimeHelper.betweenSeconds(15, 60)
 
         val FLOP_ANIMATION: RawAnimation  = RawAnimation.begin().then("flop", Animation.LoopType.LOOP)
         val ATTACK_ANIMATION: RawAnimation  = RawAnimation.begin().then("attack", Animation.LoopType.LOOP)
@@ -134,7 +134,7 @@ open class HybridAquaticSharkEntity(
             })
             targetSelector.add(3, UniversalAngerGoal(this, false))
             targetSelector.add(3, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) {
-                hunger <= 1200 && it.type.isIn(prey) && (!isCannibalistic && !it.type.equals(this.type))
+                hunger <= 1200 && it.type.isIn(prey)
             })
         }
     }
@@ -293,7 +293,7 @@ open class HybridAquaticSharkEntity(
         if (customName?.string == "friend")
             return false
 
-        return closePlayerAttack && player.squaredDistanceTo(this) <= 12 && !player.isCreative
+        return closePlayerAttack && player.squaredDistanceTo(this) <= 8 && !player.isCreative
     }
 
     //#region Angerable Implementation Details
@@ -335,8 +335,9 @@ open class HybridAquaticSharkEntity(
         hunger += getHungerValue(entityType)
     }
 
-    internal class AttackGoal(private val shark: HybridAquaticSharkEntity) : MeleeAttackGoal(shark,
-        ORIGINAL_SPEED, true) {
+
+
+    internal class AttackGoal(private val shark: HybridAquaticSharkEntity) : MeleeAttackGoal(shark, 1.25,true) {
         override fun attack(target: LivingEntity, squaredDistance: Double) {
             val d = getSquaredMaxAttackDistance(target)
             if (squaredDistance <= d && this.isCooledDown) {
