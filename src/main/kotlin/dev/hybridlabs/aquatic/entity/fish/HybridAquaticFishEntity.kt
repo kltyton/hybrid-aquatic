@@ -106,7 +106,6 @@ open class HybridAquaticFishEntity(
                 damage(this.damageSources.dryOut(), 1.0f)
             }
         }
-
     }
 
     private fun getHungerValue(entityType: EntityType<*>): Int {
