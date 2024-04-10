@@ -2,16 +2,9 @@ package dev.hybridlabs.aquatic.entity.fish
 
 import dev.hybridlabs.aquatic.tag.HybridAquaticEntityTags
 import net.minecraft.entity.EntityType
-import net.minecraft.entity.LivingEntity
-import net.minecraft.entity.ai.goal.ActiveTargetGoal
-import net.minecraft.entity.ai.goal.MeleeAttackGoal
 import net.minecraft.entity.attribute.DefaultAttributeContainer
 import net.minecraft.entity.attribute.EntityAttributes
-import net.minecraft.entity.data.DataTracker
-import net.minecraft.entity.data.TrackedData
-import net.minecraft.entity.data.TrackedDataHandlerRegistry
 import net.minecraft.entity.mob.WaterCreatureEntity
-import net.minecraft.entity.passive.FishEntity
 import net.minecraft.world.World
 
 class MorayEelEntity(entityType: EntityType<out MorayEelEntity>, world: World) :
