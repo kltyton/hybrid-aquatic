@@ -63,22 +63,25 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
             HybridAquaticBlocks.ACACIA_CRATE,
             HybridAquaticBlocks.MANGROVE_CRATE,
             HybridAquaticBlocks.CHERRY_CRATE,
-            HybridAquaticBlocks.DRIFTWOOD_PLANKS,
         ).forEach(generator::registerSimpleCubeAll)
 
         // wood
+        val driftwoodPool = registerCubeAllModelTexturePool(HybridAquaticBlocks.DRIFTWOOD_PLANKS)
 
         registerLog(HybridAquaticBlocks.DRIFTWOOD_LOG).log(HybridAquaticBlocks.DRIFTWOOD_LOG)
             .wood(HybridAquaticBlocks.DRIFTWOOD_WOOD)
         registerLog(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_LOG).log(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_LOG)
             .wood(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_WOOD)
-        registerHangingSign(
-            HybridAquaticBlocks.STRIPPED_DRIFTWOOD_LOG,
-            HybridAquaticBlocks.DRIFTWOOD_HANGING_SIGN,
-            HybridAquaticBlocks.DRIFTWOOD_WALL_HANGING_SIGN
-        )
+
         registerDoor(HybridAquaticBlocks.DRIFTWOOD_DOOR)
         registerTrapdoor(HybridAquaticBlocks.DRIFTWOOD_TRAPDOOR)
+
+        driftwoodPool.stairs(HybridAquaticBlocks.DRIFTWOOD_STAIRS)
+        driftwoodPool.slab(HybridAquaticBlocks.DRIFTWOOD_SLAB)
+        driftwoodPool.button(HybridAquaticBlocks.DRIFTWOOD_BUTTON)
+        driftwoodPool.pressurePlate(HybridAquaticBlocks.DRIFTWOOD_PRESSURE_PLATE)
+        driftwoodPool.fence(HybridAquaticBlocks.DRIFTWOOD_FENCE)
+        driftwoodPool.fenceGate(HybridAquaticBlocks.DRIFTWOOD_FENCE_GATE)
 
         registerTorch(HybridAquaticBlocks.GLOWSTICK, HybridAquaticBlocks.WALL_GLOWSTICK)
         }

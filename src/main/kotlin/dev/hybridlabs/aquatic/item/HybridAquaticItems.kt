@@ -455,6 +455,8 @@ object HybridAquaticItems {
     val DRIFTWOOD_STAIRS = registerBlockItem("driftwood_stairs", HybridAquaticBlocks.DRIFTWOOD_STAIRS)
     val DRIFTWOOD_FENCE = registerBlockItem("driftwood_fence", HybridAquaticBlocks.DRIFTWOOD_FENCE)
     val DRIFTWOOD_FENCE_GATE = registerBlockItem("driftwood_fence_gate", HybridAquaticBlocks.DRIFTWOOD_FENCE_GATE)
+    val DRIFTWOOD_PRESSURE_PLATE = registerBlockItem("driftwood_pressure_plate", HybridAquaticBlocks.DRIFTWOOD_PRESSURE_PLATE)
+    val DRIFTWOOD_BUTTON = registerBlockItem("driftwood_button", HybridAquaticBlocks.DRIFTWOOD_BUTTON)
     val LOPHELIA_CORAL_BLOCK = registerBlockItem("lophelia_coral_block", HybridAquaticBlocks.LOPHELIA_CORAL_BLOCK)
     val DEAD_LOPHELIA_CORAL_BLOCK = registerBlockItem("dead_lophelia_coral_block", HybridAquaticBlocks.DEAD_LOPHELIA_CORAL_BLOCK)
     val LOPHELIA_CORAL = registerBlockItem("lophelia_coral", HybridAquaticBlocks.LOPHELIA_CORAL)

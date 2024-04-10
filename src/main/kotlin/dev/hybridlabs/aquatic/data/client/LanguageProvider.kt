@@ -83,6 +83,7 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             HybridAquaticBlocks.DRIFTWOOD_STAIRS to "Driftwood Stairs",
             HybridAquaticBlocks.DRIFTWOOD_SLAB to "Driftwood Slab",
             HybridAquaticBlocks.DRIFTWOOD_FENCE to "Driftwood Fence",
+            HybridAquaticBlocks.DRIFTWOOD_FENCE_GATE to "Driftwood Fence Gate",
             HybridAquaticBlocks.DRIFTWOOD_DOOR to "Driftwood Door",
             HybridAquaticBlocks.DRIFTWOOD_TRAPDOOR to "Driftwood Trapdoor",
             HybridAquaticBlocks.DRIFTWOOD_PRESSURE_PLATE to "Driftwood Pressure Plate",
