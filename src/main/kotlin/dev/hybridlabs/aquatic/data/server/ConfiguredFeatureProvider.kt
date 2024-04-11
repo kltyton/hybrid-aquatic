@@ -37,6 +37,14 @@ class ConfiguredFeatureProvider(output: FabricDataOutput, registriesFuture: Comp
             )
         )
 
+        entries.add(
+            HybridAquaticConfiguredFeatures.LOPHELIA_CORAL,
+            ConfiguredFeature(
+                CoralFeature.CORAL_TREE, DefaultFeatureConfig(
+                )
+            )
+        )
+
         // tube sponge patch
         entries.add(
             HybridAquaticConfiguredFeatures.TUBE_SPONGE_PATCH,

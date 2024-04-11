@@ -75,15 +75,25 @@ object HybridAquaticClient : ClientModInitializer {
     }
 
     private fun registerBlockRenderLayers(registry: BlockRenderLayerMap = BlockRenderLayerMap.INSTANCE) {
-        registry.putBlocks(RenderLayer.getTranslucent(),
+        registry.putBlocks(
+            RenderLayer.getTranslucent(),
             HybridAquaticBlocks.ANEMONE,
             HybridAquaticBlocks.MESSAGE_IN_A_BOTTLE,
+        )
+        registry.putBlocks(
+            RenderLayer.getCutout(),
             HybridAquaticBlocks.LOPHELIA_CORAL,
             HybridAquaticBlocks.LOPHELIA_CORAL_FAN,
             HybridAquaticBlocks.LOPHELIA_CORAL_WALL_FAN,
             HybridAquaticBlocks.DEAD_LOPHELIA_CORAL,
             HybridAquaticBlocks.DEAD_LOPHELIA_CORAL_FAN,
             HybridAquaticBlocks.DEAD_LOPHELIA_CORAL_WALL_FAN,
+            HybridAquaticBlocks.THORN_CORAL,
+            HybridAquaticBlocks.THORN_CORAL_FAN,
+            HybridAquaticBlocks.THORN_CORAL_WALL_FAN,
+            HybridAquaticBlocks.DEAD_THORN_CORAL,
+            HybridAquaticBlocks.DEAD_THORN_CORAL_FAN,
+            HybridAquaticBlocks.DEAD_THORN_CORAL_WALL_FAN,
             HybridAquaticBlocks.DRIFTWOOD_DOOR,
             HybridAquaticBlocks.DRIFTWOOD_TRAPDOOR,
             HybridAquaticBlocks.GLOWSTICK,

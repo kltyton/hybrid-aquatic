@@ -463,6 +463,12 @@ object HybridAquaticItems {
     val DEAD_LOPHELIA_CORAL = registerBlockItem("dead_lophelia_coral", HybridAquaticBlocks.DEAD_LOPHELIA_CORAL)
     val LOPHELIA_CORAL_FAN = registerBlockItem("lophelia_coral_fan", HybridAquaticBlocks.LOPHELIA_CORAL_FAN)
     val DEAD_LOPHELIA_CORAL_FAN = registerBlockItem("dead_lophelia_coral_fan", HybridAquaticBlocks.DEAD_LOPHELIA_CORAL_FAN)
+    val THORN_CORAL_BLOCK = registerBlockItem("thorn_coral_block", HybridAquaticBlocks.THORN_CORAL_BLOCK)
+    val DEAD_THORN_CORAL_BLOCK = registerBlockItem("dead_thorn_coral_block", HybridAquaticBlocks.DEAD_THORN_CORAL_BLOCK)
+    val THORN_CORAL = registerBlockItem("thorn_coral", HybridAquaticBlocks.THORN_CORAL)
+    val DEAD_THORN_CORAL = registerBlockItem("dead_thorn_coral", HybridAquaticBlocks.DEAD_THORN_CORAL)
+    val THORN_CORAL_FAN = registerBlockItem("thorn_coral_fan", HybridAquaticBlocks.THORN_CORAL_FAN)
+    val DEAD_THORN_CORAL_FAN = registerBlockItem("dead_thorn_coral_fan", HybridAquaticBlocks.DEAD_THORN_CORAL_FAN)
 
     // fish spawn eggs
     val ANGLERFISH_SPAWN_EGG = registerSpawnEgg("anglerfish_spawn_egg", HybridAquaticEntityTypes.ANGLERFISH, 0x4d4848, 0xc4faff)

@@ -35,10 +35,8 @@ class MoonJellyfishArmorItem(material: ArmorMaterial, type: Type, settings: Sett
     }
 
     override fun appendTooltip(stack: ItemStack, world: World?, tooltip: MutableList<Text>, context: TooltipContext) {
-        val text = Text.translatable(this.translationKey.plus(".description")).formatted(Formatting.GRAY)
         val jellyfishHatText = Text.translatable("item.hybrid-aquatic.moon_jellyfish_hat.description").formatted(Formatting.GRAY)
 
-        tooltip.add(text)
         tooltip.add(jellyfishHatText)
         super.appendTooltip(stack, world, tooltip, context)
     }
