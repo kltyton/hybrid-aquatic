@@ -84,6 +84,8 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
         driftwoodPool.fenceGate(HybridAquaticBlocks.DRIFTWOOD_FENCE_GATE)
 
         registerTorch(HybridAquaticBlocks.GLOWSTICK, HybridAquaticBlocks.WALL_GLOWSTICK)
+
+        registerCoral(HybridAquaticBlocks.LOPHELIA_CORAL, HybridAquaticBlocks.DEAD_LOPHELIA_CORAL, HybridAquaticBlocks.LOPHELIA_CORAL_BLOCK, HybridAquaticBlocks.DEAD_LOPHELIA_CORAL_BLOCK, HybridAquaticBlocks.LOPHELIA_CORAL_FAN, HybridAquaticBlocks.DEAD_LOPHELIA_CORAL_FAN, HybridAquaticBlocks.LOPHELIA_CORAL_WALL_FAN, HybridAquaticBlocks.DEAD_LOPHELIA_CORAL_WALL_FAN)
         }
     }
 
@@ -155,7 +157,8 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
             HybridAquaticItems.MANGLERFISH_LURE,
             HybridAquaticItems.MANGLERFISH_FIN,
             HybridAquaticItems.TURTLE_CHESTPLATE,
-            HybridAquaticItems.EEL_SCARF
+            HybridAquaticItems.EEL_SCARF,
+            HybridAquaticItems.MOON_JELLYFISH_HAT
 
         ).forEach { item ->
             generator.register(item, Models.GENERATED)

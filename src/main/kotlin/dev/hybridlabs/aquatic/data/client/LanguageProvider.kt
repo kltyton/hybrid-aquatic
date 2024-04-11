@@ -28,14 +28,13 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
 
         // sea messages
         mapOf(
-            "the_creepers_code" to "\"The creepers have a code...\"",
+            "the_creepers_code" to "\"The creepers have a code...",
             "poyo" to "\"I hate litterbugs.\"\n~Poyo",
             "rick_roll" to "\"Never gonna give you up!\nNever gonna let you down!\nNever gonna run around and desert you!\n-Rick Astley",
-            "bold_muddy" to "\"AW MAN I DROWNED!\"\n~Bold Muddy",
-            "adventure" to "\"To the brave explorer who discovers this bottle, know that adventure awaits around every corner!\"",
-            "dream" to "\"Dear reader,\nyour presence is proof that hope can survive the waves.\nKeep dreaming.\"",
-            "fortune" to "\"In this bottle lies a wish for fortune and prosperity to find its way to you.\"",
-            "sunshine" to "\"In this bottle, I send you rays of sunshine and a gentle breeze to brighten your day.\"",
+            "bold_muddy" to "\"AW MAN I DROWNED!\n~Bold Muddy",
+            "kaupenjoe" to "\"It is better to sail the seven sea, than to get STDs\n-Kaupenjoe",
+            "catpenjoe" to "\"If you wanna get a catgirl, you first have to become a catboy.\n-Catpenjoe",
+            "fishenjoe" to "\"Give a man a fish and you'll feed him for a day,\nkill a man and you'll have one less homeless person begging you for fish.\n-Fishenjoe",
 
         ).forEach { (id, translation) -> builder.add(SeaMessage(id).translationKey, translation) }
 
@@ -193,7 +192,8 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             HybridAquaticBlocks.MANGROVE_CRATE.translationKey to "Break with an axe to open",
             HybridAquaticBlocks.ACACIA_CRATE.translationKey to "Break with an axe to open",
             HybridAquaticBlocks.CHERRY_CRATE.translationKey to "Break with an axe to open",
-            HybridAquaticItems.FISHING_NET.translationKey to "Stored Entity: %s"
+            HybridAquaticItems.FISHING_NET.translationKey to "Stored Entity: %s",
+            HybridAquaticItems.MOON_JELLYFISH_HAT.translationKey to "Made by Jakotens",
         ).forEach { (itemTranslationKey, translation) ->
             builder.add(itemTranslationKey.plus(".description"), translation)
         }

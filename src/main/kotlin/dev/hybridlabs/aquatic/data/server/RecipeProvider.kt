@@ -46,21 +46,6 @@ class RecipeProvider(output: FabricDataOutput) : FabricRecipeProvider(output) {
             .criterion("has_driftwood_log", InventoryChangedCriterion.Conditions.items(HybridAquaticBlocks.DRIFTWOOD_LOG))
             .offerTo(exporter)
 
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, HybridAquaticBlocks.DRIFTWOOD_PLANKS, 4)
-            .input(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_LOG)
-            .criterion("has_stripped_driftwood_log", InventoryChangedCriterion.Conditions.items(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_LOG))
-            .offerTo(exporter)
-
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, HybridAquaticBlocks.DRIFTWOOD_PLANKS, 4)
-            .input(HybridAquaticBlocks.DRIFTWOOD_WOOD)
-            .criterion("has_driftwood_wood", InventoryChangedCriterion.Conditions.items(HybridAquaticBlocks.DRIFTWOOD_WOOD))
-            .offerTo(exporter)
-
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, HybridAquaticBlocks.DRIFTWOOD_PLANKS, 4)
-            .input(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_WOOD)
-            .criterion("has_stripped_driftwood_wood", InventoryChangedCriterion.Conditions.items(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_WOOD))
-            .offerTo(exporter)
-
         // armor recipes
         ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, HybridAquaticItems.TURTLE_CHESTPLATE)
             .pattern("S S")
@@ -229,6 +214,7 @@ class RecipeProvider(output: FabricDataOutput) : FabricRecipeProvider(output) {
         offerCookingRecipes(exporter, HybridAquaticItems.RAW_FISH_MEAT, HybridAquaticItems.COOKED_FISH_MEAT, 0.15f)
         offerCookingRecipes(exporter, HybridAquaticItems.RAW_TENTACLE, HybridAquaticItems.COOKED_TENTACLE, 0.15f)
     }
+
     private fun offerCookingRecipes(
         exporter: Consumer<RecipeJsonProvider>,
         input: Item,
@@ -237,14 +223,6 @@ class RecipeProvider(output: FabricDataOutput) : FabricRecipeProvider(output) {
     ) {
         offerFoodCookingRecipe(exporter, "smelting", RecipeSerializer.SMELTING, 200, input, output, experience)
         offerFoodCookingRecipe(exporter, "smoking", RecipeSerializer.SMOKING, 100, input, output, experience)
-        offerFoodCookingRecipe(
-            exporter,
-            "campfire_cooking",
-            RecipeSerializer.CAMPFIRE_COOKING,
-            600,
-            input,
-            output,
-            experience
-        )
+        offerFoodCookingRecipe(exporter, "campfire_cooking", RecipeSerializer.CAMPFIRE_COOKING, 600, input, output, experience)
     }
 }
