@@ -313,7 +313,7 @@ open class HybridAquaticSharkEntity(
     override fun chooseRandomAngerTime() {
         setAngerTime(ANGER_TIME_RANGE.get(random))
     }
-    //#endregion
+    //#endregioni
 
     private fun getHungerValue(entityType: EntityType<*>): Int {
         if (entityType.isIn(HybridAquaticEntityTags.CRAB))
@@ -359,6 +359,7 @@ open class HybridAquaticSharkEntity(
             super.stop()
             shark.attemptAttack = false
         }
+
 
         companion object {
             private const val ORIGINAL_SPEED = 3.0

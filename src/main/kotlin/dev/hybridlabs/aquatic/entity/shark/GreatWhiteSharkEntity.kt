@@ -9,6 +9,7 @@ import net.minecraft.entity.attribute.DefaultAttributeContainer
 import net.minecraft.entity.attribute.EntityAttributes
 import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.entity.mob.WaterCreatureEntity
+import net.minecraft.sound.SoundEvents
 import net.minecraft.sound.SoundEvents.ENTITY_FOX_BITE
 import net.minecraft.world.Difficulty
 import net.minecraft.world.World
@@ -29,7 +30,7 @@ class GreatWhiteSharkEntity(entityType: EntityType<out GreatWhiteSharkEntity>, w
     override fun tryAttack(target: Entity?): Boolean {
         if (super.tryAttack(target)) {
 
-            playSound(ENTITY_FOX_BITE,5.0F,-10.0F)
+            playSound(SoundEvents.ENTITY_FOX_BITE,5.0F,0.0F)
 
             if (target is LivingEntity) {
                 var i = 0
