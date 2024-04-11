@@ -345,7 +345,7 @@ open class HybridAquaticFishEntity(
     override fun tryAttack(target: Entity?): Boolean {
         if (super.tryAttack(target)) {
 
-            playSound(SoundEvents.ENTITY_FOX_BITE,5.0F,1.0F)
+            playSound(SoundEvents.ENTITY_FOX_EAT,1.0F,0.0F)
 
             return true
         } else {
