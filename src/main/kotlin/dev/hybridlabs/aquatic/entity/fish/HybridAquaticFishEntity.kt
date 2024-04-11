@@ -1,5 +1,6 @@
 package dev.hybridlabs.aquatic.entity.fish
 
+import dev.hybridlabs.aquatic.effect.HybridAquaticStatusEffects
 import dev.hybridlabs.aquatic.tag.HybridAquaticEntityTags
 import net.minecraft.block.Blocks
 import net.minecraft.entity.*
@@ -13,6 +14,7 @@ import net.minecraft.entity.damage.DamageSource
 import net.minecraft.entity.data.DataTracker
 import net.minecraft.entity.data.TrackedData
 import net.minecraft.entity.data.TrackedDataHandlerRegistry
+import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.nbt.NbtCompound
@@ -24,10 +26,7 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.Vec3d
 import net.minecraft.util.math.random.Random
-import net.minecraft.world.LocalDifficulty
-import net.minecraft.world.ServerWorldAccess
-import net.minecraft.world.World
-import net.minecraft.world.WorldAccess
+import net.minecraft.world.*
 import software.bernie.geckolib.animatable.GeoEntity
 import software.bernie.geckolib.core.animatable.GeoAnimatable
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache
@@ -340,6 +339,17 @@ open class HybridAquaticFishEntity(
         override fun stop() {
             super.stop()
             fish.attemptAttack = false
+        }
+    }
+
+    override fun tryAttack(target: Entity?): Boolean {
+        if (super.tryAttack(target)) {
+
+            playSound(SoundEvents.ENTITY_FOX_BITE,5.0F,1.0F)
+
+            return true
+        } else {
+            return false
         }
     }
 
