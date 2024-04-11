@@ -1,6 +1,7 @@
 package dev.hybridlabs.aquatic.data.server
 
 import dev.hybridlabs.aquatic.block.HybridAquaticBlocks
+import dev.hybridlabs.aquatic.block.wood.HybridAquaticWoodTypes
 import dev.hybridlabs.aquatic.item.HybridAquaticItems
 import dev.hybridlabs.aquatic.tag.HybridAquaticItemTags
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
@@ -40,10 +41,12 @@ class RecipeProvider(output: FabricDataOutput) : FabricRecipeProvider(output) {
 
         offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HybridAquaticBlocks.DRIFTWOOD_SLAB, HybridAquaticBlocks.DRIFTWOOD_PLANKS)
         offerBarkBlockRecipe(exporter, HybridAquaticBlocks.DRIFTWOOD_WOOD, HybridAquaticBlocks.DRIFTWOOD_LOG)
+        offerPlanksRecipe(exporter, HybridAquaticBlocks.DRIFTWOOD_PLANKS, HybridAquaticItemTags.DRIFTWOOD_LOG_WOOD, 4)
+        offerPressurePlateRecipe(exporter, HybridAquaticBlocks.DRIFTWOOD_PRESSURE_PLATE, HybridAquaticBlocks.DRIFTWOOD_PLANKS)
 
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, HybridAquaticBlocks.DRIFTWOOD_PLANKS, 4)
-            .input(HybridAquaticBlocks.DRIFTWOOD_LOG)
-            .criterion("has_driftwood_log", InventoryChangedCriterion.Conditions.items(HybridAquaticBlocks.DRIFTWOOD_LOG))
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, HybridAquaticBlocks.DRIFTWOOD_BUTTON, 1)
+            .input(HybridAquaticBlocks.DRIFTWOOD_PLANKS)
+            .criterion("has_driftwood_planks", InventoryChangedCriterion.Conditions.items(HybridAquaticBlocks.DRIFTWOOD_PLANKS))
             .offerTo(exporter)
 
         // armor recipes
@@ -204,6 +207,7 @@ class RecipeProvider(output: FabricDataOutput) : FabricRecipeProvider(output) {
             .criterion("has_opah", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.OPAH))
             .criterion("has_moray_eel", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.MORAY_EEL))
             .criterion("has_triggerfish", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.TRIGGERFISH))
+            .offerTo(exporter)
 
         // cooking recipes
         offerCookingRecipes(exporter, HybridAquaticItems.RAW_CRAB, HybridAquaticItems.COOKED_CRAB, 0.15f)
