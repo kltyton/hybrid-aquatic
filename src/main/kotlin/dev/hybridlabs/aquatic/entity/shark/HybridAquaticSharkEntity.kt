@@ -129,8 +129,8 @@ open class HybridAquaticSharkEntity(
         if (!isPassive) {
             if (revengeAttack) targetSelector.add(1, RevengeGoal(this, *arrayOfNulls(0)).setGroupRevenge(*arrayOfNulls(0)))
             targetSelector.add(2, ActiveTargetGoal(this, PlayerEntity::class.java, 10, true, true) { entity: LivingEntity -> shouldAngerAt(entity) || shouldProximityAttack(entity as PlayerEntity) })
-            targetSelector.add(3, UniversalAngerGoal(this, false))
             targetSelector.add(3, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) { hunger <= 100 && it.type.isIn(prey) })
+            targetSelector.add(3, UniversalAngerGoal(this, false))
         }
     }
 

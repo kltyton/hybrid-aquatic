@@ -27,6 +27,9 @@ class HammerheadSharkEntity(entityType: EntityType<out HammerheadSharkEntity>, w
 
     override fun tryAttack(target: Entity?): Boolean {
         if (super.tryAttack(target)) {
+
+            playSound(SoundEvents.ENTITY_FOX_BITE,5.0F,-10.0F)
+
             if (target is LivingEntity) {
                 var i = 0
                 if (world.difficulty == Difficulty.NORMAL) {
@@ -37,7 +40,6 @@ class HammerheadSharkEntity(entityType: EntityType<out HammerheadSharkEntity>, w
 
                 if (i > 0) {
                     target.addStatusEffect(StatusEffectInstance(HybridAquaticStatusEffects.BLEEDING, i * 20, 0), this)
-                    playSound(SoundEvents.ENTITY_FOX_BITE,5.0F,-10.0F)
                 }
             }
 
