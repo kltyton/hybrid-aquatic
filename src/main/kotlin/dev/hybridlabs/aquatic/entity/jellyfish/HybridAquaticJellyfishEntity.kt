@@ -321,7 +321,7 @@ open class HybridAquaticJellyfishEntity(
     }
 
     open fun <E : GeoAnimatable> predicate(event: AnimationState<E>): PlayState {
-        if (isSubmergedInWater && !isOnGround) {
+        if (moistness > 575) {
             event.controller.setAnimation(BOB_ANIMATION)
             return PlayState.CONTINUE
         }
