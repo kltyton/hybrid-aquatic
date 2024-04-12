@@ -111,6 +111,19 @@ class BlockLootTableProvider(output: FabricDataOutput) : FabricBlockLootTablePro
             )
         }
 
+        addDrop(HybridAquaticBlocks.DRIFTWOOD_CRATE) { block ->
+            LootTable.builder().pool(
+                LootPool.builder().with(
+                    AlternativeEntry.builder(
+                        LootTableEntry.builder(HybridAquaticLootTables.DRIFTWOOD_CRATE_TREASURE_ID).conditionally(
+                            MatchToolLootCondition.builder(ItemPredicate.Builder.create().tag(ItemTags.AXES))
+                        ),
+                        ItemEntry.builder(block),
+                    )
+                )
+            )
+        }
+
         addDrop(HybridAquaticBlocks.OAK_CRATE) { block ->
             LootTable.builder().pool(
                 LootPool.builder().with(
