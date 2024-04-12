@@ -1,7 +1,6 @@
 package dev.hybridlabs.aquatic.client.model.entity
 
 import dev.hybridlabs.aquatic.entity.cephalopod.HybridAquaticCephalopodEntity
-import dev.hybridlabs.aquatic.entity.fish.HybridAquaticFishEntity
 import net.minecraft.util.Identifier
 
 class UmbrellaOctopusEntityModel : HybridAquaticCephalopodEntityModel<HybridAquaticCephalopodEntity>("umbrella_octopus") {
