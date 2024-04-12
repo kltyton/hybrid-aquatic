@@ -12,7 +12,6 @@ class YellowfinTunaEntity(entityType: EntityType<out YellowfinTunaEntity>, world
     override fun initGoals() {
         super.initGoals()
         goalSelector.add(5, FishJumpGoal(this, 10))
-        goalSelector.add(1, AttackGoal(this))
     }
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {

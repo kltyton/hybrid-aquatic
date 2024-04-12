@@ -3,7 +3,7 @@ package dev.hybridlabs.aquatic.client.model.entity.fish
 import dev.hybridlabs.aquatic.entity.fish.HybridAquaticFishEntity
 import net.minecraft.util.Identifier
 
-class BettaEntityModel : dev.hybridlabs.aquatic.client.model.entity.fish.HybridAquaticFishEntityModel<HybridAquaticFishEntity>("betta") {
+class BettaEntityModel : HybridAquaticFishEntityModel<HybridAquaticFishEntity>("betta") {
     override fun getTextureResource(animatable: HybridAquaticFishEntity?): Identifier {
         if (animatable != null) return getVariantTexture(dev.hybridlabs.aquatic.client.model.entity.fish.BettaEntityModel.Companion.allVariants[animatable.variant])
         return super.getTextureResource(animatable)

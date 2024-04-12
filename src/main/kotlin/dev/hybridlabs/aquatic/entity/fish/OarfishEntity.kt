@@ -20,11 +20,6 @@ class OarfishEntity(entityType: EntityType<out OarfishEntity>, world: World) :
         }
     }
 
-    override fun initGoals() {
-        super.initGoals()
-        goalSelector.add(1, AttackGoal(this))
-    }
-
     override fun shouldFlopOnLand(): Boolean {
         return false
     }

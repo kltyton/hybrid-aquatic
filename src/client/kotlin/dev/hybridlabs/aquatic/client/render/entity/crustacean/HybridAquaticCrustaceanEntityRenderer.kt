@@ -1,6 +1,5 @@
 package dev.hybridlabs.aquatic.client.render.entity.crustacean
 
-import dev.hybridlabs.aquatic.entity.critter.HybridAquaticCritterEntity
 import dev.hybridlabs.aquatic.entity.crustacean.HybridAquaticCrustaceanEntity
 import net.minecraft.client.render.entity.EntityRendererFactory
 import software.bernie.geckolib.model.GeoModel

@@ -20,12 +20,6 @@ class SunfishEntity(entityType: EntityType<out SunfishEntity>, world: World) :
         }
     }
 
-    override fun initGoals() {
-        super.initGoals()
-        goalSelector.add(5, FishJumpGoal(this, 10))
-        goalSelector.add(1, AttackGoal(this))
-    }
-
     override fun getMaxSize(): Int {
         return 5
     }

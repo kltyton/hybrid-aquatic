@@ -5,4 +5,4 @@ import dev.hybridlabs.aquatic.entity.fish.HybridAquaticFishEntity
 import net.minecraft.client.render.entity.EntityRendererFactory.Context
 
 class OpahEntityRenderer(context: Context) : HybridAquaticFishEntityRenderer<HybridAquaticFishEntity>(context,
-    dev.hybridlabs.aquatic.client.model.entity.fish.OpahEntityModel(), true, false)
+    OpahEntityModel(), true, false)

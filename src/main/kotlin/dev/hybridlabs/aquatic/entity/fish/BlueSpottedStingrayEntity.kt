@@ -30,11 +30,6 @@ class BlueSpottedStingrayEntity(entityType: EntityType<out BlueSpottedStingrayEn
         }
     }
 
-    override fun initGoals() {
-        super.initGoals()
-        goalSelector.add(1, AttackGoal(this))
-    }
-
     override fun damage(source: DamageSource, amount: Float): Boolean {
         return if (world.isClient) {
             false

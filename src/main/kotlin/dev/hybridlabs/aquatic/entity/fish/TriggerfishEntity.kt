@@ -19,11 +19,6 @@ class TriggerfishEntity(entityType: EntityType<out TriggerfishEntity>, world: Wo
         }
     }
 
-    override fun initGoals() {
-        super.initGoals()
-        goalSelector.add(1, AttackGoal(this))
-    }
-
     override fun getMaxSize(): Int {
         return 5
     }
