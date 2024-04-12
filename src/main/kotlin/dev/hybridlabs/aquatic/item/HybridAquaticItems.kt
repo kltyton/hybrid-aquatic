@@ -33,7 +33,6 @@ object HybridAquaticItems {
 
     val FISHING_NET = register("fishing_net", FishingNetItem(FabricItemSettings().maxCount(1)))
     val GLOW_SLIME = register("glow_slime", Item(FabricItemSettings()))
-    val STARFISH= register("starfish", Item(FabricItemSettings()))
     val SHARK_TOOTH = register("shark_tooth", Item(FabricItemSettings()))
     val SPONGE_CHUNK = register("sponge_chunk", Item(FabricItemSettings()))
     val PEARL = register("pearl", Item(FabricItemSettings()))

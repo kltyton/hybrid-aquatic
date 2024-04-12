@@ -117,7 +117,6 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
             HybridAquaticItems.RAW_TENTACLE,
             HybridAquaticItems.COOKED_TENTACLE,
             HybridAquaticItems.GLOW_SLIME,
-            HybridAquaticItems.STARFISH,
             HybridAquaticItems.SHARK_TOOTH,
             HybridAquaticItems.SPONGE_CHUNK,
             HybridAquaticItems.PEARL,
