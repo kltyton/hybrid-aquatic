@@ -218,6 +218,8 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             BiomeKeys.DEEP_COLD_OCEAN,
             BiomeKeys.DEEP_OCEAN,
             BiomeKeys.DEEP_LUKEWARM_OCEAN,
+            BiomeKeys.LUKEWARM_OCEAN,
+            BiomeKeys.WARM_OCEAN,
         )
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.FLASHLIGHT_FISH_SPAWN_BIOMES).add(

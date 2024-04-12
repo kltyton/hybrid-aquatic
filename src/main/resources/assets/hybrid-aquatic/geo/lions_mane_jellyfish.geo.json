@@ -12,12 +12,12 @@
 			},
 			"bones": [
 				{
-					"name": "lions_mane_jelly",
+					"name": "body",
 					"pivot": [-5, 27, 5]
 				},
 				{
 					"name": "head",
-					"parent": "lions_mane_jelly",
+					"parent": "body",
 					"pivot": [-5, 37, 5],
 					"cubes": [
 						{"origin": [-18, 29, -18], "size": [36, 16, 36], "uv": [0, 0]},
@@ -39,7 +39,7 @@
 				},
 				{
 					"name": "inner_tentacles",
-					"parent": "lions_mane_jelly",
+					"parent": "body",
 					"pivot": [-5, 9.5, 5],
 					"cubes": [
 						{"origin": [-12.5, 0, -12.5], "size": [25, 32, 25], "uv": [119, 27]},
@@ -48,7 +48,7 @@
 				},
 				{
 					"name": "outer_tentacles",
-					"parent": "lions_mane_jelly",
+					"parent": "body",
 					"pivot": [-5, 10.5, 5],
 					"cubes": [
 						{"origin": [-15.5, 13, -15.5], "size": [31, 16, 31], "uv": [0, 97]}
