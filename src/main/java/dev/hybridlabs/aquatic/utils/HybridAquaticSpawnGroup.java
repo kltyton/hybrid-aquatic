@@ -5,6 +5,8 @@ import net.minecraft.entity.SpawnGroup;
 public enum HybridAquaticSpawnGroup {
     FISH("ha_fish", 5, true, false, 64),
     FISH_UNDERGROUND("ha_fish_underground", 5, true, false, 64),
+    CEPHALOPOD("ha_squid", 5, true, false, 64),
+    CEPHALOPOD_UNDERGROUND("ha_squid_underground", 5, true, false, 64),
     JELLY("ha_jelly", 5, false, false, 64),
     SHARK("ha_shark", 5, true, true, 128),
     CRITTER("ha_critter", 5, true, false, 64);

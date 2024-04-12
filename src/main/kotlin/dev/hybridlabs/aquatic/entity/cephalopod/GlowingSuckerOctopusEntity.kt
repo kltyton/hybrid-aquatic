@@ -1,17 +1,14 @@
-package dev.hybridlabs.aquatic.entity.fish
+package dev.hybridlabs.aquatic.entity.cephalopod
 
 import dev.hybridlabs.aquatic.tag.HybridAquaticEntityTags
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.attribute.DefaultAttributeContainer
 import net.minecraft.entity.attribute.EntityAttributes
-import net.minecraft.entity.damage.DamageSource
 import net.minecraft.entity.mob.WaterCreatureEntity
-import net.minecraft.sound.SoundEvent
-import net.minecraft.sound.SoundEvents
 import net.minecraft.world.World
 
 class GlowingSuckerOctopusEntity(entityType: EntityType<out GlowingSuckerOctopusEntity>, world: World) :
-    HybridAquaticFishEntity(entityType, world, 1, HybridAquaticEntityTags.OCTOPUS_PREY, HybridAquaticEntityTags.OCTOPUS_PREDATOR) {
+    HybridAquaticCephalopodEntity(entityType, world, 1, HybridAquaticEntityTags.OCTOPUS_PREY, HybridAquaticEntityTags.OCTOPUS_PREDATOR) {
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()
@@ -26,30 +23,6 @@ class GlowingSuckerOctopusEntity(entityType: EntityType<out GlowingSuckerOctopus
     override fun initGoals() {
         super.initGoals()
         goalSelector.add(1, AttackGoal(this))
-    }
-
-    override fun shouldFlopOnLand(): Boolean {
-        return false
-    }
-
-    override fun getHurtSound(source: DamageSource): SoundEvent {
-        return SoundEvents.ENTITY_SQUID_HURT
-    }
-
-    override fun getDeathSound(): SoundEvent {
-        return SoundEvents.ENTITY_SQUID_DEATH
-    }
-
-    override fun getAmbientSound(): SoundEvent {
-        return SoundEvents.ENTITY_SQUID_AMBIENT
-    }
-
-    override fun getSplashSound(): SoundEvent {
-        return SoundEvents.ENTITY_DOLPHIN_SPLASH
-    }
-
-    override fun getSwimSound(): SoundEvent {
-        return SoundEvents.ENTITY_SQUID_AMBIENT
     }
 
     override fun getMaxSize(): Int {

@@ -1,5 +1,6 @@
 package dev.hybridlabs.aquatic.client.render.entity
 
+import dev.hybridlabs.aquatic.client.render.entity.cephalopods.*
 import dev.hybridlabs.aquatic.client.render.entity.critter.*
 import dev.hybridlabs.aquatic.client.render.entity.crustacean.*
 import dev.hybridlabs.aquatic.client.render.entity.fish.*
@@ -12,26 +13,22 @@ object HybridAquaticEntityRenderers {
     //region Fish
     val ANGLERFISH = EntityRendererRegistry.register(HybridAquaticEntityTypes.ANGLERFISH, ::AnglerfishEntityRenderer)
     val DRAGONFISH = EntityRendererRegistry.register(HybridAquaticEntityTypes.DRAGONFISH, ::DragonfishEntityRenderer)
-    val UMBRELLA_OCTOPUS = EntityRendererRegistry.register(HybridAquaticEntityTypes.UMBRELLA_OCTOPUS, ::UmbrellaOctopusEntityRenderer)
     val PIRANHA = EntityRendererRegistry.register(HybridAquaticEntityTypes.PIRANHA, ::PiranhaEntityRenderer)
     val BARRELEYE = EntityRendererRegistry.register(HybridAquaticEntityTypes.BARRELEYE, ::BarreleyeEntityRenderer)
     val CLOWNFISH = EntityRendererRegistry.register(HybridAquaticEntityTypes.CLOWNFISH, ::ClownfishEntityRenderer)
     val YELLOWFIN_TUNA = EntityRendererRegistry.register(HybridAquaticEntityTypes.YELLOWFIN_TUNA, ::YellowfinTunaEntityRenderer)
-    val CUTTLEFISH = EntityRendererRegistry.register(HybridAquaticEntityTypes.CUTTLEFISH, ::CuttlefishEntityRenderer)
     val FLASHLIGHT_FISH = EntityRendererRegistry.register(HybridAquaticEntityTypes.FLASHLIGHT_FISH, ::FlashlightfishEntityRenderer)
     val LIONFISH = EntityRendererRegistry.register(HybridAquaticEntityTypes.LIONFISH, ::LionfishEntityRenderer)
     val OARFISH = EntityRendererRegistry.register(HybridAquaticEntityTypes.OARFISH, ::OarfishEntityRenderer)
     val SEA_ANGEL = EntityRendererRegistry.register(HybridAquaticEntityTypes.SEA_ANGEL, ::SeaAngelEntityRenderer)
     val OPAH = EntityRendererRegistry.register(HybridAquaticEntityTypes.OPAH, ::OpahEntityRenderer)
     val SUNFISH = EntityRendererRegistry.register(HybridAquaticEntityTypes.SUNFISH, ::SunfishEntityRenderer)
-    val VAMPIRE_SQUID = EntityRendererRegistry.register(HybridAquaticEntityTypes.VAMPIRE_SQUID, ::VampireSquidEntityRenderer)
     val MAHIMAHI = EntityRendererRegistry.register(HybridAquaticEntityTypes.MAHIMAHI, ::MahiMahiEntityRenderer)
     val MORAY_EEL = EntityRendererRegistry.register(HybridAquaticEntityTypes.MORAY_EEL, ::MorayEelEntityRenderer)
     val ROCKFISH = EntityRendererRegistry.register(HybridAquaticEntityTypes.ROCKFISH, ::RockfishEntityRenderer)
     val TIGER_BARB = EntityRendererRegistry.register(HybridAquaticEntityTypes.TIGER_BARB, ::TigerBarbEntityRenderer)
     val NEEDLEFISH = EntityRendererRegistry.register(HybridAquaticEntityTypes.NEEDLEFISH, ::NeedlefishEntityRenderer)
     val RATFISH = EntityRendererRegistry.register(HybridAquaticEntityTypes.RATFISH, ::RatfishEntityRenderer)
-    val NAUTILUS = EntityRendererRegistry.register(HybridAquaticEntityTypes.NAUTILUS, ::NautilusEntityRenderer)
     val TRIGGERFISH = EntityRendererRegistry.register(HybridAquaticEntityTypes.TRIGGERFISH, ::TriggerfishEntityRenderer)
     val OSCAR = EntityRendererRegistry.register(HybridAquaticEntityTypes.OSCAR, ::OscarEntityRenderer)
     val UNICORN_FISH = EntityRendererRegistry.register(HybridAquaticEntityTypes.UNICORN_FISH, ::UnicornFishEntityRenderer)
@@ -44,11 +41,23 @@ object HybridAquaticEntityRenderers {
     val MOON_JELLYFISH = EntityRendererRegistry.register(HybridAquaticEntityTypes.MOON_JELLYFISH, ::MoonJellyfishEntityRenderer)
     val GOURAMI = EntityRendererRegistry.register(HybridAquaticEntityTypes.GOURAMI, ::GouramiEntityRenderer)
     val COWFISH = EntityRendererRegistry.register(HybridAquaticEntityTypes.COWFISH, ::CowfishEntityRenderer)
-    val FIREFLY_SQUID = EntityRendererRegistry.register(HybridAquaticEntityTypes.FIREFLY_SQUID, ::FireflySquidEntityRenderer)
     val DISCUS = EntityRendererRegistry.register(HybridAquaticEntityTypes.DISCUS, ::DiscusEntityRenderer)
     val BLUE_TANG = EntityRendererRegistry.register(HybridAquaticEntityTypes.BLUE_TANG, ::BlueTangEntityRenderer)
     val BLUE_SPOTTED_STINGRAY = EntityRendererRegistry.register(HybridAquaticEntityTypes.BLUE_SPOTTED_STINGRAY, ::BlueSpottedStingrayEntityRenderer)
+
+    //endregion
+
+    //region cephalopods
+    val CUTTLEFISH = EntityRendererRegistry.register(HybridAquaticEntityTypes.CUTTLEFISH, ::CuttlefishEntityRenderer)
+    val UMBRELLA_OCTOPUS = EntityRendererRegistry.register(HybridAquaticEntityTypes.UMBRELLA_OCTOPUS, ::UmbrellaOctopusEntityRenderer)
+    val VAMPIRE_SQUID = EntityRendererRegistry.register(HybridAquaticEntityTypes.VAMPIRE_SQUID, ::VampireSquidEntityRenderer)
+    val NAUTILUS = EntityRendererRegistry.register(HybridAquaticEntityTypes.NAUTILUS, ::NautilusEntityRenderer)
+    val FIREFLY_SQUID = EntityRendererRegistry.register(HybridAquaticEntityTypes.FIREFLY_SQUID, ::FireflySquidEntityRenderer)
     val GLOWING_SUCKER_OCTOPUS = EntityRendererRegistry.register(HybridAquaticEntityTypes.GLOWING_SUCKER_OCTOPUS, ::GlowingSuckerOctopusEntityRenderer)
+
+    //endregion
+
+    //region jellyfish
     val SEA_NETTLE = EntityRendererRegistry.register(HybridAquaticEntityTypes.SEA_NETTLE, ::SeaNettleEntityRenderer)
     val FRIED_EGG_JELLYFISH = EntityRendererRegistry.register(HybridAquaticEntityTypes.FRIED_EGG_JELLYFISH, ::FriedEggJellyfishEntityRenderer)
     val CAULIFLOWER_JELLYFISH = EntityRendererRegistry.register(HybridAquaticEntityTypes.CAULIFLOWER_JELLYFISH, ::CauliflowerJellyfishEntityRenderer)

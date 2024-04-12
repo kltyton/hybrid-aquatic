@@ -1,10 +1,11 @@
 package dev.hybridlabs.aquatic.client.model.entity
 
+import dev.hybridlabs.aquatic.entity.cephalopod.HybridAquaticCephalopodEntity
 import dev.hybridlabs.aquatic.entity.fish.HybridAquaticFishEntity
 import net.minecraft.util.Identifier
 
-class UmbrellaOctopusEntityModel : HybridAquaticFishEntityModel<HybridAquaticFishEntity>("umbrella_octopus") {
-    override fun getTextureResource(animatable: HybridAquaticFishEntity?): Identifier {
+class UmbrellaOctopusEntityModel : HybridAquaticCephalopodEntityModel<HybridAquaticCephalopodEntity>("umbrella_octopus") {
+    override fun getTextureResource(animatable: HybridAquaticCephalopodEntity?): Identifier {
         if (animatable != null) return getVariantTexture(allVariants[animatable.variant])
         return super.getTextureResource(animatable)
     }
