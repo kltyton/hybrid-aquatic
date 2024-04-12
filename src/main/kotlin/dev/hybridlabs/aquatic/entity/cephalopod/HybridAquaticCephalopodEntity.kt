@@ -269,29 +269,30 @@ open class HybridAquaticCephalopodEntity(
     }
 
     private fun squirt() {
-        if (hasInk)
-        this.playSound(this.getSquirtSound(), this.soundVolume, this.soundPitch)
-        val vec3d = applyBodyRotations(Vec3d(0.0, -1.0, 0.0)).add(this.x, this.y, this.z)
+        if (hasInk) {
+            this.playSound(this.getSquirtSound(), this.soundVolume, this.soundPitch)
+            val vec3d = applyBodyRotations(Vec3d(0.0, -1.0, 0.0)).add(this.x, this.y, this.z)
 
-        for (i in 0..29) {
-            val vec3d2 = this.applyBodyRotations(
-                Vec3d(
-                    random.nextFloat().toDouble() * 0.6 - 0.3, -1.0,
-                    random.nextFloat().toDouble() * 0.6 - 0.3
+            for (i in 0..29) {
+                val vec3d2 = this.applyBodyRotations(
+                    Vec3d(
+                        random.nextFloat().toDouble() * 0.6 - 0.3, -1.0,
+                        random.nextFloat().toDouble() * 0.6 - 0.3
+                    )
                 )
-            )
-            val vec3d3 = vec3d2.multiply(0.3 + (random.nextFloat() * 2.0f).toDouble())
-            (world as ServerWorld).spawnParticles(
-                this.getInkParticle(),
-                vec3d.x,
-                vec3d.y + 0.5,
-                vec3d.z,
-                0,
-                vec3d3.x,
-                vec3d3.y,
-                vec3d3.z,
-                0.10000000149011612
-            )
+                val vec3d3 = vec3d2.multiply(0.3 + (random.nextFloat() * 2.0f).toDouble())
+                (world as ServerWorld).spawnParticles(
+                    this.getInkParticle(),
+                    vec3d.x,
+                    vec3d.y + 0.5,
+                    vec3d.z,
+                    0,
+                    vec3d3.x,
+                    vec3d3.y,
+                    vec3d3.z,
+                    0.10000000149011612
+                )
+            }
         }
     }
 
