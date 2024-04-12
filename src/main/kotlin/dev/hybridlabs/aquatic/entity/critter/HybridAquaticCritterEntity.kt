@@ -136,6 +136,7 @@ open class HybridAquaticCritterEntity(type: EntityType<out HybridAquaticCritterE
     override fun getSwimSound(): SoundEvent {
         return SoundEvents.ENTITY_SLIME_JUMP_SMALL
     }
+
     override fun registerControllers(controllerRegistrar: AnimatableManager.ControllerRegistrar) {
         controllerRegistrar.add(
             AnimationController(
