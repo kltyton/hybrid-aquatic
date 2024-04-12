@@ -79,6 +79,7 @@ open class HybridAquaticSharkEntity(
         lookControl = YawAdjustingLookControl(this, 10)
         navigation = SwimNavigation(this, world)
     }
+
     companion object {
         const val MOISTNESS_KEY = "Moistness"
         const val SHARK_SIZE_KEY = "SharkSize"
