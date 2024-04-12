@@ -28,7 +28,7 @@ import software.bernie.geckolib.core.animation.AnimationState
 import software.bernie.geckolib.core.`object`.PlayState
 import software.bernie.geckolib.util.GeckoLibUtil
 
-@Suppress("DEPRECATION")
+@Suppress("DEPRECATION", "LeakingThis")
 open class HybridAquaticCrustaceanEntity(
     type: EntityType<out HybridAquaticCrustaceanEntity>,
     world: World,
@@ -204,7 +204,7 @@ open class HybridAquaticCrustaceanEntity(
     }
 
     override fun getAmbientSound(): SoundEvent {
-        return SoundEvents.ENTITY_ENDERMITE_AMBIENT
+        return SoundEvents.ENTITY_TURTLE_EGG_HATCH
     }
 
     override fun registerControllers(controllerRegistrar: AnimatableManager.ControllerRegistrar) {
