@@ -8,7 +8,7 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
 
 class CuttlefishEntity(entityType: EntityType<out CuttlefishEntity>, world: World) :
-    HybridAquaticCephalopodEntity(entityType, world, 1, HybridAquaticEntityTags.CUTTLEFISH_PREY, HybridAquaticEntityTags.CUTTLEFISH_PREDATOR) {
+    HybridAquaticCephalopodEntity(entityType, world, 1, HybridAquaticEntityTags.CUTTLEFISH_PREY, HybridAquaticEntityTags.CUTTLEFISH_PREDATOR, true) {
 
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {

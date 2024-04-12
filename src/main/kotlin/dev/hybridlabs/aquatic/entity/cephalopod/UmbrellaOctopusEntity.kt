@@ -8,7 +8,7 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
 
 class UmbrellaOctopusEntity(entityType: EntityType<out UmbrellaOctopusEntity>, world: World) :
-    HybridAquaticCephalopodEntity(entityType, world, 6, HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.OCTOPUS_PREDATOR) {
+    HybridAquaticCephalopodEntity(entityType, world, 6, HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.OCTOPUS_PREDATOR, false) {
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

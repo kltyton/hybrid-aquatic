@@ -48,6 +48,7 @@ open class HybridAquaticCephalopodEntity(
     private val variantCount: Int = 1,
     open val prey: TagKey<EntityType<*>>,
     open val predator: TagKey<EntityType<*>>,
+    open val hasInk: Boolean
 ) : WaterCreatureEntity(type, world), GeoEntity {
     private val factory = GeckoLibUtil.createInstanceCache(this)
     private var tiltAngle: Float = 0f
@@ -268,6 +269,7 @@ open class HybridAquaticCephalopodEntity(
     }
 
     private fun squirt() {
+        if (hasInk)
         this.playSound(this.getSquirtSound(), this.soundVolume, this.soundPitch)
         val vec3d = applyBodyRotations(Vec3d(0.0, -1.0, 0.0)).add(this.x, this.y, this.z)
 
