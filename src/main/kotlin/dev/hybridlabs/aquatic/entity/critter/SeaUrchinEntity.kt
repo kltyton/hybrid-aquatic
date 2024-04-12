@@ -40,26 +40,6 @@ class SeaUrchinEntity(entityType: EntityType<out SeaUrchinEntity>, world: World)
         return PlayState.CONTINUE
     }
 
-    override fun getHurtSound(source: DamageSource): SoundEvent {
-        return SoundEvents.ENTITY_SLIME_HURT_SMALL
-    }
-
-    override fun getDeathSound(): SoundEvent {
-        return SoundEvents.ENTITY_SLIME_DEATH_SMALL
-    }
-
-    override fun getAmbientSound(): SoundEvent {
-        return SoundEvents.ENTITY_COD_AMBIENT
-    }
-
-    override fun getSplashSound(): SoundEvent {
-        return SoundEvents.ENTITY_DOLPHIN_SPLASH
-    }
-
-    override fun getSwimSound(): SoundEvent {
-        return SoundEvents.ENTITY_SLIME_SQUISH_SMALL
-    }
-
     override fun damage(source: DamageSource, amount: Float): Boolean {
         return if (world.isClient) {
             false

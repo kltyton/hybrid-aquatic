@@ -12,13 +12,13 @@ import software.bernie.geckolib.core.animatable.GeoAnimatable
 import software.bernie.geckolib.core.animation.AnimationState
 import software.bernie.geckolib.core.`object`.PlayState
 
-class SeaCucumberEntity(entityType: EntityType<out SeaCucumberEntity>, world: World) : HybridAquaticCritterEntity(entityType, world, 4) {
+class SeaCucumberEntity(entityType: EntityType<out SeaCucumberEntity>, world: World) :
+    HybridAquaticCritterEntity(entityType, world, 4) {
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 2.0)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.2)
-
         }
     }
 
@@ -29,31 +29,13 @@ class SeaCucumberEntity(entityType: EntityType<out SeaCucumberEntity>, world: Wo
         return PlayState.CONTINUE
     }
 
-    override fun getHurtSound(source: DamageSource): SoundEvent {
-        return SoundEvents.ENTITY_SLIME_HURT_SMALL
-    }
-
-    override fun getDeathSound(): SoundEvent {
-        return SoundEvents.ENTITY_SLIME_DEATH_SMALL
-    }
-
-    override fun getAmbientSound(): SoundEvent {
-        return SoundEvents.ENTITY_COD_AMBIENT
-    }
-
-    override fun getSplashSound(): SoundEvent {
-        return SoundEvents.ENTITY_DOLPHIN_SPLASH
-    }
-
-    override fun getSwimSound(): SoundEvent {
-        return SoundEvents.ENTITY_SLIME_SQUISH_SMALL
-    }
     override fun tick() {
         super.tick()
         if (!isWet) {
             this.speed = 0.01F
         }
     }
+
     override fun getMaxSize() : Int {
         return 5
     }

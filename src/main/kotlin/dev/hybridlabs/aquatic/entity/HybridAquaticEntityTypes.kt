@@ -288,112 +288,112 @@ object HybridAquaticEntityTypes {
 
     //crustaceans
 
-    val COCONUT_CRAB = registerCritter(
+    val COCONUT_CRAB = registerCrustacean(
         "coconut_crab",
         ::CoconutCrabEntity,
         EntityDimensions.fixed(0.5f, 0.5f),
         CoconutCrabEntity.createMobAttributes()
     )
 
-    val DUNGENESS_CRAB = registerCritter(
+    val DUNGENESS_CRAB = registerCrustacean(
         "dungeness_crab",
         ::DungenessCrabEntity,
         EntityDimensions.fixed(0.5f, 0.5f),
         DungenessCrabEntity.createMobAttributes()
     )
 
-    val CRAYFISH = registerCritter(
+    val CRAYFISH = registerCrustacean(
         "crayfish",
         ::CrayfishEntity,
         EntityDimensions.fixed(0.5f, 0.5f),
         CrayfishEntity.createMobAttributes()
     )
 
-    val FIDDLER_CRAB = registerCritter(
+    val FIDDLER_CRAB = registerCrustacean(
         "fiddler_crab",
         ::FiddlerCrabEntity,
         EntityDimensions.fixed(0.5f, 0.5f),
         FiddlerCrabEntity.createMobAttributes()
     )
 
-    val FLOWER_CRAB = registerCritter(
+    val FLOWER_CRAB = registerCrustacean(
         "flower_crab",
         ::FlowerCrabEntity,
         EntityDimensions.fixed(0.5f, 0.5f),
         FlowerCrabEntity.createMobAttributes()
     )
 
-    val GHOST_CRAB = registerCritter(
+    val GHOST_CRAB = registerCrustacean(
         "ghost_crab",
         ::GhostCrabEntity,
         EntityDimensions.fixed(0.5f, 0.5f),
         GhostCrabEntity.createMobAttributes()
     )
 
-    val GIANT_ISOPOD = registerCritter(
+    val GIANT_ISOPOD = registerCrustacean(
         "giant_isopod",
         ::GiantIsopodEntity,
         EntityDimensions.fixed(0.5f, 0.5f),
         GiantIsopodEntity.createMobAttributes()
     )
 
-    val HERMIT_CRAB = registerCritter(
+    val HERMIT_CRAB = registerCrustacean(
         "hermit_crab",
         ::HermitCrabEntity,
         EntityDimensions.fixed(0.5f, 0.5f),
         HermitCrabEntity.createMobAttributes()
     )
 
-    val HORSESHOE_CRAB = registerCritter(
+    val HORSESHOE_CRAB = registerCrustacean(
         "horseshoe_crab",
         ::HorseshoeCrabEntity,
         EntityDimensions.fixed(0.5f, 0.5f),
         HorseshoeCrabEntity.createMobAttributes()
     )
 
-    val LIGHTFOOT_CRAB = registerCritter(
+    val LIGHTFOOT_CRAB = registerCrustacean(
         "lightfoot_crab",
         ::LightfootCrabEntity,
         EntityDimensions.fixed(0.5f, 0.5f),
         LightfootCrabEntity.createMobAttributes()
     )
 
-    val LOBSTER = registerCritter(
+    val LOBSTER = registerCrustacean(
         "lobster",
         ::LobsterEntity,
         EntityDimensions.fixed(0.5f, 0.5f),
         LobsterEntity.createMobAttributes()
     )
 
-    val SHRIMP = registerCritter(
+    val SHRIMP = registerCrustacean(
         "shrimp",
         ::ShrimpEntity,
         EntityDimensions.fixed(0.5f, 0.5f),
         ShrimpEntity.createMobAttributes()
     )
 
-    val SPIDER_CRAB = registerCritter(
+    val SPIDER_CRAB = registerCrustacean(
         "spider_crab",
         ::SpiderCrabEntity,
         EntityDimensions.fixed(0.5f, 0.5f),
         SpiderCrabEntity.createMobAttributes()
     )
 
-    val VAMPIRE_CRAB = registerCritter(
+    val VAMPIRE_CRAB = registerCrustacean(
         "vampire_crab",
         ::VampireCrabEntity,
         EntityDimensions.fixed(0.5f, 0.5f),
         VampireCrabEntity.createMobAttributes()
     )
 
-    val YETI_CRAB = registerCritter(
+    val YETI_CRAB = registerCrustacean(
         "yeti_crab",
         ::YetiCrabEntity,
         EntityDimensions.fixed(0.5f, 0.5f),
         YetiCrabEntity.createMobAttributes()
     )
 
-    val KARKINOS = registerCritter(
+    val KARKINOS = registerCrustacean(
         "karkinos",
         ::KarkinosEntity,
         EntityDimensions.fixed(2.25f, 1.25f),
@@ -578,6 +578,15 @@ object HybridAquaticEntityTypes {
     }
 
     private fun <T : LivingEntity> registerCritter(
+        id: String,
+        entityFactory: EntityFactory<T>,
+        dimensions: EntityDimensions,
+        attributeContainer: DefaultAttributeContainer.Builder
+    ): EntityType<T> {
+        return registerCustomSpawnGroup(id, entityFactory, dimensions, attributeContainer, HybridAquaticSpawnGroup.CRITTER)
+    }
+
+    private fun <T : LivingEntity> registerCrustacean(
         id: String,
         entityFactory: EntityFactory<T>,
         dimensions: EntityDimensions,

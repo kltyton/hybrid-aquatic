@@ -1,6 +1,5 @@
 package dev.hybridlabs.aquatic.entity.crustacean
 
-import dev.hybridlabs.aquatic.entity.critter.HybridAquaticCritterEntity
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.ai.goal.ActiveTargetGoal
 import net.minecraft.entity.attribute.DefaultAttributeContainer
@@ -9,8 +8,8 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.entity.passive.TurtleEntity
 import net.minecraft.world.World
 
-class CoconutCrabEntity(entityType: EntityType<out HybridAquaticCritterEntity>, world: World) :
-    HybridAquaticCrabEntity(entityType, world, 4) {
+class CoconutCrabEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>, world: World) :
+    HybridAquaticCrustaceanEntity(entityType, world, 1, false, true, true) {
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

@@ -1,6 +1,5 @@
 package dev.hybridlabs.aquatic.entity.critter
 
-import dev.hybridlabs.aquatic.entity.crustacean.HybridAquaticCrabEntity
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.attribute.DefaultAttributeContainer
 import net.minecraft.entity.attribute.EntityAttributes
@@ -21,27 +20,7 @@ class StarfishEntity(entityType: EntityType<out StarfishEntity>, world: World) :
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 1.0)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.2)
                 .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 100.0)
-
         }
-    }
-    override fun getHurtSound(source: DamageSource): SoundEvent {
-        return SoundEvents.ENTITY_SLIME_HURT_SMALL
-    }
-
-    override fun getDeathSound(): SoundEvent {
-        return SoundEvents.ENTITY_SLIME_DEATH_SMALL
-    }
-
-    override fun getAmbientSound(): SoundEvent {
-        return SoundEvents.ENTITY_COD_AMBIENT
-    }
-
-    override fun getSplashSound(): SoundEvent {
-        return SoundEvents.ENTITY_DOLPHIN_SPLASH
-    }
-
-    override fun getSwimSound(): SoundEvent {
-        return SoundEvents.ENTITY_SLIME_SQUISH_SMALL
     }
 
     override fun <E : GeoAnimatable> predicate(event: AnimationState<E>): PlayState {

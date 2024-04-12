@@ -7,8 +7,8 @@ import net.minecraft.entity.attribute.EntityAttributes
 import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
 
-class GiantIsopodEntity(entityType: EntityType<out HybridAquaticCritterEntity>, world: World) :
-    HybridAquaticCritterEntity(entityType, world) {
+class GiantIsopodEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>, world: World) :
+    HybridAquaticCrustaceanEntity(entityType, world, 1, false, false, true) {
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

@@ -10,7 +10,7 @@ import dev.hybridlabs.aquatic.entity.HybridAquaticEntityTypes
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry
 
 object HybridAquaticEntityRenderers {
-    //region Fish
+    //region fish
     val ANGLERFISH = EntityRendererRegistry.register(HybridAquaticEntityTypes.ANGLERFISH, ::AnglerfishEntityRenderer)
     val DRAGONFISH = EntityRendererRegistry.register(HybridAquaticEntityTypes.DRAGONFISH, ::DragonfishEntityRenderer)
     val PIRANHA = EntityRendererRegistry.register(HybridAquaticEntityTypes.PIRANHA, ::PiranhaEntityRenderer)
@@ -71,7 +71,7 @@ object HybridAquaticEntityRenderers {
 
     //endregion
 
-    //region critters
+    //region crustaceans
     val KARKINOS = EntityRendererRegistry.register(HybridAquaticEntityTypes.KARKINOS, ::KarkinosEntityRenderer)
     val DUNGENESS_CRAB = EntityRendererRegistry.register(HybridAquaticEntityTypes.DUNGENESS_CRAB, ::DungenessCrabEntityRenderer)
     val FIDDLER_CRAB = EntityRendererRegistry.register(HybridAquaticEntityTypes.FIDDLER_CRAB, ::FiddlerCrabEntityRenderer)
@@ -88,10 +88,15 @@ object HybridAquaticEntityRenderers {
     val LOBSTER = EntityRendererRegistry.register(HybridAquaticEntityTypes.LOBSTER, ::LobsterEntityRenderer)
     val COCONUT_CRAB = EntityRendererRegistry.register(HybridAquaticEntityTypes.COCONUT_CRAB, ::CoconutCrabEntityRenderer)
     val HERMIT_CRAB = EntityRendererRegistry.register(HybridAquaticEntityTypes.HERMIT_CRAB, ::HermitCrabEntityRenderer)
+
+    //endregion
+
+    //region critters
     val STARFISH = EntityRendererRegistry.register(HybridAquaticEntityTypes.STARFISH, ::StarfishEntityRenderer)
     val NUDIBRANCH = EntityRendererRegistry.register(HybridAquaticEntityTypes.NUDIBRANCH, ::NudibranchEntityRenderer)
     val SEA_CUCUMBER = EntityRendererRegistry.register(HybridAquaticEntityTypes.SEA_CUCUMBER, ::SeaCucumberEntityRenderer)
     val SEA_URCHIN = EntityRendererRegistry.register(HybridAquaticEntityTypes.SEA_URCHIN, ::SeaUrchinEntityRenderer)
+
     //endregion
 
     //region sharks

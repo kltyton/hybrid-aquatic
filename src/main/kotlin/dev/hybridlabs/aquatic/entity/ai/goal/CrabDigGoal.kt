@@ -1,6 +1,6 @@
 package dev.hybridlabs.aquatic.entity.ai.goal
 
-import dev.hybridlabs.aquatic.entity.crustacean.HybridAquaticCrabEntity
+import dev.hybridlabs.aquatic.entity.crustacean.HybridAquaticCrustaceanEntity
 import dev.hybridlabs.aquatic.loot.HybridAquaticLootTables
 import dev.hybridlabs.aquatic.tag.HybridAquaticBlockTags
 import net.minecraft.block.BlockState
@@ -15,7 +15,7 @@ import net.minecraft.server.world.ServerWorld
 import java.util.*
 
 class CrabDigGoal(
-    private val crab: HybridAquaticCrabEntity,
+    private val crab: HybridAquaticCrustaceanEntity,
     private val chance: Double,
 ) : Goal() {
     private val random: Random = Random()

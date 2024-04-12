@@ -4,7 +4,6 @@ import dev.hybridlabs.aquatic.entity.critter.HybridAquaticCritterEntity
 import net.minecraft.enchantment.EnchantmentHelper
 import net.minecraft.enchantment.Enchantments
 import net.minecraft.entity.EntityType
-import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.ai.goal.*
 import net.minecraft.entity.attribute.DefaultAttributeContainer
 import net.minecraft.entity.attribute.EntityAttributes
@@ -29,8 +28,8 @@ import software.bernie.geckolib.core.animation.AnimationState
 import software.bernie.geckolib.core.`object`.PlayState
 import java.util.*
 
-class KarkinosEntity(entityType: EntityType<out HybridAquaticCritterEntity>, world: World) :
-    HybridAquaticCrabEntity(entityType, world), Angerable {
+class KarkinosEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>, world: World) :
+    HybridAquaticCrustaceanEntity(entityType, world, 1, false, false, true), Angerable {
 
     init {
         stepHeight = 2.0F

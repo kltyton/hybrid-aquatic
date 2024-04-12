@@ -10,8 +10,8 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.entity.passive.TurtleEntity
 import net.minecraft.world.World
 
-class FiddlerCrabEntity(entityType: EntityType<out HybridAquaticCritterEntity>, world: World) :
-    HybridAquaticCrabEntity(entityType, world, 3) {
+class FiddlerCrabEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>, world: World) :
+    HybridAquaticCrustaceanEntity(entityType, world, 3, false, true, true) {
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

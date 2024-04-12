@@ -17,6 +17,7 @@ import net.minecraft.entity.mob.Angerable
 import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.nbt.NbtCompound
+import net.minecraft.particle.ParticleTypes
 import net.minecraft.registry.tag.FluidTags
 import net.minecraft.registry.tag.TagKey
 import net.minecraft.sound.SoundEvent
@@ -177,6 +178,26 @@ open class HybridAquaticSharkEntity(
             attributes.getCustomInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED)?.baseValue
         }
 
+        if (world.isClient && isTouchingWater && isAttacking) {
+            val rotationVec = getRotationVec(0.0f)
+            val offsetY = 0.0f - random.nextFloat()
+
+            for (i in 0..1) {
+                val particleX = x - rotationVec.x * offsetY
+                val particleY = y - rotationVec.y
+                val particleZ = z - rotationVec.z * offsetY
+
+                world.addParticle(
+                    ParticleTypes.DOLPHIN,
+                    particleX,
+                    particleY,
+                    particleZ,
+                    0.0,
+                    0.0,
+                    0.0
+                )
+            }
+        }
         if (hunger > 0) hunger -= 1
     }
 

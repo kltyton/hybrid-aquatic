@@ -32,7 +32,8 @@ import software.bernie.geckolib.core.`object`.PlayState
 import software.bernie.geckolib.util.GeckoLibUtil
 
 @Suppress("LeakingThis")
-open class HybridAquaticCritterEntity(type: EntityType<out HybridAquaticCritterEntity>, world: World, private val variantCount: Int = 1) : WaterCreatureEntity(type, world), GeoEntity {
+open class HybridAquaticCritterEntity(type: EntityType<out HybridAquaticCritterEntity>, world: World, private val variantCount: Int = 1
+) : WaterCreatureEntity(type, world), GeoEntity {
 
     private val factory = GeckoLibUtil.createInstanceCache(this)
     private var landNavigation: EntityNavigation = createNavigation(world)
@@ -121,11 +122,11 @@ open class HybridAquaticCritterEntity(type: EntityType<out HybridAquaticCritterE
     }
 
     override fun getHurtSound(source: DamageSource): SoundEvent {
-        return SoundEvents.ENTITY_TURTLE_EGG_CRACK
+        return SoundEvents.ENTITY_SLIME_HURT
     }
 
     override fun getDeathSound(): SoundEvent {
-        return SoundEvents.ENTITY_TURTLE_EGG_BREAK
+        return SoundEvents.ENTITY_SLIME_DEATH_SMALL
     }
 
     override fun getAmbientSound(): SoundEvent {
@@ -133,7 +134,7 @@ open class HybridAquaticCritterEntity(type: EntityType<out HybridAquaticCritterE
     }
 
     override fun getSwimSound(): SoundEvent {
-        return SoundEvents.ENTITY_SPIDER_STEP
+        return SoundEvents.ENTITY_SLIME_JUMP_SMALL
     }
     override fun registerControllers(controllerRegistrar: AnimatableManager.ControllerRegistrar) {
         controllerRegistrar.add(

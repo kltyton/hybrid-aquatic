@@ -16,6 +16,7 @@ import net.minecraft.entity.data.TrackedDataHandlerRegistry
 import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.nbt.NbtCompound
+import net.minecraft.particle.ParticleTypes
 import net.minecraft.registry.tag.FluidTags
 import net.minecraft.registry.tag.TagKey
 import net.minecraft.sound.SoundEvent
@@ -101,6 +102,26 @@ open class HybridAquaticFishEntity(
             if (moistness <= -20) {
                 moistness = 0
                 damage(this.damageSources.dryOut(), 1.0f)
+            }
+        }
+        if (world.isClient && isTouchingWater && isAttacking) {
+            val rotationVec = getRotationVec(0.0f)
+            val offsetY = 0.0f - random.nextFloat()
+
+            for (i in 0..1) {
+                val particleX = x - rotationVec.x * 0.1
+                val particleY = y - rotationVec.y * -0.1
+                val particleZ = z - rotationVec.z * offsetY
+
+                world.addParticle(
+                    ParticleTypes.DOLPHIN,
+                    particleX,
+                    particleY,
+                    particleZ,
+                    0.0,
+                    0.0,
+                    0.0
+                )
             }
         }
     }
@@ -326,7 +347,7 @@ open class HybridAquaticFishEntity(
         }
 
         override fun getSquaredMaxAttackDistance(entity: LivingEntity): Double {
-            return (1.0f + entity.width).toDouble()
+            return (1.25f + entity.width).toDouble()
         }
 
         override fun start() {
