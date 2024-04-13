@@ -382,6 +382,7 @@ open class HybridAquaticFishEntity(
         const val MAX_HUNGER = 1200
         const val HUNGER_KEY = "Hunger"
 
+        val ATTACK_ANIMATION: RawAnimation  = RawAnimation.begin().then("attack", Animation.LoopType.LOOP)
         val SWIM_ANIMATION: RawAnimation  = RawAnimation.begin().then("swim", Animation.LoopType.LOOP)
         val FLOP_ANIMATION: RawAnimation  = RawAnimation.begin().then("flop", Animation.LoopType.LOOP)
 

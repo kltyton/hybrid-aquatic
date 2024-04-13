@@ -13,6 +13,9 @@ import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.Difficulty
 import net.minecraft.world.World
+import software.bernie.geckolib.core.animatable.GeoAnimatable
+import software.bernie.geckolib.core.animation.AnimationState
+import software.bernie.geckolib.core.`object`.PlayState
 
 class PiranhaEntity(entityType: EntityType<out PiranhaEntity>, world: World) :
     HybridAquaticSchoolingFishEntity(entityType, world, HybridAquaticEntityTags.PIRANHA_PREY, HybridAquaticEntityTags.PIRANHA_PREDATOR) {
@@ -32,7 +35,17 @@ class PiranhaEntity(entityType: EntityType<out PiranhaEntity>, world: World) :
     override fun initGoals() {
         super.initGoals()
         targetSelector.add(1, RevengeGoal(this, *arrayOfNulls(0)).setGroupRevenge(*arrayOfNulls(0)))
-        targetSelector.add(1, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) { it.hasStatusEffect(HybridAquaticStatusEffects.BLEEDING) })
+        targetSelector.add(1, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) { it.hasStatusEffect(HybridAquaticStatusEffects.BLEEDING) && it !is PiranhaEntity })
+    }
+
+    override fun <E : GeoAnimatable> predicate(event: AnimationState<E>): PlayState {
+        if (isAttacking) {
+            event.controller.setAnimation(ATTACK_ANIMATION)
+
+        } else if (isSubmergedInWater) {
+            event.controller.setAnimation(SWIM_ANIMATION)
+        }
+        return PlayState.CONTINUE
     }
 
     override fun tryAttack(target: Entity?): Boolean {
