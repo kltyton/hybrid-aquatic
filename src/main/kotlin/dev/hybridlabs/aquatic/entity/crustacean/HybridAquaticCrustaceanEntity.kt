@@ -12,7 +12,6 @@ import net.minecraft.entity.data.TrackedData
 import net.minecraft.entity.data.TrackedDataHandlerRegistry
 import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.nbt.NbtCompound
-import net.minecraft.registry.tag.TagKey
 import net.minecraft.sound.SoundEvent
 import net.minecraft.sound.SoundEvents
 import net.minecraft.util.math.BlockPos
@@ -91,10 +90,9 @@ open class HybridAquaticCrustaceanEntity(
     override fun initGoals() {
         super.initGoals()
         goalSelector.add(1, EscapeDangerGoal(this, 0.35))
+        goalSelector.add(1, MoveIntoWaterGoal(this))
         goalSelector.add(2, WanderAroundGoal(this, 0.35, 10))
         goalSelector.add(2, LookAroundGoal(this))
-        if (moistness < 1500)
-            goalSelector.add(1, MoveIntoWaterGoal(this))
     }
 
     override fun initialize(
@@ -180,7 +178,7 @@ open class HybridAquaticCrustaceanEntity(
 
     private fun getMaxMoistness(): Int {
         return if (canWalkOnLand)
-            3000
+            -1
         else
             1200
     }
