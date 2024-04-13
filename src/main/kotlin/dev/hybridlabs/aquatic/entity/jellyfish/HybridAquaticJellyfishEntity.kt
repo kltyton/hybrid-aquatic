@@ -1,5 +1,6 @@
 package dev.hybridlabs.aquatic.entity.jellyfish
 
+import net.minecraft.block.Blocks
 import net.minecraft.entity.*
 import net.minecraft.entity.ai.control.AquaticMoveControl
 import net.minecraft.entity.ai.control.YawAdjustingLookControl
@@ -43,10 +44,10 @@ open class HybridAquaticJellyfishEntity(
 
 ) : WaterCreatureEntity(type, world), GeoEntity {
     private val factory = GeckoLibUtil.createInstanceCache(this)
-    private var tiltAngle: Float = 0f
-    private var prevTiltAngle: Float = 0f
-    private var rollAngle: Float = 0f
-    private var prevRollAngle: Float = 0f
+    var tiltAngle: Float = 0f
+    var prevTiltAngle: Float = 0f
+    var rollAngle: Float = 0f
+    var prevRollAngle: Float = 0f
     private var thrustTimer: Float = 0f
     private var prevThrustTimer: Float = 0f
     private var swimVelocityScale = 0f
@@ -224,6 +225,10 @@ open class HybridAquaticJellyfishEntity(
     }
 
     private fun applyBodyRotations(shootVector: Vec3d): Vec3d {
+        if (!isSubmergedInWater) {
+            return shootVector
+        }
+
         var vec3d = shootVector.rotateX(this.prevTiltAngle * 0.017453292f)
         vec3d = vec3d.rotateY(-this.prevBodyYaw * 0.017453292f)
         return vec3d
@@ -312,21 +317,9 @@ open class HybridAquaticJellyfishEntity(
             dataTracker.set(JELLYFISH_SIZE, size)
         }
 
-    override fun getMaxAir(): Int {
-        return 600
-    }
-
-    public override fun getNextAirOnLand(air: Int): Int {
-        return this.maxAir
-    }
-
     open fun <E : GeoAnimatable> predicate(event: AnimationState<E>): PlayState {
-        if (moistness > 575) {
+        if (isSubmergedInWater) {
             event.controller.setAnimation(BOB_ANIMATION)
-            return PlayState.CONTINUE
-        }
-        if (moistness < 575) {
-            event.controller.setAnimation(FLOP_ANIMATION)
             return PlayState.CONTINUE
         }
         return PlayState.STOP
@@ -350,7 +343,7 @@ open class HybridAquaticJellyfishEntity(
     override fun tickWaterBreathingAir(air: Int) {}
 
     private fun getMaxMoistness(): Int {
-        return 600
+        return 300
     }
 
     protected open fun getMinSize() : Int {
@@ -378,7 +371,6 @@ open class HybridAquaticJellyfishEntity(
         val JELLYFISH_SIZE: TrackedData<Int> = DataTracker.registerData(HybridAquaticJellyfishEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
 
         val BOB_ANIMATION: RawAnimation = RawAnimation.begin().then("bob", Animation.LoopType.LOOP)
-        val FLOP_ANIMATION: RawAnimation = RawAnimation.begin().then("flop", Animation.LoopType.LOOP)
 
         fun canSpawn(
             type: EntityType<out WaterCreatureEntity>,
@@ -387,12 +379,25 @@ open class HybridAquaticJellyfishEntity(
             pos: BlockPos,
             random: Random?
         ): Boolean {
-            val topY = world.seaLevel - 6
-            val bottomY = world.seaLevel - 48
+            val topY = world.seaLevel
+            val bottomY = world.seaLevel - 24
 
             return pos.y in bottomY..topY &&
                     world.getFluidState(pos.down()).isIn(FluidTags.WATER) &&
-                    world.getFluidState(pos.up()).isIn(FluidTags.WATER)
+                    world.getBlockState(pos.up()).isOf(Blocks.WATER)
+        }
+
+        fun canUndergroundSpawn(
+            type: EntityType<out WaterCreatureEntity?>?,
+            world: WorldAccess,
+            reason: SpawnReason?,
+            pos: BlockPos,
+            random: Random?
+        ): Boolean {
+            return pos.y <= world.seaLevel - 32 &&
+                    world.getBaseLightLevel(pos, 0) == 0 &&
+                    world.getFluidState(pos.down()).isIn(FluidTags.WATER) &&
+                    world.getBlockState(pos).isOf(Blocks.WATER)
         }
 
         fun getScaleAdjustment(jellyfish : HybridAquaticJellyfishEntity, adjustment : Float): Float {
