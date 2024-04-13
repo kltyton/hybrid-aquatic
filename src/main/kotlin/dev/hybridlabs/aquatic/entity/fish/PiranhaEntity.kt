@@ -5,6 +5,8 @@ import dev.hybridlabs.aquatic.tag.HybridAquaticEntityTags
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.LivingEntity
+import net.minecraft.entity.ai.goal.ActiveTargetGoal
+import net.minecraft.entity.ai.goal.RevengeGoal
 import net.minecraft.entity.attribute.DefaultAttributeContainer
 import net.minecraft.entity.attribute.EntityAttributes
 import net.minecraft.entity.effect.StatusEffectInstance
@@ -21,8 +23,16 @@ class PiranhaEntity(entityType: EntityType<out PiranhaEntity>, world: World) :
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 3.0)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 1.0)
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 2.0)
+                .add(EntityAttributes.GENERIC_ATTACK_SPEED, 2.0)
+                .add(EntityAttributes.GENERIC_ATTACK_KNOCKBACK, 0.0)
                 .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 12.0)
         }
+    }
+
+    override fun initGoals() {
+        super.initGoals()
+        targetSelector.add(1, RevengeGoal(this, *arrayOfNulls(0)).setGroupRevenge(*arrayOfNulls(0)))
+        targetSelector.add(1, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) { it.hasStatusEffect(HybridAquaticStatusEffects.BLEEDING) })
     }
 
     override fun tryAttack(target: Entity?): Boolean {
@@ -43,6 +53,14 @@ class PiranhaEntity(entityType: EntityType<out PiranhaEntity>, world: World) :
             return true
         } else {
             return false
+        }
+    }
+
+    override fun tick() {
+        super.tick()
+
+        if (isSprinting) {
+            attributes.getCustomInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED)?.baseValue = 1.5
         }
     }
 

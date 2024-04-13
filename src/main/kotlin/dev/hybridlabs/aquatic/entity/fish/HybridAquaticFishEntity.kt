@@ -63,8 +63,8 @@ open class HybridAquaticFishEntity(
         goalSelector.add(2, SwimAroundGoal(this, 0.50, 6))
         goalSelector.add(1, AttackGoal(this))
         goalSelector.add(1, FleeEntityGoal(this, LivingEntity::class.java, 8.0f, 1.2, 1.0) {it.type.isIn(predator)})
-        goalSelector.add(1, FleeEntityGoal(this, PlayerEntity::class.java, 5.0f, 1.0, 1.0))
-        targetSelector.add(3, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) {hunger <= 1200 && it.type.isIn(prey)})
+        goalSelector.add(2, FleeEntityGoal(this, PlayerEntity::class.java, 5.0f, 1.0, 1.0))
+        targetSelector.add(1, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) {hunger <= 1200 && it.type.isIn(prey)})
     }
 
     override fun initDataTracker() {
@@ -339,7 +339,7 @@ open class HybridAquaticFishEntity(
             if (squaredDistance <= d && this.isCooledDown) {
                 resetCooldown()
                 mob.tryAttack(target)
-                fish.isSprinting = false
+                fish.isSprinting = true
                 fish.attemptAttack = true
 
                 if (target.health <= 0)
