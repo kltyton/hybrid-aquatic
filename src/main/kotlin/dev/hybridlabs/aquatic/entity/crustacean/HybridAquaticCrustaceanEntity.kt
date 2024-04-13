@@ -37,7 +37,6 @@ open class HybridAquaticCrustaceanEntity(
     open val canDig: Boolean,
     open val canDance: Boolean,
     open val canWalkOnLand: Boolean,
-    open val predator: TagKey<EntityType<*>>,
 ) : WaterCreatureEntity(type, world), GeoEntity {
     private val factory = GeckoLibUtil.createInstanceCache(this)
     private var landNavigation: EntityNavigation = createNavigation(world)

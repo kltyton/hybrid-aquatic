@@ -1,7 +1,6 @@
 package dev.hybridlabs.aquatic.entity.crustacean
 
 import dev.hybridlabs.aquatic.entity.ai.goal.CrabDigGoal
-import dev.hybridlabs.aquatic.tag.HybridAquaticEntityTags
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.attribute.DefaultAttributeContainer
 import net.minecraft.entity.attribute.EntityAttributes
@@ -12,7 +11,7 @@ import software.bernie.geckolib.core.animation.AnimationState
 import software.bernie.geckolib.core.`object`.PlayState
 
 class HermitCrabEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>, world: World) :
-    HybridAquaticCrustaceanEntity(entityType, world, 1, true, false, true, HybridAquaticEntityTags.CRUSTACEAN_PREDATOR) {
+    HybridAquaticCrustaceanEntity(entityType, world, 1, true, false, true) {
 
     private var isHiding: Boolean = false
     private var hidingTimer: Int = 0
