@@ -1,5 +1,6 @@
 package dev.hybridlabs.aquatic.entity.crustacean
 
+import dev.hybridlabs.aquatic.tag.HybridAquaticEntityTags
 import net.minecraft.enchantment.EnchantmentHelper
 import net.minecraft.enchantment.Enchantments
 import net.minecraft.entity.EntityType
@@ -28,7 +29,7 @@ import software.bernie.geckolib.core.`object`.PlayState
 import java.util.*
 
 class KarkinosEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>, world: World) :
-    HybridAquaticCrustaceanEntity(entityType, world, 1, false, false, true), Angerable {
+    HybridAquaticCrustaceanEntity(entityType, world, 1, false, false, true, HybridAquaticEntityTags.NONE), Angerable {
 
     init {
         stepHeight = 2.0F

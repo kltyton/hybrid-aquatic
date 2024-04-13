@@ -1,5 +1,6 @@
 package dev.hybridlabs.aquatic.entity.crustacean
 
+import dev.hybridlabs.aquatic.tag.HybridAquaticEntityTags
 import net.minecraft.entity.EntityGroup
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.ai.goal.ActiveTargetGoal
@@ -10,7 +11,7 @@ import net.minecraft.entity.passive.TurtleEntity
 import net.minecraft.world.World
 
 class FiddlerCrabEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>, world: World) :
-    HybridAquaticCrustaceanEntity(entityType, world, 3, false, true, true) {
+    HybridAquaticCrustaceanEntity(entityType, world, 3, false, true, true, HybridAquaticEntityTags.CRUSTACEAN_PREDATOR) {
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

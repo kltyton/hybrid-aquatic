@@ -55,7 +55,6 @@ object SpawnRestrictionRegistry {
             HybridAquaticEntityTypes.DRAGONFISH,
             HybridAquaticEntityTypes.BARRELEYE,
             HybridAquaticEntityTypes.SEA_ANGEL,
-            HybridAquaticEntityTypes.ATOLLA_JELLYFISH,
             HybridAquaticEntityTypes.FRILLED_SHARK,
             HybridAquaticEntityTypes.RATFISH,
             ).forEach { registerFishUnderground(it) }
@@ -77,11 +76,19 @@ object SpawnRestrictionRegistry {
         // jellies
         setOf(
             HybridAquaticEntityTypes.MOON_JELLYFISH,
+            HybridAquaticEntityTypes.MAUVE_STINGER,
             HybridAquaticEntityTypes.SEA_NETTLE,
             HybridAquaticEntityTypes.FRIED_EGG_JELLYFISH,
             HybridAquaticEntityTypes.CAULIFLOWER_JELLYFISH,
+            HybridAquaticEntityTypes.BLUE_JELLYFISH,
+            HybridAquaticEntityTypes.COMPASS_JELLYFISH,
+            HybridAquaticEntityTypes.LIONS_MANE_JELLYFISH,
             HybridAquaticEntityTypes.NOMURA_JELLYFISH,
         ).forEach { registerJelly(it) }
+
+        setOf(
+            HybridAquaticEntityTypes.ATOLLA_JELLYFISH,
+        ).forEach { registerJellyUnderground(it) }
 
         // sharks
         setOf(
@@ -110,15 +117,19 @@ object SpawnRestrictionRegistry {
             HybridAquaticEntityTypes.GHOST_CRAB,
             HybridAquaticEntityTypes.FLOWER_CRAB,
             HybridAquaticEntityTypes.VAMPIRE_CRAB,
-            HybridAquaticEntityTypes.SPIDER_CRAB,
             HybridAquaticEntityTypes.LIGHTFOOT_CRAB,
             HybridAquaticEntityTypes.HORSESHOE_CRAB,
             HybridAquaticEntityTypes.COCONUT_CRAB,
-            HybridAquaticEntityTypes.GIANT_ISOPOD,
             HybridAquaticEntityTypes.SHRIMP,
             HybridAquaticEntityTypes.CRAYFISH,
             HybridAquaticEntityTypes.LOBSTER,
         ).forEach { registerCrustacean(it) }
+
+        setOf(
+            HybridAquaticEntityTypes.YETI_CRAB,
+            HybridAquaticEntityTypes.SPIDER_CRAB,
+            HybridAquaticEntityTypes.GIANT_ISOPOD
+        ).forEach { registerCrustaceanUnderground(it) }
     }
 
     private fun <T : WaterCreatureEntity> registerFish(entityType: EntityType<T>) {
@@ -145,8 +156,16 @@ object SpawnRestrictionRegistry {
         registerWaterCreature(entityType, HybridAquaticJellyfishEntity::canSpawn)
     }
 
+    private fun <T : WaterCreatureEntity> registerJellyUnderground(entityType: EntityType<T>) {
+        registerWaterCreature(entityType, HybridAquaticJellyfishEntity::canUndergroundSpawn)
+    }
+
     private fun <T : WaterCreatureEntity> registerCrustacean(entityType: EntityType<T>) {
         registerLandWaterCreature(entityType, HybridAquaticCrustaceanEntity::canSpawn)
+    }
+
+    private fun <T : WaterCreatureEntity> registerCrustaceanUnderground(entityType: EntityType<T>) {
+        registerLandWaterCreature(entityType, HybridAquaticCrustaceanEntity::canUndergroundSpawn)
     }
 
     private fun <T : WaterCreatureEntity> registerCritter(entityType: EntityType<T>) {

@@ -47,7 +47,6 @@ object EntityBiomeModifications {
 
 
         // underground fishes
-        addUndergroundFish(HybridAquaticEntityTypes.ATOLLA_JELLYFISH, HybridAquaticBiomeTags.ATOLLA_JELLYFISH_SPAWN_BIOMES, 3, 1, 2)
         addUndergroundFish(HybridAquaticEntityTypes.ANGLERFISH, HybridAquaticBiomeTags.ANGLERFISH_SPAWN_BIOMES, 6, 1, 2)
         addUndergroundFish(HybridAquaticEntityTypes.BARRELEYE, HybridAquaticBiomeTags.BARRELEYE_SPAWN_BIOMES, 5, 1, 2)
         addUndergroundFish(HybridAquaticEntityTypes.DRAGONFISH, HybridAquaticBiomeTags.DRAGONFISH_SPAWN_BIOMES, 6, 1, 1)
@@ -78,6 +77,9 @@ object EntityBiomeModifications {
         addJelly(HybridAquaticEntityTypes.MAUVE_STINGER, HybridAquaticBiomeTags.MAUVE_STINGER_SPAWN_BIOMES, 7, 1, 3)
         addJelly(HybridAquaticEntityTypes.LIONS_MANE_JELLYFISH, HybridAquaticBiomeTags.LIONS_MANE_JELLYFISH_SPAWN_BIOMES, 3, 1, 1)
 
+        //underground jellies
+        addUndergroundJelly(HybridAquaticEntityTypes.ATOLLA_JELLYFISH, HybridAquaticBiomeTags.ATOLLA_JELLYFISH_SPAWN_BIOMES, 1, 1, 1)
+
         // sharks
         addShark(HybridAquaticEntityTypes.GREAT_WHITE_SHARK, HybridAquaticBiomeTags.GREAT_WHITE_SHARK_SPAWN_BIOMES, 2, 1, 1)
         addShark(HybridAquaticEntityTypes.TIGER_SHARK, HybridAquaticBiomeTags.TIGER_SHARK_SPAWN_BIOMES, 2, 1, 1)
@@ -87,22 +89,26 @@ object EntityBiomeModifications {
         addShark(HybridAquaticEntityTypes.WHALE_SHARK, HybridAquaticBiomeTags.WHALE_SHARK_SPAWN_BIOMES, 4, 1, 1)
         addShark(HybridAquaticEntityTypes.BASKING_SHARK, HybridAquaticBiomeTags.BASKING_SHARK_SPAWN_BIOMES, 4, 1, 1)
 
-        // critters
-        addCritter(HybridAquaticEntityTypes.DUNGENESS_CRAB, HybridAquaticBiomeTags.CRAB_SPAWN_BIOMES, 7, 1, 2)
-        addCritter(HybridAquaticEntityTypes.HERMIT_CRAB, HybridAquaticBiomeTags.HERMIT_CRAB_SPAWN_BIOMES, 7, 1, 2)
-        addCritter(HybridAquaticEntityTypes.FIDDLER_CRAB, HybridAquaticBiomeTags.FIDDLER_CRAB_SPAWN_BIOMES, 7, 1, 2)
-        addCritter(HybridAquaticEntityTypes.GHOST_CRAB, HybridAquaticBiomeTags.GHOST_CRAB_SPAWN_BIOMES, 7, 1, 2)
-        addCritter(HybridAquaticEntityTypes.HORSESHOE_CRAB, HybridAquaticBiomeTags.HORSESHOE_CRAB_SPAWN_BIOMES, 7, 1, 2)
-        addCritter(HybridAquaticEntityTypes.LIGHTFOOT_CRAB, HybridAquaticBiomeTags.LIGHTFOOT_CRAB_SPAWN_BIOMES, 7, 1, 2)
-        addCritter(HybridAquaticEntityTypes.FLOWER_CRAB, HybridAquaticBiomeTags.FLOWER_CRAB_SPAWN_BIOMES, 7, 1, 2)
-        addCritter(HybridAquaticEntityTypes.VAMPIRE_CRAB, HybridAquaticBiomeTags.VAMPIRE_CRAB_SPAWN_BIOMES, 7, 1, 2)
-        addCritter(HybridAquaticEntityTypes.SPIDER_CRAB, HybridAquaticBiomeTags.SPIDER_CRAB_SPAWN_BIOMES, 7, 1, 2)
-        addCritter(HybridAquaticEntityTypes.YETI_CRAB, HybridAquaticBiomeTags.YETI_CRAB_SPAWN_BIOMES, 7, 1, 2)
-        addCritter(HybridAquaticEntityTypes.GIANT_ISOPOD, HybridAquaticBiomeTags.GIANT_ISOPOD_SPAWN_BIOMES, 7, 1, 2)
-        addCritter(HybridAquaticEntityTypes.SHRIMP, HybridAquaticBiomeTags.SHRIMP_SPAWN_BIOMES, 7, 1, 2)
-        addCritter(HybridAquaticEntityTypes.CRAYFISH, HybridAquaticBiomeTags.CRAYFISH_SPAWN_BIOMES, 7, 1, 2)
-        addCritter(HybridAquaticEntityTypes.LOBSTER, HybridAquaticBiomeTags.LOBSTER_SPAWN_BIOMES, 7, 1, 2)
-        addCritter(HybridAquaticEntityTypes.COCONUT_CRAB, HybridAquaticBiomeTags.COCONUT_CRAB_SPAWN_BIOMES, 7, 1, 2)
+        // crustaceans
+        addCrustacean(HybridAquaticEntityTypes.DUNGENESS_CRAB, HybridAquaticBiomeTags.DUNGENESS_CRAB_SPAWN_BIOMES, 7, 1, 2)
+        addCrustacean(HybridAquaticEntityTypes.HERMIT_CRAB, HybridAquaticBiomeTags.HERMIT_CRAB_SPAWN_BIOMES, 7, 1, 2)
+        addCrustacean(HybridAquaticEntityTypes.FIDDLER_CRAB, HybridAquaticBiomeTags.FIDDLER_CRAB_SPAWN_BIOMES, 7, 1, 2)
+        addCrustacean(HybridAquaticEntityTypes.GHOST_CRAB, HybridAquaticBiomeTags.GHOST_CRAB_SPAWN_BIOMES, 7, 1, 2)
+        addCrustacean(HybridAquaticEntityTypes.HORSESHOE_CRAB, HybridAquaticBiomeTags.HORSESHOE_CRAB_SPAWN_BIOMES, 7, 1, 2)
+        addCrustacean(HybridAquaticEntityTypes.LIGHTFOOT_CRAB, HybridAquaticBiomeTags.LIGHTFOOT_CRAB_SPAWN_BIOMES, 7, 1, 2)
+        addCrustacean(HybridAquaticEntityTypes.FLOWER_CRAB, HybridAquaticBiomeTags.FLOWER_CRAB_SPAWN_BIOMES, 7, 1, 2)
+        addCrustacean(HybridAquaticEntityTypes.VAMPIRE_CRAB, HybridAquaticBiomeTags.VAMPIRE_CRAB_SPAWN_BIOMES, 7, 1, 2)
+        addCrustacean(HybridAquaticEntityTypes.SHRIMP, HybridAquaticBiomeTags.SHRIMP_SPAWN_BIOMES, 7, 1, 2)
+        addCrustacean(HybridAquaticEntityTypes.CRAYFISH, HybridAquaticBiomeTags.CRAYFISH_SPAWN_BIOMES, 7, 1, 2)
+        addCrustacean(HybridAquaticEntityTypes.LOBSTER, HybridAquaticBiomeTags.LOBSTER_SPAWN_BIOMES, 7, 1, 2)
+        addCrustacean(HybridAquaticEntityTypes.COCONUT_CRAB, HybridAquaticBiomeTags.COCONUT_CRAB_SPAWN_BIOMES, 7, 1, 2)
+
+        //underground crustaceans
+        addUndergroundCrustacean(HybridAquaticEntityTypes.YETI_CRAB, HybridAquaticBiomeTags.YETI_CRAB_SPAWN_BIOMES, 7, 2, 3)
+        addUndergroundCrustacean(HybridAquaticEntityTypes.GIANT_ISOPOD, HybridAquaticBiomeTags.GIANT_ISOPOD_SPAWN_BIOMES, 5, 1, 2)
+        addUndergroundCrustacean(HybridAquaticEntityTypes.SPIDER_CRAB, HybridAquaticBiomeTags.SPIDER_CRAB_SPAWN_BIOMES, 7, 1, 2)
+
+        //critters
         addCritter(HybridAquaticEntityTypes.STARFISH, HybridAquaticBiomeTags.STARFISH_SPAWN_BIOMES, 7, 1, 3)
         addCritter(HybridAquaticEntityTypes.NUDIBRANCH, HybridAquaticBiomeTags.NUDIBRANCH_SPAWN_BIOMES, 5, 1, 2)
         addCritter(HybridAquaticEntityTypes.SEA_CUCUMBER, HybridAquaticBiomeTags.SEA_CUCUMBER_SPAWN_BIOMES, 7, 1, 3)
@@ -167,6 +173,36 @@ object EntityBiomeModifications {
         maxGroup: Int
     ) {
         add(entityType, spawnTag, HybridAquaticSpawnGroup.JELLY.spawnGroup, weight, minGroup, maxGroup)
+    }
+
+    private fun addUndergroundJelly(
+        entityType: EntityType<*>,
+        spawnTag: TagKey<Biome>,
+        weight: Int,
+        minGroup: Int,
+        maxGroup: Int
+    ) {
+        add(entityType, spawnTag, HybridAquaticSpawnGroup.JELLY_UNDERGROUND.spawnGroup, weight, minGroup, maxGroup)
+    }
+
+    private fun addCrustacean(
+        entityType: EntityType<*>,
+        spawnTag: TagKey<Biome>,
+        weight: Int,
+        minGroup: Int,
+        maxGroup: Int
+    ) {
+        add(entityType, spawnTag, HybridAquaticSpawnGroup.CRUSTACEAN.spawnGroup, weight, minGroup, maxGroup)
+    }
+
+    private fun addUndergroundCrustacean(
+        entityType: EntityType<*>,
+        spawnTag: TagKey<Biome>,
+        weight: Int,
+        minGroup: Int,
+        maxGroup: Int
+    ) {
+        add(entityType, spawnTag, HybridAquaticSpawnGroup.CRUSTACEAN_UNDERGROUND.spawnGroup, weight, minGroup, maxGroup)
     }
 
     private fun addCritter(

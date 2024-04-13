@@ -1,6 +1,7 @@
 package dev.hybridlabs.aquatic.entity.crustacean
 
 import dev.hybridlabs.aquatic.block.HybridAquaticBlocks
+import dev.hybridlabs.aquatic.tag.HybridAquaticEntityTags
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.attribute.DefaultAttributeContainer
 import net.minecraft.entity.attribute.EntityAttributes
@@ -9,7 +10,7 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 
 class YetiCrabEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>, world: World) :
-    HybridAquaticCrustaceanEntity(entityType, world, 1, false, true, true) {
+    HybridAquaticCrustaceanEntity(entityType, world, 1, false, true, true, HybridAquaticEntityTags.CRUSTACEAN_PREDATOR) {
 
     private var targetVentPos: BlockPos? = null
 
@@ -30,10 +31,6 @@ class YetiCrabEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>, 
     override fun getMinSize(): Int {
         return -5
 
-    }
-
-    override fun isSneaking(): Boolean {
-        return true
     }
 
     override fun tick() {

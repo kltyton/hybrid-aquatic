@@ -11,7 +11,9 @@ import net.minecraft.entity.data.DataTracker
 import net.minecraft.entity.data.TrackedData
 import net.minecraft.entity.data.TrackedDataHandlerRegistry
 import net.minecraft.entity.mob.WaterCreatureEntity
+import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.nbt.NbtCompound
+import net.minecraft.registry.tag.TagKey
 import net.minecraft.sound.SoundEvent
 import net.minecraft.sound.SoundEvents
 import net.minecraft.util.math.BlockPos
@@ -36,6 +38,7 @@ open class HybridAquaticCrustaceanEntity(
     open val canDig: Boolean,
     open val canDance: Boolean,
     open val canWalkOnLand: Boolean,
+    open val predator: TagKey<EntityType<*>>,
 ) : WaterCreatureEntity(type, world), GeoEntity {
     private val factory = GeckoLibUtil.createInstanceCache(this)
     private var landNavigation: EntityNavigation = createNavigation(world)
@@ -89,10 +92,11 @@ open class HybridAquaticCrustaceanEntity(
 
     override fun initGoals() {
         super.initGoals()
-        goalSelector.add(2, MoveIntoWaterGoal(this))
         goalSelector.add(1, EscapeDangerGoal(this, 0.35))
-        goalSelector.add(3, WanderAroundGoal(this, 0.35, 10))
-        goalSelector.add(5, LookAroundGoal(this))
+        goalSelector.add(2, WanderAroundGoal(this, 0.35, 10))
+        goalSelector.add(2, LookAroundGoal(this))
+        if (moistness < 1500)
+            goalSelector.add(1, MoveIntoWaterGoal(this))
     }
 
     override fun initialize(
@@ -170,6 +174,10 @@ open class HybridAquaticCrustaceanEntity(
         super.tickMovement()
     }
 
+    override fun isSneaking(): Boolean {
+        return true
+    }
+
     override fun tickWaterBreathingAir(air: Int) {}
 
     private fun getMaxMoistness(): Int {
@@ -204,7 +212,7 @@ open class HybridAquaticCrustaceanEntity(
     }
 
     override fun getAmbientSound(): SoundEvent {
-        return SoundEvents.ENTITY_TURTLE_EGG_HATCH
+        return SoundEvents.ENTITY_COD_AMBIENT
     }
 
     override fun registerControllers(controllerRegistrar: AnimatableManager.ControllerRegistrar) {
@@ -286,6 +294,22 @@ open class HybridAquaticCrustaceanEntity(
             return pos.y in bottomY..topY &&
                     world.getBlockState(pos.down()).isIn(HybridAquaticBlockTags.CRABS_SPAWN_ON) &&
                     (world.isWater(pos) || world.isAir(pos))
+        }
+
+        fun canUndergroundSpawn(
+            type: EntityType<out WaterCreatureEntity?>?,
+            world: WorldAccess,
+            reason: SpawnReason?,
+            pos: BlockPos,
+            random: Random?
+        ): Boolean {
+            val topY = world.seaLevel + 6
+            val bottomY = world.seaLevel - 48
+
+            return pos.y in bottomY..topY &&
+                    world.getBaseLightLevel(pos, 0) == 0 &&
+                    world.getBlockState(pos).isOf(Blocks.WATER) &&
+                    world.getBlockState(pos.down()).isIn(HybridAquaticBlockTags.CRABS_SPAWN_ON)
         }
 
         fun getScaleAdjustment(critter : HybridAquaticCrustaceanEntity, adjustment : Float): Float {

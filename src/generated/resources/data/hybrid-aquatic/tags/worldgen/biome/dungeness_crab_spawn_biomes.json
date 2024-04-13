@@ -4,6 +4,7 @@
     "minecraft:ocean",
     "minecraft:warm_ocean",
     "minecraft:lukewarm_ocean",
-    "minecraft:beach"
+    "minecraft:beach",
+    "minecraft:stony_shore"
   ]
 }

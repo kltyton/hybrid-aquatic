@@ -330,13 +330,6 @@ object HybridAquaticEntityTypes {
         GhostCrabEntity.createMobAttributes()
     )
 
-    val GIANT_ISOPOD = registerCrustacean(
-        "giant_isopod",
-        ::GiantIsopodEntity,
-        EntityDimensions.fixed(0.5f, 0.5f),
-        GiantIsopodEntity.createMobAttributes()
-    )
-
     val HERMIT_CRAB = registerCrustacean(
         "hermit_crab",
         ::HermitCrabEntity,
@@ -372,13 +365,6 @@ object HybridAquaticEntityTypes {
         ShrimpEntity.createMobAttributes()
     )
 
-    val SPIDER_CRAB = registerCrustacean(
-        "spider_crab",
-        ::SpiderCrabEntity,
-        EntityDimensions.fixed(0.5f, 0.5f),
-        SpiderCrabEntity.createMobAttributes()
-    )
-
     val VAMPIRE_CRAB = registerCrustacean(
         "vampire_crab",
         ::VampireCrabEntity,
@@ -386,11 +372,25 @@ object HybridAquaticEntityTypes {
         VampireCrabEntity.createMobAttributes()
     )
 
-    val YETI_CRAB = registerCrustacean(
+    val SPIDER_CRAB = registerCrustaceanUnderground(
+        "spider_crab",
+        ::SpiderCrabEntity,
+        EntityDimensions.fixed(0.5f, 0.5f),
+        SpiderCrabEntity.createMobAttributes()
+    )
+
+    val YETI_CRAB = registerCrustaceanUnderground(
         "yeti_crab",
         ::YetiCrabEntity,
         EntityDimensions.fixed(0.5f, 0.5f),
         YetiCrabEntity.createMobAttributes()
+    )
+
+    val GIANT_ISOPOD = registerCrustaceanUnderground(
+        "giant_isopod",
+        ::GiantIsopodEntity,
+        EntityDimensions.fixed(0.5f, 0.5f),
+        GiantIsopodEntity.createMobAttributes()
     )
 
     val KARKINOS = registerCrustacean(
@@ -433,7 +433,7 @@ object HybridAquaticEntityTypes {
 
     //jellyfish
 
-    val ATOLLA_JELLYFISH = registerJelly(
+    val ATOLLA_JELLYFISH = registerJellyUnderground(
         "atolla_jellyfish",
         ::AtollaJellyfishEntity,
         EntityDimensions.fixed(0.75f, 0.75f),
@@ -443,7 +443,7 @@ object HybridAquaticEntityTypes {
     val BARREL_JELLYFISH = registerJelly(
         "barrel_jellyfish",
         ::BarrelJellyfishEntity,
-        EntityDimensions.fixed(0.75f, 0.6f),
+        EntityDimensions.fixed(0.75f, 0.75f),
         BarrelJellyfishEntity.createMobAttributes()
     )
 
@@ -485,7 +485,7 @@ object HybridAquaticEntityTypes {
     val MAUVE_STINGER = registerJelly(
         "mauve_stinger",
         ::MauveStingerEntity,
-        EntityDimensions.fixed(0.25f, 0.25f),
+        EntityDimensions.fixed(0.35f, 0.35f),
         MauveStingerEntity.createMobAttributes()
     )
 
@@ -506,7 +506,7 @@ object HybridAquaticEntityTypes {
     val SEA_NETTLE = registerJelly(
         "sea_nettle",
         ::SeaNettleEntity,
-        EntityDimensions.fixed(0.75f, 0.5f),
+        EntityDimensions.fixed(0.75f, 0.75f),
         SeaNettleEntity.createMobAttributes()
     )
 
@@ -592,7 +592,16 @@ object HybridAquaticEntityTypes {
         dimensions: EntityDimensions,
         attributeContainer: DefaultAttributeContainer.Builder
     ): EntityType<T> {
-        return registerCustomSpawnGroup(id, entityFactory, dimensions, attributeContainer, HybridAquaticSpawnGroup.CRITTER)
+        return registerCustomSpawnGroup(id, entityFactory, dimensions, attributeContainer, HybridAquaticSpawnGroup.CRUSTACEAN)
+    }
+
+    private fun <T : LivingEntity> registerCrustaceanUnderground(
+        id: String,
+        entityFactory: EntityFactory<T>,
+        dimensions: EntityDimensions,
+        attributeContainer: DefaultAttributeContainer.Builder
+    ): EntityType<T> {
+        return registerCustomSpawnGroup(id, entityFactory, dimensions, attributeContainer, HybridAquaticSpawnGroup.CRUSTACEAN_UNDERGROUND)
     }
 
     private fun <T : LivingEntity> registerFish(
@@ -638,6 +647,15 @@ object HybridAquaticEntityTypes {
         attributeContainer: DefaultAttributeContainer.Builder
     ): EntityType<T> {
         return registerCustomSpawnGroup(id, entityFactory, dimensions, attributeContainer, HybridAquaticSpawnGroup.JELLY)
+    }
+
+    private fun <T : LivingEntity> registerJellyUnderground(
+        id: String,
+        entityFactory: EntityFactory<T>,
+        dimensions: EntityDimensions,
+        attributeContainer: DefaultAttributeContainer.Builder
+    ): EntityType<T> {
+        return registerCustomSpawnGroup(id, entityFactory, dimensions, attributeContainer, HybridAquaticSpawnGroup.JELLY_UNDERGROUND)
     }
 
     /**

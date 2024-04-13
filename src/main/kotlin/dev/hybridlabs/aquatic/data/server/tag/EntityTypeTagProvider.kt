@@ -405,6 +405,18 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
             .addTag(HybridAquaticEntityTags.JELLYFISH)
             .addTag(HybridAquaticEntityTags.SHARKS)
 
+        getOrCreateTagBuilder(HybridAquaticEntityTags.CRUSTACEAN_PREDATOR)
+            .add(
+                HybridAquaticEntityTypes.LIONFISH,
+                HybridAquaticEntityTypes.NEEDLEFISH,
+                HybridAquaticEntityTypes.GLOWING_SUCKER_OCTOPUS,
+                HybridAquaticEntityTypes.CUTTLEFISH,
+                HybridAquaticEntityTypes.FIREFLY_SQUID,
+                HybridAquaticEntityTypes.TRIGGERFISH,
+                HybridAquaticEntityTypes.BLUE_SPOTTED_STINGRAY,
+                HybridAquaticEntityTypes.HAMMERHEAD_SHARK,
+            )
+
         // fishes
         getOrCreateTagBuilder(HybridAquaticEntityTags.FISHES)
             .add(
