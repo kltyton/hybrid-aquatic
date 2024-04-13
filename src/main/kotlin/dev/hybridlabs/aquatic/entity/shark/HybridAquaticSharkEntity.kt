@@ -1,5 +1,6 @@
 package dev.hybridlabs.aquatic.entity.shark
 
+import dev.hybridlabs.aquatic.effect.HybridAquaticStatusEffects
 import dev.hybridlabs.aquatic.tag.HybridAquaticEntityTags
 import net.minecraft.block.Blocks
 import net.minecraft.entity.*
@@ -47,8 +48,7 @@ open class HybridAquaticSharkEntity(
     world: World,
     private val prey: TagKey<EntityType<*>>,
     private val isPassive: Boolean,
-    private val closePlayerAttack: Boolean,
-    private val revengeAttack: Boolean
+    private val closePlayerAttack: Boolean
 ) : WaterCreatureEntity(entityType, world), Angerable, GeoEntity {
     private val factory = GeckoLibUtil.createInstanceCache(this)
     private var angerTime = 0
@@ -76,7 +76,7 @@ open class HybridAquaticSharkEntity(
 
     init {
         setPathfindingPenalty(PathNodeType.WATER, 0.0f)
-        moveControl = AquaticMoveControl(this, 85, 10, 0.05F, 0.1F, true)
+        moveControl = AquaticMoveControl(this, 85, 10, 0.1F, 0.1F, true)
         lookControl = YawAdjustingLookControl(this, 10)
         navigation = SwimNavigation(this, world)
     }
@@ -100,8 +100,8 @@ open class HybridAquaticSharkEntity(
         val ANGER_TIME_RANGE: UniformIntProvider = TimeHelper.betweenSeconds(15, 60)
 
         val FLOP_ANIMATION: RawAnimation  = RawAnimation.begin().then("flop", Animation.LoopType.LOOP)
-        val ATTACK_ANIMATION: RawAnimation  = RawAnimation.begin().then("attack", Animation.LoopType.LOOP)
         val SWIM_ANIMATION: RawAnimation  = RawAnimation.begin().then("swim", Animation.LoopType.LOOP)
+        val RUSH_ANIMATION: RawAnimation  = RawAnimation.begin().then("rush", Animation.LoopType.LOOP)
 
         fun canSpawn(
             type: EntityType<out WaterCreatureEntity>,
@@ -129,9 +129,10 @@ open class HybridAquaticSharkEntity(
         goalSelector.add(4, LookAroundGoal(this))
         goalSelector.add(5, LookAtEntityGoal(this, PlayerEntity::class.java, 6.0f))
         if (!isPassive) {
-            if (revengeAttack) targetSelector.add(1, RevengeGoal(this, *arrayOfNulls(0)).setGroupRevenge(*arrayOfNulls(0)))
+            targetSelector.add(1, RevengeGoal(this))
             targetSelector.add(2, ActiveTargetGoal(this, PlayerEntity::class.java, 10, true, true) { entity: LivingEntity -> shouldAngerAt(entity) || shouldProximityAttack(entity as PlayerEntity) })
             targetSelector.add(3, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) { hunger <= 100 && it.type.isIn(prey) })
+            targetSelector.add(1, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) { it.hasStatusEffect(HybridAquaticStatusEffects.BLEEDING) && it !is HybridAquaticSharkEntity})
             targetSelector.add(3, UniversalAngerGoal(this, false))
         }
     }
@@ -171,11 +172,8 @@ open class HybridAquaticSharkEntity(
                 damage(this.damageSources.dryOut(), 1.0f)
             }
         }
-
         if (isSprinting) {
-            attributes.getCustomInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED)?.baseValue = 1.5
-           } else {
-            attributes.getCustomInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED)?.baseValue
+            attributes.getCustomInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED)?.baseValue = 2.0
         }
 
         if (world.isClient && isTouchingWater && isAttacking) {
@@ -231,8 +229,8 @@ open class HybridAquaticSharkEntity(
         if (!this.isWet) {
             event.controller.setAnimation(FLOP_ANIMATION)
 
-        } else if (this.handSwinging) {
-            event.controller.setAnimation(ATTACK_ANIMATION)
+        } else if (isAttacking) {
+            event.controller.setAnimation(RUSH_ANIMATION)
 
         } else if (isSubmergedInWater) {
                 event.controller.setAnimation(SWIM_ANIMATION)
@@ -272,16 +270,8 @@ open class HybridAquaticSharkEntity(
         return SoundEvents.ENTITY_COD_AMBIENT
     }
 
-    override fun getSplashSound(): SoundEvent {
-        return SoundEvents.ENTITY_DOLPHIN_SPLASH
-    }
-
     override fun getSwimSound(): SoundEvent {
         return SoundEvents.ENTITY_DOLPHIN_SWIM
-    }
-
-    open fun getAttackSound(): SoundEvent {
-        return SoundEvents.ENTITY_PHANTOM_BITE
     }
 
     //#endregion
@@ -380,11 +370,6 @@ open class HybridAquaticSharkEntity(
         override fun stop() {
             super.stop()
             shark.attemptAttack = false
-        }
-
-
-        companion object {
-            private const val ORIGINAL_SPEED = 3.0
         }
     }
 }

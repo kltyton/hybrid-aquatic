@@ -147,7 +147,7 @@ object HybridAquaticEntityTypes {
     val PIRANHA = registerFish(
         "piranha",
         ::PiranhaEntity,
-        EntityDimensions.fixed(0.25f, 0.25f),
+        EntityDimensions.fixed(0.35f, 0.35f),
         PiranhaEntity.createMobAttributes()
     )
 
