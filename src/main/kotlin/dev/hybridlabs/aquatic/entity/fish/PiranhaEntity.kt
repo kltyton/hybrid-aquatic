@@ -76,12 +76,4 @@ class PiranhaEntity(entityType: EntityType<out PiranhaEntity>, world: World) :
             attributes.getCustomInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED)?.baseValue = 1.5
         }
     }
-
-    override fun getMaxSize(): Int {
-        return 5
-    }
-
-    override fun getMinSize(): Int {
-        return -5
-    }
 }

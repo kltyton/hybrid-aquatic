@@ -1,5 +1,6 @@
 package dev.hybridlabs.aquatic.item
 
+import dev.hybridlabs.aquatic.entity.fish.HybridAquaticFishEntity
 import dev.hybridlabs.aquatic.tag.HybridAquaticEntityTags
 import net.minecraft.client.item.TooltipData
 import net.minecraft.entity.Entity
@@ -41,6 +42,11 @@ class FishingNetItem(settings: Settings?): Item(settings) {
                 entity.readNbt(context.stack.nbt?.getCompound(ENTITY_KEY))
                 context.stack.nbt?.remove(ENTITY_KEY)
 
+                // Set IsNetted to true if present in NBT
+                if (entity is HybridAquaticFishEntity) {
+                    entity.isNetted = true
+                }
+
                 entity.setPosition(context.hitPos)
                 world.spawnEntity(entity)
                 return ActionResult.SUCCESS
@@ -60,6 +66,7 @@ class FishingNetItem(settings: Settings?): Item(settings) {
             val entityCompound = NbtCompound()
             entity.saveNbt(entityCompound)
             entityCompound.putBoolean("PersistenceRequired", true)
+            entityCompound.putBoolean("isNetted", true)
 
             val itemStack = user.getStackInHand(hand)
             itemStack.orCreateNbt.put(ENTITY_KEY, entityCompound)

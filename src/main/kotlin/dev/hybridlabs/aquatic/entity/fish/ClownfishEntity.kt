@@ -24,14 +24,6 @@ class ClownfishEntity(entityType: EntityType<out ClownfishEntity>, world: World)
         }
     }
 
-    override fun getMaxSize(): Int {
-        return 5
-    }
-
-    override fun getMinSize(): Int {
-        return -5
-    }
-
     override fun tick() {
         super.tick()
 

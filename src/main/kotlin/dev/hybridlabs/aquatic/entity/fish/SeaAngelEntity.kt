@@ -22,12 +22,4 @@ class SeaAngelEntity(entityType: EntityType<out SeaAngelEntity>, world: World) :
     override fun shouldFlopOnLand(): Boolean {
         return false
     }
-
-    override fun getMaxSize(): Int {
-        return 5
-    }
-
-    override fun getMinSize(): Int {
-        return -5
-    }
 }

@@ -16,12 +16,4 @@ class RatfishEntity(entityType: EntityType<out RatfishEntity>, world: World) :
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.6)
         }
     }
-
-    override fun getMaxSize(): Int {
-        return 5
-    }
-
-    override fun getMinSize(): Int {
-        return -5
-    }
 }

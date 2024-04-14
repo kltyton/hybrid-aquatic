@@ -38,12 +38,4 @@ class StonefishEntity(entityType: EntityType<out StonefishEntity>, world: World)
             super.damage(source, amount)
         }
     }
-
-    override fun getMaxSize(): Int {
-        return 5
-    }
-
-    override fun getMinSize(): Int {
-        return -5
-    }
 }

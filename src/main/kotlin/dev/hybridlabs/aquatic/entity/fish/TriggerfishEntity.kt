@@ -18,12 +18,4 @@ class TriggerfishEntity(entityType: EntityType<out TriggerfishEntity>, world: Wo
                 .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 12.0)
         }
     }
-
-    override fun getMaxSize(): Int {
-        return 5
-    }
-
-    override fun getMinSize(): Int {
-        return -5
-    }
 }

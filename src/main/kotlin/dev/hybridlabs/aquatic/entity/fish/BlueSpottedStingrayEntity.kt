@@ -43,12 +43,4 @@ class BlueSpottedStingrayEntity(entityType: EntityType<out BlueSpottedStingrayEn
             super.damage(source, amount)
         }
     }
-
-    override fun getMaxSize(): Int {
-        return 5
-    }
-
-    override fun getMinSize(): Int {
-        return -5
-    }
 }

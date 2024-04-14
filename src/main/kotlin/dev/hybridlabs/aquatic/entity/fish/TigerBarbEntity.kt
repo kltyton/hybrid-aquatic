@@ -18,12 +18,4 @@ class TigerBarbEntity(entityType: EntityType<out TigerBarbEntity>, world: World)
                 .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 12.0)
         }
     }
-
-    override fun getMaxSize(): Int {
-        return 5
-    }
-
-    override fun getMinSize(): Int {
-        return -5
-    }
 }

@@ -25,7 +25,10 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.Vec3d
 import net.minecraft.util.math.random.Random
-import net.minecraft.world.*
+import net.minecraft.world.LocalDifficulty
+import net.minecraft.world.ServerWorldAccess
+import net.minecraft.world.World
+import net.minecraft.world.WorldAccess
 import software.bernie.geckolib.animatable.GeoEntity
 import software.bernie.geckolib.core.animatable.GeoAnimatable
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache
@@ -42,6 +45,7 @@ open class HybridAquaticFishEntity(
     private val variantCount: Int = 1,
     open val prey: TagKey<EntityType<*>>,
     open val predator: TagKey<EntityType<*>>,
+    open var isNetted: Boolean = false
 ) : WaterCreatureEntity(type, world), GeoEntity {
     private val factory = GeckoLibUtil.createInstanceCache(this)
     private var hunger: Int
@@ -61,10 +65,13 @@ open class HybridAquaticFishEntity(
         goalSelector.add(1, EscapeDangerGoal(this, 1.25))
         goalSelector.add(2, MoveIntoWaterGoal(this))
         goalSelector.add(2, SwimAroundGoal(this, 0.50, 6))
-        goalSelector.add(1, AttackGoal(this))
-        goalSelector.add(1, FleeEntityGoal(this, LivingEntity::class.java, 8.0f, 1.2, 1.0) {it.type.isIn(predator)})
-        goalSelector.add(2, FleeEntityGoal(this, PlayerEntity::class.java, 5.0f, 1.0, 1.0))
-        targetSelector.add(1, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) {hunger <= 1200 && it.type.isIn(prey)})
+        if (!isNetted) {
+            goalSelector.add(1, AttackGoal(this))
+            goalSelector.add(1, EscapeDangerGoal(this, 1.25))
+            goalSelector.add(1, FleeEntityGoal(this, LivingEntity::class.java, 8.0f, 1.2, 1.0) {it.type.isIn(predator)})
+            goalSelector.add(2, FleeEntityGoal(this, PlayerEntity::class.java, 5.0f, 1.0, 1.0))
+            targetSelector.add(1, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) {hunger <= 1200 && it.type.isIn(prey)})
+        }
     }
 
     override fun initDataTracker() {
@@ -253,11 +260,11 @@ open class HybridAquaticFishEntity(
     }
 
     protected open fun getMinSize(): Int {
-        return 0
+        return -3
     }
 
     protected open fun getMaxSize(): Int {
-        return 0
+        return 3
     }
 
     override fun registerControllers(controllerRegistrar: AnimatableManager.ControllerRegistrar) {

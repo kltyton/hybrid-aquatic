@@ -17,16 +17,4 @@ class GouramiEntity(entityType: EntityType<out GouramiEntity>, world: World) :
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 1.0)
         }
     }
-
-    override fun shouldFlopOnLand(): Boolean {
-        return true
-    }
-
-    override fun getMaxSize(): Int {
-        return 5
-    }
-
-    override fun getMinSize(): Int {
-        return -5
-    }
 }

@@ -13,6 +13,7 @@ class YellowfinTunaEntity(entityType: EntityType<out YellowfinTunaEntity>, world
         super.initGoals()
         goalSelector.add(5, FishJumpGoal(this, 10))
     }
+
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()
@@ -24,11 +25,5 @@ class YellowfinTunaEntity(entityType: EntityType<out YellowfinTunaEntity>, world
     }
     override fun speedModifier(): Double {
         return 0.005
-    }
-    override fun getMaxSize(): Int {
-        return 5
-    }
-    override fun getMinSize(): Int {
-        return -5
     }
 }
