@@ -1,0 +1,10 @@
+{
+  "condition": {
+    "type": "origins:origin",
+    "origin": "origins:merling",
+    "layer": "origins:origin"
+  },
+  "powers": [
+    "hybrid_aquatic:clarity"
+  ]
+}
