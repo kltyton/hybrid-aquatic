@@ -1,5 +1,6 @@
 package dev.hybridlabs.aquatic.entity.fish
 
+import dev.hybridlabs.aquatic.tag.HybridAquaticEntityTags
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.attribute.DefaultAttributeContainer
 import net.minecraft.entity.attribute.EntityAttributes
@@ -9,7 +10,7 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 
 class SeahorseEntity(entityType: EntityType<out SeahorseEntity>, world: World) :
-    HybridAquaticFishEntity(entityType, world, 6) {
+    HybridAquaticFishEntity(entityType, world, 6, HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
 
     private var targetCoralPos: BlockPos? = null
 
@@ -18,6 +19,8 @@ class SeahorseEntity(entityType: EntityType<out SeahorseEntity>, world: World) :
             return WaterCreatureEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 2.0)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.6)
+                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 1.0)
+                .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 12.0)
         }
     }
 

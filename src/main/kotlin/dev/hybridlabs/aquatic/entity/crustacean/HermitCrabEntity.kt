@@ -1,8 +1,6 @@
 package dev.hybridlabs.aquatic.entity.crustacean
 
 import dev.hybridlabs.aquatic.entity.ai.goal.CrabDigGoal
-import dev.hybridlabs.aquatic.entity.critter.HybridAquaticCritterEntity
-import net.minecraft.entity.EntityGroup
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.attribute.DefaultAttributeContainer
 import net.minecraft.entity.attribute.EntityAttributes
@@ -12,8 +10,8 @@ import software.bernie.geckolib.core.animatable.GeoAnimatable
 import software.bernie.geckolib.core.animation.AnimationState
 import software.bernie.geckolib.core.`object`.PlayState
 
-class HermitCrabEntity(entityType: EntityType<out HybridAquaticCritterEntity>, world: World) :
-    HybridAquaticCrabEntity(entityType, world) {
+class HermitCrabEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>, world: World) :
+    HybridAquaticCrustaceanEntity(entityType, world, 1, true, false, true) {
 
     private var isHiding: Boolean = false
     private var hidingTimer: Int = 0
@@ -33,10 +31,6 @@ class HermitCrabEntity(entityType: EntityType<out HybridAquaticCritterEntity>, w
     override fun initGoals() {
         super.initGoals()
         goalSelector.add(3, CrabDigGoal(this, 0.05))
-    }
-
-    override fun getGroup(): EntityGroup? {
-        return EntityGroup.ARTHROPOD
     }
 
     override fun getMaxSize(): Int {

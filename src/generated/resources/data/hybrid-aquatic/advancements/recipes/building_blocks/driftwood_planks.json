@@ -1,13 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_driftwood_log": {
+    "has_logs": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "hybrid-aquatic:driftwood_log"
-            ]
+            "tag": "hybrid-aquatic:driftwood_log_wood"
           }
         ]
       },
@@ -22,7 +20,7 @@
   },
   "requirements": [
     [
-      "has_driftwood_log",
+      "has_logs",
       "has_the_recipe"
     ]
   ],
