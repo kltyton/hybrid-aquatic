@@ -125,6 +125,20 @@ class RecipeProvider(output: FabricDataOutput) : FabricRecipeProvider(output) {
             .criterion("string", InventoryChangedCriterion.Conditions.items(Items.STRING))
             .offerTo(exporter)
 
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, HybridAquaticItems.GLOW_SLIME)
+            .input(Items.SLIME_BALL)
+            .input(Items.GLOW_INK_SAC)
+            .criterion("has_slime_ball", InventoryChangedCriterion.Conditions.items(Items.SLIME_BALL))
+            .criterion("has_glow_ink_sac", InventoryChangedCriterion.Conditions.items(Items.GLOW_INK_SAC))
+            .offerTo(exporter)
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, HybridAquaticItems.GLOWSTICK)
+            .input(Items.STICK)
+            .input(HybridAquaticItems.GLOW_SLIME)
+            .criterion("has_stick", InventoryChangedCriterion.Conditions.items(Items.STICK))
+            .criterion("has_glow_slime", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.GLOW_SLIME))
+            .offerTo(exporter)
+
         ShapelessRecipeJsonBuilder.create(RecipeCategory.TOOLS, HybridAquaticItems.GLOWING_HOOK)
             .input(HybridAquaticItems.BARBED_HOOK)
             .input(HybridAquaticItems.GLOW_SLIME)
