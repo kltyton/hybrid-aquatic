@@ -39,6 +39,7 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             "willowshine" to "\"Beware the fish girl\n-Willowshine",
             "warranty" to "\"We've been trying to reach you about your car's extended warranty",
             "poke" to "\"I like cheese\n-Poke",
+            "one_piece" to "\"THE ONE PIECE IS REAL\n-Poke",
 
         ).forEach { (id, translation) -> builder.add(SeaMessage(id).translationKey, translation) }
 
