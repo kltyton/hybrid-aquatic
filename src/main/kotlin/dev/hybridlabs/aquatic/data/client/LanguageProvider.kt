@@ -183,6 +183,7 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             HybridAquaticItems.MAGNETIC_HOOK.translationKey to "Increases treasure chance",
             HybridAquaticItems.OMINOUS_HOOK.translationKey to "Summons Karkinos",
             HybridAquaticBlocks.HYBRID_CRATE.translationKey to "Break with an axe to open",
+            HybridAquaticBlocks.DRIFTWOOD_CRATE.translationKey to "Break with an axe to open",
             HybridAquaticBlocks.OAK_CRATE.translationKey to "Break with an axe to open",
             HybridAquaticBlocks.SPRUCE_CRATE.translationKey to "Break with an axe to open",
             HybridAquaticBlocks.BIRCH_CRATE.translationKey to "Break with an axe to open",
@@ -207,7 +208,8 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
         mapOf(
             "glowing" to "Glowing",
             "clarity" to "Clarity",
-            "thalassophobia" to "Thalassophobia"
+            "thalassophobia" to "Thalassophobia",
+            "bleeding" to "Bleeding"
         ).forEach { (potion, translation) ->
             builder.add("item.minecraft.potion.effect.$potion", "Potion of $translation")
             builder.add("item.minecraft.splash_potion.effect.$potion", "Splash Potion of $translation")
