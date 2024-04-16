@@ -35,6 +35,10 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             "kaupenjoe" to "\"It is better to sail the seven sea, than to get STDs\n-Kaupenjoe",
             "catpenjoe" to "\"If you wanna get a catgirl, you first have to become a catboy.\n-Catpenjoe",
             "fishenjoe" to "\"Give a man a fish and you'll feed him for a day,\nkill a man and you'll have one less homeless person begging you for fish.\n-Fishenjoe",
+            "loss" to "\"| ||\n|| |_",
+            "willowshine" to "\"Beware the fish girl\n-Willowshine",
+            "warranty" to "\"We've been trying to reach you about your car's extended warranty",
+            "poke" to "\"I like cheese\n-Poke",
 
         ).forEach { (id, translation) -> builder.add(SeaMessage(id).translationKey, translation) }
 
