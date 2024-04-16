@@ -59,15 +59,18 @@ open class HybridAquaticMinibossEntity(type: EntityType<out HybridAquaticMinibos
     override fun writeCustomDataToNbt(nbt: NbtCompound) {
         super.writeCustomDataToNbt(nbt)
         nbt.putInt(MOISTNESS_KEY, moistness)
+        nbt.putBoolean("FromFishingNet", fromFishingNet)
     }
 
     open fun shouldFlopOnLand(): Boolean {
         return false
     }
 
+    private var fromFishingNet = false
     override fun readCustomDataFromNbt(nbt: NbtCompound) {
         super.readCustomDataFromNbt(nbt)
         moistness = nbt.getInt(MOISTNESS_KEY)
+        fromFishingNet = nbt.getBoolean("FromFishingNet")
     }
 
     private var moistness: Int
@@ -100,8 +103,11 @@ open class HybridAquaticMinibossEntity(type: EntityType<out HybridAquaticMinibos
         return factory
     }
 
-    internal class AttackGoal(private val miniboss: HybridAquaticMinibossEntity) :
-        MeleeAttackGoal(miniboss, 1.0, true) {
+    internal class AttackGoal(private val miniboss: HybridAquaticMinibossEntity) : MeleeAttackGoal(miniboss, 1.0, true) {
+        override fun canStart(): Boolean {
+            return !miniboss.fromFishingNet && super.canStart()
+        }
+
         override fun attack(target: LivingEntity, squaredDistance: Double) {
             val d = getSquaredMaxAttackDistance(target)
             if (squaredDistance <= d && this.isCooledDown) {

@@ -88,9 +88,9 @@ open class HybridAquaticCephalopodEntity(
     override fun initGoals() {
         goalSelector.add(2, SwimGoal(this))
         goalSelector.add(2, SwimToRandomPlaceGoal(this, 0.50, 6))
-        goalSelector.add(1, FleeEntityGoal(this, LivingEntity::class.java, 8.0f, 1.2, 1.0) {it.type.isIn(predator)})
-        goalSelector.add(1, FleeEntityGoal(this, PlayerEntity::class.java, 5.0f, 1.0, 1.0))
-        targetSelector.add(1, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) {hunger <= 1200 && it.type.isIn(prey)})
+        goalSelector.add(1, FleeEntityGoal(this, LivingEntity::class.java, 8.0f, 1.2, 1.0) { !fromFishingNet && it.type.isIn(predator) })
+        goalSelector.add(1, FleeEntityGoal(this, PlayerEntity::class.java, 5.0f, 1.0, 1.0) { !fromFishingNet })
+        targetSelector.add(1, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) { hunger <= 1200 && it.type.isIn(prey) })
     }
 
     override fun initDataTracker() {
@@ -440,14 +440,17 @@ open class HybridAquaticCephalopodEntity(
         nbt.putInt(VARIANT_KEY, variant)
         nbt.putInt(CEPHALOPOD_SIZE_KEY, size)
         nbt.putInt(HUNGER_KEY, hunger)
+        nbt.putBoolean("FromFishingNet", fromFishingNet)
     }
 
+    private var fromFishingNet = false
     override fun readCustomDataFromNbt(nbt: NbtCompound) {
         super.readCustomDataFromNbt(nbt)
         moistness = nbt.getInt(MOISTNESS_KEY)
         variant = nbt.getInt(VARIANT_KEY).coerceAtLeast(0).coerceAtMost(variantCount-1)
         size = nbt.getInt(CEPHALOPOD_SIZE_KEY)
         hunger = nbt.getInt(HUNGER_KEY)
+        fromFishingNet = nbt.getBoolean("FromFishingNet")
     }
 
     internal class SwimToRandomPlaceGoal(private val cephalopod: HybridAquaticCephalopodEntity, d: Double, i: Int) :
@@ -458,6 +461,10 @@ open class HybridAquaticCephalopodEntity(
     }
 
     internal class AttackGoal(private val cephalopod: HybridAquaticCephalopodEntity) : MeleeAttackGoal(cephalopod, 1.0,true) {
+        override fun canStart(): Boolean {
+            return !cephalopod.fromFishingNet && super.canStart()
+        }
+
         override fun attack(target: LivingEntity, squaredDistance: Double) {
             val d = getSquaredMaxAttackDistance(target)
             if (squaredDistance <= d && this.isCooledDown) {

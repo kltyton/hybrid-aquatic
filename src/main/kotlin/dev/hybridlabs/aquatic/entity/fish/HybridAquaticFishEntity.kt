@@ -25,10 +25,7 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.Vec3d
 import net.minecraft.util.math.random.Random
-import net.minecraft.world.LocalDifficulty
-import net.minecraft.world.ServerWorldAccess
-import net.minecraft.world.World
-import net.minecraft.world.WorldAccess
+import net.minecraft.world.*
 import software.bernie.geckolib.animatable.GeoEntity
 import software.bernie.geckolib.core.animatable.GeoAnimatable
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache
@@ -45,7 +42,6 @@ open class HybridAquaticFishEntity(
     private val variantCount: Int = 1,
     open val prey: TagKey<EntityType<*>>,
     open val predator: TagKey<EntityType<*>>,
-    open var isNetted: Boolean = false
 ) : WaterCreatureEntity(type, world), GeoEntity {
     private val factory = GeckoLibUtil.createInstanceCache(this)
     private var hunger: Int
@@ -65,13 +61,10 @@ open class HybridAquaticFishEntity(
         goalSelector.add(1, EscapeDangerGoal(this, 1.25))
         goalSelector.add(2, MoveIntoWaterGoal(this))
         goalSelector.add(2, SwimAroundGoal(this, 0.50, 6))
-        if (!isNetted) {
-            goalSelector.add(1, AttackGoal(this))
-            goalSelector.add(1, EscapeDangerGoal(this, 1.25))
-            goalSelector.add(1, FleeEntityGoal(this, LivingEntity::class.java, 8.0f, 1.2, 1.0) {it.type.isIn(predator)})
-            goalSelector.add(2, FleeEntityGoal(this, PlayerEntity::class.java, 5.0f, 1.0, 1.0))
-            targetSelector.add(1, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) {hunger <= 1200 && it.type.isIn(prey)})
-        }
+        goalSelector.add(1, AttackGoal(this))
+        goalSelector.add(1, FleeEntityGoal(this, LivingEntity::class.java, 8.0f, 1.2, 1.0) { !fromFishingNet && it.type.isIn(predator) })
+        goalSelector.add(2, FleeEntityGoal(this, PlayerEntity::class.java, 5.0f, 1.0, 1.0) { !fromFishingNet })
+        targetSelector.add(1, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) { hunger <= 1200 && it.type.isIn(prey) })
     }
 
     override fun initDataTracker() {
@@ -165,18 +158,21 @@ open class HybridAquaticFishEntity(
         nbt.putInt(VARIANT_KEY, variant)
         nbt.putInt(FISH_SIZE_KEY, size)
         nbt.putInt(HUNGER_KEY, hunger)
+        nbt.putBoolean("FromFishingNet", fromFishingNet)
     }
 
     open fun shouldFlopOnLand(): Boolean {
         return true
     }
 
+    private var fromFishingNet = false
     override fun readCustomDataFromNbt(nbt: NbtCompound) {
         super.readCustomDataFromNbt(nbt)
         moistness = nbt.getInt(MOISTNESS_KEY)
         variant = nbt.getInt(VARIANT_KEY).coerceAtLeast(0).coerceAtMost(variantCount-1)
         size = nbt.getInt(FISH_SIZE_KEY)
         hunger = nbt.getInt(HUNGER_KEY)
+        fromFishingNet = nbt.getBoolean("FromFishingNet")
     }
 
     open fun <E : GeoAnimatable> predicate(event: AnimationState<E>): PlayState {
@@ -260,11 +256,11 @@ open class HybridAquaticFishEntity(
     }
 
     protected open fun getMinSize(): Int {
-        return -3
+        return 0
     }
 
     protected open fun getMaxSize(): Int {
-        return 3
+        return 0
     }
 
     override fun registerControllers(controllerRegistrar: AnimatableManager.ControllerRegistrar) {
@@ -341,6 +337,10 @@ open class HybridAquaticFishEntity(
     }
 
     internal class AttackGoal(private val fish: HybridAquaticFishEntity) : MeleeAttackGoal(fish, 1.0,true) {
+        override fun canStart(): Boolean {
+            return !fish.fromFishingNet && super.canStart()
+        }
+
         override fun attack(target: LivingEntity, squaredDistance: Double) {
             val d = getSquaredMaxAttackDistance(target)
             if (squaredDistance <= d && this.isCooledDown) {
