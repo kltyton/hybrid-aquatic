@@ -215,14 +215,17 @@ open class HybridAquaticSharkEntity(
         nbt.putInt(MOISTNESS_KEY, moistness)
         nbt.putInt(HUNGER_KEY, hunger)
         nbt.putInt(SHARK_SIZE_KEY, size)
+        nbt.putBoolean("FromFishingNet", fromFishingNet)
     }
 
+    private var fromFishingNet = false
     override fun readCustomDataFromNbt(nbt: NbtCompound) {
         super.readCustomDataFromNbt(nbt)
         this.readAngerFromNbt(this.world, nbt)
         moistness = nbt.getInt(MOISTNESS_KEY)
         hunger = nbt.getInt(HUNGER_KEY)
         size = nbt.getInt(SHARK_SIZE_KEY)
+        fromFishingNet = nbt.getBoolean("FromFishingNet")
     }
 
     open fun <E : GeoAnimatable> predicate(event: AnimationState<E>): PlayState {
@@ -345,6 +348,10 @@ open class HybridAquaticSharkEntity(
     }
 
     internal class AttackGoal(private val shark: HybridAquaticSharkEntity) : MeleeAttackGoal(shark, 1.5,true) {
+        override fun canStart(): Boolean {
+            return !shark.fromFishingNet && super.canStart()
+        }
+
         override fun attack(target: LivingEntity, squaredDistance: Double) {
             val d = getSquaredMaxAttackDistance(target)
             if (squaredDistance <= d && this.isCooledDown) {

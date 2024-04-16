@@ -60,7 +60,7 @@ class FishingNetItem(settings: Settings?): Item(settings) {
             val entityCompound = NbtCompound()
             entity.saveNbt(entityCompound)
             entityCompound.putBoolean("PersistenceRequired", true)
-
+            entityCompound.putBoolean("FromFishingNet", true)
             val itemStack = user.getStackInHand(hand)
             itemStack.orCreateNbt.put(ENTITY_KEY, entityCompound)
         }

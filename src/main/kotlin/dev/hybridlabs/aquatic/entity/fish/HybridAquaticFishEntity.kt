@@ -62,9 +62,9 @@ open class HybridAquaticFishEntity(
         goalSelector.add(2, MoveIntoWaterGoal(this))
         goalSelector.add(2, SwimAroundGoal(this, 0.50, 6))
         goalSelector.add(1, AttackGoal(this))
-        goalSelector.add(1, FleeEntityGoal(this, LivingEntity::class.java, 8.0f, 1.2, 1.0) {it.type.isIn(predator)})
-        goalSelector.add(2, FleeEntityGoal(this, PlayerEntity::class.java, 5.0f, 1.0, 1.0))
-        targetSelector.add(1, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) {hunger <= 1200 && it.type.isIn(prey)})
+        goalSelector.add(1, FleeEntityGoal(this, LivingEntity::class.java, 8.0f, 1.2, 1.0) { !fromFishingNet && it.type.isIn(predator) })
+        goalSelector.add(2, FleeEntityGoal(this, PlayerEntity::class.java, 5.0f, 1.0, 1.0) { !fromFishingNet })
+        targetSelector.add(1, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) { hunger <= 1200 && it.type.isIn(prey) })
     }
 
     override fun initDataTracker() {
@@ -158,18 +158,21 @@ open class HybridAquaticFishEntity(
         nbt.putInt(VARIANT_KEY, variant)
         nbt.putInt(FISH_SIZE_KEY, size)
         nbt.putInt(HUNGER_KEY, hunger)
+        nbt.putBoolean("FromFishingNet", fromFishingNet)
     }
 
     open fun shouldFlopOnLand(): Boolean {
         return true
     }
 
+    private var fromFishingNet = false
     override fun readCustomDataFromNbt(nbt: NbtCompound) {
         super.readCustomDataFromNbt(nbt)
         moistness = nbt.getInt(MOISTNESS_KEY)
         variant = nbt.getInt(VARIANT_KEY).coerceAtLeast(0).coerceAtMost(variantCount-1)
         size = nbt.getInt(FISH_SIZE_KEY)
         hunger = nbt.getInt(HUNGER_KEY)
+        fromFishingNet = nbt.getBoolean("FromFishingNet")
     }
 
     open fun <E : GeoAnimatable> predicate(event: AnimationState<E>): PlayState {
@@ -334,6 +337,10 @@ open class HybridAquaticFishEntity(
     }
 
     internal class AttackGoal(private val fish: HybridAquaticFishEntity) : MeleeAttackGoal(fish, 1.0,true) {
+        override fun canStart(): Boolean {
+            return !fish.fromFishingNet && super.canStart()
+        }
+
         override fun attack(target: LivingEntity, squaredDistance: Double) {
             val d = getSquaredMaxAttackDistance(target)
             if (squaredDistance <= d && this.isCooledDown) {
