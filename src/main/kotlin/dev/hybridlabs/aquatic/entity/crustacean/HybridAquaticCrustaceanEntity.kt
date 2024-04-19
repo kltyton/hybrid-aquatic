@@ -183,6 +183,21 @@ open class HybridAquaticCrustaceanEntity(
         return SoundEvents.ENTITY_COD_AMBIENT
     }
 
+    override fun tickWaterBreathingAir(air: Int) {}
+
+    override fun canBreatheInWater(): Boolean {
+        return true
+    }
+
+    override fun getLimitPerChunk(): Int {
+        return 8
+    }
+
+    override fun canImmediatelyDespawn(distanceSquared: Double): Boolean {
+        return !hasCustomName()
+    }
+
+
     override fun registerControllers(controllerRegistrar: AnimatableManager.ControllerRegistrar) {
         controllerRegistrar.add(
             AnimationController(
