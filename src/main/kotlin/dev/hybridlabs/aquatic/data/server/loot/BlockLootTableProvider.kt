@@ -7,6 +7,7 @@ import dev.hybridlabs.aquatic.data.HybridAquaticDataGenerator.filterHybridAquati
 import dev.hybridlabs.aquatic.loot.HybridAquaticLootTables
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider
+import net.minecraft.block.Blocks
 import net.minecraft.item.BlockItem.BLOCK_ENTITY_TAG_KEY
 import net.minecraft.item.Items
 import net.minecraft.item.WrittenBookItem.*
@@ -34,7 +35,6 @@ class BlockLootTableProvider(output: FabricDataOutput) : FabricBlockLootTablePro
         }
 
         //region wood
-
         addDrop(HybridAquaticBlocks.DRIFTWOOD_LOG)
         addDrop(HybridAquaticBlocks.DRIFTWOOD_WOOD)
         addDrop(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_LOG)
@@ -48,6 +48,26 @@ class BlockLootTableProvider(output: FabricDataOutput) : FabricBlockLootTablePro
         addDrop(HybridAquaticBlocks.DRIFTWOOD_FENCE_GATE)
         addDrop(HybridAquaticBlocks.DRIFTWOOD_SLAB, slabDrops(HybridAquaticBlocks.DRIFTWOOD_SLAB))
         addDrop(HybridAquaticBlocks.DRIFTWOOD_DOOR, doorDrops(HybridAquaticBlocks.DRIFTWOOD_DOOR))
+
+        addDrop(HybridAquaticBlocks.GLOWSTICK)
+        addDrop(Blocks.TORCH)
+
+        //endregion
+
+        //region corals
+        addDropWithSilkTouch(HybridAquaticBlocks.LOPHELIA_CORAL_BLOCK)
+        addDropWithSilkTouch(HybridAquaticBlocks.DEAD_LOPHELIA_CORAL_BLOCK)
+        addDropWithSilkTouch(HybridAquaticBlocks.LOPHELIA_CORAL)
+        addDropWithSilkTouch(HybridAquaticBlocks.DEAD_LOPHELIA_CORAL)
+        addDropWithSilkTouch(HybridAquaticBlocks.LOPHELIA_CORAL_FAN)
+        addDropWithSilkTouch(HybridAquaticBlocks.DEAD_LOPHELIA_CORAL_FAN)
+
+        addDropWithSilkTouch(HybridAquaticBlocks.THORN_CORAL_BLOCK)
+        addDropWithSilkTouch(HybridAquaticBlocks.DEAD_THORN_CORAL_BLOCK)
+        addDropWithSilkTouch(HybridAquaticBlocks.THORN_CORAL)
+        addDropWithSilkTouch(HybridAquaticBlocks.DEAD_THORN_CORAL)
+        addDropWithSilkTouch(HybridAquaticBlocks.THORN_CORAL_FAN)
+        addDropWithSilkTouch(HybridAquaticBlocks.DEAD_THORN_CORAL_FAN)
 
         //endregion
 
