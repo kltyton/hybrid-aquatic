@@ -4,14 +4,15 @@ import net.minecraft.block.*
 import net.minecraft.fluid.FluidState
 import net.minecraft.fluid.Fluids
 import net.minecraft.item.ItemPlacementContext
-import net.minecraft.particle.ParticleTypes.BUBBLE_COLUMN_UP
+import net.minecraft.particle.ParticleTypes.GLOW
+import net.minecraft.registry.tag.FluidTags
 import net.minecraft.state.StateManager
 import net.minecraft.state.property.Properties
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
 import net.minecraft.world.WorldAccess
 
-class GlowstickBlock(settings: Settings) : TorchBlock(settings, BUBBLE_COLUMN_UP), Waterloggable {
+class GlowstickBlock(settings: Settings) : TorchBlock(settings, GLOW), Waterloggable {
     init {
         defaultState = stateManager.defaultState.with(Properties.WATERLOGGED, false)
     }
