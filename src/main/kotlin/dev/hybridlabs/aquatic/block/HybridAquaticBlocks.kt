@@ -9,7 +9,6 @@ import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.block.enums.Instrument
 import net.minecraft.block.piston.PistonBehavior
-import net.minecraft.particle.ParticleTypes.GLOW
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.sound.BlockSoundGroup
