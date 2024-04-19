@@ -11,8 +11,9 @@ import net.minecraft.state.property.Properties
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
 import net.minecraft.world.WorldAccess
+import net.minecraft.world.WorldView
 
-class GlowstickBlock(settings: Settings) : TorchBlock(settings, GLOW), Waterloggable {
+class WallGlowstickBlock(settings: Settings) : WallTorchBlock(settings, GLOW), Waterloggable {
     init {
         defaultState = stateManager.defaultState.with(Properties.WATERLOGGED, false)
     }
@@ -42,12 +43,6 @@ class GlowstickBlock(settings: Settings) : TorchBlock(settings, GLOW), Waterlogg
     }
 
     override fun appendProperties(builder: StateManager.Builder<Block, BlockState>) {
-        builder.add(Properties.WATERLOGGED)
-    }
-
-    companion object {
-        fun luminance(state: BlockState): Int {
-            return if (state.get(Properties.WATERLOGGED)) 14 else 0
-        }
+        super.appendProperties(builder.add(Properties.WATERLOGGED))
     }
 }

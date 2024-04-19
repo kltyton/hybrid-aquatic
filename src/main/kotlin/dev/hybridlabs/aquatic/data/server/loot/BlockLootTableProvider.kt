@@ -4,10 +4,14 @@ import dev.hybridlabs.aquatic.block.HybridAquaticBlocks
 import dev.hybridlabs.aquatic.block.entity.MessageInABottleBlockEntity.Companion.MESSAGE_KEY
 import dev.hybridlabs.aquatic.block.entity.MessageInABottleBlockEntity.Companion.VARIANT_KEY
 import dev.hybridlabs.aquatic.data.HybridAquaticDataGenerator.filterHybridAquatic
+import dev.hybridlabs.aquatic.item.HybridAquaticItems
 import dev.hybridlabs.aquatic.loot.HybridAquaticLootTables
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider
 import net.minecraft.block.Blocks
+import net.minecraft.block.CoralWallFanBlock
+import net.minecraft.block.DeadCoralWallFanBlock
+import net.minecraft.block.WallTorchBlock
 import net.minecraft.item.BlockItem.BLOCK_ENTITY_TAG_KEY
 import net.minecraft.item.Items
 import net.minecraft.item.WrittenBookItem.*
@@ -50,7 +54,6 @@ class BlockLootTableProvider(output: FabricDataOutput) : FabricBlockLootTablePro
         addDrop(HybridAquaticBlocks.DRIFTWOOD_DOOR, doorDrops(HybridAquaticBlocks.DRIFTWOOD_DOOR))
 
         addDrop(HybridAquaticBlocks.GLOWSTICK)
-        addDrop(Blocks.TORCH)
 
         //endregion
 
@@ -251,7 +254,10 @@ class BlockLootTableProvider(output: FabricDataOutput) : FabricBlockLootTablePro
         // generate remaining drops
         Registries.BLOCK
             .filter(filterHybridAquatic(Registries.BLOCK))
-            .filter { block -> block.lootTableId !in lootTables }
+            .filter { block ->
+                block !is WallTorchBlock && block !is DeadCoralWallFanBlock
+                        && block.lootTableId !in lootTables
+            }
             .forEach(::addDrop)
     }
 }
