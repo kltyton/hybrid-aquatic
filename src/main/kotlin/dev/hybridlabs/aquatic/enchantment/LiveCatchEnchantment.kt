@@ -41,7 +41,13 @@ class LiveCatchEnchantment : Enchantment(Rarity.RARE, EnchantmentTarget.FISHING_
             HybridAquaticItems.COWFISH to HybridAquaticEntityTypes.COWFISH,
             HybridAquaticItems.TRIGGERFISH to HybridAquaticEntityTypes.TRIGGERFISH,
             HybridAquaticItems.TIGER_BARB to HybridAquaticEntityTypes.TIGER_BARB,
-            HybridAquaticItems.OSCAR to HybridAquaticEntityTypes.OSCAR,
+            HybridAquaticItems.BETTA to HybridAquaticEntityTypes.BETTA,
+            HybridAquaticItems.TETRA to HybridAquaticEntityTypes.TETRA,
+            HybridAquaticItems.DANIO to HybridAquaticEntityTypes.ZEBRA_DANIO,
+            HybridAquaticItems.DISCUS to HybridAquaticEntityTypes.DISCUS,
+            HybridAquaticItems.RATFISH to HybridAquaticEntityTypes.RATFISH,
+            HybridAquaticItems.FLASHLIGHT_FISH to HybridAquaticEntityTypes.FLASHLIGHT_FISH,
+            HybridAquaticItems.GOURAMI to HybridAquaticEntityTypes.GOURAMI,
         )
     }
 }
