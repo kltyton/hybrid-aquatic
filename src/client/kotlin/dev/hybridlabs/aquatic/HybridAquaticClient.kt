@@ -96,6 +96,7 @@ object HybridAquaticClient : ClientModInitializer {
             HybridAquaticBlocks.DEAD_THORN_CORAL_WALL_FAN,
             HybridAquaticBlocks.DRIFTWOOD_DOOR,
             HybridAquaticBlocks.DRIFTWOOD_TRAPDOOR,
+            HybridAquaticBlocks.COCONUT_PALM_LEAVES,
             HybridAquaticBlocks.GLOWSTICK,
             HybridAquaticBlocks.WALL_GLOWSTICK,
         )

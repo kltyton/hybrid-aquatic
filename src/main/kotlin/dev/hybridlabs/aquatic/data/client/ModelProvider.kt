@@ -63,6 +63,7 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
             HybridAquaticBlocks.ACACIA_CRATE,
             HybridAquaticBlocks.MANGROVE_CRATE,
             HybridAquaticBlocks.CHERRY_CRATE,
+            HybridAquaticBlocks.COCONUT_PALM_LEAVES
         ).forEach(generator::registerSimpleCubeAll)
 
         // wood
@@ -82,6 +83,20 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
         driftwoodPool.pressurePlate(HybridAquaticBlocks.DRIFTWOOD_PRESSURE_PLATE)
         driftwoodPool.fence(HybridAquaticBlocks.DRIFTWOOD_FENCE)
         driftwoodPool.fenceGate(HybridAquaticBlocks.DRIFTWOOD_FENCE_GATE)
+
+        val coconutPalmPool = registerCubeAllModelTexturePool(HybridAquaticBlocks.COCONUT_PALM_PLANKS)
+
+        registerLog(HybridAquaticBlocks.COCONUT_PALM_LOG).log(HybridAquaticBlocks.COCONUT_PALM_LOG)
+            .wood(HybridAquaticBlocks.COCONUT_PALM_WOOD)
+        registerLog(HybridAquaticBlocks.STRIPPED_COCONUT_PALM_LOG).log(HybridAquaticBlocks.STRIPPED_COCONUT_PALM_LOG)
+            .wood(HybridAquaticBlocks.STRIPPED_COCONUT_PALM_WOOD)
+
+        coconutPalmPool.stairs(HybridAquaticBlocks.COCONUT_PALM_STAIRS)
+        coconutPalmPool.slab(HybridAquaticBlocks.COCONUT_PALM_SLAB)
+        coconutPalmPool.button(HybridAquaticBlocks.COCONUT_PALM_BUTTON)
+        coconutPalmPool.pressurePlate(HybridAquaticBlocks.COCONUT_PALM_PRESSURE_PLATE)
+        coconutPalmPool.fence(HybridAquaticBlocks.COCONUT_PALM_FENCE)
+        coconutPalmPool.fenceGate(HybridAquaticBlocks.COCONUT_PALM_FENCE_GATE)
 
         registerTorch(HybridAquaticBlocks.GLOWSTICK, HybridAquaticBlocks.WALL_GLOWSTICK)
 

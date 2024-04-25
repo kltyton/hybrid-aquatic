@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "hybrid-aquatic:block/coconut_palm_log",
+    "side": "hybrid-aquatic:block/coconut_palm_log"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "hybrid-aquatic:block/coconut_palm_slab"
+    },
+    "type=double": {
+      "model": "hybrid-aquatic:block/coconut_palm_planks"
+    },
+    "type=top": {
+      "model": "hybrid-aquatic:block/coconut_palm_slab_top"
+    }
+  }
+}
