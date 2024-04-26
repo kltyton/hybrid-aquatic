@@ -3,13 +3,13 @@ package dev.hybridlabs.aquatic.block
 import com.google.common.collect.ImmutableSet
 import dev.hybridlabs.aquatic.HybridAquatic
 import dev.hybridlabs.aquatic.block.wood.HybridAquaticWoodTypes
+import dev.hybridlabs.aquatic.world.tree.CoconutPalmSaplingGenerator
 import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
 import net.minecraft.block.*
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.block.enums.Instrument
 import net.minecraft.block.piston.PistonBehavior
-import net.minecraft.particle.ParticleTypes.GLOW
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.sound.BlockSoundGroup
@@ -99,6 +99,7 @@ object HybridAquaticBlocks {
     val DRIFTWOOD_DOOR = register("driftwood_door", DoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_DOOR), BlockSetType.OAK))
     val DRIFTWOOD_TRAPDOOR = register("driftwood_trapdoor", TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_TRAPDOOR), BlockSetType.OAK))
 
+    val COCONUT_PALM_SAPLING = register("coconut_palm_sapling", SaplingBlock(CoconutPalmSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)))
     val COCONUT_PALM_LOG = register("coconut_palm_log", PillarBlock(FabricBlockSettings.copyOf((Blocks.OAK_PLANKS))))
     val STRIPPED_COCONUT_PALM_LOG = register("stripped_coconut_palm_log", PillarBlock(FabricBlockSettings.copyOf((Blocks.OAK_PLANKS))))
     val COCONUT_PALM_WOOD = register("coconut_palm_wood", PillarBlock(FabricBlockSettings.copyOf((Blocks.OAK_PLANKS))))

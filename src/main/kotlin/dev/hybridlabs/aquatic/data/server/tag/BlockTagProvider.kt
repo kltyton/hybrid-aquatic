@@ -64,6 +64,10 @@ class BlockTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             .add(HybridAquaticBlocks.DRIFTWOOD_WOOD)
             .add(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_LOG)
             .add(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_WOOD)
+            .add(HybridAquaticBlocks.COCONUT_PALM_LOG)
+            .add(HybridAquaticBlocks.COCONUT_PALM_WOOD)
+            .add(HybridAquaticBlocks.STRIPPED_COCONUT_PALM_LOG)
+            .add(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_WOOD)
 
         getOrCreateTagBuilder(BlockTags.CORAL_BLOCKS)
             .add(HybridAquaticBlocks.LOPHELIA_CORAL_BLOCK)

@@ -99,6 +99,7 @@ object HybridAquaticClient : ClientModInitializer {
             HybridAquaticBlocks.COCONUT_PALM_LEAVES,
             HybridAquaticBlocks.GLOWSTICK,
             HybridAquaticBlocks.WALL_GLOWSTICK,
+            HybridAquaticBlocks.COCONUT_PALM_SAPLING,
         )
     }
 

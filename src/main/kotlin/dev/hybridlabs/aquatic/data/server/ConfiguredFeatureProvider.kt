@@ -11,11 +11,15 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider
 import net.minecraft.registry.RegistryWrapper
 import net.minecraft.state.property.Properties
+import net.minecraft.util.math.intprovider.ConstantIntProvider
 import net.minecraft.world.gen.CountConfig
 import net.minecraft.world.gen.blockpredicate.BlockPredicate
 import net.minecraft.world.gen.feature.*
+import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize
+import net.minecraft.world.gen.foliage.JungleFoliagePlacer
 import net.minecraft.world.gen.stateprovider.BlockStateProvider
 import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider
+import net.minecraft.world.gen.trunk.StraightTrunkPlacer
 import java.util.concurrent.CompletableFuture
 
 class ConfiguredFeatureProvider(output: FabricDataOutput, registriesFuture: CompletableFuture<RegistryWrapper.WrapperLookup>) : FabricDynamicRegistryProvider(output, registriesFuture) {
@@ -38,12 +42,19 @@ class ConfiguredFeatureProvider(output: FabricDataOutput, registriesFuture: Comp
         )
 
         entries.add(
-            HybridAquaticConfiguredFeatures.LOPHELIA_CORAL,
+            HybridAquaticConfiguredFeatures.COCONUT_PALM_TREE,
             ConfiguredFeature(
-                CoralFeature.CORAL_TREE, DefaultFeatureConfig(
-                )
+                Feature.TREE,
+                TreeFeatureConfig.Builder(
+                    BlockStateProvider.of(HybridAquaticBlocks.COCONUT_PALM_LOG),
+                    StraightTrunkPlacer(5, 4, 3),
+                    BlockStateProvider.of(HybridAquaticBlocks.COCONUT_PALM_LEAVES),
+                    JungleFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(1), 2),
+                    TwoLayersFeatureSize(1,0,2)
+                ).build()
             )
         )
+
 
         // tube sponge patch
         entries.add(

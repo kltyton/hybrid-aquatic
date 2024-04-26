@@ -536,6 +536,7 @@ object HybridAquaticItems {
     val DRIFTWOOD_FENCE_GATE = registerBlockItem("driftwood_fence_gate", HybridAquaticBlocks.DRIFTWOOD_FENCE_GATE)
     val DRIFTWOOD_PRESSURE_PLATE = registerBlockItem("driftwood_pressure_plate", HybridAquaticBlocks.DRIFTWOOD_PRESSURE_PLATE)
     val DRIFTWOOD_BUTTON = registerBlockItem("driftwood_button", HybridAquaticBlocks.DRIFTWOOD_BUTTON)
+    val COCONUT_PALM_SAPLING = registerBlockItem("coconut_palm_sapling", HybridAquaticBlocks.COCONUT_PALM_SAPLING)
     val COCONUT_PALM_PLANKS = registerBlockItem("coconut_palm_planks", HybridAquaticBlocks.COCONUT_PALM_PLANKS)
     val COCONUT_PALM_LOG = registerBlockItem("coconut_palm_log", HybridAquaticBlocks.COCONUT_PALM_LOG)
     val STRIPPED_COCONUT_PALM_LOG = registerBlockItem("stripped_coconut_palm_log", HybridAquaticBlocks.STRIPPED_COCONUT_PALM_LOG)

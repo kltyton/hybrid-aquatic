@@ -44,6 +44,9 @@ object HybridAquatic : ModInitializer {
         StrippableBlockRegistry.register(HybridAquaticBlocks.DRIFTWOOD_LOG, HybridAquaticBlocks.STRIPPED_DRIFTWOOD_LOG)
         StrippableBlockRegistry.register(HybridAquaticBlocks.DRIFTWOOD_WOOD, HybridAquaticBlocks.STRIPPED_DRIFTWOOD_WOOD)
 
+        StrippableBlockRegistry.register(HybridAquaticBlocks.COCONUT_PALM_LOG, HybridAquaticBlocks.STRIPPED_COCONUT_PALM_LOG)
+        StrippableBlockRegistry.register(HybridAquaticBlocks.COCONUT_PALM_WOOD, HybridAquaticBlocks.STRIPPED_COCONUT_PALM_WOOD)
+
         FlammableBlockRegistry.getDefaultInstance().add(HybridAquaticBlocks.DRIFTWOOD_LOG, 5, 5)
         FlammableBlockRegistry.getDefaultInstance().add(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_LOG, 5, 5)
         FlammableBlockRegistry.getDefaultInstance().add(HybridAquaticBlocks.DRIFTWOOD_WOOD, 5, 5)
@@ -52,6 +55,17 @@ object HybridAquatic : ModInitializer {
         FlammableBlockRegistry.getDefaultInstance().add(HybridAquaticBlocks.DRIFTWOOD_SLAB, 5, 20)
         FlammableBlockRegistry.getDefaultInstance().add(HybridAquaticBlocks.DRIFTWOOD_FENCE, 5, 20)
         FlammableBlockRegistry.getDefaultInstance().add(HybridAquaticBlocks.DRIFTWOOD_FENCE_GATE, 5, 20)
+
+        FlammableBlockRegistry.getDefaultInstance().add(HybridAquaticBlocks.COCONUT_PALM_LOG, 5, 5)
+        FlammableBlockRegistry.getDefaultInstance().add(HybridAquaticBlocks.STRIPPED_COCONUT_PALM_LOG, 5, 5)
+        FlammableBlockRegistry.getDefaultInstance().add(HybridAquaticBlocks.COCONUT_PALM_WOOD, 5, 5)
+        FlammableBlockRegistry.getDefaultInstance().add(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_WOOD, 5, 5)
+        FlammableBlockRegistry.getDefaultInstance().add(HybridAquaticBlocks.COCONUT_PALM_PLANKS, 5, 20)
+        FlammableBlockRegistry.getDefaultInstance().add(HybridAquaticBlocks.COCONUT_PALM_SLAB, 5, 20)
+        FlammableBlockRegistry.getDefaultInstance().add(HybridAquaticBlocks.COCONUT_PALM_FENCE, 5, 20)
+        FlammableBlockRegistry.getDefaultInstance().add(HybridAquaticBlocks.COCONUT_PALM_FENCE_GATE, 5, 20)
+        FlammableBlockRegistry.getDefaultInstance().add(HybridAquaticBlocks.COCONUT_PALM_LEAVES, 5, 20)
+        FlammableBlockRegistry.getDefaultInstance().add(HybridAquaticBlocks.COCONUT_PALM_SAPLING, 5, 20)
 
         HybridAquaticBiomeTags
 

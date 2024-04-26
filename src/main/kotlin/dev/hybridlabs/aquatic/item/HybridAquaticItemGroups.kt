@@ -46,6 +46,7 @@ object HybridAquaticItemGroups {
             entries.add(HybridAquaticBlocks.DRIFTWOOD_PRESSURE_PLATE)
             entries.add(HybridAquaticBlocks.DRIFTWOOD_BUTTON)
 
+            entries.add(HybridAquaticBlocks.COCONUT_PALM_SAPLING)
             entries.add(HybridAquaticBlocks.COCONUT_PALM_LEAVES)
             entries.add(HybridAquaticBlocks.COCONUT_PALM_LOG)
             entries.add(HybridAquaticBlocks.COCONUT_PALM_WOOD)

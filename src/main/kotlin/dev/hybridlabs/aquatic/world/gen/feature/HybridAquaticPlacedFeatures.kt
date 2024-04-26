@@ -21,8 +21,6 @@ object HybridAquaticPlacedFeatures {
 
     val MESSAGE_IN_A_BOTTLE = register("message_in_a_bottle")
 
-    val LOPHELIA_CORAL = register("lophelia_coral")
-
     private fun register(id: String): RegistryKey<PlacedFeature> {
         return RegistryKey.of(RegistryKeys.PLACED_FEATURE, Identifier(HybridAquatic.MOD_ID, id))
     }
