@@ -10,6 +10,6 @@ class CoconutPalmSaplingGenerator : SaplingGenerator() {
         random: net.minecraft.util.math.random.Random,
         bees: Boolean
     ): RegistryKey<ConfiguredFeature<*, *>> {
-        return HybridAquaticConfiguredFeatures.COCONUT_PALM_TREE
+        return HybridAquaticConfiguredFeatures.COCONUT_PALM
     }
 }

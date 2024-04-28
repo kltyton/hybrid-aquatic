@@ -9,6 +9,7 @@ import dev.hybridlabs.aquatic.world.gen.feature.HybridAquaticFeatures
 import dev.hybridlabs.aquatic.world.gen.feature.MessageInABottleFeatureConfig
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider
+import net.minecraft.block.Blocks
 import net.minecraft.registry.RegistryWrapper
 import net.minecraft.state.property.Properties
 import net.minecraft.util.math.intprovider.ConstantIntProvider
@@ -42,7 +43,7 @@ class ConfiguredFeatureProvider(output: FabricDataOutput, registriesFuture: Comp
         )
 
         entries.add(
-            HybridAquaticConfiguredFeatures.COCONUT_PALM_TREE,
+            HybridAquaticConfiguredFeatures.COCONUT_PALM,
             ConfiguredFeature(
                 Feature.TREE,
                 TreeFeatureConfig.Builder(
@@ -51,7 +52,9 @@ class ConfiguredFeatureProvider(output: FabricDataOutput, registriesFuture: Comp
                     BlockStateProvider.of(HybridAquaticBlocks.COCONUT_PALM_LEAVES),
                     JungleFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(1), 2),
                     TwoLayersFeatureSize(1,0,2)
-                ).build()
+                )
+                    .dirtProvider(BlockStateProvider.of(Blocks.SAND))
+                    .build()
             )
         )
 
@@ -60,7 +63,8 @@ class ConfiguredFeatureProvider(output: FabricDataOutput, registriesFuture: Comp
         entries.add(
             HybridAquaticConfiguredFeatures.TUBE_SPONGE_PATCH,
             ConfiguredFeature(
-                Feature.FLOWER, RandomPatchFeatureConfig(
+                Feature.FLOWER,
+                RandomPatchFeatureConfig(
                     4, 2, 2,
                     PlacedFeatures.createEntry(
                         Feature.SIMPLE_BLOCK,

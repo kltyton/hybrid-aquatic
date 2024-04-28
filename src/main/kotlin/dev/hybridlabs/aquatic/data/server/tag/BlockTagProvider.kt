@@ -91,6 +91,9 @@ class BlockTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             .add(HybridAquaticBlocks.THORN_CORAL_BLOCK)
             .add(HybridAquaticBlocks.DEAD_THORN_CORAL_BLOCK)
 
+        getOrCreateTagBuilder(BlockTags.SAPLINGS)
+            .add(HybridAquaticBlocks.COCONUT_PALM_SAPLING)
+
 
         // plushies
         Registries.BLOCK
