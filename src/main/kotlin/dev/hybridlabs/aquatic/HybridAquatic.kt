@@ -18,7 +18,7 @@ import dev.hybridlabs.aquatic.registry.HybridAquaticRegistryKeys
 import dev.hybridlabs.aquatic.tag.HybridAquaticBiomeTags
 import dev.hybridlabs.aquatic.utils.HybridAquaticCustomTrades.registerCustomTrades
 import dev.hybridlabs.aquatic.world.EntityBiomeModifications
-import dev.hybridlabs.aquatic.world.biome.HybridAquaticBiomes
+//import dev.hybridlabs.aquatic.world.biome.HybridAquaticBiomes
 import dev.hybridlabs.aquatic.world.gen.HybridAquaticWorldGeneration
 import dev.hybridlabs.aquatic.world.gen.feature.FeatureBiomeModifications
 import dev.hybridlabs.aquatic.world.gen.feature.HybridAquaticFeatures
@@ -82,7 +82,7 @@ object HybridAquatic : ModInitializer {
 
         HybridAquaticEnchantments
 
-        HybridAquaticBiomes
+//        HybridAquaticBiomes
         HybridAquaticFeatures
         HybridAquaticWorldGeneration.generateHybridAquaticWorldGen()
 

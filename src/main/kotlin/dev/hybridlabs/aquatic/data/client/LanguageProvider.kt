@@ -110,6 +110,7 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             HybridAquaticBlocks.COCONUT_PALM_BUTTON to "Coconut Palm Button",
             HybridAquaticBlocks.COCONUT_PALM_LEAVES to "Coconut Palm Leaves",
             HybridAquaticBlocks.COCONUT_PALM_SAPLING to "Coconut Palm Sapling",
+            HybridAquaticBlocks.TUBE_WORMS to "Tube Worms",
         ).forEach { (block, translation) ->
             builder.add(block, translation)
         }

@@ -132,6 +132,8 @@ object HybridAquaticBlocks {
     val GLOWSTICK = register("glowstick", GlowstickBlock(FabricBlockSettings.copyOf(Blocks.TORCH).noCollision().luminance(GlowstickBlock::luminance).nonOpaque()))
     val WALL_GLOWSTICK = register("wall_glowstick", WallGlowstickBlock(FabricBlockSettings.copyOf(Blocks.WALL_TORCH).dropsLike(GLOWSTICK).noCollision().luminance(GlowstickBlock::luminance).nonOpaque()))
 
+    val TUBE_WORMS = register("tube_worms", TubeWormsBlock(FabricBlockSettings.copy(Blocks.SEAGRASS).noCollision().nonOpaque()))
+
     val TUBE_SPONGE = register("tube_sponge", TubeSpongeBlock(FabricBlockSettings.copyOf(Blocks.WET_SPONGE)
         .nonOpaque()
     ))

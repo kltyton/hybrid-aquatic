@@ -511,6 +511,8 @@ object HybridAquaticItems {
 
     val GLOWSTICK = registerVerticallyAttachable("glowstick", HybridAquaticBlocks.GLOWSTICK, HybridAquaticBlocks.WALL_GLOWSTICK)
 
+    val TUBE_WORMS = registerBlockItem("tube_worms", HybridAquaticBlocks.TUBE_WORMS)
+
     val HYBRID_CRATE = registerBlockItem("hybrid_crate", HybridAquaticBlocks.HYBRID_CRATE)
     val DRIFTWOOD_CRATE = registerBlockItem("driftwood_crate", HybridAquaticBlocks.DRIFTWOOD_CRATE)
     val OAK_CRATE = registerBlockItem("oak_crate", HybridAquaticBlocks.OAK_CRATE)
