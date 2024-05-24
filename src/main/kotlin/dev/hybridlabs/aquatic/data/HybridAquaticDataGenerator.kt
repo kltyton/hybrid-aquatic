@@ -16,10 +16,12 @@ import dev.hybridlabs.aquatic.data.server.tag.BlockTagProvider
 import dev.hybridlabs.aquatic.data.server.tag.EntityTypeTagProvider
 import dev.hybridlabs.aquatic.data.server.tag.ItemTagProvider
 import dev.hybridlabs.aquatic.registry.HybridAquaticRegistryKeys
+import dev.hybridlabs.aquatic.world.biome.HybridAquaticBiomes
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator
 import net.minecraft.registry.Registry
 import net.minecraft.registry.RegistryBuilder
+import net.minecraft.registry.RegistryKeys
 
 object HybridAquaticDataGenerator : DataGeneratorEntrypoint {
     override fun onInitializeDataGenerator(generator: FabricDataGenerator) {
@@ -42,6 +44,7 @@ object HybridAquaticDataGenerator : DataGeneratorEntrypoint {
 
     override fun buildRegistry(registryBuilder: RegistryBuilder) {
         registryBuilder.addRegistry(HybridAquaticRegistryKeys.SEA_MESSAGE) {}
+        registryBuilder.addRegistry(RegistryKeys.BIOME, HybridAquaticBiomes::bootstrap)
     }
 
     fun <T> filterHybridAquatic(registry: Registry<T>): (T) -> Boolean {

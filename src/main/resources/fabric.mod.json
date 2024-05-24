@@ -41,6 +41,9 @@
                 "adapter": "kotlin"
             }
         ],
+        "terrablender": [
+            "dev.hybridlabs.aquatic.world.biome.HybridAquaticTerrablenderAPI"
+        ],
         "preLaunch": [
             "com.llamalad7.mixinextras.MixinExtrasBootstrap::init"
         ]

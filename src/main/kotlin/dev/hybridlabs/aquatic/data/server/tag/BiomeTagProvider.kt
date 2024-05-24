@@ -1,6 +1,7 @@
 package dev.hybridlabs.aquatic.data.server.tag
 
 import dev.hybridlabs.aquatic.tag.HybridAquaticBiomeTags
+import dev.hybridlabs.aquatic.world.biome.HybridAquaticBiomes
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider
 import net.minecraft.registry.RegistryKeys
@@ -581,5 +582,17 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
         getOrCreateTagBuilder(HybridAquaticBiomeTags.MESSAGE_IN_A_BOTTLE_SPAWN_BIOMES)
             .forceAddTag(BiomeTags.IS_OCEAN)
             .forceAddTag(BiomeTags.IS_BEACH)
+
+        getOrCreateTagBuilder(BiomeTags.IS_BEACH).add(
+            HybridAquaticBiomes.TROPICAL_BEACH,
+        )
+
+        getOrCreateTagBuilder(BiomeTags.BURIED_TREASURE_HAS_STRUCTURE).add(
+            HybridAquaticBiomes.TROPICAL_BEACH,
+        )
+
+        getOrCreateTagBuilder(BiomeTags.SHIPWRECK_BEACHED_HAS_STRUCTURE).add(
+            HybridAquaticBiomes.TROPICAL_BEACH,
+        )
     }
 }
