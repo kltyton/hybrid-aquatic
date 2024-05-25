@@ -7,11 +7,12 @@ import dev.hybridlabs.aquatic.tag.HybridAquaticBlockTags
 import dev.hybridlabs.aquatic.world.gen.feature.HybridAquaticConfiguredFeatures
 import dev.hybridlabs.aquatic.world.gen.feature.HybridAquaticFeatures
 import dev.hybridlabs.aquatic.world.gen.feature.MessageInABottleFeatureConfig
+import dev.hybridlabs.aquatic.world.gen.feature.SargassumPatchFeatureConfig
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider
 import net.minecraft.block.Blocks
 import net.minecraft.registry.RegistryWrapper
-import net.minecraft.state.property.Properties
+import net.minecraft.state.property.Properties.WATERLOGGED
 import net.minecraft.util.math.intprovider.ConstantIntProvider
 import net.minecraft.world.gen.CountConfig
 import net.minecraft.world.gen.blockpredicate.BlockPredicate
@@ -34,7 +35,7 @@ class ConfiguredFeatureProvider(output: FabricDataOutput, registriesFuture: Comp
                     PlacedFeatures.createEntry(
                         Feature.SIMPLE_BLOCK,
                         SimpleBlockFeatureConfig(
-                            BlockStateProvider.of(HybridAquaticBlocks.ANEMONE.defaultState.with(Properties.WATERLOGGED, true))
+                            BlockStateProvider.of(HybridAquaticBlocks.ANEMONE.defaultState.with(WATERLOGGED, true))
                         ),
                         BlockPredicate.matchingBlockTag(HybridAquaticBlockTags.ANEMONES_GENERATE_IN)
                     )
@@ -58,7 +59,6 @@ class ConfiguredFeatureProvider(output: FabricDataOutput, registriesFuture: Comp
             )
         )
 
-
         // tube sponge patch
         entries.add(
             HybridAquaticConfiguredFeatures.TUBE_SPONGE_PATCH,
@@ -69,7 +69,7 @@ class ConfiguredFeatureProvider(output: FabricDataOutput, registriesFuture: Comp
                     PlacedFeatures.createEntry(
                         Feature.SIMPLE_BLOCK,
                         SimpleBlockFeatureConfig(
-                            BlockStateProvider.of(HybridAquaticBlocks.TUBE_SPONGE.defaultState.with(Properties.WATERLOGGED, true))
+                            BlockStateProvider.of(HybridAquaticBlocks.TUBE_SPONGE.defaultState.with(WATERLOGGED, true))
                         ),
                         BlockPredicate.matchingBlockTag(HybridAquaticBlockTags.TUBE_SPONGE_GENERATE_IN)
                     )
@@ -86,7 +86,7 @@ class ConfiguredFeatureProvider(output: FabricDataOutput, registriesFuture: Comp
                     PlacedFeatures.createEntry(
                         Feature.SIMPLE_BLOCK,
                         SimpleBlockFeatureConfig(
-                            BlockStateProvider.of(HybridAquaticBlocks.GIANT_CLAM.defaultState.with(Properties.WATERLOGGED, true))
+                            BlockStateProvider.of(HybridAquaticBlocks.GIANT_CLAM.defaultState.with(WATERLOGGED, true))
                         ),
                         BlockPredicate.matchingBlockTag(HybridAquaticBlockTags.GIANT_CLAM_GENERATE_IN)
                     )
@@ -109,6 +109,16 @@ class ConfiguredFeatureProvider(output: FabricDataOutput, registriesFuture: Comp
             ConfiguredFeature(
                 HybridAquaticFeatures.MESSAGE_IN_A_BOTTLE, MessageInABottleFeatureConfig(
                     SimpleBlockStateProvider.of(HybridAquaticBlocks.MESSAGE_IN_A_BOTTLE)
+                )
+            )
+        )
+
+        // sargassum patch
+        entries.add(
+            HybridAquaticConfiguredFeatures.SARGASSUM_PATCH,
+            ConfiguredFeature(
+                HybridAquaticFeatures.SARGASSUM_PATCH, SargassumPatchFeatureConfig(
+                    SimpleBlockStateProvider.of(HybridAquaticBlocks.SARGASSUM_SEAWEED)
                 )
             )
         )

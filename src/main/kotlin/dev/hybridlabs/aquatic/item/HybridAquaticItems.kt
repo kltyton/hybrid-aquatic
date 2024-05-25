@@ -31,6 +31,7 @@ object HybridAquaticItems {
     val BUOY = registerPlaceableInWaterBlockItem("buoy", HybridAquaticBlocks.BUOY)
     val HYDROTHERMAL_VENT = registerBlockItem("hydrothermal_vent", HybridAquaticBlocks.HYDROTHERMAL_VENT)
     val MESSAGE_IN_A_BOTTLE = register("message_in_a_bottle", MessageInABottleItem(FabricItemSettings()))
+    val SARGASSUM_SEAWEED = registerPlaceableInWaterBlockItem("sargassum_seaweed", HybridAquaticBlocks.SARGASSUM_SEAWEED)
 
     val FISHING_NET = register("fishing_net", FishingNetItem(FabricItemSettings().maxCount(1)))
     val GLOW_SLIME = register("glow_slime", Item(FabricItemSettings()))

@@ -63,7 +63,8 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
             HybridAquaticBlocks.ACACIA_CRATE,
             HybridAquaticBlocks.MANGROVE_CRATE,
             HybridAquaticBlocks.CHERRY_CRATE,
-            HybridAquaticBlocks.COCONUT_PALM_LEAVES
+            HybridAquaticBlocks.COCONUT_PALM_LEAVES,
+            HybridAquaticBlocks.SARGASSUM_SEAWEED,
         ).forEach(generator::registerSimpleCubeAll)
 
         // wood

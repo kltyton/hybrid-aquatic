@@ -12,6 +12,8 @@ object HybridAquaticBlockTags {
 
     val ANEMONES_GENERATE_IN = create("anemones_generate_in")
 
+    val SARGASSUM_GENERATE_IN = create("sargassum_generate_in")
+
     val GIANT_CLAM_GENERATE_IN = create("giant_clam_generate_in")
 
     val TUBE_SPONGE_GENERATE_IN = create("tube_sponge_generate_in")

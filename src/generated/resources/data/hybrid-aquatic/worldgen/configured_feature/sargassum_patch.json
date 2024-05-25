@@ -1,0 +1,14 @@
+{
+  "type": "hybrid-aquatic:sargassum_patch",
+  "config": {
+    "to_place": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "hybrid-aquatic:sargassum_seaweed",
+        "Properties": {
+          "waterlogged": "true"
+        }
+      }
+    }
+  }
+}
