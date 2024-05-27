@@ -1,5 +1,6 @@
 package dev.hybridlabs.aquatic
 
+//import dev.hybridlabs.aquatic.world.biome.HybridAquaticBiomes
 import dev.hybridlabs.aquatic.block.HybridAquaticBlocks
 import dev.hybridlabs.aquatic.block.PlushieBlock
 import dev.hybridlabs.aquatic.block.SeaMessage
@@ -18,7 +19,6 @@ import dev.hybridlabs.aquatic.registry.HybridAquaticRegistryKeys
 import dev.hybridlabs.aquatic.tag.HybridAquaticBiomeTags
 import dev.hybridlabs.aquatic.utils.HybridAquaticCustomTrades.registerCustomTrades
 import dev.hybridlabs.aquatic.world.EntityBiomeModifications
-//import dev.hybridlabs.aquatic.world.biome.HybridAquaticBiomes
 import dev.hybridlabs.aquatic.world.gen.HybridAquaticWorldGeneration
 import dev.hybridlabs.aquatic.world.gen.feature.FeatureBiomeModifications
 import dev.hybridlabs.aquatic.world.gen.feature.HybridAquaticFeatures
@@ -30,7 +30,6 @@ import net.fabricmc.fabric.api.registry.StrippableBlockRegistry
 import net.minecraft.item.BlockItem
 import net.minecraft.registry.Registries
 import net.minecraft.village.TradeOffers.SellItemFactory
-import net.minecraft.world.biome.Biome
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
@@ -82,7 +81,6 @@ object HybridAquatic : ModInitializer {
 
         HybridAquaticEnchantments
 
-//        HybridAquaticBiomes
         HybridAquaticFeatures
         HybridAquaticWorldGeneration.generateHybridAquaticWorldGen()
 
