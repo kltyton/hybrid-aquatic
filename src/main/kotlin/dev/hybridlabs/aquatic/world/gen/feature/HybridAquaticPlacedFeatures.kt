@@ -21,8 +21,6 @@ object HybridAquaticPlacedFeatures {
 
     val COCONUT_PALM_PLACED = register("coconut_palm_placed")
 
-    val SARGASSUM_PATCH = register("sargassum_patch")
-
     val MESSAGE_IN_A_BOTTLE = register("message_in_a_bottle")
 
     private fun register(id: String): RegistryKey<PlacedFeature> {

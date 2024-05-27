@@ -15,15 +15,13 @@ object HybridAquaticConfiguredFeatures {
 
     val GIANT_CLAM_PATCH = register("giant_clam_patch")
 
-    val HYDROTHERMAL_VENTS= register("hydrothermal_vents")
-
     val TUBE_SPONGE_PATCH = register("tube_sponge_patch")
 
-    val COCONUT_PALM = register("coconut_palm")
-
-    val SARGASSUM_PATCH = register("sargassum_patch")
+    val HYDROTHERMAL_VENTS= register("hydrothermal_vents")
 
     val MESSAGE_IN_A_BOTTLE = register("message_in_a_bottle")
+
+    val COCONUT_PALM = register("coconut_palm")
 
     private fun register(id: String): RegistryKey<ConfiguredFeature<*, *>> {
         return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, Identifier(HybridAquatic.MOD_ID, id))

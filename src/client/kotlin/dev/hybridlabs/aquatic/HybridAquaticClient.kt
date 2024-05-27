@@ -101,7 +101,6 @@ object HybridAquaticClient : ClientModInitializer {
             HybridAquaticBlocks.WALL_GLOWSTICK,
             HybridAquaticBlocks.COCONUT_PALM_SAPLING,
             HybridAquaticBlocks.TUBE_WORMS,
-            HybridAquaticBlocks.SARGASSUM_SEAWEED,
         )
     }
 

@@ -2,7 +2,6 @@
   "replace": false,
   "values": [
     "minecraft:beach",
-    "minecraft:warm_ocean",
-    "hybrid-aquatic:tropical_beach"
+    "minecraft:warm_ocean"
   ]
 }

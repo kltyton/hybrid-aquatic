@@ -80,19 +80,6 @@ class PlacedFeatureProvider(output: FabricDataOutput, registriesFuture: Completa
             )
         )
 
-        // sargassum patch
-        entries.add(
-            HybridAquaticPlacedFeatures.SARGASSUM_PATCH,
-            PlacedFeature(entries.ref(HybridAquaticConfiguredFeatures.SARGASSUM_PATCH),
-                listOf(
-                    SquarePlacementModifier.of(),
-                    PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP,
-                    CountPlacementModifier.of(10),
-                    BiomePlacementModifier.of()
-                )
-            )
-        )
-
         // message in a bottle
         entries.add(
             HybridAquaticPlacedFeatures.MESSAGE_IN_A_BOTTLE,

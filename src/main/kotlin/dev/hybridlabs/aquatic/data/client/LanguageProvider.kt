@@ -70,7 +70,6 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             HybridAquaticBlocks.CHERRY_CRATE to "Cherry Crate",
             HybridAquaticBlocks.BUOY to "Buoy",
             HybridAquaticBlocks.HYDROTHERMAL_VENT to "Hydrothermal Vent",
-            HybridAquaticBlocks.SARGASSUM_SEAWEED to "Sargassum Seaweed",
             HybridAquaticBlocks.GIANT_CLAM to "Giant Clam",
             HybridAquaticBlocks.LOPHELIA_CORAL_BLOCK to "Lophelia Coral Block",
             HybridAquaticBlocks.DEAD_LOPHELIA_CORAL_BLOCK to "Dead Lophelia Coral Block",
