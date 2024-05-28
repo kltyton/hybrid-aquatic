@@ -134,9 +134,9 @@ object HybridAquaticBlocks {
 
     val TUBE_WORMS = register("tube_worms", TubeWormsBlock(FabricBlockSettings.copy(Blocks.SEAGRASS).noCollision().nonOpaque()))
 
-    val TUBE_SPONGE = register("tube_sponge", TubeSpongeBlock(FabricBlockSettings.copyOf(Blocks.WET_SPONGE)
-        .nonOpaque()
-    ))
+    val FLOATING_SARGASSUM = register("floating_sargassum", FloatingSargassumBlock(FabricBlockSettings.copyOf(Blocks.LILY_PAD).nonOpaque()))
+
+    val TUBE_SPONGE = register("tube_sponge", TubeSpongeBlock(FabricBlockSettings.copyOf(Blocks.WET_SPONGE).nonOpaque()))
 
     val GIANT_CLAM = register("giant_clam", GiantClamBlock(FabricBlockSettings.copyOf(Blocks.TUFF)
         .nonOpaque()
