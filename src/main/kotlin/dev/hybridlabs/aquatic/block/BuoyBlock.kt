@@ -3,7 +3,6 @@
 package dev.hybridlabs.aquatic.block
 
 import dev.hybridlabs.aquatic.block.entity.BuoyBlockEntity
-import dev.hybridlabs.aquatic.block.entity.GiantClamBlockEntity
 import dev.hybridlabs.aquatic.block.entity.HybridAquaticBlockEntityTypes
 import net.minecraft.block.*
 import net.minecraft.block.entity.BlockEntity
