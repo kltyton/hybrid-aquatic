@@ -330,5 +330,7 @@
   "item.minecraft.tipped_arrow.effect.clarity": "Arrow of Clarity",
   "item.minecraft.tipped_arrow.effect.glowing": "Arrow of Glowing",
   "item.minecraft.tipped_arrow.effect.thalassophobia": "Arrow of Thalassophobia",
-  "itemGroup.hybrid-aquatic": "Hybrid Aquatic"
+  "itemGroup.hybrid-aquatic.blocks": "Hybrid Aquatic Blocks",
+  "itemGroup.hybrid-aquatic.items": "Hybrid Aquatic Items",
+  "itemGroup.hybrid-aquatic.spawn_eggs": "Hybrid Aquatic Spawn Eggs"
 }

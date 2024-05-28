@@ -18,8 +18,8 @@ import net.minecraft.util.Identifier
 import net.minecraft.util.math.BlockPos
 
 object HybridAquaticItemGroups {
-    val ALL = register("all", FabricItemGroup.builder()
-        .displayName(Text.translatable("itemGroup.${HybridAquatic.MOD_ID}"))
+    val BLOCKS = register("blocks", FabricItemGroup.builder()
+        .displayName(Text.translatable("itemGroup.${HybridAquatic.MOD_ID}.blocks"))
         .icon { ItemStack(HybridAquaticItems.ANEMONE) }
         .entries { _, entries ->
             // message in a bottle variants
@@ -95,6 +95,22 @@ object HybridAquaticItemGroups {
             entries.add(HybridAquaticBlocks.THRESHER_SHARK_PLUSHIE)
             entries.add(HybridAquaticBlocks.TIGER_SHARK_PLUSHIE)
             entries.add(HybridAquaticBlocks.WHALE_SHARK_PLUSHIE)
+
+            // spawn eggs
+            Registries.ITEM.forEach { item ->
+                val id = Registries.ITEM.getId(item)
+                if (id.namespace != HybridAquatic.MOD_ID) {
+                    return@forEach
+                }
+            }
+        }
+        .build()
+    )
+
+    val ITEMS = register("items", FabricItemGroup.builder()
+        .displayName(Text.translatable("itemGroup.${HybridAquatic.MOD_ID}.items"))
+        .icon { ItemStack(HybridAquaticItems.BARBED_HOOK) }
+        .entries { _, entries ->
 
             // food items
             entries.add(HybridAquaticItems.RAW_FISH_MEAT)
@@ -183,7 +199,20 @@ object HybridAquaticItemGroups {
                 if (id.namespace != HybridAquatic.MOD_ID) {
                     return@forEach
                 }
+            }
+        }
+        .build()
+    )
 
+    val SPAWN_EGGS = register("spawn_eggs", FabricItemGroup.builder()
+        .displayName(Text.translatable("itemGroup.${HybridAquatic.MOD_ID}.spawn_eggs"))
+        .icon { ItemStack(HybridAquaticItems.YELLOWFIN_TUNA) }
+        .entries { _, entries ->
+            Registries.ITEM.forEach { item ->
+                val id = Registries.ITEM.getId(item)
+                if (id.namespace != HybridAquatic.MOD_ID) {
+                    return@forEach
+                }
                 if (item is SpawnEggItem) {
                     entries.add(item)
                 }
