@@ -27,15 +27,15 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(SchoolingFishEntity.class)
-public abstract class SchoolingFishMixin extends FishEntity {
-    public SchoolingFishMixin(EntityType<? extends FishEntity> entityType, World world) {
+public abstract class SchoolingFishEntityMixin extends FishEntity {
+    public SchoolingFishEntityMixin(EntityType<? extends FishEntity> entityType, World world) {
         super(entityType, world);
     }
 
     @Inject(method = "initGoals", at = @At("HEAD"), cancellable = true)
     protected void registerGoals(CallbackInfo ci) {
 
-        this.goalSelector.add(5, new BoidGoal(this,0.3f, 0.6f, 8 / 20f, 4 / 20f));
+        this.goalSelector.add(5, new BoidGoal(this, 0.5f, 0.9f, 8 / 20f, 10 / 20f));
         this.goalSelector.add(3, new StayInWaterGoal(this));
         this.goalSelector.add(2, new LimitSpeedAndLookInVelocityDirectionGoal(this, 0.2f, 0.4f));
 

@@ -7,7 +7,7 @@
     "FishingBobberEntityMixin",
     "FishingRodItemMixin",
     "PlayerEntityMixin",
-    "SchoolingFishMixin",
+    "SchoolingFishEntityMixin",
     "SpawnGroupMixin",
     "TurtleEntityMixin"
   ],

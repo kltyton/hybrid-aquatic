@@ -31,6 +31,6 @@ public class LimitSpeedAndLookInVelocityDirectionGoal extends Goal {
             velocity = velocity.multiply(maxSpeed);
 
         mob.setVelocity(velocity);
-        mob.lookAt(EntityAnchorArgumentType.EntityAnchor.EYES, mob.getPos().add(velocity.multiply(10)));
+        mob.lookAt(EntityAnchorArgumentType.EntityAnchor.EYES, mob.getPos().add(velocity.multiply(3)));
     }
 }

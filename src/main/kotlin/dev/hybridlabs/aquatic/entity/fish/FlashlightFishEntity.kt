@@ -14,8 +14,8 @@ class FlashlightFishEntity(entityType: EntityType<out FlashlightFishEntity>, wor
 
     override fun initGoals() {
         super.initGoals()
-        goalSelector.add(5, BoidGoal(this, 0.3f, 0.8f, 8 / 20f, 1 / 20f))
-        goalSelector.add(2, LimitSpeedAndLookInVelocityDirectionGoal(this, 0.2f, 0.5f))
+        goalSelector.add(5, BoidGoal(this, 0.5f, 0.9f, 8 / 20f, 10 / 20f))
+        goalSelector.add(2, LimitSpeedAndLookInVelocityDirectionGoal(this, 0.2f, 0.4f))
     }
 
     companion object {
@@ -25,7 +25,6 @@ class FlashlightFishEntity(entityType: EntityType<out FlashlightFishEntity>, wor
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 1.0)
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 1.0)
                 .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 12.0)
-
         }
     }
 }
