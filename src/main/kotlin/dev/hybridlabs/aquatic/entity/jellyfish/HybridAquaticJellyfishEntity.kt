@@ -78,6 +78,10 @@ open class HybridAquaticJellyfishEntity(
         dataTracker.startTracking(JELLYFISH_SIZE, 0)
     }
 
+    override fun getLimitPerChunk(): Int {
+        return 4
+    }
+
     override fun getActiveEyeHeight(pose: EntityPose?, dimensions: EntityDimensions): Float {
         return dimensions.height * 0.5f
     }

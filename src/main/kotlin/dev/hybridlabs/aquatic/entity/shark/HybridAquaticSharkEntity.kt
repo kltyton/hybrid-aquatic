@@ -257,7 +257,7 @@ open class HybridAquaticSharkEntity(
     }
 
     override fun getLimitPerChunk(): Int {
-        return 8
+        return 4
     }
 
     //#region SFX

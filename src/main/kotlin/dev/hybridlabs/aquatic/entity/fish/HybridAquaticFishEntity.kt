@@ -64,10 +64,8 @@ open class HybridAquaticFishEntity(
         goalSelector.add(1, EscapeDangerGoal(this, 1.25))
         goalSelector.add(2, FleeEntityGoal(this, LivingEntity::class.java, 8.0f, 1.2, 1.0) { !fromFishingNet && it.type.isIn(predator) })
         goalSelector.add(2, FleeEntityGoal(this, PlayerEntity::class.java, 5.0f, 1.0, 1.0) { !fromFishingNet })
-        if (!fromFishingNet && hunger <= 300) {
-            goalSelector.add(7, AttackGoal(this))
-            targetSelector.add(6, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) { hunger <= 300 && it.type.isIn(prey) })
-        }
+        goalSelector.add(7, AttackGoal(this))
+        targetSelector.add(6, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) { hunger <= 300 && it.type.isIn(prey) })
     }
 
     override fun initDataTracker() {
@@ -89,7 +87,6 @@ open class HybridAquaticFishEntity(
         this.air = getMaxMoistness()
         this.variant = this.random.nextInt(variantCount)
         this.size = this.random.nextBetween(getMinSize(), getMaxSize())
-        this.pitch = 0.0f
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt)
     }
 
@@ -169,6 +166,7 @@ open class HybridAquaticFishEntity(
     }
 
     private var fromFishingNet = false
+
     override fun readCustomDataFromNbt(nbt: NbtCompound) {
         super.readCustomDataFromNbt(nbt)
         moistness = nbt.getInt(MOISTNESS_KEY)
@@ -202,7 +200,7 @@ open class HybridAquaticFishEntity(
         return !hasCustomName()
     }
     override fun getLimitPerChunk(): Int {
-        return 8
+        return 4
     }
 
     open val flopSound: SoundEvent = SoundEvents.ENTITY_PUFFER_FISH_FLOP
@@ -350,6 +348,50 @@ open class HybridAquaticFishEntity(
     internal class SwimToRandomPlaceGoal(private val fish: HybridAquaticFishEntity) : SwimAroundGoal(fish, 1.0, 40) {
         override fun canStart(): Boolean {
             return fish.hasSelfControl() && super.canStart()
+        }
+    }
+
+    internal class AttackGoal(private val fish: HybridAquaticFishEntity) : MeleeAttackGoal(fish, 1.0,true) {
+        override fun canStart(): Boolean {
+            return !fish.fromFishingNet && super.canStart()
+        }
+
+        override fun attack(target: LivingEntity, squaredDistance: Double) {
+            val d = getSquaredMaxAttackDistance(target)
+            if (squaredDistance <= d && this.isCooledDown) {
+                resetCooldown()
+                mob.tryAttack(target)
+                fish.isSprinting = true
+                fish.attemptAttack = true
+
+                if (target.health <= 0)
+                    fish.eatFish(target.type)
+            }
+        }
+
+        override fun getSquaredMaxAttackDistance(entity: LivingEntity): Double {
+            return (1.25f + entity.width).toDouble()
+        }
+
+        override fun start() {
+            super.start()
+            fish.attemptAttack = false
+        }
+
+        override fun stop() {
+            super.stop()
+            fish.attemptAttack = false
+        }
+    }
+
+    override fun tryAttack(target: Entity?): Boolean {
+        if (super.tryAttack(target)) {
+
+            playSound(SoundEvents.ENTITY_FOX_EAT,1.0F,0.0F)
+
+            return true
+        } else {
+            return false
         }
     }
 

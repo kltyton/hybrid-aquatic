@@ -118,7 +118,7 @@ open class HybridAquaticCritterEntity(type: EntityType<out HybridAquaticCritterE
     }
 
     override fun getLimitPerChunk(): Int {
-        return 8
+        return 4
     }
 
     override fun getHurtSound(source: DamageSource): SoundEvent {
