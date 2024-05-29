@@ -2,6 +2,7 @@ package dev.hybridlabs.aquatic.entity.cephalopod
 
 import dev.hybridlabs.aquatic.entity.fish.HybridAquaticFishEntity
 import dev.hybridlabs.aquatic.tag.HybridAquaticEntityTags
+import net.minecraft.block.BlockState
 import net.minecraft.block.Blocks
 import net.minecraft.entity.*
 import net.minecraft.entity.ai.control.AquaticMoveControl
@@ -17,6 +18,7 @@ import net.minecraft.entity.data.TrackedDataHandlerRegistry
 import net.minecraft.entity.effect.StatusEffects
 import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.entity.player.PlayerEntity
+import net.minecraft.fluid.FluidState
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.particle.ParticleEffect
 import net.minecraft.particle.ParticleTypes
@@ -88,6 +90,7 @@ open class HybridAquaticCephalopodEntity(
     override fun initGoals() {
         goalSelector.add(2, SwimGoal(this))
         goalSelector.add(2, SwimToRandomPlaceGoal(this, 0.50, 6))
+        goalSelector.add(1, EscapeAttackerGoal(this))
         goalSelector.add(1, FleeEntityGoal(this, LivingEntity::class.java, 8.0f, 1.2, 1.0) { !fromFishingNet && it.type.isIn(predator) })
         goalSelector.add(1, FleeEntityGoal(this, PlayerEntity::class.java, 5.0f, 1.0, 1.0) { !fromFishingNet })
         targetSelector.add(1, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) { hunger <= 1200 && it.type.isIn(prey) })
@@ -114,6 +117,10 @@ open class HybridAquaticCephalopodEntity(
         this.size = this.random.nextBetween(getMinSize(), getMaxSize())
         this.pitch = 0.0f
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt)
+    }
+
+    override fun getLimitPerChunk(): Int {
+        return 4
     }
 
     override fun getActiveEyeHeight(pose: EntityPose?, dimensions: EntityDimensions): Float {
@@ -457,6 +464,75 @@ open class HybridAquaticCephalopodEntity(
         SwimAroundGoal(cephalopod, 1.0, 40) {
         override fun canStart(): Boolean {
             return cephalopod.hasSelfControl() && super.canStart()
+        }
+    }
+
+    internal class EscapeAttackerGoal(private val cephalopod: HybridAquaticCephalopodEntity) : Goal() {
+        private var timer = 0
+
+        override fun canStart(): Boolean {
+            val attacker: LivingEntity? = cephalopod.attacker
+            return cephalopod.isTouchingWater && attacker != null && cephalopod.squaredDistanceTo(attacker) < 100.0
+        }
+
+        override fun start() {
+            timer = 0
+        }
+
+        override fun shouldRunEveryTick(): Boolean {
+            return true
+        }
+
+        override fun tick() {
+            timer++
+            val attacker: LivingEntity? = cephalopod.attacker
+            if (attacker != null) {
+                var vec3d = Vec3d(
+                    cephalopod.x - attacker.x,
+                    cephalopod.y - attacker.y,
+                    cephalopod.z - attacker.z
+                )
+                val blockState: BlockState = cephalopod.world.getBlockState(
+                    BlockPos.ofFloored(
+                        cephalopod.x + vec3d.x,
+                        cephalopod.y + vec3d.y,
+                        cephalopod.z + vec3d.z
+                    )
+                )
+                val fluidState: FluidState = cephalopod.world.getFluidState(
+                    BlockPos.ofFloored(
+                        cephalopod.x + vec3d.x,
+                        cephalopod.y + vec3d.y,
+                        cephalopod.z + vec3d.z
+                    )
+                )
+                if (fluidState.isIn(FluidTags.WATER) || blockState.isAir) {
+                    val d = vec3d.length()
+                    if (d > 0.0) {
+                        vec3d = vec3d.normalize().multiply(3.0)
+                    }
+
+                    if (blockState.isAir) {
+                        vec3d = vec3d.subtract(0.0, vec3d.y, 0.0)
+                    }
+
+                    cephalopod.setSwimmingVector(
+                        vec3d.x.toFloat() / 20.0f,
+                        vec3d.y.toFloat() / 20.0f,
+                        vec3d.z.toFloat() / 20.0f
+                    )
+                }
+
+                if (timer % 10 == 5) {
+                    cephalopod.world.addParticle(
+                        ParticleTypes.BUBBLE,
+                        cephalopod.x,
+                        cephalopod.y,
+                        cephalopod.z,
+                        0.0, 0.0, 0.0
+                    )
+                }
+            }
         }
     }
 
