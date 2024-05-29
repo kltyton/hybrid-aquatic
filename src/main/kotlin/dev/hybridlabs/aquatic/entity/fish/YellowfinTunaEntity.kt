@@ -23,7 +23,4 @@ class YellowfinTunaEntity(entityType: EntityType<out YellowfinTunaEntity>, world
                 .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 12.0)
         }
     }
-    override fun speedModifier(): Double {
-        return 0.005
-    }
 }

@@ -23,7 +23,4 @@ class MahiMahiEntity(entityType: EntityType<out MahiMahiEntity>, world: World) :
                 .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 12.0)
         }
     }
-    override fun speedModifier(): Double {
-        return 0.005
-    }
 }

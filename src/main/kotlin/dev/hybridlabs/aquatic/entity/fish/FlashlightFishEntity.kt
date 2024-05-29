@@ -1,5 +1,7 @@
 package dev.hybridlabs.aquatic.entity.fish
 
+import dev.hybridlabs.aquatic.goals.BoidGoal
+import dev.hybridlabs.aquatic.goals.LimitSpeedAndLookInVelocityDirectionGoal
 import dev.hybridlabs.aquatic.tag.HybridAquaticEntityTags
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.attribute.DefaultAttributeContainer
@@ -9,6 +11,13 @@ import net.minecraft.world.World
 
 class FlashlightFishEntity(entityType: EntityType<out FlashlightFishEntity>, world: World) :
     HybridAquaticSchoolingFishEntity(entityType, world, HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
+
+    override fun initGoals() {
+        super.initGoals()
+        goalSelector.add(5, BoidGoal(this, 0.3f, 0.8f, 8 / 20f, 1 / 20f))
+        goalSelector.add(2, LimitSpeedAndLookInVelocityDirectionGoal(this, 0.2f, 0.5f))
+    }
+
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

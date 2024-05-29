@@ -1,6 +1,9 @@
 package dev.hybridlabs.aquatic.entity.fish
 
 import dev.hybridlabs.aquatic.entity.ai.goal.FishFollowGroupLeaderGoal
+import dev.hybridlabs.aquatic.goals.BoidGoal
+import dev.hybridlabs.aquatic.goals.LimitSpeedAndLookInVelocityDirectionGoal
+import dev.hybridlabs.aquatic.goals.StayInWaterGoal
 import dev.hybridlabs.aquatic.tag.HybridAquaticEntityTags
 import net.minecraft.entity.EntityData
 import net.minecraft.entity.EntityType
@@ -17,83 +20,88 @@ open class HybridAquaticSchoolingFishEntity(
     world: World,
     override val prey: TagKey<EntityType<*>>,
     override val predator: TagKey<EntityType<*>>,
+    private var leader: HybridAquaticSchoolingFishEntity? = null,
+    private var groupSize: Int = 1
 ) : HybridAquaticFishEntity(type, world, 1, HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
-    private var leader: HybridAquaticSchoolingFishEntity? = null
-    private var groupSize = 1
 
     override fun initGoals() {
         super.initGoals()
         goalSelector.add(5, FishFollowGroupLeaderGoal(this))
+        goalSelector.add(5, BoidGoal(this, 0.3f, 0.9f, 4 / 20f, 4 / 20f))
+        goalSelector.add(3, StayInWaterGoal(this))
+        goalSelector.add(2, LimitSpeedAndLookInVelocityDirectionGoal(this, 0.4f, 0.8f))
     }
 
     override fun getLimitPerChunk(): Int {
-        return getMaxGroupSize()
+        return this.getMaxGroupSize()
     }
 
-    private fun getMaxGroupSize(): Int {
+    open fun getMaxGroupSize(): Int {
         return super.getLimitPerChunk()
     }
 
     override fun hasSelfControl(): Boolean {
-        return !hasLeader()
+        return !this.hasLeader()
     }
 
     fun hasLeader(): Boolean {
-        return leader != null && leader!!.isAlive
+        return this.leader != null && leader!!.isAlive
     }
 
     private fun joinGroupOf(groupLeader: HybridAquaticSchoolingFishEntity): HybridAquaticSchoolingFishEntity {
-        leader = groupLeader
+        this.leader = groupLeader
         groupLeader.increaseGroupSize()
         return groupLeader
     }
 
     fun leaveGroup() {
         leader!!.decreaseGroupSize()
-        leader = null
+        this.leader = null
     }
 
     private fun increaseGroupSize() {
-        ++groupSize
+        ++this.groupSize
     }
 
     private fun decreaseGroupSize() {
-        --groupSize
+        --this.groupSize
     }
 
     fun canHaveMoreFishInGroup(): Boolean {
-        return hasOtherFishInGroup() && groupSize < getMaxGroupSize()
+        return this.hasOtherFishInGroup() && this.groupSize < this.getMaxGroupSize()
     }
 
     override fun tick() {
         super.tick()
-        if (hasOtherFishInGroup() && world.random.nextInt(200) == 1) {
+        if (this.hasOtherFishInGroup() && world.random.nextInt(200) == 1) {
             val list: List<HybridAquaticFishEntity?> =
                 world.getNonSpectatingEntities(this.javaClass, boundingBox.expand(8.0, 8.0, 8.0))
             if (list.size <= 1) {
-                groupSize = 1
+                this.groupSize = 1
             }
         }
     }
 
     fun hasOtherFishInGroup(): Boolean {
-        return groupSize > 1
+        return this.groupSize > 1
     }
 
     fun isCloseEnoughToLeader(): Boolean {
-        return this.squaredDistanceTo(leader) <= 121.0
+        return this.squaredDistanceTo(this.leader) <= 121.0
     }
 
     fun moveTowardLeader() {
-        if (hasLeader()) {
-            getNavigation().startMovingTo(leader, 1.0)
+        if (this.hasLeader()) {
+            getNavigation().startMovingTo(this.leader, 1.0)
         }
     }
 
-    fun pullInOtherFish(fish: Stream<out HybridAquaticSchoolingFishEntity>) {
-        fish.limit((getMaxGroupSize() - groupSize).toLong())
-            .filter { fishx: HybridAquaticSchoolingFishEntity -> fishx !== this }
-            .forEach { fishx: HybridAquaticSchoolingFishEntity -> fishx.joinGroupOf(this) }
+    fun pullInOtherFish(fish: Stream<out HybridAquaticSchoolingFishEntity?>) {
+        fish.limit((this.getMaxGroupSize() - this.groupSize).toLong())
+            .filter { fishx: HybridAquaticSchoolingFishEntity? -> fishx !== this }
+            .forEach { fishx: HybridAquaticSchoolingFishEntity? ->
+                fishx!!.joinGroupOf(this)
+            }
     }
 
     override fun initialize(
@@ -112,7 +120,6 @@ open class HybridAquaticSchoolingFishEntity(
         }
         return entityData
     }
-
 
     open class FishData(val leader: HybridAquaticSchoolingFishEntity) : EntityData
 }
