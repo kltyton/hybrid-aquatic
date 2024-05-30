@@ -64,7 +64,7 @@ open class HybridAquaticCrustaceanEntity(
             dataTracker.set(CRUSTACEAN_SIZE, size)
         }
 
-    var moistness: Int
+    private var moistness: Int
         get() = dataTracker.get(MOISTNESS)
         set(moistness) {
             dataTracker.set(MOISTNESS, moistness)
@@ -193,7 +193,7 @@ open class HybridAquaticCrustaceanEntity(
     }
 
     override fun calculateNextStepSoundDistance(): Float {
-        return this.distanceTraveled + 0.15f
+        return this.distanceTraveled + 0.5f
     }
 
 
@@ -257,7 +257,7 @@ open class HybridAquaticCrustaceanEntity(
         return PlayState.CONTINUE
     }
 
-    internal class CrustaceanEscapeDangerGoal(private val crustacean: HybridAquaticCrustaceanEntity?, speed: Double) :
+    internal class CrustaceanEscapeDangerGoal(crustacean: HybridAquaticCrustaceanEntity?, speed: Double) :
         EscapeDangerGoal(crustacean, speed) {
         override fun canStart(): Boolean {
             if (!this.isInDanger) {
@@ -323,7 +323,7 @@ open class HybridAquaticCrustaceanEntity(
         }
 
         override fun getSquaredMaxAttackDistance(entity: LivingEntity): Double {
-            return (0.25f + entity.width).toDouble()
+            return (1.5f + entity.width).toDouble()
         }
 
         override fun start() {
