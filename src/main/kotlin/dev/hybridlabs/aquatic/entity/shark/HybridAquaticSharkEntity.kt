@@ -172,8 +172,11 @@ open class HybridAquaticSharkEntity(
                 damage(this.damageSources.dryOut(), 1.0f)
             }
         }
-        if (isSprinting) {
-            attributes.getCustomInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED)?.baseValue = 2.0
+
+        if (isAttacking) {
+            attributes.getCustomInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED)?.baseValue = 3.0
+        } else {
+            attributes.getCustomInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED)?.baseValue = 1.0
         }
 
         if (world.isClient && isTouchingWater && isAttacking) {
@@ -328,7 +331,7 @@ open class HybridAquaticSharkEntity(
     override fun chooseRandomAngerTime() {
         setAngerTime(ANGER_TIME_RANGE.get(random))
     }
-    //#endregioni
+    //#endregion
 
     private fun getHungerValue(entityType: EntityType<*>): Int {
         if (entityType.isIn(HybridAquaticEntityTags.CRAB))
@@ -347,7 +350,7 @@ open class HybridAquaticSharkEntity(
         hunger += getHungerValue(entityType)
     }
 
-    internal class AttackGoal(private val shark: HybridAquaticSharkEntity) : MeleeAttackGoal(shark, 1.5,true) {
+    internal class AttackGoal(private val shark: HybridAquaticSharkEntity) : MeleeAttackGoal(shark, 1.5, true) {
         override fun canStart(): Boolean {
             return !shark.fromFishingNet && super.canStart()
         }
@@ -360,8 +363,9 @@ open class HybridAquaticSharkEntity(
                 shark.isSprinting = true
                 shark.attemptAttack = true
 
-                if (target.health <= 0)
+                if (target.health <= 0) {
                     shark.eatFish(target.type)
+                }
             }
         }
 
@@ -371,11 +375,13 @@ open class HybridAquaticSharkEntity(
 
         override fun start() {
             super.start()
+            shark.isSprinting = true
             shark.attemptAttack = false
         }
 
         override fun stop() {
             super.stop()
+            shark.isSprinting = false
             shark.attemptAttack = false
         }
     }
