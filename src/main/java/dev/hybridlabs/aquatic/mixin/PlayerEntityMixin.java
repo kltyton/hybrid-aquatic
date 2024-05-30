@@ -55,6 +55,7 @@ public abstract class PlayerEntityMixin implements CustomPlayerEntityData {
                     shift = At.Shift.BEFORE
             )
     )
+
     private void setCustomHurtTimeOnDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
         PlayerEntity object = ((PlayerEntity) (Object) this);
 

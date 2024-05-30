@@ -4,7 +4,6 @@ import dev.hybridlabs.aquatic.tag.HybridAquaticEntityTags
 import net.minecraft.block.Blocks
 import net.minecraft.entity.*
 import net.minecraft.entity.ai.control.MoveControl
-import net.minecraft.entity.ai.control.YawAdjustingLookControl
 import net.minecraft.entity.ai.goal.*
 import net.minecraft.entity.ai.pathing.EntityNavigation
 import net.minecraft.entity.ai.pathing.SwimNavigation
@@ -61,6 +60,7 @@ open class HybridAquaticFishEntity(
     override fun initGoals() {
         super.initGoals()
         goalSelector.add(1, SwimToRandomPlaceGoal(this))
+        goalSelector.add(2, SwimAroundGoal(this, 0.50, 6))
         goalSelector.add(1, EscapeDangerGoal(this, 1.25))
         goalSelector.add(2, FleeEntityGoal(this, LivingEntity::class.java, 8.0f, 1.2, 1.0) { !fromFishingNet && it.type.isIn(predator) })
         goalSelector.add(2, FleeEntityGoal(this, PlayerEntity::class.java, 5.0f, 1.0, 1.0) { !fromFishingNet })
@@ -196,14 +196,17 @@ open class HybridAquaticFishEntity(
     override fun getActiveEyeHeight(pose: EntityPose, dimensions: EntityDimensions): Float {
         return dimensions.height * 0.65f
     }
+
     override fun canImmediatelyDespawn(distanceSquared: Double): Boolean {
         return !hasCustomName()
     }
+
     override fun getLimitPerChunk(): Int {
         return 4
     }
 
     open val flopSound: SoundEvent = SoundEvents.ENTITY_PUFFER_FISH_FLOP
+
     override fun getHurtSound(source: DamageSource): SoundEvent {
         return SoundEvents.ENTITY_COD_HURT
     }
@@ -218,10 +221,6 @@ open class HybridAquaticFishEntity(
 
     override fun getSplashSound(): SoundEvent {
         return SoundEvents.ENTITY_DOLPHIN_SPLASH
-    }
-
-    override fun getSwimSound(): SoundEvent {
-        return SoundEvents.ENTITY_FISH_SWIM
     }
 
     override fun createNavigation(world: World): EntityNavigation {
@@ -279,7 +278,6 @@ open class HybridAquaticFishEntity(
 
     init {
         moveControl = FishMoveControl(this)
-        lookControl = YawAdjustingLookControl(this, 10)
     }
 
     override fun travel(movementInput: Vec3d?) {
