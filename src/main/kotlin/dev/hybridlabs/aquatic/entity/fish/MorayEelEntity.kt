@@ -13,7 +13,7 @@ class MorayEelEntity(entityType: EntityType<out MorayEelEntity>, world: World) :
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 8.0)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.6)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.7)
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 3.0)
                 .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 12.0)
         }
