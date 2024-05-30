@@ -1,5 +1,8 @@
 package dev.hybridlabs.aquatic.entity.fish
 
+import dev.hybridlabs.aquatic.goals.BoidGoal
+import dev.hybridlabs.aquatic.goals.LimitSpeedAndLookInVelocityDirectionGoal
+import dev.hybridlabs.aquatic.goals.StayInWaterGoal
 import dev.hybridlabs.aquatic.tag.HybridAquaticEntityTags
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.attribute.DefaultAttributeContainer
@@ -9,7 +12,15 @@ import net.minecraft.world.World
 
 class RockfishEntity(entityType: EntityType<out RockfishEntity>, world: World) :
     HybridAquaticSchoolingFishEntity(entityType, world, HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.ROCKFISH_PREDATOR) {
-    companion object {
+
+    override fun initGoals() {
+        super.initGoals()
+            goalSelector.add(5, BoidGoal(this, 0.4f, 0.5f, 4 / 20f, 4 / 20f))
+            goalSelector.add(2, LimitSpeedAndLookInVelocityDirectionGoal(this, 0.2f, 0.4f))
+            goalSelector.add(3, StayInWaterGoal(this))
+    }
+
+        companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 3.0)
