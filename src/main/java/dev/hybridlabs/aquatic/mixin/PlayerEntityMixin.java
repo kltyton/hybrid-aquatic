@@ -12,9 +12,11 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.fluid.Fluid;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.tag.FluidTags;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -23,8 +25,16 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(PlayerEntity.class)
 public abstract class PlayerEntityMixin implements CustomPlayerEntityData {
+
+    @Shadow protected boolean isSubmergedInWater;
+
+    @Shadow public abstract boolean isSwimming();
+
     @Unique
     private int haHurtTime = 0;
+
+    @Unique
+    private boolean isWearingDivingBoots;
 
     @Override
     public void hybrid_aquatic$setHurtTime(int value) {
@@ -44,6 +54,13 @@ public abstract class PlayerEntityMixin implements CustomPlayerEntityData {
     @Inject(method = "writeCustomDataToNbt", at = @At("TAIL"))
     private void writeCustomDataToNbt(NbtCompound nbt, CallbackInfo ci) {
         nbt.putInt("haHurtTime", hybrid_aquatic$getHurtTime());
+    }
+
+    @Inject(method = "shouldSwimInFluids", at = @At("HEAD"), cancellable = true)
+    private void overrideShouldSwimInFluids(CallbackInfoReturnable<Boolean> ci) {
+        if (isWearingDivingBoots && !isSwimming() && isSubmergedInWater) {
+            ci.setReturnValue(false);
+        }
     }
 
     @Inject(
@@ -75,6 +92,8 @@ public abstract class PlayerEntityMixin implements CustomPlayerEntityData {
         updateDivingHelmet();
         //Call updateTurtleChestplate method
         updateTurtleChestplate();
+        //Call updateDivingBoots method
+        updateDivingBoots();
     }
 
     @Unique
@@ -82,8 +101,20 @@ public abstract class PlayerEntityMixin implements CustomPlayerEntityData {
         var player = (PlayerEntity)(Object)this;
         var itemStack = player.getEquippedStack(EquipmentSlot.HEAD);
         if (itemStack.isOf(HybridAquaticItems.INSTANCE.getDIVING_HELMET()) && player.isSubmergedIn(FluidTags.WATER)) {
-            player.addStatusEffect(new StatusEffectInstance(HybridAquaticStatusEffects.INSTANCE.getCLARITY(), 200, 0, false, false, true));
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.WATER_BREATHING, 200, 0, false, false, true));
+            player.addStatusEffect(new StatusEffectInstance(HybridAquaticStatusEffects.INSTANCE.getCLARITY(), 40, 0, false, false, false));
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.WATER_BREATHING, 40, 0, false, false, false));
+        }
+    }
+
+    @Unique
+    private void updateDivingBoots() {
+        var player = (PlayerEntity)(Object)this;
+        var itemStack = player.getEquippedStack(EquipmentSlot.FEET);
+        isWearingDivingBoots = itemStack.isOf(HybridAquaticItems.INSTANCE.getDIVING_BOOTS());
+        if (isWearingDivingBoots && player.isSubmergedIn(FluidTags.WATER)) {
+            player.setStepHeight(1.0f);
+        } else {
+            player.setStepHeight(0.6f);
         }
     }
 
