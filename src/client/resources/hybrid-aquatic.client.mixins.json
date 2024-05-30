@@ -6,6 +6,7 @@
     "BackgroundRendererMixin",
     "FishingBobberEntityRendererMixin",
     "HeadFeatureRendererMixin",
+    "InGameHudMixin",
     "SkullBlockEntityRendererMixin",
     "WeatherDisplayMixin"
   ],
