@@ -9,12 +9,8 @@ import kotlin.math.abs
 import kotlin.math.atan2
 
 class FishJumpGoal(private val fish: HybridAquaticFishEntity, chance: Int) : DiveJumpingGoal() {
-    private val chance: Int
+    private val chance: Int = toGoalTicks(chance)
     private var inWater = false
-
-    init {
-        this.chance = toGoalTicks(chance)
-    }
 
     override fun canStart(): Boolean {
         return if (fish.random.nextInt(chance) != 0) {

@@ -1,5 +1,6 @@
 package dev.hybridlabs.aquatic.entity.jellyfish
 
+import dev.hybridlabs.aquatic.goals.StayInWaterGoal
 import net.minecraft.block.Blocks
 import net.minecraft.entity.*
 import net.minecraft.entity.ai.control.AquaticMoveControl
@@ -70,6 +71,7 @@ open class HybridAquaticJellyfishEntity(
 
     override fun initGoals() {
         goalSelector.add(0, SwimGoal(this))
+        goalSelector.add(1, StayInWaterGoal(this))
     }
 
     override fun initDataTracker() {
