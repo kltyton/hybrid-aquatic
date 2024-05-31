@@ -30,6 +30,8 @@ object HybridAquaticItemGroups {
                 entries.add(stack)
             }
 
+            entries.add(HybridAquaticItems.SEA_MESSAGE_BOOK)
+
             // blocks
             entries.add(HybridAquaticBlocks.GLOWSTICK)
             entries.add(HybridAquaticBlocks.DRIFTWOOD_LOG)

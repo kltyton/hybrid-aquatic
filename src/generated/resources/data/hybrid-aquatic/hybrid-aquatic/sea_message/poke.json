@@ -1,3 +1,5 @@
 {
-  "id": "poke"
+  "author": "Poke",
+  "has_title": true,
+  "translation_key": "poke"
 }

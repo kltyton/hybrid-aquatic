@@ -3,6 +3,7 @@
 package dev.hybridlabs.aquatic.block
 
 import dev.hybridlabs.aquatic.block.entity.MessageInABottleBlockEntity
+import dev.hybridlabs.aquatic.item.SeaMessageBookItem
 import dev.hybridlabs.aquatic.registry.HybridAquaticRegistryKeys
 import net.minecraft.block.Block
 import net.minecraft.block.BlockRenderType
@@ -77,13 +78,14 @@ class MessageInABottleBlock(settings: Settings) : BlockWithEntity(settings), Wat
             // if not present, generate a random message
             if (MessageInABottleBlockEntity.MESSAGE_KEY !in nbt) {
                 // get a random message
-                val registry = world.registryManager.get(HybridAquaticRegistryKeys.SEA_MESSAGE)
+                val registryManager = world.registryManager
+                val registry = registryManager.get(HybridAquaticRegistryKeys.SEA_MESSAGE)
                 val messageKey = registry.getRandom(world.random).getOrNull()?.registryKey() ?: return
                 val message = registry.get(messageKey) ?: return
 
                 // get block entity
                 val blockEntity = world.getBlockEntity(pos) as? MessageInABottleBlockEntity ?: return
-                blockEntity.messageItemStack = message.createBookItemStack()
+                blockEntity.messageItemStack = SeaMessageBookItem.createItemStack(message, registryManager)
             }
         }
     }

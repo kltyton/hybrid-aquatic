@@ -5,16 +5,13 @@ import dev.hybridlabs.aquatic.block.entity.MessageInABottleBlockEntity.Companion
 import dev.hybridlabs.aquatic.block.entity.MessageInABottleBlockEntity.Companion.VARIANT_KEY
 import dev.hybridlabs.aquatic.data.HybridAquaticDataGenerator.filterHybridAquatic
 import dev.hybridlabs.aquatic.item.HybridAquaticItems
+import dev.hybridlabs.aquatic.item.SeaMessageBookItem.Companion.SEA_MESSAGE_KEY
 import dev.hybridlabs.aquatic.loot.HybridAquaticLootTables
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider
-import net.minecraft.block.Blocks
-import net.minecraft.block.CoralWallFanBlock
 import net.minecraft.block.DeadCoralWallFanBlock
 import net.minecraft.block.WallTorchBlock
 import net.minecraft.item.BlockItem.BLOCK_ENTITY_TAG_KEY
-import net.minecraft.item.Items
-import net.minecraft.item.WrittenBookItem.*
 import net.minecraft.loot.LootPool
 import net.minecraft.loot.LootTable
 import net.minecraft.loot.condition.MatchToolLootCondition
@@ -109,11 +106,9 @@ class BlockLootTableProvider(output: FabricDataOutput) : FabricBlockLootTablePro
                                         .withOperation(VARIANT_KEY, "$BLOCK_ENTITY_TAG_KEY.$VARIANT_KEY")
                                         .withOperation(MESSAGE_KEY, "$BLOCK_ENTITY_TAG_KEY.$MESSAGE_KEY")
                                 ),
-                                ItemEntry.builder(Items.WRITTEN_BOOK).apply(
+                                ItemEntry.builder(HybridAquaticItems.SEA_MESSAGE_BOOK).apply(
                                     CopyNbtLootFunction.builder(ContextLootNbtProvider.BLOCK_ENTITY)
-                                        .withOperation("$MESSAGE_KEY.tag.$PAGES_KEY", PAGES_KEY)
-                                        .withOperation("$MESSAGE_KEY.tag.$TITLE_KEY", TITLE_KEY)
-                                        .withOperation("$MESSAGE_KEY.tag.$AUTHOR_KEY", AUTHOR_KEY)
+                                        .withOperation("$MESSAGE_KEY.tag.$SEA_MESSAGE_KEY", SEA_MESSAGE_KEY)
                                 )
                             )
                         )

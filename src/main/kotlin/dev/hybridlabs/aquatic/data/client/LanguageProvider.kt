@@ -1,8 +1,8 @@
 package dev.hybridlabs.aquatic.data.client
 
 import dev.hybridlabs.aquatic.block.HybridAquaticBlocks
-import dev.hybridlabs.aquatic.block.SeaMessage
 import dev.hybridlabs.aquatic.data.HybridAquaticDataGenerator.filterHybridAquatic
+import dev.hybridlabs.aquatic.data.server.seamessage.SeaMessageProvider
 import dev.hybridlabs.aquatic.effect.HybridAquaticStatusEffects
 import dev.hybridlabs.aquatic.enchantment.HybridAquaticEnchantments
 import dev.hybridlabs.aquatic.entity.HybridAquaticEntityTypes
@@ -29,21 +29,12 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
         }
 
         // sea messages
-        mapOf(
-            "the_creepers_code" to "\"The creepers have a code...",
-            "poyo" to "\"I hate litterbugs.\"\n~Poyo",
-            "rick_roll" to "\"Never gonna give you up!\nNever gonna let you down!\nNever gonna run around and desert you!\n-Rick Astley",
-            "bold_muddy" to "\"AW MAN I DROWNED!\n~Bold Muddy",
-            "kaupenjoe" to "\"It is better to sail the seven sea, than to get STDs\n-Kaupenjoe",
-            "catpenjoe" to "\"If you wanna get a catgirl, you first have to become a catboy.\n-Catpenjoe",
-            "fishenjoe" to "\"Give a man a fish and you'll feed him for a day,\nkill a man and you'll have one less homeless person begging you for fish.\n-Fishenjoe",
-            "loss" to "\"| ||\n|| |_",
-            "willowshine" to "\"Beware the fish girl\n-Willowshine",
-            "warranty" to "\"We've been trying to reach you about your car's extended warranty",
-            "poke" to "\"I like cheese\n-Poke",
-            "one_piece" to "\"THE ONE PIECE IS REAL\n-Poke",
+        SeaMessageProvider.BUILT_IN.forEach { message ->
+            builder.add(message.translationKey, message.englishText)
+            message.englishTitle?.let { title -> builder.add(message.titleTranslationKey, title) }
+        }
 
-        ).forEach { (id, translation) -> builder.add(SeaMessage(id).translationKey, translation) }
+        builder.add(HybridAquaticItems.SEA_MESSAGE_BOOK, "Sea Message")
 
         // entities
         generateEntities(builder)
