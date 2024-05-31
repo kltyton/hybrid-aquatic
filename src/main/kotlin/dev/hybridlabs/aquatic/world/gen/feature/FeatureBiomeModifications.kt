@@ -41,6 +41,18 @@ object FeatureBiomeModifications {
         )
 
         BiomeModifications.addFeature(
+            BiomeSelectors.tag(HybridAquaticBiomeTags.DENSE_SARGASSUM_SPAWN_BIOMES),
+            GenerationStep.Feature.VEGETAL_DECORATION,
+            HybridAquaticPlacedFeatures.DENSE_SARGASSUM
+        )
+
+        BiomeModifications.addFeature(
+            BiomeSelectors.tag(HybridAquaticBiomeTags.FLOATING_SARGASSUM_SPAWN_BIOMES),
+            GenerationStep.Feature.VEGETAL_DECORATION,
+            HybridAquaticPlacedFeatures.FLOATING_SARGASSUM
+        )
+
+        BiomeModifications.addFeature(
             BiomeSelectors.tag(HybridAquaticBiomeTags.DENSE_KELP_WARM_SPAWN_BIOMES),
             GenerationStep.Feature.VEGETAL_DECORATION,
             HybridAquaticPlacedFeatures.DENSE_KELP_WARM

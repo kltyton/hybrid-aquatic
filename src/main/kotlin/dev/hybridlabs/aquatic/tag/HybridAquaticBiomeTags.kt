@@ -8,7 +8,7 @@ import net.minecraft.world.biome.Biome
 
 object HybridAquaticBiomeTags {
     val CLOWNFISH_SPAWN_BIOMES = create("clownfish_spawn_biomes")
-    val YELLOWFIN_SPAWN_BIOMES = create("yellowfin_spawn_biomes")
+    val TUNA_SPAWN_BIOMES = create("tuna_spawn_biomes")
     val MAHIMAHI_SPAWN_BIOMES = create("mahimahi_spawn_biomes")
     val BLUE_TANG_SPAWN_BIOMES = create("blue_tang_spawn_biomes")
     val COWFISH_SPAWN_BIOMES = create("cowfish_spawn_biomes")
@@ -88,6 +88,8 @@ object HybridAquaticBiomeTags {
     val TUBE_SPONGE_SPAWN_BIOMES = create("tube_sponge_spawn_biomes")
     val MESSAGE_IN_A_BOTTLE_SPAWN_BIOMES = create("message_in_a_bottle_spawn_biomes")
     val SARGASSUM_SPAWN_BIOMES = create("sargassum_spawn_biomes")
+    val DENSE_SARGASSUM_SPAWN_BIOMES = create("dense_sargassum_spawn_biomes")
+    val FLOATING_SARGASSUM_SPAWN_BIOMES = create("sargassum_patch_spawn_biomes")
     val DENSE_KELP_WARM_SPAWN_BIOMES = create("dense_kelp_warm_spawn_biomes")
     val DENSE_KELP_COLD_SPAWN_BIOMES = create("dense_kelp_cold_spawn_biomes")
     val THERMAL_VENT_SPAWN_BIOMES = create("thermal_vent_spawn_biomes")

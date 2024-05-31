@@ -1,6 +1,7 @@
 package dev.hybridlabs.aquatic.data.server.tag
 
 import dev.hybridlabs.aquatic.tag.HybridAquaticBiomeTags
+import dev.hybridlabs.aquatic.world.biome.HybridAquaticBiomes
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider
 import net.minecraft.registry.RegistryKeys
@@ -288,6 +289,7 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             BiomeKeys.LUKEWARM_OCEAN,
             BiomeKeys.DEEP_OCEAN,
             BiomeKeys.DEEP_LUKEWARM_OCEAN,
+            HybridAquaticBiomes.SARGASSUM_SEA
         )
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.MOON_JELLYFISH_SPAWN_BIOMES).add(
@@ -300,12 +302,14 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             BiomeKeys.WARM_OCEAN,
             BiomeKeys.DEEP_LUKEWARM_OCEAN,
             BiomeKeys.LUKEWARM_OCEAN,
+            HybridAquaticBiomes.SARGASSUM_SEA
         )
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.CAULIFLOWER_JELLYFISH_SPAWN_BIOMES).add(
             BiomeKeys.WARM_OCEAN,
             BiomeKeys.DEEP_LUKEWARM_OCEAN,
             BiomeKeys.LUKEWARM_OCEAN,
+            HybridAquaticBiomes.SARGASSUM_SEA
         )
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.NOMURA_JELLYFISH_SPAWN_BIOMES).add(
@@ -338,6 +342,7 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             BiomeKeys.DEEP_LUKEWARM_OCEAN,
             BiomeKeys.LUKEWARM_OCEAN,
             BiomeKeys.DEEP_OCEAN,
+            HybridAquaticBiomes.SARGASSUM_SEA
         )
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.COMPASS_JELLYFISH_SPAWN_BIOMES).add(
@@ -347,6 +352,7 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             BiomeKeys.DEEP_LUKEWARM_OCEAN,
             BiomeKeys.LUKEWARM_OCEAN,
             BiomeKeys.DEEP_OCEAN,
+            HybridAquaticBiomes.SARGASSUM_SEA
         )
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.BLUE_JELLYFISH_SPAWN_BIOMES).add(
@@ -513,6 +519,7 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             BiomeKeys.WARM_OCEAN,
             BiomeKeys.LUKEWARM_OCEAN,
             BiomeKeys.DEEP_LUKEWARM_OCEAN,
+            HybridAquaticBiomes.SARGASSUM_SEA
         )
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.UNICORN_FISH_SPAWN_BIOMES).add(
@@ -539,10 +546,11 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             BiomeKeys.LUKEWARM_OCEAN,
         )
 
-        getOrCreateTagBuilder(HybridAquaticBiomeTags.YELLOWFIN_SPAWN_BIOMES).add(
+        getOrCreateTagBuilder(HybridAquaticBiomeTags.TUNA_SPAWN_BIOMES).add(
             BiomeKeys.OCEAN,
             BiomeKeys.DEEP_OCEAN,
             BiomeKeys.DEEP_LUKEWARM_OCEAN,
+            HybridAquaticBiomes.SARGASSUM_SEA
         )
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.ZEBRA_DANIO_SPAWN_BIOMES).add(
@@ -579,6 +587,15 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             BiomeKeys.LUKEWARM_OCEAN,
             BiomeKeys.DEEP_LUKEWARM_OCEAN,
             BiomeKeys.OCEAN,
+            HybridAquaticBiomes.SARGASSUM_SEA
+        )
+
+        getOrCreateTagBuilder(HybridAquaticBiomeTags.DENSE_SARGASSUM_SPAWN_BIOMES).add(
+            HybridAquaticBiomes.SARGASSUM_SEA
+        )
+
+        getOrCreateTagBuilder(HybridAquaticBiomeTags.FLOATING_SARGASSUM_SPAWN_BIOMES).add(
+            HybridAquaticBiomes.SARGASSUM_SEA
         )
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.DENSE_KELP_WARM_SPAWN_BIOMES).add(

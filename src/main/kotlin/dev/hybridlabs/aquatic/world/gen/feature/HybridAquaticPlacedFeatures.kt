@@ -25,6 +25,10 @@ object HybridAquaticPlacedFeatures {
 
     val SARGASSUM = register("sargassum")
 
+    val DENSE_SARGASSUM = register("dense_sargassum")
+
+    val FLOATING_SARGASSUM = register("floating_sargassum")
+
     val DENSE_KELP_WARM = register("dense_kelp_warm")
 
     val DENSE_KELP_COLD = register("dense_kelp_cold")

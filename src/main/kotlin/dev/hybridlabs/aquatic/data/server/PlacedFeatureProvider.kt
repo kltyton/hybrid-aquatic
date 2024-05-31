@@ -99,9 +99,34 @@ class PlacedFeatureProvider(output: FabricDataOutput, registriesFuture: Completa
                 listOf(
                     SquarePlacementModifier.of(),
                     PlacedFeatures.OCEAN_FLOOR_WG_HEIGHTMAP,
-                    CountPlacementModifier.of(20),
                     BiomePlacementModifier.of(),
                     NoiseThresholdCountPlacementModifier.of(80.0, 80, 0)
+                )
+            )
+        )
+
+        // dense sargassum
+        entries.add(
+            HybridAquaticPlacedFeatures.DENSE_SARGASSUM,
+            PlacedFeature(entries.ref(HybridAquaticConfiguredFeatures.DENSE_SARGASSUM),
+                listOf(
+                    SquarePlacementModifier.of(),
+                    PlacedFeatures.OCEAN_FLOOR_WG_HEIGHTMAP,
+                    BiomePlacementModifier.of(),
+                    NoiseThresholdCountPlacementModifier.of(120.0, 80, 0)
+                )
+            )
+        )
+
+        // floating sargassum
+        entries.add(
+            HybridAquaticPlacedFeatures.FLOATING_SARGASSUM,
+            PlacedFeature(entries.ref(HybridAquaticConfiguredFeatures.FLOATING_SARGASSUM),
+                listOf(
+                    SquarePlacementModifier.of(),
+                    PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP,
+                    CountPlacementModifier.of(50),
+                    BiomePlacementModifier.of()
                 )
             )
         )
@@ -113,7 +138,6 @@ class PlacedFeatureProvider(output: FabricDataOutput, registriesFuture: Completa
                 listOf(
                     SquarePlacementModifier.of(),
                     PlacedFeatures.OCEAN_FLOOR_WG_HEIGHTMAP,
-                    CountPlacementModifier.of(25),
                     BiomePlacementModifier.of(),
                     NoiseThresholdCountPlacementModifier.of(80.0, 80, 0)
                 )
@@ -127,7 +151,6 @@ class PlacedFeatureProvider(output: FabricDataOutput, registriesFuture: Completa
                 listOf(
                     SquarePlacementModifier.of(),
                     PlacedFeatures.OCEAN_FLOOR_WG_HEIGHTMAP,
-                    CountPlacementModifier.of(50),
                     BiomePlacementModifier.of(),
                     NoiseThresholdCountPlacementModifier.of(120.0, 80, 0)
                 )

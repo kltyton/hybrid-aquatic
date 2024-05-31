@@ -1,0 +1,19 @@
+{
+  "feature": "hybrid-aquatic:floating_sargassum",
+  "placement": [
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "WORLD_SURFACE_WG"
+    },
+    {
+      "type": "minecraft:count",
+      "count": 50
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

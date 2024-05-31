@@ -121,6 +121,32 @@ class ConfiguredFeatureProvider(output: FabricDataOutput, registriesFuture: Comp
             )
         )
 
+        // dense sargassum
+        entries.add(
+            HybridAquaticConfiguredFeatures.DENSE_SARGASSUM,
+            ConfiguredFeature(
+                HybridAquaticFeatures.DENSE_SARGASSUM, DenseSargassumFeatureConfig(
+                    SimpleBlockStateProvider.of(HybridAquaticBlocks.SARGASSUM)
+                )
+            )
+        )
+
+        // floating sargassum
+        entries.add(
+            HybridAquaticConfiguredFeatures.FLOATING_SARGASSUM,
+            ConfiguredFeature(
+                Feature.RANDOM_PATCH, RandomPatchFeatureConfig(
+                    10, 7, 3,
+                    PlacedFeatures.createEntry(
+                        Feature.SIMPLE_BLOCK,
+                        SimpleBlockFeatureConfig(
+                            BlockStateProvider.of(HybridAquaticBlocks.FLOATING_SARGASSUM.defaultState.with(Properties.WATERLOGGED, true))
+                        )
+                    )
+                )
+            )
+        )
+
         // dense kelp warm
         entries.add(
             HybridAquaticConfiguredFeatures.DENSE_KELP_WARM,
