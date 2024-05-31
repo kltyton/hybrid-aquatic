@@ -87,11 +87,11 @@ open class HybridAquaticCrustaceanEntity(
 
     override fun initGoals() {
         super.initGoals()
-        goalSelector.add(0, CrustaceanEscapeDangerGoal(this, 0.8))
-        goalSelector.add(1, FleeEntityGoal(this, PlayerEntity::class.java, 6.0f, 0.5, 0.8))
-        goalSelector.add(2, WanderAroundGoal(this, 0.5))
-        goalSelector.add(9, WanderOnLandGoal(this, 0.5, 100))
-        goalSelector.add(3, WanderInWaterGoal(this, 0.5))
+        goalSelector.add(0, CrustaceanEscapeDangerGoal(this, 0.6))
+        goalSelector.add(1, FleeEntityGoal(this, PlayerEntity::class.java, 6.0f, 0.3, 0.5))
+        goalSelector.add(2, WanderAroundGoal(this, 0.3))
+        goalSelector.add(9, WanderOnLandGoal(this, 0.3, 100))
+        goalSelector.add(3, WanderInWaterGoal(this, 0.3))
         goalSelector.add(2, LookAroundGoal(this))
         goalSelector.add(8, LookAtEntityGoal(this, PlayerEntity::class.java, 10.0f))
     }
@@ -108,6 +108,7 @@ open class HybridAquaticCrustaceanEntity(
         this.size = this.random.nextBetween(getMinSize(),getMaxSize())
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt)
     }
+
     override fun hasNoDrag(): Boolean {
         return false
     }
