@@ -65,6 +65,11 @@ data class SeaMessage(
             "kaupenjoe",
             "catpenjoe",
             "fishenjoe",
+            "willowshine",
+            "loss",
+            "warranty",
+            "poke",
+            "one_piece"
         )
     }
 }
