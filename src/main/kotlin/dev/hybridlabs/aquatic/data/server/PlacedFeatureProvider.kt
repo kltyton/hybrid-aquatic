@@ -8,13 +8,11 @@ import dev.hybridlabs.aquatic.world.gen.feature.HybridAquaticPlacedFeatures
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider
 import net.minecraft.registry.RegistryWrapper
+import net.minecraft.world.Heightmap
 import net.minecraft.world.gen.feature.PlacedFeature
 import net.minecraft.world.gen.feature.PlacedFeatures
 import net.minecraft.world.gen.feature.VegetationPlacedFeatures
-import net.minecraft.world.gen.placementmodifier.BiomePlacementModifier
-import net.minecraft.world.gen.placementmodifier.CountPlacementModifier
-import net.minecraft.world.gen.placementmodifier.RarityFilterPlacementModifier
-import net.minecraft.world.gen.placementmodifier.SquarePlacementModifier
+import net.minecraft.world.gen.placementmodifier.*
 import java.util.concurrent.CompletableFuture
 
 class PlacedFeatureProvider(output: FabricDataOutput, registriesFuture: CompletableFuture<RegistryWrapper.WrapperLookup>) : FabricDynamicRegistryProvider(output, registriesFuture) {
@@ -86,8 +84,9 @@ class PlacedFeatureProvider(output: FabricDataOutput, registriesFuture: Completa
             PlacedFeature(entries.ref(HybridAquaticConfiguredFeatures.THERMAL_VENT),
                 listOf(
                     SquarePlacementModifier.of(),
-                    PlacedFeatures.OCEAN_FLOOR_WG_HEIGHTMAP,
-                    CountPlacementModifier.of(100),
+                    PlacedFeatures.BOTTOM_TO_120_RANGE,
+                    SurfaceThresholdFilterPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG, Int.MIN_VALUE, -2),
+                    CountPlacementModifier.of(1),
                     BiomePlacementModifier.of()
                 )
             )
@@ -101,7 +100,8 @@ class PlacedFeatureProvider(output: FabricDataOutput, registriesFuture: Completa
                     SquarePlacementModifier.of(),
                     PlacedFeatures.OCEAN_FLOOR_WG_HEIGHTMAP,
                     CountPlacementModifier.of(20),
-                    BiomePlacementModifier.of()
+                    BiomePlacementModifier.of(),
+                    NoiseThresholdCountPlacementModifier.of(80.0, 80, 0)
                 )
             )
         )
@@ -114,7 +114,8 @@ class PlacedFeatureProvider(output: FabricDataOutput, registriesFuture: Completa
                     SquarePlacementModifier.of(),
                     PlacedFeatures.OCEAN_FLOOR_WG_HEIGHTMAP,
                     CountPlacementModifier.of(25),
-                    BiomePlacementModifier.of()
+                    BiomePlacementModifier.of(),
+                    NoiseThresholdCountPlacementModifier.of(80.0, 80, 0)
                 )
             )
         )
@@ -127,7 +128,8 @@ class PlacedFeatureProvider(output: FabricDataOutput, registriesFuture: Completa
                     SquarePlacementModifier.of(),
                     PlacedFeatures.OCEAN_FLOOR_WG_HEIGHTMAP,
                     CountPlacementModifier.of(50),
-                    BiomePlacementModifier.of()
+                    BiomePlacementModifier.of(),
+                    NoiseThresholdCountPlacementModifier.of(120.0, 80, 0)
                 )
             )
         )

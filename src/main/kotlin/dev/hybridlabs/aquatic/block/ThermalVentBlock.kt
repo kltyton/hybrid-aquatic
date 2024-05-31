@@ -17,7 +17,7 @@ import net.minecraft.world.WorldAccess
 import net.minecraft.world.WorldView
 
 class ThermalVentBlock(settings: Settings?) :
-    AbstractPlantStemBlock(settings, Direction.UP, SHAPE, true, 0.05),
+    AbstractPlantStemBlock(settings, Direction.UP, SHAPE, true, 0.0),
     FluidFillable {
     override fun chooseStemState(state: BlockState): Boolean {
         return state.isOf(Blocks.WATER)

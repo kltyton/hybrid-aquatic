@@ -14,6 +14,12 @@
     },
     {
       "type": "minecraft:biome"
+    },
+    {
+      "type": "minecraft:noise_threshold_count",
+      "above_noise": 0,
+      "below_noise": 80,
+      "noise_level": 120.0
     }
   ]
 }

@@ -17,7 +17,7 @@ class ThermalVentFeature(codec: Codec<ThermalVentFeatureConfig>?) :
         val structureWorldAccess = context.world
         val blockPos = context.origin
         val random = context.random
-        val j = structureWorldAccess.getTopY(Heightmap.Type.OCEAN_FLOOR_WG, blockPos.x, blockPos.z)
+        val j = structureWorldAccess.getTopY(Heightmap.Type.OCEAN_FLOOR, blockPos.x, blockPos.z)
         var blockPos2 = BlockPos(blockPos.x, j, blockPos.z)
         if (structureWorldAccess.getBlockState(blockPos2).isOf(Blocks.WATER)) {
             val blockState = HybridAquaticBlocks.THERMAL_VENT.defaultState
