@@ -176,6 +176,9 @@ object HybridAquaticItemGroups {
             entries.add(HybridAquaticItems.PEARL)
             entries.add(HybridAquaticItems.BLACK_PEARL)
             entries.add(HybridAquaticItems.SPONGE_CHUNK)
+            entries.add(HybridAquaticItems.CUTTLEBONE)
+            entries.add(HybridAquaticItems.COCONUT)
+            entries.add(HybridAquaticItems.COCONUT_HALF)
 
             // lures
             entries.add(HybridAquaticItems.BARBED_HOOK)

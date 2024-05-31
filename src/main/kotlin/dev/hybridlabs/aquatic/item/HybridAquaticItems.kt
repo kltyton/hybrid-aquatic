@@ -9,12 +9,7 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings
 import net.minecraft.block.Block
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.mob.MobEntity
-import net.minecraft.item.ArmorItem
-import net.minecraft.item.BlockItem
-import net.minecraft.item.FoodComponent
-import net.minecraft.item.Item
-import net.minecraft.item.SpawnEggItem
-import net.minecraft.item.VerticallyAttachableBlockItem
+import net.minecraft.item.*
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.util.Identifier
@@ -44,6 +39,8 @@ object HybridAquaticItems {
     val SPONGE_CHUNK = register("sponge_chunk", Item(FabricItemSettings()))
     val PEARL = register("pearl", Item(FabricItemSettings()))
     val BLACK_PEARL = register("black_pearl", Item(FabricItemSettings()))
+    val COCONUT = register("coconut", Item(FabricItemSettings()))
+    val CUTTLEBONE = register("cuttlebone", Item(FabricItemSettings()))
 
     val RAW_SHRIMP = register("raw_shrimp", Item(FabricItemSettings()))
     val RAW_CRAYFISH = register("raw_crayfish", Item(FabricItemSettings()))
@@ -60,6 +57,19 @@ object HybridAquaticItems {
     val KARKINOS_CLAW = register("karkinos_claw", KarkinosClawItem(FabricItemSettings().maxCount(1)))
 
     // food items
+    val COCONUT_HALF = register("coconut_half",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(6)
+                        .saturationModifier(0.8F)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+
     val COOKED_CRAB = register("cooked_crab",
         Item(
             FabricItemSettings()

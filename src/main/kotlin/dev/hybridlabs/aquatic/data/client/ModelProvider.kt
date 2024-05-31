@@ -8,11 +8,7 @@ import dev.hybridlabs.aquatic.item.HybridAquaticItems
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider
 import net.minecraft.block.Blocks
-import net.minecraft.data.client.BlockStateModelGenerator
-import net.minecraft.data.client.ItemModelGenerator
-import net.minecraft.data.client.ModelIds
-import net.minecraft.data.client.Models
-import net.minecraft.data.client.TextureMap
+import net.minecraft.data.client.*
 import net.minecraft.item.Items
 import net.minecraft.item.SpawnEggItem
 import net.minecraft.registry.Registries
@@ -171,6 +167,9 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
             HybridAquaticItems.TRIGGERFISH,
             HybridAquaticItems.TIGER_BARB,
             HybridAquaticItems.OSCAR,
+            HybridAquaticItems.COCONUT,
+            HybridAquaticItems.COCONUT_HALF,
+            HybridAquaticItems.CUTTLEBONE,
 
             HybridAquaticItems.BARBED_HOOK,
             HybridAquaticItems.GLOWING_HOOK,
