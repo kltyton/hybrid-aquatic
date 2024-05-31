@@ -4,16 +4,13 @@ package dev.hybridlabs.aquatic.data.server
 
 import dev.hybridlabs.aquatic.block.HybridAquaticBlocks
 import dev.hybridlabs.aquatic.tag.HybridAquaticBlockTags
-import dev.hybridlabs.aquatic.world.gen.feature.HybridAquaticConfiguredFeatures
-import dev.hybridlabs.aquatic.world.gen.feature.HybridAquaticFeatures
-import dev.hybridlabs.aquatic.world.gen.feature.MessageInABottleFeatureConfig
+import dev.hybridlabs.aquatic.world.gen.feature.*
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider
 import net.minecraft.block.Blocks
 import net.minecraft.registry.RegistryWrapper
 import net.minecraft.state.property.Properties
 import net.minecraft.util.math.intprovider.ConstantIntProvider
-import net.minecraft.world.gen.CountConfig
 import net.minecraft.world.gen.blockpredicate.BlockPredicate
 import net.minecraft.world.gen.feature.*
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize
@@ -94,21 +91,52 @@ class ConfiguredFeatureProvider(output: FabricDataOutput, registriesFuture: Comp
             )
         )
 
-        // hydrothermal vents
-        entries.add(
-            HybridAquaticConfiguredFeatures.HYDROTHERMAL_VENTS,
-            ConfiguredFeature(
-                Feature.SEA_PICKLE, CountConfig(9
-                )
-            )
-        )
-
         // message in a bottle
         entries.add(
             HybridAquaticConfiguredFeatures.MESSAGE_IN_A_BOTTLE,
             ConfiguredFeature(
                 HybridAquaticFeatures.MESSAGE_IN_A_BOTTLE, MessageInABottleFeatureConfig(
                     SimpleBlockStateProvider.of(HybridAquaticBlocks.MESSAGE_IN_A_BOTTLE)
+                )
+            )
+        )
+
+        // thermal vents
+        entries.add(
+            HybridAquaticConfiguredFeatures.THERMAL_VENT,
+            ConfiguredFeature(
+                HybridAquaticFeatures.THERMAL_VENT, ThermalVentFeatureConfig(
+                    SimpleBlockStateProvider.of(HybridAquaticBlocks.THERMAL_VENT)
+                )
+            )
+        )
+
+        // sargassum
+        entries.add(
+            HybridAquaticConfiguredFeatures.SARGASSUM,
+            ConfiguredFeature(
+                HybridAquaticFeatures.SARGASSUM, SargassumFeatureConfig(
+                    SimpleBlockStateProvider.of(HybridAquaticBlocks.SARGASSUM)
+                )
+            )
+        )
+
+        // dense kelp warm
+        entries.add(
+            HybridAquaticConfiguredFeatures.DENSE_KELP_WARM,
+            ConfiguredFeature(
+                HybridAquaticFeatures.DENSE_KELP_WARM, DenseKelpWarmFeatureConfig(
+                    SimpleBlockStateProvider.of(HybridAquaticBlocks.DENSE_KELP)
+                )
+            )
+        )
+
+        // dense kelp cold
+        entries.add(
+            HybridAquaticConfiguredFeatures.DENSE_KELP_COLD,
+            ConfiguredFeature(
+                HybridAquaticFeatures.DENSE_KELP_COLD, DenseKelpColdFeatureConfig(
+                    SimpleBlockStateProvider.of(HybridAquaticBlocks.DENSE_KELP)
                 )
             )
         )

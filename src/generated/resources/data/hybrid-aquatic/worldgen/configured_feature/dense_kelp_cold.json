@@ -1,0 +1,14 @@
+{
+  "type": "hybrid-aquatic:dense_kelp_cold",
+  "config": {
+    "to_place": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "hybrid-aquatic:dense_kelp",
+        "Properties": {
+          "age": "0"
+        }
+      }
+    }
+  }
+}

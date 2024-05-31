@@ -58,19 +58,6 @@ class PlacedFeatureProvider(output: FabricDataOutput, registriesFuture: Completa
             )
         )
 
-        // hydrothermal vents
-        entries.add(
-            HybridAquaticPlacedFeatures.HYDROTHERMAL_VENTS,
-            PlacedFeature(entries.ref(HybridAquaticConfiguredFeatures.HYDROTHERMAL_VENTS),
-                listOf(
-                    SquarePlacementModifier.of(),
-                    PlacedFeatures.OCEAN_FLOOR_WG_HEIGHTMAP,
-                    CountPlacementModifier.of(1),
-                    BiomePlacementModifier.of()
-                )
-            )
-        )
-
         // coconut palms
         entries.add(
             HybridAquaticPlacedFeatures.COCONUT_PALM_PLACED,
@@ -88,6 +75,58 @@ class PlacedFeatureProvider(output: FabricDataOutput, registriesFuture: Completa
                     SquarePlacementModifier.of(),
                     PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP,
                     RarityFilterPlacementModifier.of(150),
+                    BiomePlacementModifier.of()
+                )
+            )
+        )
+
+        // thermal vents
+        entries.add(
+            HybridAquaticPlacedFeatures.THERMAL_VENT,
+            PlacedFeature(entries.ref(HybridAquaticConfiguredFeatures.THERMAL_VENT),
+                listOf(
+                    SquarePlacementModifier.of(),
+                    PlacedFeatures.OCEAN_FLOOR_WG_HEIGHTMAP,
+                    CountPlacementModifier.of(100),
+                    BiomePlacementModifier.of()
+                )
+            )
+        )
+
+        // sargassum
+        entries.add(
+            HybridAquaticPlacedFeatures.SARGASSUM,
+            PlacedFeature(entries.ref(HybridAquaticConfiguredFeatures.SARGASSUM),
+                listOf(
+                    SquarePlacementModifier.of(),
+                    PlacedFeatures.OCEAN_FLOOR_WG_HEIGHTMAP,
+                    CountPlacementModifier.of(20),
+                    BiomePlacementModifier.of()
+                )
+            )
+        )
+
+        // dense kelp warm
+        entries.add(
+            HybridAquaticPlacedFeatures.DENSE_KELP_WARM,
+            PlacedFeature(entries.ref(HybridAquaticConfiguredFeatures.DENSE_KELP_WARM),
+                listOf(
+                    SquarePlacementModifier.of(),
+                    PlacedFeatures.OCEAN_FLOOR_WG_HEIGHTMAP,
+                    CountPlacementModifier.of(25),
+                    BiomePlacementModifier.of()
+                )
+            )
+        )
+
+        // dense kelp cold
+        entries.add(
+            HybridAquaticPlacedFeatures.DENSE_KELP_COLD,
+            PlacedFeature(entries.ref(HybridAquaticConfiguredFeatures.DENSE_KELP_COLD),
+                listOf(
+                    SquarePlacementModifier.of(),
+                    PlacedFeatures.OCEAN_FLOOR_WG_HEIGHTMAP,
+                    CountPlacementModifier.of(50),
                     BiomePlacementModifier.of()
                 )
             )

@@ -23,12 +23,6 @@ object FeatureBiomeModifications {
         )
 
         BiomeModifications.addFeature(
-            BiomeSelectors.tag(HybridAquaticBiomeTags.HYDROTHERMAL_VENT_SPAWN_BIOMES),
-            GenerationStep.Feature.VEGETAL_DECORATION,
-            HybridAquaticPlacedFeatures.HYDROTHERMAL_VENTS
-        )
-
-        BiomeModifications.addFeature(
             BiomeSelectors.tag(HybridAquaticBiomeTags.TUBE_SPONGE_SPAWN_BIOMES),
             GenerationStep.Feature.VEGETAL_DECORATION,
             HybridAquaticPlacedFeatures.TUBE_SPONGE_PATCH
@@ -38,6 +32,30 @@ object FeatureBiomeModifications {
             BiomeSelectors.tag(HybridAquaticBiomeTags.MESSAGE_IN_A_BOTTLE_SPAWN_BIOMES),
             GenerationStep.Feature.TOP_LAYER_MODIFICATION,
             HybridAquaticPlacedFeatures.MESSAGE_IN_A_BOTTLE
+        )
+
+        BiomeModifications.addFeature(
+            BiomeSelectors.tag(HybridAquaticBiomeTags.SARGASSUM_SPAWN_BIOMES),
+            GenerationStep.Feature.VEGETAL_DECORATION,
+            HybridAquaticPlacedFeatures.SARGASSUM
+        )
+
+        BiomeModifications.addFeature(
+            BiomeSelectors.tag(HybridAquaticBiomeTags.DENSE_KELP_WARM_SPAWN_BIOMES),
+            GenerationStep.Feature.VEGETAL_DECORATION,
+            HybridAquaticPlacedFeatures.DENSE_KELP_WARM
+        )
+
+        BiomeModifications.addFeature(
+            BiomeSelectors.tag(HybridAquaticBiomeTags.DENSE_KELP_COLD_SPAWN_BIOMES),
+            GenerationStep.Feature.VEGETAL_DECORATION,
+            HybridAquaticPlacedFeatures.DENSE_KELP_COLD
+        )
+
+        BiomeModifications.addFeature(
+            BiomeSelectors.tag(HybridAquaticBiomeTags.THERMAL_VENT_SPAWN_BIOMES),
+            GenerationStep.Feature.VEGETAL_DECORATION,
+            HybridAquaticPlacedFeatures.THERMAL_VENT
         )
     }
 }

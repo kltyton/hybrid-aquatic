@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "minecraft:water"
+    "#minecraft:is_deep_ocean"
   ]
 }

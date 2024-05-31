@@ -1,0 +1,14 @@
+{
+  "type": "hybrid-aquatic:thermal_vent",
+  "config": {
+    "to_place": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "hybrid-aquatic:thermal_vent",
+        "Properties": {
+          "age": "0"
+        }
+      }
+    }
+  }
+}

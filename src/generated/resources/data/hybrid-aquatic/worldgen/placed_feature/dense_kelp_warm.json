@@ -1,5 +1,5 @@
 {
-  "feature": "hybrid-aquatic:hydrothermal_vents",
+  "feature": "hybrid-aquatic:dense_kelp_warm",
   "placement": [
     {
       "type": "minecraft:in_square"
@@ -10,7 +10,7 @@
     },
     {
       "type": "minecraft:count",
-      "count": 1
+      "count": 25
     },
     {
       "type": "minecraft:biome"

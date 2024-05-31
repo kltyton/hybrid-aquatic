@@ -554,13 +554,6 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             BiomeKeys.WARM_OCEAN,
         )
 
-        getOrCreateTagBuilder(HybridAquaticBiomeTags.HYDROTHERMAL_VENT_SPAWN_BIOMES).add(
-            BiomeKeys.DEEP_OCEAN,
-            BiomeKeys.DEEP_FROZEN_OCEAN,
-            BiomeKeys.DEEP_COLD_OCEAN,
-            BiomeKeys.DEEP_LUKEWARM_OCEAN,
-        )
-
         getOrCreateTagBuilder(HybridAquaticBiomeTags.TUBE_SPONGE_SPAWN_BIOMES).add(
             BiomeKeys.OCEAN,
             BiomeKeys.DEEP_OCEAN,
@@ -581,5 +574,28 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
         getOrCreateTagBuilder(HybridAquaticBiomeTags.MESSAGE_IN_A_BOTTLE_SPAWN_BIOMES)
             .forceAddTag(BiomeTags.IS_OCEAN)
             .forceAddTag(BiomeTags.IS_BEACH)
+
+        getOrCreateTagBuilder(HybridAquaticBiomeTags.SARGASSUM_SPAWN_BIOMES).add(
+            BiomeKeys.LUKEWARM_OCEAN,
+            BiomeKeys.DEEP_LUKEWARM_OCEAN,
+            BiomeKeys.OCEAN,
+        )
+
+        getOrCreateTagBuilder(HybridAquaticBiomeTags.DENSE_KELP_WARM_SPAWN_BIOMES).add(
+            BiomeKeys.LUKEWARM_OCEAN,
+            BiomeKeys.DEEP_LUKEWARM_OCEAN,
+            BiomeKeys.OCEAN
+        )
+
+        getOrCreateTagBuilder(HybridAquaticBiomeTags.DENSE_KELP_COLD_SPAWN_BIOMES).add(
+            BiomeKeys.COLD_OCEAN,
+            BiomeKeys.DEEP_COLD_OCEAN,
+            BiomeKeys.FROZEN_OCEAN,
+            BiomeKeys.DEEP_FROZEN_OCEAN,
+            BiomeKeys.DEEP_OCEAN,
+        )
+
+        getOrCreateTagBuilder(HybridAquaticBiomeTags.THERMAL_VENT_SPAWN_BIOMES)
+            .forceAddTag(BiomeTags.IS_DEEP_OCEAN)
     }
 }

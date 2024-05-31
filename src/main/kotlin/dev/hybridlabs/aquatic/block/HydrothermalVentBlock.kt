@@ -39,6 +39,7 @@ class HydrothermalVentBlock(settings: Settings) : PlantBlock(settings), BlockEnt
             spawnSmokeParticle(world, pos)
         }
     }
+
     private fun spawnSmokeParticle(world: World, pos: BlockPos) {
         val random = world.random
         val defaultParticleType = ParticleTypes.CAMPFIRE_COSY_SMOKE
@@ -81,11 +82,11 @@ class HydrothermalVentBlock(settings: Settings) : PlantBlock(settings), BlockEnt
         pos: BlockPos,
         context: ShapeContext
     ): VoxelShape {
-        return HydrothermalVentBlock.COLLISION_SHAPE
+        return COLLISION_SHAPE
     }
 
     override fun getOutlineShape(state: BlockState, world: BlockView, pos: BlockPos, context: ShapeContext): VoxelShape {
-        return HydrothermalVentBlock.SHAPE
+        return SHAPE
     }
 
     override fun getPlacementState(ctx: ItemPlacementContext): BlockState? {

@@ -135,6 +135,13 @@ object HybridAquaticBlocks {
     val TUBE_WORMS = register("tube_worms", TubeWormsBlock(FabricBlockSettings.copy(Blocks.SEAGRASS).noCollision().nonOpaque()))
 
     val FLOATING_SARGASSUM = register("floating_sargassum", FloatingSargassumBlock(FabricBlockSettings.copyOf(Blocks.LILY_PAD).nonOpaque()))
+    val SARGASSUM = register("sargassum", SargassumBlock(FabricBlockSettings.copyOf(Blocks.KELP).nonOpaque()))
+    val SARGASSUM_PLANT = register("sargassum_plant", SargassumPlantBlock(FabricBlockSettings.copyOf(Blocks.KELP_PLANT).nonOpaque()))
+    val DENSE_KELP = register("dense_kelp", DenseKelpBlock(FabricBlockSettings.copyOf(Blocks.KELP).nonOpaque()))
+    val DENSE_KELP_PLANT = register("dense_kelp_plant", DenseKelpPlantBlock(FabricBlockSettings.copyOf(Blocks.KELP_PLANT).nonOpaque()))
+
+    val THERMAL_VENT = register("thermal_vent", ThermalVentBlock(FabricBlockSettings.copyOf(Blocks.TUFF).nonOpaque().hardness(1.0F)))
+    val THERMAL_VENT_SHAFT = register("thermal_vent_shaft", ThermalVentShaftBlock(FabricBlockSettings.copyOf(Blocks.TUFF).nonOpaque().hardness(1.0F)))
 
     val TUBE_SPONGE = register("tube_sponge", TubeSpongeBlock(FabricBlockSettings.copyOf(Blocks.WET_SPONGE).nonOpaque()))
 
