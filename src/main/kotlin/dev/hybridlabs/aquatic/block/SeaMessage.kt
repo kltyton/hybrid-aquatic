@@ -2,45 +2,36 @@ package dev.hybridlabs.aquatic.block
 
 import com.mojang.serialization.Codec
 import com.mojang.serialization.codecs.RecordCodecBuilder
-import dev.hybridlabs.aquatic.HybridAquatic
-import net.minecraft.item.ItemStack
-import net.minecraft.item.Items
-import net.minecraft.item.WrittenBookItem
-import net.minecraft.nbt.NbtList
-import net.minecraft.nbt.NbtString
-import net.minecraft.text.MutableText
-import net.minecraft.text.Text
+import dev.hybridlabs.aquatic.registry.HybridAquaticRegistryKeys
+import net.minecraft.registry.DynamicRegistryManager
+import net.minecraft.util.Identifier
+import java.util.Optional
 
 /**
  * Represents a message inside a Message in a Bottle.
  */
 data class SeaMessage(
     /**
-     * The id of this sea message.
+     * The translation key for the text content of this message.
      */
-    val id: String
+    val translationKey: String,
+
+    /**
+     * Whether this message has a title.
+     */
+    val hasTitle: Boolean = false,
+
+    /**
+     * The author of this message.
+     */
+    val author: Optional<String>
 ) {
     /**
-     * The translation key of this message.
+     * Retrieves the id of this sea message.
      */
-    val translationKey: String = "${HybridAquatic.MOD_ID}.sea_message.$id"
-
-    /**
-     * The text component for this message.
-     */
-    private val text: MutableText = Text.translatable(translationKey)
-
-    fun createBookItemStack(): ItemStack {
-        val stack = ItemStack(Items.WRITTEN_BOOK)
-
-        stack.setSubNbt(WrittenBookItem.PAGES_KEY, NbtList().apply {
-            add(NbtString.of(Text.Serializer.toJson(text)))
-        })
-
-        stack.setSubNbt(WrittenBookItem.TITLE_KEY, NbtString.of("Sea Message"))
-        stack.setSubNbt(WrittenBookItem.AUTHOR_KEY, NbtString.of("?????"))
-
-        return stack
+    fun getId(registryManager: DynamicRegistryManager): Identifier? {
+        val registry = registryManager.get(HybridAquaticRegistryKeys.SEA_MESSAGE)
+        return registry.getId(this)
     }
 
     companion object {
@@ -49,27 +40,10 @@ data class SeaMessage(
          */
         val CODEC: Codec<SeaMessage> = RecordCodecBuilder.create { instance ->
             instance.group(
-                Codec.STRING.fieldOf("id")
-                    .forGetter(SeaMessage::id)
+                Codec.STRING.fieldOf("translation_key").forGetter(SeaMessage::translationKey),
+                Codec.BOOL.fieldOf("has_title").forGetter(SeaMessage::hasTitle),
+                Codec.STRING.optionalFieldOf("author").forGetter(SeaMessage::author)
             ).apply(instance, ::SeaMessage)
         }
-
-        /**
-         * The built-in Hybrid Aquatic sea messages.
-         */
-        val BUILT_IN = listOf(
-            "the_creepers_code",
-            "poyo",
-            "rick_roll",
-            "bold_muddy",
-            "kaupenjoe",
-            "catpenjoe",
-            "fishenjoe",
-            "willowshine",
-            "loss",
-            "warranty",
-            "poke",
-            "one_piece"
-        )
     }
 }

@@ -8,7 +8,12 @@ import dev.hybridlabs.aquatic.item.HybridAquaticItems
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider
 import net.minecraft.block.Blocks
-import net.minecraft.data.client.*
+import net.minecraft.data.client.BlockStateModelGenerator
+import net.minecraft.data.client.ItemModelGenerator
+import net.minecraft.data.client.ModelIds
+import net.minecraft.data.client.Models
+import net.minecraft.data.client.TextureMap
+import net.minecraft.item.Items
 import net.minecraft.item.SpawnEggItem
 import net.minecraft.registry.Registries
 import net.minecraft.util.Identifier
@@ -180,10 +185,11 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
             HybridAquaticItems.TURTLE_CHESTPLATE,
             HybridAquaticItems.EEL_SCARF,
             HybridAquaticItems.MOON_JELLYFISH_HAT
-
         ).forEach { item ->
             generator.register(item, Models.GENERATED)
         }
+
+        generator.register(HybridAquaticItems.SEA_MESSAGE_BOOK, Items.WRITTEN_BOOK, Models.GENERATED)
     }
 
     companion object {
