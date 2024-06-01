@@ -70,7 +70,7 @@
         "java": ">=17",
         "fabric-language-kotlin": "*",
         "fabric-api": ">=0.92",
-        "geckolib": ">=4.2"
+        "geckolib": ">=4.4"
     },
 
     "custom": {
