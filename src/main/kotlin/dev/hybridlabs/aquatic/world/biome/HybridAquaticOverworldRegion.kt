@@ -20,6 +20,7 @@ class HybridAquaticOverworldRegion(name: Identifier?, weight: Int) :
             mapper
         ) { modifiedVanillaOverworldBuilder: ModifiedVanillaOverworldBuilder ->
             modifiedVanillaOverworldBuilder.replaceBiome(BiomeKeys.DEEP_LUKEWARM_OCEAN, HybridAquaticBiomes.SARGASSUM_SEA)
+            modifiedVanillaOverworldBuilder.replaceBiome(BiomeKeys.WARM_OCEAN, HybridAquaticBiomes.RED_MEADOW)
         }
     }
 }

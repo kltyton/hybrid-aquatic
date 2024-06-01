@@ -7,15 +7,18 @@ import dev.hybridlabs.aquatic.tag.HybridAquaticBlockTags
 import dev.hybridlabs.aquatic.world.gen.feature.*
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider
+import net.minecraft.block.BlockState
 import net.minecraft.block.Blocks
 import net.minecraft.registry.RegistryWrapper
 import net.minecraft.state.property.Properties
 import net.minecraft.util.math.intprovider.ConstantIntProvider
+import net.minecraft.util.math.noise.DoublePerlinNoiseSampler.NoiseParameters
 import net.minecraft.world.gen.blockpredicate.BlockPredicate
 import net.minecraft.world.gen.feature.*
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize
 import net.minecraft.world.gen.foliage.JungleFoliagePlacer
 import net.minecraft.world.gen.stateprovider.BlockStateProvider
+import net.minecraft.world.gen.stateprovider.NoiseBlockStateProvider
 import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer
 import java.util.concurrent.CompletableFuture
@@ -148,7 +151,50 @@ class ConfiguredFeatureProvider(output: FabricDataOutput, registriesFuture: Comp
             )
         )
 
-        // floating sargassum
+        // red algae
+        entries.add(
+            HybridAquaticConfiguredFeatures.RED_ALGAE,
+            ConfiguredFeature(
+                Feature.RANDOM_PATCH, RandomPatchFeatureConfig(
+                    5, 3, 3,
+                    PlacedFeatures.createEntry(
+                        Feature.SIMPLE_BLOCK,
+                        SimpleBlockFeatureConfig(
+                            BlockStateProvider.of(HybridAquaticBlocks.RED_ALGAE.defaultState)
+                        ),
+                        BlockPredicate.matchingBlockTag(HybridAquaticBlockTags.RED_ALGAE_GENERATE_IN)
+                    )
+                )
+            )
+        )
+
+        // red algae meadow
+        entries.add(
+            HybridAquaticConfiguredFeatures.RED_ALGAE_MEADOW,
+            ConfiguredFeature(
+                Feature.RANDOM_PATCH, RandomPatchFeatureConfig(
+                    500, 10, 10,
+                    PlacedFeatures.createEntry(
+                        Feature.SIMPLE_BLOCK,
+                        SimpleBlockFeatureConfig(
+                            NoiseBlockStateProvider(
+                                2345L,
+                                NoiseParameters(0, 1.0, *DoubleArray(0)),
+                                0.020833334f,
+                                listOf<BlockState>(
+                                    HybridAquaticBlocks.SHORT_RED_ALGAE.defaultState,
+                                    HybridAquaticBlocks.RED_ALGAE.defaultState,
+                                    HybridAquaticBlocks.TALL_RED_ALGAE.defaultState,
+                                )
+                            )
+                        ),
+                        BlockPredicate.matchingBlockTag(HybridAquaticBlockTags.RED_ALGAE_GENERATE_IN)
+                    )
+                )
+            )
+        )
+
+        // glowing plankton
         entries.add(
             HybridAquaticConfiguredFeatures.GLOWING_PLANKTON,
             ConfiguredFeature(

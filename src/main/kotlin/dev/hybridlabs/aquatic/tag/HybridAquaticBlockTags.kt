@@ -18,6 +18,8 @@ object HybridAquaticBlockTags {
 
     val FLOATING_SARGASSUM_GENERATE_IN = create("floating_sargassum_generate_in")
 
+    val RED_ALGAE_GENERATE_IN = create("red_algae_generate_in")
+
     val GLOWING_PLANKTON_GENERATE_IN = create("glowing_plankton_generate_in")
 
     val MESSAGE_IN_A_BOTTLE_SPAWNS_IN = create("message_in_a_bottle_spawns_in")

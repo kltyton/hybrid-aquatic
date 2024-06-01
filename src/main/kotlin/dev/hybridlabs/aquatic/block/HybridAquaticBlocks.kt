@@ -142,6 +142,10 @@ object HybridAquaticBlocks {
     val DENSE_KELP = register("dense_kelp", DenseKelpBlock(FabricBlockSettings.copyOf(Blocks.KELP).nonOpaque()))
     val DENSE_KELP_PLANT = register("dense_kelp_plant", DenseKelpPlantBlock(FabricBlockSettings.copyOf(Blocks.KELP_PLANT).nonOpaque().dropsLike(DENSE_KELP)))
 
+    val SHORT_RED_ALGAE = register("short_red_algae", ShortRedAlgaeBlock(FabricBlockSettings.copyOf(Blocks.SEAGRASS).nonOpaque().noCollision()))
+    val RED_ALGAE = register("red_algae", RedAlgaeBlock(FabricBlockSettings.copyOf(Blocks.SEAGRASS).nonOpaque().noCollision()))
+    val TALL_RED_ALGAE = register("tall_red_algae", TallRedAlgaeBlock(FabricBlockSettings.copyOf(Blocks.TALL_SEAGRASS).nonOpaque().noCollision()))
+
     val THERMAL_VENT = register("thermal_vent", ThermalVentBlock(FabricBlockSettings.copyOf(Blocks.TUFF).nonOpaque().hardness(1.0F)))
     val THERMAL_VENT_SHAFT = register("thermal_vent_shaft", ThermalVentShaftBlock(FabricBlockSettings.copyOf(Blocks.TUFF).nonOpaque().hardness(1.0F).dropsLike(THERMAL_VENT)))
 

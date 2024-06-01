@@ -5,6 +5,7 @@
     "minecraft:warm_ocean",
     "minecraft:lukewarm_ocean",
     "minecraft:beach",
-    "minecraft:stony_shore"
+    "minecraft:stony_shore",
+    "hybrid-aquatic:sargassum_sea"
   ]
 }

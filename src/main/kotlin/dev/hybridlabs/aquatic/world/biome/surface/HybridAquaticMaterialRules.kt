@@ -15,6 +15,8 @@ object HybridAquaticMaterialRules {
             MaterialRules.sequence(
                 MaterialRules.condition(MaterialRules.biome(HybridAquaticBiomes.SARGASSUM_SEA),
                     MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, SAND)),
+                MaterialRules.condition(MaterialRules.biome(HybridAquaticBiomes.RED_MEADOW),
+                    MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, SAND)),
             )
         )
     }

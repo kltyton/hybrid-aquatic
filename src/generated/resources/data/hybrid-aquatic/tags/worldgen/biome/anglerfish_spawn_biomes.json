@@ -9,6 +9,7 @@
     "minecraft:cold_ocean",
     "minecraft:frozen_ocean",
     "minecraft:lukewarm_ocean",
-    "minecraft:warm_ocean"
+    "minecraft:warm_ocean",
+    "hybrid-aquatic:sargassum_sea"
   ]
 }

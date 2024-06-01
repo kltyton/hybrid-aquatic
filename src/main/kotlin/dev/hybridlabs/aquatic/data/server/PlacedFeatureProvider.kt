@@ -112,9 +112,8 @@ class PlacedFeatureProvider(output: FabricDataOutput, registriesFuture: Completa
                 listOf(
                     SquarePlacementModifier.of(),
                     PlacedFeatures.OCEAN_FLOOR_WG_HEIGHTMAP,
-                    CountPlacementModifier.of(1),
                     BiomePlacementModifier.of(),
-                    NoiseThresholdCountPlacementModifier.of(0.5, 10, 1)
+                    NoiseThresholdCountPlacementModifier.of(0.5, 10, 1),
                 )
             )
         )
@@ -126,6 +125,31 @@ class PlacedFeatureProvider(output: FabricDataOutput, registriesFuture: Completa
                 listOf(
                     SquarePlacementModifier.of(),
                     PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP,
+                    BiomePlacementModifier.of(),
+                    NoiseThresholdCountPlacementModifier.of(0.5, 10, 1)
+                )
+            )
+        )
+
+        // red algae
+        entries.add(
+            HybridAquaticPlacedFeatures.RED_ALGAE,
+            PlacedFeature(entries.ref(HybridAquaticConfiguredFeatures.RED_ALGAE),
+                listOf(
+                    SquarePlacementModifier.of(),
+                    PlacedFeatures.OCEAN_FLOOR_WG_HEIGHTMAP,
+                    BiomePlacementModifier.of()
+                )
+            )
+        )
+
+        // red algae meadow
+        entries.add(
+            HybridAquaticPlacedFeatures.RED_ALGAE_MEADOW,
+            PlacedFeature(entries.ref(HybridAquaticConfiguredFeatures.RED_ALGAE_MEADOW),
+                listOf(
+                    SquarePlacementModifier.of(),
+                    PlacedFeatures.OCEAN_FLOOR_WG_HEIGHTMAP,
                     BiomePlacementModifier.of(),
                     NoiseThresholdCountPlacementModifier.of(0.5, 10, 1)
                 )
