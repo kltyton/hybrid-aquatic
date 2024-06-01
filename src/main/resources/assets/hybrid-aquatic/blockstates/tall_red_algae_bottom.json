@@ -1,0 +1,6 @@
+{
+  "parent": "hybrid-aquatic:block/template_red_algae",
+  "textures": {
+    "texture": "hybrid-aquatic:block/tall_red_algae_bottom"
+  }
+}

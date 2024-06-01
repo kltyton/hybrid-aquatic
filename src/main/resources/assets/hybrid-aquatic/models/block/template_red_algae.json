@@ -1,9 +1,9 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "hybrid-aquatic:block/red_algae_bottom",
-		"1": "hybrid-aquatic:block/red_algae_top",
-		"particle": "hybrid-aquatic:block/red_algae_bottom"
+		"0": "hybrid-aquatic:block/tall_red_algae_bottom",
+		"1": "hybrid-aquatic:block/tall_red_algae_top",
+		"particle": "hybrid-aquatic:block/tall_red_algae_bottom"
 	},
 	"elements": [
 		{
