@@ -7,9 +7,12 @@
     "description": "A mod that enhances your underwater Minecraft experience! Explore improved rivers, swamps, oceans, and undersea caves with new creatures, blocks, and (coming soon) biomes.",
 
     "authors": [
-        "dragoncommands",
         "MysticKoko",
-        "Andante"
+        "Aqua",
+        "Andante",
+        "Ragno",
+        "TheNuclearNexus",
+        "dragoncommads"
     ],
 
     "contact": {
@@ -42,7 +45,10 @@
             }
         ],
         "terrablender": [
-            "dev.hybridlabs.aquatic.world.biome.HybridAquaticTerrablenderAPI"
+            {
+                "value" : "dev.hybridlabs.aquatic.world.biome.HybridAquaticTerrablenderAPI",
+                "adapter": "kotlin"
+            }
         ],
         "preLaunch": [
             "com.llamalad7.mixinextras.MixinExtrasBootstrap::init"
