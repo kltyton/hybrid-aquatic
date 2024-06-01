@@ -136,12 +136,13 @@ class ConfiguredFeatureProvider(output: FabricDataOutput, registriesFuture: Comp
             HybridAquaticConfiguredFeatures.FLOATING_SARGASSUM,
             ConfiguredFeature(
                 Feature.RANDOM_PATCH, RandomPatchFeatureConfig(
-                    10, 7, 3,
+                    500, 10, 10,
                     PlacedFeatures.createEntry(
                         Feature.SIMPLE_BLOCK,
                         SimpleBlockFeatureConfig(
                             BlockStateProvider.of(HybridAquaticBlocks.FLOATING_SARGASSUM.defaultState.with(Properties.WATERLOGGED, true))
-                        )
+                        ),
+                        BlockPredicate.matchingBlockTag(HybridAquaticBlockTags.FLOATING_SARGASSUM_GENERATE_IN)
                     )
                 )
             )

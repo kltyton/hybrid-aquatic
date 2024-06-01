@@ -132,6 +132,7 @@ open class HybridAquaticMinibossEntity(type: EntityType<out HybridAquaticMinibos
             miniboss.attemptAttack = false
         }
     }
+
     companion object {
 
         val WALK_ANIMATION: RawAnimation  = RawAnimation.begin().then("walk", Animation.LoopType.LOOP)

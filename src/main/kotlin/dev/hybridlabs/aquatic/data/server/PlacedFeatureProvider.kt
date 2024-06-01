@@ -112,8 +112,9 @@ class PlacedFeatureProvider(output: FabricDataOutput, registriesFuture: Completa
                 listOf(
                     SquarePlacementModifier.of(),
                     PlacedFeatures.OCEAN_FLOOR_WG_HEIGHTMAP,
+                    CountPlacementModifier.of(1),
                     BiomePlacementModifier.of(),
-                    NoiseThresholdCountPlacementModifier.of(120.0, 80, 0)
+                    NoiseThresholdCountPlacementModifier.of(0.5, 10, 1)
                 )
             )
         )
@@ -125,8 +126,8 @@ class PlacedFeatureProvider(output: FabricDataOutput, registriesFuture: Completa
                 listOf(
                     SquarePlacementModifier.of(),
                     PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP,
-                    CountPlacementModifier.of(50),
-                    BiomePlacementModifier.of()
+                    BiomePlacementModifier.of(),
+                    NoiseThresholdCountPlacementModifier.of(0.5, 10, 1)
                 )
             )
         )

@@ -12,6 +12,8 @@ import net.minecraft.state.property.Properties
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
 import net.minecraft.util.math.Vec3d
+import net.minecraft.util.shape.VoxelShape
+import net.minecraft.world.BlockView
 import net.minecraft.world.World
 import net.minecraft.world.WorldAccess
 import net.minecraft.world.WorldView
@@ -66,6 +68,15 @@ class FloatingSargassumBlock(settings: Settings) : PlantBlock(settings), Waterlo
         return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos)
     }
 
+    override fun getOutlineShape(
+        state: BlockState?,
+        world: BlockView?,
+        pos: BlockPos?,
+        context: ShapeContext?
+    ): VoxelShape {
+        return SHAPE
+    }
+
     override fun getFluidState(state: BlockState): FluidState {
         return if (state.get(Properties.WATERLOGGED)) Fluids.WATER.getStill(false) else super.getFluidState(state)
     }
@@ -80,5 +91,9 @@ class FloatingSargassumBlock(settings: Settings) : PlantBlock(settings), Waterlo
             world.breakBlock(BlockPos(pos), true, entity)
             entity.slowMovement(state, Vec3d(0.75, 0.75, 0.75))
         }
+    }
+
+    companion object {
+        private val SHAPE: VoxelShape = createCuboidShape(0.0, 14.0, 0.0, 16.0, 15.0, 16.0)
     }
 }
