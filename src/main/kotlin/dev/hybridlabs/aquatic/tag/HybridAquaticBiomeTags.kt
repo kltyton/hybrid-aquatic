@@ -90,6 +90,7 @@ object HybridAquaticBiomeTags {
     val SARGASSUM_SPAWN_BIOMES = create("sargassum_spawn_biomes")
     val DENSE_SARGASSUM_SPAWN_BIOMES = create("dense_sargassum_spawn_biomes")
     val FLOATING_SARGASSUM_SPAWN_BIOMES = create("floating_sargassum_spawn_biomes")
+    val GLOWING_PLANKTON_SPAWN_BIOMES = create("glowing_plankton_spawn_biomes")
     val DENSE_KELP_WARM_SPAWN_BIOMES = create("dense_kelp_warm_spawn_biomes")
     val DENSE_KELP_COLD_SPAWN_BIOMES = create("dense_kelp_cold_spawn_biomes")
     val THERMAL_VENT_SPAWN_BIOMES = create("thermal_vent_spawn_biomes")

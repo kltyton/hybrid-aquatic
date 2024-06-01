@@ -27,6 +27,9 @@ class BlockTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
         getOrCreateTagBuilder(HybridAquaticBlockTags.FLOATING_SARGASSUM_GENERATE_IN)
             .add(Blocks.WATER)
 
+        getOrCreateTagBuilder(HybridAquaticBlockTags.GLOWING_PLANKTON_GENERATE_IN)
+            .add(Blocks.WATER)
+
         getOrCreateTagBuilder(HybridAquaticBlockTags.MESSAGE_IN_A_BOTTLE_SPAWNS_IN)
             .add(Blocks.WATER)
 

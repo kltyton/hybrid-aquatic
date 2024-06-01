@@ -598,6 +598,10 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             HybridAquaticBiomes.SARGASSUM_SEA
         )
 
+        getOrCreateTagBuilder(HybridAquaticBiomeTags.GLOWING_PLANKTON_SPAWN_BIOMES).add(
+            BiomeKeys.WARM_OCEAN
+        )
+
         getOrCreateTagBuilder(HybridAquaticBiomeTags.DENSE_KELP_WARM_SPAWN_BIOMES).add(
             BiomeKeys.LUKEWARM_OCEAN,
             BiomeKeys.DEEP_LUKEWARM_OCEAN,

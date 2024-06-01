@@ -106,6 +106,7 @@ object HybridAquaticClient : ClientModInitializer {
             HybridAquaticBlocks.SARGASSUM_PLANT,
             HybridAquaticBlocks.DENSE_KELP,
             HybridAquaticBlocks.DENSE_KELP_PLANT,
+            HybridAquaticBlocks.GLOWING_PLANKTON,
         )
     }
 

@@ -148,6 +148,23 @@ class ConfiguredFeatureProvider(output: FabricDataOutput, registriesFuture: Comp
             )
         )
 
+        // floating sargassum
+        entries.add(
+            HybridAquaticConfiguredFeatures.GLOWING_PLANKTON,
+            ConfiguredFeature(
+                Feature.RANDOM_PATCH, RandomPatchFeatureConfig(
+                    500, 10, 10,
+                    PlacedFeatures.createEntry(
+                        Feature.SIMPLE_BLOCK,
+                        SimpleBlockFeatureConfig(
+                            BlockStateProvider.of(HybridAquaticBlocks.GLOWING_PLANKTON.defaultState.with(Properties.WATERLOGGED, true))
+                        ),
+                        BlockPredicate.matchingBlockTag(HybridAquaticBlockTags.GLOWING_PLANKTON_GENERATE_IN)
+                    )
+                )
+            )
+        )
+
         // dense kelp warm
         entries.add(
             HybridAquaticConfiguredFeatures.DENSE_KELP_WARM,
