@@ -11,6 +11,9 @@ class HybridAquaticTerrablenderAPI : TerraBlenderApi {
     override fun onTerraBlenderInitialized() {
         Regions.register(HybridAquaticOverworldRegion(Identifier(HybridAquatic.MOD_ID, "overworld"), 4))
 
-        SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, HybridAquatic.MOD_ID, HybridAquaticMaterialRules.makeRules())
+        SurfaceRuleManager.addSurfaceRules(
+            SurfaceRuleManager.RuleCategory.OVERWORLD,
+            HybridAquatic.MOD_ID,
+            HybridAquaticMaterialRules.makeRules())
     }
 }

@@ -19,7 +19,6 @@ class HybridAquaticOverworldRegion(name: Identifier?, weight: Int) :
         this.addModifiedVanillaOverworldBiomes(
             mapper
         ) { modifiedVanillaOverworldBuilder: ModifiedVanillaOverworldBuilder ->
-            modifiedVanillaOverworldBuilder.replaceBiome(BiomeKeys.BEACH, HybridAquaticBiomes.TROPICAL_BEACH)
             modifiedVanillaOverworldBuilder.replaceBiome(BiomeKeys.DEEP_LUKEWARM_OCEAN, HybridAquaticBiomes.SARGASSUM_SEA)
         }
     }
