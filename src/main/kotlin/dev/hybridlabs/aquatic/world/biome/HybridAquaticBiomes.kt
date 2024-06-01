@@ -6,6 +6,7 @@ import net.minecraft.client.sound.MusicType
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.SpawnGroup
 import net.minecraft.registry.Registerable
+import net.minecraft.registry.RegistryEntryLookup
 import net.minecraft.registry.RegistryKey
 import net.minecraft.registry.RegistryKeys
 import net.minecraft.sound.BiomeMoodSound
@@ -17,8 +18,10 @@ import net.minecraft.world.biome.GenerationSettings
 import net.minecraft.world.biome.SpawnSettings
 import net.minecraft.world.biome.SpawnSettings.SpawnEntry
 import net.minecraft.world.gen.GenerationStep
+import net.minecraft.world.gen.carver.ConfiguredCarver
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures
 import net.minecraft.world.gen.feature.OceanPlacedFeatures
+import net.minecraft.world.gen.feature.PlacedFeature
 
 object HybridAquaticBiomes {
     val SARGASSUM_SEA: RegistryKey<Biome> = RegistryKey.of(
@@ -27,7 +30,7 @@ object HybridAquaticBiomes {
     )
 
     fun bootstrap(context: Registerable<Biome>) {
-        context.register(SARGASSUM_SEA, sargassumSea(context))
+        context.register(SARGASSUM_SEA, sargassumSea(context.getRegistryLookup(RegistryKeys.PLACED_FEATURE), context.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER)))
     }
 
     fun globalOverworldGeneration(builder: GenerationSettings.LookupBackedBuilder) {
@@ -39,17 +42,14 @@ object HybridAquaticBiomes {
         DefaultBiomeFeatures.addFrozenTopLayer(builder)
     }
 
-    fun sargassumSea(context: Registerable<Biome>): Biome {
+    fun sargassumSea(featureRegistry: RegistryEntryLookup<PlacedFeature>, carverRegistry: RegistryEntryLookup<ConfiguredCarver<*>>): Biome {
         val spawnBuilder = SpawnSettings.Builder()
         spawnBuilder.spawn(SpawnGroup.WATER_AMBIENT, SpawnEntry(HybridAquaticEntityTypes.MAHIMAHI, 2, 1, 3))
         spawnBuilder.spawn(SpawnGroup.WATER_AMBIENT, SpawnEntry(HybridAquaticEntityTypes.YELLOWFIN_TUNA, 2, 1, 3))
         spawnBuilder.spawn(SpawnGroup.WATER_AMBIENT, SpawnEntry(HybridAquaticEntityTypes.TRIGGERFISH, 2, 1, 3))
         spawnBuilder.spawn(SpawnGroup.WATER_CREATURE, SpawnEntry(EntityType.TURTLE, 5, 2, 5))
 
-        val biomeBuilder = GenerationSettings.LookupBackedBuilder(
-            context.getRegistryLookup(RegistryKeys.PLACED_FEATURE),
-            context.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER)
-        )
+        val biomeBuilder = GenerationSettings.LookupBackedBuilder(featureRegistry, carverRegistry)
 
         globalOverworldGeneration(biomeBuilder)
         biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, OceanPlacedFeatures.SEAGRASS_WARM)

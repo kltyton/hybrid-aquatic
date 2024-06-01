@@ -3,6 +3,7 @@ package dev.hybridlabs.aquatic.data
 import dev.hybridlabs.aquatic.HybridAquatic
 import dev.hybridlabs.aquatic.data.client.LanguageProvider
 import dev.hybridlabs.aquatic.data.client.ModelProvider
+import dev.hybridlabs.aquatic.data.server.BiomeProvider
 import dev.hybridlabs.aquatic.data.server.ConfiguredFeatureProvider
 import dev.hybridlabs.aquatic.data.server.PlacedFeatureProvider
 import dev.hybridlabs.aquatic.data.server.RecipeProvider
@@ -40,6 +41,7 @@ object HybridAquaticDataGenerator : DataGeneratorEntrypoint {
         pack.addProvider(::PlacedFeatureProvider)
         pack.addProvider(::RecipeProvider)
         pack.addProvider(::SeaMessageProvider)
+        pack.addProvider(::BiomeProvider)
     }
 
     override fun buildRegistry(registryBuilder: RegistryBuilder) {
