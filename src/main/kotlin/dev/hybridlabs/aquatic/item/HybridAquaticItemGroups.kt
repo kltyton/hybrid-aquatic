@@ -30,8 +30,6 @@ object HybridAquaticItemGroups {
                 entries.add(stack)
             }
 
-            entries.add(HybridAquaticItems.SEA_MESSAGE_BOOK)
-
             // blocks
             entries.add(HybridAquaticBlocks.GLOWSTICK)
             entries.add(HybridAquaticBlocks.DRIFTWOOD_LOG)
@@ -85,7 +83,6 @@ object HybridAquaticItemGroups {
             entries.add(HybridAquaticItems.DEAD_THORN_CORAL_BLOCK)
             entries.add(HybridAquaticItems.DEAD_THORN_CORAL)
             entries.add(HybridAquaticItems.DEAD_THORN_CORAL_FAN)
-            entries.add(HybridAquaticItems.HYDROTHERMAL_VENT)
             entries.add(HybridAquaticItems.SARGASSUM)
             entries.add(HybridAquaticItems.FLOATING_SARGASSUM)
             entries.add(HybridAquaticItems.DENSE_KELP)

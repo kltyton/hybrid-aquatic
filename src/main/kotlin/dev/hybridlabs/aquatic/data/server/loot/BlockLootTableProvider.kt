@@ -84,18 +84,6 @@ class BlockLootTableProvider(output: FabricDataOutput) : FabricBlockLootTablePro
             )
         }
 
-        // hydrothermal vent
-        addDrop(HybridAquaticBlocks.HYDROTHERMAL_VENT) { block ->
-            LootTable.builder().pool(
-                LootPool.builder().with(
-                    AlternativeEntry.builder(
-                        ItemEntry.builder(block).conditionally(WITH_SILK_TOUCH),
-                        LootTableEntry.builder(HybridAquaticLootTables.HYDROTHERMAL_VENT_LOOT_ID)
-                    )
-                )
-            )
-        }
-
         // message in a bottle
         addDrop(HybridAquaticBlocks.MESSAGE_IN_A_BOTTLE) { block ->
             LootTable.builder().pool(

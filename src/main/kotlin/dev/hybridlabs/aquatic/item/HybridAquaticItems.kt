@@ -29,7 +29,6 @@ object HybridAquaticItems {
 
     val ANEMONE = registerBlockItem("anemone", HybridAquaticBlocks.ANEMONE)
     val BUOY = registerPlaceableInWaterBlockItem("buoy", HybridAquaticBlocks.BUOY)
-    val HYDROTHERMAL_VENT = registerBlockItem("hydrothermal_vent", HybridAquaticBlocks.HYDROTHERMAL_VENT)
     val MESSAGE_IN_A_BOTTLE = register("message_in_a_bottle", MessageInABottleItem(FabricItemSettings()))
     val SEA_MESSAGE_BOOK = register("sea_message_book", SeaMessageBookItem(FabricItemSettings()))
 

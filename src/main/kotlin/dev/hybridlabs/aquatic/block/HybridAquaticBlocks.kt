@@ -228,12 +228,6 @@ object HybridAquaticBlocks {
         .hardness(0.75F)
     ))
 
-    val HYDROTHERMAL_VENT = register("hydrothermal_vent", HydrothermalVentBlock(FabricBlockSettings.create()
-        .nonOpaque()
-        .hardness(1.0F)
-        .pistonBehavior(PistonBehavior.DESTROY)
-    ))
-
     private fun createPlushieBlock(variant: PlushieBlock.Variant, particleBlock: Block): PlushieBlock {
         return PlushieBlock(variant, particleBlock,
             FabricBlockSettings.create()

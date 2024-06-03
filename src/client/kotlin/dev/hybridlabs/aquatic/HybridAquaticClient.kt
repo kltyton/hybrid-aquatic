@@ -118,7 +118,6 @@ object HybridAquaticClient : ClientModInitializer {
         BlockEntityRendererFactories.register(HybridAquaticBlockEntityTypes.GIANT_CLAM, ::GiantClamBlockEntityRenderer)
         BlockEntityRendererFactories.register(HybridAquaticBlockEntityTypes.MESSAGE_IN_A_BOTTLE, ::MessageInABottleBlockEntityRenderer)
         BlockEntityRendererFactories.register(HybridAquaticBlockEntityTypes.BUOY, ::BuoyBlockEntityRenderer)
-        BlockEntityRendererFactories.register(HybridAquaticBlockEntityTypes.HYDROTHERMAL_VENT, ::HydrothermalVentBlockEntityRenderer)
         BlockEntityRendererFactories.register(HybridAquaticBlockEntityTypes.TUBE_SPONGE, ::TubeSpongeBlockEntityRenderer)
     }
 
@@ -132,7 +131,6 @@ object HybridAquaticClient : ClientModInitializer {
         registry.register(HybridAquaticItems.TUBE_SPONGE, TubeSpongeBlockItemRenderer())
         registry.register(HybridAquaticItems.BUOY, BuoyBlockItemRenderer())
         registry.register(HybridAquaticItems.MESSAGE_IN_A_BOTTLE, MessageInABottleBlockItemRenderer())
-        registry.register(HybridAquaticItems.HYDROTHERMAL_VENT, HydrothermalVentBlockItemRenderer())
     }
 
     fun createBlockEntityRendererFactoryContext(): BlockEntityRendererFactory.Context {

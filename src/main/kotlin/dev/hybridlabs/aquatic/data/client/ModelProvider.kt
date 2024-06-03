@@ -41,7 +41,6 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
             HybridAquaticBlocks.TUBE_SPONGE to (HybridAquaticBlocks.TUBE_SPONGE to TEMPLATE_TUBE_SPONGE),
             HybridAquaticBlocks.MESSAGE_IN_A_BOTTLE to (Blocks.GLASS to TEMPLATE_MESSAGE_IN_A_BOTTLE),
             HybridAquaticBlocks.BUOY to (HybridAquaticBlocks.BUOY to TEMPLATE_BUOY),
-            HybridAquaticBlocks.HYDROTHERMAL_VENT to (HybridAquaticBlocks.HYDROTHERMAL_VENT to TEMPLATE_HYDROTHERMAL_VENT),
             HybridAquaticBlocks.GIANT_CLAM to (HybridAquaticBlocks.GIANT_CLAM to TEMPLATE_GIANT_CLAM)
         ).forEach { (block, info) ->
             val (particleBlock, template) = info
@@ -196,7 +195,6 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
         private val TEMPLATE_ANEMONE = Identifier(HybridAquatic.MOD_ID, "item/template_anemone")
         private val TEMPLATE_TUBE_SPONGE = Identifier(HybridAquatic.MOD_ID, "item/template_tube_sponge")
         private val TEMPLATE_BUOY = Identifier(HybridAquatic.MOD_ID, "item/template_buoy")
-        private val TEMPLATE_HYDROTHERMAL_VENT = Identifier(HybridAquatic.MOD_ID, "item/template_hydrothermal_vent")
         private val TEMPLATE_MESSAGE_IN_A_BOTTLE = Identifier(HybridAquatic.MOD_ID, "item/template_message_in_a_bottle")
         private val TEMPLATE_PLUSHIE = Identifier(HybridAquatic.MOD_ID, "item/template_plushie")
         private val TEMPLATE_GIANT_CLAM = Identifier(HybridAquatic.MOD_ID, "item/template_giant_clam")
