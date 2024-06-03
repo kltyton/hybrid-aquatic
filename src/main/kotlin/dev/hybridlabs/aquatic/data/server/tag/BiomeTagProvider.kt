@@ -589,6 +589,7 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
         getOrCreateTagBuilder(HybridAquaticBiomeTags.ZEBRA_DANIO_SPAWN_BIOMES).add(
             BiomeKeys.JUNGLE,
             BiomeKeys.SPARSE_JUNGLE,
+            BiomeKeys.MANGROVE_SWAMP,
         )
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.ANEMONE_SPAWN_BIOMES).add(
@@ -616,6 +617,7 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.MESSAGE_IN_A_BOTTLE_SPAWN_BIOMES)
             .forceAddTag(BiomeTags.IS_OCEAN)
+            .forceAddTag(BiomeTags.IS_DEEP_OCEAN)
             .forceAddTag(BiomeTags.IS_BEACH)
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.SARGASSUM_SPAWN_BIOMES).add(
@@ -660,5 +662,25 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.THERMAL_VENT_SPAWN_BIOMES)
             .forceAddTag(BiomeTags.IS_DEEP_OCEAN)
+
+        getOrCreateTagBuilder(BiomeTags.SHIPWRECK_HAS_STRUCTURE).add(
+            HybridAquaticBiomes.RED_MEADOW,
+            HybridAquaticBiomes.SARGASSUM_SEA,
+        )
+
+        getOrCreateTagBuilder(BiomeTags.OCEAN_RUIN_WARM_HAS_STRUCTURE).add(
+            HybridAquaticBiomes.RED_MEADOW,
+            HybridAquaticBiomes.SARGASSUM_SEA,
+        )
+
+        getOrCreateTagBuilder(BiomeTags.RUINED_PORTAL_OCEAN_HAS_STRUCTURE).add(
+            HybridAquaticBiomes.RED_MEADOW,
+            HybridAquaticBiomes.SARGASSUM_SEA,
+        )
+
+        getOrCreateTagBuilder(BiomeTags.PLAYS_UNDERWATER_MUSIC).add(
+            HybridAquaticBiomes.RED_MEADOW,
+            HybridAquaticBiomes.SARGASSUM_SEA,
+        )
     }
 }
