@@ -29,6 +29,7 @@ import net.minecraft.world.LocalDifficulty
 import net.minecraft.world.ServerWorldAccess
 import net.minecraft.world.World
 import net.minecraft.world.WorldAccess
+import net.minecraft.world.biome.Biome
 import software.bernie.geckolib.animatable.GeoEntity
 import software.bernie.geckolib.core.animatable.GeoAnimatable
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache
@@ -452,5 +453,13 @@ open class HybridAquaticFishEntity(
         val modelID : Identifier,
         val textureID : Identifier,
         val spawnCondition: (WorldAccess, SpawnReason, BlockPos, SpawnReason, ) -> Boolean
-    )
+    ) {
+        companion object {
+            fun biomeVariant(animationID: Identifier, modelID: Identifier, textureID: Identifier, biomes : TagKey<Biome>): FishVariant {
+                return FishVariant(animationID, modelID, textureID) { world, _, pos, _ ->
+                    world.getBiome(pos).isIn(biomes)
+                }
+            }
+        }
+    }
 }
