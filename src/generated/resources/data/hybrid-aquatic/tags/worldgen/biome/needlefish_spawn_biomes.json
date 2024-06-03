@@ -3,6 +3,7 @@
   "values": [
     "minecraft:ocean",
     "minecraft:warm_ocean",
-    "minecraft:lukewarm_ocean"
+    "minecraft:lukewarm_ocean",
+    "hybrid-aquatic:red_meadow"
   ]
 }
