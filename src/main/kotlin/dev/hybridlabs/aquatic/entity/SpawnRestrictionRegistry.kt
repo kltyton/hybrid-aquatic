@@ -1,8 +1,8 @@
 package dev.hybridlabs.aquatic.entity
 
 import dev.hybridlabs.aquatic.entity.cephalopod.HybridAquaticCephalopodEntity
-import dev.hybridlabs.aquatic.entity.crustacean.HybridAquaticCrustaceanEntity
 import dev.hybridlabs.aquatic.entity.critter.HybridAquaticCritterEntity
+import dev.hybridlabs.aquatic.entity.crustacean.HybridAquaticCrustaceanEntity
 import dev.hybridlabs.aquatic.entity.fish.HybridAquaticFishEntity
 import dev.hybridlabs.aquatic.entity.jellyfish.HybridAquaticJellyfishEntity
 import dev.hybridlabs.aquatic.entity.shark.HybridAquaticSharkEntity
@@ -84,6 +84,7 @@ object SpawnRestrictionRegistry {
             HybridAquaticEntityTypes.COMPASS_JELLYFISH,
             HybridAquaticEntityTypes.LIONS_MANE_JELLYFISH,
             HybridAquaticEntityTypes.NOMURA_JELLYFISH,
+            HybridAquaticEntityTypes.BARREL_JELLYFISH,
         ).forEach { registerJelly(it) }
 
         setOf(
@@ -169,7 +170,7 @@ object SpawnRestrictionRegistry {
     }
 
     private fun <T : WaterCreatureEntity> registerCritter(entityType: EntityType<T>) {
-        registerLandWaterCreature(entityType, HybridAquaticCritterEntity::canSpawn)
+        registerWaterCreature(entityType, HybridAquaticCritterEntity::canSpawn)
     }
 
     private fun <T : WaterCreatureEntity> registerWaterCreature(entityType: EntityType<T>, predicate: SpawnPredicate<T>) {

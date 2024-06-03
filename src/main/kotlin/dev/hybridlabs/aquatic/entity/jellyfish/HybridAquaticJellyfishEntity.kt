@@ -1,7 +1,6 @@
 package dev.hybridlabs.aquatic.entity.jellyfish
 
 import dev.hybridlabs.aquatic.goals.StayInWaterGoal
-import net.minecraft.block.Blocks
 import net.minecraft.entity.*
 import net.minecraft.entity.ai.control.AquaticMoveControl
 import net.minecraft.entity.ai.control.YawAdjustingLookControl
@@ -389,8 +388,9 @@ open class HybridAquaticJellyfishEntity(
             val bottomY = world.seaLevel - 24
 
             return pos.y in bottomY..topY &&
+                    world.getFluidState(pos).isIn(FluidTags.WATER) &&
                     world.getFluidState(pos.down()).isIn(FluidTags.WATER) &&
-                    world.getBlockState(pos.up()).isOf(Blocks.WATER)
+                    world.getFluidState(pos.up()).isIn(FluidTags.WATER)
         }
 
         fun canUndergroundSpawn(
@@ -402,8 +402,9 @@ open class HybridAquaticJellyfishEntity(
         ): Boolean {
             return pos.y <= world.seaLevel - 32 &&
                     world.getBaseLightLevel(pos, 0) == 0 &&
+                    world.getFluidState(pos).isIn(FluidTags.WATER) &&
                     world.getFluidState(pos.down()).isIn(FluidTags.WATER) &&
-                    world.getBlockState(pos).isOf(Blocks.WATER)
+                    world.getFluidState(pos.up()).isIn(FluidTags.WATER)
         }
 
         fun getScaleAdjustment(jellyfish : HybridAquaticJellyfishEntity, adjustment : Float): Float {

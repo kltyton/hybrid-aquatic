@@ -430,6 +430,7 @@ open class HybridAquaticFishEntity(
         ): Boolean {
             return pos.y <= world.seaLevel - 32 &&
                     world.getBaseLightLevel(pos, 0) == 0 &&
+                    world.getFluidState(pos.down()).isIn(FluidTags.WATER) &&
                     world.getBlockState(pos).isOf(Blocks.WATER)
         }
 
