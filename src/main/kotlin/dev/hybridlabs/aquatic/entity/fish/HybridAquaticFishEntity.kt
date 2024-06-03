@@ -20,6 +20,7 @@ import net.minecraft.registry.tag.FluidTags
 import net.minecraft.registry.tag.TagKey
 import net.minecraft.sound.SoundEvent
 import net.minecraft.sound.SoundEvents
+import net.minecraft.util.Identifier
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.Vec3d
@@ -35,16 +36,18 @@ import software.bernie.geckolib.core.animation.*
 import software.bernie.geckolib.core.animation.AnimationState
 import software.bernie.geckolib.core.`object`.PlayState
 import software.bernie.geckolib.util.GeckoLibUtil
+import java.util.concurrent.locks.Condition
 import kotlin.math.sqrt
 
 @Suppress("LeakingThis")
 open class HybridAquaticFishEntity(
     type: EntityType<out HybridAquaticFishEntity>,
     world: World,
-    private val variantCount: Int = 1,
+    private val variants: List<FishVariant> = emptyList(),
     open val prey: TagKey<EntityType<*>>,
     open val predator: TagKey<EntityType<*>>,
 ) : WaterCreatureEntity(type, world), GeoEntity {
+
     private val factory = GeckoLibUtil.createInstanceCache(this)
     private var hunger: Int
         get() = dataTracker.get(HUNGER)
@@ -85,7 +88,7 @@ open class HybridAquaticFishEntity(
         entityNbt: NbtCompound?
     ): EntityData? {
         this.air = getMaxMoistness()
-        this.variant = this.random.nextInt(variantCount)
+        this.variant = this.random.nextInt(variants.size)
         this.size = this.random.nextBetween(getMinSize(), getMaxSize())
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt)
     }
@@ -170,7 +173,7 @@ open class HybridAquaticFishEntity(
     override fun readCustomDataFromNbt(nbt: NbtCompound) {
         super.readCustomDataFromNbt(nbt)
         moistness = nbt.getInt(MOISTNESS_KEY)
-        variant = nbt.getInt(VARIANT_KEY).coerceAtLeast(0).coerceAtMost(variantCount-1)
+        variant = nbt.getInt(VARIANT_KEY).coerceAtLeast(0).coerceAtMost(variants.size)
         size = nbt.getInt(FISH_SIZE_KEY)
         hunger = nbt.getInt(HUNGER_KEY)
         fromFishingNet = nbt.getBoolean("FromFishingNet")
@@ -234,7 +237,7 @@ open class HybridAquaticFishEntity(
         }
 
     var variant: Int
-        get() = dataTracker.get(VARIANT).coerceAtLeast(0).coerceAtMost(variantCount-1)
+        get() = dataTracker.get(VARIANT).coerceAtLeast(0).coerceAtMost(variants.size)
         set(int) {
             dataTracker.set(VARIANT, int)
         }
@@ -262,6 +265,7 @@ open class HybridAquaticFishEntity(
     }
 
     override fun registerControllers(controllerRegistrar: AnimatableManager.ControllerRegistrar) {
+
         controllerRegistrar.add(
             AnimationController(
                 this,
@@ -442,4 +446,11 @@ open class HybridAquaticFishEntity(
         const val FISH_SIZE_KEY = "FishSize"
         val ATTEMPT_ATTACK: TrackedData<Boolean> = DataTracker.registerData(HybridAquaticFishEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
     }
+
+    data class FishVariant(
+        val animationID : Identifier,
+        val modelID : Identifier,
+        val textureID : Identifier,
+        val spawnCondition: (WorldAccess, SpawnReason, BlockPos, SpawnReason, ) -> Boolean
+    )
 }
