@@ -178,13 +178,13 @@ class ConfiguredFeatureProvider(output: FabricDataOutput, registriesFuture: Comp
                         Feature.SIMPLE_BLOCK,
                         SimpleBlockFeatureConfig(
                             NoiseBlockStateProvider(
-                                2345L,
-                                NoiseParameters(0, 1.0, *DoubleArray(0)),
-                                0.020833334f,
+                                237L,
+                                NoiseParameters(-4, 1.0, *DoubleArray(0)),
+                                1.0f ,
                                 listOf<BlockState>(
                                     HybridAquaticBlocks.SHORT_RED_ALGAE.defaultState,
                                     HybridAquaticBlocks.RED_ALGAE.defaultState,
-                                    HybridAquaticBlocks.TALL_RED_ALGAE.defaultState,
+                                    HybridAquaticBlocks.TALL_RED_ALGAE.defaultState
                                 )
                             )
                         ),

@@ -1,8 +1,6 @@
 package dev.hybridlabs.aquatic.block
 
-import dev.hybridlabs.aquatic.block.TallRedAlgaeBlock.Companion.HALF
 import net.minecraft.block.*
-import net.minecraft.block.enums.DoubleBlockHalf
 import net.minecraft.fluid.Fluid
 import net.minecraft.fluid.FluidState
 import net.minecraft.fluid.Fluids
@@ -66,12 +64,10 @@ open class ShortRedAlgaeBlock(settings: Settings?) : PlantBlock(settings), Ferti
     }
 
     override fun grow(world: ServerWorld, random: Random, pos: BlockPos, state: BlockState) {
-        val blockState = HybridAquaticBlocks.TALL_RED_ALGAE.defaultState
-        val blockState2 = blockState.with(HALF, DoubleBlockHalf.UPPER) as BlockState
+        val blockState = HybridAquaticBlocks.RED_ALGAE.defaultState
         val blockPos = pos.up()
         if (world.getBlockState(blockPos).isOf(Blocks.WATER)) {
             world.setBlockState(pos, blockState, 2)
-            world.setBlockState(blockPos, blockState2, 2)
         }
     }
 
@@ -89,6 +85,6 @@ open class ShortRedAlgaeBlock(settings: Settings?) : PlantBlock(settings), Ferti
     }
 
     companion object {
-        protected val SHAPE: VoxelShape = createCuboidShape(2.0, 0.0, 2.0, 14.0, 12.0, 14.0)
+        protected val SHAPE: VoxelShape = createCuboidShape(2.0, 0.0, 2.0, 14.0, 16.0, 14.0)
     }
 }

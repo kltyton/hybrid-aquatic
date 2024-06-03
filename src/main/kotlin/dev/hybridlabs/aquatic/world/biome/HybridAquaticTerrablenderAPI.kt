@@ -9,7 +9,7 @@ import terrablender.api.TerraBlenderApi
 
 class HybridAquaticTerrablenderAPI : TerraBlenderApi {
     override fun onTerraBlenderInitialized() {
-        Regions.register(HybridAquaticOverworldRegion(Identifier(HybridAquatic.MOD_ID, "overworld"), 4))
+        Regions.register(HybridAquaticOverworldCommonRegion(Identifier(HybridAquatic.MOD_ID, "common"), 4))
 
         SurfaceRuleManager.addSurfaceRules(
             SurfaceRuleManager.RuleCategory.OVERWORLD,

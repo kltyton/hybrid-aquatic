@@ -112,44 +112,108 @@ object HybridAquaticBlocks {
     val COCONUT_PALM_FENCE = register("coconut_palm_fence", FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE)))
     val COCONUT_PALM_FENCE_GATE = register("coconut_palm_fence_gate", FenceGateBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE), HybridAquaticWoodTypes.COCONUT_PALM))
 
-    val DEAD_LOPHELIA_CORAL_BLOCK = register("dead_lophelia_coral_block", DeadCoralBlock(FabricBlockSettings.copyOf(Blocks.DEAD_FIRE_CORAL_BLOCK).mapColor(MapColor.OFF_WHITE).instrument(Instrument.BASEDRUM).requiresTool().hardness(1.0F).sounds(BlockSoundGroup.CORAL)))
-    val LOPHELIA_CORAL_BLOCK = register("lophelia_coral_block", CoralBlockBlock(DEAD_LOPHELIA_CORAL_BLOCK, FabricBlockSettings.copyOf(Blocks.FIRE_CORAL_BLOCK).mapColor(MapColor.OFF_WHITE).instrument(Instrument.BASEDRUM).requiresTool().hardness(1.0F).sounds(BlockSoundGroup.CORAL)))
+    val DEAD_LOPHELIA_CORAL_BLOCK = register("dead_lophelia_coral_block", DeadCoralBlock(FabricBlockSettings.copyOf(Blocks.DEAD_FIRE_CORAL_BLOCK)
+        .mapColor(MapColor.OFF_WHITE)
+        .instrument(Instrument.BASEDRUM)
+        .requiresTool()
+        .hardness(1.0F)
+        .sounds(BlockSoundGroup.CORAL)))
+
+    val LOPHELIA_CORAL_BLOCK = register("lophelia_coral_block", CoralBlockBlock(DEAD_LOPHELIA_CORAL_BLOCK, FabricBlockSettings.copyOf(Blocks.FIRE_CORAL_BLOCK)
+        .mapColor(MapColor.OFF_WHITE)
+        .instrument(Instrument.BASEDRUM)
+        .requiresTool()
+        .hardness(1.0F)
+        .sounds(BlockSoundGroup.CORAL)))
+
     val DEAD_LOPHELIA_CORAL_FAN = register("dead_lophelia_coral_fan", DeadCoralFanBlock(FabricBlockSettings.copyOf(Blocks.DEAD_FIRE_CORAL_FAN)))
+
     val LOPHELIA_CORAL_FAN = register("lophelia_coral_fan", CoralFanBlock(DEAD_LOPHELIA_CORAL_FAN, FabricBlockSettings.copyOf(Blocks.FIRE_CORAL_FAN)))
+
     val DEAD_LOPHELIA_CORAL = register("dead_lophelia_coral", DeadCoralBlock(FabricBlockSettings.copyOf(Blocks.DEAD_FIRE_CORAL)))
+
     val DEAD_LOPHELIA_CORAL_WALL_FAN = register("dead_lophelia_coral_wall_fan", DeadCoralWallFanBlock(FabricBlockSettings.copyOf(Blocks.DEAD_FIRE_CORAL_WALL_FAN).dropsLike(DEAD_LOPHELIA_CORAL)))
+
     val LOPHELIA_CORAL = register("lophelia_coral", CoralBlock(DEAD_LOPHELIA_CORAL, FabricBlockSettings.copyOf(Blocks.FIRE_CORAL)))
+
     val LOPHELIA_CORAL_WALL_FAN = register("lophelia_coral_wall_fan", CoralWallFanBlock(DEAD_LOPHELIA_CORAL_WALL_FAN, FabricBlockSettings.copyOf(Blocks.FIRE_CORAL_WALL_FAN).dropsLike(LOPHELIA_CORAL)))
+
     val DEAD_THORN_CORAL_BLOCK = register("dead_thorn_coral_block", DeadCoralBlock(FabricBlockSettings.copyOf(Blocks.DEAD_FIRE_CORAL_BLOCK).mapColor(MapColor.OFF_WHITE).instrument(Instrument.BASEDRUM).requiresTool().hardness(1.0F).sounds(BlockSoundGroup.CORAL)))
+
     val THORN_CORAL_BLOCK = register("thorn_coral_block", CoralBlockBlock(DEAD_THORN_CORAL_BLOCK, FabricBlockSettings.copyOf(Blocks.FIRE_CORAL_BLOCK).mapColor(MapColor.OFF_WHITE).instrument(Instrument.BASEDRUM).requiresTool().hardness(1.0F).sounds(BlockSoundGroup.CORAL)))
+
     val DEAD_THORN_CORAL_FAN = register("dead_thorn_coral_fan", DeadCoralFanBlock(FabricBlockSettings.copyOf(Blocks.DEAD_FIRE_CORAL_FAN)))
+
     val THORN_CORAL_FAN = register("thorn_coral_fan", CoralFanBlock(DEAD_THORN_CORAL_FAN, FabricBlockSettings.copyOf(Blocks.FIRE_CORAL_FAN)))
+
     val DEAD_THORN_CORAL = register("dead_thorn_coral", DeadCoralBlock(FabricBlockSettings.copyOf(Blocks.DEAD_FIRE_CORAL)))
+
     val DEAD_THORN_CORAL_WALL_FAN = register("dead_thorn_coral_wall_fan", DeadCoralWallFanBlock(FabricBlockSettings.copyOf(Blocks.DEAD_FIRE_CORAL_WALL_FAN).dropsLike(DEAD_THORN_CORAL)))
+
     val THORN_CORAL = register("thorn_coral", CoralBlock(DEAD_THORN_CORAL, FabricBlockSettings.copyOf(Blocks.FIRE_CORAL)))
+
     val THORN_CORAL_WALL_FAN = register("thorn_coral_wall_fan", CoralWallFanBlock(DEAD_THORN_CORAL_WALL_FAN, FabricBlockSettings.copyOf(Blocks.FIRE_CORAL_WALL_FAN).dropsLike(THORN_CORAL)))
 
-    val GLOWSTICK = register("glowstick", GlowstickBlock(FabricBlockSettings.copyOf(Blocks.TORCH).noCollision().luminance(GlowstickBlock::luminance).nonOpaque()))
-    val WALL_GLOWSTICK = register("wall_glowstick", WallGlowstickBlock(FabricBlockSettings.copyOf(Blocks.WALL_TORCH).dropsLike(GLOWSTICK).noCollision().luminance(GlowstickBlock::luminance).nonOpaque()))
+    val GLOWSTICK = register("glowstick", GlowstickBlock(FabricBlockSettings.copyOf(Blocks.TORCH)
+        .noCollision()
+        .luminance(GlowstickBlock::luminance)
+        .nonOpaque()))
 
-    val TUBE_WORMS = register("tube_worms", TubeWormsBlock(FabricBlockSettings.copy(Blocks.SEAGRASS).noCollision().nonOpaque()))
+    val WALL_GLOWSTICK = register("wall_glowstick", WallGlowstickBlock(FabricBlockSettings.copyOf(Blocks.WALL_TORCH)
+        .dropsLike(GLOWSTICK)
+        .noCollision()
+        .luminance(GlowstickBlock::luminance)
+        .nonOpaque()))
 
-    val GLOWING_PLANKTON = register("glowing_plankton", GlowingPlanktonBlock(FabricBlockSettings.copyOf(Blocks.LILY_PAD).nonOpaque().noCollision().breakInstantly()))
+    val TUBE_WORMS = register("tube_worms", TubeWormsBlock(FabricBlockSettings.copy(Blocks.SEAGRASS)
+        .noCollision()
+        .nonOpaque()))
 
-    val FLOATING_SARGASSUM = register("floating_sargassum", FloatingSargassumBlock(FabricBlockSettings.copyOf(Blocks.LILY_PAD).noCollision().breakInstantly()))
-    val SARGASSUM = register("sargassum", SargassumBlock(FabricBlockSettings.copyOf(Blocks.KELP).nonOpaque()))
-    val SARGASSUM_PLANT = register("sargassum_plant", SargassumPlantBlock(FabricBlockSettings.copyOf(Blocks.KELP_PLANT).nonOpaque().dropsLike(SARGASSUM)))
-    val DENSE_KELP = register("dense_kelp", DenseKelpBlock(FabricBlockSettings.copyOf(Blocks.KELP).nonOpaque()))
-    val DENSE_KELP_PLANT = register("dense_kelp_plant", DenseKelpPlantBlock(FabricBlockSettings.copyOf(Blocks.KELP_PLANT).nonOpaque().dropsLike(DENSE_KELP)))
+    val GLOWING_PLANKTON = register("glowing_plankton", GlowingPlanktonBlock(FabricBlockSettings.copyOf(Blocks.LILY_PAD)
+        .nonOpaque()
+        .noCollision()
+        .breakInstantly()))
 
-    val SHORT_RED_ALGAE = register("short_red_algae", ShortRedAlgaeBlock(FabricBlockSettings.copyOf(Blocks.SEAGRASS).nonOpaque().noCollision()))
-    val RED_ALGAE = register("red_algae", RedAlgaeBlock(FabricBlockSettings.copyOf(Blocks.SEAGRASS).nonOpaque().noCollision()))
-    val TALL_RED_ALGAE = register("tall_red_algae", TallRedAlgaeBlock(FabricBlockSettings.copyOf(Blocks.TALL_SEAGRASS).nonOpaque().noCollision()))
+    val FLOATING_SARGASSUM = register("floating_sargassum", FloatingSargassumBlock(FabricBlockSettings.copyOf(Blocks.LILY_PAD)
+        .noCollision()
+        .breakInstantly()))
 
-    val THERMAL_VENT = register("thermal_vent", ThermalVentBlock(FabricBlockSettings.copyOf(Blocks.TUFF).nonOpaque().hardness(1.0F)))
-    val THERMAL_VENT_SHAFT = register("thermal_vent_shaft", ThermalVentShaftBlock(FabricBlockSettings.copyOf(Blocks.TUFF).nonOpaque().hardness(1.0F).dropsLike(THERMAL_VENT)))
+    val SARGASSUM = register("sargassum", SargassumBlock(FabricBlockSettings.copyOf(Blocks.KELP)
+        .nonOpaque()))
 
-    val TUBE_SPONGE = register("tube_sponge", TubeSpongeBlock(FabricBlockSettings.copyOf(Blocks.WET_SPONGE).nonOpaque()))
+    val SARGASSUM_PLANT = register("sargassum_plant", SargassumPlantBlock(FabricBlockSettings.copyOf(Blocks.KELP_PLANT)
+        .nonOpaque()
+        .dropsLike(SARGASSUM)))
+    val DENSE_KELP = register("dense_kelp", DenseKelpBlock(FabricBlockSettings.copyOf(Blocks.KELP)
+        .nonOpaque()))
+
+    val DENSE_KELP_PLANT = register("dense_kelp_plant", DenseKelpPlantBlock(FabricBlockSettings.copyOf(Blocks.KELP_PLANT)
+        .nonOpaque()
+        .dropsLike(DENSE_KELP)))
+
+    val SHORT_RED_ALGAE = register("short_red_algae", ShortRedAlgaeBlock(FabricBlockSettings.copyOf(Blocks.TALL_SEAGRASS)
+        .nonOpaque()
+        .noCollision()))
+
+    val RED_ALGAE = register("red_algae", RedAlgaeBlock(FabricBlockSettings.copyOf(Blocks.TALL_SEAGRASS)
+        .nonOpaque()
+        .noCollision()))
+
+    val TALL_RED_ALGAE = register("tall_red_algae", TallRedAlgaeBlock(FabricBlockSettings.copyOf(Blocks.TALL_SEAGRASS)
+        .nonOpaque()
+        .noCollision()))
+
+    val THERMAL_VENT = register("thermal_vent", ThermalVentBlock(FabricBlockSettings.copyOf(Blocks.TUFF)
+        .nonOpaque()
+        .hardness(1.0F)))
+
+    val THERMAL_VENT_SHAFT = register("thermal_vent_shaft", ThermalVentShaftBlock(FabricBlockSettings.copyOf(Blocks.TUFF)
+        .nonOpaque()
+        .hardness(1.0F)
+        .dropsLike(THERMAL_VENT)))
+
+    val TUBE_SPONGE = register("tube_sponge", TubeSpongeBlock(FabricBlockSettings.copyOf(Blocks.WET_SPONGE)
+        .nonOpaque()))
 
     val GIANT_CLAM = register("giant_clam", GiantClamBlock(FabricBlockSettings.copyOf(Blocks.TUFF)
         .nonOpaque()

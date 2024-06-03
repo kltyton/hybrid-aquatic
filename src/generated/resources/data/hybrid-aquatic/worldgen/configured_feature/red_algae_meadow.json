@@ -11,10 +11,10 @@
               "amplitudes": [
                 1.0
               ],
-              "firstOctave": 0
+              "firstOctave": -4
             },
-            "scale": 0.020833334,
-            "seed": 2345,
+            "scale": 1.0,
+            "seed": 237,
             "states": [
               {
                 "Name": "hybrid-aquatic:short_red_algae"
@@ -23,10 +23,7 @@
                 "Name": "hybrid-aquatic:red_algae"
               },
               {
-                "Name": "hybrid-aquatic:tall_red_algae",
-                "Properties": {
-                  "half": "lower"
-                }
+                "Name": "hybrid-aquatic:tall_red_algae"
               }
             ]
           }
