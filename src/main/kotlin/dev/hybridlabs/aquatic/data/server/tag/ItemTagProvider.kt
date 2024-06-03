@@ -132,6 +132,40 @@ class ItemTagProvider(output: FabricDataOutput, registriesFuture: CompletableFut
             getOrCreateTagBuilder(HybridAquaticItemTags.COOKED_FISHES).add(item)
         }
 
+        listOf(
+            HybridAquaticItems.ANGLERFISH,
+            HybridAquaticItems.BARRELEYE,
+            HybridAquaticItems.CLOWNFISH,
+            HybridAquaticItems.ROCKFISH,
+            HybridAquaticItems.YELLOWFIN_TUNA,
+            HybridAquaticItems.BLUE_TANG,
+            HybridAquaticItems.UNICORN_FISH,
+            HybridAquaticItems.TRIGGERFISH,
+            HybridAquaticItems.OSCAR,
+            HybridAquaticItems.OPAH,
+            HybridAquaticItems.MAHI_MAHI,
+            HybridAquaticItems.NEEDLEFISH,
+            HybridAquaticItems.BLUE_SPOTTED_STINGRAY,
+            HybridAquaticItems.LIONFISH,
+            HybridAquaticItems.MORAY_EEL,
+            HybridAquaticItems.PIRANHA,
+            HybridAquaticItems.TETRA,
+            HybridAquaticItems.DANIO,
+            HybridAquaticItems.GOURAMI,
+            HybridAquaticItems.BETTA,
+            HybridAquaticItems.DISCUS,
+            HybridAquaticItems.RATFISH,
+            HybridAquaticItems.TIGER_BARB,
+        ).forEach { item ->
+            getOrCreateTagBuilder(ItemTags.FISHES).add(item)
+        }
+
+        listOf(
+            HybridAquaticItems.COCONUT_PALM_SAPLING
+        ).forEach { item ->
+            getOrCreateTagBuilder(ItemTags.SAPLINGS).add(item)
+        }
+
         // plushies
         Registries.ITEM
             .filter(filterHybridAquatic(Registries.ITEM))
