@@ -101,7 +101,9 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
 
         registerTorch(HybridAquaticBlocks.GLOWSTICK, HybridAquaticBlocks.WALL_GLOWSTICK)
         registerTintableCross(HybridAquaticBlocks.COCONUT_PALM_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED)
+
         registerTintableCross(HybridAquaticBlocks.TUBE_WORMS, BlockStateModelGenerator.TintType.NOT_TINTED)
+
         registerTintableCross(HybridAquaticBlocks.SARGASSUM_PLANT, BlockStateModelGenerator.TintType.NOT_TINTED)
         registerTintableCross(HybridAquaticBlocks.SARGASSUM, BlockStateModelGenerator.TintType.NOT_TINTED)
 
