@@ -1,21 +1,16 @@
 package dev.hybridlabs.aquatic.block
 
 import net.minecraft.block.*
-import net.minecraft.entity.Entity
 import net.minecraft.entity.ai.pathing.NavigationType
-import net.minecraft.entity.vehicle.BoatEntity
 import net.minecraft.fluid.FluidState
 import net.minecraft.fluid.Fluids
 import net.minecraft.item.ItemPlacementContext
-import net.minecraft.server.world.ServerWorld
 import net.minecraft.state.StateManager
 import net.minecraft.state.property.Properties
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
-import net.minecraft.util.math.Vec3d
 import net.minecraft.util.shape.VoxelShape
 import net.minecraft.world.BlockView
-import net.minecraft.world.World
 import net.minecraft.world.WorldAccess
 import net.minecraft.world.WorldView
 
@@ -84,14 +79,6 @@ class FloatingSargassumBlock(settings: Settings) : PlantBlock(settings), Waterlo
 
     override fun appendProperties(builder: StateManager.Builder<Block, BlockState>) {
         builder.add(Properties.WATERLOGGED)
-    }
-
-    override fun onEntityCollision(state: BlockState?, world: World, pos: BlockPos?, entity: Entity?) {
-        super.onEntityCollision(state, world, pos, entity)
-        if (world is ServerWorld && entity is BoatEntity) {
-            world.breakBlock(BlockPos(pos), true, entity)
-            entity.slowMovement(state, Vec3d(0.75, 0.75, 0.75))
-        }
     }
 
     override fun canPathfindThrough(

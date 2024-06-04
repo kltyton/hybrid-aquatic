@@ -160,7 +160,7 @@ class ConfiguredFeatureProvider(output: FabricDataOutput, registriesFuture: Comp
                     PlacedFeatures.createEntry(
                         Feature.SIMPLE_BLOCK,
                         SimpleBlockFeatureConfig(
-                            BlockStateProvider.of(HybridAquaticBlocks.RED_ALGAE.defaultState)
+                            BlockStateProvider.of(HybridAquaticBlocks.SHORT_RED_ALGAE.defaultState)
                         ),
                         BlockPredicate.matchingBlockTag(HybridAquaticBlockTags.RED_ALGAE_GENERATE_IN)
                     )

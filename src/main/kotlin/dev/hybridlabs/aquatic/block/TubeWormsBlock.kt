@@ -1,11 +1,10 @@
 package dev.hybridlabs.aquatic.block
 
-import dev.hybridlabs.aquatic.world.tree.CoconutPalmSaplingGenerator
 import net.minecraft.block.*
+import net.minecraft.entity.ai.pathing.NavigationType
 import net.minecraft.fluid.FluidState
 import net.minecraft.fluid.Fluids
 import net.minecraft.item.ItemPlacementContext
-import net.minecraft.registry.tag.BlockTags
 import net.minecraft.registry.tag.FluidTags
 import net.minecraft.state.StateManager
 import net.minecraft.state.property.Properties
@@ -52,5 +51,14 @@ class TubeWormsBlock(settings: Settings) : PlantBlock(settings), Waterloggable {
 
     override fun appendProperties(builder: StateManager.Builder<Block, BlockState>) {
         builder.add(Properties.WATERLOGGED)
+    }
+
+    override fun canPathfindThrough(
+        state: BlockState?,
+        world: BlockView?,
+        pos: BlockPos?,
+        type: NavigationType?
+    ): Boolean {
+        return true
     }
 }

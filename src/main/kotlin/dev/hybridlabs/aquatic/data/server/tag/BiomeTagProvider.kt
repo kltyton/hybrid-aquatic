@@ -187,7 +187,7 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.COCONUT_CRAB_SPAWN_BIOMES).add(
             BiomeKeys.BEACH,
-            BiomeKeys.WARM_OCEAN
+            HybridAquaticBiomes.TROPICAL_BEACH,
         )
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.CUTTLEFISH_SPAWN_BIOMES).add(
@@ -280,16 +280,8 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             BiomeKeys.MANGROVE_SWAMP,
         )
 
-        getOrCreateTagBuilder(HybridAquaticBiomeTags.GREAT_WHITE_SHARK_SPAWN_BIOMES).add(
-            BiomeKeys.LUKEWARM_OCEAN,
-            BiomeKeys.DEEP_LUKEWARM_OCEAN,
-            BiomeKeys.DEEP_OCEAN,
-            BiomeKeys.OCEAN,
-            BiomeKeys.COLD_OCEAN,
-            BiomeKeys.DEEP_COLD_OCEAN,
-            BiomeKeys.FROZEN_OCEAN,
-            BiomeKeys.DEEP_FROZEN_OCEAN,
-        )
+        getOrCreateTagBuilder(HybridAquaticBiomeTags.GREAT_WHITE_SHARK_SPAWN_BIOMES)
+            .forceAddTag(BiomeTags.IS_DEEP_OCEAN)
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.HAMMERHEAD_SHARK_SPAWN_BIOMES).add(
             BiomeKeys.DEEP_OCEAN,
@@ -315,7 +307,9 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             BiomeKeys.WARM_OCEAN,
             BiomeKeys.LUKEWARM_OCEAN,
             BiomeKeys.BEACH,
-            HybridAquaticBiomes.SARGASSUM_SEA
+            HybridAquaticBiomes.SARGASSUM_SEA,
+            HybridAquaticBiomes.GLOWING_BEACH,
+            HybridAquaticBiomes.TROPICAL_BEACH
         )
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.FRIED_EGG_JELLYFISH_SPAWN_BIOMES).add(
@@ -391,6 +385,7 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
         getOrCreateTagBuilder(HybridAquaticBiomeTags.MAUVE_STINGER_SPAWN_BIOMES).add(
             BiomeKeys.WARM_OCEAN,
             BiomeKeys.LUKEWARM_OCEAN,
+            HybridAquaticBiomes.TROPICAL_BEACH,
         )
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.MORAY_EEL_SPAWN_BIOMES).add(
@@ -643,7 +638,7 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
         )
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.GLOWING_PLANKTON_SPAWN_BIOMES).add(
-            BiomeKeys.WARM_OCEAN
+            HybridAquaticBiomes.GLOWING_BEACH
         )
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.DENSE_KELP_WARM_SPAWN_BIOMES).add(
@@ -663,9 +658,26 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
         getOrCreateTagBuilder(HybridAquaticBiomeTags.THERMAL_VENT_SPAWN_BIOMES)
             .forceAddTag(BiomeTags.IS_DEEP_OCEAN)
 
+        getOrCreateTagBuilder(BiomeTags.IS_OCEAN).add(
+            HybridAquaticBiomes.RED_MEADOW,
+            HybridAquaticBiomes.SARGASSUM_SEA,
+        )
+
+        getOrCreateTagBuilder(BiomeTags.IS_BEACH).add(
+            HybridAquaticBiomes.TROPICAL_BEACH,
+            HybridAquaticBiomes.GLOWING_BEACH,
+            HybridAquaticBiomes.TIDE_POOLS,
+        )
+
         getOrCreateTagBuilder(BiomeTags.SHIPWRECK_HAS_STRUCTURE).add(
             HybridAquaticBiomes.RED_MEADOW,
             HybridAquaticBiomes.SARGASSUM_SEA,
+        )
+
+        getOrCreateTagBuilder(BiomeTags.SHIPWRECK_BEACHED_HAS_STRUCTURE).add(
+            HybridAquaticBiomes.TROPICAL_BEACH,
+            HybridAquaticBiomes.GLOWING_BEACH,
+            HybridAquaticBiomes.TIDE_POOLS,
         )
 
         getOrCreateTagBuilder(BiomeTags.OCEAN_RUIN_WARM_HAS_STRUCTURE).add(

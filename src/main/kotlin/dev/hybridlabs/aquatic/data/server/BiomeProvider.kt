@@ -1,9 +1,11 @@
 package dev.hybridlabs.aquatic.data.server
 
 import dev.hybridlabs.aquatic.world.biome.HybridAquaticBiomes
+import dev.hybridlabs.aquatic.world.biome.HybridAquaticBiomes.glowingBeach
 import dev.hybridlabs.aquatic.world.biome.HybridAquaticBiomes.redMeadow
 import dev.hybridlabs.aquatic.world.biome.HybridAquaticBiomes.sargassumSea
 import dev.hybridlabs.aquatic.world.biome.HybridAquaticBiomes.tidePools
+import dev.hybridlabs.aquatic.world.biome.HybridAquaticBiomes.tropicalBeach
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider
 import net.minecraft.registry.RegistryKeys
@@ -22,6 +24,15 @@ class BiomeProvider(output: FabricDataOutput, registriesFuture: CompletableFutur
 
         entries.add(HybridAquaticBiomes.TIDE_POOLS,
             tidePools(lookup.getWrapperOrThrow(RegistryKeys.PLACED_FEATURE),
+                lookup.getWrapperOrThrow(RegistryKeys.CONFIGURED_CARVER)))
+
+        entries.add(HybridAquaticBiomes.TROPICAL_BEACH,
+            tropicalBeach(lookup.getWrapperOrThrow(RegistryKeys.PLACED_FEATURE),
+                lookup.getWrapperOrThrow(RegistryKeys.CONFIGURED_CARVER))
+        )
+
+        entries.add(HybridAquaticBiomes.GLOWING_BEACH,
+            glowingBeach(lookup.getWrapperOrThrow(RegistryKeys.PLACED_FEATURE),
                 lookup.getWrapperOrThrow(RegistryKeys.CONFIGURED_CARVER))
         )
     }

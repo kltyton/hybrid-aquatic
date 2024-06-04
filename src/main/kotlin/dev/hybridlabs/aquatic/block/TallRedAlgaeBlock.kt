@@ -1,6 +1,7 @@
 package dev.hybridlabs.aquatic.block
 
 import net.minecraft.block.*
+import net.minecraft.entity.ai.pathing.NavigationType
 import net.minecraft.fluid.Fluid
 import net.minecraft.fluid.FluidState
 import net.minecraft.fluid.Fluids
@@ -62,6 +63,15 @@ open class TallRedAlgaeBlock(settings: Settings?) : PlantBlock(settings), FluidF
         fluidState: FluidState
     ): Boolean {
         return false
+    }
+
+    override fun canPathfindThrough(
+        state: BlockState?,
+        world: BlockView?,
+        pos: BlockPos?,
+        type: NavigationType?
+    ): Boolean {
+        return true
     }
 
     companion object {

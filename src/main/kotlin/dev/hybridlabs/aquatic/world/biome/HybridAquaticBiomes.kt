@@ -53,6 +53,8 @@ object HybridAquaticBiomes {
         context.register(SARGASSUM_SEA, sargassumSea(context.getRegistryLookup(RegistryKeys.PLACED_FEATURE), context.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER)))
         context.register(RED_MEADOW, redMeadow(context.getRegistryLookup(RegistryKeys.PLACED_FEATURE), context.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER)))
         context.register(TIDE_POOLS, tidePools(context.getRegistryLookup(RegistryKeys.PLACED_FEATURE), context.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER)))
+        context.register(TROPICAL_BEACH, tropicalBeach(context.getRegistryLookup(RegistryKeys.PLACED_FEATURE), context.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER)))
+        context.register(GLOWING_BEACH, glowingBeach(context.getRegistryLookup(RegistryKeys.PLACED_FEATURE), context.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER)))
     }
 
     private fun globalOverworldGeneration(builder: GenerationSettings.LookupBackedBuilder) {
@@ -150,6 +152,69 @@ object HybridAquaticBiomes {
                 BiomeEffects.Builder()
                     .waterColor(0x00bfff)
                     .waterFogColor(0x1d61ad)
+                    .skyColor(0x7BA4FF)
+                    .grassColor(0x5bd959)
+                    .foliageColor(0x5bd959)
+                    .fogColor(0xC0D8FF)
+                    .moodSound(BiomeMoodSound.CAVE)
+                    .music(MusicType.createIngameMusic(MUSIC_UNDER_WATER)).build()
+            )
+            .build()
+    }
+
+    fun glowingBeach(featureRegistry: RegistryEntryLookup<PlacedFeature>,
+                     carverRegistry: RegistryEntryLookup<ConfiguredCarver<*>>):
+            Biome {
+        val spawnBuilder = SpawnSettings.Builder()
+        spawnBuilder.spawn(SpawnGroup.WATER_AMBIENT, SpawnEntry(EntityType.TROPICAL_FISH, 1, 1, 3))
+
+        val biomeBuilder = GenerationSettings.LookupBackedBuilder(featureRegistry, carverRegistry)
+
+        globalOverworldGeneration(biomeBuilder)
+        biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, OceanPlacedFeatures.SEAGRASS_WARM)
+
+        return Biome.Builder()
+            .precipitation(true)
+            .downfall(0.5f)
+            .temperature(0.7f)
+            .generationSettings(biomeBuilder.build())
+            .spawnSettings(spawnBuilder.build())
+            .effects(
+                BiomeEffects.Builder()
+                    .waterColor(0x98a869)
+                    .waterFogColor(0x535c39)
+                    .skyColor(0x7BA4FF)
+                    .grassColor(0x5bd959)
+                    .foliageColor(0x5bd959)
+                    .fogColor(0xC0D8FF)
+                    .moodSound(BiomeMoodSound.CAVE)
+                    .music(MusicType.createIngameMusic(MUSIC_UNDER_WATER)).build()
+            )
+            .build()
+    }
+
+    fun tropicalBeach(featureRegistry: RegistryEntryLookup<PlacedFeature>,
+                     carverRegistry: RegistryEntryLookup<ConfiguredCarver<*>>):
+            Biome {
+        val spawnBuilder = SpawnSettings.Builder()
+        spawnBuilder.spawn(SpawnGroup.WATER_AMBIENT, SpawnEntry(EntityType.TROPICAL_FISH, 1, 1, 3))
+
+        val biomeBuilder = GenerationSettings.LookupBackedBuilder(featureRegistry, carverRegistry)
+
+        globalOverworldGeneration(biomeBuilder)
+        biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, OceanPlacedFeatures.SEAGRASS_WARM)
+        biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, OceanPlacedFeatures.SEA_PICKLE)
+
+        return Biome.Builder()
+            .precipitation(true)
+            .downfall(0.5f)
+            .temperature(0.7f)
+            .generationSettings(biomeBuilder.build())
+            .spawnSettings(spawnBuilder.build())
+            .effects(
+                BiomeEffects.Builder()
+                    .waterColor(0x98a869)
+                    .waterFogColor(0x535c39)
                     .skyColor(0x7BA4FF)
                     .grassColor(0x5bd959)
                     .foliageColor(0x5bd959)
