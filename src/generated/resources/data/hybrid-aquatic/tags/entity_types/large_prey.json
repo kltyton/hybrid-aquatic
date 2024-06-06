@@ -3,9 +3,6 @@
   "values": [
     "hybrid-aquatic:sunfish",
     "hybrid-aquatic:oarfish",
-    "minecraft:turtle",
-    "minecraft:cow",
-    "minecraft:pig",
-    "minecraft:sheep"
+    "minecraft:turtle"
   ]
 }

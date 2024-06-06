@@ -79,9 +79,6 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
                 HybridAquaticEntityTypes.SUNFISH,
                 HybridAquaticEntityTypes.OARFISH,
                 EntityType.TURTLE,
-                EntityType.COW,
-                EntityType.PIG,
-                EntityType.SHEEP,
             )
 
         // prey
@@ -464,57 +461,61 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
         // sharks
         getOrCreateTagBuilder(HybridAquaticEntityTags.SHARKS)
             .add(
-                HybridAquaticEntityTypes.BULL_SHARK,
                 HybridAquaticEntityTypes.BASKING_SHARK,
-                HybridAquaticEntityTypes.THRESHER_SHARK,
+                HybridAquaticEntityTypes.BULL_SHARK,
                 HybridAquaticEntityTypes.FRILLED_SHARK,
                 HybridAquaticEntityTypes.GREAT_WHITE_SHARK,
-                HybridAquaticEntityTypes.TIGER_SHARK,
                 HybridAquaticEntityTypes.HAMMERHEAD_SHARK,
+                HybridAquaticEntityTypes.THRESHER_SHARK,
+                HybridAquaticEntityTypes.TIGER_SHARK,
                 HybridAquaticEntityTypes.WHALE_SHARK,
             )
 
         // critters
         getOrCreateTagBuilder(HybridAquaticEntityTags.CRAB)
             .add(
+                HybridAquaticEntityTypes.COCONUT_CRAB,
                 HybridAquaticEntityTypes.DUNGENESS_CRAB,
                 HybridAquaticEntityTypes.FIDDLER_CRAB,
-                HybridAquaticEntityTypes.HERMIT_CRAB,
-                HybridAquaticEntityTypes.GHOST_CRAB,
-                HybridAquaticEntityTypes.LIGHTFOOT_CRAB,
                 HybridAquaticEntityTypes.FLOWER_CRAB,
-                HybridAquaticEntityTypes.SPIDER_CRAB,
+                HybridAquaticEntityTypes.GHOST_CRAB,
+                HybridAquaticEntityTypes.HERMIT_CRAB,
                 HybridAquaticEntityTypes.HORSESHOE_CRAB,
+                HybridAquaticEntityTypes.LIGHTFOOT_CRAB,
+                HybridAquaticEntityTypes.SPIDER_CRAB,
+                HybridAquaticEntityTypes.VAMPIRE_CRAB,
                 HybridAquaticEntityTypes.GIANT_ISOPOD,
                 HybridAquaticEntityTypes.YETI_CRAB,
             )
         getOrCreateTagBuilder(HybridAquaticEntityTags.SHRIMP)
             .add(
-                HybridAquaticEntityTypes.SHRIMP,
                 HybridAquaticEntityTypes.CRAYFISH,
                 HybridAquaticEntityTypes.LOBSTER,
+                HybridAquaticEntityTypes.SHRIMP,
         )
 
         getOrCreateTagBuilder(HybridAquaticEntityTags.CRITTER)
             .add(
                 HybridAquaticEntityTypes.NUDIBRANCH,
-                HybridAquaticEntityTypes.SEA_URCHIN,
                 HybridAquaticEntityTypes.SEA_CUCUMBER,
+                HybridAquaticEntityTypes.SEA_URCHIN,
                 HybridAquaticEntityTypes.STARFISH,
             )
 
         // jellyfish
         getOrCreateTagBuilder(HybridAquaticEntityTags.JELLYFISH)
             .add(
-                HybridAquaticEntityTypes.FRIED_EGG_JELLYFISH,
-                HybridAquaticEntityTypes.CAULIFLOWER_JELLYFISH,
-                HybridAquaticEntityTypes.MOON_JELLYFISH,
-                HybridAquaticEntityTypes.MAUVE_STINGER,
-                HybridAquaticEntityTypes.BARRELEYE,
                 HybridAquaticEntityTypes.ATOLLA_JELLYFISH,
-                HybridAquaticEntityTypes.STARFISH,
-                HybridAquaticEntityTypes.COMPASS_JELLYFISH,
+                HybridAquaticEntityTypes.BARREL_JELLYFISH,
                 HybridAquaticEntityTypes.BLUE_JELLYFISH,
+                HybridAquaticEntityTypes.CAULIFLOWER_JELLYFISH,
+                HybridAquaticEntityTypes.COMPASS_JELLYFISH,
+                HybridAquaticEntityTypes.FRIED_EGG_JELLYFISH,
+                HybridAquaticEntityTypes.LIONS_MANE_JELLYFISH,
+                HybridAquaticEntityTypes.MAUVE_STINGER,
+                HybridAquaticEntityTypes.MOON_JELLYFISH,
+                HybridAquaticEntityTypes.NOMURA_JELLYFISH,
+                HybridAquaticEntityTypes.SEA_NETTLE,
             )
     }
 }
