@@ -59,14 +59,16 @@ open class HybridAquaticFishEntity(
 
     override fun initGoals() {
         super.initGoals()
-        goalSelector.add(1, SwimToRandomPlaceGoal(this))
-        goalSelector.add(2, SwimAroundGoal(this, 0.50, 6))
+        goalSelector.add(1, SwimToRandomPlaceGoal(this, 1.0, 40))
         goalSelector.add(1, EscapeDangerGoal(this, 1.25))
-        goalSelector.add(2, FleeEntityGoal(this, LivingEntity::class.java, 8.0f, 1.2, 1.0) { !fromFishingNet && it.type.isIn(predator) })
+        goalSelector.add(2, MoveIntoWaterGoal(this))
+        goalSelector.add(2, SwimAroundGoal(this, 0.50, 6))
+        goalSelector.add(1, AttackGoal(this))
+        goalSelector.add(1, FleeEntityGoal(this, LivingEntity::class.java, 8.0f, 1.2, 1.0) { !fromFishingNet && it.type.isIn(predator) })
         goalSelector.add(2, FleeEntityGoal(this, PlayerEntity::class.java, 5.0f, 1.0, 1.0) { !fromFishingNet })
-        goalSelector.add(7, AttackGoal(this))
-        targetSelector.add(6, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) { hunger <= 300 && it.type.isIn(prey) })
+        targetSelector.add(1, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) { hunger <= 1200 && it.type.isIn(prey) })
     }
+
 
     override fun initDataTracker() {
         super.initDataTracker()
@@ -294,18 +296,21 @@ open class HybridAquaticFishEntity(
     }
 
     override fun tickMovement() {
-        if (!this.isTouchingWater && this.isOnGround && this.verticalCollision) {
-            this.velocity = velocity.add(
-                ((random.nextFloat() * 2.0f - 1.0f) * 0.05f).toDouble(), 0.4000000059604645,
-                ((random.nextFloat() * 2.0f - 1.0f) * 0.05f).toDouble()
-            )
-            this.isOnGround = false
-            this.velocityDirty = true
-            this.playSound(this.flopSound, this.soundVolume, this.soundPitch)
-        }
+            // Proper flop on land
+            if (!this.isTouchingWater && this.isOnGround && verticalCollision && shouldFlopOnLand()) {
+                val randomFloat = random.nextFloat()
+                addVelocity(
+                    ((randomFloat * 2.0f - 1.0f) * 0.2f).toDouble(),
+                    0.4,
+                    ((random.nextFloat() * 2.0f - 1.0f) * 0.2f).toDouble()
+                )
+                yaw = randomFloat * 360.0f
+                velocityDirty = true
+                playSound(flopSound, this.soundVolume, this.soundPitch)
+            }
 
-        super.tickMovement()
-    }
+            super.tickMovement()
+        }
 
     open fun speedModifier(): Double {
         return 0.0
@@ -316,26 +321,22 @@ open class HybridAquaticFishEntity(
             if (fish.isSubmergedIn(FluidTags.WATER)) {
                 fish.velocity = fish.velocity.add(0.0, 0.005, 0.0)
             }
+            if (state == State.MOVE_TO && !fish.getNavigation().isIdle) {
+                val speed = (speed * fish.getAttributeValue(EntityAttributes.GENERIC_MOVEMENT_SPEED)).toFloat()
+                fish.movementSpeed = MathHelper.lerp(0.125f, fish.movementSpeed, speed)
+                val velocity = Vec3d(targetX, targetY, targetZ).subtract(fish.pos)
 
-            if (this.state == State.MOVE_TO && !fish.navigation.isIdle) {
-                val f = (this.speed * fish.getAttributeValue(EntityAttributes.GENERIC_MOVEMENT_SPEED)).toFloat()
-                fish.movementSpeed =
-                    MathHelper.lerp(0.125f, fish.movementSpeed, f)
-                val d = this.targetX - fish.x
-                val e = this.targetY - fish.y
-                val g = this.targetZ - fish.z
-                if (e != 0.0) {
-                    val h = sqrt(d * d + e * e + g * g)
-                    fish.velocity = fish.velocity.add(
-                        0.0,
-                        fish.movementSpeed.toDouble() * (e / h) * 0.1, 0.0
-                    )
+                if (velocity.y != 0.0) {
+                    val h = sqrt(velocity.x * velocity.x + velocity.y * velocity.y + velocity.z * velocity.z)
+                    fish.addVelocity(0.0, fish.movementSpeed.toDouble() * (velocity.y / h) * 0.1, 0.0)
+
                 }
+                if (velocity.x != 0.0 || velocity.z != 0.0) {
+                    val i = (MathHelper.atan2(velocity.z, velocity.x) * 57.2957763671875).toFloat() - 90.0f
+                    fish.yaw = wrapDegrees(fish.yaw, i, 90.0f)
 
-                if (d != 0.0 || g != 0.0) {
-                    val i = (MathHelper.atan2(g, d) * 57.2957763671875).toFloat() - 90.0f
-                    fish.yaw = this.wrapDegrees(fish.yaw, i, 90.0f)
                     fish.bodyYaw = fish.yaw
+                    fish.addVelocity(velocity.x * fish.speedModifier(), 0.0, velocity.z * fish.speedModifier())
                 }
             } else {
                 fish.movementSpeed = 0.0f
@@ -343,7 +344,8 @@ open class HybridAquaticFishEntity(
         }
     }
 
-    internal class SwimToRandomPlaceGoal(private val fish: HybridAquaticFishEntity) : SwimAroundGoal(fish, 1.0, 40) {
+    internal class SwimToRandomPlaceGoal(private val fish: HybridAquaticFishEntity, d: Double, i: Int) :
+        SwimAroundGoal(fish, 1.0, 40) {
         override fun canStart(): Boolean {
             return fish.hasSelfControl() && super.canStart()
         }
