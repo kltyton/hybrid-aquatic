@@ -1,10 +1,9 @@
 package dev.hybridlabs.aquatic.data.server
 
 import dev.hybridlabs.aquatic.world.biome.HybridAquaticBiomes
-import dev.hybridlabs.aquatic.world.biome.HybridAquaticBiomes.glowingBeach
+import dev.hybridlabs.aquatic.world.biome.HybridAquaticBiomes.abyssalOcean
 import dev.hybridlabs.aquatic.world.biome.HybridAquaticBiomes.redMeadow
 import dev.hybridlabs.aquatic.world.biome.HybridAquaticBiomes.sargassumSea
-import dev.hybridlabs.aquatic.world.biome.HybridAquaticBiomes.tidePools
 import dev.hybridlabs.aquatic.world.biome.HybridAquaticBiomes.tropicalBeach
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider
@@ -22,17 +21,13 @@ class BiomeProvider(output: FabricDataOutput, registriesFuture: CompletableFutur
             redMeadow(lookup.getWrapperOrThrow(RegistryKeys.PLACED_FEATURE),
                 lookup.getWrapperOrThrow(RegistryKeys.CONFIGURED_CARVER)))
 
-        entries.add(HybridAquaticBiomes.TIDE_POOLS,
-            tidePools(lookup.getWrapperOrThrow(RegistryKeys.PLACED_FEATURE),
-                lookup.getWrapperOrThrow(RegistryKeys.CONFIGURED_CARVER)))
-
-        entries.add(HybridAquaticBiomes.TROPICAL_BEACH,
-            tropicalBeach(lookup.getWrapperOrThrow(RegistryKeys.PLACED_FEATURE),
+        entries.add(HybridAquaticBiomes.ABYSSAL_OCEAN,
+            abyssalOcean(lookup.getWrapperOrThrow(RegistryKeys.PLACED_FEATURE),
                 lookup.getWrapperOrThrow(RegistryKeys.CONFIGURED_CARVER))
         )
 
-        entries.add(HybridAquaticBiomes.GLOWING_BEACH,
-            glowingBeach(lookup.getWrapperOrThrow(RegistryKeys.PLACED_FEATURE),
+        entries.add(HybridAquaticBiomes.TROPICAL_BEACH,
+            tropicalBeach(lookup.getWrapperOrThrow(RegistryKeys.PLACED_FEATURE),
                 lookup.getWrapperOrThrow(RegistryKeys.CONFIGURED_CARVER))
         )
     }

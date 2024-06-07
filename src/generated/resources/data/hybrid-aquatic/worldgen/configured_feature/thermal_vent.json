@@ -1,14 +1,8 @@
 {
   "type": "hybrid-aquatic:thermal_vent",
   "config": {
-    "to_place": {
-      "type": "minecraft:simple_state_provider",
-      "state": {
-        "Name": "hybrid-aquatic:thermal_vent",
-        "Properties": {
-          "age": "0"
-        }
-      }
-    }
+    "floor_search_range": 5,
+    "placement_probability_per_valid_position": 0.5,
+    "placement_radius_around_floor": 1
   }
 }

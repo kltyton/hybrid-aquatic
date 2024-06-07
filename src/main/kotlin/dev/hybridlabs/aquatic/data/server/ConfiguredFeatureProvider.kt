@@ -109,7 +109,9 @@ class ConfiguredFeatureProvider(output: FabricDataOutput, registriesFuture: Comp
             HybridAquaticConfiguredFeatures.THERMAL_VENT,
             ConfiguredFeature(
                 HybridAquaticFeatures.THERMAL_VENT, ThermalVentFeatureConfig(
-                    SimpleBlockStateProvider.of(HybridAquaticBlocks.THERMAL_VENT)
+                    5,
+                    1,
+                    0.5F
                 )
             )
         )
@@ -189,23 +191,6 @@ class ConfiguredFeatureProvider(output: FabricDataOutput, registriesFuture: Comp
                             )
                         ),
                         BlockPredicate.matchingBlockTag(HybridAquaticBlockTags.RED_ALGAE_GENERATE_IN)
-                    )
-                )
-            )
-        )
-
-        // glowing plankton
-        entries.add(
-            HybridAquaticConfiguredFeatures.GLOWING_PLANKTON,
-            ConfiguredFeature(
-                Feature.RANDOM_PATCH, RandomPatchFeatureConfig(
-                    500, 10, 10,
-                    PlacedFeatures.createEntry(
-                        Feature.SIMPLE_BLOCK,
-                        SimpleBlockFeatureConfig(
-                            BlockStateProvider.of(HybridAquaticBlocks.GLOWING_PLANKTON.defaultState.with(Properties.WATERLOGGED, true))
-                        ),
-                        BlockPredicate.matchingBlockTag(HybridAquaticBlockTags.GLOWING_PLANKTON_GENERATE_IN)
                     )
                 )
             )

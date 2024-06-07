@@ -65,12 +65,6 @@ object FeatureBiomeModifications {
         )
 
         BiomeModifications.addFeature(
-            BiomeSelectors.tag(HybridAquaticBiomeTags.GLOWING_PLANKTON_SPAWN_BIOMES),
-            GenerationStep.Feature.VEGETAL_DECORATION,
-            HybridAquaticPlacedFeatures.GLOWING_PLANKTON
-        )
-
-        BiomeModifications.addFeature(
             BiomeSelectors.tag(HybridAquaticBiomeTags.DENSE_KELP_WARM_SPAWN_BIOMES),
             GenerationStep.Feature.VEGETAL_DECORATION,
             HybridAquaticPlacedFeatures.DENSE_KELP_WARM

@@ -13,13 +13,16 @@ import terrablender.api.RegionType
 import java.util.function.Consumer
 
 
-class HybridAquaticOverworldUncommonRegion(name: Identifier?, weight: Int) :
+class HybridAquaticOverworldRegion(name: Identifier?, weight: Int) :
     Region(name, RegionType.OVERWORLD, weight) {
     override fun addBiomes(registry: Registry<Biome>, mapper: Consumer<Pair<NoiseHypercube, RegistryKey<Biome>>>) {
         this.addModifiedVanillaOverworldBiomes(
             mapper
         ) { modifiedVanillaOverworldBuilder: ModifiedVanillaOverworldBuilder ->
-            modifiedVanillaOverworldBuilder.replaceBiome(BiomeKeys.BEACH, HybridAquaticBiomes.GLOWING_BEACH)
+            modifiedVanillaOverworldBuilder.replaceBiome(BiomeKeys.DEEP_LUKEWARM_OCEAN, HybridAquaticBiomes.SARGASSUM_SEA)
+            modifiedVanillaOverworldBuilder.replaceBiome(BiomeKeys.WARM_OCEAN, HybridAquaticBiomes.RED_MEADOW)
+            modifiedVanillaOverworldBuilder.replaceBiome(BiomeKeys.BEACH, HybridAquaticBiomes.TROPICAL_BEACH)
+            modifiedVanillaOverworldBuilder.replaceBiome(BiomeKeys.DEEP_OCEAN, HybridAquaticBiomes.ABYSSAL_OCEAN)
         }
     }
 }

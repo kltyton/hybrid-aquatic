@@ -1,8 +1,6 @@
 {
   "replace": false,
   "values": [
-    "hybrid-aquatic:tropical_beach",
-    "hybrid-aquatic:glowing_beach",
-    "hybrid-aquatic:tide_pools"
+    "hybrid-aquatic:tropical_beach"
   ]
 }

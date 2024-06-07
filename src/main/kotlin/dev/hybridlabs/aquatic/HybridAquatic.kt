@@ -22,6 +22,7 @@ import dev.hybridlabs.aquatic.world.EntityBiomeModifications
 import dev.hybridlabs.aquatic.world.gen.HybridAquaticWorldGeneration
 import dev.hybridlabs.aquatic.world.gen.feature.FeatureBiomeModifications
 import dev.hybridlabs.aquatic.world.gen.feature.HybridAquaticFeatures
+import dev.hybridlabs.aquatic.world.gen.feature.HybridAquaticPlacedFeatures
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.event.registry.DynamicRegistries
 import net.fabricmc.fabric.api.`object`.builder.v1.trade.TradeOfferHelper
@@ -82,6 +83,7 @@ object HybridAquatic : ModInitializer {
         HybridAquaticEnchantments
 
         HybridAquaticFeatures
+        HybridAquaticPlacedFeatures
         HybridAquaticWorldGeneration.generateHybridAquaticWorldGen()
 
         HybridAquaticNetworking

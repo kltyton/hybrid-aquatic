@@ -156,19 +156,6 @@ class PlacedFeatureProvider(output: FabricDataOutput, registriesFuture: Completa
             )
         )
 
-        // glowing plankton
-        entries.add(
-            HybridAquaticPlacedFeatures.GLOWING_PLANKTON,
-            PlacedFeature(entries.ref(HybridAquaticConfiguredFeatures.GLOWING_PLANKTON),
-                listOf(
-                    SquarePlacementModifier.of(),
-                    PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP,
-                    BiomePlacementModifier.of(),
-                    NoiseThresholdCountPlacementModifier.of(0.5, 10, 1)
-                )
-            )
-        )
-
         // dense kelp warm
         entries.add(
             HybridAquaticPlacedFeatures.DENSE_KELP_WARM,

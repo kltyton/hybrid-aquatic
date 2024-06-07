@@ -24,8 +24,8 @@
       "sound": "minecraft:music.under_water"
     },
     "sky_color": 8103167,
-    "water_color": 49151,
-    "water_fog_color": 1925549
+    "water_color": 10004585,
+    "water_fog_color": 5463097
   },
   "features": [
     [],
@@ -40,7 +40,9 @@
       "minecraft:monster_room",
       "minecraft:monster_room_deep"
     ],
-    [],
+    [
+      "minecraft:fossil_upper"
+    ],
     [],
     [
       "minecraft:ore_dirt",
@@ -62,8 +64,7 @@
       "minecraft:glow_lichen"
     ],
     [
-      "minecraft:freeze_top_layer",
-      "minecraft:lush_caves_clay"
+      "minecraft:freeze_top_layer"
     ]
   ],
   "has_precipitation": true,
@@ -87,13 +88,13 @@
     "underground_water_creature": [],
     "water_ambient": [
       {
-        "type": "minecraft:tropical_fish",
-        "maxCount": 3,
-        "minCount": 1,
+        "type": "minecraft:cod",
+        "maxCount": 5,
+        "minCount": 2,
         "weight": 2
       }
     ],
     "water_creature": []
   },
-  "temperature": 0.6
+  "temperature": 0.7
 }

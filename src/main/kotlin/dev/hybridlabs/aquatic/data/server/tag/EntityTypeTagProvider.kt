@@ -169,6 +169,7 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
             .addTag(HybridAquaticEntityTags.SHARKS)
             .add(
                 HybridAquaticEntityTypes.MORAY_EEL,
+                HybridAquaticEntityTypes.LIONFISH,
             )
 
         getOrCreateTagBuilder(HybridAquaticEntityTags.UNICORN_FISH_PREDATOR)

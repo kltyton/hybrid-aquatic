@@ -19,8 +19,6 @@ object HybridAquaticMaterialRules {
                     MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, SAND)),
                 MaterialRules.condition(MaterialRules.biome(HybridAquaticBiomes.TROPICAL_BEACH),
                     MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, SAND)),
-                MaterialRules.condition(MaterialRules.biome(HybridAquaticBiomes.GLOWING_BEACH),
-                    MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, SAND)),
             )
         )
     }

@@ -308,7 +308,6 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             BiomeKeys.LUKEWARM_OCEAN,
             BiomeKeys.BEACH,
             HybridAquaticBiomes.SARGASSUM_SEA,
-            HybridAquaticBiomes.GLOWING_BEACH,
             HybridAquaticBiomes.TROPICAL_BEACH
         )
 
@@ -637,10 +636,6 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             HybridAquaticBiomes.RED_MEADOW
         )
 
-        getOrCreateTagBuilder(HybridAquaticBiomeTags.GLOWING_PLANKTON_SPAWN_BIOMES).add(
-            HybridAquaticBiomes.GLOWING_BEACH
-        )
-
         getOrCreateTagBuilder(HybridAquaticBiomeTags.DENSE_KELP_WARM_SPAWN_BIOMES).add(
             BiomeKeys.LUKEWARM_OCEAN,
             BiomeKeys.DEEP_LUKEWARM_OCEAN,
@@ -665,19 +660,11 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
 
         getOrCreateTagBuilder(BiomeTags.IS_BEACH).add(
             HybridAquaticBiomes.TROPICAL_BEACH,
-            HybridAquaticBiomes.GLOWING_BEACH,
-            HybridAquaticBiomes.TIDE_POOLS,
         )
 
         getOrCreateTagBuilder(BiomeTags.SHIPWRECK_HAS_STRUCTURE).add(
             HybridAquaticBiomes.RED_MEADOW,
             HybridAquaticBiomes.SARGASSUM_SEA,
-        )
-
-        getOrCreateTagBuilder(BiomeTags.SHIPWRECK_BEACHED_HAS_STRUCTURE).add(
-            HybridAquaticBiomes.TROPICAL_BEACH,
-            HybridAquaticBiomes.GLOWING_BEACH,
-            HybridAquaticBiomes.TIDE_POOLS,
         )
 
         getOrCreateTagBuilder(BiomeTags.OCEAN_RUIN_WARM_HAS_STRUCTURE).add(
