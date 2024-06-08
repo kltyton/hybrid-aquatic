@@ -263,7 +263,7 @@ open class HybridAquaticFishEntity(
         }
 
     var variant: FishVariant?
-        get() = variants[""]
+        get() = variants[variantKey]
         private set(value) {
             variants
         }
