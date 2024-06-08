@@ -1,7 +1,10 @@
 package dev.hybridlabs.aquatic.client.render.entity
 
 import dev.hybridlabs.aquatic.client.render.entity.cephalopods.*
-import dev.hybridlabs.aquatic.client.render.entity.critter.*
+import dev.hybridlabs.aquatic.client.render.entity.critter.NudibranchEntityRenderer
+import dev.hybridlabs.aquatic.client.render.entity.critter.SeaCucumberEntityRenderer
+import dev.hybridlabs.aquatic.client.render.entity.critter.SeaUrchinEntityRenderer
+import dev.hybridlabs.aquatic.client.render.entity.critter.StarfishEntityRenderer
 import dev.hybridlabs.aquatic.client.render.entity.crustacean.*
 import dev.hybridlabs.aquatic.client.render.entity.fish.*
 import dev.hybridlabs.aquatic.client.render.entity.jellyfish.*
@@ -16,7 +19,7 @@ object HybridAquaticEntityRenderers {
     val PIRANHA = EntityRendererRegistry.register(HybridAquaticEntityTypes.PIRANHA, ::PiranhaEntityRenderer)
     val BARRELEYE = EntityRendererRegistry.register(HybridAquaticEntityTypes.BARRELEYE, ::BarreleyeEntityRenderer)
     val CLOWNFISH = EntityRendererRegistry.register(HybridAquaticEntityTypes.CLOWNFISH, ::ClownfishEntityRenderer)
-    val YELLOWFIN_TUNA = EntityRendererRegistry.register(HybridAquaticEntityTypes.YELLOWFIN_TUNA, ::YellowfinTunaEntityRenderer)
+    val TUNA = EntityRendererRegistry.register(HybridAquaticEntityTypes.TUNA, ::TunaEntityRenderer)
     val FLASHLIGHT_FISH = EntityRendererRegistry.register(HybridAquaticEntityTypes.FLASHLIGHT_FISH, ::FlashlightfishEntityRenderer)
     val LIONFISH = EntityRendererRegistry.register(HybridAquaticEntityTypes.LIONFISH, ::LionfishEntityRenderer)
     val OARFISH = EntityRendererRegistry.register(HybridAquaticEntityTypes.OARFISH, ::OarfishEntityRenderer)

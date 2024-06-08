@@ -35,6 +35,7 @@ import net.minecraft.world.LocalDifficulty
 import net.minecraft.world.ServerWorldAccess
 import net.minecraft.world.World
 import net.minecraft.world.WorldAccess
+import net.minecraft.world.biome.Biome
 import software.bernie.geckolib.animatable.GeoEntity
 import software.bernie.geckolib.core.animatable.GeoAnimatable
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache
@@ -47,7 +48,7 @@ import software.bernie.geckolib.util.GeckoLibUtil
 open class HybridAquaticCephalopodEntity(
     type: EntityType<out HybridAquaticCephalopodEntity>,
     world: World,
-    private val variantCount: Int = 1,
+    private val variants: Map<String, CephalopodVariant> = hashMapOf(),
     open val prey: TagKey<EntityType<*>>,
     open val predator: TagKey<EntityType<*>>,
     open val hasInk: Boolean
@@ -67,25 +68,6 @@ open class HybridAquaticCephalopodEntity(
     private var swimX = 0f
     private var swimY = 0f
     private var swimZ = 0f
-    private var hunger: Int
-        get() = dataTracker.get(HUNGER)
-        set(hunger) {
-            dataTracker.set(HUNGER, hunger)
-        }
-    private var attemptAttack: Boolean
-        get() = dataTracker.get(ATTEMPT_ATTACK)
-        set(attemptAttack) {
-            dataTracker.set(ATTEMPT_ATTACK, attemptAttack)
-        }
-
-    init {
-        random.setSeed(id.toLong())
-        this.thrustTimerSpeed = 1.0f / (random.nextFloat() + 1.0f) * 0.2f
-        setPathfindingPenalty(PathNodeType.WATER, 0.0f)
-        moveControl = AquaticMoveControl(this, 85, 10, 0.05F, 0.1F, true)
-        lookControl = YawAdjustingLookControl(this, 10)
-        navigation = SwimNavigation(this, world)
-    }
 
     override fun initGoals() {
         goalSelector.add(2, SwimGoal(this))
@@ -99,10 +81,11 @@ open class HybridAquaticCephalopodEntity(
     override fun initDataTracker() {
         super.initDataTracker()
         dataTracker.startTracking(MOISTNESS, getMaxMoistness())
-        dataTracker.startTracking(VARIANT, 0)
         dataTracker.startTracking(CEPHALOPOD_SIZE, 0)
         dataTracker.startTracking(ATTEMPT_ATTACK, false)
         dataTracker.startTracking(HUNGER, MAX_HUNGER)
+        dataTracker.startTracking(VARIANT, "")
+        dataTracker.startTracking(VARIANT_DATA, NbtCompound())
     }
 
     override fun initialize(
@@ -113,46 +96,14 @@ open class HybridAquaticCephalopodEntity(
         entityNbt: NbtCompound?
     ): EntityData? {
         this.air = getMaxMoistness()
-        this.variant = this.random.nextInt(variantCount)
+
+        for (pair in variants) if (pair.value.spawnCondition(world, spawnReason, blockPos, random)) {
+            variantKey = pair.key
+        }
+
         this.size = this.random.nextBetween(getMinSize(), getMaxSize())
         this.pitch = 0.0f
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt)
-    }
-
-    override fun getLimitPerChunk(): Int {
-        return 4
-    }
-
-    override fun getActiveEyeHeight(pose: EntityPose?, dimensions: EntityDimensions): Float {
-        return dimensions.height * 0.5f
-    }
-
-    override fun getAmbientSound(): SoundEvent {
-        return SoundEvents.ENTITY_SQUID_AMBIENT
-    }
-
-    override fun getHurtSound(source: DamageSource?): SoundEvent {
-        return SoundEvents.ENTITY_SLIME_HURT
-    }
-
-    override fun getDeathSound(): SoundEvent {
-        return SoundEvents.ENTITY_SLIME_DEATH
-    }
-
-    protected open fun getSquirtSound(): SoundEvent? {
-        return SoundEvents.ENTITY_SQUID_SQUIRT
-    }
-
-    override fun getSoundVolume(): Float {
-        return 0.4f
-    }
-
-    override fun getMoveEffect(): MoveEffect {
-        return MoveEffect.EVENTS
-    }
-
-    override fun createNavigation(world: World): EntityNavigation {
-        return SwimNavigation(this, world)
     }
 
     override fun tick() {
@@ -211,6 +162,93 @@ open class HybridAquaticCephalopodEntity(
 
     open fun eatFish(entityType: EntityType<*>) {
         hunger += getHungerValue(entityType)
+    }
+
+    override fun tickWaterBreathingAir(air: Int) {}
+
+    private fun getMaxMoistness(): Int {
+        return 600
+    }
+
+    override fun writeCustomDataToNbt(nbt: NbtCompound) {
+        super.writeCustomDataToNbt(nbt)
+        nbt.putInt(MOISTNESS_KEY, moistness)
+        nbt.putString(VARIANT_KEY, variantKey)
+        nbt.put(VARIANT_DATA_KEY, variantData)
+        nbt.putInt(CEPHALOPOD_SIZE_KEY, size)
+        nbt.putInt(HUNGER_KEY, hunger)
+        nbt.putBoolean("FromFishingNet", fromFishingNet)
+    }
+
+    override fun readCustomDataFromNbt(nbt: NbtCompound) {
+        super.readCustomDataFromNbt(nbt)
+        moistness = nbt.getInt(MOISTNESS_KEY)
+        variantKey = nbt.getString(VARIANT_KEY)
+        variantData = nbt.getCompound(VARIANT_DATA_KEY)
+        size = nbt.getInt(CEPHALOPOD_SIZE_KEY)
+        hunger = nbt.getInt(HUNGER_KEY)
+        fromFishingNet = nbt.getBoolean("FromFishingNet")
+    }
+
+    open fun <E : GeoAnimatable> predicate(event: AnimationState<E>): PlayState {
+        if (moistness > 575) {
+            event.controller.setAnimation(SWIM_ANIMATION)
+            return PlayState.CONTINUE
+        }
+        if (moistness < 575) {
+            event.controller.setAnimation(FLOP_ANIMATION)
+            return PlayState.CONTINUE
+        }
+        return PlayState.STOP
+    }
+
+    override fun getActiveEyeHeight(pose: EntityPose?, dimensions: EntityDimensions): Float {
+        return dimensions.height * 0.5f
+    }
+
+    override fun canImmediatelyDespawn(distanceSquared: Double): Boolean {
+        return !hasCustomName()
+    }
+
+    init {
+        random.setSeed(id.toLong())
+        this.thrustTimerSpeed = 1.0f / (random.nextFloat() + 1.0f) * 0.2f
+        setPathfindingPenalty(PathNodeType.WATER, 0.0f)
+        moveControl = AquaticMoveControl(this, 85, 10, 0.05F, 0.1F, true)
+        lookControl = YawAdjustingLookControl(this, 10)
+        navigation = SwimNavigation(this, world)
+    }
+
+    override fun getLimitPerChunk(): Int {
+        return 4
+    }
+
+    override fun getAmbientSound(): SoundEvent {
+        return SoundEvents.ENTITY_SQUID_AMBIENT
+    }
+
+    override fun getHurtSound(source: DamageSource?): SoundEvent {
+        return SoundEvents.ENTITY_SLIME_HURT
+    }
+
+    override fun getDeathSound(): SoundEvent {
+        return SoundEvents.ENTITY_SLIME_DEATH
+    }
+
+    protected open fun getSquirtSound(): SoundEvent? {
+        return SoundEvents.ENTITY_SQUID_SQUIRT
+    }
+
+    override fun getSoundVolume(): Float {
+        return 0.4f
+    }
+
+    override fun getMoveEffect(): MoveEffect {
+        return MoveEffect.EVENTS
+    }
+
+    override fun createNavigation(world: World): EntityNavigation {
+        return SwimNavigation(this, world)
     }
 
     override fun tickMovement() {
@@ -370,16 +408,12 @@ open class HybridAquaticCephalopodEntity(
         }
     }
 
+    //region properties
+
     private var moistness: Int
         get() = dataTracker.get(MOISTNESS)
         set(moistness) {
             dataTracker.set(MOISTNESS, moistness)
-        }
-
-    var variant: Int
-        get() = dataTracker.get(HybridAquaticFishEntity.VARIANT).coerceAtLeast(0).coerceAtMost(variantCount-1)
-        set(int) {
-            dataTracker.set(HybridAquaticFishEntity.VARIANT, int)
         }
 
     var size: Int
@@ -388,24 +422,44 @@ open class HybridAquaticCephalopodEntity(
             dataTracker.set(CEPHALOPOD_SIZE, size)
         }
 
+    private var hunger: Int
+        get() = dataTracker.get(HUNGER)
+        set(hunger) {
+            dataTracker.set(HUNGER, hunger)
+        }
+    private var attemptAttack: Boolean
+        get() = dataTracker.get(ATTEMPT_ATTACK)
+        set(attemptAttack) {
+            dataTracker.set(ATTEMPT_ATTACK, attemptAttack)
+        }
+
+    private var variantData: NbtCompound
+        get() = dataTracker.get(VARIANT_DATA)
+        set(value) {
+            dataTracker.set(VARIANT_DATA, value)
+        }
+
+    private var variantKey: String
+        get() = dataTracker.get(VARIANT)
+        private set(value) {
+            dataTracker.set(VARIANT, value)
+            dataTracker.set(VARIANT, value)
+        }
+
+    var variant: CephalopodVariant?
+        get() = variants[variantKey]
+        private set(value) {
+            variants
+        }
+
+    // endregion
+
     override fun getMaxAir(): Int {
         return 600
     }
 
     public override fun getNextAirOnLand(air: Int): Int {
         return this.maxAir
-    }
-
-    open fun <E : GeoAnimatable> predicate(event: AnimationState<E>): PlayState {
-        if (moistness > 575) {
-            event.controller.setAnimation(SWIM_ANIMATION)
-            return PlayState.CONTINUE
-        }
-        if (moistness < 575) {
-            event.controller.setAnimation(FLOP_ANIMATION)
-            return PlayState.CONTINUE
-        }
-        return PlayState.STOP
     }
 
     override fun registerControllers(controllerRegistrar: AnimatableManager.ControllerRegistrar) {
@@ -423,12 +477,6 @@ open class HybridAquaticCephalopodEntity(
         return factory
     }
 
-    override fun tickWaterBreathingAir(air: Int) {}
-
-    private fun getMaxMoistness(): Int {
-        return 600
-    }
-
     protected open fun hasSelfControl(): Boolean {
         return true
     }
@@ -441,24 +489,7 @@ open class HybridAquaticCephalopodEntity(
         return 0
     }
 
-    override fun writeCustomDataToNbt(nbt: NbtCompound) {
-        super.writeCustomDataToNbt(nbt)
-        nbt.putInt(MOISTNESS_KEY, moistness)
-        nbt.putInt(VARIANT_KEY, variant)
-        nbt.putInt(CEPHALOPOD_SIZE_KEY, size)
-        nbt.putInt(HUNGER_KEY, hunger)
-        nbt.putBoolean("FromFishingNet", fromFishingNet)
-    }
-
     private var fromFishingNet = false
-    override fun readCustomDataFromNbt(nbt: NbtCompound) {
-        super.readCustomDataFromNbt(nbt)
-        moistness = nbt.getInt(MOISTNESS_KEY)
-        variant = nbt.getInt(VARIANT_KEY).coerceAtLeast(0).coerceAtMost(variantCount-1)
-        size = nbt.getInt(CEPHALOPOD_SIZE_KEY)
-        hunger = nbt.getInt(HUNGER_KEY)
-        fromFishingNet = nbt.getBoolean("FromFishingNet")
-    }
 
     internal class SwimToRandomPlaceGoal(private val cephalopod: HybridAquaticCephalopodEntity, d: Double, i: Int) :
         SwimAroundGoal(cephalopod, 1.0, 40) {
@@ -582,16 +613,23 @@ open class HybridAquaticCephalopodEntity(
 
     companion object {
         val MOISTNESS: TrackedData<Int> = DataTracker.registerData(HybridAquaticCephalopodEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
-        val VARIANT: TrackedData<Int> = DataTracker.registerData(HybridAquaticFishEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
         val CEPHALOPOD_SIZE: TrackedData<Int> = DataTracker.registerData(HybridAquaticCephalopodEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
         val HUNGER: TrackedData<Int> = DataTracker.registerData(HybridAquaticFishEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
+        val ATTEMPT_ATTACK: TrackedData<Boolean> = DataTracker.registerData(HybridAquaticCephalopodEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
+        val VARIANT: TrackedData<String> = DataTracker.registerData(HybridAquaticCephalopodEntity::class.java, TrackedDataHandlerRegistry.STRING)
+        var VARIANT_DATA: TrackedData<NbtCompound> = DataTracker.registerData(HybridAquaticCephalopodEntity::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND);
 
         const val MAX_HUNGER = 1200
         const val HUNGER_KEY = "Hunger"
+        const val MOISTNESS_KEY = "Moistness"
+        const val VARIANT_KEY = "Variant"
+        const val VARIANT_DATA_KEY = "VariantData"
+        const val CEPHALOPOD_SIZE_KEY = "CephalopodSize"
 
         val SWIM_ANIMATION: RawAnimation = RawAnimation.begin().then("swim", Animation.LoopType.LOOP)
         val FLOP_ANIMATION: RawAnimation = RawAnimation.begin().then("flop", Animation.LoopType.LOOP)
 
+        @Suppress("UNUSED_PARAMETER", "DEPRECATION")
         fun canSpawn(
             type: EntityType<out WaterCreatureEntity>,
             world: WorldAccess,
@@ -599,14 +637,15 @@ open class HybridAquaticCephalopodEntity(
             pos: BlockPos,
             random: Random?
         ): Boolean {
-            val topY = world.seaLevel - 6
-            val bottomY = world.seaLevel - 48
+            val topY = world.seaLevel
+            val bottomY = world.seaLevel - 24
 
             return pos.y in bottomY..topY &&
                     world.getFluidState(pos.down()).isIn(FluidTags.WATER) &&
-                    world.getFluidState(pos.up()).isIn(FluidTags.WATER)
+                    world.getBlockState(pos.up()).isOf(Blocks.WATER)
         }
 
+        @Suppress("UNUSED_PARAMETER", "DEPRECATION")
         fun canUndergroundSpawn(
             type: EntityType<out WaterCreatureEntity?>?,
             world: WorldAccess,
@@ -622,11 +661,30 @@ open class HybridAquaticCephalopodEntity(
         fun getScaleAdjustment(jellyfish : HybridAquaticCephalopodEntity, adjustment : Float): Float {
             return 1.0f + (jellyfish.size * adjustment)
         }
-
-        const val MOISTNESS_KEY = "Moistness"
-        const val VARIANT_KEY = "Variant"
-        const val CEPHALOPOD_SIZE_KEY = "CephalopodSize"
-        val ATTEMPT_ATTACK: TrackedData<Boolean> =
-            DataTracker.registerData(HybridAquaticFishEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
     }
+
+    @Suppress("UNUSED")
+    data class CephalopodVariant(
+        var variantName : String,
+        val spawnCondition: (WorldAccess, SpawnReason, BlockPos, Random ) -> Boolean,
+        var ignore: List<Ignore> = emptyList()
+    ) {
+        companion object {
+            /**
+             * Creates a biome variant of a cephalopod
+             */
+            fun biomeVariant(variantName: String, biomes : TagKey<Biome>, ignore : List<Ignore> = emptyList()): CephalopodVariant {
+                return CephalopodVariant(variantName, { world, _, pos, _ ->
+                    world.getBiome(pos).isIn(biomes)
+                }, ignore)
+            }
+        }
+
+        enum class Ignore {
+            TEXTURE,
+            MODEL,
+            ANIMATION
+        }
+    }
+
 }
