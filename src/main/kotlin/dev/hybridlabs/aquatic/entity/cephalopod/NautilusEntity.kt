@@ -10,7 +10,7 @@ import net.minecraft.sound.SoundEvents
 import net.minecraft.world.World
 
 class NautilusEntity(entityType: EntityType<out NautilusEntity>, world: World) :
-    HybridAquaticCephalopodEntity(entityType, world, 1, HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NAUTILUS_PREDATOR, false) {
+    HybridAquaticCephalopodEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NAUTILUS_PREDATOR, false) {
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

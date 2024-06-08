@@ -63,7 +63,7 @@ class ItemTagProvider(output: FabricDataOutput, registriesFuture: CompletableFut
         }
 
         listOf(
-            HybridAquaticItems.YELLOWFIN_TUNA,
+            HybridAquaticItems.TUNA,
             HybridAquaticItems.MAHI_MAHI,
             HybridAquaticItems.OPAH,
             HybridAquaticItems.MORAY_EEL,
@@ -91,7 +91,7 @@ class ItemTagProvider(output: FabricDataOutput, registriesFuture: CompletableFut
             HybridAquaticItems.BARRELEYE,
             HybridAquaticItems.CLOWNFISH,
             HybridAquaticItems.ROCKFISH,
-            HybridAquaticItems.YELLOWFIN_TUNA,
+            HybridAquaticItems.TUNA,
             HybridAquaticItems.BLUE_TANG,
             HybridAquaticItems.UNICORN_FISH,
             HybridAquaticItems.TRIGGERFISH,
@@ -138,7 +138,7 @@ class ItemTagProvider(output: FabricDataOutput, registriesFuture: CompletableFut
             HybridAquaticItems.BARRELEYE,
             HybridAquaticItems.CLOWNFISH,
             HybridAquaticItems.ROCKFISH,
-            HybridAquaticItems.YELLOWFIN_TUNA,
+            HybridAquaticItems.TUNA,
             HybridAquaticItems.BLUE_TANG,
             HybridAquaticItems.UNICORN_FISH,
             HybridAquaticItems.TRIGGERFISH,

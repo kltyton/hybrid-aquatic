@@ -14,7 +14,7 @@ import net.minecraft.registry.tag.DamageTypeTags
 import net.minecraft.world.World
 
 class LionfishEntity(entityType: EntityType<out LionfishEntity>, world: World) :
-    HybridAquaticFishEntity(entityType, world, 1, HybridAquaticEntityTags.LIONFISH_PREY, HybridAquaticEntityTags.LIONFISH_PREDATOR) {
+    HybridAquaticFishEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.LIONFISH_PREY, HybridAquaticEntityTags.LIONFISH_PREDATOR) {
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

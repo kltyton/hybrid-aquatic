@@ -65,7 +65,7 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
         getOrCreateTagBuilder(HybridAquaticEntityTags.MEDIUM_PREY)
             .add(
                 HybridAquaticEntityTypes.OPAH,
-                HybridAquaticEntityTypes.YELLOWFIN_TUNA,
+                HybridAquaticEntityTypes.TUNA,
                 HybridAquaticEntityTypes.MORAY_EEL,
                 HybridAquaticEntityTypes.MAHIMAHI,
                 HybridAquaticEntityTypes.TRIGGERFISH,
@@ -87,7 +87,7 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
         getOrCreateTagBuilder(HybridAquaticEntityTags.BULL_SHARK_PREY)
             .add(
                 HybridAquaticEntityTypes.MAHIMAHI,
-                HybridAquaticEntityTypes.YELLOWFIN_TUNA,
+                HybridAquaticEntityTypes.TUNA,
                 HybridAquaticEntityTypes.OARFISH,
                 HybridAquaticEntityTypes.MORAY_EEL,
                 HybridAquaticEntityTypes.OPAH,
@@ -108,7 +108,7 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
         getOrCreateTagBuilder(HybridAquaticEntityTags.GREAT_WHITE_SHARK_PREY)
             .add(
                 HybridAquaticEntityTypes.MAHIMAHI,
-                HybridAquaticEntityTypes.YELLOWFIN_TUNA,
+                HybridAquaticEntityTypes.TUNA,
                 HybridAquaticEntityTypes.OARFISH,
                 HybridAquaticEntityTypes.MORAY_EEL,
                 HybridAquaticEntityTypes.OPAH,
@@ -147,7 +147,7 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
         getOrCreateTagBuilder(HybridAquaticEntityTags.TIGER_SHARK_PREY)
             .add(
                 HybridAquaticEntityTypes.MAHIMAHI,
-                HybridAquaticEntityTypes.YELLOWFIN_TUNA,
+                HybridAquaticEntityTypes.TUNA,
                 HybridAquaticEntityTypes.OARFISH,
                 HybridAquaticEntityTypes.MORAY_EEL,
                 HybridAquaticEntityTypes.OPAH,
@@ -258,7 +258,7 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
             .add(
                 HybridAquaticEntityTypes.OARFISH,
                 HybridAquaticEntityTypes.OPAH,
-                HybridAquaticEntityTypes.YELLOWFIN_TUNA,
+                HybridAquaticEntityTypes.TUNA,
                 HybridAquaticEntityTypes.MAHIMAHI,
                 HybridAquaticEntityTypes.NEEDLEFISH,
             )
@@ -421,7 +421,7 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
                 HybridAquaticEntityTypes.CLOWNFISH,
                 HybridAquaticEntityTypes.ANGLERFISH,
                 HybridAquaticEntityTypes.BARRELEYE,
-                HybridAquaticEntityTypes.YELLOWFIN_TUNA,
+                HybridAquaticEntityTypes.TUNA,
                 HybridAquaticEntityTypes.CUTTLEFISH,
                 HybridAquaticEntityTypes.FLASHLIGHT_FISH,
                 HybridAquaticEntityTypes.LIONFISH,

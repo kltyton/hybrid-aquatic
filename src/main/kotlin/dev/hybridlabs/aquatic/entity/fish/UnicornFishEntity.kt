@@ -8,7 +8,7 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
 
 class UnicornFishEntity(entityType: EntityType<out UnicornFishEntity>, world: World) :
-    HybridAquaticFishEntity(entityType, world, 5, HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.UNICORN_FISH_PREDATOR) {
+    HybridAquaticFishEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.UNICORN_FISH_PREDATOR) {
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

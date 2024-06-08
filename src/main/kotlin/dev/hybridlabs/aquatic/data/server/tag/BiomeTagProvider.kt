@@ -580,6 +580,18 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             HybridAquaticBiomes.SARGASSUM_SEA
         )
 
+        getOrCreateTagBuilder(HybridAquaticBiomeTags.YELLOWFIN_SPAWN_BIOMES).add(
+            BiomeKeys.DEEP_LUKEWARM_OCEAN,
+        )
+
+        getOrCreateTagBuilder(HybridAquaticBiomeTags.BLUEFIN_SPAWN_BIOMES).add(
+            BiomeKeys.DEEP_OCEAN,
+        )
+
+        getOrCreateTagBuilder(HybridAquaticBiomeTags.BLACKFIN_SPAWN_BIOMES).add(
+            BiomeKeys.DEEP_COLD_OCEAN,
+        )
+
         getOrCreateTagBuilder(HybridAquaticBiomeTags.ZEBRA_DANIO_SPAWN_BIOMES).add(
             BiomeKeys.JUNGLE,
             BiomeKeys.SPARSE_JUNGLE,

@@ -18,8 +18,9 @@ open class HybridAquaticSchoolingFishEntity(
     override val prey: TagKey<EntityType<*>>,
     override val predator: TagKey<EntityType<*>>,
     private var leader: HybridAquaticSchoolingFishEntity? = null,
-    private var groupSize: Int = 1
-) : HybridAquaticFishEntity(type, world, 1, HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
+    private var groupSize: Int = 1,
+    private val variants: Map<String, FishVariant> = hashMapOf()
+) : HybridAquaticFishEntity(type, world, variants, HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
 
     override fun initGoals() {
         super.initGoals()

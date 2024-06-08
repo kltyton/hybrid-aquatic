@@ -232,11 +232,11 @@ object HybridAquaticEntityTypes {
         UnicornFishEntity.createMobAttributes()
     )
 
-    val YELLOWFIN_TUNA = registerFish(
-        "yellowfin_tuna",
-        ::YellowfinTunaEntity,
+    val TUNA = registerFish(
+        "tuna",
+        ::TunaEntity,
         EntityDimensions.fixed(1.0f, 0.7f),
-        YellowfinTunaEntity.createMobAttributes()
+        TunaEntity.createMobAttributes()
     )
 
     val ZEBRA_DANIO = registerFish(

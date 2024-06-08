@@ -637,11 +637,11 @@ class EntityTypeLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTa
         }
 
         // medium fish
-        export(exporter, HybridAquaticEntityTypes.YELLOWFIN_TUNA) {
+        export(exporter, HybridAquaticEntityTypes.TUNA) {
             pool(
                 LootPool.builder()
                     .with(
-                        ItemEntry.builder(HybridAquaticItems.YELLOWFIN_TUNA)
+                        ItemEntry.builder(HybridAquaticItems.TUNA)
                             .apply(FurnaceSmeltLootFunction.builder().conditionally(EntityPropertiesLootCondition.builder(LootContext.EntityTarget.THIS, NEEDS_ENTITY_ON_FIRE)))
                             .apply(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0F, 1.0F)))
                             .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0F, 1.0F)))
