@@ -145,6 +145,12 @@ class RecipeProvider(output: FabricDataOutput) : FabricRecipeProvider(output) {
             .criterion("has_glow_slime", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.GLOW_SLIME))
             .offerTo(exporter)
 
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, HybridAquaticItems.CREEPERMAGNET_HOOK)
+            .input(HybridAquaticItems.MAGNETIC_HOOK)
+            .input(Items.GUNPOWDER)
+            .criterion("has_magnetic_hook", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.MAGNETIC_HOOK))
+            .offerTo(exporter)
+
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.BONE_MEAL)
             .input(HybridAquaticItems.CUTTLEBONE)
             .criterion("has_cuttlebone", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.CUTTLEBONE))

@@ -181,6 +181,7 @@ object HybridAquaticItemGroups {
             entries.add(HybridAquaticItems.BARBED_HOOK)
             entries.add(HybridAquaticItems.GLOWING_HOOK)
             entries.add(HybridAquaticItems.MAGNETIC_HOOK)
+            entries.add(HybridAquaticItems.CREEPERMAGNET_HOOK)
             entries.add(HybridAquaticItems.OMINOUS_HOOK)
 
             // fishing net

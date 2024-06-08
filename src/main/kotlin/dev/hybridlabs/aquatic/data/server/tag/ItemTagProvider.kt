@@ -19,6 +19,7 @@ class ItemTagProvider(output: FabricDataOutput, registriesFuture: CompletableFut
             HybridAquaticItems.BARBED_HOOK,
             HybridAquaticItems.GLOWING_HOOK,
             HybridAquaticItems.MAGNETIC_HOOK,
+            HybridAquaticItems.CREEPERMAGNET_HOOK,
             HybridAquaticItems.OMINOUS_HOOK
         ).forEach { item ->
             getOrCreateTagBuilder(HybridAquaticItemTags.LURE_ITEMS).add(item)

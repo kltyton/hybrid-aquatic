@@ -174,6 +174,7 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
             HybridAquaticItems.BARBED_HOOK,
             HybridAquaticItems.GLOWING_HOOK,
             HybridAquaticItems.MAGNETIC_HOOK,
+            HybridAquaticItems.CREEPERMAGNET_HOOK,
             HybridAquaticItems.OMINOUS_HOOK,
             HybridAquaticItems.DIVING_HELMET,
             HybridAquaticItems.DIVING_SUIT,

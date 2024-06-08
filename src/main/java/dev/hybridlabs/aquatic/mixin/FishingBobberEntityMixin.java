@@ -226,6 +226,27 @@ public abstract class FishingBobberEntityMixin extends ProjectileEntity implemen
                     cir.setReturnValue(1);
                 }
             }
+            if (!lureItemStack.isEmpty() && lureItemStack.isOf(HybridAquaticItems.INSTANCE.getCREEPERMAGNET_HOOK())) {
+                try {
+                    var creeperType = EntityType.CREEPER;
+                    var creeper = creeperType.spawn(serverWorld, getBlockPos().add(0, -1, 0), SpawnReason.MOB_SUMMONED);
+                    if(creeper == null) return;
+
+                    double modifier = 0.15;
+                    Vec3d vecBetween = usedPlayer.getPos().subtract(this.getPos());
+                    Vec3d vecBetweenMod = vecBetween.multiply(modifier);
+                    var yOffset = Math.sqrt(Math.sqrt(Math.pow(vecBetween.x, 2) + Math.pow(vecBetween.y, 2) + Math.pow(vecBetween.z, 2))) * 0.08;
+                    creeper.setVelocity(
+                            vecBetweenMod.x,
+                            vecBetweenMod.y + yOffset,
+                            vecBetweenMod.z
+                    );
+
+                } finally {
+                    this.discard();
+                    cir.setReturnValue(1);
+                }
+            }
         }
     }
 

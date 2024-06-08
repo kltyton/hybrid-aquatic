@@ -209,6 +209,8 @@
   "item.hybrid-aquatic.cowfish": "Cowfish",
   "item.hybrid-aquatic.cowfish_spawn_egg": "Cowfish Spawn Egg",
   "item.hybrid-aquatic.crayfish_spawn_egg": "Crayfish Spawn Egg",
+  "item.hybrid-aquatic.creepermagnet_hook": "CreeperMagnet Hook",
+  "item.hybrid-aquatic.creepermagnet_hook.description": "Don't use indoors",
   "item.hybrid-aquatic.cuttlebone": "Cuttlebone",
   "item.hybrid-aquatic.cuttlefish_spawn_egg": "Cuttlefish Spawn Egg",
   "item.hybrid-aquatic.danio": "Danio",
