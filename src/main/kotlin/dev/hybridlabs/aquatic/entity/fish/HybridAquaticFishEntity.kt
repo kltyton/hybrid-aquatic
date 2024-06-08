@@ -478,17 +478,24 @@ open class HybridAquaticFishEntity(
     @Suppress("UNUSED")
     data class FishVariant(
         var variantName : String,
-        val spawnCondition: (WorldAccess, SpawnReason, BlockPos, Random ) -> Boolean
+        val spawnCondition: (WorldAccess, SpawnReason, BlockPos, Random ) -> Boolean,
+        var ignore: List<Ignore> = emptyList()
     ) {
         companion object {
             /**
              * Creates a biome variant of a fish
              */
-            fun biomeVariant(variantName: String, biomes : TagKey<Biome>): FishVariant {
-                return FishVariant(variantName) { world, _, pos, _ ->
+            fun biomeVariant(variantName: String, biomes : TagKey<Biome>, ignore : List<Ignore> = emptyList()): FishVariant {
+                return FishVariant(variantName, { world, _, pos, _ ->
                     world.getBiome(pos).isIn(biomes)
-                }
+                }, ignore)
             }
+        }
+
+        enum class Ignore {
+            TEXTURE,
+            MODEL,
+            ANIMATION
         }
     }
 
