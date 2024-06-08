@@ -79,7 +79,9 @@ open class HybridAquaticFishEntity(
     ): EntityData? {
         this.air = getMaxMoistness()
 
-
+        for (pair in variants) if (pair.value.spawnCondition(world, spawnReason, blockPos, random)) {
+            variantKey = pair.key
+        }
 
         this.size = this.random.nextBetween(getMinSize(), getMaxSize())
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt)
