@@ -9,7 +9,7 @@
 					"rotation": [0, "Math.cos(query.anim_time * 90)*5", "Math.sin(query.anim_time * 90)*2.5"]
 				},
 				"left_fin": {
-					"rotation": [0, "Math.sin(query.anim_time * 90)*-7.5", 0]
+					"rotation": [0, "Math.cos(query.anim_time * 90)*7.5", "Math.cos(query.anim_time * 90)*7.5"]
 				},
 				"tail": {
 					"rotation": [0, "Math.sin(query.anim_time * 90)*10", 0]
@@ -18,7 +18,7 @@
 					"rotation": [0, 0, "Math.cos(query.anim_time * 90)*7.5"]
 				},
 				"right_fin": {
-					"rotation": [0, "Math.sin(query.anim_time * 90)*-7.5", 0]
+					"rotation": [0, "Math.cos(query.anim_time * 90)*7.5", "Math.cos(query.anim_time * 90)*7.5"]
 				},
 				"bottom_fin": {
 					"rotation": [0, 0, "Math.cos(query.anim_time * 90)*-7.5"]

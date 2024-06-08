@@ -514,6 +514,17 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.SUNFISH_SPAWN_BIOMES).add(
             BiomeKeys.DEEP_LUKEWARM_OCEAN,
+        )
+
+        getOrCreateTagBuilder(HybridAquaticBiomeTags.SHARPTAIL_SUNFISH_SPAWN_BIOMES).add(
+            BiomeKeys.OCEAN,
+        )
+
+        getOrCreateTagBuilder(HybridAquaticBiomeTags.HOODWINKER_SUNFISH_SPAWN_BIOMES).add(
+            BiomeKeys.LUKEWARM_OCEAN,
+        )
+
+        getOrCreateTagBuilder(HybridAquaticBiomeTags.GIANT_SUNFISH_SPAWN_BIOMES).add(
             BiomeKeys.DEEP_OCEAN,
         )
 

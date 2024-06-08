@@ -15,10 +15,15 @@ object HybridAquaticBiomeTags {
     val BLACKFIN_SPAWN_BIOMES = create("blackfin_spawn_biomes")
 
     val MAHIMAHI_SPAWN_BIOMES = create("mahimahi_spawn_biomes")
+
+    val SUNFISH_SPAWN_BIOMES = create("sunfish_spawn_biomes")
+    val SHARPTAIL_SUNFISH_SPAWN_BIOMES = create("sharptail_sunfish_spawn_biomes")
+    val HOODWINKER_SUNFISH_SPAWN_BIOMES = create("hoodwinker_sunfish_spawn_biomes")
+    val GIANT_SUNFISH_SPAWN_BIOMES = create("giant_sunfish_spawn_biomes")
+
     val BLUE_TANG_SPAWN_BIOMES = create("blue_tang_spawn_biomes")
     val COWFISH_SPAWN_BIOMES = create("cowfish_spawn_biomes")
     val SEAHORSE_SPAWN_BIOMES = create("seahorse_spawn_biomes")
-    val SUNFISH_SPAWN_BIOMES = create("sunfish_spawn_biomes")
     val BLUE_SPOTTED_STINGRAY_SPAWN_BIOMES = create("blue_spotted_stingray_spawn_biomes")
     val LIONFISH_SPAWN_BIOMES = create("lionfish_spawn_biomes")
     val MOON_JELLYFISH_SPAWN_BIOMES = create("moon_jellyfish_spawn_biomes")
