@@ -5,10 +5,12 @@ import dev.hybridlabs.aquatic.entity.critter.HybridAquaticCritterEntity
 import dev.hybridlabs.aquatic.entity.crustacean.HybridAquaticCrustaceanEntity
 import dev.hybridlabs.aquatic.entity.fish.HybridAquaticFishEntity
 import dev.hybridlabs.aquatic.entity.jellyfish.HybridAquaticJellyfishEntity
+import dev.hybridlabs.aquatic.entity.miniboss.HybridAquaticMinibossEntity
 import dev.hybridlabs.aquatic.entity.shark.HybridAquaticSharkEntity
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.SpawnRestriction
 import net.minecraft.entity.SpawnRestriction.SpawnPredicate
+import net.minecraft.entity.mob.HostileEntity
 import net.minecraft.entity.mob.MobEntity
 import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.Heightmap
@@ -131,6 +133,10 @@ object SpawnRestrictionRegistry {
             HybridAquaticEntityTypes.SPIDER_CRAB,
             HybridAquaticEntityTypes.GIANT_ISOPOD
         ).forEach { registerCrustaceanUnderground(it) }
+
+        setOf(
+            HybridAquaticEntityTypes.KARKINOS,
+        ).forEach { registerMiniboss(it) }
     }
 
     private fun <T : WaterCreatureEntity> registerFish(entityType: EntityType<T>) {
@@ -173,6 +179,10 @@ object SpawnRestrictionRegistry {
         registerWaterCreature(entityType, HybridAquaticCritterEntity::canSpawn)
     }
 
+    private fun <T : HostileEntity> registerMiniboss(entityType: EntityType<T>) {
+        registerHostileCreature(entityType, HybridAquaticMinibossEntity::canSpawn)
+    }
+
     private fun <T : WaterCreatureEntity> registerWaterCreature(entityType: EntityType<T>, predicate: SpawnPredicate<T>) {
         register(
             entityType,
@@ -182,6 +192,14 @@ object SpawnRestrictionRegistry {
     }
 
     private fun <T : WaterCreatureEntity> registerLandWaterCreature(entityType: EntityType<T>, predicate: SpawnPredicate<T>) {
+        register(
+            entityType,
+            SpawnRestriction.Location.NO_RESTRICTIONS,
+            predicate
+        )
+    }
+
+    private fun <T : HostileEntity> registerHostileCreature(entityType: EntityType<T>, predicate: SpawnPredicate<T>) {
         register(
             entityType,
             SpawnRestriction.Location.NO_RESTRICTIONS,

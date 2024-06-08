@@ -1,10 +1,14 @@
 package dev.hybridlabs.aquatic.client.render.entity
 
 import dev.hybridlabs.aquatic.client.render.entity.cephalopods.*
-import dev.hybridlabs.aquatic.client.render.entity.critter.*
+import dev.hybridlabs.aquatic.client.render.entity.critter.NudibranchEntityRenderer
+import dev.hybridlabs.aquatic.client.render.entity.critter.SeaCucumberEntityRenderer
+import dev.hybridlabs.aquatic.client.render.entity.critter.SeaUrchinEntityRenderer
+import dev.hybridlabs.aquatic.client.render.entity.critter.StarfishEntityRenderer
 import dev.hybridlabs.aquatic.client.render.entity.crustacean.*
 import dev.hybridlabs.aquatic.client.render.entity.fish.*
 import dev.hybridlabs.aquatic.client.render.entity.jellyfish.*
+import dev.hybridlabs.aquatic.client.render.entity.miniboss.KarkinosEntityRenderer
 import dev.hybridlabs.aquatic.client.render.entity.shark.*
 import dev.hybridlabs.aquatic.entity.HybridAquaticEntityTypes
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry

@@ -316,6 +316,10 @@ open class HybridAquaticFishEntity(
         return 0.0
     }
 
+    override fun getMaxHeadRotation(): Int {
+        return 45
+    }
+
     internal class FishMoveControl(private val fish: HybridAquaticFishEntity) : MoveControl(fish) {
         override fun tick() {
             if (fish.isSubmergedIn(FluidTags.WATER)) {

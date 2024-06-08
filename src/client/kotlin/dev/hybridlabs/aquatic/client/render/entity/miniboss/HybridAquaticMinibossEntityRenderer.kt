@@ -8,7 +8,7 @@ import software.bernie.geckolib.model.GeoModel
 import software.bernie.geckolib.renderer.GeoEntityRenderer
 import software.bernie.geckolib.renderer.layer.AutoGlowingGeoLayer
 
-class HybridAquaticMinibossEntityRenderer<T: HybridAquaticMinibossEntity>(
+open class HybridAquaticMinibossEntityRenderer<T: HybridAquaticMinibossEntity>(
     context: EntityRendererFactory.Context,
     model: GeoModel<T>,
     canGlow: Boolean = false

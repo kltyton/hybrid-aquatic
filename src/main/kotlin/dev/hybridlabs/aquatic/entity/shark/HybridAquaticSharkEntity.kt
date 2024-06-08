@@ -122,6 +122,10 @@ open class HybridAquaticSharkEntity(
         }
     }
 
+    override fun getMaxHeadRotation(): Int {
+        return 45
+    }
+
     override fun initGoals() {
         super.initGoals()
         goalSelector.add(4, SwimAroundGoal(this, 1.0, 2))
