@@ -256,16 +256,16 @@ open class HybridAquaticFishEntity(
             dataTracker.set(VARIANT_DATA, value)
         }
 
+    private var variantKey: String
+        get() = dataTracker.get(VARIANT)
+        private set(value) {
+            dataTracker.set(VARIANT, value)
+        }
+
     var variant: FishVariant?
         get() = variants[""]
         private set(value) {
             variants
-        }
-
-    var variantKey: String
-        get() = dataTracker.get(VARIANT)
-        private set(value) {
-            dataTracker.set(VARIANT, value)
         }
 
     // endregion
@@ -475,7 +475,7 @@ open class HybridAquaticFishEntity(
 
     @Suppress("UNUSED")
     data class FishVariant(
-        val variantName : String,
+        var variantName : String,
         val spawnCondition: (WorldAccess, SpawnReason, BlockPos, Random ) -> Boolean
     ) {
         companion object {
