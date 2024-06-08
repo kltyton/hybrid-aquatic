@@ -10,7 +10,7 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 
 class SeahorseEntity(entityType: EntityType<out SeahorseEntity>, world: World) :
-    HybridAquaticFishEntity(entityType, world, 6, HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
+    HybridAquaticFishEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
 
     private var targetCoralPos: BlockPos? = null
 

@@ -10,7 +10,7 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 
 class ClownfishEntity(entityType: EntityType<out ClownfishEntity>, world: World) :
-    HybridAquaticFishEntity(entityType, world, 1, HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.CLOWNFISH_PREDATOR) {
+    HybridAquaticFishEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.CLOWNFISH_PREDATOR) {
 
     private var targetAnemonePos: BlockPos? = null
 

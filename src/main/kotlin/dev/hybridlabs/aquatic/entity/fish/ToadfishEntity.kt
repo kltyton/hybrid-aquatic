@@ -14,7 +14,7 @@ import net.minecraft.registry.tag.DamageTypeTags
 import net.minecraft.world.World
 
 class ToadfishEntity(entityType: EntityType<out ToadfishEntity>, world: World) :
-    HybridAquaticFishEntity(entityType, world,1, HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
+    HybridAquaticFishEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

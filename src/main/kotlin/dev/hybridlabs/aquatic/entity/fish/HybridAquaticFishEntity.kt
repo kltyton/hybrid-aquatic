@@ -20,7 +20,6 @@ import net.minecraft.registry.tag.FluidTags
 import net.minecraft.registry.tag.TagKey
 import net.minecraft.sound.SoundEvent
 import net.minecraft.sound.SoundEvents
-import net.minecraft.util.Identifier
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.Vec3d
@@ -37,29 +36,18 @@ import software.bernie.geckolib.core.animation.*
 import software.bernie.geckolib.core.animation.AnimationState
 import software.bernie.geckolib.core.`object`.PlayState
 import software.bernie.geckolib.util.GeckoLibUtil
-import java.util.concurrent.locks.Condition
 import kotlin.math.sqrt
 
 @Suppress("LeakingThis")
 open class HybridAquaticFishEntity(
     type: EntityType<out HybridAquaticFishEntity>,
     world: World,
-    private val variants: List<FishVariant> = emptyList(),
+    private val variants: Map<String, FishVariant> = hashMapOf(),
     open val prey: TagKey<EntityType<*>>,
     open val predator: TagKey<EntityType<*>>,
 ) : WaterCreatureEntity(type, world), GeoEntity {
 
     private val factory = GeckoLibUtil.createInstanceCache(this)
-    private var hunger: Int
-        get() = dataTracker.get(HUNGER)
-        set(hunger) {
-            dataTracker.set(HUNGER, hunger)
-        }
-    private var attemptAttack: Boolean
-        get() = dataTracker.get(ATTEMPT_ATTACK)
-        set(attemptAttack) {
-            dataTracker.set(ATTEMPT_ATTACK, attemptAttack)
-        }
 
     override fun initGoals() {
         super.initGoals()
@@ -75,10 +63,11 @@ open class HybridAquaticFishEntity(
     override fun initDataTracker() {
         super.initDataTracker()
         dataTracker.startTracking(MOISTNESS, getMaxMoistness())
-        dataTracker.startTracking(VARIANT, 0)
         dataTracker.startTracking(FISH_SIZE, 0)
         dataTracker.startTracking(ATTEMPT_ATTACK, false)
         dataTracker.startTracking(HUNGER, MAX_HUNGER)
+        dataTracker.startTracking(VARIANT, "")
+        dataTracker.startTracking(VARIANT_DATA, NbtCompound())
     }
 
     override fun initialize(
@@ -89,7 +78,9 @@ open class HybridAquaticFishEntity(
         entityNbt: NbtCompound?
     ): EntityData? {
         this.air = getMaxMoistness()
-        this.variant = this.random.nextInt(variants.size)
+
+
+
         this.size = this.random.nextBetween(getMinSize(), getMaxSize())
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt)
     }
@@ -159,7 +150,8 @@ open class HybridAquaticFishEntity(
     override fun writeCustomDataToNbt(nbt: NbtCompound) {
         super.writeCustomDataToNbt(nbt)
         nbt.putInt(MOISTNESS_KEY, moistness)
-        nbt.putInt(VARIANT_KEY, variant)
+        nbt.putString(VARIANT_KEY, variantKey)
+        nbt.put(VARIANT_DATA_KEY, variantData)
         nbt.putInt(FISH_SIZE_KEY, size)
         nbt.putInt(HUNGER_KEY, hunger)
         nbt.putBoolean("FromFishingNet", fromFishingNet)
@@ -174,7 +166,8 @@ open class HybridAquaticFishEntity(
     override fun readCustomDataFromNbt(nbt: NbtCompound) {
         super.readCustomDataFromNbt(nbt)
         moistness = nbt.getInt(MOISTNESS_KEY)
-        variant = nbt.getInt(VARIANT_KEY).coerceAtLeast(0).coerceAtMost(variants.size)
+        variantKey = nbt.getString(VARIANT_KEY)
+        variantData = nbt.getCompound(VARIANT_DATA_KEY)
         size = nbt.getInt(FISH_SIZE_KEY)
         hunger = nbt.getInt(HUNGER_KEY)
         fromFishingNet = nbt.getBoolean("FromFishingNet")
@@ -231,16 +224,12 @@ open class HybridAquaticFishEntity(
         return SwimNavigation(this, world)
     }
 
+    // region Properties
+
     private var moistness: Int
         get() = dataTracker.get(MOISTNESS)
         set(moistness) {
             dataTracker.set(MOISTNESS, moistness)
-        }
-
-    var variant: Int
-        get() = dataTracker.get(VARIANT).coerceAtLeast(0).coerceAtMost(variants.size)
-        set(int) {
-            dataTracker.set(VARIANT, int)
         }
 
     var size: Int
@@ -248,6 +237,38 @@ open class HybridAquaticFishEntity(
         set(size) {
             dataTracker.set(FISH_SIZE, size)
         }
+
+    private var hunger: Int
+        get() = dataTracker.get(HUNGER)
+        set(hunger) {
+            dataTracker.set(HUNGER, hunger)
+        }
+
+    private var attemptAttack: Boolean
+        get() = dataTracker.get(ATTEMPT_ATTACK)
+        set(attemptAttack) {
+            dataTracker.set(ATTEMPT_ATTACK, attemptAttack)
+        }
+
+    private var variantData: NbtCompound
+        get() = dataTracker.get(VARIANT_DATA)
+        set(value) {
+            dataTracker.set(VARIANT_DATA, value)
+        }
+
+    var variant: FishVariant?
+        get() = variants[""]
+        private set(value) {
+            variants
+        }
+
+    var variantKey: String
+        get() = dataTracker.get(VARIANT)
+        private set(value) {
+            dataTracker.set(VARIANT, value)
+        }
+
+    // endregion
 
     public override fun getNextAirOnLand(air: Int): Int {
         return this.maxAir
@@ -266,7 +287,6 @@ open class HybridAquaticFishEntity(
     }
 
     override fun registerControllers(controllerRegistrar: AnimatableManager.ControllerRegistrar) {
-
         controllerRegistrar.add(
             AnimationController(
                 this,
@@ -400,17 +420,25 @@ open class HybridAquaticFishEntity(
 
     companion object {
         val MOISTNESS: TrackedData<Int> = DataTracker.registerData(HybridAquaticFishEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
-        val VARIANT: TrackedData<Int> = DataTracker.registerData(HybridAquaticFishEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
         val FISH_SIZE: TrackedData<Int> = DataTracker.registerData(HybridAquaticFishEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
         val HUNGER: TrackedData<Int> = DataTracker.registerData(HybridAquaticFishEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
+        val ATTEMPT_ATTACK: TrackedData<Boolean> = DataTracker.registerData(HybridAquaticFishEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
+        val VARIANT: TrackedData<String> = DataTracker.registerData(HybridAquaticFishEntity::class.java, TrackedDataHandlerRegistry.STRING)
+        var VARIANT_DATA: TrackedData<NbtCompound> = DataTracker.registerData(HybridAquaticFishEntity::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND);
 
         const val MAX_HUNGER = 1200
         const val HUNGER_KEY = "Hunger"
+        const val MOISTNESS_KEY = "Moistness"
+        const val VARIANT_KEY = "Variant"
+        const val VARIANT_DATA_KEY = "VariantData"
+        const val FISH_SIZE_KEY = "FishSize"
+
 
         val ATTACK_ANIMATION: RawAnimation  = RawAnimation.begin().then("attack", Animation.LoopType.LOOP)
         val SWIM_ANIMATION: RawAnimation  = RawAnimation.begin().then("swim", Animation.LoopType.LOOP)
         val FLOP_ANIMATION: RawAnimation  = RawAnimation.begin().then("flop", Animation.LoopType.LOOP)
 
+        @Suppress("UNUSED_PARAMETER", "DEPRECATION")
         fun canSpawn(
             type: EntityType<out WaterCreatureEntity>,
             world: WorldAccess,
@@ -426,6 +454,7 @@ open class HybridAquaticFishEntity(
                     world.getBlockState(pos.up()).isOf(Blocks.WATER)
         }
 
+        @Suppress("UNUSED_PARAMETER", "DEPRECATION")
         fun canUndergroundSpawn(
             type: EntityType<out WaterCreatureEntity?>?,
             world: WorldAccess,
@@ -442,24 +471,23 @@ open class HybridAquaticFishEntity(
             return 1.0f + (fish.size * adjustment)
         }
 
-        const val MOISTNESS_KEY = "Moistness"
-        const val VARIANT_KEY = "Variant"
-        const val FISH_SIZE_KEY = "FishSize"
-        val ATTEMPT_ATTACK: TrackedData<Boolean> = DataTracker.registerData(HybridAquaticFishEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
     }
 
+    @Suppress("UNUSED")
     data class FishVariant(
-        val animationID : Identifier,
-        val modelID : Identifier,
-        val textureID : Identifier,
-        val spawnCondition: (WorldAccess, SpawnReason, BlockPos, SpawnReason, ) -> Boolean
+        val variantName : String,
+        val spawnCondition: (WorldAccess, SpawnReason, BlockPos, Random ) -> Boolean
     ) {
         companion object {
-            fun biomeVariant(animationID: Identifier, modelID: Identifier, textureID: Identifier, biomes : TagKey<Biome>): FishVariant {
-                return FishVariant(animationID, modelID, textureID) { world, _, pos, _ ->
+            /**
+             * Creates a biome variant of a fish
+             */
+            fun biomeVariant(variantName: String, biomes : TagKey<Biome>): FishVariant {
+                return FishVariant(variantName) { world, _, pos, _ ->
                     world.getBiome(pos).isIn(biomes)
                 }
             }
         }
     }
+
 }
