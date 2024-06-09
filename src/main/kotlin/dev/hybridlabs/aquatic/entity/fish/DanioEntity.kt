@@ -10,7 +10,7 @@ import net.minecraft.entity.attribute.EntityAttributes
 import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
 
-class ZebraDanioEntity(entityType: EntityType<out ZebraDanioEntity>, world: World) :
+class DanioEntity(entityType: EntityType<out DanioEntity>, world: World) :
     HybridAquaticSchoolingFishEntity(entityType, world, HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
 
     override fun initGoals() {

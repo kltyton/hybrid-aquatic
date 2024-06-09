@@ -225,13 +225,6 @@ object HybridAquaticEntityTypes {
         TriggerfishEntity.createMobAttributes()
     )
 
-    val UNICORN_FISH = registerFish(
-        "unicorn_fish",
-        ::UnicornFishEntity,
-        EntityDimensions.fixed(0.35f, 0.4f),
-        UnicornFishEntity.createMobAttributes()
-    )
-
     val TUNA = registerFish(
         "tuna",
         ::TunaEntity,
@@ -239,11 +232,11 @@ object HybridAquaticEntityTypes {
         TunaEntity.createMobAttributes()
     )
 
-    val ZEBRA_DANIO = registerFish(
-        "zebra_danio",
-        ::ZebraDanioEntity,
+    val DANIO = registerFish(
+        "danio",
+        ::DanioEntity,
         EntityDimensions.fixed(0.3f, 0.25f),
-        ZebraDanioEntity.createMobAttributes()
+        DanioEntity.createMobAttributes()
     )
 
     //cephalopods

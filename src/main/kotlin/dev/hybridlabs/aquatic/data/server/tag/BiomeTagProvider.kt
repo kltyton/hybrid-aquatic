@@ -603,7 +603,7 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             BiomeKeys.DEEP_COLD_OCEAN,
         )
 
-        getOrCreateTagBuilder(HybridAquaticBiomeTags.ZEBRA_DANIO_SPAWN_BIOMES).add(
+        getOrCreateTagBuilder(HybridAquaticBiomeTags.DANIO_SPAWN_BIOMES).add(
             BiomeKeys.JUNGLE,
             BiomeKeys.SPARSE_JUNGLE,
             BiomeKeys.MANGROVE_SWAMP,

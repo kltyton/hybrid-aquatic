@@ -41,9 +41,8 @@ object EntityBiomeModifications {
         addFish(HybridAquaticEntityTypes.TIGER_BARB, HybridAquaticBiomeTags.TIGER_BARB_SPAWN_BIOMES, 10, 2, 3)
         addFish(HybridAquaticEntityTypes.TOADFISH, HybridAquaticBiomeTags.TOADFISH_SPAWN_BIOMES, 3, 1, 1)
         addFish(HybridAquaticEntityTypes.TRIGGERFISH, HybridAquaticBiomeTags.TRIGGERFISH_SPAWN_BIOMES, 5, 1, 2)
-        addFish(HybridAquaticEntityTypes.UNICORN_FISH, HybridAquaticBiomeTags.UNICORN_FISH_SPAWN_BIOMES, 10, 1, 2)
         addFish(HybridAquaticEntityTypes.TUNA, HybridAquaticBiomeTags.TUNA_SPAWN_BIOMES, 10, 1, 3)
-        addFish(HybridAquaticEntityTypes.ZEBRA_DANIO, HybridAquaticBiomeTags.ZEBRA_DANIO_SPAWN_BIOMES, 15, 2, 3)
+        addFish(HybridAquaticEntityTypes.DANIO, HybridAquaticBiomeTags.DANIO_SPAWN_BIOMES, 15, 2, 3)
 
 
         // underground fishes

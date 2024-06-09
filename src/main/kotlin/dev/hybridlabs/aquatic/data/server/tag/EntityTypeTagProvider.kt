@@ -23,8 +23,7 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
                 HybridAquaticEntityTypes.TETRA,
                 HybridAquaticEntityTypes.PIRANHA,
                 HybridAquaticEntityTypes.ROCKFISH,
-                HybridAquaticEntityTypes.UNICORN_FISH,
-                HybridAquaticEntityTypes.ZEBRA_DANIO,
+                HybridAquaticEntityTypes.DANIO,
                 HybridAquaticEntityTypes.SEAHORSE,
                 HybridAquaticEntityTypes.TIGER_BARB,
                 HybridAquaticEntityTypes.RATFISH,
@@ -172,13 +171,6 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
                 HybridAquaticEntityTypes.LIONFISH,
             )
 
-        getOrCreateTagBuilder(HybridAquaticEntityTags.UNICORN_FISH_PREDATOR)
-            .addTag(HybridAquaticEntityTags.JELLYFISH)
-            .addTag(HybridAquaticEntityTags.SHARKS)
-            .add(
-                HybridAquaticEntityTypes.MORAY_EEL,
-            )
-
         getOrCreateTagBuilder(HybridAquaticEntityTags.ROCKFISH_PREDATOR)
             .addTag(HybridAquaticEntityTags.JELLYFISH)
             .addTag(HybridAquaticEntityTags.SHARKS)
@@ -208,7 +200,6 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
                 HybridAquaticEntityTypes.CLOWNFISH,
                 HybridAquaticEntityTypes.BLUE_TANG,
                 HybridAquaticEntityTypes.FLASHLIGHT_FISH,
-                HybridAquaticEntityTypes.UNICORN_FISH,
             )
 
         getOrCreateTagBuilder(HybridAquaticEntityTags.LIONFISH_PREDATOR)
@@ -297,7 +288,6 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
                 HybridAquaticEntityTypes.CUTTLEFISH,
                 HybridAquaticEntityTypes.CLOWNFISH,
                 HybridAquaticEntityTypes.BLUE_TANG,
-                HybridAquaticEntityTypes.UNICORN_FISH,
                 HybridAquaticEntityTypes.TRIGGERFISH,
                 HybridAquaticEntityTypes.GLOWING_SUCKER_OCTOPUS
             )
@@ -395,7 +385,7 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
                 EntityType.COD,
                 EntityType.TROPICAL_FISH,
                 HybridAquaticEntityTypes.TETRA,
-                HybridAquaticEntityTypes.ZEBRA_DANIO,
+                HybridAquaticEntityTypes.DANIO,
                 HybridAquaticEntityTypes.TIGER_BARB,
             )
 
@@ -440,8 +430,7 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
                 HybridAquaticEntityTypes.NAUTILUS,
                 HybridAquaticEntityTypes.TRIGGERFISH,
                 HybridAquaticEntityTypes.OSCAR,
-                HybridAquaticEntityTypes.UNICORN_FISH,
-                HybridAquaticEntityTypes.ZEBRA_DANIO,
+                HybridAquaticEntityTypes.DANIO,
                 HybridAquaticEntityTypes.TOADFISH,
                 HybridAquaticEntityTypes.TETRA,
                 HybridAquaticEntityTypes.STONEFISH,

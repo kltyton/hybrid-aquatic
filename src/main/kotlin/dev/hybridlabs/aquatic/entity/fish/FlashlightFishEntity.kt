@@ -11,7 +11,7 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
 
 class FlashlightFishEntity(entityType: EntityType<out FlashlightFishEntity>, world: World) :
-    HybridAquaticSchoolingFishEntity(entityType, world, HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
+    HybridAquaticSchoolingFishEntity(entityType, world, HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.FLASHLIGHT_FISH_PREDATOR) {
 
     override fun initGoals() {
         super.initGoals()

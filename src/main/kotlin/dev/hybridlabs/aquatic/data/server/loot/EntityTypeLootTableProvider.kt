@@ -566,7 +566,7 @@ class EntityTypeLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTa
             )
         }
 
-        export(exporter, HybridAquaticEntityTypes.ZEBRA_DANIO) {
+        export(exporter, HybridAquaticEntityTypes.DANIO) {
             pool(
                 LootPool.builder()
                     .with(
@@ -610,17 +610,6 @@ class EntityTypeLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTa
                             .apply(FurnaceSmeltLootFunction.builder().conditionally(EntityPropertiesLootCondition.builder(LootContext.EntityTarget.THIS, NEEDS_ENTITY_ON_FIRE)))
                             .apply(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0F, 1.0F)))
                             .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0F, 1.0F)))
-                    )
-            )
-        }
-
-        export(exporter, HybridAquaticEntityTypes.UNICORN_FISH) {
-            pool(
-                LootPool.builder()
-                    .with(
-                        ItemEntry.builder(HybridAquaticItems.UNICORN_FISH)
-                            .apply(FurnaceSmeltLootFunction.builder().conditionally(EntityPropertiesLootCondition.builder(LootContext.EntityTarget.THIS, NEEDS_ENTITY_ON_FIRE)))
-                            .apply(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(1.0F, 1.0F)))
                     )
             )
         }
