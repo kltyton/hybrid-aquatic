@@ -28,7 +28,8 @@ class StarfishEntity(entityType: EntityType<out StarfishEntity>, world: World) :
         "medium_knobbed_orange" to CritterVariant.biomeVariant("medium_knobbed_orange", HybridAquaticBiomeTags.STARFISH_SPAWN_BIOMES),
         "medium_knobbed_purple" to CritterVariant.biomeVariant("medium_knobbed_purple", HybridAquaticBiomeTags.STARFISH_SPAWN_BIOMES),
         "medium_knobbed_red" to CritterVariant.biomeVariant("medium_knobbed_red", HybridAquaticBiomeTags.STARFISH_SPAWN_BIOMES),
-        "medium_knobbed_yellow" to CritterVariant.biomeVariant("medium_knobbed_yellow", HybridAquaticBiomeTags.STARFISH_SPAWN_BIOMES),)) {
+        "medium_knobbed_yellow" to CritterVariant.biomeVariant("medium_knobbed_yellow", HybridAquaticBiomeTags.STARFISH_SPAWN_BIOMES),
+        "crown_of_thorns" to CritterVariant.biomeVariant("crown_of_thorns", HybridAquaticBiomeTags.COT_SPAWN_BIOMES),)) {
 
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {

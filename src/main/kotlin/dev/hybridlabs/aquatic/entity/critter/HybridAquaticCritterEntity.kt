@@ -97,16 +97,16 @@ open class HybridAquaticCritterEntity(
                 } else {
                     // Default to a priority based system
                     val validityFilter = variants.filter { validKeys.contains(it.key) }
-                    if (validityFilter.isNotEmpty()) {
+                    variantKey = if (validityFilter.isNotEmpty()) {
                         val maxPriority = validityFilter.values.maxOf { it.priority }
                         val filteredMap = validityFilter.filter { it.value.priority == maxPriority }
                         if (filteredMap.isNotEmpty()) {
-                            variantKey = filteredMap.keys.random()
+                            filteredMap.keys.random()
                         } else {
-                            variantKey = validKeys.random()
+                            validKeys.random()
                         }
                     } else {
-                        variantKey = validKeys.random()
+                        validKeys.random()
                     }
                 }
             }
@@ -114,10 +114,6 @@ open class HybridAquaticCritterEntity(
 
         this.size = this.random.nextBetween(getMinSize(), getMaxSize())
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt)
-    }
-
-    override fun hasNoDrag(): Boolean {
-        return false
     }
 
     override fun shouldSwimInFluids(): Boolean {

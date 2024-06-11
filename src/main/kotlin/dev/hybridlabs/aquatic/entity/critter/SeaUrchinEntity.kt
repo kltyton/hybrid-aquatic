@@ -1,6 +1,7 @@
 package dev.hybridlabs.aquatic.entity.critter
 
 import dev.hybridlabs.aquatic.entity.HybridAquaticEntityTypes
+import dev.hybridlabs.aquatic.tag.HybridAquaticBiomeTags
 import net.minecraft.block.Blocks
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.LivingEntity
@@ -17,7 +18,11 @@ import software.bernie.geckolib.core.animation.AnimationState
 import software.bernie.geckolib.core.`object`.PlayState
 
 class SeaUrchinEntity(entityType: EntityType<out SeaUrchinEntity>, world: World) :
-    HybridAquaticCritterEntity(entityType, world, emptyMap()) {
+    HybridAquaticCritterEntity(entityType, world, variants = hashMapOf(
+        "long_black" to CritterVariant.biomeVariant("long_black", HybridAquaticBiomeTags.SEA_URCHIN_SPAWN_BIOMES),
+        "long_blue" to CritterVariant.biomeVariant("long_blue", HybridAquaticBiomeTags.SEA_URCHIN_SPAWN_BIOMES),
+        "long_purple" to CritterVariant.biomeVariant("long_purple", HybridAquaticBiomeTags.SEA_URCHIN_SPAWN_BIOMES),
+        "long_red" to CritterVariant.biomeVariant("long_red", HybridAquaticBiomeTags.SEA_URCHIN_SPAWN_BIOMES))) {
 
     private var timeUntilNextBreak = 0
     private var spawnUrchinOnNextBreak = false

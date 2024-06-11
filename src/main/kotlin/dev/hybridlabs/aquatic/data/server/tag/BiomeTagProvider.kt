@@ -506,6 +506,10 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             HybridAquaticBiomes.RED_MEADOW
         )
 
+        getOrCreateTagBuilder(HybridAquaticBiomeTags.COT_SPAWN_BIOMES).add(
+            BiomeKeys.WARM_OCEAN,
+        )
+
         getOrCreateTagBuilder(HybridAquaticBiomeTags.STONEFISH_SPAWN_BIOMES).add(
             BiomeKeys.WARM_OCEAN,
             BiomeKeys.LUKEWARM_OCEAN,
