@@ -297,8 +297,11 @@ open class HybridAquaticFishEntity(
         }
 
     private var variantKey: String
-        get() = if (dataTracker.get(VARIANT).isBlank() && assumeDefault) {
-            variants.keys.first()
+        get() = if (dataTracker.get(VARIANT).isBlank()) {
+            if (!assumeDefault && variants.isNotEmpty()) {
+                variants.isNotEmpty()
+            }
+            dataTracker.get(VARIANT)
         } else dataTracker.get(VARIANT)
         private set(value) {
             dataTracker.set(VARIANT, value)
