@@ -48,7 +48,7 @@ open class HybridAquaticFishEntity(
     private val variants: Map<String, FishVariant> = mutableMapOf(),
     open val prey: TagKey<EntityType<*>>,
     open val predator: TagKey<EntityType<*>>,
-    open val assumeDefault: Boolean = true,
+    open val assumeDefault: Boolean = false,
     open val collisionRules: List<VariantCollisionRules> = listOf()
 ) : WaterCreatureEntity(type, world), GeoEntity {
 
