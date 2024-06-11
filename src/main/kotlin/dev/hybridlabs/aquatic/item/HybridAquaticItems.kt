@@ -345,6 +345,18 @@ object HybridAquaticItems {
                 )
         )
     )
+    val DRAGONFISH = register("dragonfish",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(1)
+                        .saturationModifier(0.4F)
+                        .meat()
+                        .build()
+                )
+        )
+    )
     val BLUE_TANG = register("blue_tang",
         Item(
             FabricItemSettings()

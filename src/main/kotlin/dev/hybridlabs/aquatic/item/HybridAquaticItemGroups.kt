@@ -132,6 +132,7 @@ object HybridAquaticItemGroups {
 
             entries.add(HybridAquaticItems.ANGLERFISH)
             entries.add(HybridAquaticItems.BARRELEYE)
+            entries.add(HybridAquaticItems.DRAGONFISH)
             entries.add(HybridAquaticItems.BETTA)
             entries.add(HybridAquaticItems.BLUE_TANG)
             entries.add(HybridAquaticItems.BLUE_SPOTTED_STINGRAY)
