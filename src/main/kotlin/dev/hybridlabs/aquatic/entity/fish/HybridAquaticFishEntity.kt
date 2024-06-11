@@ -1,6 +1,7 @@
 package dev.hybridlabs.aquatic.entity.fish
 
-import dev.hybridlabs.aquatic.entity.fish.HybridAquaticFishEntity.VariantCollisionRules.ExclusionStatus.*
+import dev.hybridlabs.aquatic.entity.fish.HybridAquaticFishEntity.VariantCollisionRules.ExclusionStatus.EXCLUSIVE
+import dev.hybridlabs.aquatic.entity.fish.HybridAquaticFishEntity.VariantCollisionRules.ExclusionStatus.INCLUSIVE
 import dev.hybridlabs.aquatic.tag.HybridAquaticEntityTags
 import net.minecraft.block.Blocks
 import net.minecraft.entity.*
@@ -536,7 +537,7 @@ open class HybridAquaticFishEntity(
     }
 
     @Suppress("UNUSED")
-    data class VariantCollisionRules(val variants : Set<String>, val collisionHandler: (Set<String>, Random) -> String, val exclusionStatus: ExclusionStatus = ExclusionStatus.INCLUSIVE) {
+    data class VariantCollisionRules(val variants : Set<String>, val collisionHandler: (Set<String>, Random) -> String, val exclusionStatus: ExclusionStatus = INCLUSIVE) {
 
         /**
          * INCLUSIVE - all other variants can exist within this selection swath
@@ -557,7 +558,7 @@ open class HybridAquaticFishEntity(
          * ```
          * @return a random variant within the set
          */
-        fun equalDistribution(variants: Set<String>, status : ExclusionStatus = ExclusionStatus.INCLUSIVE) : VariantCollisionRules {
+        fun equalDistribution(variants: Set<String>, status : ExclusionStatus = INCLUSIVE) : VariantCollisionRules {
             return VariantCollisionRules(variants, { possibleVariants, _ ->
                 possibleVariants.random()
             }, status)
@@ -573,7 +574,7 @@ open class HybridAquaticFishEntity(
          * ```
          * @return a premade variant collision rule which allows weighted distribution of variants.
          */
-        fun weightedDistribution(weights: Set<Pair<String, Double>>, status: ExclusionStatus = ExclusionStatus.EXCLUSIVE) : VariantCollisionRules {
+        fun weightedDistribution(weights: Set<Pair<String, Double>>, status: ExclusionStatus = EXCLUSIVE) : VariantCollisionRules {
             return VariantCollisionRules(weights.map { pair -> pair.first }.toSet(), { _, random ->
                 // sum up weights
                 val weightTotal = weights.sumOf { pair -> pair.second }
