@@ -1,5 +1,6 @@
 package dev.hybridlabs.aquatic.entity.fish
 
+import dev.hybridlabs.aquatic.entity.fish.HybridAquaticFishEntity.VariantCollisionRules.ExclusionStatus.*
 import dev.hybridlabs.aquatic.tag.HybridAquaticEntityTags
 import net.minecraft.block.Blocks
 import net.minecraft.entity.*
@@ -38,7 +39,6 @@ import software.bernie.geckolib.core.animation.AnimationState
 import software.bernie.geckolib.core.`object`.PlayState
 import software.bernie.geckolib.util.GeckoLibUtil
 import kotlin.math.sqrt
-
 
 @Suppress("LeakingThis")
 open class HybridAquaticFishEntity(
@@ -90,8 +90,12 @@ open class HybridAquaticFishEntity(
             val validKeys = variants.filter { it.value.spawnCondition(world, spawnReason, blockPos, random) }.map { it.key }
 
             if(collisionRules.isNotEmpty()) {
-                for (rule in collisionRules) if (validKeys.toSet() == rule.variants.toSet()) {
-                    variantKey = rule.collisionHandler(validKeys.toSet(), random)
+                for (rule in collisionRules) {
+                    val variantSet = rule.variants.toSet()
+                    if ((rule.exclusionStatus == EXCLUSIVE && validKeys.toSet() == variantSet) || (rule.exclusionStatus == INCLUSIVE && validKeys.containsAll(variantSet))) {
+                        variantKey = rule.collisionHandler(validKeys.toSet(), random)
+                        break
+                    }
                 }
             } else {
                 // Default to a priority based system
@@ -581,6 +585,7 @@ open class HybridAquaticFishEntity(
                     accumulatedWeight += pair.second
                     if (randomVal < accumulatedWeight) {
                         result = pair.first
+                        break
                     }
                 }
 
