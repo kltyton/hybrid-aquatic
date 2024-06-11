@@ -92,7 +92,7 @@ open class HybridAquaticFishEntity(
                 val validKeys = variants.filter { it.value.spawnCondition(world, spawnReason, blockPos, random) }.map { it.key }
 
                 if (validKeys.isEmpty()) {
-                    variantKey = "default_variant" // or handle this case appropriately
+                    variantKey = variants.keys.random()
                 } else if (collisionRules.isNotEmpty()) {
                     for (rule in collisionRules) {
                         val variantSet = rule.variants.toSet()
@@ -621,7 +621,4 @@ open class HybridAquaticFishEntity(
             }, status)
         }
     }
-
-
-
 }

@@ -10,7 +10,7 @@ import software.bernie.geckolib.core.animation.AnimationState
 import software.bernie.geckolib.core.`object`.PlayState
 
 class SeaCucumberEntity(entityType: EntityType<out SeaCucumberEntity>, world: World) :
-    HybridAquaticCritterEntity(entityType, world, 4) {
+    HybridAquaticCritterEntity(entityType, world, emptyMap()) {
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

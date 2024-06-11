@@ -27,7 +27,7 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
                 HybridAquaticEntityTypes.SEAHORSE,
                 HybridAquaticEntityTypes.TIGER_BARB,
                 HybridAquaticEntityTypes.RATFISH,
-                HybridAquaticEntityTypes.BLUE_TANG,
+                HybridAquaticEntityTypes.SURGEONFISH,
                 HybridAquaticEntityTypes.NAUTILUS,
                 HybridAquaticEntityTypes.DISCUS,
                 HybridAquaticEntityTypes.GOURAMI,
@@ -163,7 +163,7 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
                 HybridAquaticEntityTypes.LIONFISH,
             )
 
-        getOrCreateTagBuilder(HybridAquaticEntityTags.BLUE_TANG_PREDATOR)
+        getOrCreateTagBuilder(HybridAquaticEntityTags.SURGEONFISH_PREDATOR)
             .addTag(HybridAquaticEntityTags.JELLYFISH)
             .addTag(HybridAquaticEntityTags.SHARKS)
             .add(
@@ -198,7 +198,7 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
             .addTag(HybridAquaticEntityTags.SHRIMP)
             .add(
                 HybridAquaticEntityTypes.CLOWNFISH,
-                HybridAquaticEntityTypes.BLUE_TANG,
+                HybridAquaticEntityTypes.SURGEONFISH,
                 HybridAquaticEntityTypes.FLASHLIGHT_FISH,
             )
 
@@ -287,7 +287,7 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
                 HybridAquaticEntityTypes.ROCKFISH,
                 HybridAquaticEntityTypes.CUTTLEFISH,
                 HybridAquaticEntityTypes.CLOWNFISH,
-                HybridAquaticEntityTypes.BLUE_TANG,
+                HybridAquaticEntityTypes.SURGEONFISH,
                 HybridAquaticEntityTypes.TRIGGERFISH,
                 HybridAquaticEntityTypes.GLOWING_SUCKER_OCTOPUS
             )
@@ -445,7 +445,7 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
                 HybridAquaticEntityTypes.FIREFLY_SQUID,
                 HybridAquaticEntityTypes.DRAGONFISH,
                 HybridAquaticEntityTypes.BLUE_SPOTTED_STINGRAY,
-                HybridAquaticEntityTypes.BLUE_TANG
+                HybridAquaticEntityTypes.SURGEONFISH
             )
 
         // sharks

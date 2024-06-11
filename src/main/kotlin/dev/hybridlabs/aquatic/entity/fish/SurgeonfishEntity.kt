@@ -1,5 +1,6 @@
 package dev.hybridlabs.aquatic.entity.fish
 
+import dev.hybridlabs.aquatic.tag.HybridAquaticBiomeTags
 import dev.hybridlabs.aquatic.tag.HybridAquaticEntityTags
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.attribute.DefaultAttributeContainer
@@ -7,8 +8,13 @@ import net.minecraft.entity.attribute.EntityAttributes
 import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
 
-class BlueTangEntity(entityType: EntityType<out BlueTangEntity>, world: World) :
-    HybridAquaticFishEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.BLUE_TANG_PREDATOR) {
+class SurgeonfishEntity(entityType: EntityType<out SurgeonfishEntity>, world: World) :
+    HybridAquaticFishEntity(entityType, world, variants = hashMapOf(
+        "sohal" to FishVariant.biomeVariant("sohal", HybridAquaticBiomeTags.SURGEONFISH_SPAWN_BIOMES),
+        "lined" to FishVariant.biomeVariant("lined", HybridAquaticBiomeTags.SURGEONFISH_SPAWN_BIOMES),
+        "orangeshoulder" to FishVariant.biomeVariant("orangeshoulder", HybridAquaticBiomeTags.SURGEONFISH_SPAWN_BIOMES),
+        "bluetang" to FishVariant.biomeVariant("bluetang", HybridAquaticBiomeTags.SURGEONFISH_SPAWN_BIOMES)),
+        HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.SURGEONFISH_PREDATOR) {
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

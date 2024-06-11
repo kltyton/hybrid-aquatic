@@ -36,7 +36,7 @@ class LiveCatchEnchantment : Enchantment(Rarity.RARE, EnchantmentTarget.FISHING_
             HybridAquaticItems.ANGLERFISH to HybridAquaticEntityTypes.ANGLERFISH,
             HybridAquaticItems.BARRELEYE to HybridAquaticEntityTypes.BARRELEYE,
             HybridAquaticItems.DRAGONFISH to HybridAquaticEntityTypes.DRAGONFISH,
-            HybridAquaticItems.BLUE_TANG to HybridAquaticEntityTypes.BLUE_TANG,
+            HybridAquaticItems.BLUE_TANG to HybridAquaticEntityTypes.SURGEONFISH,
             HybridAquaticItems.CLOWNFISH to HybridAquaticEntityTypes.CLOWNFISH,
             HybridAquaticItems.COWFISH to HybridAquaticEntityTypes.COWFISH,
             HybridAquaticItems.TRIGGERFISH to HybridAquaticEntityTypes.TRIGGERFISH,

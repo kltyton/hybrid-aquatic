@@ -50,11 +50,11 @@ object HybridAquaticEntityTypes {
         BlueSpottedStingrayEntity.createMobAttributes()
     )
 
-    val BLUE_TANG = registerFish(
-        "blue_tang",
-        ::BlueTangEntity,
+    val SURGEONFISH = registerFish(
+        "surgeonfish",
+        ::SurgeonfishEntity,
         EntityDimensions.fixed(0.4f, 0.35f),
-        BlueTangEntity.createMobAttributes()
+        SurgeonfishEntity.createMobAttributes()
     )
 
     val CLOWNFISH = registerFish(

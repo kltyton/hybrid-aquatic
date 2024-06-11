@@ -10,7 +10,7 @@ import software.bernie.geckolib.core.animation.AnimationState
 import software.bernie.geckolib.core.`object`.PlayState
 
 class NudibranchEntity(entityType: EntityType<out NudibranchEntity>, world: World) :
-    HybridAquaticCritterEntity(entityType, world, 9) {
+    HybridAquaticCritterEntity(entityType, world, emptyMap()) {
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

@@ -38,7 +38,7 @@ object HybridAquaticEntityTags {
     val ANGLERFISH_PREDATOR = create("predator/anglerfish")
     val DRAGONFISH_PREDATOR = create("predator/dragonfish")
     val CLOWNFISH_PREDATOR = create("predator/clownfish")
-    val BLUE_TANG_PREDATOR = create("predator/blue_tang")
+    val SURGEONFISH_PREDATOR = create("predator/surgeonfish")
     val LIONFISH_PREDATOR = create("predator/lionfish")
     val TRIGGERFISH_PREDATOR = create("predator/triggerfish")
     val FIREFLY_SQUID_PREDATOR = create("predator/firefly_squid")

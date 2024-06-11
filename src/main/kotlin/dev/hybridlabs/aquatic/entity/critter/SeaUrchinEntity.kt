@@ -10,8 +10,6 @@ import net.minecraft.entity.damage.DamageSource
 import net.minecraft.entity.damage.DamageTypes
 import net.minecraft.entity.mob.PathAwareEntity
 import net.minecraft.registry.tag.DamageTypeTags
-import net.minecraft.sound.SoundEvent
-import net.minecraft.sound.SoundEvents
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 import software.bernie.geckolib.core.animatable.GeoAnimatable
@@ -19,7 +17,7 @@ import software.bernie.geckolib.core.animation.AnimationState
 import software.bernie.geckolib.core.`object`.PlayState
 
 class SeaUrchinEntity(entityType: EntityType<out SeaUrchinEntity>, world: World) :
-    HybridAquaticCritterEntity(entityType, world, 4) {
+    HybridAquaticCritterEntity(entityType, world, emptyMap()) {
 
     private var timeUntilNextBreak = 0
     private var spawnUrchinOnNextBreak = false

@@ -280,7 +280,7 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             HybridAquaticEntityTypes.DISCUS to "Discus",
             HybridAquaticEntityTypes.FIREFLY_SQUID to "Firefly Squid",
             HybridAquaticEntityTypes.BLUE_SPOTTED_STINGRAY to "Blue Spotted Stingray",
-            HybridAquaticEntityTypes.BLUE_TANG to "Blue Tang",
+            HybridAquaticEntityTypes.SURGEONFISH to "Surgeonfish",
             HybridAquaticEntityTypes.BULL_SHARK to "Bull Shark",
             HybridAquaticEntityTypes.BASKING_SHARK to "Basking Shark",
             HybridAquaticEntityTypes.THRESHER_SHARK to "Thresher Shark",

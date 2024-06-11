@@ -476,7 +476,7 @@ class EntityTypeLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTa
             )
         }
 
-        export(exporter, HybridAquaticEntityTypes.BLUE_TANG) {
+        export(exporter, HybridAquaticEntityTypes.SURGEONFISH) {
             pool(
                 LootPool.builder()
                     .with(
