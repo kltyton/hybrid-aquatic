@@ -105,8 +105,9 @@ open class HybridAquaticFishEntity(
                     }
                 } else {
                     // Default to a priority based system
-                    val maxPriority = variants.values.maxOf { it.priority }
-                    val filteredMap = variants.filter { it.value.priority == maxPriority }
+                    val validityFilter = variants.filter { validKeys.contains(it.key) }
+                    val maxPriority = validityFilter.values.maxOf { it.priority }
+                    val filteredMap = validityFilter.filter { it.value.priority == maxPriority }
 
                     filteredMap.keys.random()
                 }
