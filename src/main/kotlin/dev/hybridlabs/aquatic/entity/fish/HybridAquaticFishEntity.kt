@@ -514,10 +514,15 @@ open class HybridAquaticFishEntity(
         val spawnCondition: (WorldAccess, SpawnReason, BlockPos, Random ) -> Boolean,
         val ignore: List<Ignore> = emptyList(),
         val priority: Int = 0,
-        var providedVariant: (WorldAccess, SpawnReason, BlockPos, Random, HybridAquaticFishEntity) -> String = {_,_,_,_,_ ->
+        var providedVariant: (World, BlockPos, Random, HybridAquaticFishEntity) -> String = {_,_,_,_ ->
             variantName
         }
     ) {
+
+        fun getProvidedVariant(fish: HybridAquaticFishEntity) : String {
+            return providedVariant.invoke(fish.world, fish.blockPos, fish.random, fish)
+        }
+
         companion object {
             /**
              * Creates a biome variant of a fish
