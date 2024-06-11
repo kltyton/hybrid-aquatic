@@ -520,7 +520,7 @@ open class HybridAquaticFishEntity(
     ) {
 
         fun getProvidedVariant(fish: HybridAquaticFishEntity) : String {
-            return providedVariant.invoke(fish.world, fish.blockPos, fish.random, fish)
+            return providedVariant(fish.world, fish.blockPos, fish.random, fish)
         }
 
         companion object {
