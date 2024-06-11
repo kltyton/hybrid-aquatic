@@ -90,6 +90,10 @@ class FishingLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
                                 .weight(1)
                         )
                         .with(
+                            ItemEntry.builder(HybridAquaticItems.DRAGONFISH)
+                                .weight(1)
+                        )
+                        .with(
                             ItemEntry.builder(HybridAquaticItems.BLUE_TANG)
                                 .weight(4)
                         )
