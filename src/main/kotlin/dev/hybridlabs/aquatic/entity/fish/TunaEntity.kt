@@ -13,7 +13,7 @@ class TunaEntity(entityType: EntityType<out TunaEntity>, world: World) :
         "bluefin" to FishVariant.biomeVariant("bluefin", HybridAquaticBiomeTags.BLUEFIN_SPAWN_BIOMES),
         "yellowfin" to FishVariant.biomeVariant("yellowfin", HybridAquaticBiomeTags.YELLOWFIN_SPAWN_BIOMES),
         "blackfin" to FishVariant.biomeVariant("blackfin", HybridAquaticBiomeTags.BLACKFIN_SPAWN_BIOMES)
-    )) {
+    ), collisionRules = listOf()) {
 
     override fun initGoals() {
         super.initGoals()

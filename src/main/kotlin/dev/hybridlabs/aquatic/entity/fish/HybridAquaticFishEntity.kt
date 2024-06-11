@@ -1,5 +1,7 @@
 package dev.hybridlabs.aquatic.entity.fish
 
+import dev.hybridlabs.aquatic.entity.fish.HybridAquaticFishEntity.VariantCollisionRules.ExclusionStatus.EXCLUSIVE
+import dev.hybridlabs.aquatic.entity.fish.HybridAquaticFishEntity.VariantCollisionRules.ExclusionStatus.INCLUSIVE
 import dev.hybridlabs.aquatic.tag.HybridAquaticEntityTags
 import net.minecraft.block.Blocks
 import net.minecraft.entity.*
@@ -20,6 +22,7 @@ import net.minecraft.registry.tag.FluidTags
 import net.minecraft.registry.tag.TagKey
 import net.minecraft.sound.SoundEvent
 import net.minecraft.sound.SoundEvents
+import net.minecraft.util.Identifier
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.Vec3d
@@ -42,9 +45,11 @@ import kotlin.math.sqrt
 open class HybridAquaticFishEntity(
     type: EntityType<out HybridAquaticFishEntity>,
     world: World,
-    private val variants: Map<String, FishVariant> = hashMapOf(),
+    private val variants: Map<String, FishVariant> = mutableMapOf(),
     open val prey: TagKey<EntityType<*>>,
     open val predator: TagKey<EntityType<*>>,
+    open val assumeDefault: Boolean = false,
+    open val collisionRules: List<VariantCollisionRules> = listOf()
 ) : WaterCreatureEntity(type, world), GeoEntity {
 
     private val factory = GeckoLibUtil.createInstanceCache(this)
@@ -79,8 +84,34 @@ open class HybridAquaticFishEntity(
     ): EntityData? {
         this.air = getMaxMoistness()
 
-        for (pair in variants) if (pair.value.spawnCondition(world, spawnReason, blockPos, random)) {
-            variantKey = pair.key
+        if(variants.isNotEmpty()) {
+            if (spawnReason == SpawnReason.SPAWN_EGG) {
+                variantKey = variants.keys.elementAt(random.nextBetween(0, variants.size - 1))
+            } else {
+                // Handle collisions
+                val validKeys =
+                    variants.filter { it.value.spawnCondition(world, spawnReason, blockPos, random) }.map { it.key }
+
+                if (collisionRules.isNotEmpty()) {
+                    for (rule in collisionRules) {
+                        val variantSet = rule.variants.toSet()
+                        if ((rule.exclusionStatus == EXCLUSIVE && validKeys.toSet() == variantSet) || (rule.exclusionStatus == INCLUSIVE && validKeys.containsAll(
+                                variantSet
+                            ))
+                        ) {
+                            variantKey = rule.collisionHandler(validKeys.toSet(), random, world)
+                            break
+                        }
+                    }
+                } else {
+                    // Default to a priority based system
+                    val validityFilter = variants.filter { validKeys.contains(it.key) }
+                    val maxPriority = validityFilter.values.maxOf { it.priority }
+                    val filteredMap = validityFilter.filter { it.value.priority == maxPriority }
+
+                    filteredMap.keys.random()
+                }
+            }
         }
 
         this.size = this.random.nextBetween(getMinSize(), getMaxSize())
@@ -121,6 +152,14 @@ open class HybridAquaticFishEntity(
                     0.0
                 )
             }
+        }
+    }
+
+    override fun getLootTableId(): Identifier {
+        return if (variant != null) {
+            super.getLootTableId().withPath { path -> "${path}_${variant!!.variantName}" }
+        } else {
+            super.getLootTableId()
         }
     }
 
@@ -259,16 +298,20 @@ open class HybridAquaticFishEntity(
         }
 
     private var variantKey: String
-        get() = dataTracker.get(VARIANT)
+        get() = if (dataTracker.get(VARIANT).isBlank()) {
+            if (!assumeDefault && variants.isNotEmpty()) {
+                variants.isNotEmpty()
+            }
+            dataTracker.get(VARIANT)
+        } else dataTracker.get(VARIANT)
         private set(value) {
             dataTracker.set(VARIANT, value)
         }
 
+    @Suppress("UNUSED_PARAMETER")
     var variant: FishVariant?
         get() = variants[variantKey]
-        private set(value) {
-            variants
-        }
+        private set(value) {}
 
     // endregion
 
@@ -483,10 +526,19 @@ open class HybridAquaticFishEntity(
 
     @Suppress("UNUSED")
     data class FishVariant(
-        var variantName : String,
+        val variantName : String,
         val spawnCondition: (WorldAccess, SpawnReason, BlockPos, Random ) -> Boolean,
-        var ignore: List<Ignore> = emptyList()
+        val ignore: List<Ignore> = emptyList(),
+        val priority: Int = 0,
+        var providedVariant: (World, BlockPos, Random, HybridAquaticFishEntity) -> String = {_,_,_,_ ->
+            variantName
+        }
     ) {
+
+        fun getProvidedVariant(fish: HybridAquaticFishEntity) : String {
+            return providedVariant(fish.world, fish.blockPos, fish.random, fish)
+        }
+
         companion object {
             /**
              * Creates a biome variant of a fish
@@ -504,5 +556,66 @@ open class HybridAquaticFishEntity(
             ANIMATION
         }
     }
+
+    @Suppress("UNUSED")
+    data class VariantCollisionRules(val variants : Set<String>, val collisionHandler: (Set<String>, Random, ServerWorldAccess) -> String, val exclusionStatus: ExclusionStatus = INCLUSIVE) {
+
+        /**
+         * INCLUSIVE - all other variants can exist within this selection swath
+         * <pre> </pre>
+         * EXCLUSIVE - all other variants are excluded from this selection swath
+         */
+        enum class ExclusionStatus {
+            INCLUSIVE,
+            EXCLUSIVE
+        }
+
+        /**
+         * <pre></pre>
+         * Example:
+         * ```kotlin
+         * // returns a bluefin or a yellowfin tuna variant
+         * equalDistribution(setOf("bluefin", "yellowfin"))
+         * ```
+         * @return a random variant within the set
+         */
+        fun equalDistribution(variants: Set<String>, status : ExclusionStatus = INCLUSIVE) : VariantCollisionRules {
+            return VariantCollisionRules(variants, { possibleVariants, _, _ ->
+                possibleVariants.random()
+            }, status)
+        }
+
+        /**
+         * Example
+         * ```
+         * weightedDistribution(setOf(
+         *  Pair("bluefin", 0.80),
+         *  Pair("yellowfin", 0.20)
+         * ))
+         * ```
+         * @return a premade variant collision rule which allows weighted distribution of variants.
+         */
+        fun weightedDistribution(weights: Set<Pair<String, Double>>, status: ExclusionStatus = EXCLUSIVE) : VariantCollisionRules {
+            return VariantCollisionRules(weights.map { pair -> pair.first }.toSet(), { _, random, _ ->
+                // sum up weights
+                val weightTotal = weights.sumOf { pair -> pair.second }
+                val randomVal = random.nextFloat() * weightTotal
+                var accumulatedWeight = 0.0
+                var result = ""
+
+                for (pair in weights) {
+                    accumulatedWeight += pair.second
+                    if (randomVal < accumulatedWeight) {
+                        result = pair.first
+                        break
+                    }
+                }
+
+                result
+            }, status)
+        }
+    }
+
+
 
 }
