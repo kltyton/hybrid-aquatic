@@ -19,7 +19,8 @@ open class HybridAquaticSchoolingFishEntity(
     override val predator: TagKey<EntityType<*>>,
     private var leader: HybridAquaticSchoolingFishEntity? = null,
     private var groupSize: Int = 1,
-    private val variants: Map<String, FishVariant> = hashMapOf()
+    private val variants: Map<String, FishVariant> = hashMapOf(),
+    override val collisionRules: List<VariantCollisionRules> = listOf()
 ) : HybridAquaticFishEntity(type, world, variants, HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
 
     override fun initGoals() {
