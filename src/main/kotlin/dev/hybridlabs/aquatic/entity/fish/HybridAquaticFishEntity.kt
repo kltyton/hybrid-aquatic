@@ -38,7 +38,7 @@ import software.bernie.geckolib.core.`object`.PlayState
 import software.bernie.geckolib.util.GeckoLibUtil
 import kotlin.math.sqrt
 
-@Suppress("LeakingThis")
+@Suppress("LeakingThis", "UNUSED_PARAMETER")
 open class HybridAquaticFishEntity(
     type: EntityType<out HybridAquaticFishEntity>,
     world: World,
@@ -272,7 +272,7 @@ open class HybridAquaticFishEntity(
 
     // endregion
 
-    public override fun getNextAirOnLand(air: Int): Int {
+    override fun getNextAirOnLand(air: Int): Int {
         return this.maxAir
     }
 
@@ -426,7 +426,7 @@ open class HybridAquaticFishEntity(
         val HUNGER: TrackedData<Int> = DataTracker.registerData(HybridAquaticFishEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
         val ATTEMPT_ATTACK: TrackedData<Boolean> = DataTracker.registerData(HybridAquaticFishEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
         val VARIANT: TrackedData<String> = DataTracker.registerData(HybridAquaticFishEntity::class.java, TrackedDataHandlerRegistry.STRING)
-        var VARIANT_DATA: TrackedData<NbtCompound> = DataTracker.registerData(HybridAquaticFishEntity::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND);
+        var VARIANT_DATA: TrackedData<NbtCompound> = DataTracker.registerData(HybridAquaticFishEntity::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
 
         const val MAX_HUNGER = 1200
         const val HUNGER_KEY = "Hunger"
@@ -471,7 +471,14 @@ open class HybridAquaticFishEntity(
         fun getScaleAdjustment(fish: HybridAquaticFishEntity, adjustment: Float): Float {
             return 1.0f + (fish.size * adjustment)
         }
+    }
 
+    override fun getMaxHeadRotation(): Int {
+        return 1
+    }
+
+    override fun getMaxLookPitchChange(): Int {
+        return 1
     }
 
     @Suppress("UNUSED")

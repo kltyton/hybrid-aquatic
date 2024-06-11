@@ -2,10 +2,17 @@ package dev.hybridlabs.aquatic.entity.crustacean
 
 import dev.hybridlabs.aquatic.tag.HybridAquaticBlockTags
 import net.minecraft.block.Blocks
-import net.minecraft.entity.*
+import net.minecraft.entity.EntityData
+import net.minecraft.entity.EntityGroup
+import net.minecraft.entity.EntityType
+import net.minecraft.entity.SpawnReason
 import net.minecraft.entity.ai.control.MoveControl
-import net.minecraft.entity.ai.goal.*
+import net.minecraft.entity.ai.goal.LookAroundGoal
+import net.minecraft.entity.ai.goal.LookAtEntityGoal
+import net.minecraft.entity.ai.goal.WanderAroundGoal
+import net.minecraft.entity.ai.pathing.AmphibiousSwimNavigation
 import net.minecraft.entity.ai.pathing.EntityNavigation
+import net.minecraft.entity.ai.pathing.PathNodeType
 import net.minecraft.entity.damage.DamageSource
 import net.minecraft.entity.data.DataTracker
 import net.minecraft.entity.data.TrackedData
@@ -22,28 +29,21 @@ import software.bernie.geckolib.animatable.GeoEntity
 import software.bernie.geckolib.core.animatable.GeoAnimatable
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache
 import software.bernie.geckolib.core.animation.*
-import software.bernie.geckolib.core.animation.AnimationState
 import software.bernie.geckolib.core.`object`.PlayState
 import software.bernie.geckolib.util.GeckoLibUtil
 
-@Suppress("DEPRECATION", "LeakingThis")
+@Suppress("DEPRECATION", "LeakingThis", "UNUSED_PARAMETER")
 open class HybridAquaticCrustaceanEntity(
     type: EntityType<out HybridAquaticCrustaceanEntity>,
     world: World,
     private val variantCount: Int = 1,
     open val canDig: Boolean,
     open val canDance: Boolean,
-    open val canWalkOnLand: Boolean,
 ) : WaterCreatureEntity(type, world), GeoEntity {
     private val factory = GeckoLibUtil.createInstanceCache(this)
     private var landNavigation: EntityNavigation = createNavigation(world)
     private var songSource: BlockPos? = null
     private var songPlaying: Boolean = false
-    private var attemptAttack: Boolean
-        get() = dataTracker.get(ATTEMPT_ATTACK)
-        set(attemptAttack) {
-            dataTracker.set(ATTEMPT_ATTACK, attemptAttack)
-        }
 
     var diggingCooldown: Int = 0
     var isDigging: Boolean
@@ -64,34 +64,17 @@ open class HybridAquaticCrustaceanEntity(
             dataTracker.set(CRUSTACEAN_SIZE, size)
         }
 
-    private var moistness: Int
-        get() = dataTracker.get(MOISTNESS)
-        set(moistness) {
-            dataTracker.set(MOISTNESS, moistness)
-        }
-
-    init {
-        stepHeight = 1.0F
-        moveControl = MoveControl(this)
-        navigation = this.landNavigation
-    }
-
     override fun initDataTracker() {
+        super.initDataTracker()
         dataTracker.startTracking(MOISTNESS, getMaxMoistness())
         dataTracker.startTracking(IS_DIGGING, false)
-        dataTracker.startTracking(ATTEMPT_ATTACK, false)
         dataTracker.startTracking(VARIANT, 0)
         dataTracker.startTracking(CRUSTACEAN_SIZE, 0)
-        super.initDataTracker()
     }
 
     override fun initGoals() {
         super.initGoals()
-        goalSelector.add(0, CrustaceanEscapeDangerGoal(this, 0.6))
-        goalSelector.add(1, FleeEntityGoal(this, PlayerEntity::class.java, 6.0f, 0.3, 0.5))
         goalSelector.add(2, WanderAroundGoal(this, 0.3))
-        goalSelector.add(9, WanderOnLandGoal(this, 0.3, 100))
-        goalSelector.add(3, WanderInWaterGoal(this, 0.3))
         goalSelector.add(2, LookAroundGoal(this))
         goalSelector.add(8, LookAtEntityGoal(this, PlayerEntity::class.java, 10.0f))
     }
@@ -109,6 +92,22 @@ open class HybridAquaticCrustaceanEntity(
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt)
     }
 
+    // region movement
+    init {
+        setPathfindingPenalty(PathNodeType.WATER, 0.0f)
+        moveControl = MoveControl(this)
+        navigation = this.landNavigation
+        stepHeight = 1.0F
+    }
+
+    override fun getPathfindingFavor(pos: BlockPos?, world: WorldView?): Float {
+        return 0.0f
+    }
+
+    override fun createNavigation(world: World?): EntityNavigation {
+        return AmphibiousSwimNavigation(this, world)
+    }
+
     override fun hasNoDrag(): Boolean {
         return false
     }
@@ -116,6 +115,8 @@ open class HybridAquaticCrustaceanEntity(
     override fun shouldSwimInFluids(): Boolean {
         return false
     }
+
+    // end region
 
     override fun setNearbySongPlaying(songPosition: BlockPos?, playing: Boolean) {
         songSource = songPosition
@@ -134,6 +135,7 @@ open class HybridAquaticCrustaceanEntity(
         super.mobTick()
     }
 
+
     override fun getGroup(): EntityGroup? {
         return EntityGroup.ARTHROPOD
     }
@@ -144,33 +146,6 @@ open class HybridAquaticCrustaceanEntity(
 
     protected open fun getMaxSize(): Int {
         return 0
-    }
-
-    override fun tick() {
-        super.tick()
-        if (isAiDisabled) {
-            return
-        }
-        if (isWet) {
-            moistness = getMaxMoistness()
-        }
-    }
-
-    private fun getMaxMoistness(): Int {
-        return 1200
-    }
-
-    override fun tickMovement() {
-        val songSourceCopy = songSource
-        if (songSourceCopy == null || !songSourceCopy.isWithinDistance(pos, 3.46) || !world.getBlockState(songSourceCopy).isOf(Blocks.JUKEBOX)) {
-            songPlaying = false
-            songSource = null
-        }
-        super.tickMovement()
-    }
-
-    override fun isSneaking(): Boolean {
-        return true
     }
 
     override fun writeCustomDataToNbt(nbt: NbtCompound) {
@@ -193,10 +168,11 @@ open class HybridAquaticCrustaceanEntity(
         return false
     }
 
+    // region sounds
+
     override fun calculateNextStepSoundDistance(): Float {
         return this.distanceTraveled + 0.5f
     }
-
 
     override fun getMinAmbientSoundDelay(): Int {
         return 200
@@ -214,11 +190,44 @@ open class HybridAquaticCrustaceanEntity(
         return SoundEvents.ENTITY_COD_AMBIENT
     }
 
+    // endregion
+
+    // region water breathing
+
+    private var moistness: Int
+        get() = dataTracker.get(MOISTNESS)
+        set(moistness) {
+            dataTracker.set(MOISTNESS, moistness)
+        }
+
+    override fun tick() {
+        super.tick()
+        if (isAiDisabled) {
+            return
+        }
+
+        if (isSubmergedInWater) {
+            moistness = getMaxMoistness()
+        } else if (!isSubmergedInWater) {
+            moistness -= 1
+            if (moistness <= -20) {
+                moistness = 0
+                damage(this.damageSources.dryOut(), 1.0f)
+            }
+        }
+    }
+
+    override fun getNextAirOnLand(air: Int): Int {
+        return this.maxAir
+    }
+
     override fun tickWaterBreathingAir(air: Int) {}
 
-    override fun canBreatheInWater(): Boolean {
-        return true
+    private fun getMaxMoistness(): Int {
+        return 3000
     }
+
+    // endregion
 
     override fun getLimitPerChunk(): Int {
         return 4
@@ -258,91 +267,11 @@ open class HybridAquaticCrustaceanEntity(
         return PlayState.CONTINUE
     }
 
-    internal class CrustaceanEscapeDangerGoal(crustacean: HybridAquaticCrustaceanEntity?, speed: Double) :
-        EscapeDangerGoal(crustacean, speed) {
-        override fun canStart(): Boolean {
-            if (!this.isInDanger) {
-                return false
-            } else {
-                val blockPos = this.locateClosestWater(mob.world, this.mob, 7)
-                if (blockPos != null) {
-                    this.targetX = blockPos.x.toDouble()
-                    this.targetY = blockPos.y.toDouble()
-                    this.targetZ = blockPos.z.toDouble()
-                    return true
-                } else {
-                    return this.findTarget()
-                }
-            }
-        }
-    }
-
-    private class WanderInWaterGoal(private val crustacean: HybridAquaticCrustaceanEntity, speed: Double) :
-        MoveToTargetPosGoal(crustacean, speed, 24) {
-        init {
-            this.lowestY = -1
-        }
-
-        override fun shouldContinue(): Boolean {
-            return !crustacean.isTouchingWater && this.tryingTime <= 1200 && this.isTargetPos(
-                crustacean.world, this.targetPos
-            )
-        }
-
-        override fun canStart(): Boolean {
-            return if (crustacean.isTouchingWater) {
-                super.canStart()
-            } else {
-                if (!crustacean.isTouchingWater) super.canStart() else false
-            }
-        }
-
-        override fun shouldResetPath(): Boolean {
-            return this.tryingTime % 160 == 0
-        }
-
-        override fun isTargetPos(world: WorldView, pos: BlockPos): Boolean {
-            return world.getBlockState(pos).isOf(Blocks.WATER)
-        }
-    }
-
-    internal class WanderOnLandGoal(private val crustacean: HybridAquaticCrustaceanEntity, speed: Double, chance: Int) :
-        WanderAroundGoal(crustacean, speed, chance) {
-        override fun canStart(): Boolean {
-            return if (!mob.isTouchingWater && crustacean.canWalkOnLand) super.canStart() else false
-        }
-    }
-
-    internal open class AttackGoal(private val crab: HybridAquaticCrustaceanEntity) : MeleeAttackGoal(crab, 0.4,true) {
-        override fun attack(target: LivingEntity, squaredDistance: Double) {
-            val d = getSquaredMaxAttackDistance(target)
-            if (squaredDistance <= d && this.isCooledDown) {
-                resetCooldown()
-                mob.tryAttack(target)
-                crab.attemptAttack = true
-            }
-        }
-
-        override fun getSquaredMaxAttackDistance(entity: LivingEntity): Double {
-            return (1.5f + entity.width).toDouble()
-        }
-
-        override fun start() {
-            super.start()
-            crab.attemptAttack = false
-        }
-
-        override fun stop() {
-            super.stop()
-            crab.attemptAttack = false
-        }
-    }
-
     companion object {
         val MOISTNESS: TrackedData<Int> = DataTracker.registerData(HybridAquaticCrustaceanEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
         val VARIANT: TrackedData<Int> = DataTracker.registerData(HybridAquaticCrustaceanEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
         val CRUSTACEAN_SIZE: TrackedData<Int> = DataTracker.registerData(HybridAquaticCrustaceanEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
-        val ATTEMPT_ATTACK: TrackedData<Boolean> = DataTracker.registerData(HybridAquaticCrustaceanEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
+
         val DANCE_ANIMATION: RawAnimation = RawAnimation.begin().then("dance", Animation.LoopType.LOOP)
         val DIG_ANIMATION: RawAnimation = RawAnimation.begin().then("dig", Animation.LoopType.LOOP)
         val WALK_ANIMATION: RawAnimation = RawAnimation.begin().then("walk", Animation.LoopType.LOOP)
@@ -380,13 +309,13 @@ open class HybridAquaticCrustaceanEntity(
                     world.getBlockState(pos.down()).isIn(HybridAquaticBlockTags.CRABS_SPAWN_ON)
         }
 
-        fun getScaleAdjustment(critter : HybridAquaticCrustaceanEntity, adjustment : Float): Float {
-            return 1.0f + (critter.size * adjustment)
+        fun getScaleAdjustment(crustacean : HybridAquaticCrustaceanEntity, adjustment : Float): Float {
+            return 1.0f + (crustacean.size * adjustment)
         }
 
         const val MOISTNESS_KEY = "Moistness"
         const val VARIANT_KEY = "Variant"
-        const val CRUSTACEAN_SIZE_KEY = "FishSize"
+        const val CRUSTACEAN_SIZE_KEY = "CrustaceanSize"
 
         val IS_DIGGING: TrackedData<Boolean> =
             DataTracker.registerData(HybridAquaticCrustaceanEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)

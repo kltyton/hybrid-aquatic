@@ -11,7 +11,7 @@ import software.bernie.geckolib.core.animation.AnimationState
 import software.bernie.geckolib.core.`object`.PlayState
 
 class HermitCrabEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>, world: World) :
-    HybridAquaticCrustaceanEntity(entityType, world, 1, true, false, true) {
+    HybridAquaticCrustaceanEntity(entityType, world, 1, true, false) {
 
     private var isHiding: Boolean = false
     private var hidingTimer: Int = 0

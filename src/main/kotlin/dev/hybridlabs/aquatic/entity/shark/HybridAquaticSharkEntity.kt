@@ -77,7 +77,7 @@ open class HybridAquaticSharkEntity(
     init {
         setPathfindingPenalty(PathNodeType.WATER, 0.0f)
         moveControl = AquaticMoveControl(this, 85, 10, 0.1F, 0.1F, true)
-        lookControl = YawAdjustingLookControl(this, 10)
+        lookControl = YawAdjustingLookControl(this, 20)
         navigation = SwimNavigation(this, world)
     }
 
@@ -103,6 +103,7 @@ open class HybridAquaticSharkEntity(
         val SWIM_ANIMATION: RawAnimation  = RawAnimation.begin().then("swim", Animation.LoopType.LOOP)
         val RUSH_ANIMATION: RawAnimation  = RawAnimation.begin().then("rush", Animation.LoopType.LOOP)
 
+
         fun canSpawn(
             type: EntityType<out WaterCreatureEntity>,
             world: WorldAccess,
@@ -123,7 +124,11 @@ open class HybridAquaticSharkEntity(
     }
 
     override fun getMaxHeadRotation(): Int {
-        return 45
+        return 1
+    }
+
+    override fun getMaxLookPitchChange(): Int {
+        return 1
     }
 
     override fun initGoals() {
