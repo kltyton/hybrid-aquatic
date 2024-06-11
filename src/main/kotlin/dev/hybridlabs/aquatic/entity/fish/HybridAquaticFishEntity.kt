@@ -84,21 +84,20 @@ open class HybridAquaticFishEntity(
     ): EntityData? {
         this.air = getMaxMoistness()
 
-        if(variants.isNotEmpty()) {
+        if (variants.isNotEmpty()) {
             if (spawnReason == SpawnReason.SPAWN_EGG) {
                 variantKey = variants.keys.elementAt(random.nextBetween(0, variants.size - 1))
             } else {
                 // Handle collisions
-                val validKeys =
-                    variants.filter { it.value.spawnCondition(world, spawnReason, blockPos, random) }.map { it.key }
+                val validKeys = variants.filter { it.value.spawnCondition(world, spawnReason, blockPos, random) }.map { it.key }
 
-                if (collisionRules.isNotEmpty()) {
+                if (validKeys.isEmpty()) {
+                    variantKey = "default_variant" // or handle this case appropriately
+                } else if (collisionRules.isNotEmpty()) {
                     for (rule in collisionRules) {
                         val variantSet = rule.variants.toSet()
-                        if ((rule.exclusionStatus == EXCLUSIVE && validKeys.toSet() == variantSet) || (rule.exclusionStatus == INCLUSIVE && validKeys.containsAll(
-                                variantSet
-                            ))
-                        ) {
+                        if ((rule.exclusionStatus == EXCLUSIVE && validKeys.toSet() == variantSet) ||
+                            (rule.exclusionStatus == INCLUSIVE && validKeys.containsAll(variantSet))) {
                             variantKey = rule.collisionHandler(validKeys.toSet(), random, world)
                             break
                         }
@@ -106,10 +105,17 @@ open class HybridAquaticFishEntity(
                 } else {
                     // Default to a priority based system
                     val validityFilter = variants.filter { validKeys.contains(it.key) }
-                    val maxPriority = validityFilter.values.maxOf { it.priority }
-                    val filteredMap = validityFilter.filter { it.value.priority == maxPriority }
-
-                    filteredMap.keys.random()
+                    if (validityFilter.isNotEmpty()) {
+                        val maxPriority = validityFilter.values.maxOf { it.priority }
+                        val filteredMap = validityFilter.filter { it.value.priority == maxPriority }
+                        if (filteredMap.isNotEmpty()) {
+                            variantKey = filteredMap.keys.random()
+                        } else {
+                            variantKey = validKeys.random()
+                        }
+                    } else {
+                        variantKey = validKeys.random()
+                    }
                 }
             }
         }
@@ -298,12 +304,12 @@ open class HybridAquaticFishEntity(
         }
 
     private var variantKey: String
-        get() = if (dataTracker.get(VARIANT).isBlank()) {
+        get() = dataTracker.get(VARIANT).ifBlank {
             if (!assumeDefault && variants.isNotEmpty()) {
                 variants.isNotEmpty()
             }
             dataTracker.get(VARIANT)
-        } else dataTracker.get(VARIANT)
+        }
         private set(value) {
             dataTracker.set(VARIANT, value)
         }
