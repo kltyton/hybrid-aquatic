@@ -84,28 +84,33 @@ open class HybridAquaticFishEntity(
     ): EntityData? {
         this.air = getMaxMoistness()
 
-        if(spawnReason == SpawnReason.SPAWN_EGG) {
-            variantKey = variants.keys.elementAt(random.nextBetween(0, variants.size - 1))
-        } else {
-            // Handle collisions
-            val validKeys = variants.filter { it.value.spawnCondition(world, spawnReason, blockPos, random) }.map { it.key }
-
-            if(collisionRules.isNotEmpty()) {
-                for (rule in collisionRules) {
-                    val variantSet = rule.variants.toSet()
-                    if ((rule.exclusionStatus == EXCLUSIVE && validKeys.toSet() == variantSet) || (rule.exclusionStatus == INCLUSIVE && validKeys.containsAll(variantSet))) {
-                        variantKey = rule.collisionHandler(validKeys.toSet(), random, world)
-                        break
-                    }
-                }
+        if(variants.isNotEmpty()) {
+            if (spawnReason == SpawnReason.SPAWN_EGG) {
+                variantKey = variants.keys.elementAt(random.nextBetween(0, variants.size - 1))
             } else {
-                // Default to a priority based system
-                val maxPriority = variants.values.maxOf { it.priority }
-                val filteredMap = variants.filter { it.value.priority == maxPriority }
+                // Handle collisions
+                val validKeys =
+                    variants.filter { it.value.spawnCondition(world, spawnReason, blockPos, random) }.map { it.key }
 
-                filteredMap.keys.random()
+                if (collisionRules.isNotEmpty()) {
+                    for (rule in collisionRules) {
+                        val variantSet = rule.variants.toSet()
+                        if ((rule.exclusionStatus == EXCLUSIVE && validKeys.toSet() == variantSet) || (rule.exclusionStatus == INCLUSIVE && validKeys.containsAll(
+                                variantSet
+                            ))
+                        ) {
+                            variantKey = rule.collisionHandler(validKeys.toSet(), random, world)
+                            break
+                        }
+                    }
+                } else {
+                    // Default to a priority based system
+                    val maxPriority = variants.values.maxOf { it.priority }
+                    val filteredMap = variants.filter { it.value.priority == maxPriority }
+
+                    filteredMap.keys.random()
+                }
             }
-
         }
 
         this.size = this.random.nextBetween(getMinSize(), getMaxSize())
