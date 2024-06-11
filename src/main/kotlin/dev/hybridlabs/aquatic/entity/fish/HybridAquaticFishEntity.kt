@@ -94,7 +94,7 @@ open class HybridAquaticFishEntity(
                 for (rule in collisionRules) {
                     val variantSet = rule.variants.toSet()
                     if ((rule.exclusionStatus == EXCLUSIVE && validKeys.toSet() == variantSet) || (rule.exclusionStatus == INCLUSIVE && validKeys.containsAll(variantSet))) {
-                        variantKey = rule.collisionHandler(validKeys.toSet(), random)
+                        variantKey = rule.collisionHandler(validKeys.toSet(), random, world)
                         break
                     }
                 }
@@ -537,7 +537,7 @@ open class HybridAquaticFishEntity(
     }
 
     @Suppress("UNUSED")
-    data class VariantCollisionRules(val variants : Set<String>, val collisionHandler: (Set<String>, Random) -> String, val exclusionStatus: ExclusionStatus = INCLUSIVE) {
+    data class VariantCollisionRules(val variants : Set<String>, val collisionHandler: (Set<String>, Random, ServerWorldAccess) -> String, val exclusionStatus: ExclusionStatus = INCLUSIVE) {
 
         /**
          * INCLUSIVE - all other variants can exist within this selection swath
@@ -559,7 +559,7 @@ open class HybridAquaticFishEntity(
          * @return a random variant within the set
          */
         fun equalDistribution(variants: Set<String>, status : ExclusionStatus = INCLUSIVE) : VariantCollisionRules {
-            return VariantCollisionRules(variants, { possibleVariants, _ ->
+            return VariantCollisionRules(variants, { possibleVariants, _, _ ->
                 possibleVariants.random()
             }, status)
         }
@@ -575,7 +575,7 @@ open class HybridAquaticFishEntity(
          * @return a premade variant collision rule which allows weighted distribution of variants.
          */
         fun weightedDistribution(weights: Set<Pair<String, Double>>, status: ExclusionStatus = EXCLUSIVE) : VariantCollisionRules {
-            return VariantCollisionRules(weights.map { pair -> pair.first }.toSet(), { _, random ->
+            return VariantCollisionRules(weights.map { pair -> pair.first }.toSet(), { _, random, _ ->
                 // sum up weights
                 val weightTotal = weights.sumOf { pair -> pair.second }
                 val randomVal = random.nextFloat() * weightTotal
