@@ -497,9 +497,7 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             BiomeKeys.WARM_OCEAN,
             BiomeKeys.LUKEWARM_OCEAN,
             BiomeKeys.DEEP_LUKEWARM_OCEAN,
-            BiomeKeys.OCEAN,
             BiomeKeys.DEEP_OCEAN,
-            BiomeKeys.COLD_OCEAN,
             BiomeKeys.DEEP_COLD_OCEAN,
             BiomeKeys.DEEP_FROZEN_OCEAN,
             HybridAquaticBiomes.SARGASSUM_SEA,
@@ -507,8 +505,9 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
         )
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.KNOBBED_STARFISH_SPAWN_BIOMES).add(
+            BiomeKeys.WARM_OCEAN,
             BiomeKeys.LUKEWARM_OCEAN,
-            BiomeKeys.OCEAN,
+            HybridAquaticBiomes.SARGASSUM_SEA,
             HybridAquaticBiomes.RED_MEADOW
         )
 

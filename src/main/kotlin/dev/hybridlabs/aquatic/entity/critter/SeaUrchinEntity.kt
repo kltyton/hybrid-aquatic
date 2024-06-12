@@ -19,6 +19,10 @@ import software.bernie.geckolib.core.`object`.PlayState
 
 class SeaUrchinEntity(entityType: EntityType<out SeaUrchinEntity>, world: World) :
     HybridAquaticCritterEntity(entityType, world, variants = hashMapOf(
+        "black" to CritterVariant.biomeVariant("black", HybridAquaticBiomeTags.SEA_URCHIN_SPAWN_BIOMES),
+        "blue" to CritterVariant.biomeVariant("blue", HybridAquaticBiomeTags.SEA_URCHIN_SPAWN_BIOMES),
+        "purple" to CritterVariant.biomeVariant("purple", HybridAquaticBiomeTags.SEA_URCHIN_SPAWN_BIOMES),
+        "red" to CritterVariant.biomeVariant("red", HybridAquaticBiomeTags.SEA_URCHIN_SPAWN_BIOMES),
         "long_black" to CritterVariant.biomeVariant("long_black", HybridAquaticBiomeTags.SEA_URCHIN_SPAWN_BIOMES),
         "long_blue" to CritterVariant.biomeVariant("long_blue", HybridAquaticBiomeTags.SEA_URCHIN_SPAWN_BIOMES),
         "long_purple" to CritterVariant.biomeVariant("long_purple", HybridAquaticBiomeTags.SEA_URCHIN_SPAWN_BIOMES),
@@ -31,7 +35,7 @@ class SeaUrchinEntity(entityType: EntityType<out SeaUrchinEntity>, world: World)
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return PathAwareEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 2.0)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.2)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.1)
                 .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 100.0)
         }
     }
