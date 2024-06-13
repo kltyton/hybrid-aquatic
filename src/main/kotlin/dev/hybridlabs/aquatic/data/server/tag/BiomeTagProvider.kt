@@ -460,18 +460,22 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             BiomeKeys.DEEP_FROZEN_OCEAN,
         )
 
-        getOrCreateTagBuilder(HybridAquaticBiomeTags.SEA_CUCUMBER_SPAWN_BIOMES).add(
-            BiomeKeys.WARM_OCEAN,
-            BiomeKeys.LUKEWARM_OCEAN,
+        getOrCreateTagBuilder(HybridAquaticBiomeTags.SEA_CUCUMBER_SPAWN_BIOMES)
+            .forceAddTag(BiomeTags.IS_OCEAN)
+            .forceAddTag(BiomeTags.IS_DEEP_OCEAN)
+
+        getOrCreateTagBuilder(HybridAquaticBiomeTags.SEA_PIG_SPAWN_BIOMES).add(
             BiomeKeys.DEEP_LUKEWARM_OCEAN,
-            BiomeKeys.OCEAN,
             BiomeKeys.DEEP_OCEAN,
-            BiomeKeys.COLD_OCEAN,
             BiomeKeys.DEEP_COLD_OCEAN,
             BiomeKeys.DEEP_FROZEN_OCEAN,
-            HybridAquaticBiomes.SARGASSUM_SEA,
-            HybridAquaticBiomes.RED_MEADOW
-            )
+        )
+
+        getOrCreateTagBuilder(HybridAquaticBiomeTags.REGULAR_SEA_CUCUMBER_SPAWN_BIOMES).add(
+            BiomeKeys.OCEAN,
+            BiomeKeys.LUKEWARM_OCEAN,
+            BiomeKeys.WARM_OCEAN,
+        )
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.SEA_URCHIN_SPAWN_BIOMES).add(
             BiomeKeys.WARM_OCEAN,

@@ -18,5 +18,8 @@ object HybridAquaticLootTables {
     val CHERRY_CRATE_TREASURE_ID = Identifier(HybridAquatic.MOD_ID, "gameplay/cherry_crate_treasure")
     val TUBE_SPONGE_LOOT_ID = Identifier(HybridAquatic.MOD_ID, "gameplay/tube_sponge_drops")
 
+    val BLUE_TANG = Identifier(HybridAquatic.MOD_ID, "gameplay/blue_tang")
+    val UNICORNFISH = Identifier(HybridAquatic.MOD_ID, "gameplay/unicornfish")
+
     val CRAB_DIGGING_TREASURE_ID = Identifier(HybridAquatic.MOD_ID, "gameplay/crab_digging_treasure")
 }

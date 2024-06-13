@@ -1,5 +1,6 @@
 package dev.hybridlabs.aquatic.entity.critter
 
+import dev.hybridlabs.aquatic.tag.HybridAquaticBiomeTags
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.attribute.DefaultAttributeContainer
 import net.minecraft.entity.attribute.EntityAttributes
@@ -10,18 +11,21 @@ import software.bernie.geckolib.core.animation.AnimationState
 import software.bernie.geckolib.core.`object`.PlayState
 
 class SeaCucumberEntity(entityType: EntityType<out SeaCucumberEntity>, world: World) :
-    HybridAquaticCritterEntity(entityType, world, emptyMap()) {
+    HybridAquaticCritterEntity(entityType, world, variants = hashMapOf(
+        "sea_pig" to CritterVariant.biomeVariant("sea_pig", HybridAquaticBiomeTags.SEA_PIG_SPAWN_BIOMES),
+        "regular" to CritterVariant.biomeVariant("regular", HybridAquaticBiomeTags.REGULAR_SEA_CUCUMBER_SPAWN_BIOMES))) {
+
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 2.0)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.2)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.1)
         }
     }
 
     override fun <E : GeoAnimatable> predicate(event: AnimationState<E>): PlayState {
         if (isSubmergedInWater) {
-            event.controller.setAnimation(WALK_ANIMATION)
+            event.controller.setAnimation(IDLE_ANIMATION)
         }
         return PlayState.CONTINUE
     }

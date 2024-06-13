@@ -1,6 +1,7 @@
 package dev.hybridlabs.aquatic.entity.fish
 
 import dev.hybridlabs.aquatic.block.HybridAquaticBlocks
+import dev.hybridlabs.aquatic.tag.HybridAquaticBiomeTags
 import dev.hybridlabs.aquatic.tag.HybridAquaticEntityTags
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.attribute.DefaultAttributeContainer
@@ -10,7 +11,11 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 
 class ClownfishEntity(entityType: EntityType<out ClownfishEntity>, world: World) :
-    HybridAquaticFishEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.CLOWNFISH_PREDATOR) {
+    HybridAquaticFishEntity(entityType, world, variants = hashMapOf(
+        "ocellaris" to FishVariant.biomeVariant("ocellaris", HybridAquaticBiomeTags.CLOWNFISH_SPAWN_BIOMES),
+        "percula" to FishVariant.biomeVariant("percula", HybridAquaticBiomeTags.CLOWNFISH_SPAWN_BIOMES),
+        "whiteband" to FishVariant.biomeVariant("whiteband", HybridAquaticBiomeTags.CLOWNFISH_SPAWN_BIOMES)),
+        HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.CLOWNFISH_PREDATOR) {
 
     private var targetAnemonePos: BlockPos? = null
 
