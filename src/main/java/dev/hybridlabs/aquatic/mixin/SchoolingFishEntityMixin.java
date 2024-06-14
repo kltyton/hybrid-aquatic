@@ -35,7 +35,7 @@ public abstract class SchoolingFishEntityMixin extends FishEntity {
     @Inject(method = "initGoals", at = @At("HEAD"), cancellable = true)
     protected void registerGoals(CallbackInfo ci) {
 
-        this.goalSelector.add(5, new BoidGoal(this, 0.6f, 0.5f, 4/20f, 4/20f));
+        this.goalSelector.add(5, new BoidGoal(this, 0.5f, 0.9f, 4/20f, 4/20f));
         this.goalSelector.add(3, new StayInWaterGoal(this));
         this.goalSelector.add(2, new LimitSpeedAndLookInVelocityDirectionGoal(this, 0.2f, 0.4f));
 

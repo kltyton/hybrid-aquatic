@@ -1,5 +1,6 @@
-package dev.hybridlabs.aquatic.entity.fish
+package dev.hybridlabs.aquatic.entity.ai.goal
 
+import dev.hybridlabs.aquatic.entity.fish.HybridAquaticFishEntity
 import net.minecraft.entity.ai.goal.DiveJumpingGoal
 import net.minecraft.registry.tag.FluidTags
 import net.minecraft.sound.SoundEvents
