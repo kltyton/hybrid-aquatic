@@ -14,7 +14,12 @@ class ClownfishEntity(entityType: EntityType<out ClownfishEntity>, world: World)
     HybridAquaticFishEntity(entityType, world, variants = hashMapOf(
         "ocellaris" to FishVariant.biomeVariant("ocellaris", HybridAquaticBiomeTags.CLOWNFISH_SPAWN_BIOMES),
         "percula" to FishVariant.biomeVariant("percula", HybridAquaticBiomeTags.CLOWNFISH_SPAWN_BIOMES),
-        "whiteband" to FishVariant.biomeVariant("whiteband", HybridAquaticBiomeTags.CLOWNFISH_SPAWN_BIOMES)),
+        "whiteband" to FishVariant.biomeVariant("whiteband", HybridAquaticBiomeTags.CLOWNFISH_SPAWN_BIOMES),
+        "tomato" to FishVariant.biomeVariant("tomato", HybridAquaticBiomeTags.CLOWNFISH_SPAWN_BIOMES),
+        "cinnamon" to FishVariant.biomeVariant("cinnamon", HybridAquaticBiomeTags.CLOWNFISH_SPAWN_BIOMES),
+        "clarkii" to FishVariant.biomeVariant("clarkii", HybridAquaticBiomeTags.CLOWNFISH_SPAWN_BIOMES),
+        "pink_skunk" to FishVariant.biomeVariant("pink_skunk", HybridAquaticBiomeTags.CLOWNFISH_SPAWN_BIOMES),
+        "orange_skunk" to FishVariant.biomeVariant("orange_skunk", HybridAquaticBiomeTags.CLOWNFISH_SPAWN_BIOMES),),
         HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.CLOWNFISH_PREDATOR) {
 
     private var targetAnemonePos: BlockPos? = null

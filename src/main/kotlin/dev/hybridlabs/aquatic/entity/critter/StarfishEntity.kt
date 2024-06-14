@@ -34,14 +34,14 @@ class StarfishEntity(entityType: EntityType<out StarfishEntity>, world: World) :
         "brittlestar_yellow" to CritterVariant.biomeVariant("brittlestar_yellow", HybridAquaticBiomeTags.BRITTLESTAR_SPAWN_BIOMES),
         "brittlestar_white" to CritterVariant.biomeVariant("brittlestar_white", HybridAquaticBiomeTags.BRITTLESTAR_SPAWN_BIOMES),)) {
 
-    companion object {
-        fun createMobAttributes(): DefaultAttributeContainer.Builder {
+        companion object {
+            fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 1.0)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.1)
                 .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 100.0)
+            }
         }
-    }
 
     override fun <E : GeoAnimatable> predicate(event: AnimationState<E>): PlayState {
         if (isSubmergedInWater) {
