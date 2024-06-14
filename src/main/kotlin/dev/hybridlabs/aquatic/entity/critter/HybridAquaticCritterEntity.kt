@@ -34,7 +34,7 @@ import software.bernie.geckolib.core.animation.*
 import software.bernie.geckolib.core.`object`.PlayState
 import software.bernie.geckolib.util.GeckoLibUtil
 
-@Suppress("LeakingThis", "DEPRECATION")
+@Suppress("LeakingThis", "DEPRECATION", "UNUSED_PARAMETER")
 open class HybridAquaticCritterEntity(
     type: EntityType<out HybridAquaticCritterEntity>,
     world: World,
