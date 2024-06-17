@@ -246,7 +246,7 @@ open class HybridAquaticFishEntity(
     }
 
     override fun getLimitPerChunk(): Int {
-        return 4
+        return 8
     }
 
     open val flopSound: SoundEvent = SoundEvents.ENTITY_PUFFER_FISH_FLOP

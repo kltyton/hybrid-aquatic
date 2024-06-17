@@ -15,12 +15,13 @@ class SurgeonfishEntity(entityType: EntityType<out SurgeonfishEntity>, world: Wo
         "lined" to FishVariant.biomeVariant("lined", HybridAquaticBiomeTags.SURGEONFISH_SPAWN_BIOMES),
         "orangeshoulder" to FishVariant.biomeVariant("orangeshoulder", HybridAquaticBiomeTags.SURGEONFISH_SPAWN_BIOMES),
         "unicornfish" to FishVariant.biomeVariant("unicornfish", HybridAquaticBiomeTags.SURGEONFISH_SPAWN_BIOMES),
-        "bluetang" to FishVariant.biomeVariant("bluetang", HybridAquaticBiomeTags.SURGEONFISH_SPAWN_BIOMES)),
+        "powder_blue_tang" to FishVariant.biomeVariant("powder_blue_tang", HybridAquaticBiomeTags.SURGEONFISH_SPAWN_BIOMES),
+        "blue_tang" to FishVariant.biomeVariant("blue_tang", HybridAquaticBiomeTags.SURGEONFISH_SPAWN_BIOMES)),
         HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.SURGEONFISH_PREDATOR) {
 
     public override fun getLootTableId(): Identifier {
         return when (this.variant?.variantName) {
-            "bluetang" -> Identifier("hybrid-aquatic", "gameplay/blue_tang")
+            "blue_tang" -> Identifier("hybrid-aquatic", "gameplay/blue_tang")
             "sohal" -> Identifier("hybrid-aquatic", "gameplay/sohal")
             "orangeshoulder" -> Identifier("hybrid-aquatic", "gameplay/orangeshoulder")
             "unicornfish" -> Identifier("hybrid-aquatic", "gameplay/unicornfish")
