@@ -225,7 +225,9 @@ open class HybridAquaticFishEntity(
             event.controller.setAnimation(SWIM_ANIMATION)
             return PlayState.CONTINUE
 
-        } else if (!isSubmergedInWater) {
+        }
+
+        if (!isSubmergedInWater) {
             event.controller.setAnimation(FLOP_ANIMATION)
             return PlayState.CONTINUE
         }
@@ -234,7 +236,7 @@ open class HybridAquaticFishEntity(
             event.controller.setAnimation(IDLE_ANIMATION)
             return PlayState.CONTINUE
         }
-        return PlayState.STOP
+        return PlayState.CONTINUE
     }
 
     override fun getActiveEyeHeight(pose: EntityPose, dimensions: EntityDimensions): Float {

@@ -141,10 +141,21 @@ open class HybridAquaticCritterEntity(
     override fun tickWaterBreathingAir(air: Int) {}
 
     open fun <E : GeoAnimatable> predicate(event: AnimationState<E>): PlayState {
-        if (event.isMoving) {
+        if (isSubmergedInWater && event.isMoving) {
             event.controller.setAnimation(WALK_ANIMATION)
-        } else {
+            return PlayState.CONTINUE
+
+        }
+
+        if (!isSubmergedInWater) {
+            event.controller.setAnimation(FLOP_ANIMATION)
+            return PlayState.CONTINUE
+
+        }
+
+        if (isSubmergedInWater && !event.isMoving) {
             event.controller.setAnimation(IDLE_ANIMATION)
+            return PlayState.CONTINUE
         }
         return PlayState.CONTINUE
     }
@@ -186,7 +197,7 @@ open class HybridAquaticCritterEntity(
             AnimationController(
                 this,
                 "controller",
-                0,
+                5,
                 ::predicate
             )
         )
