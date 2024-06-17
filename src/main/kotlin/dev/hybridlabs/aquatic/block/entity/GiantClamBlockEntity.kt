@@ -30,7 +30,11 @@ class GiantClamBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(Hybri
     }
 
     override fun registerControllers(controllerRegistrar: AnimatableManager.ControllerRegistrar) {
-        controllerRegistrar.add(AnimationController(this, "controller", 0, ::predicate))
+        controllerRegistrar.add(AnimationController(
+            this,
+            "controller",
+            5,
+            ::predicate))
     }
 
     override fun getAnimatableInstanceCache(): AnimatableInstanceCache {

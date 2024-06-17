@@ -467,7 +467,7 @@ open class HybridAquaticCephalopodEntity(
             AnimationController(
                 this,
                 "controller",
-                0,
+                5,
                 ::predicate
             )
         )

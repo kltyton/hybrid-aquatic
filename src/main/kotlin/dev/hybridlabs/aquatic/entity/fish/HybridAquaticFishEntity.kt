@@ -221,7 +221,7 @@ open class HybridAquaticFishEntity(
     }
 
     open fun <E : GeoAnimatable> predicate(event: AnimationState<E>): PlayState {
-        if (isSubmergedInWater) {
+        if (isSubmergedInWater && event.isMoving) {
             event.controller.setAnimation(SWIM_ANIMATION)
             return PlayState.CONTINUE
 
@@ -230,8 +230,8 @@ open class HybridAquaticFishEntity(
             return PlayState.CONTINUE
         }
 
-        if (isWet && isFallFlying) {
-            event.controller.setAnimation(SWIM_ANIMATION)
+        if (isSubmergedInWater && !event.isMoving) {
+            event.controller.setAnimation(IDLE_ANIMATION)
             return PlayState.CONTINUE
         }
         return PlayState.STOP
@@ -342,7 +342,7 @@ open class HybridAquaticFishEntity(
             AnimationController(
                 this,
                 "controller",
-                0,
+                5,
                 ::predicate
             )
         )
@@ -485,6 +485,7 @@ open class HybridAquaticFishEntity(
         const val FISH_SIZE_KEY = "FishSize"
 
         val ATTACK_ANIMATION: RawAnimation  = RawAnimation.begin().then("attack", Animation.LoopType.LOOP)
+        val IDLE_ANIMATION: RawAnimation  = RawAnimation.begin().then("idle", Animation.LoopType.LOOP)
         val SWIM_ANIMATION: RawAnimation  = RawAnimation.begin().then("swim", Animation.LoopType.LOOP)
         val FLOP_ANIMATION: RawAnimation  = RawAnimation.begin().then("flop", Animation.LoopType.LOOP)
 
