@@ -1,0 +1,40 @@
+{
+  "variants": {
+    "attachment=ceiling": {
+      "model": "hybrid-aquatic:block/anemone_ceiling"
+    },
+    "attachment=double_wall,facing=east": {
+      "model": "hybrid-aquatic:block/anemone_wall"
+    },
+    "attachment=double_wall,facing=north": {
+      "model": "hybrid-aquatic:block/anemone_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=south": {
+      "model": "hybrid-aquatic:block/anemone_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=west": {
+      "model": "hybrid-aquatic:block/anemone_wall",
+      "y": 180
+    },
+    "attachment=floor": {
+      "model": "hybrid-aquatic:block/anemone"
+    },
+    "attachment=single_wall,facing=east": {
+      "model": "hybrid-aquatic:block/anemone_wall"
+    },
+    "attachment=single_wall,facing=north": {
+      "model": "hybrid-aquatic:block/anemone_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=south": {
+      "model": "hybrid-aquatic:block/anemone_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=west": {
+      "model": "hybrid-aquatic:block/anemone_wall",
+      "y": 180
+    }
+  }
+}
