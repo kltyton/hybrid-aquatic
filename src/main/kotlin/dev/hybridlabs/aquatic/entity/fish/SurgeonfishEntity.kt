@@ -16,6 +16,7 @@ class SurgeonfishEntity(entityType: EntityType<out SurgeonfishEntity>, world: Wo
         "orangeshoulder" to FishVariant.biomeVariant("orangeshoulder", HybridAquaticBiomeTags.SURGEONFISH_SPAWN_BIOMES),
         "unicornfish" to FishVariant.biomeVariant("unicornfish", HybridAquaticBiomeTags.SURGEONFISH_SPAWN_BIOMES),
         "powder_blue_tang" to FishVariant.biomeVariant("powder_blue_tang", HybridAquaticBiomeTags.SURGEONFISH_SPAWN_BIOMES),
+        "yellow_tang" to FishVariant.biomeVariant("yellow_tang", HybridAquaticBiomeTags.SURGEONFISH_SPAWN_BIOMES),
         "blue_tang" to FishVariant.biomeVariant("blue_tang", HybridAquaticBiomeTags.SURGEONFISH_SPAWN_BIOMES)),
         HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.SURGEONFISH_PREDATOR) {
 
