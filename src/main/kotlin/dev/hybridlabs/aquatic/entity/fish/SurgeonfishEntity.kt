@@ -30,11 +30,22 @@ class SurgeonfishEntity(entityType: EntityType<out SurgeonfishEntity>, world: Wo
         }
     }
 
+    override fun tick() {
+        super.tick()
+
+        return when (this.variant?.variantName) {
+            "powder_blue_tang" -> attributes.getCustomInstance(EntityAttributes.GENERIC_MAX_HEALTH)?.baseValue = 1.5
+            "yellow_tang" -> attributes.getCustomInstance(EntityAttributes.GENERIC_MAX_HEALTH)?.baseValue = 1.5
+
+            else -> attributes.getCustomInstance(EntityAttributes.GENERIC_MAX_HEALTH)?.baseValue = 4.0
+        }
+    }
+
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 4.0)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.7)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.6)
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 1.0)
                 .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 12.0)
         }
