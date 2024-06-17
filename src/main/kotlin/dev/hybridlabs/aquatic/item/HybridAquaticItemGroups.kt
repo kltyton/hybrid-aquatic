@@ -135,7 +135,10 @@ object HybridAquaticItemGroups {
             entries.add(HybridAquaticItems.DRAGONFISH)
             entries.add(HybridAquaticItems.BETTA)
             entries.add(HybridAquaticItems.BLUE_TANG)
+            entries.add(HybridAquaticItems.SURGEONFISH_SOHAL)
+            entries.add(HybridAquaticItems.SURGEONFISH_ORANGESHOULDER)
             entries.add(HybridAquaticItems.BLUE_SPOTTED_STINGRAY)
+            entries.add(HybridAquaticItems.UNICORNFISH)
             entries.add(HybridAquaticItems.CLOWNFISH)
             entries.add(HybridAquaticItems.COWFISH)
             entries.add(HybridAquaticItems.DANIO)
@@ -154,7 +157,6 @@ object HybridAquaticItemGroups {
             entries.add(HybridAquaticItems.TETRA)
             entries.add(HybridAquaticItems.TIGER_BARB)
             entries.add(HybridAquaticItems.TRIGGERFISH)
-            entries.add(HybridAquaticItems.UNICORN_FISH)
             entries.add(HybridAquaticItems.TUNA)
 
             // miscellaneous items

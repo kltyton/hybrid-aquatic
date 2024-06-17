@@ -369,6 +369,30 @@ object HybridAquaticItems {
                 )
         )
     )
+    val SURGEONFISH_SOHAL = register("surgeonfish_sohal",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(1)
+                        .saturationModifier(0.4F)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+    val SURGEONFISH_ORANGESHOULDER = register("surgeonfish_orangeshoulder",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(1)
+                        .saturationModifier(0.4F)
+                        .meat()
+                        .build()
+                )
+        )
+    )
     val CLOWNFISH = register("clownfish",
         Item(
             FabricItemSettings()
@@ -381,7 +405,7 @@ object HybridAquaticItems {
                 )
         )
     )
-    val UNICORN_FISH = register("unicorn_fish",
+    val UNICORNFISH = register("unicorn_fish",
         Item(
             FabricItemSettings()
                 .food(

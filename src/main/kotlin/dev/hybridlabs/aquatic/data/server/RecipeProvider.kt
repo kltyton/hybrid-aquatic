@@ -223,7 +223,7 @@ class RecipeProvider(output: FabricDataOutput) : FabricRecipeProvider(output) {
             .criterion("has_barreleye", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.BARRELEYE))
             .criterion("has_anglerfish", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.ANGLERFISH))
             .criterion("has_piranha", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.PIRANHA))
-            .criterion("has_unicorn_fish", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.UNICORN_FISH))
+            .criterion("has_unicorn_fish", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.UNICORNFISH))
             .criterion("has_cowfish", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.COWFISH))
             .criterion("has_tiger_barb", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.TIGER_BARB))
             .criterion("has_oscar", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.OSCAR))
