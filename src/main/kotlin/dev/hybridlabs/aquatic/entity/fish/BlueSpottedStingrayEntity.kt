@@ -17,6 +17,7 @@ class BlueSpottedStingrayEntity(entityType: EntityType<out BlueSpottedStingrayEn
         targetSelector.add(1, RevengeGoal(this, *arrayOfNulls(0)).setGroupRevenge(*arrayOfNulls(0)))
         goalSelector.add(1, StayNearSeabedGoal(this))
     }
+
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

@@ -12,6 +12,7 @@ import net.minecraft.world.ServerWorldAccess
 import net.minecraft.world.World
 import java.util.stream.Stream
 
+@Suppress("NAME_SHADOWING")
 open class HybridAquaticSchoolingFishEntity(
     type: EntityType<out HybridAquaticFishEntity>,
     world: World,
