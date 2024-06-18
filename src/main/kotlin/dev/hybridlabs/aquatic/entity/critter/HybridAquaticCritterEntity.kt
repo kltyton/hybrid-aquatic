@@ -42,7 +42,6 @@ open class HybridAquaticCritterEntity(
     open val assumeDefault: Boolean = false,
     open val collisionRules: List<VariantCollisionRules> = listOf()
 ) : WaterCreatureEntity(type, world), GeoEntity {
-
     private val factory = GeckoLibUtil.createInstanceCache(this)
     private var landNavigation: EntityNavigation = createNavigation(world)
 
@@ -52,11 +51,38 @@ open class HybridAquaticCritterEntity(
         navigation = this.landNavigation
     }
 
+    override fun isClimbing(): Boolean {
+        return this.isClimbingWall()
+    }
+
+    private fun isClimbingWall(): Boolean {
+        return ((dataTracker.get(CRITTER_FLAGS) as Byte).toInt() and 1) != 0
+    }
+
+    override fun tick() {
+        super.tick()
+        if (!world.isClient) {
+            this.setClimbingWall(this.horizontalCollision)
+        }
+    }
+
+    private fun setClimbingWall(climbing: Boolean) {
+        var b = dataTracker.get(CRITTER_FLAGS) as Byte
+        b = if (climbing) {
+            (b.toInt() or 1).toByte()
+        } else {
+            (b.toInt() and -2).toByte()
+        }
+
+        dataTracker.set(CRITTER_FLAGS, b)
+    }
+
     override fun initDataTracker() {
         super.initDataTracker()
         dataTracker.startTracking(VARIANT, "")
         dataTracker.startTracking(VARIANT_DATA, NbtCompound())
         dataTracker.startTracking(CRITTER_SIZE, 0)
+        dataTracker.startTracking(CRITTER_FLAGS, 0.toByte())
     }
 
     override fun initGoals() {
@@ -243,6 +269,7 @@ open class HybridAquaticCritterEntity(
         val VARIANT: TrackedData<String> = DataTracker.registerData(HybridAquaticCritterEntity::class.java, TrackedDataHandlerRegistry.STRING)
         var VARIANT_DATA: TrackedData<NbtCompound> = DataTracker.registerData(HybridAquaticCritterEntity::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
         val CRITTER_SIZE: TrackedData<Int> = DataTracker.registerData(HybridAquaticCritterEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
+        val CRITTER_FLAGS: TrackedData<Byte> = DataTracker.registerData(HybridAquaticCritterEntity::class.java, TrackedDataHandlerRegistry.BYTE)
 
         fun canSpawn(
             type: EntityType<out WaterCreatureEntity?>?,
