@@ -1,116 +1,96 @@
 {
-  "format_version": "1.8.0",
-  "animations": {
-    "swim": {
-      "loop": true,
-      "animation_length": 2.5,
-      "bones": {
-        "tail": {
-          "rotation": {
-            "0.0": {
-              "vector": [0, 15, 0]
-            },
-            "1.25": {
-              "vector": [0, -15, 0]
-            },
-            "2.5": {
-              "vector": [0, 15, 0]
-            }
-          }
-        },
-        "leftfin": {
-          "rotation": {
-            "0.0": {
-              "vector": [-10, 5, -10]
-            },
-            "1.25": {
-              "vector": [10, 5, -10]
-            },
-            "2.5": {
-              "vector": [-10, 5, -10]
-            }
-          }
-        },
-        "rightfin": {
-          "rotation": {
-            "0.0": {
-              "vector": [-10, -5, 10]
-            },
-            "1.25": {
-              "vector": [10, -5, 10]
-            },
-            "2.5": {
-              "vector": [-10, -5, 10]
-            }
-          }
-        },
-        "bone2": {
-          "rotation": {
-            "0.0": {
-              "vector": [0, -5, 0]
-            },
-            "1.25": {
-              "vector": [0, 5, 0]
-            },
-            "2.5": {
-              "vector": [0, -5, 0]
-            }
-          }
-        },
-        "upperfin": {
-          "rotation": {
-            "0.0": {
-              "vector": [5, 0, -10]
-            },
-            "1.25": {
-              "vector": [-5, 0, 10]
-            },
-            "2.5": {
-              "vector": [5, 0, -10]
-            }
-          }
-        },
-        "lowerfin": {
-          "rotation": {
-            "0.0": {
-              "vector": [-5, 0, 10]
-            },
-            "1.25": {
-              "vector": [5, 0, -10]
-            },
-            "2.5": {
-              "vector": [-5, 0, 10]
-            }
-          }
-        },
-        "dorsalfin": {
-          "rotation": {
-            "0.0": {
-              "vector": [5, 0, -10]
-            },
-            "1.25": {
-              "vector": [-5, 0, 10]
-            },
-            "2.5": {
-              "vector": [5, 0, -10]
-            }
-          }
-        },
-        "details": {
-          "rotation": {
-            "0.0": {
-              "vector": [0, -5, -7.5]
-            },
-            "1.25": {
-              "vector": [0, 5, 7.5]
-            },
-            "2.5": {
-              "vector": [0, -5, -7.5]
-            }
-          }
-        }
-      }
-    }
-  },
-  "geckolib_format_version": 2
+	"format_version": "1.8.0",
+	"animations": {
+		"idle": {
+			"loop": true,
+			"animation_length": 4,
+			"bones": {
+				"pelvic_fin": {
+					"rotation": [0, 0, "Math.sin(query.anim_time * 90)*10"]
+				},
+				"dorsal_fin": {
+					"rotation": [0, 0, "Math.sin(query.anim_time * 90)*10"]
+				},
+				"left_fin": {
+					"rotation": [0, 0, "Math.cos(query.anim_time * 90)*-5"]
+				},
+				"right_fin": {
+					"rotation": [0, 0, "Math.cos(query.anim_time * 90)*5"]
+				},
+				"tail_fin": {
+					"rotation": [0, "Math.sin(query.anim_time * 90)*10", 0]
+				},
+				"body": {
+					"rotation": ["Math.cos(query.anim_time * 90)*2.5", 0, 0],
+					"position": [0, "Math.sin(query.anim_time * 90)*-0.25", 0]
+				},
+				"tail": {
+					"rotation": [0, "Math.cos(query.anim_time * 90)*10", 0]
+				}
+			}
+		},
+		"swim": {
+			"loop": true,
+			"animation_length": 2.5,
+			"bones": {
+				"tail": {
+					"rotation": {
+						"0.0": [0, 15, 0],
+						"1.25": [0, -15, 0],
+						"2.5": [0, 15, 0]
+					}
+				},
+				"leftfin": {
+					"rotation": {
+						"0.0": [-10, 5, -10],
+						"1.25": [10, 5, -10],
+						"2.5": [-10, 5, -10]
+					}
+				},
+				"rightfin": {
+					"rotation": {
+						"0.0": [-10, -5, 10],
+						"1.25": [10, -5, 10],
+						"2.5": [-10, -5, 10]
+					}
+				},
+				"body": {
+					"rotation": {
+						"0.0": [0, -5, 0],
+						"1.25": [0, 5, 0],
+						"2.5": [0, -5, 0]
+					}
+				},
+				"upperfin": {
+					"rotation": {
+						"0.0": [5, 0, -10],
+						"1.25": [-5, 0, 10],
+						"2.5": [5, 0, -10]
+					}
+				},
+				"lowerfin": {
+					"rotation": {
+						"0.0": [-5, 0, 10],
+						"1.25": [5, 0, -10],
+						"2.5": [-5, 0, 10]
+					}
+				},
+				"dorsalfin": {
+					"rotation": {
+						"0.0": [5, 0, -10],
+						"1.25": [-5, 0, 10],
+						"2.5": [5, 0, -10]
+					}
+				},
+				"details": {
+					"rotation": {
+						"0.0": [0, -5, -7.5],
+						"1.25": [0, 5, 7.5],
+						"2.5": [0, -5, -7.5]
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
 }

@@ -227,7 +227,7 @@ open class HybridAquaticFishEntity(
 
         }
 
-        if (!isSubmergedInWater) {
+        if (!isSubmergedInWater && this.moistness < getMaxMoistness()) {
             event.controller.setAnimation(FLOP_ANIMATION)
             return PlayState.CONTINUE
         }
