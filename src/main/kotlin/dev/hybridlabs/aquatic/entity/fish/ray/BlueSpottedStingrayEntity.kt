@@ -1,6 +1,5 @@
 package dev.hybridlabs.aquatic.entity.fish.ray
 
-import dev.hybridlabs.aquatic.entity.ai.goal.StayNearSeabedGoal
 import dev.hybridlabs.aquatic.entity.fish.HybridAquaticFishEntity
 import dev.hybridlabs.aquatic.tag.HybridAquaticEntityTags
 import net.minecraft.entity.EntityType
@@ -16,7 +15,6 @@ class BlueSpottedStingrayEntity(entityType: EntityType<out BlueSpottedStingrayEn
     override fun initGoals() {
         super.initGoals()
         targetSelector.add(1, RevengeGoal(this, *arrayOfNulls(0)).setGroupRevenge(*arrayOfNulls(0)))
-        goalSelector.add(1, StayNearSeabedGoal(this))
     }
 
     companion object {

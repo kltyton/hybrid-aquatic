@@ -1,5 +1,6 @@
 package dev.hybridlabs.aquatic.entity.jellyfish
 
+import dev.hybridlabs.aquatic.entity.ai.goal.StayInWaterGoal
 import net.minecraft.entity.*
 import net.minecraft.entity.ai.control.AquaticMoveControl
 import net.minecraft.entity.ai.control.YawAdjustingLookControl
@@ -35,7 +36,7 @@ import software.bernie.geckolib.core.animation.AnimationState
 import software.bernie.geckolib.core.`object`.PlayState
 import software.bernie.geckolib.util.GeckoLibUtil
 
-@Suppress("LeakingThis")
+@Suppress("LeakingThis", "UNUSED_PARAMETER", "DEPRECATION")
 open class HybridAquaticJellyfishEntity(
     type: EntityType<out HybridAquaticJellyfishEntity>,
     world: World,
@@ -69,6 +70,7 @@ open class HybridAquaticJellyfishEntity(
 
     override fun initGoals() {
         goalSelector.add(0, SwimGoal(this))
+        goalSelector.add(0, StayInWaterGoal(this))
     }
 
     override fun initDataTracker() {

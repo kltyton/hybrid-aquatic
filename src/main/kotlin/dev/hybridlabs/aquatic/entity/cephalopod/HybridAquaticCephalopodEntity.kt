@@ -1,5 +1,6 @@
 package dev.hybridlabs.aquatic.entity.cephalopod
 
+import dev.hybridlabs.aquatic.entity.ai.goal.StayInWaterGoal
 import dev.hybridlabs.aquatic.entity.fish.HybridAquaticFishEntity
 import dev.hybridlabs.aquatic.tag.HybridAquaticEntityTags
 import net.minecraft.block.BlockState
@@ -44,7 +45,7 @@ import software.bernie.geckolib.core.animation.AnimationState
 import software.bernie.geckolib.core.`object`.PlayState
 import software.bernie.geckolib.util.GeckoLibUtil
 
-@Suppress("LeakingThis")
+@Suppress("LeakingThis", "UNUSED_PARAMETER")
 open class HybridAquaticCephalopodEntity(
     type: EntityType<out HybridAquaticCephalopodEntity>,
     world: World,
@@ -72,6 +73,7 @@ open class HybridAquaticCephalopodEntity(
     override fun initGoals() {
         goalSelector.add(2, SwimGoal(this))
         goalSelector.add(2, SwimToRandomPlaceGoal(this, 0.50, 6))
+        goalSelector.add(0, StayInWaterGoal(this))
         goalSelector.add(1, EscapeAttackerGoal(this))
         goalSelector.add(1, FleeEntityGoal(this, LivingEntity::class.java, 8.0f, 1.2, 1.0) { !fromFishingNet && it.type.isIn(predator) })
         goalSelector.add(1, FleeEntityGoal(this, PlayerEntity::class.java, 5.0f, 1.0, 1.0) { !fromFishingNet })
@@ -617,7 +619,7 @@ open class HybridAquaticCephalopodEntity(
         val HUNGER: TrackedData<Int> = DataTracker.registerData(HybridAquaticFishEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
         val ATTEMPT_ATTACK: TrackedData<Boolean> = DataTracker.registerData(HybridAquaticCephalopodEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
         val VARIANT: TrackedData<String> = DataTracker.registerData(HybridAquaticCephalopodEntity::class.java, TrackedDataHandlerRegistry.STRING)
-        var VARIANT_DATA: TrackedData<NbtCompound> = DataTracker.registerData(HybridAquaticCephalopodEntity::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND);
+        var VARIANT_DATA: TrackedData<NbtCompound> = DataTracker.registerData(HybridAquaticCephalopodEntity::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
 
         const val MAX_HUNGER = 1200
         const val HUNGER_KEY = "Hunger"
