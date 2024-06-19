@@ -1,5 +1,6 @@
 package dev.hybridlabs.aquatic.entity.jellyfish
 
+import dev.hybridlabs.aquatic.entity.ai.goal.StayDeepGoal
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.attribute.DefaultAttributeContainer
 import net.minecraft.entity.attribute.EntityAttributes
@@ -7,6 +8,11 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
 
 class AtollaJellyfishEntity(entityType: EntityType<out AtollaJellyfishEntity>, world: World) : HybridAquaticJellyfishEntity(entityType, world, true) {
+
+    override fun initGoals() {
+        super.initGoals()
+        goalSelector.add(0, StayDeepGoal(this))
+    }
 
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {

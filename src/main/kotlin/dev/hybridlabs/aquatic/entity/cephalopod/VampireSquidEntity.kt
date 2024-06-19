@@ -1,5 +1,6 @@
 package dev.hybridlabs.aquatic.entity.cephalopod
 
+import dev.hybridlabs.aquatic.entity.ai.goal.StayDeepGoal
 import dev.hybridlabs.aquatic.tag.HybridAquaticEntityTags
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.attribute.DefaultAttributeContainer
@@ -9,6 +10,12 @@ import net.minecraft.world.World
 
 class VampireSquidEntity(entityType: EntityType<out VampireSquidEntity>, world: World) :
     HybridAquaticCephalopodEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.FIREFLY_SQUID_PREDATOR, false) {
+
+    override fun initGoals() {
+        super.initGoals()
+        goalSelector.add(0, StayDeepGoal(this))
+    }
+
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

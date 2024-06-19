@@ -1,6 +1,7 @@
-package dev.hybridlabs.aquatic.entity.fish
+package dev.hybridlabs.aquatic.entity.fish.ray
 
 import dev.hybridlabs.aquatic.entity.ai.goal.StayNearSeabedGoal
+import dev.hybridlabs.aquatic.entity.fish.HybridAquaticFishEntity
 import dev.hybridlabs.aquatic.tag.HybridAquaticEntityTags
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.ai.goal.RevengeGoal
