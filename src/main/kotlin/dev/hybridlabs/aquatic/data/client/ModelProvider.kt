@@ -8,7 +8,11 @@ import dev.hybridlabs.aquatic.item.HybridAquaticItems
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider
 import net.minecraft.block.Blocks
-import net.minecraft.data.client.*
+import net.minecraft.data.client.BlockStateModelGenerator
+import net.minecraft.data.client.ItemModelGenerator
+import net.minecraft.data.client.ModelIds
+import net.minecraft.data.client.Models
+import net.minecraft.data.client.TextureMap
 import net.minecraft.item.Items
 import net.minecraft.item.SpawnEggItem
 import net.minecraft.registry.Registries
@@ -37,7 +41,7 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
 
         // builtin
         mapOf(
-            HybridAquaticBlocks.ANEMONE to (HybridAquaticBlocks.ANEMONE to TEMPLATE_ANEMONE),
+            HybridAquaticBlocks.ANEMONE to (null to TEMPLATE_ANEMONE),
             HybridAquaticBlocks.TUBE_SPONGE to (HybridAquaticBlocks.TUBE_SPONGE to TEMPLATE_TUBE_SPONGE),
             HybridAquaticBlocks.MESSAGE_IN_A_BOTTLE to (Blocks.GLASS to TEMPLATE_MESSAGE_IN_A_BOTTLE),
             HybridAquaticBlocks.BUOY to (HybridAquaticBlocks.BUOY to TEMPLATE_BUOY),
@@ -47,9 +51,11 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
 
             excludeFromSimpleItemModelGeneration(block)
 
-            registerBuiltinWithParticle(block, TextureMap.getId(particleBlock))
+            particleBlock?.let { b -> registerBuiltinWithParticle(block, TextureMap.getId(b)) }
             registerParentedItemModel(block, template)
         }
+
+        registerBuiltinWithParticle(HybridAquaticBlocks.ANEMONE, TextureMap.getSubId(HybridAquaticBlocks.ANEMONE, "_top"))
 
         // simple cubes
         setOf(
