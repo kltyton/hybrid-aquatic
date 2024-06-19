@@ -56,13 +56,13 @@ open class HybridAquaticFishEntity(
 
     override fun initGoals() {
         super.initGoals()
-        goalSelector.add(1, SwimToRandomPlaceGoal(this))
-        goalSelector.add(2, SwimAroundGoal(this, 0.50, 6))
+        goalSelector.add(3, SwimToRandomPlaceGoal(this))
+        goalSelector.add(3, SwimAroundGoal(this, 0.50, 6))
         goalSelector.add(1, EscapeDangerGoal(this, 1.25))
-        goalSelector.add(2, FleeEntityGoal(this, LivingEntity::class.java, 8.0f, 1.2, 1.0) { !fromFishingNet && it.type.isIn(predator) })
-        goalSelector.add(2, FleeEntityGoal(this, PlayerEntity::class.java, 5.0f, 1.0, 1.0) { !fromFishingNet })
-        goalSelector.add(7, AttackGoal(this))
-        targetSelector.add(6, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) { hunger <= 300 && it.type.isIn(prey) })
+        goalSelector.add(1, FleeEntityGoal(this, LivingEntity::class.java, 8.0f, 1.2, 1.0) { !fromFishingNet && it.type.isIn(predator) })
+        goalSelector.add(1, FleeEntityGoal(this, PlayerEntity::class.java, 5.0f, 1.0, 1.0) { !fromFishingNet })
+        goalSelector.add(2, AttackGoal(this))
+        targetSelector.add(2, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) { hunger <= 300 && it.type.isIn(prey) })
     }
 
     override fun initDataTracker() {
