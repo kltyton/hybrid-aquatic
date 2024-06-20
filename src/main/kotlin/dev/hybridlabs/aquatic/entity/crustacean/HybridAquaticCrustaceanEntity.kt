@@ -97,6 +97,10 @@ open class HybridAquaticCrustaceanEntity(
     }
 
     // region movement
+    override fun createNavigation(world: World): EntityNavigation {
+        return AmphibiousSwimNavigation(this, world)
+    }
+
     init {
         setPathfindingPenalty(PathNodeType.WATER, 0.0f)
         moveControl = MoveControl(this)
@@ -106,10 +110,6 @@ open class HybridAquaticCrustaceanEntity(
 
     override fun getPathfindingFavor(pos: BlockPos?, world: WorldView?): Float {
         return 0.0f
-    }
-
-    override fun createNavigation(world: World?): EntityNavigation {
-        return AmphibiousSwimNavigation(this, world)
     }
 
     override fun hasNoDrag(): Boolean {

@@ -11,7 +11,7 @@ class NeedlefishEntity(entityType: EntityType<out NeedlefishEntity>, world: Worl
     HybridAquaticSchoolingFishEntity(entityType, world, HybridAquaticEntityTags.NEEDLEFISH_PREY, HybridAquaticEntityTags.NEEDLEFISH_PREDATOR) {
 
         companion object {
-        fun createMobAttributes(): DefaultAttributeContainer.Builder {
+            fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 4.0)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.7)

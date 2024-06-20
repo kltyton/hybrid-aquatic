@@ -42,7 +42,7 @@ import software.bernie.geckolib.util.GeckoLibUtil
 import java.util.*
 
 
-@Suppress("LeakingThis", "DEPRECATION")
+@Suppress("LeakingThis", "DEPRECATION", "UNUSED_PARAMETER")
 open class HybridAquaticSharkEntity(
     entityType: EntityType<out HybridAquaticSharkEntity>,
     world: World,
@@ -97,7 +97,7 @@ open class HybridAquaticSharkEntity(
         val ATTEMPT_ATTACK: TrackedData<Boolean> =
             DataTracker.registerData(HybridAquaticSharkEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
 
-        val ANGER_TIME_RANGE: UniformIntProvider = TimeHelper.betweenSeconds(15, 60)
+        val ANGER_TIME_RANGE: UniformIntProvider = TimeHelper.betweenSeconds(10, 30)
 
         val FLOP_ANIMATION: RawAnimation  = RawAnimation.begin().then("flop", Animation.LoopType.LOOP)
         val SWIM_ANIMATION: RawAnimation  = RawAnimation.begin().then("swim", Animation.LoopType.LOOP)

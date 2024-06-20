@@ -11,6 +11,7 @@ import net.minecraft.entity.ai.goal.LookAroundGoal
 import net.minecraft.entity.ai.goal.MoveIntoWaterGoal
 import net.minecraft.entity.ai.goal.WanderAroundGoal
 import net.minecraft.entity.ai.pathing.EntityNavigation
+import net.minecraft.entity.ai.pathing.SpiderNavigation
 import net.minecraft.entity.damage.DamageSource
 import net.minecraft.entity.data.DataTracker
 import net.minecraft.entity.data.TrackedData
@@ -57,6 +58,9 @@ open class HybridAquaticCritterEntity(
 
     private fun isClimbingWall(): Boolean {
         return ((dataTracker.get(CRITTER_FLAGS) as Byte).toInt() and 1) != 0
+    }
+    override fun createNavigation(world: World): EntityNavigation {
+        return SpiderNavigation(this, world)
     }
 
     override fun tick() {
