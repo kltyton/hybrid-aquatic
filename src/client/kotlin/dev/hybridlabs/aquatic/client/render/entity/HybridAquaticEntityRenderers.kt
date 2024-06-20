@@ -47,6 +47,7 @@ object HybridAquaticEntityRenderers {
     val DISCUS = EntityRendererRegistry.register(HybridAquaticEntityTypes.DISCUS, ::DiscusEntityRenderer)
     val SURGEONFISH = EntityRendererRegistry.register(HybridAquaticEntityTypes.SURGEONFISH, ::SurgeonfishEntityRenderer)
     val STINGRAY = EntityRendererRegistry.register(HybridAquaticEntityTypes.STINGRAY, ::StingrayEntityRenderer)
+    val MANTA_RAY = EntityRendererRegistry.register(HybridAquaticEntityTypes.MANTA_RAY, ::MantaRayEntityRenderer)
 
     //endregion
 

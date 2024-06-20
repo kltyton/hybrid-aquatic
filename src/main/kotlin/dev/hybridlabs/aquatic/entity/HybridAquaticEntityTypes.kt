@@ -9,6 +9,7 @@ import dev.hybridlabs.aquatic.entity.critter.StarfishEntity
 import dev.hybridlabs.aquatic.entity.crustacean.*
 import dev.hybridlabs.aquatic.entity.fish.*
 import dev.hybridlabs.aquatic.entity.fish.deepsea.*
+import dev.hybridlabs.aquatic.entity.fish.ray.MantaRayEntity
 import dev.hybridlabs.aquatic.entity.fish.ray.StingrayEntity
 import dev.hybridlabs.aquatic.entity.jellyfish.*
 import dev.hybridlabs.aquatic.entity.miniboss.KarkinosEntity
@@ -50,6 +51,13 @@ object HybridAquaticEntityTypes {
         ::StingrayEntity,
         EntityDimensions.fixed(0.75f, 0.2f),
         StingrayEntity.createMobAttributes()
+    )
+
+    val MANTA_RAY = registerFish(
+        "manta_ray",
+        ::MantaRayEntity,
+        EntityDimensions.fixed(1.0f, 0.3f),
+        MantaRayEntity.createMobAttributes()
     )
 
     val SURGEONFISH = registerFish(

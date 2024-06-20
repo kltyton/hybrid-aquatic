@@ -25,7 +25,10 @@ object HybridAquaticBiomeTags {
     val SURGEONFISH_SPAWN_BIOMES = create("surgeonfish_spawn_biomes")
     val COWFISH_SPAWN_BIOMES = create("cowfish_spawn_biomes")
     val SEAHORSE_SPAWN_BIOMES = create("seahorse_spawn_biomes")
+
     val STINGRAY_SPAWN_BIOMES = create("stingray_spawn_biomes")
+    val MANTA_RAY_SPAWN_BIOMES = create("manta_ray_spawn_biomes")
+
     val LIONFISH_SPAWN_BIOMES = create("lionfish_spawn_biomes")
     val MOON_JELLYFISH_SPAWN_BIOMES = create("moon_jellyfish_spawn_biomes")
     val FRIED_EGG_JELLYFISH_SPAWN_BIOMES = create("fried_egg_jellyfish_spawn_biomes")
@@ -111,7 +114,6 @@ object HybridAquaticBiomeTags {
     val FLOATING_SARGASSUM_SPAWN_BIOMES = create("floating_sargassum_spawn_biomes")
     val RED_ALGAE_SPAWN_BIOMES = create("red_algae_spawn_biomes")
     val RED_ALGAE_MEADOW_SPAWN_BIOMES = create("red_algae_meadow_spawn_biomes")
-    val GLOWING_PLANKTON_SPAWN_BIOMES = create("glowing_plankton_spawn_biomes")
     val DENSE_KELP_WARM_SPAWN_BIOMES = create("dense_kelp_warm_spawn_biomes")
     val DENSE_KELP_COLD_SPAWN_BIOMES = create("dense_kelp_cold_spawn_biomes")
     val THERMAL_VENT_SPAWN_BIOMES = create("thermal_vent_spawn_biomes")

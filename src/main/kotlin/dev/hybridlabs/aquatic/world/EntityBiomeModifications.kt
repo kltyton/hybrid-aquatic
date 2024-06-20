@@ -19,6 +19,7 @@ object EntityBiomeModifications {
         // fish
         addFish(HybridAquaticEntityTypes.BETTA, HybridAquaticBiomeTags.BETTA_SPAWN_BIOMES, 1, 1, 1)
         addFish(HybridAquaticEntityTypes.STINGRAY, HybridAquaticBiomeTags.STINGRAY_SPAWN_BIOMES, 3, 1, 2)
+        addFish(HybridAquaticEntityTypes.MANTA_RAY, HybridAquaticBiomeTags.MANTA_RAY_SPAWN_BIOMES, 3, 1, 1)
         addFish(HybridAquaticEntityTypes.SURGEONFISH, HybridAquaticBiomeTags.SURGEONFISH_SPAWN_BIOMES, 5, 1, 3)
         addFish(HybridAquaticEntityTypes.CLOWNFISH, HybridAquaticBiomeTags.CLOWNFISH_SPAWN_BIOMES, 5, 1, 2)
         addFish(HybridAquaticEntityTypes.COWFISH, HybridAquaticBiomeTags.COWFISH_SPAWN_BIOMES, 3, 1, 1)

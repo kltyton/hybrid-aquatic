@@ -6,7 +6,10 @@ import dev.hybridlabs.aquatic.tag.HybridAquaticEntityTags
 import net.minecraft.block.Blocks
 import net.minecraft.entity.*
 import net.minecraft.entity.ai.control.MoveControl
-import net.minecraft.entity.ai.goal.*
+import net.minecraft.entity.ai.goal.ActiveTargetGoal
+import net.minecraft.entity.ai.goal.EscapeDangerGoal
+import net.minecraft.entity.ai.goal.MeleeAttackGoal
+import net.minecraft.entity.ai.goal.SwimAroundGoal
 import net.minecraft.entity.ai.pathing.EntityNavigation
 import net.minecraft.entity.ai.pathing.SwimNavigation
 import net.minecraft.entity.attribute.EntityAttributes
@@ -15,7 +18,6 @@ import net.minecraft.entity.data.DataTracker
 import net.minecraft.entity.data.TrackedData
 import net.minecraft.entity.data.TrackedDataHandlerRegistry
 import net.minecraft.entity.mob.WaterCreatureEntity
-import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.particle.ParticleTypes
 import net.minecraft.registry.tag.FluidTags
@@ -59,8 +61,6 @@ open class HybridAquaticFishEntity(
         goalSelector.add(3, SwimToRandomPlaceGoal(this))
         goalSelector.add(3, SwimAroundGoal(this, 0.50, 6))
         goalSelector.add(1, EscapeDangerGoal(this, 1.25))
-        goalSelector.add(1, FleeEntityGoal(this, LivingEntity::class.java, 8.0f, 1.2, 1.0) { !fromFishingNet && it.type.isIn(predator) })
-        goalSelector.add(1, FleeEntityGoal(this, PlayerEntity::class.java, 5.0f, 1.0, 1.0) { !fromFishingNet })
         goalSelector.add(2, AttackGoal(this))
         targetSelector.add(2, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) { hunger <= 300 && it.type.isIn(prey) })
     }
@@ -105,16 +105,16 @@ open class HybridAquaticFishEntity(
                 } else {
                     // Default to a priority based system
                     val validityFilter = variants.filter { validKeys.contains(it.key) }
-                    if (validityFilter.isNotEmpty()) {
+                    variantKey = if (validityFilter.isNotEmpty()) {
                         val maxPriority = validityFilter.values.maxOf { it.priority }
                         val filteredMap = validityFilter.filter { it.value.priority == maxPriority }
                         if (filteredMap.isNotEmpty()) {
-                            variantKey = filteredMap.keys.random()
+                            filteredMap.keys.random()
                         } else {
-                            variantKey = validKeys.random()
+                            validKeys.random()
                         }
                     } else {
-                        variantKey = validKeys.random()
+                        validKeys.random()
                     }
                 }
             }
