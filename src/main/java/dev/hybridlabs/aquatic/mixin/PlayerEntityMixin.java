@@ -12,7 +12,7 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.fluid.Fluid;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.tag.FluidTags;
 import org.spongepowered.asm.mixin.Mixin;
@@ -99,17 +99,18 @@ public abstract class PlayerEntityMixin implements CustomPlayerEntityData {
     @Unique
     private void updateDivingHelmet() {
         var player = (PlayerEntity)(Object)this;
-        var itemStack = player.getEquippedStack(EquipmentSlot.HEAD);
-        if (itemStack.isOf(HybridAquaticItems.INSTANCE.getDIVING_HELMET()) && player.isSubmergedIn(FluidTags.WATER)) {
-            player.addStatusEffect(new StatusEffectInstance(HybridAquaticStatusEffects.INSTANCE.getCLARITY(), 40, 0, false, false, false));
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.WATER_BREATHING, 40, 0, false, false, false));
+        ItemStack itemStack = player.getEquippedStack(EquipmentSlot.HEAD);
+        if (itemStack.isOf(HybridAquaticItems.INSTANCE.getDIVING_HELMET()) && !player.isSubmergedIn(FluidTags.WATER)) {
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.WATER_BREATHING, 600, 0, false, false, true));
+            player.addStatusEffect(new StatusEffectInstance(HybridAquaticStatusEffects.INSTANCE.getCLARITY(), 600, 0, false, false, true));
         }
+
     }
 
     @Unique
     private void updateDivingBoots() {
         var player = (PlayerEntity)(Object)this;
-        var itemStack = player.getEquippedStack(EquipmentSlot.FEET);
+        ItemStack itemStack = player.getEquippedStack(EquipmentSlot.FEET);
         isWearingDivingBoots = itemStack.isOf(HybridAquaticItems.INSTANCE.getDIVING_BOOTS());
         if (isWearingDivingBoots && player.isSubmergedIn(FluidTags.WATER)) {
             player.setStepHeight(1.0f);
@@ -123,7 +124,7 @@ public abstract class PlayerEntityMixin implements CustomPlayerEntityData {
         var player = (PlayerEntity)(Object)this;
         var itemStack = player.getEquippedStack(EquipmentSlot.CHEST);
         if (itemStack.isOf(HybridAquaticItems.INSTANCE.getTURTLE_CHESTPLATE())) {
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 200, 1, false, false, true));
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 200, 0, false, false, true));
             player.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 200, 0, false, false, true));
         }
     }
