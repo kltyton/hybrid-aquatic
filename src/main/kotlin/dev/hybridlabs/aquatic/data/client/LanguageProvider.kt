@@ -281,7 +281,7 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             HybridAquaticEntityTypes.GLOWING_SUCKER_OCTOPUS to "Glowing Sucker Octopus",
             HybridAquaticEntityTypes.DISCUS to "Discus",
             HybridAquaticEntityTypes.FIREFLY_SQUID to "Firefly Squid",
-            HybridAquaticEntityTypes.BLUE_SPOTTED_STINGRAY to "Blue Spotted Stingray",
+            HybridAquaticEntityTypes.STINGRAY to "Blue Spotted Stingray",
             HybridAquaticEntityTypes.SURGEONFISH to "Surgeonfish",
             HybridAquaticEntityTypes.BULL_SHARK to "Bull Shark",
             HybridAquaticEntityTypes.BASKING_SHARK to "Basking Shark",

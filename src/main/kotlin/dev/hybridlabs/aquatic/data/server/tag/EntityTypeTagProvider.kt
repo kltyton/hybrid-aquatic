@@ -46,7 +46,7 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
                 HybridAquaticEntityTypes.SHRIMP,
                 HybridAquaticEntityTypes.CRAYFISH,
                 HybridAquaticEntityTypes.LOBSTER,
-                HybridAquaticEntityTypes.BLUE_SPOTTED_STINGRAY,
+                HybridAquaticEntityTypes.STINGRAY,
                 HybridAquaticEntityTypes.VAMPIRE_SQUID,
                 HybridAquaticEntityTypes.GLOWING_SUCKER_OCTOPUS,
                 HybridAquaticEntityTypes.DRAGONFISH,
@@ -121,7 +121,7 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
             .addTag(HybridAquaticEntityTags.CRAB)
             .addTag(HybridAquaticEntityTags.SHRIMP)
             .add(
-                HybridAquaticEntityTypes.BLUE_SPOTTED_STINGRAY,
+                HybridAquaticEntityTypes.STINGRAY,
                 HybridAquaticEntityTypes.FIREFLY_SQUID,
                 HybridAquaticEntityTypes.CUTTLEFISH,
                 EntityType.TROPICAL_FISH,
@@ -401,7 +401,7 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
                 HybridAquaticEntityTypes.CUTTLEFISH,
                 HybridAquaticEntityTypes.FIREFLY_SQUID,
                 HybridAquaticEntityTypes.TRIGGERFISH,
-                HybridAquaticEntityTypes.BLUE_SPOTTED_STINGRAY,
+                HybridAquaticEntityTypes.STINGRAY,
                 HybridAquaticEntityTypes.HAMMERHEAD_SHARK,
             )
 
@@ -444,7 +444,7 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
                 HybridAquaticEntityTypes.DISCUS,
                 HybridAquaticEntityTypes.FIREFLY_SQUID,
                 HybridAquaticEntityTypes.DRAGONFISH,
-                HybridAquaticEntityTypes.BLUE_SPOTTED_STINGRAY,
+                HybridAquaticEntityTypes.STINGRAY,
                 HybridAquaticEntityTypes.SURGEONFISH
             )
 

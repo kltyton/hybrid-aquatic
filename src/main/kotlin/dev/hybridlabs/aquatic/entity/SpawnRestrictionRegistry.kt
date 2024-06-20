@@ -29,7 +29,7 @@ object SpawnRestrictionRegistry {
             HybridAquaticEntityTypes.COWFISH,
             HybridAquaticEntityTypes.SEAHORSE,
             HybridAquaticEntityTypes.SUNFISH,
-            HybridAquaticEntityTypes.BLUE_SPOTTED_STINGRAY,
+            HybridAquaticEntityTypes.STINGRAY,
             HybridAquaticEntityTypes.LIONFISH,
             HybridAquaticEntityTypes.TOADFISH,
             HybridAquaticEntityTypes.OARFISH,

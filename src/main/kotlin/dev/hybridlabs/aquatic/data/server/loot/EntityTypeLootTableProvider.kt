@@ -530,7 +530,7 @@ class EntityTypeLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTa
             )
         }
 
-        export(exporter, HybridAquaticEntityTypes.BLUE_SPOTTED_STINGRAY) {
+        export(exporter, HybridAquaticEntityTypes.STINGRAY) {
             pool(
                 LootPool.builder()
                     .with(

@@ -52,7 +52,7 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             BiomeKeys.SPARSE_JUNGLE,
         )
 
-        getOrCreateTagBuilder(HybridAquaticBiomeTags.BLUE_SPOTTED_STINGRAY_SPAWN_BIOMES).add(
+        getOrCreateTagBuilder(HybridAquaticBiomeTags.STINGRAY_SPAWN_BIOMES).add(
             BiomeKeys.WARM_OCEAN,
             BiomeKeys.LUKEWARM_OCEAN,
             BiomeKeys.BEACH,

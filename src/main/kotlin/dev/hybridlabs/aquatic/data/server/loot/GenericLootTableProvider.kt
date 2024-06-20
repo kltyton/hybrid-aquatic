@@ -685,6 +685,15 @@ class GenericLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
         )
 
         exporter.accept(
+            HybridAquaticLootTables.BLUE_SPOTTED_STINGRAY,
+            LootTable.builder()
+                .pool(
+                    LootPool.builder()
+                        .with(ItemEntry.builder(HybridAquaticItems.BLUE_SPOTTED_STINGRAY))
+                )
+        )
+
+        exporter.accept(
             HybridAquaticLootTables.UNICORNFISH,
             LootTable.builder()
                 .pool(
