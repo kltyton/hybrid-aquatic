@@ -15,25 +15,14 @@ class StayInWaterGoal(private val mob: MobEntity) : Goal() {
     override fun tick() {
         val blockPos = mob.blockPos
         val blockAbove = mob.entityWorld.getBlockState(blockPos.up(1))
-        val blockBelow = mob.entityWorld.getBlockState(blockPos.down(1))
 
         if (!blockAbove.isOf(Blocks.WATER)) {
             setDownwardVelocity()
-        }
-
-        if (blockBelow.isSolid) {
-            setUpwardVelocity()
         }
     }
 
     private fun setDownwardVelocity() {
         val downwardVelocity = -0.25
-        val currentVelocity = mob.velocity
-        mob.velocity = Vec3d(currentVelocity.x, downwardVelocity, currentVelocity.z)
-    }
-
-    private fun setUpwardVelocity() {
-        val downwardVelocity = 0.25
         val currentVelocity = mob.velocity
         mob.velocity = Vec3d(currentVelocity.x, downwardVelocity, currentVelocity.z)
     }
