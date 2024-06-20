@@ -3,17 +3,17 @@ package dev.hybridlabs.aquatic.utils;
 import net.minecraft.entity.SpawnGroup;
 
 public enum HybridAquaticSpawnGroup {
-    FISH("ha_fish", 3, true, false, 64),
+    FISH("ha_fish", 5, true, false, 64),
     FISH_UNDERGROUND("ha_fish_underground", 3, true, false, 64),
-    CEPHALOPOD("ha_squid", 3, true, false, 64),
-    CEPHALOPOD_UNDERGROUND("ha_squid_underground", 3, true, false, 64),
-    JELLY("ha_jelly", 3, true, false, 64),
+    CEPHALOPOD("ha_cephalopod", 5, true, true, 64),
+    CEPHALOPOD_UNDERGROUND("ha_cephalopod_underground", 3, true, false, 64),
+    JELLY("ha_jelly", 5, true, false, 64),
     JELLY_UNDERGROUND("ha_jelly_underground", 3, true, false, 64),
     SHARK("ha_shark", 3, true, true, 64),
-    CRUSTACEAN("crustacean", 3, true, false, 64),
+    CRUSTACEAN("crustacean", 5, true, false, 64),
     CRUSTACEAN_UNDERGROUND("crustacean_underground", 3, true, false, 64),
-    CRITTER("ha_critter", 3, true, false, 64),
-    MINIBOSS("ha_miniboss", 3, false, true, 640);
+    CRITTER("ha_critter", 5, true, false, 64),
+    MINIBOSS("ha_miniboss", 3, false, true, 64);
 
     public SpawnGroup spawnGroup;
     public final String name;
