@@ -1,5 +1,6 @@
 package dev.hybridlabs.aquatic.client.model.entity.fish
 
 import dev.hybridlabs.aquatic.entity.fish.HybridAquaticFishEntity
+import dev.hybridlabs.aquatic.entity.fish.ray.HybridAquaticRayEntity
 
-class MantaRayEntityModel : HybridAquaticFishEntityModel<HybridAquaticFishEntity>("manta_ray")
+class MantaRayEntityModel : HybridAquaticRayEntityModel<HybridAquaticRayEntity>("manta_ray")

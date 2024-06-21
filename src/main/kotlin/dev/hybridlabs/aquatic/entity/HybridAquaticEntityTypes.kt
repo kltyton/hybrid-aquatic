@@ -46,14 +46,14 @@ object HybridAquaticEntityTypes {
         BettaEntity.createMobAttributes()
     )
 
-    val STINGRAY = registerFish(
+    val STINGRAY = registerRay(
         "stingray",
         ::StingrayEntity,
         EntityDimensions.fixed(0.75f, 0.2f),
         StingrayEntity.createMobAttributes()
     )
 
-    val MANTA_RAY = registerFish(
+    val MANTA_RAY = registerRay(
         "manta_ray",
         ::MantaRayEntity,
         EntityDimensions.fixed(1.0f, 0.3f),
@@ -610,6 +610,15 @@ object HybridAquaticEntityTypes {
     }
 
     private fun <T : LivingEntity> registerFish(
+        id: String,
+        entityFactory: EntityFactory<T>,
+        dimensions: EntityDimensions,
+        attributeContainer: DefaultAttributeContainer.Builder
+    ): EntityType<T> {
+        return registerCustomSpawnGroup(id, entityFactory, dimensions, attributeContainer, HybridAquaticSpawnGroup.FISH)
+    }
+
+    private fun <T : LivingEntity> registerRay(
         id: String,
         entityFactory: EntityFactory<T>,
         dimensions: EntityDimensions,

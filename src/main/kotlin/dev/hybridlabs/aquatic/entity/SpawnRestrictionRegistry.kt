@@ -4,6 +4,7 @@ import dev.hybridlabs.aquatic.entity.cephalopod.HybridAquaticCephalopodEntity
 import dev.hybridlabs.aquatic.entity.critter.HybridAquaticCritterEntity
 import dev.hybridlabs.aquatic.entity.crustacean.HybridAquaticCrustaceanEntity
 import dev.hybridlabs.aquatic.entity.fish.HybridAquaticFishEntity
+import dev.hybridlabs.aquatic.entity.fish.ray.HybridAquaticRayEntity
 import dev.hybridlabs.aquatic.entity.jellyfish.HybridAquaticJellyfishEntity
 import dev.hybridlabs.aquatic.entity.miniboss.HybridAquaticMinibossEntity
 import dev.hybridlabs.aquatic.entity.shark.HybridAquaticSharkEntity
@@ -29,8 +30,6 @@ object SpawnRestrictionRegistry {
             HybridAquaticEntityTypes.COWFISH,
             HybridAquaticEntityTypes.SEAHORSE,
             HybridAquaticEntityTypes.SUNFISH,
-            HybridAquaticEntityTypes.STINGRAY,
-            HybridAquaticEntityTypes.MANTA_RAY,
             HybridAquaticEntityTypes.LIONFISH,
             HybridAquaticEntityTypes.TOADFISH,
             HybridAquaticEntityTypes.OARFISH,
@@ -60,6 +59,12 @@ object SpawnRestrictionRegistry {
             HybridAquaticEntityTypes.FRILLED_SHARK,
             HybridAquaticEntityTypes.RATFISH,
             ).forEach { registerFishUnderground(it) }
+
+        // rays
+        setOf(
+            HybridAquaticEntityTypes.STINGRAY,
+            HybridAquaticEntityTypes.MANTA_RAY,
+        ).forEach { registerRay(it) }
 
         // squids
         setOf(
@@ -145,6 +150,10 @@ object SpawnRestrictionRegistry {
 
     private fun <T : WaterCreatureEntity> registerFishUnderground(entityType: EntityType<T>) {
         registerWaterCreature(entityType, HybridAquaticFishEntity::canUndergroundSpawn)
+    }
+
+    private fun <T : WaterCreatureEntity> registerRay(entityType: EntityType<T>) {
+        registerWaterCreature(entityType, HybridAquaticRayEntity::canSpawn)
     }
 
     private fun <T : WaterCreatureEntity> registerCephalopod(entityType: EntityType<T>) {
