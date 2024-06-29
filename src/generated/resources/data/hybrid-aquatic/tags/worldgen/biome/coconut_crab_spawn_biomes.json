@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "minecraft:beach",
-    "hybrid-aquatic:tropical_beach"
+    "minecraft:beach"
   ]
 }

@@ -109,14 +109,7 @@ object HybridAquaticBiomeTags {
     val ANEMONE_SPAWN_BIOMES = create("anemone_spawn_biomes")
     val TUBE_SPONGE_SPAWN_BIOMES = create("tube_sponge_spawn_biomes")
     val MESSAGE_IN_A_BOTTLE_SPAWN_BIOMES = create("message_in_a_bottle_spawn_biomes")
-    val SARGASSUM_SPAWN_BIOMES = create("sargassum_spawn_biomes")
-    val DENSE_SARGASSUM_SPAWN_BIOMES = create("dense_sargassum_spawn_biomes")
-    val FLOATING_SARGASSUM_SPAWN_BIOMES = create("floating_sargassum_spawn_biomes")
-    val RED_ALGAE_SPAWN_BIOMES = create("red_algae_spawn_biomes")
-    val RED_ALGAE_MEADOW_SPAWN_BIOMES = create("red_algae_meadow_spawn_biomes")
-    val DENSE_KELP_WARM_SPAWN_BIOMES = create("dense_kelp_warm_spawn_biomes")
-    val DENSE_KELP_COLD_SPAWN_BIOMES = create("dense_kelp_cold_spawn_biomes")
-    val THERMAL_VENT_SPAWN_BIOMES = create("thermal_vent_spawn_biomes")
+    val HYDROTHERMAL_VENT_SPAWN_BIOMES = create("thermal_vent_spawn_biomes")
     val GIANT_CLAM_SPAWN_BIOMES = create("giant_clam_spawn_biomes")
 
     private fun create(id: String): TagKey<Biome> {

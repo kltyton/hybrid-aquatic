@@ -20,7 +20,6 @@ object HybridAquaticItemTags {
     val IRON_TOOLS = createConventional("iron_tools")
 
     val DRIFTWOOD_LOG_WOOD = create("driftwood_log_wood")
-    val COCONUT_PALM_LOG_WOOD = create("coconut_palm_log_wood")
 
     val RAW_FISHES = createConventional("foods/raw_fishes")
     val COOKED_FISHES = createConventional("foods/cooked_fishes")

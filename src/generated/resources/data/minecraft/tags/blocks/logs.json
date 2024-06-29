@@ -1,8 +1,6 @@
 {
   "replace": false,
   "values": [
-    "hybrid-aquatic:coconut_palm_log",
-    "hybrid-aquatic:stripped_coconut_palm_log",
     "hybrid-aquatic:driftwood_log",
     "hybrid-aquatic:stripped_driftwood_log"
   ]

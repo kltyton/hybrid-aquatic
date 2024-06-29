@@ -22,16 +22,6 @@ class BlockTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             .add(Blocks.WATER)
 
         getOrCreateTagBuilder(HybridAquaticBlockTags.TUBE_SPONGE_GENERATE_IN)
-            .add(Blocks.WATER)
-
-        getOrCreateTagBuilder(HybridAquaticBlockTags.FLOATING_SARGASSUM_GENERATE_IN)
-            .add(Blocks.WATER)
-
-        getOrCreateTagBuilder(HybridAquaticBlockTags.RED_ALGAE_GENERATE_IN)
-            .add(Blocks.WATER)
-
-        getOrCreateTagBuilder(HybridAquaticBlockTags.GLOWING_PLANKTON_GENERATE_IN)
-            .add(Blocks.WATER)
 
         getOrCreateTagBuilder(HybridAquaticBlockTags.MESSAGE_IN_A_BOTTLE_SPAWNS_IN)
             .add(Blocks.WATER)
@@ -61,20 +51,15 @@ class BlockTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
 
         getOrCreateTagBuilder(BlockTags.WOODEN_FENCES)
             .add(HybridAquaticBlocks.DRIFTWOOD_FENCE)
-            .add(HybridAquaticBlocks.COCONUT_PALM_FENCE)
 
         getOrCreateTagBuilder(BlockTags.FENCE_GATES)
             .add(HybridAquaticBlocks.DRIFTWOOD_FENCE_GATE)
-            .add(HybridAquaticBlocks.COCONUT_PALM_FENCE_GATE)
 
         getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN)
             .add(HybridAquaticBlocks.DRIFTWOOD_LOG)
             .add(HybridAquaticBlocks.DRIFTWOOD_WOOD)
             .add(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_LOG)
             .add(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_WOOD)
-            .add(HybridAquaticBlocks.COCONUT_PALM_LOG)
-            .add(HybridAquaticBlocks.COCONUT_PALM_WOOD)
-            .add(HybridAquaticBlocks.STRIPPED_COCONUT_PALM_LOG)
             .add(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_WOOD)
 
         getOrCreateTagBuilder(BlockTags.CORAL_BLOCKS)
@@ -99,17 +84,9 @@ class BlockTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             .add(HybridAquaticBlocks.THORN_CORAL_BLOCK)
             .add(HybridAquaticBlocks.DEAD_THORN_CORAL_BLOCK)
 
-        getOrCreateTagBuilder(BlockTags.SAPLINGS)
-            .add(HybridAquaticBlocks.COCONUT_PALM_SAPLING)
-
         getOrCreateTagBuilder(BlockTags.LOGS)
-            .add(HybridAquaticBlocks.COCONUT_PALM_LOG)
-            .add(HybridAquaticBlocks.STRIPPED_COCONUT_PALM_LOG)
             .add(HybridAquaticBlocks.DRIFTWOOD_LOG)
             .add(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_LOG)
-
-        getOrCreateTagBuilder(BlockTags.LEAVES)
-            .add(HybridAquaticBlocks.COCONUT_PALM_LEAVES)
 
 
         // plushies

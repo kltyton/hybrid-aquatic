@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "hybrid-aquatic:block/coconut_palm_planks",
-    "side": "hybrid-aquatic:block/coconut_palm_planks",
-    "top": "hybrid-aquatic:block/coconut_palm_planks"
-  }
-}

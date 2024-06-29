@@ -8,11 +8,7 @@ import dev.hybridlabs.aquatic.item.HybridAquaticItems
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider
 import net.minecraft.block.Blocks
-import net.minecraft.data.client.BlockStateModelGenerator
-import net.minecraft.data.client.ItemModelGenerator
-import net.minecraft.data.client.ModelIds
-import net.minecraft.data.client.Models
-import net.minecraft.data.client.TextureMap
+import net.minecraft.data.client.*
 import net.minecraft.item.Items
 import net.minecraft.item.SpawnEggItem
 import net.minecraft.registry.Registries
@@ -69,7 +65,6 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
             HybridAquaticBlocks.ACACIA_CRATE,
             HybridAquaticBlocks.MANGROVE_CRATE,
             HybridAquaticBlocks.CHERRY_CRATE,
-            HybridAquaticBlocks.COCONUT_PALM_LEAVES
         ).forEach(generator::registerSimpleCubeAll)
 
         // wood
@@ -90,27 +85,7 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
         driftwoodPool.fence(HybridAquaticBlocks.DRIFTWOOD_FENCE)
         driftwoodPool.fenceGate(HybridAquaticBlocks.DRIFTWOOD_FENCE_GATE)
 
-        val coconutPalmPool = registerCubeAllModelTexturePool(HybridAquaticBlocks.COCONUT_PALM_PLANKS)
-
-        registerLog(HybridAquaticBlocks.COCONUT_PALM_LOG).log(HybridAquaticBlocks.COCONUT_PALM_LOG)
-            .wood(HybridAquaticBlocks.COCONUT_PALM_WOOD)
-        registerLog(HybridAquaticBlocks.STRIPPED_COCONUT_PALM_LOG).log(HybridAquaticBlocks.STRIPPED_COCONUT_PALM_LOG)
-            .wood(HybridAquaticBlocks.STRIPPED_COCONUT_PALM_WOOD)
-
-        coconutPalmPool.stairs(HybridAquaticBlocks.COCONUT_PALM_STAIRS)
-        coconutPalmPool.slab(HybridAquaticBlocks.COCONUT_PALM_SLAB)
-        coconutPalmPool.button(HybridAquaticBlocks.COCONUT_PALM_BUTTON)
-        coconutPalmPool.pressurePlate(HybridAquaticBlocks.COCONUT_PALM_PRESSURE_PLATE)
-        coconutPalmPool.fence(HybridAquaticBlocks.COCONUT_PALM_FENCE)
-        coconutPalmPool.fenceGate(HybridAquaticBlocks.COCONUT_PALM_FENCE_GATE)
-
         registerTorch(HybridAquaticBlocks.GLOWSTICK, HybridAquaticBlocks.WALL_GLOWSTICK)
-        registerTintableCross(HybridAquaticBlocks.COCONUT_PALM_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED)
-
-        registerTintableCross(HybridAquaticBlocks.TUBE_WORMS, BlockStateModelGenerator.TintType.NOT_TINTED)
-
-        registerTintableCross(HybridAquaticBlocks.SARGASSUM_PLANT, BlockStateModelGenerator.TintType.NOT_TINTED)
-        registerTintableCross(HybridAquaticBlocks.SARGASSUM, BlockStateModelGenerator.TintType.NOT_TINTED)
 
         registerCoral(HybridAquaticBlocks.LOPHELIA_CORAL, HybridAquaticBlocks.DEAD_LOPHELIA_CORAL, HybridAquaticBlocks.LOPHELIA_CORAL_BLOCK, HybridAquaticBlocks.DEAD_LOPHELIA_CORAL_BLOCK, HybridAquaticBlocks.LOPHELIA_CORAL_FAN, HybridAquaticBlocks.DEAD_LOPHELIA_CORAL_FAN, HybridAquaticBlocks.LOPHELIA_CORAL_WALL_FAN, HybridAquaticBlocks.DEAD_LOPHELIA_CORAL_WALL_FAN)
         registerCoral(HybridAquaticBlocks.THORN_CORAL, HybridAquaticBlocks.DEAD_THORN_CORAL, HybridAquaticBlocks.THORN_CORAL_BLOCK, HybridAquaticBlocks.DEAD_THORN_CORAL_BLOCK, HybridAquaticBlocks.THORN_CORAL_FAN, HybridAquaticBlocks.DEAD_THORN_CORAL_FAN, HybridAquaticBlocks.THORN_CORAL_WALL_FAN, HybridAquaticBlocks.DEAD_THORN_CORAL_WALL_FAN)
@@ -176,8 +151,6 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
             HybridAquaticItems.TRIGGERFISH,
             HybridAquaticItems.TUNA,
             HybridAquaticItems.UNICORNFISH,
-            HybridAquaticItems.COCONUT,
-            HybridAquaticItems.COCONUT_HALF,
             HybridAquaticItems.CUTTLEBONE,
 
             HybridAquaticItems.BARBED_HOOK,

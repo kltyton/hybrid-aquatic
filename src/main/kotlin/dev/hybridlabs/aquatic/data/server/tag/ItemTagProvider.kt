@@ -29,29 +29,18 @@ class ItemTagProvider(output: FabricDataOutput, registriesFuture: CompletableFut
 
         getOrCreateTagBuilder(ItemTags.PLANKS)
             .add(HybridAquaticBlocks.DRIFTWOOD_PLANKS.asItem())
-            .add(HybridAquaticBlocks.COCONUT_PALM_PLANKS.asItem())
 
         getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN)
             .add(HybridAquaticBlocks.DRIFTWOOD_LOG.asItem())
             .add(HybridAquaticBlocks.DRIFTWOOD_WOOD.asItem())
             .add(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_LOG.asItem())
             .add(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_WOOD.asItem())
-            .add(HybridAquaticBlocks.COCONUT_PALM_LOG.asItem())
-            .add(HybridAquaticBlocks.COCONUT_PALM_WOOD.asItem())
-            .add(HybridAquaticBlocks.STRIPPED_COCONUT_PALM_LOG.asItem())
-            .add(HybridAquaticBlocks.STRIPPED_COCONUT_PALM_WOOD.asItem())
 
         getOrCreateTagBuilder(HybridAquaticItemTags.DRIFTWOOD_LOG_WOOD)
             .add(HybridAquaticItems.DRIFTWOOD_LOG)
             .add(HybridAquaticItems.STRIPPED_DRIFTWOOD_LOG)
             .add(HybridAquaticItems.DRIFTWOOD_WOOD)
             .add(HybridAquaticItems.STRIPPED_DRIFTWOOD_WOOD)
-
-        getOrCreateTagBuilder(HybridAquaticItemTags.COCONUT_PALM_LOG_WOOD)
-            .add(HybridAquaticItems.COCONUT_PALM_LOG)
-            .add(HybridAquaticItems.STRIPPED_COCONUT_PALM_LOG)
-            .add(HybridAquaticItems.COCONUT_PALM_WOOD)
-            .add(HybridAquaticItems.STRIPPED_COCONUT_PALM_WOOD)
 
         //endregion
 
@@ -219,12 +208,6 @@ class ItemTagProvider(output: FabricDataOutput, registriesFuture: CompletableFut
             HybridAquaticItems.TIGER_BARB,
         ).forEach { item ->
             getOrCreateTagBuilder(ItemTags.FISHES).add(item)
-        }
-
-        listOf(
-            HybridAquaticItems.COCONUT_PALM_SAPLING
-        ).forEach { item ->
-            getOrCreateTagBuilder(ItemTags.SAPLINGS).add(item)
         }
 
         // plushies

@@ -35,51 +35,9 @@ object FeatureBiomeModifications {
         )
 
         BiomeModifications.addFeature(
-            BiomeSelectors.tag(HybridAquaticBiomeTags.SARGASSUM_SPAWN_BIOMES),
+            BiomeSelectors.tag(HybridAquaticBiomeTags.HYDROTHERMAL_VENT_SPAWN_BIOMES),
             GenerationStep.Feature.VEGETAL_DECORATION,
-            HybridAquaticPlacedFeatures.SARGASSUM
-        )
-
-        BiomeModifications.addFeature(
-            BiomeSelectors.tag(HybridAquaticBiomeTags.DENSE_SARGASSUM_SPAWN_BIOMES),
-            GenerationStep.Feature.VEGETAL_DECORATION,
-            HybridAquaticPlacedFeatures.DENSE_SARGASSUM
-        )
-
-        BiomeModifications.addFeature(
-            BiomeSelectors.tag(HybridAquaticBiomeTags.FLOATING_SARGASSUM_SPAWN_BIOMES),
-            GenerationStep.Feature.VEGETAL_DECORATION,
-            HybridAquaticPlacedFeatures.FLOATING_SARGASSUM
-        )
-
-        BiomeModifications.addFeature(
-            BiomeSelectors.tag(HybridAquaticBiomeTags.RED_ALGAE_SPAWN_BIOMES),
-            GenerationStep.Feature.VEGETAL_DECORATION,
-            HybridAquaticPlacedFeatures.RED_ALGAE
-        )
-
-        BiomeModifications.addFeature(
-            BiomeSelectors.tag(HybridAquaticBiomeTags.RED_ALGAE_MEADOW_SPAWN_BIOMES),
-            GenerationStep.Feature.VEGETAL_DECORATION,
-            HybridAquaticPlacedFeatures.RED_ALGAE_MEADOW
-        )
-
-        BiomeModifications.addFeature(
-            BiomeSelectors.tag(HybridAquaticBiomeTags.DENSE_KELP_WARM_SPAWN_BIOMES),
-            GenerationStep.Feature.VEGETAL_DECORATION,
-            HybridAquaticPlacedFeatures.DENSE_KELP_WARM
-        )
-
-        BiomeModifications.addFeature(
-            BiomeSelectors.tag(HybridAquaticBiomeTags.DENSE_KELP_COLD_SPAWN_BIOMES),
-            GenerationStep.Feature.VEGETAL_DECORATION,
-            HybridAquaticPlacedFeatures.DENSE_KELP_COLD
-        )
-
-        BiomeModifications.addFeature(
-            BiomeSelectors.tag(HybridAquaticBiomeTags.THERMAL_VENT_SPAWN_BIOMES),
-            GenerationStep.Feature.VEGETAL_DECORATION,
-            HybridAquaticPlacedFeatures.THERMAL_VENT
+            HybridAquaticPlacedFeatures.HYDROTHERMAL_VENT
         )
     }
 }

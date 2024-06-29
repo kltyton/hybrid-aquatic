@@ -79,7 +79,6 @@ object HybridAquaticClient : ClientModInitializer {
             RenderLayer.getTranslucent(),
             HybridAquaticBlocks.ANEMONE,
             HybridAquaticBlocks.MESSAGE_IN_A_BOTTLE,
-            HybridAquaticBlocks.GLOWING_PLANKTON
         )
         registry.putBlocks(
             RenderLayer.getCutout(),
@@ -97,19 +96,8 @@ object HybridAquaticClient : ClientModInitializer {
             HybridAquaticBlocks.DEAD_THORN_CORAL_WALL_FAN,
             HybridAquaticBlocks.DRIFTWOOD_DOOR,
             HybridAquaticBlocks.DRIFTWOOD_TRAPDOOR,
-            HybridAquaticBlocks.COCONUT_PALM_LEAVES,
             HybridAquaticBlocks.GLOWSTICK,
             HybridAquaticBlocks.WALL_GLOWSTICK,
-            HybridAquaticBlocks.COCONUT_PALM_SAPLING,
-            HybridAquaticBlocks.TUBE_WORMS,
-            HybridAquaticBlocks.FLOATING_SARGASSUM,
-            HybridAquaticBlocks.SARGASSUM,
-            HybridAquaticBlocks.SARGASSUM_PLANT,
-            HybridAquaticBlocks.DENSE_KELP,
-            HybridAquaticBlocks.DENSE_KELP_PLANT,
-            HybridAquaticBlocks.SHORT_RED_ALGAE,
-            HybridAquaticBlocks.RED_ALGAE,
-            HybridAquaticBlocks.TALL_RED_ALGAE,
         )
     }
 

@@ -19,7 +19,6 @@ import dev.hybridlabs.aquatic.registry.HybridAquaticRegistryKeys
 import dev.hybridlabs.aquatic.tag.HybridAquaticBiomeTags
 import dev.hybridlabs.aquatic.utils.HybridAquaticCustomTrades.registerCustomTrades
 import dev.hybridlabs.aquatic.world.EntityBiomeModifications
-import dev.hybridlabs.aquatic.world.gen.HybridAquaticWorldGeneration
 import dev.hybridlabs.aquatic.world.gen.feature.FeatureBiomeModifications
 import dev.hybridlabs.aquatic.world.gen.feature.HybridAquaticFeatures
 import dev.hybridlabs.aquatic.world.gen.feature.HybridAquaticPlacedFeatures
@@ -47,9 +46,6 @@ object HybridAquatic : ModInitializer {
         StrippableBlockRegistry.register(HybridAquaticBlocks.DRIFTWOOD_LOG, HybridAquaticBlocks.STRIPPED_DRIFTWOOD_LOG)
         StrippableBlockRegistry.register(HybridAquaticBlocks.DRIFTWOOD_WOOD, HybridAquaticBlocks.STRIPPED_DRIFTWOOD_WOOD)
 
-        StrippableBlockRegistry.register(HybridAquaticBlocks.COCONUT_PALM_LOG, HybridAquaticBlocks.STRIPPED_COCONUT_PALM_LOG)
-        StrippableBlockRegistry.register(HybridAquaticBlocks.COCONUT_PALM_WOOD, HybridAquaticBlocks.STRIPPED_COCONUT_PALM_WOOD)
-
         FlammableBlockRegistry.getDefaultInstance().add(HybridAquaticBlocks.DRIFTWOOD_LOG, 5, 5)
         FlammableBlockRegistry.getDefaultInstance().add(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_LOG, 5, 5)
         FlammableBlockRegistry.getDefaultInstance().add(HybridAquaticBlocks.DRIFTWOOD_WOOD, 5, 5)
@@ -59,16 +55,7 @@ object HybridAquatic : ModInitializer {
         FlammableBlockRegistry.getDefaultInstance().add(HybridAquaticBlocks.DRIFTWOOD_FENCE, 5, 20)
         FlammableBlockRegistry.getDefaultInstance().add(HybridAquaticBlocks.DRIFTWOOD_FENCE_GATE, 5, 20)
 
-        FlammableBlockRegistry.getDefaultInstance().add(HybridAquaticBlocks.COCONUT_PALM_LOG, 5, 5)
-        FlammableBlockRegistry.getDefaultInstance().add(HybridAquaticBlocks.STRIPPED_COCONUT_PALM_LOG, 5, 5)
-        FlammableBlockRegistry.getDefaultInstance().add(HybridAquaticBlocks.COCONUT_PALM_WOOD, 5, 5)
         FlammableBlockRegistry.getDefaultInstance().add(HybridAquaticBlocks.STRIPPED_DRIFTWOOD_WOOD, 5, 5)
-        FlammableBlockRegistry.getDefaultInstance().add(HybridAquaticBlocks.COCONUT_PALM_PLANKS, 5, 20)
-        FlammableBlockRegistry.getDefaultInstance().add(HybridAquaticBlocks.COCONUT_PALM_SLAB, 5, 20)
-        FlammableBlockRegistry.getDefaultInstance().add(HybridAquaticBlocks.COCONUT_PALM_FENCE, 5, 20)
-        FlammableBlockRegistry.getDefaultInstance().add(HybridAquaticBlocks.COCONUT_PALM_FENCE_GATE, 5, 20)
-        FlammableBlockRegistry.getDefaultInstance().add(HybridAquaticBlocks.COCONUT_PALM_LEAVES, 5, 20)
-        FlammableBlockRegistry.getDefaultInstance().add(HybridAquaticBlocks.COCONUT_PALM_SAPLING, 5, 20)
 
         HybridAquaticBiomeTags
 
@@ -84,7 +71,6 @@ object HybridAquatic : ModInitializer {
 
         HybridAquaticFeatures
         HybridAquaticPlacedFeatures
-        HybridAquaticWorldGeneration.generateHybridAquaticWorldGen()
 
         HybridAquaticNetworking
 

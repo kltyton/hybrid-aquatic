@@ -38,7 +38,6 @@ object HybridAquaticItems {
     val SPONGE_CHUNK = register("sponge_chunk", Item(FabricItemSettings()))
     val PEARL = register("pearl", Item(FabricItemSettings()))
     val BLACK_PEARL = register("black_pearl", Item(FabricItemSettings()))
-    val COCONUT = register("coconut", Item(FabricItemSettings()))
     val CUTTLEBONE = register("cuttlebone", Item(FabricItemSettings()))
 
     val RAW_SHRIMP = register("raw_shrimp", Item(FabricItemSettings()))
@@ -56,19 +55,6 @@ object HybridAquaticItems {
     val KARKINOS_CLAW = register("karkinos_claw", KarkinosClawItem(FabricItemSettings().maxCount(1)))
 
     // food items
-    val COCONUT_HALF = register("coconut_half",
-        Item(
-            FabricItemSettings()
-                .food(
-                    FoodComponent.Builder()
-                        .hunger(6)
-                        .saturationModifier(0.8F)
-                        .meat()
-                        .build()
-                )
-        )
-    )
-
     val COOKED_CRAB = register("cooked_crab",
         Item(
             FabricItemSettings()
@@ -559,16 +545,8 @@ object HybridAquaticItems {
     val THRESHER_SHARK_PLUSHIE = registerBlockItem("thresher_shark_plushie", HybridAquaticBlocks.THRESHER_SHARK_PLUSHIE)
     val TIGER_SHARK_PLUSHIE = registerBlockItem("tiger_shark_plushie", HybridAquaticBlocks.TIGER_SHARK_PLUSHIE)
     val WHALE_SHARK_PLUSHIE = registerBlockItem("whale_shark_plushie", HybridAquaticBlocks.WHALE_SHARK_PLUSHIE)
-
     val GLOWSTICK = registerVerticallyAttachable("glowstick", HybridAquaticBlocks.GLOWSTICK, HybridAquaticBlocks.WALL_GLOWSTICK)
-
-    val TUBE_WORMS = registerBlockItem("tube_worms", HybridAquaticBlocks.TUBE_WORMS)
-    val THERMAL_VENT = registerBlockItem("thermal_vent", HybridAquaticBlocks.THERMAL_VENT)
-
-    val FLOATING_SARGASSUM = registerPlaceableInWaterBlockItem("floating_sargassum", HybridAquaticBlocks.FLOATING_SARGASSUM)
-    val SARGASSUM = registerBlockItem("sargassum", HybridAquaticBlocks.SARGASSUM)
-    val DENSE_KELP = registerBlockItem("dense_kelp", HybridAquaticBlocks.DENSE_KELP)
-
+    val HYDROTHERMAL_VENT = registerBlockItem("hydrothermal_vent", HybridAquaticBlocks.HYDROTHERMAL_VENT)
     val HYBRID_CRATE = registerBlockItem("hybrid_crate", HybridAquaticBlocks.HYBRID_CRATE)
     val DRIFTWOOD_CRATE = registerBlockItem("driftwood_crate", HybridAquaticBlocks.DRIFTWOOD_CRATE)
     val OAK_CRATE = registerBlockItem("oak_crate", HybridAquaticBlocks.OAK_CRATE)
@@ -594,19 +572,6 @@ object HybridAquaticItems {
     val DRIFTWOOD_FENCE_GATE = registerBlockItem("driftwood_fence_gate", HybridAquaticBlocks.DRIFTWOOD_FENCE_GATE)
     val DRIFTWOOD_PRESSURE_PLATE = registerBlockItem("driftwood_pressure_plate", HybridAquaticBlocks.DRIFTWOOD_PRESSURE_PLATE)
     val DRIFTWOOD_BUTTON = registerBlockItem("driftwood_button", HybridAquaticBlocks.DRIFTWOOD_BUTTON)
-    val COCONUT_PALM_SAPLING = registerBlockItem("coconut_palm_sapling", HybridAquaticBlocks.COCONUT_PALM_SAPLING)
-    val COCONUT_PALM_PLANKS = registerBlockItem("coconut_palm_planks", HybridAquaticBlocks.COCONUT_PALM_PLANKS)
-    val COCONUT_PALM_LOG = registerBlockItem("coconut_palm_log", HybridAquaticBlocks.COCONUT_PALM_LOG)
-    val STRIPPED_COCONUT_PALM_LOG = registerBlockItem("stripped_coconut_palm_log", HybridAquaticBlocks.STRIPPED_COCONUT_PALM_LOG)
-    val COCONUT_PALM_LEAVES = registerBlockItem("coconut_palm_leaves", HybridAquaticBlocks.COCONUT_PALM_LEAVES)
-    val COCONUT_PALM_WOOD = registerBlockItem("coconut_palm_wood", HybridAquaticBlocks.COCONUT_PALM_WOOD)
-    val STRIPPED_COCONUT_PALM_WOOD = registerBlockItem("stripped_coconut_palm_wood", HybridAquaticBlocks.STRIPPED_COCONUT_PALM_WOOD)
-    val COCONUT_PALM_SLAB = registerBlockItem("coconut_palm_slab", HybridAquaticBlocks.COCONUT_PALM_SLAB)
-    val COCONUT_PALM_STAIRS = registerBlockItem("coconut_palm_stairs", HybridAquaticBlocks.COCONUT_PALM_STAIRS)
-    val COCONUT_PALM_FENCE = registerBlockItem("coconut_palm_fence", HybridAquaticBlocks.COCONUT_PALM_FENCE)
-    val COCONUT_PALM_FENCE_GATE = registerBlockItem("coconut_palm_fence_gate", HybridAquaticBlocks.COCONUT_PALM_FENCE_GATE)
-    val COCONUT_PALM_PRESSURE_PLATE = registerBlockItem("coconut_palm_pressure_plate", HybridAquaticBlocks.COCONUT_PALM_PRESSURE_PLATE)
-    val COCONUT_PALM_BUTTON = registerBlockItem("coconut_palm_button", HybridAquaticBlocks.COCONUT_PALM_BUTTON)
     val LOPHELIA_CORAL_BLOCK = registerBlockItem("lophelia_coral_block", HybridAquaticBlocks.LOPHELIA_CORAL_BLOCK)
     val DEAD_LOPHELIA_CORAL_BLOCK = registerBlockItem("dead_lophelia_coral_block", HybridAquaticBlocks.DEAD_LOPHELIA_CORAL_BLOCK)
     val LOPHELIA_CORAL = registerBlockItem("lophelia_coral", HybridAquaticBlocks.LOPHELIA_CORAL)

@@ -43,11 +43,6 @@ class RecipeProvider(output: FabricDataOutput) : FabricRecipeProvider(output) {
         offerPlanksRecipe(exporter, HybridAquaticBlocks.DRIFTWOOD_PLANKS, HybridAquaticItemTags.DRIFTWOOD_LOG_WOOD, 4)
         offerPressurePlateRecipe(exporter, HybridAquaticBlocks.DRIFTWOOD_PRESSURE_PLATE, HybridAquaticBlocks.DRIFTWOOD_PLANKS)
 
-        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HybridAquaticBlocks.COCONUT_PALM_SLAB, HybridAquaticBlocks.COCONUT_PALM_PLANKS)
-        offerBarkBlockRecipe(exporter, HybridAquaticBlocks.COCONUT_PALM_WOOD, HybridAquaticBlocks.COCONUT_PALM_LOG)
-        offerPlanksRecipe(exporter, HybridAquaticBlocks.COCONUT_PALM_PLANKS, HybridAquaticItemTags.COCONUT_PALM_LOG_WOOD, 4)
-        offerPressurePlateRecipe(exporter, HybridAquaticBlocks.COCONUT_PALM_PRESSURE_PLATE, HybridAquaticBlocks.COCONUT_PALM_PLANKS)
-
         ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, HybridAquaticBlocks.DRIFTWOOD_BUTTON, 1)
             .input(HybridAquaticBlocks.DRIFTWOOD_PLANKS)
             .criterion("has_driftwood_planks", InventoryChangedCriterion.Conditions.items(HybridAquaticBlocks.DRIFTWOOD_PLANKS))

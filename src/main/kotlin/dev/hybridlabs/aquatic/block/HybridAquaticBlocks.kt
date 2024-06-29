@@ -98,20 +98,6 @@ object HybridAquaticBlocks {
     val DRIFTWOOD_DOOR = register("driftwood_door", DoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_DOOR), BlockSetType.OAK))
     val DRIFTWOOD_TRAPDOOR = register("driftwood_trapdoor", TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_TRAPDOOR), BlockSetType.OAK))
 
-    val COCONUT_PALM_SAPLING = register("coconut_palm_sapling", CoconutPalmSaplingBlock(FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)))
-    val COCONUT_PALM_LOG = register("coconut_palm_log", PillarBlock(FabricBlockSettings.copyOf((Blocks.OAK_PLANKS))))
-    val STRIPPED_COCONUT_PALM_LOG = register("stripped_coconut_palm_log", PillarBlock(FabricBlockSettings.copyOf((Blocks.OAK_PLANKS))))
-    val COCONUT_PALM_WOOD = register("coconut_palm_wood", PillarBlock(FabricBlockSettings.copyOf((Blocks.OAK_PLANKS))))
-    val STRIPPED_COCONUT_PALM_WOOD = register("stripped_coconut_palm_wood", PillarBlock(FabricBlockSettings.copyOf((Blocks.OAK_PLANKS))))
-    val COCONUT_PALM_LEAVES = register("coconut_palm_leaves", LeavesBlock(FabricBlockSettings.copyOf((Blocks.OAK_LEAVES)).nonOpaque()))
-    val COCONUT_PALM_PLANKS = register("coconut_palm_planks", Block(FabricBlockSettings.copyOf((Blocks.OAK_PLANKS))))
-    val COCONUT_PALM_STAIRS = register("coconut_palm_stairs", StairsBlock(COCONUT_PALM_PLANKS.defaultState, FabricBlockSettings.copyOf(Blocks.OAK_STAIRS)))
-    val COCONUT_PALM_SLAB = register("coconut_palm_slab", SlabBlock(FabricBlockSettings.copyOf(Blocks.OAK_STAIRS)))
-    val COCONUT_PALM_BUTTON = register("coconut_palm_button", ButtonBlock(FabricBlockSettings.copyOf(Blocks.OAK_BUTTON), BlockSetType.OAK, 25, true))
-    val COCONUT_PALM_PRESSURE_PLATE = register("coconut_palm_pressure_plate", PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copyOf(Blocks.OAK_PRESSURE_PLATE), BlockSetType.OAK))
-    val COCONUT_PALM_FENCE = register("coconut_palm_fence", FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE)))
-    val COCONUT_PALM_FENCE_GATE = register("coconut_palm_fence_gate", FenceGateBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE), HybridAquaticWoodTypes.COCONUT_PALM))
-
     val DEAD_LOPHELIA_CORAL_BLOCK = register("dead_lophelia_coral_block", DeadCoralBlock(FabricBlockSettings.copyOf(Blocks.DEAD_FIRE_CORAL_BLOCK)
         .mapColor(MapColor.OFF_WHITE)
         .instrument(Instrument.BASEDRUM)
@@ -165,52 +151,14 @@ object HybridAquaticBlocks {
         .luminance(GlowstickBlock::luminance)
         .nonOpaque()))
 
-    val TUBE_WORMS = register("tube_worms", TubeWormsBlock(FabricBlockSettings.copy(Blocks.SEAGRASS)
-        .noCollision()
-        .nonOpaque()))
-
-    val GLOWING_PLANKTON = register("glowing_plankton", GlowingPlanktonBlock(FabricBlockSettings.copyOf(Blocks.LILY_PAD)
-        .nonOpaque()
-        .noCollision()
-        .breakInstantly()))
-
-    val FLOATING_SARGASSUM = register("floating_sargassum", FloatingSargassumBlock(FabricBlockSettings.copyOf(Blocks.LILY_PAD)
-        .noCollision()
-        .breakInstantly()))
-
-    val SARGASSUM = register("sargassum", SargassumBlock(FabricBlockSettings.copyOf(Blocks.KELP)
-        .nonOpaque()))
-
-    val SARGASSUM_PLANT = register("sargassum_plant", SargassumPlantBlock(FabricBlockSettings.copyOf(Blocks.KELP_PLANT)
-        .nonOpaque()
-        .dropsLike(SARGASSUM)))
-    val DENSE_KELP = register("dense_kelp", DenseKelpBlock(FabricBlockSettings.copyOf(Blocks.KELP)
-        .nonOpaque()))
-
-    val DENSE_KELP_PLANT = register("dense_kelp_plant", DenseKelpPlantBlock(FabricBlockSettings.copyOf(Blocks.KELP_PLANT)
-        .nonOpaque()
-        .dropsLike(DENSE_KELP)))
-
-    val SHORT_RED_ALGAE = register("short_red_algae", ShortRedAlgaeBlock(FabricBlockSettings.copyOf(Blocks.TALL_SEAGRASS)
-        .nonOpaque()
-        .noCollision()))
-
-    val RED_ALGAE = register("red_algae", RedAlgaeBlock(FabricBlockSettings.copyOf(Blocks.TALL_SEAGRASS)
-        .nonOpaque()
-        .noCollision()))
-
-    val TALL_RED_ALGAE = register("tall_red_algae", TallRedAlgaeBlock(FabricBlockSettings.copyOf(Blocks.TALL_SEAGRASS)
-        .nonOpaque()
-        .noCollision()))
-
-    val THERMAL_VENT = register("thermal_vent", ThermalVentBlock(FabricBlockSettings.copyOf(Blocks.TUFF)
+    val HYDROTHERMAL_VENT = register("hydrothermal_vent", HydrothermalVentBlock(FabricBlockSettings.copyOf(Blocks.TUFF)
         .nonOpaque()
         .hardness(1.0F)))
 
-    val THERMAL_VENT_SHAFT = register("thermal_vent_shaft", ThermalVentShaftBlock(FabricBlockSettings.copyOf(Blocks.TUFF)
+    val HYDROTHERMAL_VENT_SHAFT = register("hydrothermal_vent_shaft", HydrothermalVentShaftBlock(FabricBlockSettings.copyOf(Blocks.TUFF)
         .nonOpaque()
         .hardness(1.0F)
-        .dropsLike(THERMAL_VENT)))
+        .dropsLike(HYDROTHERMAL_VENT)))
 
     val TUBE_SPONGE = register("tube_sponge", TubeSpongeBlock(FabricBlockSettings.copyOf(Blocks.WET_SPONGE)
         .nonOpaque()))
