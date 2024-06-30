@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "hybrid-aquatic:driftwood_fence",
-    "hybrid-aquatic:coconut_palm_fence"
+    "hybrid-aquatic:driftwood_fence"
   ]
 }

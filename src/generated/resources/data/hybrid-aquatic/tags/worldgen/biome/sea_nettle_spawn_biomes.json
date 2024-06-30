@@ -4,7 +4,6 @@
     "minecraft:lukewarm_ocean",
     "minecraft:deep_lukewarm_ocean",
     "minecraft:deep_ocean",
-    "minecraft:ocean",
-    "hybrid-aquatic:sargassum_sea"
+    "minecraft:ocean"
   ]
 }

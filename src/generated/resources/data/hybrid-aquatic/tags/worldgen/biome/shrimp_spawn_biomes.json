@@ -2,7 +2,6 @@
   "replace": false,
   "values": [
     "minecraft:warm_ocean",
-    "minecraft:lukewarm_ocean",
-    "hybrid-aquatic:sargassum_sea"
+    "minecraft:lukewarm_ocean"
   ]
 }

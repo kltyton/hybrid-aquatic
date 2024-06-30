@@ -56,13 +56,14 @@ open class HybridAquaticFishEntity(
 
     override fun initGoals() {
         super.initGoals()
-        goalSelector.add(4, SwimToRandomPlaceGoal(this))
-        goalSelector.add(4, SwimAroundGoal(this, 0.50, 6))
-        goalSelector.add(4, LookAroundGoal(this))
-        goalSelector.add(5, LookAtEntityGoal(this, PlayerEntity::class.java, 6.0f))
+        goalSelector.add(1, SwimToRandomPlaceGoal(this, 1.0, 40))
         goalSelector.add(1, EscapeDangerGoal(this, 1.25))
+        goalSelector.add(2, MoveIntoWaterGoal(this))
+        goalSelector.add(2, SwimAroundGoal(this, 0.50, 6))
         goalSelector.add(1, AttackGoal(this))
-        targetSelector.add(3, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) { hunger <= 600 && it.type.isIn(prey) })
+        goalSelector.add(1, FleeEntityGoal(this, LivingEntity::class.java, 8.0f, 1.2, 1.0) { !fromFishingNet && it.type.isIn(predator) })
+        goalSelector.add(2, FleeEntityGoal(this, PlayerEntity::class.java, 5.0f, 1.0, 1.0) { !fromFishingNet })
+        targetSelector.add(1, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) { hunger <= 1200 && it.type.isIn(prey) })
     }
 
     override fun initDataTracker() {
@@ -422,7 +423,7 @@ open class HybridAquaticFishEntity(
         }
     }
 
-    internal class SwimToRandomPlaceGoal(private val fish: HybridAquaticFishEntity) : SwimAroundGoal(fish, 1.0, 40) {
+    internal class SwimToRandomPlaceGoal(private val fish: HybridAquaticFishEntity, d: Double, i: Int) : SwimAroundGoal(fish, 1.0, 40) {
         override fun canStart(): Boolean {
             return fish.hasSelfControl() && super.canStart()
         }

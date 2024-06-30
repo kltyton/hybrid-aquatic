@@ -3,8 +3,6 @@
   "values": [
     "minecraft:warm_ocean",
     "minecraft:lukewarm_ocean",
-    "minecraft:beach",
-    "hybrid-aquatic:sargassum_sea",
-    "hybrid-aquatic:tropical_beach"
+    "minecraft:beach"
   ]
 }

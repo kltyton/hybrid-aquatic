@@ -1,9 +1,6 @@
 {
   "replace": false,
   "values": [
-    "#hybrid-aquatic:crab_diggable_treasure_blocks",
-    "minecraft:dirt",
-    "minecraft:coarse_dirt",
-    "minecraft:grass_block"
+    "#hybrid-aquatic:crab_diggable_treasure_blocks"
   ]
 }

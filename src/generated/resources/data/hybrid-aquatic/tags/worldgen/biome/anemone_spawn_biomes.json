@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "minecraft:warm_ocean",
-    "hybrid-aquatic:red_meadow"
+    "minecraft:warm_ocean"
   ]
 }
