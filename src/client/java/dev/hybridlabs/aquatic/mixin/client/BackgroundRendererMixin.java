@@ -56,7 +56,7 @@ public class BackgroundRendererMixin {
             } else {
                 fogData.fogStart = -8.0F;
                 int topY = world.getSeaLevel();
-                float fogStep = (float) (topY - camera.getPos().y) / 32.0f;
+                float fogStep = (float) (topY - camera.getPos().y) / 48.0f;
                 fogData.fogEnd = MathHelper.lerp(fogStep, 80.0f, 12.0f);
                 fogData.fogEnd *= Math.max(0.25F, clientPlayerEntity.getUnderwaterVisibility());
                 RegistryEntry<Biome> registryEntry = world.getBiome(clientPlayerEntity.getBlockPos());
