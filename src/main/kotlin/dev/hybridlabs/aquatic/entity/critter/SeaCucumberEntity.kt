@@ -13,7 +13,8 @@ import software.bernie.geckolib.core.`object`.PlayState
 class SeaCucumberEntity(entityType: EntityType<out SeaCucumberEntity>, world: World) :
     HybridAquaticCritterEntity(entityType, world, variants = hashMapOf(
         "sea_pig" to CritterVariant.biomeVariant("sea_pig", HybridAquaticBiomeTags.SEA_PIG_SPAWN_BIOMES),
-        "regular" to CritterVariant.biomeVariant("regular", HybridAquaticBiomeTags.REGULAR_SEA_CUCUMBER_SPAWN_BIOMES))) {
+        "red" to CritterVariant.biomeVariant("black", HybridAquaticBiomeTags.REGULAR_SEA_CUCUMBER_SPAWN_BIOMES),
+        "black" to CritterVariant.biomeVariant("red", HybridAquaticBiomeTags.REGULAR_SEA_CUCUMBER_SPAWN_BIOMES))) {
 
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
