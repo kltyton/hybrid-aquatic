@@ -112,6 +112,7 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             HybridAquaticItems.RAW_CRAYFISH to "Raw Crayfish",
             HybridAquaticItems.COOKED_CRAYFISH to "Cooked Crayfish",
             HybridAquaticItems.LIONFISH to "Lionfish",
+            HybridAquaticItems.NEON_TETRA to "Neon Tetra",
             HybridAquaticItems.MAHI_MAHI to "Mahi Mahi",
             HybridAquaticItems.TUNA to "Tuna",
             HybridAquaticItems.OPAH to "Opah",

@@ -475,7 +475,7 @@ object HybridAquaticItems {
                 )
         )
     )
-    val TETRA = register("tetra",
+    val NEON_TETRA = register("neon_tetra",
         Item(
             FabricItemSettings()
                 .food(

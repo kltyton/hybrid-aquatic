@@ -138,7 +138,7 @@ object HybridAquaticItemGroups {
             entries.add(HybridAquaticItems.PIRANHA)
             entries.add(HybridAquaticItems.RATFISH)
             entries.add(HybridAquaticItems.ROCKFISH)
-            entries.add(HybridAquaticItems.TETRA)
+            entries.add(HybridAquaticItems.NEON_TETRA)
             entries.add(HybridAquaticItems.TIGER_BARB)
             entries.add(HybridAquaticItems.TRIGGERFISH)
             entries.add(HybridAquaticItems.TUNA)

@@ -146,7 +146,7 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
             HybridAquaticItems.PIRANHA,
             HybridAquaticItems.RATFISH,
             HybridAquaticItems.ROCKFISH,
-            HybridAquaticItems.TETRA,
+            HybridAquaticItems.NEON_TETRA,
             HybridAquaticItems.TIGER_BARB,
             HybridAquaticItems.TRIGGERFISH,
             HybridAquaticItems.TUNA,

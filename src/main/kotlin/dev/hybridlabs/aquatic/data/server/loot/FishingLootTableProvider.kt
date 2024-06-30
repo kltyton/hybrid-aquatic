@@ -46,7 +46,7 @@ class FishingLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
                                 .weight(5)
                         )
                         .with(
-                            ItemEntry.builder(HybridAquaticItems.TETRA)
+                            ItemEntry.builder(HybridAquaticItems.NEON_TETRA)
                                 .weight(5)
                         )
                         .with(
