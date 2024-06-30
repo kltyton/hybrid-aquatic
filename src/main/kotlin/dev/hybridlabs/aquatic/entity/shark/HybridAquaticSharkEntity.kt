@@ -227,6 +227,7 @@ open class HybridAquaticSharkEntity(
     }
 
     private var fromFishingNet = false
+
     override fun readCustomDataFromNbt(nbt: NbtCompound) {
         super.readCustomDataFromNbt(nbt)
         this.readAngerFromNbt(this.world, nbt)
@@ -340,11 +341,11 @@ open class HybridAquaticSharkEntity(
 
     private fun getHungerValue(entityType: EntityType<*>): Int {
         if (entityType.isIn(HybridAquaticEntityTags.CRAB))
-            return 400
+            return 150
         if (entityType.isIn(HybridAquaticEntityTags.SMALL_PREY))
-            return 400
+            return 300
         else if (entityType.isIn(HybridAquaticEntityTags.MEDIUM_PREY))
-            return 800
+            return 600
         else if (entityType.isIn(HybridAquaticEntityTags.LARGE_PREY))
             return 1200
 
