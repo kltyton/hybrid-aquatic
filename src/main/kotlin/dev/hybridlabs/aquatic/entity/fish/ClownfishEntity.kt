@@ -7,6 +7,7 @@ import net.minecraft.entity.EntityType
 import net.minecraft.entity.attribute.DefaultAttributeContainer
 import net.minecraft.entity.attribute.EntityAttributes
 import net.minecraft.entity.mob.WaterCreatureEntity
+import net.minecraft.util.Identifier
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 
@@ -21,6 +22,20 @@ class ClownfishEntity(entityType: EntityType<out ClownfishEntity>, world: World)
         "pink_skunk" to FishVariant.biomeVariant("pink_skunk", HybridAquaticBiomeTags.CLOWNFISH_SPAWN_BIOMES),
         "orange_skunk" to FishVariant.biomeVariant("orange_skunk", HybridAquaticBiomeTags.CLOWNFISH_SPAWN_BIOMES),),
         HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.CLOWNFISH_PREDATOR) {
+
+    public override fun getLootTableId(): Identifier {
+        return when (this.variant?.variantName) {
+            "ocellaris" -> Identifier("hybrid-aquatic", "entities/clownfish")
+            "percula" -> Identifier("hybrid-aquatic", "entities/clownfish")
+            "whiteband" -> Identifier("hybrid-aquatic", "entities/clownfish")
+            "tomato" -> Identifier("hybrid-aquatic", "entities/clownfish")
+            "cinnamon" -> Identifier("hybrid-aquatic", "entities/clownfish")
+            "clarkii" -> Identifier("hybrid-aquatic", "entities/clownfish")
+            "pink_skunk" -> Identifier("hybrid-aquatic", "entities/clownfish")
+            "orange_skunk" -> Identifier("hybrid-aquatic", "entities/clownfish")
+            else -> super.getLootTableId()
+        }
+    }
 
     private var targetAnemonePos: BlockPos? = null
 
