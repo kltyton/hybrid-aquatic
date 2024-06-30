@@ -45,6 +45,7 @@ object SpawnRestrictionRegistry {
             HybridAquaticEntityTypes.GOURAMI,
             HybridAquaticEntityTypes.DANIO,
             HybridAquaticEntityTypes.DISCUS,
+            HybridAquaticEntityTypes.GOLDFISH,
             HybridAquaticEntityTypes.BETTA,
             HybridAquaticEntityTypes.TETRA,
             HybridAquaticEntityTypes.NEEDLEFISH,

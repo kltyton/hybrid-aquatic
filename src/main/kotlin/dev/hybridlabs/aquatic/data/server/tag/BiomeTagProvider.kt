@@ -82,6 +82,14 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             BiomeKeys.LUKEWARM_OCEAN,
         )
 
+        getOrCreateTagBuilder(HybridAquaticBiomeTags.GOLDFISH_SPAWN_BIOMES).add(
+            BiomeKeys.CHERRY_GROVE,
+        )
+
+        getOrCreateTagBuilder(HybridAquaticBiomeTags.KOI_SPAWN_BIOMES).add(
+            BiomeKeys.CHERRY_GROVE,
+        )
+
         getOrCreateTagBuilder(HybridAquaticBiomeTags.DUNGENESS_CRAB_SPAWN_BIOMES).add(
             BiomeKeys.OCEAN,
             BiomeKeys.WARM_OCEAN,

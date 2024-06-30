@@ -102,6 +102,13 @@ object HybridAquaticEntityTypes {
         FlashlightFishEntity.createMobAttributes()
     )
 
+    val GOLDFISH = registerFish(
+        "goldfish",
+        ::GoldfishEntity,
+        EntityDimensions.fixed(0.5f, 0.5f),
+        GouramiEntity.createMobAttributes()
+    )
+
     val GOURAMI = registerFish(
         "gourami",
         ::GouramiEntity,
