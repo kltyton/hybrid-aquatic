@@ -1,7 +1,6 @@
 package dev.hybridlabs.aquatic.entity.fish
 
 import dev.hybridlabs.aquatic.entity.ai.goal.FishJumpGoal
-import dev.hybridlabs.aquatic.tag.HybridAquaticBiomeTags
 import dev.hybridlabs.aquatic.tag.HybridAquaticEntityTags
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.attribute.DefaultAttributeContainer
@@ -10,11 +9,7 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
 
 class TunaEntity(entityType: EntityType<out TunaEntity>, world: World) :
-    HybridAquaticSchoolingFishEntity(entityType, world, HybridAquaticEntityTags.TUNA_PREY, HybridAquaticEntityTags.TUNA_PREDATOR, variants = hashMapOf(
-        "bluefin" to FishVariant.biomeVariant("bluefin", HybridAquaticBiomeTags.BLUEFIN_SPAWN_BIOMES),
-        "yellowfin" to FishVariant.biomeVariant("yellowfin", HybridAquaticBiomeTags.YELLOWFIN_SPAWN_BIOMES),
-        "blackfin" to FishVariant.biomeVariant("blackfin", HybridAquaticBiomeTags.BLACKFIN_SPAWN_BIOMES)
-    ), collisionRules = listOf()) {
+    HybridAquaticSchoolingFishEntity(entityType, world, HybridAquaticEntityTags.TUNA_PREY, HybridAquaticEntityTags.TUNA_PREDATOR) {
 
     override fun initGoals() {
         super.initGoals()
