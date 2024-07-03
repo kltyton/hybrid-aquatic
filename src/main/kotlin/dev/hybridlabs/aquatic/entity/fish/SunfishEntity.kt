@@ -12,7 +12,6 @@ class SunfishEntity(entityType: EntityType<out SunfishEntity>, world: World) :
     HybridAquaticFishEntity(entityType, world, variants = hashMapOf(
         "ocean" to FishVariant.biomeVariant("ocean", HybridAquaticBiomeTags.OCEAN_SUNFISH_SPAWN_BIOMES),
         "hoodwinker" to FishVariant.biomeVariant("hoodwinker", HybridAquaticBiomeTags.HOODWINKER_SUNFISH_SPAWN_BIOMES),
-        "giant" to FishVariant.biomeVariant("giant", HybridAquaticBiomeTags.GIANT_SUNFISH_SPAWN_BIOMES),
         "sharptail" to FishVariant.biomeVariant("sharptail", HybridAquaticBiomeTags.SHARPTAIL_SUNFISH_SPAWN_BIOMES)),
         HybridAquaticEntityTags.SUNFISH_PREY, HybridAquaticEntityTags.SUNFISH_PREDATOR) {
 
