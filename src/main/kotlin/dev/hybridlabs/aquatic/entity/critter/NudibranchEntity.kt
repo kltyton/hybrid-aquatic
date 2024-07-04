@@ -18,7 +18,7 @@ class NudibranchEntity(entityType: EntityType<out NudibranchEntity>, world: Worl
         "festiva" to CritterVariant.biomeVariant("festiva", HybridAquaticBiomeTags.NUDIBRANCH_SPAWN_BIOMES),
         "magnificent" to CritterVariant.biomeVariant("magnificent", HybridAquaticBiomeTags.NUDIBRANCH_SPAWN_BIOMES),
         "kubaryana" to CritterVariant.biomeVariant("kubaryana", HybridAquaticBiomeTags.NUDIBRANCH_SPAWN_BIOMES),
-        "yonowae" to CritterVariant.biomeVariant("yonoawe", HybridAquaticBiomeTags.NUDIBRANCH_SPAWN_BIOMES),
+        "yonowae" to CritterVariant.biomeVariant("yonowae", HybridAquaticBiomeTags.NUDIBRANCH_SPAWN_BIOMES),
         "kuniei" to CritterVariant.biomeVariant("kuniei", HybridAquaticBiomeTags.NUDIBRANCH_SPAWN_BIOMES),
         "baba" to CritterVariant.biomeVariant("baba", HybridAquaticBiomeTags.NUDIBRANCH_SPAWN_BIOMES))) {
 
