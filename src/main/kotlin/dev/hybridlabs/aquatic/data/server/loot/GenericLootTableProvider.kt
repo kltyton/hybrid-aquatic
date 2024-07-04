@@ -676,6 +676,18 @@ class GenericLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
         )
 
         exporter.accept(
+            HybridAquaticLootTables.THERMAL_VENT_LOOT_ID,
+            LootTable.builder()
+                .randomSequenceId(HybridAquaticLootTables.THERMAL_VENT_LOOT_ID)
+                .pool(
+                    LootPool.builder()
+                        .with(ItemEntry.builder(Items.RAW_GOLD).weight(1))
+                        .with(ItemEntry.builder(Items.RAW_IRON).weight(3))
+                        .with(ItemEntry.builder(Items.RAW_COPPER).weight(5))
+                )
+        )
+
+        exporter.accept(
             HybridAquaticLootTables.BLUE_TANG,
             LootTable.builder()
                 .pool(

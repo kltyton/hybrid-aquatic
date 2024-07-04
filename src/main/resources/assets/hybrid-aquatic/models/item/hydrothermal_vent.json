@@ -2,8 +2,7 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
-		"1": "hybrid-aquatic:block/hydrothermal_vent_shaft",
-		"particle": "hybrid-aquatic:block/hydrothermal_vent_shaft"
+		"1": "hybrid-aquatic:block/hydrothermal_vent_shaft"
 	},
 	"elements": [
 		{
@@ -19,5 +18,25 @@
 				"down": {"uv": [12, 8, 8, 12], "texture": "#1"}
 			}
 		}
-	]
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, -2, 1],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"thirdperson_lefthand": {
+			"translation": [0, -2, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"firstperson_righthand": {
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"firstperson_lefthand": {
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"gui": {
+			"rotation": [35, 45, 0],
+			"scale": [0.75, 0.75, 0.75]
+		}
+	}
 }
