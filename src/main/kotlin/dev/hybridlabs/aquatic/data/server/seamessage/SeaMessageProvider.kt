@@ -37,6 +37,7 @@ class SeaMessageProvider(output: FabricDataOutput, registriesFuture: Completable
             GeneratedSeaMessageData("fishenjoe", "Give a man a fish and you'll feed him for a day,\nkill a man and you'll have one less homeless person begging you for fish.", "Fishenjoe"),
             GeneratedSeaMessageData("willowshine", "Beware the fish girl", "Willowshine"),
             GeneratedSeaMessageData("loss", "| ||\n|| |_"),
+            GeneratedSeaMessageData("duunch", "Do I know you?", "Duunc_h"),
             GeneratedSeaMessageData("warranty", "We've been trying to reach you about your car's extended warranty.", englishTitle = "IMPORTANT: PLEASE READ"),
             GeneratedSeaMessageData("poke", "I like cheese", "Poke", englishTitle = "Cheese"),
             GeneratedSeaMessageData("one_piece", "THE ONE PIECE IS REAL", "Poke", englishTitle = "One Piece"),
