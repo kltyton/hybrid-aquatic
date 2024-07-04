@@ -1,9 +1,0 @@
-{
-  "condition": {
-    "type": "origins:power_active",
-    "power": "origins:water_vision"
-  },
-  "powers": [
-    "hybrid-aquatic:clarity"
-  ]
-}
