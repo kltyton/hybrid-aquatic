@@ -5,6 +5,14 @@
     "minecraft:bamboo_jungle",
     "minecraft:sparse_jungle",
     "minecraft:swamp",
-    "minecraft:mangrove_swamp"
+    "minecraft:mangrove_swamp",
+    {
+      "id": "wythers:flooded_jungle",
+      "required": false
+    },
+    {
+      "id": "wythers:waterlily_swamp",
+      "required": false
+    }
   ]
 }

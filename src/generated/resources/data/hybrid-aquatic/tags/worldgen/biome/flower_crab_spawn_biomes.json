@@ -4,6 +4,10 @@
     "minecraft:ocean",
     "minecraft:warm_ocean",
     "minecraft:lukewarm_ocean",
-    "minecraft:beach"
+    "minecraft:beach",
+    {
+      "id": "wythers:tropical_beach",
+      "required": false
+    }
   ]
 }

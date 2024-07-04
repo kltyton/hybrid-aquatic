@@ -2,6 +2,14 @@
   "replace": false,
   "values": [
     "minecraft:swamp",
-    "minecraft:mangrove_swamp"
+    "#minecraft:is_river",
+    {
+      "id": "wythers:waterlily_swamp",
+      "required": false
+    },
+    {
+      "id": "wythers:gravelly_river",
+      "required": false
+    }
   ]
 }
