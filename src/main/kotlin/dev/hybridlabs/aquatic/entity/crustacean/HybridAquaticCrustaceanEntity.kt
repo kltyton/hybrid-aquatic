@@ -3,15 +3,9 @@ package dev.hybridlabs.aquatic.entity.crustacean
 import dev.hybridlabs.aquatic.tag.HybridAquaticBlockTags
 import dev.hybridlabs.aquatic.tag.HybridAquaticItemTags
 import net.minecraft.block.Blocks
-import net.minecraft.entity.EntityData
-import net.minecraft.entity.EntityGroup
-import net.minecraft.entity.EntityType
-import net.minecraft.entity.SpawnReason
+import net.minecraft.entity.*
 import net.minecraft.entity.ai.control.MoveControl
-import net.minecraft.entity.ai.goal.LookAroundGoal
-import net.minecraft.entity.ai.goal.LookAtEntityGoal
-import net.minecraft.entity.ai.goal.TemptGoal
-import net.minecraft.entity.ai.goal.WanderAroundGoal
+import net.minecraft.entity.ai.goal.*
 import net.minecraft.entity.ai.pathing.AmphibiousSwimNavigation
 import net.minecraft.entity.ai.pathing.EntityNavigation
 import net.minecraft.entity.ai.pathing.PathNodeType
@@ -32,6 +26,7 @@ import software.bernie.geckolib.animatable.GeoEntity
 import software.bernie.geckolib.core.animatable.GeoAnimatable
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache
 import software.bernie.geckolib.core.animation.*
+import software.bernie.geckolib.core.animation.AnimationState
 import software.bernie.geckolib.core.`object`.PlayState
 import software.bernie.geckolib.util.GeckoLibUtil
 
@@ -67,12 +62,19 @@ open class HybridAquaticCrustaceanEntity(
             dataTracker.set(CRUSTACEAN_SIZE, size)
         }
 
+private var attemptAttack: Boolean
+    get() = dataTracker.get(ATTEMPT_ATTACK)
+    set(attemptAttack) {
+        dataTracker.set(ATTEMPT_ATTACK, attemptAttack)
+    }
+
     override fun initDataTracker() {
         super.initDataTracker()
         dataTracker.startTracking(MOISTNESS, getMaxMoistness())
         dataTracker.startTracking(IS_DIGGING, false)
         dataTracker.startTracking(VARIANT, 0)
         dataTracker.startTracking(CRUSTACEAN_SIZE, 0)
+        dataTracker.startTracking(ATTEMPT_ATTACK, false)
     }
 
     override fun initGoals() {
@@ -197,6 +199,9 @@ open class HybridAquaticCrustaceanEntity(
     // endregion
 
     // region water breathing
+    override fun canBreatheInWater(): Boolean {
+        return true
+    }
 
     private var moistness: Int
         get() = dataTracker.get(MOISTNESS)
@@ -271,16 +276,46 @@ open class HybridAquaticCrustaceanEntity(
         return PlayState.CONTINUE
     }
 
+
+    internal class AttackGoal(private val crustacean: HybridAquaticCrustaceanEntity) : MeleeAttackGoal(crustacean, 1.0,true) {
+
+        override fun attack(target: LivingEntity, squaredDistance: Double) {
+            val d = getSquaredMaxAttackDistance(target)
+            if (squaredDistance <= d && this.isCooledDown) {
+                resetCooldown()
+                mob.tryAttack(target)
+                crustacean.isSprinting = true
+                crustacean.attemptAttack = true
+            }
+        }
+
+        override fun getSquaredMaxAttackDistance(entity: LivingEntity): Double {
+            return (1.25f + entity.width).toDouble()
+        }
+
+        override fun start() {
+            super.start()
+            crustacean.attemptAttack = false
+        }
+
+        override fun stop() {
+            super.stop()
+            crustacean.attemptAttack = false
+        }
+    }
+
     companion object {
         val MOISTNESS: TrackedData<Int> = DataTracker.registerData(HybridAquaticCrustaceanEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
         val VARIANT: TrackedData<Int> = DataTracker.registerData(HybridAquaticCrustaceanEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
         val CRUSTACEAN_SIZE: TrackedData<Int> = DataTracker.registerData(HybridAquaticCrustaceanEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
+        val ATTEMPT_ATTACK: TrackedData<Boolean> = DataTracker.registerData(HybridAquaticCrustaceanEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
 
         val DANCE_ANIMATION: RawAnimation = RawAnimation.begin().then("dance", Animation.LoopType.LOOP)
         val DIG_ANIMATION: RawAnimation = RawAnimation.begin().then("dig", Animation.LoopType.LOOP)
         val WALK_ANIMATION: RawAnimation = RawAnimation.begin().then("walk", Animation.LoopType.LOOP)
         val IDLE_ANIMATION: RawAnimation = RawAnimation.begin().then("idle", Animation.LoopType.LOOP)
         val HIDING_ANIMATION: RawAnimation = RawAnimation.begin().then("hide", Animation.LoopType.LOOP)
+        val FLIPPED_ANIMATION: RawAnimation = RawAnimation.begin().then("flipped", Animation.LoopType.LOOP)
 
         fun canSpawn(
             type: EntityType<out WaterCreatureEntity?>?,

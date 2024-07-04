@@ -114,9 +114,6 @@ object EntityBiomeModifications {
         addCritter(HybridAquaticEntityTypes.NUDIBRANCH, HybridAquaticBiomeTags.NUDIBRANCH_SPAWN_BIOMES, 3, 1, 2)
         addCritter(HybridAquaticEntityTypes.SEA_CUCUMBER, HybridAquaticBiomeTags.SEA_CUCUMBER_SPAWN_BIOMES, 3, 1, 3)
         addCritter(HybridAquaticEntityTypes.SEA_URCHIN, HybridAquaticBiomeTags.SEA_URCHIN_SPAWN_BIOMES, 5, 1, 3)
-
-        //minibosses
-        addMiniboss(HybridAquaticEntityTypes.KARKINOS, HybridAquaticBiomeTags.SEA_URCHIN_SPAWN_BIOMES, 1, 1, 1)
     }
 
     private fun addFish(
@@ -217,16 +214,6 @@ object EntityBiomeModifications {
         maxGroup: Int
     ) {
         add(entityType, spawnTag, HybridAquaticSpawnGroup.CRITTER.spawnGroup, weight, minGroup, maxGroup)
-    }
-
-    private fun addMiniboss(
-        entityType: EntityType<*>,
-        spawnTag: TagKey<Biome>,
-        weight: Int,
-        minGroup: Int,
-        maxGroup: Int
-    ) {
-        add(entityType, spawnTag, HybridAquaticSpawnGroup.MINIBOSS.spawnGroup, weight, minGroup, maxGroup)
     }
 
     private fun add(

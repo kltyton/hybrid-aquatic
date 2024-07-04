@@ -215,7 +215,7 @@ open class HybridAquaticCritterEntity(
     }
 
     override fun getAmbientSound(): SoundEvent {
-        return SoundEvents.ENTITY_SALMON_AMBIENT
+        return SoundEvents.ENTITY_COD_AMBIENT
     }
 
     override fun getSwimSound(): SoundEvent {
