@@ -13,6 +13,10 @@
     {
       "id": "wythers:waterlily_swamp",
       "required": false
+    },
+    {
+      "id": "terralith:orchid_swamp",
+      "required": false
     }
   ]
 }

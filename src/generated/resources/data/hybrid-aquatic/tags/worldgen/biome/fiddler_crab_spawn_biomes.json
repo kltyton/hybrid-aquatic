@@ -2,10 +2,6 @@
   "replace": false,
   "values": [
     "minecraft:mangrove_swamp",
-    "minecraft:beach",
-    {
-      "id": "wythers:waterlily_swamp",
-      "required": false
-    }
+    "minecraft:beach"
   ]
 }

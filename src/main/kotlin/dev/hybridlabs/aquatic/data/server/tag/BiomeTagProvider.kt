@@ -52,6 +52,8 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             .addOptional(Identifier("wythers", "jungle_river"))
             .addOptional(Identifier("wythers", "tropical_forest_river"))
             .addOptional(Identifier("wythers", "flooded_jungle"))
+            .addOptional(Identifier("terralith", "warm_river"))
+            .addOptional(Identifier("regions_unexplored", "tropical_river"))
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.STINGRAY_SPAWN_BIOMES).add(
             BiomeKeys.WARM_OCEAN,
@@ -146,6 +148,7 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
         )
             .addOptional(Identifier("wythers", "flooded_jungle"))
             .addOptional(Identifier("wythers", "waterlily_swamp"))
+            .addOptional(Identifier("terralith", "orchid_swamp"))
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.HORSESHOE_CRAB_SPAWN_BIOMES).add(
             BiomeKeys.OCEAN,
@@ -176,6 +179,9 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             .forceAddTag(BiomeTags.IS_RIVER)
             .addOptional(Identifier("wythers", "waterlily_swamp"))
             .addOptional(Identifier("wythers", "gravelly_river"))
+            .addOptional(Identifier("terralith", "orchid_swamp"))
+            .addOptional(Identifier("regions_unexplored", "tropical_river"))
+            .addOptional(Identifier("regions_unexplored", "muddy_river"))
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.LOBSTER_SPAWN_BIOMES).add(
             BiomeKeys.WARM_OCEAN,
@@ -200,19 +206,22 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             .addOptional(Identifier("wythers", "jungle_river"))
             .addOptional(Identifier("wythers", "tropical_forest_river"))
             .addOptional(Identifier("wythers", "flooded_jungle"))
+            .addOptional(Identifier("terralith", "warm_river"))
+            .addOptional(Identifier("regions_unexplored", "tropical_river"))
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.DRAGONFISH_SPAWN_BIOMES)
             .forceAddTag(BiomeTags.IS_OCEAN)
+            .forceAddTag(BiomeTags.IS_DEEP_OCEAN)
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.UMBRELLA_OCTOPUS_SPAWN_BIOMES)
             .forceAddTag(BiomeTags.IS_OCEAN)
+            .forceAddTag(BiomeTags.IS_DEEP_OCEAN)
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.FIDDLER_CRAB_SPAWN_BIOMES)
             .add(
             BiomeKeys.MANGROVE_SWAMP,
             BiomeKeys.BEACH,
                 )
-            .addOptional(Identifier("wythers", "waterlily_swamp"))
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.FIREFLY_SQUID_SPAWN_BIOMES).add(
             BiomeKeys.DEEP_COLD_OCEAN,
@@ -226,6 +235,7 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             .forceAddTag(BiomeTags.IS_DEEP_OCEAN)
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.FRILLED_SHARK_SPAWN_BIOMES)
+            .forceAddTag(BiomeTags.IS_OCEAN)
             .forceAddTag(BiomeTags.IS_DEEP_OCEAN)
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.SEA_NETTLE_SPAWN_BIOMES).add(
@@ -250,6 +260,9 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             .addOptional(Identifier("wythers", "jungle_river"))
             .addOptional(Identifier("wythers", "tropical_forest_river"))
             .addOptional(Identifier("wythers", "flooded_jungle"))
+            .addOptional(Identifier("terralith", "warm_river"))
+            .addOptional(Identifier("terralith", "orchid_swamp"))
+            .addOptional(Identifier("regions_unexplored", "tropical_river"))
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.GREAT_WHITE_SHARK_SPAWN_BIOMES)
             .forceAddTag(BiomeTags.IS_DEEP_OCEAN)
@@ -380,6 +393,8 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             .addOptional(Identifier("wythers", "jungle_river"))
             .addOptional(Identifier("wythers", "tropical_forest_river"))
             .addOptional(Identifier("wythers", "flooded_jungle"))
+            .addOptional(Identifier("terralith", "warm_river"))
+            .addOptional(Identifier("regions_unexplored", "tropical_river"))
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.PIRANHA_SPAWN_BIOMES).add(
                 BiomeKeys.JUNGLE,
@@ -388,6 +403,8 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             .addOptional(Identifier("wythers", "jungle_river"))
             .addOptional(Identifier("wythers", "tropical_forest_river"))
             .addOptional(Identifier("wythers", "flooded_jungle"))
+            .addOptional(Identifier("terralith", "warm_river"))
+            .addOptional(Identifier("regions_unexplored", "tropical_river"))
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.RATFISH_SPAWN_BIOMES)
             .forceAddTag(BiomeTags.IS_DEEP_OCEAN)
@@ -499,6 +516,7 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             BiomeKeys.MANGROVE_SWAMP
             )
             .addOptional(Identifier("wythers", "waterlily_swamp"))
+            .addOptional(Identifier("terralith", "orchid_swamp"))
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.TIGER_SHARK_SPAWN_BIOMES).add(
             BiomeKeys.DEEP_OCEAN,
@@ -561,6 +579,9 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             .addOptional(Identifier("wythers", "jungle_river"))
             .addOptional(Identifier("wythers", "tropical_forest_river"))
             .addOptional(Identifier("wythers", "flooded_jungle"))
+            .addOptional(Identifier("terralith", "warm_river"))
+            .addOptional(Identifier("terralith", "orchid_swamp"))
+            .addOptional(Identifier("regions_unexplored", "tropical_river"))
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.TETRA_SPAWN_BIOMES).add(
             BiomeKeys.JUNGLE,
@@ -570,6 +591,9 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             .addOptional(Identifier("wythers", "jungle_river"))
             .addOptional(Identifier("wythers", "tropical_forest_river"))
             .addOptional(Identifier("wythers", "flooded_jungle"))
+            .addOptional(Identifier("terralith", "warm_river"))
+            .addOptional(Identifier("terralith", "orchid_swamp"))
+            .addOptional(Identifier("regions_unexplored", "tropical_river"))
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.ANEMONE_SPAWN_BIOMES).add(
             BiomeKeys.WARM_OCEAN,

@@ -10,6 +10,18 @@
     {
       "id": "wythers:gravelly_river",
       "required": false
+    },
+    {
+      "id": "terralith:orchid_swamp",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:tropical_river",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:muddy_river",
+      "required": false
     }
   ]
 }
