@@ -152,7 +152,7 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
             HybridAquaticItems.TUNA,
             HybridAquaticItems.UNICORNFISH,
             HybridAquaticItems.CUTTLEBONE,
-
+            HybridAquaticItems.CORAL_CHUNK,
             HybridAquaticItems.BARBED_HOOK,
             HybridAquaticItems.GLOWING_HOOK,
             HybridAquaticItems.MAGNETIC_HOOK,
@@ -169,6 +169,21 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
             HybridAquaticItems.MOON_JELLYFISH_HAT
         ).forEach { item ->
             generator.register(item, Models.GENERATED)
+        }
+
+        setOf(
+            HybridAquaticItems.SEASHELL_SPEAR,
+            HybridAquaticItems.SEASHELL_PICKAXE,
+            HybridAquaticItems.SEASHELL_AXE,
+            HybridAquaticItems.SEASHELL_SHOVEL,
+            HybridAquaticItems.SEASHELL_HOE,
+            HybridAquaticItems.CORAL_BLADE,
+            HybridAquaticItems.CORAL_PICKAXE,
+            HybridAquaticItems.CORAL_AXE,
+            HybridAquaticItems.CORAL_SHOVEL,
+            HybridAquaticItems.CORAL_HOE
+        ).forEach { item ->
+            generator.register(item, Models.HANDHELD)
         }
 
         generator.register(HybridAquaticItems.SEA_MESSAGE_BOOK, Items.WRITTEN_BOOK, Models.GENERATED)

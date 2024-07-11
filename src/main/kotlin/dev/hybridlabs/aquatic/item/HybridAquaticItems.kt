@@ -36,9 +36,60 @@ object HybridAquaticItems {
     val GLOW_SLIME = register("glow_slime", Item(FabricItemSettings()))
     val SHARK_TOOTH = register("shark_tooth", Item(FabricItemSettings()))
     val SPONGE_CHUNK = register("sponge_chunk", Item(FabricItemSettings()))
+    val CORAL_CHUNK = register("coral_chunk", Item(FabricItemSettings()))
     val PEARL = register("pearl", Item(FabricItemSettings()))
     val BLACK_PEARL = register("black_pearl", Item(FabricItemSettings()))
     val CUTTLEBONE = register("cuttlebone", Item(FabricItemSettings()))
+
+    val SEASHELL_SPEAR = register("seashell_spear", SwordItem(HybridAquaticToolMaterials.SEASHELL,
+        3,
+        -2.4f,
+        FabricItemSettings()))
+
+    val SEASHELL_PICKAXE = register("seashell_pickaxe", PickaxeItem(HybridAquaticToolMaterials.SEASHELL,
+        1,
+        -2.8f,
+        FabricItemSettings()))
+
+    val SEASHELL_AXE = register("seashell_axe", AxeItem(HybridAquaticToolMaterials.SEASHELL,
+        7F,
+        -3.2f,
+        FabricItemSettings()))
+
+    val SEASHELL_SHOVEL = register("seashell_shovel", ShovelItem(HybridAquaticToolMaterials.SEASHELL,
+        1.5F,
+        -3.0f,
+        FabricItemSettings()))
+
+    val SEASHELL_HOE = register("seashell_hoe", HoeItem(HybridAquaticToolMaterials.SEASHELL,
+        -1,
+        -2.0f,
+        FabricItemSettings()))
+
+    val CORAL_BLADE = register("coral_blade", SwordItem(HybridAquaticToolMaterials.CORAL,
+        1,
+        3f,
+        FabricItemSettings()))
+
+    val CORAL_PICKAXE = register("coral_pickaxe", PickaxeItem(HybridAquaticToolMaterials.CORAL,
+        1,
+        3f,
+        FabricItemSettings()))
+
+    val CORAL_AXE = register("coral_axe", AxeItem(HybridAquaticToolMaterials.CORAL,
+        1F,
+        3f,
+        FabricItemSettings()))
+
+    val CORAL_SHOVEL = register("coral_shovel", ShovelItem(HybridAquaticToolMaterials.CORAL,
+        1F,
+        3f,
+        FabricItemSettings()))
+
+    val CORAL_HOE = register("coral_hoe", HoeItem(HybridAquaticToolMaterials.CORAL,
+        1,
+        3f,
+        FabricItemSettings()))
 
     val RAW_SHRIMP = register("raw_shrimp", Item(FabricItemSettings()))
     val RAW_CRAYFISH = register("raw_crayfish", Item(FabricItemSettings()))
