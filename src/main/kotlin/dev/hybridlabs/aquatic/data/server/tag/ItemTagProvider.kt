@@ -59,6 +59,16 @@ class ItemTagProvider(output: FabricDataOutput, registriesFuture: CompletableFut
             HybridAquaticItems.COWFISH,
             HybridAquaticItems.TIGER_BARB,
             HybridAquaticItems.OSCAR,
+            HybridAquaticItems.FLASHLIGHT_FISH,
+            HybridAquaticItems.RATFISH,
+            HybridAquaticItems.SURGEONFISH_ORANGESHOULDER,
+            HybridAquaticItems.SURGEONFISH_SOHAL,
+            HybridAquaticItems.DISCUS,
+            HybridAquaticItems.GOURAMI,
+            HybridAquaticItems.BETTA,
+            HybridAquaticItems.DANIO,
+            HybridAquaticItems.NEON_TETRA,
+            HybridAquaticItems.DRAGONFISH,
         ).forEach { item ->
             getOrCreateTagBuilder(HybridAquaticItemTags.SMALL_FISH).add(item)
         }

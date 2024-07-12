@@ -25,6 +25,18 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
+    "has_betta": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hybrid-aquatic:betta"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_blue_spotted_stingray": {
       "conditions": {
         "items": [
@@ -73,6 +85,66 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
+    "has_danio": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hybrid-aquatic:danio"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_discus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hybrid-aquatic:discus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_dragonfish": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hybrid-aquatic:dragonfish"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_flashlight_fish": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hybrid-aquatic:flashlight_fish"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_gourami": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hybrid-aquatic:gourami"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_lionfish": {
       "conditions": {
         "items": [
@@ -91,6 +163,30 @@
           {
             "items": [
               "hybrid-aquatic:needlefish"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_neon_tetra": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hybrid-aquatic:neon_tetra"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_orangeshoulder": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hybrid-aquatic:surgeonfish_orangeshoulder"
             ]
           }
         ]
@@ -121,12 +217,36 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
+    "has_ratfish": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hybrid-aquatic:ratfish"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_rockfish": {
       "conditions": {
         "items": [
           {
             "items": [
               "hybrid-aquatic:rockfish"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_sohal": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hybrid-aquatic:surgeonfish_sohal"
             ]
           }
         ]
@@ -172,6 +292,8 @@
       "has_needlefish",
       "has_clownfish",
       "has_blue_tang",
+      "has_sohal",
+      "has_orangeshoulder",
       "has_barreleye",
       "has_anglerfish",
       "has_piranha",
@@ -179,6 +301,14 @@
       "has_cowfish",
       "has_tiger_barb",
       "has_oscar",
+      "has_flashlight_fish",
+      "has_gourami",
+      "has_betta",
+      "has_ratfish",
+      "has_discus",
+      "has_neon_tetra",
+      "has_danio",
+      "has_dragonfish",
       "has_the_recipe"
     ]
   ],
