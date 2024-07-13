@@ -11,7 +11,8 @@ import net.minecraft.world.World
 class GoldfishEntity(entityType: EntityType<out GoldfishEntity>, world: World) :
     HybridAquaticFishEntity(entityType, world, variants = hashMapOf(
         "shubunkin" to FishVariant.biomeVariant("shubunkin", HybridAquaticBiomeTags.GOLDFISH_SPAWN_BIOMES)), HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
-    companion object {
+
+        companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 2.0)

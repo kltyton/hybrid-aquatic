@@ -17,6 +17,10 @@ import net.minecraft.world.World
 class ThresherSharkEntity(entityType: EntityType<out ThresherSharkEntity>, world: World) :
     HybridAquaticSharkEntity(entityType, world, HybridAquaticEntityTags.THRESHER_SHARK_PREY, false, false) {
 
+    override fun getLimitPerChunk(): Int {
+        return 1
+    }
+
     override fun initGoals() {
         super.initGoals()
         goalSelector.add(1, RevengeGoal(this))

@@ -15,6 +15,10 @@ class SunfishEntity(entityType: EntityType<out SunfishEntity>, world: World) :
         "sharptail" to FishVariant.biomeVariant("sharptail", HybridAquaticBiomeTags.SHARPTAIL_SUNFISH_SPAWN_BIOMES)),
         HybridAquaticEntityTags.SUNFISH_PREY, HybridAquaticEntityTags.SUNFISH_PREDATOR) {
 
+    override fun getLimitPerChunk(): Int {
+        return 1
+    }
+
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

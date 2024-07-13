@@ -10,6 +10,10 @@ import net.minecraft.world.World
 class AnglerfishEntity(entityType: EntityType<out AnglerfishEntity>, world: World) :
     HybridAquaticDeepSeaFishEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.ANGLERFISH_PREY, HybridAquaticEntityTags.ANGLERFISH_PREDATOR) {
 
+    override fun getLimitPerChunk(): Int {
+        return 1
+    }
+
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

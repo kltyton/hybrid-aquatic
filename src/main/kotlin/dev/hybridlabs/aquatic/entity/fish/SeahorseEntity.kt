@@ -16,6 +16,10 @@ class SeahorseEntity(entityType: EntityType<out SeahorseEntity>, world: World) :
         "pygmy" to FishVariant.biomeVariant("pygmy", HybridAquaticBiomeTags.SEAHORSE_SPAWN_BIOMES)),
         HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
 
+    override fun getLimitPerChunk(): Int {
+        return 2
+    }
+
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

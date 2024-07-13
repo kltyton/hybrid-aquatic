@@ -9,6 +9,11 @@ import net.minecraft.world.World
 
 class CowfishEntity(entityType: EntityType<out CowfishEntity>, world: World) :
     HybridAquaticFishEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
+
+    override fun getLimitPerChunk(): Int {
+        return 1
+    }
+
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

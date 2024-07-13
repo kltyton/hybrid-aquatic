@@ -9,6 +9,11 @@ import net.minecraft.world.World
 
 class TriggerfishEntity(entityType: EntityType<out TriggerfishEntity>, world: World) :
     HybridAquaticFishEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.TRIGGERFISH_PREY, HybridAquaticEntityTags.TRIGGERFISH_PREDATOR) {
+
+    override fun getLimitPerChunk(): Int {
+        return 1
+    }
+
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

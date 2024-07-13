@@ -10,6 +10,10 @@ import net.minecraft.world.World
 class RatfishEntity(entityType: EntityType<out RatfishEntity>, world: World) :
     HybridAquaticDeepSeaFishEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
 
+    override fun getLimitPerChunk(): Int {
+        return 4
+    }
+
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

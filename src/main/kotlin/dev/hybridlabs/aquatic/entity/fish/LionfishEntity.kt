@@ -15,6 +15,11 @@ import net.minecraft.world.World
 
 class LionfishEntity(entityType: EntityType<out LionfishEntity>, world: World) :
     HybridAquaticFishEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.LIONFISH_PREY, HybridAquaticEntityTags.LIONFISH_PREDATOR) {
+
+    override fun getLimitPerChunk(): Int {
+        return 2
+    }
+
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

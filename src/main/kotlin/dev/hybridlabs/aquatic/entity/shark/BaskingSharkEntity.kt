@@ -9,6 +9,11 @@ import net.minecraft.world.World
 
 class BaskingSharkEntity(entityType: EntityType<out BaskingSharkEntity>, world: World) :
     HybridAquaticSharkEntity(entityType, world, HybridAquaticEntityTags.NONE, true, false) {
+
+    override fun getLimitPerChunk(): Int {
+        return 1
+    }
+
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

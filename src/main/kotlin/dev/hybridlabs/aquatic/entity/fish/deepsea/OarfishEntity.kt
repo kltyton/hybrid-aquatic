@@ -10,6 +10,10 @@ import net.minecraft.world.World
 class OarfishEntity(entityType: EntityType<out OarfishEntity>, world: World) :
     HybridAquaticDeepSeaFishEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.OARFISH_PREY, HybridAquaticEntityTags.OARFISH_PREDATOR) {
 
+    override fun getLimitPerChunk(): Int {
+        return 1
+    }
+
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

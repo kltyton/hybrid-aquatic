@@ -17,6 +17,10 @@ import net.minecraft.world.World
 class FrilledSharkEntity(entityType: EntityType<out FrilledSharkEntity>, world: World) :
     HybridAquaticSharkEntity(entityType, world, HybridAquaticEntityTags.FRILLED_SHARK_PREY, false, false) {
 
+    override fun getLimitPerChunk(): Int {
+        return 1
+    }
+
     override fun initGoals() {
         super.initGoals()
         goalSelector.add(1, RevengeGoal(this))

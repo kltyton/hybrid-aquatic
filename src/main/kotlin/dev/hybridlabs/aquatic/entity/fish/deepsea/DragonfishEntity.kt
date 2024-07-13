@@ -10,6 +10,10 @@ import net.minecraft.world.World
 class DragonfishEntity(entityType: EntityType<out DragonfishEntity>, world: World) :
     HybridAquaticDeepSeaFishEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.DRAGONFISH_PREY, HybridAquaticEntityTags.DRAGONFISH_PREDATOR) {
 
+    override fun getLimitPerChunk(): Int {
+        return 2
+    }
+
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

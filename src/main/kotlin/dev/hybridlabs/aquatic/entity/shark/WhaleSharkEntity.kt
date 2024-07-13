@@ -9,16 +9,21 @@ import net.minecraft.world.World
 
 class WhaleSharkEntity(entityType: EntityType<out WhaleSharkEntity>, world: World) :
     HybridAquaticSharkEntity(entityType, world, HybridAquaticEntityTags.NONE, true, false) {
-        companion object {
-            fun createMobAttributes(): DefaultAttributeContainer.Builder {
-                return WaterCreatureEntity.createMobAttributes()
-                    .add(EntityAttributes.GENERIC_MAX_HEALTH, 40.0)
-                    .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.8)
-                    .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 2.0)
-                    .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 16.0)
-                    .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 100.0)
-            }
+
+    override fun getLimitPerChunk(): Int {
+        return 1
+    }
+
+    companion object {
+        fun createMobAttributes(): DefaultAttributeContainer.Builder {
+            return WaterCreatureEntity.createMobAttributes()
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 40.0)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.8)
+                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 2.0)
+                .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 16.0)
+                .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 100.0)
         }
+    }
 
     override fun getMaxSize(): Int {
         return 5

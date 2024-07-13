@@ -17,6 +17,10 @@ import net.minecraft.world.World
 class GreatWhiteSharkEntity(entityType: EntityType<out GreatWhiteSharkEntity>, world: World) :
     HybridAquaticSharkEntity(entityType, world, HybridAquaticEntityTags.GREAT_WHITE_SHARK_PREY, false, true) {
 
+    override fun getLimitPerChunk(): Int {
+        return 1
+    }
+
     override fun initGoals() {
         super.initGoals()
         goalSelector.add(1, RevengeGoal(this))

@@ -17,12 +17,16 @@ import net.minecraft.world.World
 class TigerSharkEntity(entityType: EntityType<out TigerSharkEntity>, world: World) :
     HybridAquaticSharkEntity(entityType, world, HybridAquaticEntityTags.TIGER_SHARK_PREY, false, true) {
 
+    override fun getLimitPerChunk(): Int {
+        return 1
+    }
+
     override fun initGoals() {
         super.initGoals()
         goalSelector.add(1, RevengeGoal(this))
     }
 
-        companion object {
+    companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 36.0)

@@ -10,6 +10,10 @@ import net.minecraft.world.World
 class BarreleyeEntity(entityType: EntityType<out BarreleyeEntity>, world: World) :
     HybridAquaticDeepSeaFishEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
 
+    override fun getLimitPerChunk(): Int {
+        return 1
+    }
+
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()
