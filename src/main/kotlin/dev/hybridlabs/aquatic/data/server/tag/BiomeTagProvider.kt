@@ -58,6 +58,11 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             )
             .addOptional(Identifier("regions_unexplored", "rocky_reef"))
 
+        getOrCreateTagBuilder(HybridAquaticBiomeTags.PARROTFISH_SPAWN_BIOMES).add(
+            BiomeKeys.WARM_OCEAN,
+        )
+            .addOptional(Identifier("regions_unexplored", "rocky_reef"))
+
         getOrCreateTagBuilder(HybridAquaticBiomeTags.BULL_SHARK_SPAWN_BIOMES).add(
             BiomeKeys.DEEP_OCEAN,
             BiomeKeys.DEEP_LUKEWARM_OCEAN,

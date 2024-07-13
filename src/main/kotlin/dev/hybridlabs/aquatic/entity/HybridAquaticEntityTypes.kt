@@ -59,6 +59,13 @@ object HybridAquaticEntityTypes {
         MantaRayEntity.createMobAttributes()
     )
 
+    val PARROTFISH = registerFish(
+        "parrotfish",
+        ::ParrotfishEntity,
+        EntityDimensions.fixed(0.5f, 0.4f),
+        ParrotfishEntity.createMobAttributes()
+    )
+
     val SURGEONFISH = registerFish(
         "surgeonfish",
         ::SurgeonfishEntity,

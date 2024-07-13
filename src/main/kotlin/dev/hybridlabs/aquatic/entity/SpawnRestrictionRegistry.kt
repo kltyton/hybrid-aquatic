@@ -37,6 +37,7 @@ object SpawnRestrictionRegistry {
             HybridAquaticEntityTypes.FLASHLIGHT_FISH,
             HybridAquaticEntityTypes.OPAH,
             HybridAquaticEntityTypes.TRIGGERFISH,
+            HybridAquaticEntityTypes.PARROTFISH,
             HybridAquaticEntityTypes.TIGER_BARB,
             HybridAquaticEntityTypes.PIRANHA,
             HybridAquaticEntityTypes.OSCAR,

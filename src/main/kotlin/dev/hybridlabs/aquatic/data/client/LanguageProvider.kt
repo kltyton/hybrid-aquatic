@@ -247,6 +247,7 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             HybridAquaticEntityTypes.PIRANHA to "Piranha",
             HybridAquaticEntityTypes.SEA_ANGEL to "Sea Angel",
             HybridAquaticEntityTypes.SUNFISH to "Sunfish",
+            HybridAquaticEntityTypes.PARROTFISH to "Parrotfish",
             HybridAquaticEntityTypes.VAMPIRE_SQUID to "Vampire Squid",
             HybridAquaticEntityTypes.MAHIMAHI to "Mahi Mahi",
             HybridAquaticEntityTypes.MORAY_EEL to "Moray Eel",
