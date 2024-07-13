@@ -341,11 +341,11 @@ open class HybridAquaticSharkEntity(
 
     private fun getHungerValue(entityType: EntityType<*>): Int {
         if (entityType.isIn(HybridAquaticEntityTags.CRAB))
-            return 150
-        if (entityType.isIn(HybridAquaticEntityTags.SMALL_PREY))
-            return 300
-        else if (entityType.isIn(HybridAquaticEntityTags.MEDIUM_PREY))
             return 600
+        if (entityType.isIn(HybridAquaticEntityTags.SMALL_PREY))
+            return 600
+        else if (entityType.isIn(HybridAquaticEntityTags.MEDIUM_PREY))
+            return 900
         else if (entityType.isIn(HybridAquaticEntityTags.LARGE_PREY))
             return 1200
 
