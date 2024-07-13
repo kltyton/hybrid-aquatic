@@ -11,7 +11,7 @@ class OarfishEntity(entityType: EntityType<out OarfishEntity>, world: World) :
     HybridAquaticDeepSeaFishEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.OARFISH_PREY, HybridAquaticEntityTags.OARFISH_PREDATOR) {
 
     override fun getLimitPerChunk(): Int {
-        return 1
+        return 2
     }
 
     companion object {

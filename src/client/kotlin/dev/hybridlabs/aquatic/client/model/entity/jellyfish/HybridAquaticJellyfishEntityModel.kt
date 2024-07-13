@@ -11,11 +11,11 @@ abstract class HybridAquaticJellyfishEntityModel<T: HybridAquaticJellyfishEntity
     }
 
     override fun getTextureResource(animatable: T?): Identifier {
-        return Identifier(HybridAquatic.MOD_ID, "textures/entity/$id.png")
+        return Identifier(HybridAquatic.MOD_ID, "textures/entity/jellyfish/$id.png")
     }
 
     fun getVariantTexture(variant: String): Identifier {
-        return Identifier(HybridAquatic.MOD_ID, "textures/entity/${id}_$variant.png")
+        return Identifier(HybridAquatic.MOD_ID, "textures/entity/jellyfish/${id}_$variant.png")
     }
 
     override fun getAnimationResource(animatable: T?): Identifier {

@@ -11,7 +11,7 @@ class DragonfishEntity(entityType: EntityType<out DragonfishEntity>, world: Worl
     HybridAquaticDeepSeaFishEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.DRAGONFISH_PREY, HybridAquaticEntityTags.DRAGONFISH_PREDATOR) {
 
     override fun getLimitPerChunk(): Int {
-        return 2
+        return 4
     }
 
     companion object {

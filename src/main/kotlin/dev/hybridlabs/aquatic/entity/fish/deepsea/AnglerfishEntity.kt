@@ -11,7 +11,7 @@ class AnglerfishEntity(entityType: EntityType<out AnglerfishEntity>, world: Worl
     HybridAquaticDeepSeaFishEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.ANGLERFISH_PREY, HybridAquaticEntityTags.ANGLERFISH_PREDATOR) {
 
     override fun getLimitPerChunk(): Int {
-        return 1
+        return 3
     }
 
     companion object {

@@ -11,11 +11,11 @@ abstract class HybridAquaticCrustaceanEntityModel<T: HybridAquaticCrustaceanEnti
     }
 
     override fun getTextureResource(animatable: T?): Identifier {
-        return Identifier(HybridAquatic.MOD_ID, "textures/entity/$id.png")
+        return Identifier(HybridAquatic.MOD_ID, "textures/entity/crustacean/$id/$id.png")
     }
 
     fun getVariantTexture(variant: String): Identifier {
-        return Identifier(HybridAquatic.MOD_ID, "textures/entity/${id}_$variant.png")
+        return Identifier(HybridAquatic.MOD_ID, "textures/entity/crustacean/$id/${id}_$variant.png")
     }
 
     override fun getAnimationResource(animatable: T?): Identifier {

@@ -88,7 +88,6 @@ open class HybridAquaticRayEntity(
             if (spawnReason == SpawnReason.SPAWN_EGG) {
                 variantKey = variants.keys.elementAt(random.nextBetween(0, variants.size - 1))
             } else {
-                // Handle collisions
                 val validKeys = variants.filter { it.value.spawnCondition(world, spawnReason, blockPos, random) }.map { it.key }
 
                 if (validKeys.isEmpty()) {
@@ -103,7 +102,6 @@ open class HybridAquaticRayEntity(
                         }
                     }
                 } else {
-                    // Default to a priority based system
                     val validityFilter = variants.filter { validKeys.contains(it.key) }
                     variantKey = if (validityFilter.isNotEmpty()) {
                         val maxPriority = validityFilter.values.maxOf { it.priority }
@@ -224,7 +222,7 @@ open class HybridAquaticRayEntity(
     }
 
     override fun getLimitPerChunk(): Int {
-        return 2
+        return 4
     }
 
     // region Properties
@@ -379,9 +377,6 @@ open class HybridAquaticRayEntity(
         }
 
         companion object {
-            /**
-             * Creates a biome variant of a fish
-             */
             fun biomeVariant(variantName: String, biomes : TagKey<Biome>, ignore : List<Ignore> = emptyList()): RayVariant {
                 return RayVariant(variantName, { world, _, pos, _ ->
                     world.getBiome(pos).isIn(biomes)
@@ -399,41 +394,16 @@ open class HybridAquaticRayEntity(
     @Suppress("UNUSED")
     data class VariantCollisionRules(val variants : Set<String>, val collisionHandler: (Set<String>, Random, ServerWorldAccess) -> String, val exclusionStatus: ExclusionStatus = INCLUSIVE) {
 
-        /**
-         * INCLUSIVE - all other variants can exist within this selection swath
-         * <pre> </pre>
-         * EXCLUSIVE - all other variants are excluded from this selection swath
-         */
         enum class ExclusionStatus {
             INCLUSIVE,
             EXCLUSIVE
         }
-
-        /**
-         * <pre></pre>
-         * Example:
-         * ```kotlin
-         * // returns a bluefin or a yellowfin tuna variant
-         * equalDistribution(setOf("bluefin", "yellowfin"))
-         * ```
-         * @return a random variant within the set
-         */
         fun equalDistribution(variants: Set<String>, status : ExclusionStatus = INCLUSIVE) : VariantCollisionRules {
             return VariantCollisionRules(variants, { possibleVariants, _, _ ->
                 possibleVariants.random()
             }, status)
         }
 
-        /**
-         * Example
-         * ```
-         * weightedDistribution(setOf(
-         *  Pair("bluefin", 0.80),
-         *  Pair("yellowfin", 0.20)
-         * ))
-         * ```
-         * @return a premade variant collision rule which allows weighted distribution of variants.
-         */
         fun weightedDistribution(weights: Set<Pair<String, Double>>, status: ExclusionStatus = EXCLUSIVE) : VariantCollisionRules {
             return VariantCollisionRules(weights.map { pair -> pair.first }.toSet(), { _, random, _ ->
                 // sum up weights

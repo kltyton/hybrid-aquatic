@@ -8,6 +8,10 @@ import net.minecraft.world.World
 
 class CauliflowerJellyfishEntity(entityType: EntityType<out CauliflowerJellyfishEntity>, world: World) : HybridAquaticJellyfishEntity(entityType, world, false) {
 
+    override fun getLimitPerChunk(): Int {
+        return 2
+    }
+
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

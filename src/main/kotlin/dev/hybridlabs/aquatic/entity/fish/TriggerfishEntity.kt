@@ -11,7 +11,7 @@ class TriggerfishEntity(entityType: EntityType<out TriggerfishEntity>, world: Wo
     HybridAquaticFishEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.TRIGGERFISH_PREY, HybridAquaticEntityTags.TRIGGERFISH_PREDATOR) {
 
     override fun getLimitPerChunk(): Int {
-        return 1
+        return 2
     }
 
     companion object {

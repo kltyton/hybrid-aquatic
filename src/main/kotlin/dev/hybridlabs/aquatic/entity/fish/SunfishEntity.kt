@@ -16,7 +16,7 @@ class SunfishEntity(entityType: EntityType<out SunfishEntity>, world: World) :
         HybridAquaticEntityTags.SUNFISH_PREY, HybridAquaticEntityTags.SUNFISH_PREDATOR) {
 
     override fun getLimitPerChunk(): Int {
-        return 1
+        return 2
     }
 
     companion object {

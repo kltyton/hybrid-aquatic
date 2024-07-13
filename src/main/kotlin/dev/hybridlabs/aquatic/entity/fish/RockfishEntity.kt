@@ -10,6 +10,10 @@ import net.minecraft.world.World
 class RockfishEntity(entityType: EntityType<out RockfishEntity>, world: World) :
     HybridAquaticSchoolingFishEntity(entityType, world, HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.ROCKFISH_PREDATOR) {
 
+    override fun getLimitPerChunk(): Int {
+        return 4
+    }
+
         companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

@@ -222,7 +222,7 @@ open class HybridAquaticCephalopodEntity(
     }
 
     override fun getLimitPerChunk(): Int {
-        return 4
+        return 2
     }
 
     override fun getAmbientSound(): SoundEvent {

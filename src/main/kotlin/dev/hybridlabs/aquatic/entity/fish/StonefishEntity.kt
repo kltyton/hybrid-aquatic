@@ -17,7 +17,7 @@ class StonefishEntity(entityType: EntityType<out StonefishEntity>, world: World)
     HybridAquaticFishEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
 
     override fun getLimitPerChunk(): Int {
-        return 1
+        return 2
     }
 
     companion object {

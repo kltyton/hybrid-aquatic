@@ -11,7 +11,7 @@ class BarreleyeEntity(entityType: EntityType<out BarreleyeEntity>, world: World)
     HybridAquaticDeepSeaFishEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
 
     override fun getLimitPerChunk(): Int {
-        return 1
+        return 2
     }
 
     companion object {

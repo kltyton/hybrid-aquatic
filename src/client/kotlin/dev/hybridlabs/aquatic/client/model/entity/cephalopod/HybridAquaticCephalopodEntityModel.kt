@@ -16,8 +16,8 @@ abstract class HybridAquaticCephalopodEntityModel<T: HybridAquaticCephalopodEnti
     override fun getTextureResource(animatable: T?): Identifier {
         val variant = animatable?.variant
         if (variant != null && !variant.ignore.contains(HybridAquaticCephalopodEntity.CephalopodVariant.Ignore.TEXTURE))
-            return Identifier(HybridAquatic.MOD_ID, "textures/entity/${id}_${variant.variantName}.png")
-        return Identifier(HybridAquatic.MOD_ID, "textures/entity/$id.png")
+            return Identifier(HybridAquatic.MOD_ID, "textures/entity/cephalopod/$id/${id}_${variant.variantName}.png")
+        return Identifier(HybridAquatic.MOD_ID, "textures/entity/cephalopod/$id/$id.png")
     }
 
     override fun getAnimationResource(animatable: T?): Identifier {

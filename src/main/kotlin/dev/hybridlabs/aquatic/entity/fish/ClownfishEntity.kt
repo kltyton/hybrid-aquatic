@@ -23,6 +23,10 @@ class ClownfishEntity(entityType: EntityType<out ClownfishEntity>, world: World)
         "orange_skunk" to FishVariant.biomeVariant("orange_skunk", HybridAquaticBiomeTags.CLOWNFISH_SPAWN_BIOMES),),
         HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.CLOWNFISH_PREDATOR) {
 
+    override fun getLimitPerChunk(): Int {
+        return 2
+    }
+
     public override fun getLootTableId(): Identifier {
         return when (this.variant?.variantName) {
             "ocellaris" -> Identifier("hybrid-aquatic", "entities/clownfish")

@@ -9,6 +9,10 @@ import net.minecraft.world.World
 
 class AtollaJellyfishEntity(entityType: EntityType<out AtollaJellyfishEntity>, world: World) : HybridAquaticJellyfishEntity(entityType, world, true) {
 
+    override fun getLimitPerChunk(): Int {
+        return 2
+    }
+
     override fun initGoals() {
         super.initGoals()
         goalSelector.add(0, StayDeepGoal(this))

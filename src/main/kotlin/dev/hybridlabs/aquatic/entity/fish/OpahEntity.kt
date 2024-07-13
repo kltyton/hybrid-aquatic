@@ -11,9 +11,9 @@ class OpahEntity(entityType: EntityType<out OpahEntity>, world: World) :
     HybridAquaticFishEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.OPAH_PREY, HybridAquaticEntityTags.OPAH_PREDATOR) {
 
     override fun getLimitPerChunk(): Int {
-        return 1
+        return 2
     }
-    
+
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

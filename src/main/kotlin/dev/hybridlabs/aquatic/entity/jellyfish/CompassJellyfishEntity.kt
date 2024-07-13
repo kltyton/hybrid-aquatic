@@ -8,6 +8,10 @@ import net.minecraft.world.World
 
 class CompassJellyfishEntity(entityType: EntityType<out CompassJellyfishEntity>, world: World) : HybridAquaticJellyfishEntity(entityType, world, true) {
 
+    override fun getLimitPerChunk(): Int {
+        return 2
+    }
+
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

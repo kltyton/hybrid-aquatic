@@ -11,6 +11,10 @@ import net.minecraft.world.World
 class TunaEntity(entityType: EntityType<out TunaEntity>, world: World) :
     HybridAquaticSchoolingFishEntity(entityType, world, HybridAquaticEntityTags.TUNA_PREY, HybridAquaticEntityTags.TUNA_PREDATOR) {
 
+    override fun getLimitPerChunk(): Int {
+        return 4
+    }
+
     override fun initGoals() {
         super.initGoals()
         goalSelector.add(5, FishJumpGoal(this, 10))

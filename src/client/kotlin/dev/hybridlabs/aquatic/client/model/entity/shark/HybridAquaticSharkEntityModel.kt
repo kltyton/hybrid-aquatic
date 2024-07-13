@@ -17,7 +17,7 @@ abstract class HybridAquaticSharkEntityModel<T : HybridAquaticSharkEntity> (
     }
 
     override fun getTextureResource(animatable: T?): Identifier {
-        return Identifier(HybridAquatic.MOD_ID, "textures/entity/$id.png")
+        return Identifier(HybridAquatic.MOD_ID, "textures/entity/shark/$id.png")
     }
 
     override fun getAnimationResource(animatable: T?): Identifier {
