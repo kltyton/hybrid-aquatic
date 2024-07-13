@@ -46,6 +46,7 @@ object HybridAquaticEntityRenderers {
     val COWFISH = EntityRendererRegistry.register(HybridAquaticEntityTypes.COWFISH, ::CowfishEntityRenderer)
     val DISCUS = EntityRendererRegistry.register(HybridAquaticEntityTypes.DISCUS, ::DiscusEntityRenderer)
     val SURGEONFISH = EntityRendererRegistry.register(HybridAquaticEntityTypes.SURGEONFISH, ::SurgeonfishEntityRenderer)
+    val CARP = EntityRendererRegistry.register(HybridAquaticEntityTypes.CARP, ::CarpEntityRenderer)
 
     //endregion
 

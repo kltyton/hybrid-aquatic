@@ -47,6 +47,7 @@ object SpawnRestrictionRegistry {
             HybridAquaticEntityTypes.BETTA,
             HybridAquaticEntityTypes.TETRA,
             HybridAquaticEntityTypes.NEEDLEFISH,
+            HybridAquaticEntityTypes.CARP,
         ).forEach { registerFish(it) }
 
         // underground fish

@@ -105,7 +105,14 @@ object HybridAquaticEntityTypes {
         "goldfish",
         ::GoldfishEntity,
         EntityDimensions.fixed(0.5f, 0.5f),
-        GouramiEntity.createMobAttributes()
+        GoldfishEntity.createMobAttributes()
+    )
+
+    val CARP = registerFish(
+        "carp",
+        ::CarpEntity,
+        EntityDimensions.fixed(0.75f, 0.5f),
+        CarpEntity.createMobAttributes()
     )
 
     val GOURAMI = registerFish(
