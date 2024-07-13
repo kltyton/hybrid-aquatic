@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "minecraft:jungle",
+    "minecraft:bamboo_jungle",
     "minecraft:sparse_jungle",
     {
       "id": "wythers:jungle_river",
@@ -21,6 +22,10 @@
     },
     {
       "id": "regions_unexplored:tropical_river",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:bamboo_forest",
       "required": false
     }
   ]

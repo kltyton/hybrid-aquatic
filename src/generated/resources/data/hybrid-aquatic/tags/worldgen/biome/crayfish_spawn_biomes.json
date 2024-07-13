@@ -22,6 +22,10 @@
     {
       "id": "regions_unexplored:muddy_river",
       "required": false
+    },
+    {
+      "id": "regions_unexplored:marsh",
+      "required": false
     }
   ]
 }

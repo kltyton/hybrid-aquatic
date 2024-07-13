@@ -4,6 +4,11 @@
     "minecraft:ocean",
     "minecraft:warm_ocean",
     "minecraft:lukewarm_ocean",
-    "minecraft:beach"
+    "minecraft:beach",
+    "minecraft:stony_shore",
+    {
+      "id": "regions_unexplored:rocky_reef",
+      "required": false
+    }
   ]
 }

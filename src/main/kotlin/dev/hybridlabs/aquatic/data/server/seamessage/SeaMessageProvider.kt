@@ -42,6 +42,7 @@ class SeaMessageProvider(output: FabricDataOutput, registriesFuture: Completable
             GeneratedSeaMessageData("poke", "I like cheese", "Poke", englishTitle = "Cheese"),
             GeneratedSeaMessageData("one_piece", "THE ONE PIECE IS REAL", "Poke", englishTitle = "One Piece"),
             GeneratedSeaMessageData("mylo", "Mylo, you are the best friend I could have ever hoped to have. \nRest in peace, my sweet prince. I hope you have sweet dreams and find the peace you deserve.", "MysticKoko", englishTitle = "The Best Boy"),
+            GeneratedSeaMessageData("womp_womp", "womp womp", "MrPress", englishTitle = "Catchphrase"),
         )
     }
 }

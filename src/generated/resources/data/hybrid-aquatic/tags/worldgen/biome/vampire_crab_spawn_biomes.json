@@ -17,6 +17,10 @@
     {
       "id": "terralith:orchid_swamp",
       "required": false
+    },
+    {
+      "id": "regions_unexplored:marsh",
+      "required": false
     }
   ]
 }

@@ -2,6 +2,10 @@
   "replace": false,
   "values": [
     "#minecraft:is_ocean",
-    "#minecraft:is_deep_ocean"
+    "#minecraft:is_deep_ocean",
+    {
+      "id": "regions_unexplored:rocky_reef",
+      "required": false
+    }
   ]
 }
