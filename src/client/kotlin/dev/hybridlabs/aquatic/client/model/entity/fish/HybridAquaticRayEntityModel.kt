@@ -21,8 +21,8 @@ abstract class HybridAquaticRayEntityModel<T: HybridAquaticRayEntity> (private v
     override fun getTextureResource(animatable: T?): Identifier {
         val variant = animatable?.variant
         if (variant != null && !variant.ignore.contains(TEXTURE))
-            return Identifier(HybridAquatic.MOD_ID, "textures/entity/fish/${id}_${variant.getProvidedVariant(animatable)}.png")
-        return Identifier(HybridAquatic.MOD_ID, "textures/entity/fish.$id.png")
+            return Identifier(HybridAquatic.MOD_ID, "textures/entity/fish/$id/${id}_${variant.getProvidedVariant(animatable)}.png")
+        return Identifier(HybridAquatic.MOD_ID, "textures/entity/fish/$id/$id.png")
     }
 
     override fun getAnimationResource(animatable: T?): Identifier {
