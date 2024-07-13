@@ -166,6 +166,8 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             HybridAquaticItems.DIVING_SUIT to "Diving Suit",
             HybridAquaticItems.DIVING_LEGGINGS to "Diving Leggings",
             HybridAquaticItems.DIVING_BOOTS to "Diving Boots",
+            HybridAquaticItems.SEASHELL_HELMET to "Seashell Helmet",
+            HybridAquaticItems.SEASHELL_PAULDRONS to "Seashell Pauldrons",
             HybridAquaticItems.MANGLERFISH_LURE to "Manglerfish Lure",
             HybridAquaticItems.MANGLERFISH_FIN to "Manglerfish Fin",
             HybridAquaticItems.EEL_SCARF to "Eel Scarf",

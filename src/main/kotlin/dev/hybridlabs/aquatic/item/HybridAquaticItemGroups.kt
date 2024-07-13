@@ -17,7 +17,7 @@ import net.minecraft.text.Text
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.BlockPos
 
-object HybridAquaticItemGroups {
+object  HybridAquaticItemGroups {
     val BLOCKS = register("blocks", FabricItemGroup.builder()
         .displayName(Text.translatable("itemGroup.${HybridAquatic.MOD_ID}.blocks"))
         .icon { ItemStack(HybridAquaticItems.ANEMONE) }
@@ -186,6 +186,8 @@ object HybridAquaticItemGroups {
             entries.add(HybridAquaticItems.DIVING_SUIT)
             entries.add(HybridAquaticItems.DIVING_LEGGINGS)
             entries.add(HybridAquaticItems.DIVING_BOOTS)
+            entries.add(HybridAquaticItems.SEASHELL_HELMET)
+            entries.add(HybridAquaticItems.SEASHELL_PAULDRONS)
             entries.add(HybridAquaticItems.MANGLERFISH_LURE)
             entries.add(HybridAquaticItems.MANGLERFISH_FIN)
             entries.add(HybridAquaticItems.EEL_SCARF)

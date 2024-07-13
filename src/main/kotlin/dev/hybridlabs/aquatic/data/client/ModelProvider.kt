@@ -162,6 +162,8 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
             HybridAquaticItems.DIVING_SUIT,
             HybridAquaticItems.DIVING_LEGGINGS,
             HybridAquaticItems.DIVING_BOOTS,
+            HybridAquaticItems.SEASHELL_HELMET,
+            HybridAquaticItems.SEASHELL_PAULDRONS,
             HybridAquaticItems.MANGLERFISH_LURE,
             HybridAquaticItems.MANGLERFISH_FIN,
             HybridAquaticItems.TURTLE_CHESTPLATE,

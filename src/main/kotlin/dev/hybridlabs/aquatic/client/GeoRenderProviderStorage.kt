@@ -13,6 +13,7 @@ import software.bernie.geckolib.animatable.client.RenderProvider
  */
 object GeoRenderProviderStorage {
     lateinit var divingArmorRenderProvider: () -> RenderProvider
+    lateinit var seashellArmorRenderProvider: () -> RenderProvider
     lateinit var manglerfishArmorRenderProvider: () -> RenderProvider
     lateinit var turtleArmorRenderProvider: () -> RenderProvider
     lateinit var eelArmorRenderProvider: () -> RenderProvider
