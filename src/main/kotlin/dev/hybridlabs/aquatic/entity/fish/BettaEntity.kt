@@ -18,6 +18,10 @@ class BettaEntity(entityType: EntityType<out BettaEntity>, world: World) :
         "red" to FishVariant.biomeVariant("red", HybridAquaticBiomeTags.BETTA_SPAWN_BIOMES),
         "white" to FishVariant.biomeVariant("white", HybridAquaticBiomeTags.BETTA_SPAWN_BIOMES),),
         HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
+
+    override fun getLimitPerChunk(): Int {
+        return 2
+    }
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

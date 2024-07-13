@@ -20,6 +20,10 @@ import software.bernie.geckolib.core.`object`.PlayState
 class PiranhaEntity(entityType: EntityType<out PiranhaEntity>, world: World) :
     HybridAquaticSchoolingFishEntity(entityType, world, HybridAquaticEntityTags.PIRANHA_PREY, HybridAquaticEntityTags.PIRANHA_PREDATOR) {
 
+    override fun getLimitPerChunk(): Int {
+        return 4
+    }
+
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

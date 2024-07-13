@@ -15,6 +15,11 @@ class CarpEntity(entityType: EntityType<out CarpEntity>, world: World) :
         "koi_platinum" to FishVariant.biomeVariant("koi_platinum", HybridAquaticBiomeTags.KOI_SPAWN_BIOMES),
         "koi_tancho" to FishVariant.biomeVariant("koi_tancho", HybridAquaticBiomeTags.KOI_SPAWN_BIOMES),),
         HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
+
+    override fun getLimitPerChunk(): Int {
+        return 2
+    }
+
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

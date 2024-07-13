@@ -8,6 +8,10 @@ import net.minecraft.world.World
 
 class BarrelJellyfishEntity(entityType: EntityType<out BarrelJellyfishEntity>, world: World) : HybridAquaticJellyfishEntity(entityType, world, false) {
 
+    override fun getLimitPerChunk(): Int {
+        return 4
+    }
+
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

@@ -41,6 +41,10 @@ class SurgeonfishEntity(entityType: EntityType<out SurgeonfishEntity>, world: Wo
         }
     }
 
+    override fun getLimitPerChunk(): Int {
+        return 4
+    }
+
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

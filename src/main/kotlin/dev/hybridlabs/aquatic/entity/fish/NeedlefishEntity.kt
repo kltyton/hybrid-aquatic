@@ -10,6 +10,10 @@ import net.minecraft.world.World
 class NeedlefishEntity(entityType: EntityType<out NeedlefishEntity>, world: World) :
     HybridAquaticSchoolingFishEntity(entityType, world, HybridAquaticEntityTags.NEEDLEFISH_PREY, HybridAquaticEntityTags.NEEDLEFISH_PREDATOR) {
 
+    override fun getLimitPerChunk(): Int {
+        return 4
+    }
+
         companion object {
             fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

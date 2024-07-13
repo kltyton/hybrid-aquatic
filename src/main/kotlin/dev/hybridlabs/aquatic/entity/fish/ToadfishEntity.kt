@@ -15,6 +15,11 @@ import net.minecraft.world.World
 
 class ToadfishEntity(entityType: EntityType<out ToadfishEntity>, world: World) :
     HybridAquaticFishEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
+
+    override fun getLimitPerChunk(): Int {
+        return 2
+    }
+
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

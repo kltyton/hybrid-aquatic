@@ -10,6 +10,9 @@ import net.minecraft.world.World
 class DanioEntity(entityType: EntityType<out DanioEntity>, world: World) :
     HybridAquaticSchoolingFishEntity(entityType, world, HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
 
+    override fun getLimitPerChunk(): Int {
+        return 4
+    }
 
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {

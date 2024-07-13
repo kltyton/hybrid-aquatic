@@ -10,6 +10,10 @@ import net.minecraft.world.World
 class FlashlightFishEntity(entityType: EntityType<out FlashlightFishEntity>, world: World) :
     HybridAquaticSchoolingFishEntity(entityType, world, HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.FLASHLIGHT_FISH_PREDATOR) {
 
+    override fun getLimitPerChunk(): Int {
+        return 4
+    }
+
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

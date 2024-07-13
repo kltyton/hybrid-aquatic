@@ -8,6 +8,10 @@ import net.minecraft.world.World
 
 class MauveStingerEntity(entityType: EntityType<out MauveStingerEntity>, world: World) : HybridAquaticJellyfishEntity(entityType, world, true) {
 
+    override fun getLimitPerChunk(): Int {
+        return 4
+    }
+
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()
