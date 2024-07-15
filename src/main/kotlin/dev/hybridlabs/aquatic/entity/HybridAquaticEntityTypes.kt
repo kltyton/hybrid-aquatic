@@ -452,7 +452,7 @@ object HybridAquaticEntityTypes {
     val STARFISH = registerCritter(
         "starfish",
         ::StarfishEntity,
-        EntityDimensions.fixed(0.5f, 0.25f),
+        EntityDimensions.fixed(0.5f, 0.2f),
         StarfishEntity.createMobAttributes()
     )
 
