@@ -1,13 +1,32 @@
 package dev.hybridlabs.aquatic.entity.crustacean
 
+import dev.hybridlabs.aquatic.tag.HybridAquaticBiomeTags
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.attribute.DefaultAttributeContainer
 import net.minecraft.entity.attribute.EntityAttributes
 import net.minecraft.entity.mob.WaterCreatureEntity
+import net.minecraft.util.Identifier
 import net.minecraft.world.World
 
 class LobsterEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>, world: World) :
-    HybridAquaticCrustaceanEntity(entityType, world, emptyMap(), false, false) {
+    HybridAquaticCrustaceanEntity(entityType, world, variants = hashMapOf(
+        "american" to CrustaceanVariant.biomeVariant("american", HybridAquaticBiomeTags.LOBSTER_SPAWN_BIOMES,
+            ignore = listOf(CrustaceanVariant.Ignore.MODEL, CrustaceanVariant.Ignore.ANIMATION)),
+        "california_spiny" to CrustaceanVariant.biomeVariant("california_spiny", HybridAquaticBiomeTags.LOBSTER_SPAWN_BIOMES,
+            ignore = listOf(CrustaceanVariant.Ignore.MODEL, CrustaceanVariant.Ignore.ANIMATION)),
+        "ornate_spiny" to CrustaceanVariant.biomeVariant("ornate_spiny", HybridAquaticBiomeTags.LOBSTER_SPAWN_BIOMES,
+            ignore = listOf(CrustaceanVariant.Ignore.MODEL, CrustaceanVariant.Ignore.ANIMATION)),
+        ),
+        false, false) {
+
+    public override fun getLootTableId(): Identifier {
+        return when (this.variant?.variantName) {
+            "american" -> Identifier("hybrid-aquatic", "gameplay/clawed_lobster")
+            "california_spiny" -> Identifier("hybrid-aquatic", "gameplay/clawless_lobster")
+            "ornate_spiny" -> Identifier("hybrid-aquatic", "gameplay/clawless_lobster")
+            else -> super.getLootTableId()
+        }
+    }
 
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
