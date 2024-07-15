@@ -7,7 +7,7 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
 
 class LobsterEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>, world: World) :
-    HybridAquaticCrustaceanEntity(entityType, world, 3, false, false) {
+    HybridAquaticCrustaceanEntity(entityType, world, emptyMap(), false, false) {
 
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {

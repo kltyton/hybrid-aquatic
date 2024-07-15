@@ -12,9 +12,7 @@ import software.bernie.geckolib.core.`object`.PlayState
 
 class NudibranchEntity(entityType: EntityType<out NudibranchEntity>, world: World) :
     HybridAquaticCritterEntity(entityType, world, variants = hashMapOf(
-        "pyjama" to CritterVariant.biomeVariant(
-            "pyjama",
-            HybridAquaticBiomeTags.NUDIBRANCH_SPAWN_BIOMES,
+        "pyjama" to CritterVariant.biomeVariant("pyjama", HybridAquaticBiomeTags.NUDIBRANCH_SPAWN_BIOMES,
             ignore = listOf(CritterVariant.Ignore.MODEL, CritterVariant.Ignore.ANIMATION)),
         "bullock" to CritterVariant.biomeVariant("bullock", HybridAquaticBiomeTags.NUDIBRANCH_SPAWN_BIOMES,
             ignore = listOf(CritterVariant.Ignore.MODEL, CritterVariant.Ignore.ANIMATION)),

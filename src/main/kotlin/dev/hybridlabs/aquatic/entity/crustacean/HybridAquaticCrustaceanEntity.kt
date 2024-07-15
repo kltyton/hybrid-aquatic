@@ -1,5 +1,6 @@
 package dev.hybridlabs.aquatic.entity.crustacean
 
+import dev.hybridlabs.aquatic.entity.fish.HybridAquaticFishEntity
 import dev.hybridlabs.aquatic.tag.HybridAquaticBlockTags
 import dev.hybridlabs.aquatic.tag.HybridAquaticItemTags
 import net.minecraft.block.Blocks
@@ -17,11 +18,13 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.recipe.Ingredient
+import net.minecraft.registry.tag.TagKey
 import net.minecraft.sound.SoundEvent
 import net.minecraft.sound.SoundEvents
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.random.Random
 import net.minecraft.world.*
+import net.minecraft.world.biome.Biome
 import software.bernie.geckolib.animatable.GeoEntity
 import software.bernie.geckolib.core.animatable.GeoAnimatable
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache
@@ -34,9 +37,11 @@ import software.bernie.geckolib.util.GeckoLibUtil
 open class HybridAquaticCrustaceanEntity(
     type: EntityType<out HybridAquaticCrustaceanEntity>,
     world: World,
-    private val variantCount: Int = 1,
+    private val variants: Map<String, CrustaceanVariant> = mutableMapOf(),
     open val canDig: Boolean,
     open val canDance: Boolean,
+    open val assumeDefault: Boolean = false,
+    open val collisionRules: List<HybridAquaticFishEntity.VariantCollisionRules> = listOf(),
 ) : WaterCreatureEntity(type, world), GeoEntity {
     private val factory = GeckoLibUtil.createInstanceCache(this)
     private var landNavigation: EntityNavigation = createNavigation(world)
@@ -48,12 +53,6 @@ open class HybridAquaticCrustaceanEntity(
         get() = dataTracker.get(IS_DIGGING)
         set(bool) {
             dataTracker.set(IS_DIGGING, bool)
-        }
-
-    var variant: Int
-        get() = dataTracker.get(VARIANT).coerceAtLeast(0).coerceAtMost(variantCount-1)
-        set(int) {
-            dataTracker.set(VARIANT, int)
         }
 
     var size: Int
@@ -68,13 +67,36 @@ private var attemptAttack: Boolean
         dataTracker.set(ATTEMPT_ATTACK, attemptAttack)
     }
 
+    private var variantData: NbtCompound
+        get() = dataTracker.get(VARIANT_DATA)
+        set(value) {
+            dataTracker.set(VARIANT_DATA, value)
+        }
+
+    private var variantKey: String
+        get() = dataTracker.get(VARIANT).ifBlank {
+            if (!assumeDefault && variants.isNotEmpty()) {
+                variants.isNotEmpty()
+            }
+            dataTracker.get(VARIANT)
+        }
+        private set(value) {
+            dataTracker.set(VARIANT, value)
+        }
+
+    @Suppress("UNUSED_PARAMETER")
+    var variant: CrustaceanVariant?
+        get() = variants[variantKey]
+        private set(value) {}
+
     override fun initDataTracker() {
         super.initDataTracker()
         dataTracker.startTracking(MOISTNESS, getMaxMoistness())
         dataTracker.startTracking(IS_DIGGING, false)
-        dataTracker.startTracking(VARIANT, 0)
         dataTracker.startTracking(CRUSTACEAN_SIZE, 0)
         dataTracker.startTracking(ATTEMPT_ATTACK, false)
+        dataTracker.startTracking(VARIANT, "")
+        dataTracker.startTracking(VARIANT_DATA, NbtCompound())
     }
 
     override fun initGoals() {
@@ -93,8 +115,45 @@ private var attemptAttack: Boolean
         entityNbt: NbtCompound?
     ): EntityData? {
         this.air = getMaxMoistness()
-        this.variant = this.random.nextInt(variantCount)
         this.size = this.random.nextBetween(getMinSize(),getMaxSize())
+
+        if (variants.isNotEmpty()) {
+            if (spawnReason == SpawnReason.SPAWN_EGG) {
+                variantKey = variants.keys.elementAt(random.nextBetween(0, variants.size - 1))
+            } else {
+                // Handle collisions
+                val validKeys = variants.filter { it.value.spawnCondition(world, spawnReason, blockPos, random) }.map { it.key }
+
+                if (validKeys.isEmpty()) {
+                    variantKey = variants.keys.random()
+                } else if (collisionRules.isNotEmpty()) {
+                    for (rule in collisionRules) {
+                        val variantSet = rule.variants.toSet()
+                        if ((rule.exclusionStatus == HybridAquaticFishEntity.VariantCollisionRules.ExclusionStatus.EXCLUSIVE && validKeys.toSet() == variantSet) ||
+                            (rule.exclusionStatus == HybridAquaticFishEntity.VariantCollisionRules.ExclusionStatus.INCLUSIVE && validKeys.containsAll(variantSet))) {
+                            variantKey = rule.collisionHandler(validKeys.toSet(), random, world)
+                            break
+                        }
+                    }
+                } else {
+                    // Default to a priority based system
+                    val validityFilter = variants.filter { validKeys.contains(it.key) }
+                    variantKey = if (validityFilter.isNotEmpty()) {
+                        val maxPriority = validityFilter.values.maxOf { it.priority }
+                        val filteredMap = validityFilter.filter { it.value.priority == maxPriority }
+                        if (filteredMap.isNotEmpty()) {
+                            filteredMap.keys.random()
+                        } else {
+                            validKeys.random()
+                        }
+                    } else {
+                        validKeys.random()
+                    }
+                }
+            }
+        }
+
+        this.size = this.random.nextBetween(getMinSize(), getMaxSize())
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt)
     }
 
@@ -158,7 +217,8 @@ private var attemptAttack: Boolean
         super.writeCustomDataToNbt(nbt)
         nbt.putInt(MOISTNESS_KEY, moistness)
         nbt.putInt(DIGGING_COOLDOWN_KEY, diggingCooldown)
-        nbt.putInt(VARIANT_KEY, variant)
+        nbt.putString(VARIANT_KEY, variantKey)
+        nbt.put(VARIANT_DATA_KEY, variantData)
         nbt.putInt(CRUSTACEAN_SIZE_KEY, size)
     }
 
@@ -166,7 +226,8 @@ private var attemptAttack: Boolean
         super.readCustomDataFromNbt(nbt)
         moistness = nbt.getInt(MOISTNESS_KEY)
         diggingCooldown = nbt.getInt(DIGGING_COOLDOWN_KEY)
-        variant = nbt.getInt(VARIANT_KEY).coerceAtLeast(0).coerceAtMost(variantCount-1)
+        variantKey = nbt.getString(VARIANT_KEY)
+        variantData = nbt.getCompound(VARIANT_DATA_KEY)
         size = nbt.getInt(CRUSTACEAN_SIZE_KEY)
     }
 
@@ -306,9 +367,10 @@ private var attemptAttack: Boolean
 
     companion object {
         val MOISTNESS: TrackedData<Int> = DataTracker.registerData(HybridAquaticCrustaceanEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
-        val VARIANT: TrackedData<Int> = DataTracker.registerData(HybridAquaticCrustaceanEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
         val CRUSTACEAN_SIZE: TrackedData<Int> = DataTracker.registerData(HybridAquaticCrustaceanEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
         val ATTEMPT_ATTACK: TrackedData<Boolean> = DataTracker.registerData(HybridAquaticCrustaceanEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
+        val VARIANT: TrackedData<String> = DataTracker.registerData(HybridAquaticCrustaceanEntity::class.java, TrackedDataHandlerRegistry.STRING)
+        var VARIANT_DATA: TrackedData<NbtCompound> = DataTracker.registerData(HybridAquaticCrustaceanEntity::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
 
         val DANCE_ANIMATION: RawAnimation = RawAnimation.begin().then("dance", Animation.LoopType.LOOP)
         val DIG_ANIMATION: RawAnimation = RawAnimation.begin().then("dig", Animation.LoopType.LOOP)
@@ -354,10 +416,103 @@ private var attemptAttack: Boolean
 
         const val MOISTNESS_KEY = "Moistness"
         const val VARIANT_KEY = "Variant"
+        const val VARIANT_DATA_KEY = "VariantData"
         const val CRUSTACEAN_SIZE_KEY = "CrustaceanSize"
 
         val IS_DIGGING: TrackedData<Boolean> =
             DataTracker.registerData(HybridAquaticCrustaceanEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
         const val DIGGING_COOLDOWN_KEY = "DiggingCooldown"
+    }
+
+    @Suppress("UNUSED")
+    data class CrustaceanVariant(
+        val variantName : String,
+        val spawnCondition: (WorldAccess, SpawnReason, BlockPos, Random ) -> Boolean,
+        val ignore: List<Ignore> = emptyList(),
+        val priority: Int = 0,
+        var providedVariant: (World, BlockPos, Random, HybridAquaticCrustaceanEntity) -> String = { _, _, _, _ ->
+            variantName
+        }
+    ) {
+
+        fun getProvidedVariant(crustacean: HybridAquaticCrustaceanEntity) : String {
+            return providedVariant(crustacean.world, crustacean.blockPos, crustacean.random, crustacean)
+        }
+
+        companion object {
+            /**
+             * Creates a biome variant of a fish
+             */
+            fun biomeVariant(variantName: String, biomes : TagKey<Biome>, ignore : List<Ignore> = emptyList()): CrustaceanVariant {
+                return CrustaceanVariant(variantName, { world, _, pos, _ ->
+                    world.getBiome(pos).isIn(biomes)
+                }, ignore)
+            }
+        }
+
+        enum class Ignore {
+            TEXTURE,
+            MODEL,
+            ANIMATION
+        }
+    }
+
+    @Suppress("UNUSED")
+    data class VariantCollisionRules(val variants : Set<String>, val collisionHandler: (Set<String>, Random, ServerWorldAccess) -> String, val exclusionStatus: ExclusionStatus = ExclusionStatus.INCLUSIVE) {
+
+        /**
+         * INCLUSIVE - all other variants can exist within this selection swath
+         * <pre> </pre>
+         * EXCLUSIVE - all other variants are excluded from this selection swath
+         */
+        enum class ExclusionStatus {
+            INCLUSIVE,
+            EXCLUSIVE
+        }
+
+        /**
+         * <pre></pre>
+         * Example:
+         * ```kotlin
+         * // returns a bluefin or a yellowfin tuna variant
+         * equalDistribution(setOf("bluefin", "yellowfin"))
+         * ```
+         * @return a random variant within the set
+         */
+        fun equalDistribution(variants: Set<String>, status : ExclusionStatus = ExclusionStatus.INCLUSIVE) : VariantCollisionRules {
+            return VariantCollisionRules(variants, { possibleVariants, _, _ ->
+                possibleVariants.random()
+            }, status)
+        }
+
+        /**
+         * Example
+         * ```
+         * weightedDistribution(setOf(
+         *  Pair("bluefin", 0.80),
+         *  Pair("yellowfin", 0.20)
+         * ))
+         * ```
+         * @return a premade variant collision rule which allows weighted distribution of variants.
+         */
+        fun weightedDistribution(weights: Set<Pair<String, Double>>, status: ExclusionStatus = ExclusionStatus.EXCLUSIVE) : VariantCollisionRules {
+            return VariantCollisionRules(weights.map { pair -> pair.first }.toSet(), { _, random, _ ->
+                // sum up weights
+                val weightTotal = weights.sumOf { pair -> pair.second }
+                val randomVal = random.nextFloat() * weightTotal
+                var accumulatedWeight = 0.0
+                var result = ""
+
+                for (pair in weights) {
+                    accumulatedWeight += pair.second
+                    if (randomVal < accumulatedWeight) {
+                        result = pair.first
+                        break
+                    }
+                }
+
+                result
+            }, status)
+        }
     }
 }

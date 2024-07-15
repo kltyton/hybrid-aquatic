@@ -29,7 +29,7 @@ import software.bernie.geckolib.core.`object`.PlayState
 import java.util.*
 
 class KarkinosEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>, world: World) :
-    HybridAquaticCrustaceanEntity(entityType, world, 1, false, false), Angerable {
+    HybridAquaticCrustaceanEntity(entityType, world, emptyMap(), false, false), Angerable {
 
     init {
         stepHeight = 2.0F
