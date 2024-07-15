@@ -14,10 +14,10 @@ class SeaCucumberEntity(entityType: EntityType<out SeaCucumberEntity>, world: Wo
     HybridAquaticCritterEntity(entityType, world, variants = hashMapOf(
         "sea_pig" to CritterVariant.biomeVariant("sea_pig", HybridAquaticBiomeTags.SEA_PIG_SPAWN_BIOMES,
             ignore = listOf(CritterVariant.Ignore.ANIMATION)),
-        "red" to CritterVariant.biomeVariant("black", HybridAquaticBiomeTags.REGULAR_SEA_CUCUMBER_SPAWN_BIOMES,
-            ignore = listOf(CritterVariant.Ignore.ANIMATION)),
-        "black" to CritterVariant.biomeVariant("red", HybridAquaticBiomeTags.REGULAR_SEA_CUCUMBER_SPAWN_BIOMES,
-            ignore = listOf(CritterVariant.Ignore.ANIMATION)),
+        "black" to CritterVariant.biomeVariant("black", HybridAquaticBiomeTags.REGULAR_SEA_CUCUMBER_SPAWN_BIOMES,
+            ignore = listOf(CritterVariant.Ignore.MODEL, CritterVariant.Ignore.ANIMATION)),
+        "red" to CritterVariant.biomeVariant("red", HybridAquaticBiomeTags.REGULAR_SEA_CUCUMBER_SPAWN_BIOMES,
+            ignore = listOf(CritterVariant.Ignore.MODEL, CritterVariant.Ignore.ANIMATION)),
         )) {
 
     companion object {
