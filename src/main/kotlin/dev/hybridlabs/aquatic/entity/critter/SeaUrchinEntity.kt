@@ -19,14 +19,22 @@ import software.bernie.geckolib.core.`object`.PlayState
 
 class SeaUrchinEntity(entityType: EntityType<out SeaUrchinEntity>, world: World) :
     HybridAquaticCritterEntity(entityType, world, variants = hashMapOf(
-        "black" to CritterVariant.biomeVariant("black", HybridAquaticBiomeTags.SEA_URCHIN_SPAWN_BIOMES),
-        "blue" to CritterVariant.biomeVariant("blue", HybridAquaticBiomeTags.SEA_URCHIN_SPAWN_BIOMES),
-        "purple" to CritterVariant.biomeVariant("purple", HybridAquaticBiomeTags.SEA_URCHIN_SPAWN_BIOMES),
-        "red" to CritterVariant.biomeVariant("red", HybridAquaticBiomeTags.SEA_URCHIN_SPAWN_BIOMES),
-        "long_black" to CritterVariant.biomeVariant("long_black", HybridAquaticBiomeTags.SEA_URCHIN_SPAWN_BIOMES),
-        "long_blue" to CritterVariant.biomeVariant("long_blue", HybridAquaticBiomeTags.SEA_URCHIN_SPAWN_BIOMES),
-        "long_purple" to CritterVariant.biomeVariant("long_purple", HybridAquaticBiomeTags.SEA_URCHIN_SPAWN_BIOMES),
-        "long_red" to CritterVariant.biomeVariant("long_red", HybridAquaticBiomeTags.SEA_URCHIN_SPAWN_BIOMES))) {
+        "black" to CritterVariant.biomeVariant("black", HybridAquaticBiomeTags.SEA_URCHIN_SPAWN_BIOMES,
+            ignore = listOf(CritterVariant.Ignore.ANIMATION)),
+        "blue" to CritterVariant.biomeVariant("blue", HybridAquaticBiomeTags.SEA_URCHIN_SPAWN_BIOMES,
+            ignore = listOf(CritterVariant.Ignore.ANIMATION)),
+        "purple" to CritterVariant.biomeVariant("purple", HybridAquaticBiomeTags.SEA_URCHIN_SPAWN_BIOMES,
+            ignore = listOf(CritterVariant.Ignore.ANIMATION)),
+        "red" to CritterVariant.biomeVariant("red", HybridAquaticBiomeTags.SEA_URCHIN_SPAWN_BIOMES,
+            ignore = listOf(CritterVariant.Ignore.ANIMATION)),
+        "long_black" to CritterVariant.biomeVariant("long_black", HybridAquaticBiomeTags.SEA_URCHIN_SPAWN_BIOMES,
+            ignore = listOf(CritterVariant.Ignore.ANIMATION)),
+        "long_blue" to CritterVariant.biomeVariant("long_blue", HybridAquaticBiomeTags.SEA_URCHIN_SPAWN_BIOMES,
+            ignore = listOf(CritterVariant.Ignore.ANIMATION)),
+        "long_purple" to CritterVariant.biomeVariant("long_purple", HybridAquaticBiomeTags.SEA_URCHIN_SPAWN_BIOMES,
+            ignore = listOf(CritterVariant.Ignore.ANIMATION)),
+        "long_red" to CritterVariant.biomeVariant("long_red", HybridAquaticBiomeTags.SEA_URCHIN_SPAWN_BIOMES,
+            ignore = listOf(CritterVariant.Ignore.ANIMATION)),)) {
 
     private var timeUntilNextBreak = 0
     private var spawnUrchinOnNextBreak = false
