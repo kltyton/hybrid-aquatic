@@ -174,6 +174,14 @@ class EntityTypeLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTa
                             .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0F, 2.0F)))
                     )
             )
+            pool(
+                LootPool.builder()
+                    .with(
+                        ItemEntry.builder(HybridAquaticItems.RAW_LOBSTER_TAIL)
+                            .apply(FurnaceSmeltLootFunction.builder().conditionally(EntityPropertiesLootCondition.builder(LootContext.EntityTarget.THIS, NEEDS_ENTITY_ON_FIRE)))
+                            .apply(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0F, 1.0F)))
+                    )
+            )
         }
 
         export(exporter, HybridAquaticEntityTypes.CRAYFISH) {

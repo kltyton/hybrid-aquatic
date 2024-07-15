@@ -1,6 +1,5 @@
 package dev.hybridlabs.aquatic.entity.crustacean
 
-import net.minecraft.entity.EntityGroup
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.attribute.DefaultAttributeContainer
 import net.minecraft.entity.attribute.EntityAttributes
@@ -17,10 +16,6 @@ class FiddlerCrabEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 2.0)
                 .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 8.0)
         }
-    }
-
-    override fun getGroup(): EntityGroup? {
-        return EntityGroup.ARTHROPOD
     }
 
     override fun getMaxSize() : Int {

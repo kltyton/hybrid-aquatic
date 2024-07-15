@@ -112,6 +112,8 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
             HybridAquaticItems.COOKED_CRAYFISH,
             HybridAquaticItems.RAW_LOBSTER,
             HybridAquaticItems.COOKED_LOBSTER,
+            HybridAquaticItems.RAW_LOBSTER_TAIL,
+            HybridAquaticItems.COOKED_LOBSTER_TAIL,
             HybridAquaticItems.RAW_FISH_STEAK,
             HybridAquaticItems.COOKED_FISH_STEAK,
             HybridAquaticItems.RAW_FISH_MEAT,

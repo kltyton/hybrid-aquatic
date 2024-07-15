@@ -109,6 +109,8 @@ object  HybridAquaticItemGroups {
             entries.add(HybridAquaticItems.COOKED_CRAB)
             entries.add(HybridAquaticItems.RAW_LOBSTER)
             entries.add(HybridAquaticItems.COOKED_LOBSTER)
+            entries.add(HybridAquaticItems.RAW_LOBSTER_TAIL)
+            entries.add(HybridAquaticItems.COOKED_LOBSTER_TAIL)
             entries.add(HybridAquaticItems.RAW_SHRIMP)
             entries.add(HybridAquaticItems.COOKED_SHRIMP)
             entries.add(HybridAquaticItems.RAW_CRAYFISH)
