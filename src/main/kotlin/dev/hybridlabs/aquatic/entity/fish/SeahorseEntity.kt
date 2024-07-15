@@ -10,10 +10,15 @@ import net.minecraft.world.World
 
 class SeahorseEntity(entityType: EntityType<out SeahorseEntity>, world: World) :
     HybridAquaticFishEntity(entityType, world, variants = hashMapOf(
-        "common" to FishVariant.biomeVariant("common", HybridAquaticBiomeTags.SEAHORSE_SPAWN_BIOMES),
-        "big_belly" to FishVariant.biomeVariant("big_belly", HybridAquaticBiomeTags.SEAHORSE_SPAWN_BIOMES),
-        "thorny" to FishVariant.biomeVariant("thorny", HybridAquaticBiomeTags.SEAHORSE_SPAWN_BIOMES),
-        "pygmy" to FishVariant.biomeVariant("pygmy", HybridAquaticBiomeTags.SEAHORSE_SPAWN_BIOMES)),
+        "common" to FishVariant.biomeVariant("common", HybridAquaticBiomeTags.SEAHORSE_SPAWN_BIOMES,
+            ignore = listOf(FishVariant.Ignore.ANIMATION)),
+        "big_belly" to FishVariant.biomeVariant("big_belly", HybridAquaticBiomeTags.SEAHORSE_SPAWN_BIOMES,
+            ignore = listOf(FishVariant.Ignore.ANIMATION)),
+        "thorny" to FishVariant.biomeVariant("thorny", HybridAquaticBiomeTags.SEAHORSE_SPAWN_BIOMES,
+            ignore = listOf(FishVariant.Ignore.ANIMATION)),
+        "pygmy" to FishVariant.biomeVariant("pygmy", HybridAquaticBiomeTags.SEAHORSE_SPAWN_BIOMES,
+            ignore = listOf(FishVariant.Ignore.ANIMATION)),
+        ),
         HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
 
     override fun getLimitPerChunk(): Int {
