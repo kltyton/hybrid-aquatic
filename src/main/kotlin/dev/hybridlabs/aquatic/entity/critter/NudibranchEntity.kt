@@ -12,15 +12,27 @@ import software.bernie.geckolib.core.`object`.PlayState
 
 class NudibranchEntity(entityType: EntityType<out NudibranchEntity>, world: World) :
     HybridAquaticCritterEntity(entityType, world, variants = hashMapOf(
-        "pyjama" to CritterVariant.biomeVariant("pyjama", HybridAquaticBiomeTags.NUDIBRANCH_SPAWN_BIOMES),
-        "bullock" to CritterVariant.biomeVariant("bullock", HybridAquaticBiomeTags.NUDIBRANCH_SPAWN_BIOMES),
-        "sagami" to CritterVariant.biomeVariant("sagami", HybridAquaticBiomeTags.NUDIBRANCH_SPAWN_BIOMES),
-        "festiva" to CritterVariant.biomeVariant("festiva", HybridAquaticBiomeTags.NUDIBRANCH_SPAWN_BIOMES),
-        "magnificent" to CritterVariant.biomeVariant("magnificent", HybridAquaticBiomeTags.NUDIBRANCH_SPAWN_BIOMES),
-        "kubaryana" to CritterVariant.biomeVariant("kubaryana", HybridAquaticBiomeTags.NUDIBRANCH_SPAWN_BIOMES),
-        "yonowae" to CritterVariant.biomeVariant("yonowae", HybridAquaticBiomeTags.NUDIBRANCH_SPAWN_BIOMES),
-        "kuniei" to CritterVariant.biomeVariant("kuniei", HybridAquaticBiomeTags.NUDIBRANCH_SPAWN_BIOMES),
-        "baba" to CritterVariant.biomeVariant("baba", HybridAquaticBiomeTags.NUDIBRANCH_SPAWN_BIOMES))) {
+        "pyjama" to CritterVariant.biomeVariant(
+            "pyjama",
+            HybridAquaticBiomeTags.NUDIBRANCH_SPAWN_BIOMES,
+            ignore = listOf(CritterVariant.Ignore.MODEL, CritterVariant.Ignore.ANIMATION)),
+        "bullock" to CritterVariant.biomeVariant("bullock", HybridAquaticBiomeTags.NUDIBRANCH_SPAWN_BIOMES,
+            ignore = listOf(CritterVariant.Ignore.MODEL, CritterVariant.Ignore.ANIMATION)),
+        "sagami" to CritterVariant.biomeVariant("sagami", HybridAquaticBiomeTags.NUDIBRANCH_SPAWN_BIOMES,
+            ignore = listOf(CritterVariant.Ignore.MODEL, CritterVariant.Ignore.ANIMATION)),
+        "festiva" to CritterVariant.biomeVariant("festiva", HybridAquaticBiomeTags.NUDIBRANCH_SPAWN_BIOMES,
+            ignore = listOf(CritterVariant.Ignore.MODEL, CritterVariant.Ignore.ANIMATION)),
+        "magnificent" to CritterVariant.biomeVariant("magnificent", HybridAquaticBiomeTags.NUDIBRANCH_SPAWN_BIOMES,
+            ignore = listOf(CritterVariant.Ignore.MODEL, CritterVariant.Ignore.ANIMATION)),
+        "kubaryana" to CritterVariant.biomeVariant("kubaryana", HybridAquaticBiomeTags.NUDIBRANCH_SPAWN_BIOMES,
+            ignore = listOf(CritterVariant.Ignore.MODEL, CritterVariant.Ignore.ANIMATION)),
+        "yonowae" to CritterVariant.biomeVariant("yonowae", HybridAquaticBiomeTags.NUDIBRANCH_SPAWN_BIOMES,
+            ignore = listOf(CritterVariant.Ignore.MODEL, CritterVariant.Ignore.ANIMATION)),
+        "kuniei" to CritterVariant.biomeVariant("kuniei", HybridAquaticBiomeTags.NUDIBRANCH_SPAWN_BIOMES,
+            ignore = listOf(CritterVariant.Ignore.MODEL, CritterVariant.Ignore.ANIMATION)),
+        "baba" to CritterVariant.biomeVariant("baba", HybridAquaticBiomeTags.NUDIBRANCH_SPAWN_BIOMES,
+            ignore = listOf(CritterVariant.Ignore.MODEL, CritterVariant.Ignore.ANIMATION)),
+        )) {
 
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
