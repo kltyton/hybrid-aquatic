@@ -2,9 +2,14 @@ package dev.hybridlabs.aquatic.entity.crustacean
 
 import dev.hybridlabs.aquatic.entity.ai.goal.CrabDigGoal
 import net.minecraft.entity.EntityType
+import net.minecraft.entity.EquipmentSlot
 import net.minecraft.entity.attribute.DefaultAttributeContainer
 import net.minecraft.entity.attribute.EntityAttributes
 import net.minecraft.entity.mob.WaterCreatureEntity
+import net.minecraft.item.ItemStack
+import net.minecraft.item.Items
+import net.minecraft.util.math.random.Random
+import net.minecraft.world.LocalDifficulty
 import net.minecraft.world.World
 import software.bernie.geckolib.core.animatable.GeoAnimatable
 import software.bernie.geckolib.core.animation.AnimationState

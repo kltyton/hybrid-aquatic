@@ -136,11 +136,11 @@ object HybridAquaticEntityTypes {
         LionfishEntity.createMobAttributes()
     )
 
-    val MAHIMAHI = registerFish(
-        "mahimahi",
-        ::MahiMahiEntity,
-        EntityDimensions.fixed(0.75f, 0.75f),
-        MahiMahiEntity.createMobAttributes()
+    val MAHI = registerFish(
+        "mahi",
+        ::MahiEntity,
+        EntityDimensions.fixed(0.75f, 0.65f),
+        MahiEntity.createMobAttributes()
     )
 
     val MORAY_EEL = registerFish(

@@ -131,7 +131,7 @@ object  HybridAquaticItemGroups {
             entries.add(HybridAquaticItems.DISCUS)
             entries.add(HybridAquaticItems.FLASHLIGHT_FISH)
             entries.add(HybridAquaticItems.GOURAMI)
-            entries.add(HybridAquaticItems.MAHI_MAHI)
+            entries.add(HybridAquaticItems.MAHI)
             entries.add(HybridAquaticItems.MORAY_EEL)
             entries.add(HybridAquaticItems.LIONFISH)
             entries.add(HybridAquaticItems.NEEDLEFISH)

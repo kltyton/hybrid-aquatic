@@ -646,11 +646,11 @@ class EntityTypeLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTa
             )
         }
 
-        export(exporter, HybridAquaticEntityTypes.MAHIMAHI) {
+        export(exporter, HybridAquaticEntityTypes.MAHI) {
             pool(
                 LootPool.builder()
                     .with(
-                        ItemEntry.builder(HybridAquaticItems.MAHI_MAHI)
+                        ItemEntry.builder(HybridAquaticItems.MAHI)
                             .apply(FurnaceSmeltLootFunction.builder().conditionally(EntityPropertiesLootCondition.builder(LootContext.EntityTarget.THIS, NEEDS_ENTITY_ON_FIRE)))
                             .apply(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0F, 1.0F)))
                             .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0F, 1.0F)))

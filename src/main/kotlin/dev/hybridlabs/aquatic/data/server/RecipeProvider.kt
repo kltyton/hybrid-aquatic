@@ -327,7 +327,7 @@ class RecipeProvider(output: FabricDataOutput) : FabricRecipeProvider(output) {
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, HybridAquaticItems.RAW_FISH_STEAK, 1)
             .input(HybridAquaticItemTags.MEDIUM_FISH)
             .criterion("has_yellowfin_tuna", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.TUNA))
-            .criterion("has_mahi_mahi", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.MAHI_MAHI))
+            .criterion("has_mahi_mahi", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.MAHI))
             .criterion("has_opah", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.OPAH))
             .criterion("has_moray_eel", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.MORAY_EEL))
             .criterion("has_triggerfish", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.TRIGGERFISH))

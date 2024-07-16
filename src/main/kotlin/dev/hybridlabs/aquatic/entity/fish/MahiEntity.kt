@@ -1,6 +1,7 @@
 package dev.hybridlabs.aquatic.entity.fish
 
 import dev.hybridlabs.aquatic.entity.ai.goal.FishJumpGoal
+import dev.hybridlabs.aquatic.tag.HybridAquaticBiomeTags
 import dev.hybridlabs.aquatic.tag.HybridAquaticEntityTags
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.attribute.DefaultAttributeContainer
@@ -8,8 +9,14 @@ import net.minecraft.entity.attribute.EntityAttributes
 import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
 
-class MahiMahiEntity(entityType: EntityType<out MahiMahiEntity>, world: World) :
-    HybridAquaticFishEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.MAHI_PREY, HybridAquaticEntityTags.MAHI_PREDATOR) {
+class MahiEntity(entityType: EntityType<out MahiEntity>, world: World) :
+    HybridAquaticFishEntity(entityType, world, variants = hashMapOf(
+        "mahi" to FishVariant.biomeVariant("mahi", HybridAquaticBiomeTags.MAHI_SPAWN_BIOMES,
+            ignore = listOf(FishVariant.Ignore.ANIMATION)),
+        "pompano" to FishVariant.biomeVariant("pompano", HybridAquaticBiomeTags.MAHI_SPAWN_BIOMES,
+            ignore = listOf(FishVariant.Ignore.ANIMATION)),
+        ),
+        HybridAquaticEntityTags.MAHI_PREY, HybridAquaticEntityTags.MAHI_PREDATOR) {
 
     override fun getLimitPerChunk(): Int {
         return 2

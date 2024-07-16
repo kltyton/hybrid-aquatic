@@ -15,6 +15,7 @@ class ShrimpEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>, wo
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.3)
         }
     }
+
     override fun getMaxSize() : Int {
         return 5
     }

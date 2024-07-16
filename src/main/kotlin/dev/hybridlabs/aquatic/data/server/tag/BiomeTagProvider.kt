@@ -287,7 +287,7 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
         )
             .addOptional(Identifier("regions_unexplored", "rocky_reef"))
 
-        getOrCreateTagBuilder(HybridAquaticBiomeTags.MAHIMAHI_SPAWN_BIOMES).add(
+        getOrCreateTagBuilder(HybridAquaticBiomeTags.MAHI_SPAWN_BIOMES).add(
             BiomeKeys.OCEAN,
             BiomeKeys.LUKEWARM_OCEAN,
             BiomeKeys.DEEP_OCEAN,

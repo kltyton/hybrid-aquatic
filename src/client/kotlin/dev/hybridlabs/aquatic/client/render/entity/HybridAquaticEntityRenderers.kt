@@ -26,7 +26,7 @@ object HybridAquaticEntityRenderers {
     val SEA_ANGEL = EntityRendererRegistry.register(HybridAquaticEntityTypes.SEA_ANGEL, ::SeaAngelEntityRenderer)
     val OPAH = EntityRendererRegistry.register(HybridAquaticEntityTypes.OPAH, ::OpahEntityRenderer)
     val SUNFISH = EntityRendererRegistry.register(HybridAquaticEntityTypes.SUNFISH, ::SunfishEntityRenderer)
-    val MAHIMAHI = EntityRendererRegistry.register(HybridAquaticEntityTypes.MAHIMAHI, ::MahiMahiEntityRenderer)
+    val MAHI = EntityRendererRegistry.register(HybridAquaticEntityTypes.MAHI, ::MahiEntityRenderer)
     val MORAY_EEL = EntityRendererRegistry.register(HybridAquaticEntityTypes.MORAY_EEL, ::MorayEelEntityRenderer)
     val ROCKFISH = EntityRendererRegistry.register(HybridAquaticEntityTypes.ROCKFISH, ::RockfishEntityRenderer)
     val TIGER_BARB = EntityRendererRegistry.register(HybridAquaticEntityTypes.TIGER_BARB, ::TigerBarbEntityRenderer)

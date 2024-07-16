@@ -25,7 +25,7 @@ class LiveCatchEnchantment : Enchantment(Rarity.RARE, EnchantmentTarget.FISHING_
             Items.TROPICAL_FISH to EntityType.TROPICAL_FISH,
             Items.PUFFERFISH to EntityType.PUFFERFISH,
             HybridAquaticItems.LIONFISH to HybridAquaticEntityTypes.LIONFISH,
-            HybridAquaticItems.MAHI_MAHI to HybridAquaticEntityTypes.MAHIMAHI,
+            HybridAquaticItems.MAHI to HybridAquaticEntityTypes.MAHI,
             HybridAquaticItems.TUNA to HybridAquaticEntityTypes.TUNA,
             HybridAquaticItems.OPAH to HybridAquaticEntityTypes.OPAH,
             HybridAquaticItems.ROCKFISH to HybridAquaticEntityTypes.ROCKFISH,

@@ -303,7 +303,7 @@ object HybridAquaticItems {
         )
     )
 
-    val MAHI_MAHI = register("mahi_mahi",
+    val MAHI = register("mahi",
         Item(
             FabricItemSettings()
                 .food(
@@ -723,7 +723,7 @@ object HybridAquaticItems {
     val GLOWING_SUCKER_OCTOPUS_SPAWN_EGG = registerSpawnEgg("glowing_sucker_octopus_spawn_egg", HybridAquaticEntityTypes.GLOWING_SUCKER_OCTOPUS, 0x892f4f, 0x84d5fe)
     val GOURAMI_SPAWN_EGG = registerSpawnEgg("gourami_spawn_egg", HybridAquaticEntityTypes.GOURAMI, 0x7bb6cf, 0x722a37)
     val LIONFISH_SPAWN_EGG = registerSpawnEgg("lionfish_spawn_egg", HybridAquaticEntityTypes.LIONFISH, 0xf9e6cf, 0xc64524)
-    val MAHIMAHI_SPAWN_EGG = registerSpawnEgg("mahimahi_spawn_egg", HybridAquaticEntityTypes.MAHIMAHI, 0x356c69, 0xd7e482)
+    val MAHI_SPAWN_EGG = registerSpawnEgg("mahi_spawn_egg", HybridAquaticEntityTypes.MAHI, 0x356c69, 0xd7e482)
     val MANTA_RAY_SPAWN_EGG = registerSpawnEgg("manta_ray_spawn_egg", HybridAquaticEntityTypes.MANTA_RAY, 0x000000, 0xFFFFFF)
     val MORAY_EEL_SPAWN_EGG = registerSpawnEgg("moray_eel_spawn_egg", HybridAquaticEntityTypes.MORAY_EEL, 0x8da163, 0x1d4435)
     val NAUTILUS_SPAWN_EGG = registerSpawnEgg("nautilus_spawn_egg", HybridAquaticEntityTypes.NAUTILUS, 0xd4ccc3, 0xae4635)

@@ -50,7 +50,7 @@ class FishingLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
                                 .weight(5)
                         )
                         .with(
-                            ItemEntry.builder(HybridAquaticItems.MAHI_MAHI)
+                            ItemEntry.builder(HybridAquaticItems.MAHI)
                                 .weight(3)
                         )
                         .with(

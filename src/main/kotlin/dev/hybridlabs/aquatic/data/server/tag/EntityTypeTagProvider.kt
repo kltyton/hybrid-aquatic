@@ -66,7 +66,7 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
                 HybridAquaticEntityTypes.OPAH,
                 HybridAquaticEntityTypes.TUNA,
                 HybridAquaticEntityTypes.MORAY_EEL,
-                HybridAquaticEntityTypes.MAHIMAHI,
+                HybridAquaticEntityTypes.MAHI,
                 HybridAquaticEntityTypes.TRIGGERFISH,
                 HybridAquaticEntityTypes.NEEDLEFISH,
                 EntityType.SQUID,
@@ -85,7 +85,7 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
 
         getOrCreateTagBuilder(HybridAquaticEntityTags.BULL_SHARK_PREY)
             .add(
-                HybridAquaticEntityTypes.MAHIMAHI,
+                HybridAquaticEntityTypes.MAHI,
                 HybridAquaticEntityTypes.TUNA,
                 HybridAquaticEntityTypes.OARFISH,
                 HybridAquaticEntityTypes.MORAY_EEL,
@@ -106,7 +106,7 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
 
         getOrCreateTagBuilder(HybridAquaticEntityTags.GREAT_WHITE_SHARK_PREY)
             .add(
-                HybridAquaticEntityTypes.MAHIMAHI,
+                HybridAquaticEntityTypes.MAHI,
                 HybridAquaticEntityTypes.TUNA,
                 HybridAquaticEntityTypes.OARFISH,
                 HybridAquaticEntityTypes.MORAY_EEL,
@@ -145,7 +145,7 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
 
         getOrCreateTagBuilder(HybridAquaticEntityTags.TIGER_SHARK_PREY)
             .add(
-                HybridAquaticEntityTypes.MAHIMAHI,
+                HybridAquaticEntityTypes.MAHI,
                 HybridAquaticEntityTypes.TUNA,
                 HybridAquaticEntityTypes.OARFISH,
                 HybridAquaticEntityTypes.MORAY_EEL,
@@ -250,7 +250,7 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
                 HybridAquaticEntityTypes.OARFISH,
                 HybridAquaticEntityTypes.OPAH,
                 HybridAquaticEntityTypes.TUNA,
-                HybridAquaticEntityTypes.MAHIMAHI,
+                HybridAquaticEntityTypes.MAHI,
                 HybridAquaticEntityTypes.NEEDLEFISH,
             )
 
@@ -421,7 +421,7 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
                 HybridAquaticEntityTypes.SEA_ANGEL,
                 HybridAquaticEntityTypes.SUNFISH,
                 HybridAquaticEntityTypes.VAMPIRE_SQUID,
-                HybridAquaticEntityTypes.MAHIMAHI,
+                HybridAquaticEntityTypes.MAHI,
                 HybridAquaticEntityTypes.MORAY_EEL,
                 HybridAquaticEntityTypes.ROCKFISH,
                 HybridAquaticEntityTypes.TIGER_BARB,
