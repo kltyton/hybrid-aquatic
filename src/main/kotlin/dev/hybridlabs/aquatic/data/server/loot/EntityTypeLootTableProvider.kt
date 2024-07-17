@@ -278,6 +278,17 @@ class EntityTypeLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTa
             )
         }
 
+        export(exporter, HybridAquaticEntityTypes.SEA_URCHIN) {
+            pool(
+                LootPool.builder()
+                    .with(
+                        ItemEntry.builder(HybridAquaticItems.SEA_URCHIN_SPINE)
+                            .apply(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0F, 1.0F)))
+                            .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0F, 2.0F)))
+                    )
+            )
+        }
+
         // end region
 
         export(exporter, HybridAquaticEntityTypes.GLOWING_SUCKER_OCTOPUS) {

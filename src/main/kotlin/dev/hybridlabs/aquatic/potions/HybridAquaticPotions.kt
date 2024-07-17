@@ -26,20 +26,26 @@ object HybridAquaticPotions {
         "clarity",
         Potion(StatusEffectInstance(HybridAquaticStatusEffects.CLARITY, 1200, 0)),
         Potions.AWKWARD,
-        HybridAquaticItems.PEARL
-    )
-
-    val TRUE_CLARITY_POTION = registerPotionWithRecipe(
-        "true_clarity",
-        Potion(StatusEffectInstance(HybridAquaticStatusEffects.CLARITY, 1200, 0),
-            StatusEffectInstance(StatusEffects.NIGHT_VISION, 1200, 0)),
-        Potions.AWKWARD,
         HybridAquaticItems.BARRELEYE
     )
 
     val THALASSOPHOBIA_POTION = registerPotionWithRecipe(
         "thalassophobia",
-        Potion(StatusEffectInstance(HybridAquaticStatusEffects.THALASSOPHOBIA, 3600, 0)),
+        Potion(StatusEffectInstance(HybridAquaticStatusEffects.THALASSOPHOBIA, 1200, 0)),
+        Potions.AWKWARD,
+        HybridAquaticItems.ANGLERFISH
+    )
+
+    val MINOR_LUCK_POTION = registerPotionWithRecipe(
+        "minor_luck",
+        Potion(StatusEffectInstance(StatusEffects.LUCK, 1200, 0)),
+        Potions.AWKWARD,
+        HybridAquaticItems.PEARL
+    )
+
+    val MAJOR_LUCK_POTION = registerPotionWithRecipe(
+        "major_luck",
+        Potion(StatusEffectInstance(StatusEffects.LUCK, 600, 1)),
         Potions.AWKWARD,
         HybridAquaticItems.BLACK_PEARL
     )
@@ -64,6 +70,13 @@ object HybridAquaticPotions {
         Potion(StatusEffectInstance(HybridAquaticStatusEffects.BUOYANCY, 300, 0)),
         Potions.AWKWARD,
         Items.KELP
+    )
+
+    val SPININESS_POTION = registerPotionWithRecipe(
+        "spininess",
+        Potion(StatusEffectInstance(HybridAquaticStatusEffects.SPININESS, 300, 0)),
+        Potions.AWKWARD,
+        HybridAquaticItems.SEA_URCHIN_SPINE
     )
 
     private fun registerPotionWithRecipe(id: String, potion: Potion, inputPotion: Potion, ingredient: Item): Potion {
