@@ -16,6 +16,8 @@ class LobsterEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>, w
             ignore = listOf(CrustaceanVariant.Ignore.MODEL, CrustaceanVariant.Ignore.ANIMATION)),
         "ornate_spiny" to CrustaceanVariant.biomeVariant("ornate_spiny", HybridAquaticBiomeTags.LOBSTER_SPAWN_BIOMES,
             ignore = listOf(CrustaceanVariant.Ignore.MODEL, CrustaceanVariant.Ignore.ANIMATION)),
+        "regal_slipper" to CrustaceanVariant.biomeVariant("regal_slipper", HybridAquaticBiomeTags.LOBSTER_SPAWN_BIOMES,
+            ignore = listOf(CrustaceanVariant.Ignore.ANIMATION)),
         ),
         false, false) {
 
@@ -24,6 +26,7 @@ class LobsterEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>, w
             "american" -> Identifier("hybrid-aquatic", "gameplay/clawed_lobster")
             "california_spiny" -> Identifier("hybrid-aquatic", "gameplay/clawless_lobster")
             "ornate_spiny" -> Identifier("hybrid-aquatic", "gameplay/clawless_lobster")
+            "regal_slipper" -> Identifier("hybrid-aquatic", "gameplay/clawless_lobster")
             else -> super.getLootTableId()
         }
     }
