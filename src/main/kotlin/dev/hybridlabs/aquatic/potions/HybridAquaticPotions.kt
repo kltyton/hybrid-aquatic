@@ -6,6 +6,7 @@ import dev.hybridlabs.aquatic.item.HybridAquaticItems
 import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.entity.effect.StatusEffects
 import net.minecraft.item.Item
+import net.minecraft.item.Items
 import net.minecraft.potion.Potion
 import net.minecraft.potion.Potions
 import net.minecraft.recipe.BrewingRecipeRegistry
@@ -23,9 +24,17 @@ object HybridAquaticPotions {
 
     val CLARITY_POTION = registerPotionWithRecipe(
         "clarity",
-        Potion(StatusEffectInstance(HybridAquaticStatusEffects.CLARITY, 3600, 0)),
+        Potion(StatusEffectInstance(HybridAquaticStatusEffects.CLARITY, 1200, 0)),
         Potions.AWKWARD,
         HybridAquaticItems.PEARL
+    )
+
+    val TRUE_CLARITY_POTION = registerPotionWithRecipe(
+        "true_clarity",
+        Potion(StatusEffectInstance(HybridAquaticStatusEffects.CLARITY, 1200, 0),
+            StatusEffectInstance(StatusEffects.NIGHT_VISION, 1200, 0)),
+        Potions.AWKWARD,
+        HybridAquaticItems.BARRELEYE
     )
 
     val THALASSOPHOBIA_POTION = registerPotionWithRecipe(
@@ -40,6 +49,21 @@ object HybridAquaticPotions {
         Potion(StatusEffectInstance(HybridAquaticStatusEffects.BLEEDING, 3600, 0)),
         Potions.AWKWARD,
         HybridAquaticItems.SHARK_TOOTH
+    )
+
+    val SWIMMING_POTION = registerPotionWithRecipe(
+        "swimming",
+        Potion(StatusEffectInstance(StatusEffects.DOLPHINS_GRACE, 1200, 0),
+            StatusEffectInstance(StatusEffects.HUNGER, 600, 0)),
+        Potions.AWKWARD,
+        HybridAquaticItems.MAHI
+    )
+
+    val BUOYANCY_POTION = registerPotionWithRecipe(
+        "buoyancy",
+        Potion(StatusEffectInstance(HybridAquaticStatusEffects.BUOYANCY, 300, 0)),
+        Potions.AWKWARD,
+        Items.KELP
     )
 
     private fun registerPotionWithRecipe(id: String, potion: Potion, inputPotion: Potion, ingredient: Item): Potion {

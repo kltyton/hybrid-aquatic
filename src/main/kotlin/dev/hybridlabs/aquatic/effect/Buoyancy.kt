@@ -3,17 +3,18 @@ package dev.hybridlabs.aquatic.effect
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.effect.StatusEffect
 import net.minecraft.entity.effect.StatusEffectCategory
+import net.minecraft.util.math.Vec3d
 
-class   Bleeding : StatusEffect(StatusEffectCategory.HARMFUL, 0xee4049) {
+class Buoyancy : StatusEffect(StatusEffectCategory.BENEFICIAL, 0xFFFFFF) {
 
     override fun canApplyUpdateEffect(duration: Int, amplifier: Int): Boolean {
-        return duration % 40 == 0
+        return duration % 10 == 0
     }
 
     override fun applyUpdateEffect(entity: LivingEntity, amplifier: Int) {
-        val targetHealth = entity.maxHealth / 2.0f
-        if (entity.health > targetHealth) {
-            entity.health = maxOf(entity.health - 1.0f, targetHealth)
+        val currentVelocity = entity.velocity
+        if (entity.isSubmergedInWater) {
+            entity.velocity = Vec3d(currentVelocity.x, 0.5, currentVelocity.z)
         }
     }
 }
