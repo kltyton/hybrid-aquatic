@@ -388,7 +388,7 @@ object HybridAquaticEntityTypes {
     val SHRIMP = registerCrustacean(
         "shrimp",
         ::ShrimpEntity,
-        EntityDimensions.fixed(0.5f, 0.5f),
+        EntityDimensions.fixed(0.5f, 0.3f),
         ShrimpEntity.createMobAttributes()
     )
 
