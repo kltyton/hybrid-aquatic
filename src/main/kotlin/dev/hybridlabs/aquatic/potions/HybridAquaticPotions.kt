@@ -67,7 +67,7 @@ object HybridAquaticPotions {
 
     val BUOYANCY_POTION = registerPotionWithRecipe(
         "buoyancy",
-        Potion(StatusEffectInstance(HybridAquaticStatusEffects.BUOYANCY, 300, 0)),
+        Potion(StatusEffectInstance(HybridAquaticStatusEffects.BUOYANCY, 200, 0)),
         Potions.AWKWARD,
         Items.KELP
     )
