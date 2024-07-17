@@ -381,7 +381,7 @@ object HybridAquaticEntityTypes {
     val LOBSTER = registerCrustacean(
         "lobster",
         ::LobsterEntity,
-        EntityDimensions.fixed(0.5f, 0.5f),
+        EntityDimensions.fixed(0.5f, 0.3f),
         LobsterEntity.createMobAttributes()
     )
 
