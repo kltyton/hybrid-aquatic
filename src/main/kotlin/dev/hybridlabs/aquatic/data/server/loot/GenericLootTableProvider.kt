@@ -39,38 +39,6 @@ class GenericLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
                         )
                         .with(
-                            ItemEntry.builder(HybridAquaticItems.DIVING_HELMET)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(HybridAquaticItems.DIVING_SUIT)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(HybridAquaticItems.DIVING_LEGGINGS)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(HybridAquaticItems.DIVING_BOOTS)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(HybridAquaticItems.FISHING_NET)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(HybridAquaticItems.GLOWING_HOOK)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(HybridAquaticItems.BARBED_HOOK)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(HybridAquaticItems.MAGNETIC_HOOK)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
-                        )
-                        .with(
                             ItemEntry.builder(HybridAquaticItems.THRESHER_SHARK_PLUSHIE)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
                         )
@@ -101,46 +69,6 @@ class GenericLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
                         .with(
                             ItemEntry.builder(HybridAquaticItems.FRILLED_SHARK_PLUSHIE)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(HybridAquaticItems.FLOWER_CRAB_CLAW)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(HybridAquaticItems.COCONUT_CRAB_CLAW)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(HybridAquaticItems.YETI_CRAB_CLAW)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(HybridAquaticItems.GHOST_CRAB_CLAW)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(HybridAquaticItems.SPIDER_CRAB_CLAW)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(HybridAquaticItems.FIDDLER_CRAB_CLAW)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(HybridAquaticItems.VAMPIRE_CRAB_CLAW)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(HybridAquaticItems.LIGHTFOOT_CRAB_CLAW)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(HybridAquaticItems.DUNGENESS_CRAB_CLAW)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(HybridAquaticItems.LOBSTER_CLAW)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
                         )
                 )
         )
