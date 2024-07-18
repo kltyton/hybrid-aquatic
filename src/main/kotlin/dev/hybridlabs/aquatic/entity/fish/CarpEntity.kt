@@ -10,13 +10,13 @@ import net.minecraft.world.World
 
 class CarpEntity(entityType: EntityType<out CarpEntity>, world: World) :
     HybridAquaticFishEntity(entityType, world, variants = hashMapOf(
-        "koi_ai_goromo" to FishVariant.biomeVariant("koi_ai_goromo", HybridAquaticBiomeTags.KOI_SPAWN_BIOMES,
+        "koi_ai_goromo" to FishVariant.biomeVariant("koi_ai_goromo", HybridAquaticBiomeTags.CHERRY,
             ignore = listOf(FishVariant.Ignore.MODEL, FishVariant.Ignore.ANIMATION)),
-        "koi_hajiro" to FishVariant.biomeVariant("koi_hajiro", HybridAquaticBiomeTags.KOI_SPAWN_BIOMES,
+        "koi_hajiro" to FishVariant.biomeVariant("koi_hajiro", HybridAquaticBiomeTags.CHERRY,
             ignore = listOf(FishVariant.Ignore.MODEL, FishVariant.Ignore.ANIMATION)),
-        "koi_platinum" to FishVariant.biomeVariant("koi_platinum", HybridAquaticBiomeTags.KOI_SPAWN_BIOMES,
+        "koi_platinum" to FishVariant.biomeVariant("koi_platinum", HybridAquaticBiomeTags.CHERRY,
             ignore = listOf(FishVariant.Ignore.MODEL, FishVariant.Ignore.ANIMATION)),
-        "koi_tancho" to FishVariant.biomeVariant("koi_tancho", HybridAquaticBiomeTags.KOI_SPAWN_BIOMES,
+        "koi_tancho" to FishVariant.biomeVariant("koi_tancho", HybridAquaticBiomeTags.CHERRY,
             ignore = listOf(FishVariant.Ignore.MODEL, FishVariant.Ignore.ANIMATION)),
         ),
         HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {

@@ -10,9 +10,9 @@ import net.minecraft.world.World
 
 class SunfishEntity(entityType: EntityType<out SunfishEntity>, world: World) :
     HybridAquaticFishEntity(entityType, world, variants = hashMapOf(
-        "ocean" to FishVariant.biomeVariant("ocean", HybridAquaticBiomeTags.OCEAN_SUNFISH_SPAWN_BIOMES),
-        "hoodwinker" to FishVariant.biomeVariant("hoodwinker", HybridAquaticBiomeTags.HOODWINKER_SUNFISH_SPAWN_BIOMES),
-        "sharptail" to FishVariant.biomeVariant("sharptail", HybridAquaticBiomeTags.SHARPTAIL_SUNFISH_SPAWN_BIOMES)),
+        "ocean" to FishVariant.biomeVariant("ocean", HybridAquaticBiomeTags.DEEP_WARM_OCEANS),
+        "hoodwinker" to FishVariant.biomeVariant("hoodwinker", HybridAquaticBiomeTags.WARM_OCEANS),
+        "sharptail" to FishVariant.biomeVariant("sharptail", HybridAquaticBiomeTags.OCEAN)),
         HybridAquaticEntityTags.SUNFISH_PREY, HybridAquaticEntityTags.SUNFISH_PREDATOR) {
 
     override fun getLimitPerChunk(): Int {

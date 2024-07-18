@@ -10,7 +10,7 @@ import net.minecraft.world.World
 
 class GoldfishEntity(entityType: EntityType<out GoldfishEntity>, world: World) :
     HybridAquaticFishEntity(entityType, world, variants = hashMapOf(
-        "shubunkin" to FishVariant.biomeVariant("shubunkin", HybridAquaticBiomeTags.GOLDFISH_SPAWN_BIOMES,
+        "shubunkin" to FishVariant.biomeVariant("shubunkin", HybridAquaticBiomeTags.CHERRY,
             ignore = listOf(FishVariant.Ignore.MODEL, FishVariant.Ignore.ANIMATION)),
         ),
         HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {

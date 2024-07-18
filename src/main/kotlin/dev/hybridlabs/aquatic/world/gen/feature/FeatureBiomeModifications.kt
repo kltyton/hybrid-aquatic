@@ -3,6 +3,7 @@ package dev.hybridlabs.aquatic.world.gen.feature
 import dev.hybridlabs.aquatic.tag.HybridAquaticBiomeTags
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors
+import net.minecraft.registry.tag.BiomeTags
 import net.minecraft.world.gen.GenerationStep
 
 /**
@@ -11,19 +12,19 @@ import net.minecraft.world.gen.GenerationStep
 object FeatureBiomeModifications {
     init {
         BiomeModifications.addFeature(
-            BiomeSelectors.tag(HybridAquaticBiomeTags.ANEMONE_SPAWN_BIOMES),
+            BiomeSelectors.tag(HybridAquaticBiomeTags.REEF),
             GenerationStep.Feature.VEGETAL_DECORATION,
             HybridAquaticPlacedFeatures.ANEMONE_PATCH
         )
 
         BiomeModifications.addFeature(
-            BiomeSelectors.tag(HybridAquaticBiomeTags.GIANT_CLAM_SPAWN_BIOMES),
+            BiomeSelectors.tag(HybridAquaticBiomeTags.WARM_OCEANS),
             GenerationStep.Feature.VEGETAL_DECORATION,
             HybridAquaticPlacedFeatures.GIANT_CLAM_PATCH
         )
 
         BiomeModifications.addFeature(
-            BiomeSelectors.tag(HybridAquaticBiomeTags.TUBE_SPONGE_SPAWN_BIOMES),
+            BiomeSelectors.tag(HybridAquaticBiomeTags.ALL_OCEANS),
             GenerationStep.Feature.VEGETAL_DECORATION,
             HybridAquaticPlacedFeatures.TUBE_SPONGE_PATCH
         )
@@ -35,7 +36,7 @@ object FeatureBiomeModifications {
         )
 
         BiomeModifications.addFeature(
-            BiomeSelectors.tag(HybridAquaticBiomeTags.HYDROTHERMAL_VENT_SPAWN_BIOMES),
+            BiomeSelectors.tag(BiomeTags.IS_DEEP_OCEAN),
             GenerationStep.Feature.VEGETAL_DECORATION,
             HybridAquaticPlacedFeatures.HYDROTHERMAL_VENT
         )

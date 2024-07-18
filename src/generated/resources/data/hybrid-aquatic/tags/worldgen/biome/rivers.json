@@ -1,18 +1,18 @@
 {
   "replace": false,
   "values": [
-    "minecraft:swamp",
     "#minecraft:is_river",
+    "minecraft:river",
     {
-      "id": "wythers:waterlily_swamp",
+      "id": "wythers:jungle_river",
       "required": false
     },
     {
-      "id": "wythers:gravelly_river",
+      "id": "wythers:tropical_forest_river",
       "required": false
     },
     {
-      "id": "terralith:orchid_swamp",
+      "id": "terralith:warm_river",
       "required": false
     },
     {
@@ -21,10 +21,6 @@
     },
     {
       "id": "regions_unexplored:muddy_river",
-      "required": false
-    },
-    {
-      "id": "regions_unexplored:marsh",
       "required": false
     }
   ]

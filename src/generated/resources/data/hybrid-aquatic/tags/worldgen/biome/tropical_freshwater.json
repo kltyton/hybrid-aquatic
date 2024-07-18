@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "#minecraft:is_jungle",
     "minecraft:jungle",
     "minecraft:bamboo_jungle",
     "minecraft:sparse_jungle",
@@ -25,7 +26,7 @@
       "required": false
     },
     {
-      "id": "regions_unexplored:bamboo_forest",
+      "id": "regions_unexplored:muddy_river",
       "required": false
     }
   ]

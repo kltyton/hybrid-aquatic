@@ -11,13 +11,13 @@ import net.minecraft.world.World
 
 class SurgeonfishEntity(entityType: EntityType<out SurgeonfishEntity>, world: World) :
     HybridAquaticFishEntity(entityType, world, variants = hashMapOf(
-        "sohal" to FishVariant.biomeVariant("sohal", HybridAquaticBiomeTags.SURGEONFISH_SPAWN_BIOMES),
-        "lined" to FishVariant.biomeVariant("lined", HybridAquaticBiomeTags.SURGEONFISH_SPAWN_BIOMES),
-        "orangeshoulder" to FishVariant.biomeVariant("orangeshoulder", HybridAquaticBiomeTags.SURGEONFISH_SPAWN_BIOMES),
-        "unicornfish" to FishVariant.biomeVariant("unicornfish", HybridAquaticBiomeTags.SURGEONFISH_SPAWN_BIOMES),
-        "powder_blue_tang" to FishVariant.biomeVariant("powder_blue_tang", HybridAquaticBiomeTags.SURGEONFISH_SPAWN_BIOMES),
-        "yellow_tang" to FishVariant.biomeVariant("yellow_tang", HybridAquaticBiomeTags.SURGEONFISH_SPAWN_BIOMES),
-        "blue_tang" to FishVariant.biomeVariant("blue_tang", HybridAquaticBiomeTags.SURGEONFISH_SPAWN_BIOMES)),
+        "sohal" to FishVariant.biomeVariant("sohal", HybridAquaticBiomeTags.WARM_OCEANS),
+        "lined" to FishVariant.biomeVariant("lined", HybridAquaticBiomeTags.WARM_OCEANS),
+        "orangeshoulder" to FishVariant.biomeVariant("orangeshoulder", HybridAquaticBiomeTags.WARM_OCEANS),
+        "unicornfish" to FishVariant.biomeVariant("unicornfish", HybridAquaticBiomeTags.WARM_OCEANS),
+        "powder_blue_tang" to FishVariant.biomeVariant("powder_blue_tang", HybridAquaticBiomeTags.REEF),
+        "yellow_tang" to FishVariant.biomeVariant("yellow_tang", HybridAquaticBiomeTags.REEF),
+        "blue_tang" to FishVariant.biomeVariant("blue_tang", HybridAquaticBiomeTags.REEF)),
         HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.SURGEONFISH_PREDATOR) {
 
     public override fun getLootTableId(): Identifier {

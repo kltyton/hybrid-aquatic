@@ -11,8 +11,8 @@ import net.minecraft.world.World
 
 class StingrayEntity(entityType: EntityType<out StingrayEntity>, world: World) :
     HybridAquaticRayEntity(entityType, world, variants = hashMapOf(
-        "spotted_eagle" to RayVariant.biomeVariant("spotted_eagle", HybridAquaticBiomeTags.STINGRAY_SPAWN_BIOMES),
-        "blue_spotted" to RayVariant.biomeVariant("blue_spotted", HybridAquaticBiomeTags.STINGRAY_SPAWN_BIOMES),),
+        "spotted_eagle" to RayVariant.biomeVariant("spotted_eagle", HybridAquaticBiomeTags.WARM_OCEANS),
+        "blue_spotted" to RayVariant.biomeVariant("blue_spotted", HybridAquaticBiomeTags.REEF),),
         HybridAquaticEntityTags.STINGRAY_PREY, HybridAquaticEntityTags.STINGRAY_PREDATOR) {
 
     public override fun getLootTableId(): Identifier {

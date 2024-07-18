@@ -11,9 +11,9 @@ import net.minecraft.world.World
 
 class MahiEntity(entityType: EntityType<out MahiEntity>, world: World) :
     HybridAquaticFishEntity(entityType, world, variants = hashMapOf(
-        "mahi" to FishVariant.biomeVariant("mahi", HybridAquaticBiomeTags.MAHI_SPAWN_BIOMES,
+        "mahi" to FishVariant.biomeVariant("mahi", HybridAquaticBiomeTags.DEEP_WARM_OCEANS,
             ignore = listOf(FishVariant.Ignore.ANIMATION)),
-        "pompano" to FishVariant.biomeVariant("pompano", HybridAquaticBiomeTags.MAHI_SPAWN_BIOMES,
+        "pompano" to FishVariant.biomeVariant("pompano", HybridAquaticBiomeTags.DEEP_WARM_OCEANS,
             ignore = listOf(FishVariant.Ignore.ANIMATION)),
         ),
         HybridAquaticEntityTags.MAHI_PREY, HybridAquaticEntityTags.MAHI_PREDATOR) {

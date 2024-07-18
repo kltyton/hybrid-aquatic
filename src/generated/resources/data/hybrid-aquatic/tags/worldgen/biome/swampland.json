@@ -1,15 +1,9 @@
 {
   "replace": false,
   "values": [
-    "minecraft:jungle",
-    "minecraft:bamboo_jungle",
-    "minecraft:sparse_jungle",
+    "#minecraft:has_structure/swamp_hut",
     "minecraft:swamp",
     "minecraft:mangrove_swamp",
-    {
-      "id": "wythers:flooded_jungle",
-      "required": false
-    },
     {
       "id": "wythers:waterlily_swamp",
       "required": false
@@ -20,6 +14,10 @@
     },
     {
       "id": "regions_unexplored:marsh",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:muddy_river",
       "required": false
     }
   ]

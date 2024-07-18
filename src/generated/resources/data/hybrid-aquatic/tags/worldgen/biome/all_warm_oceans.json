@@ -3,7 +3,7 @@
   "values": [
     "minecraft:warm_ocean",
     "minecraft:lukewarm_ocean",
-    "minecraft:beach",
+    "minecraft:deep_lukewarm_ocean",
     {
       "id": "regions_unexplored:rocky_reef",
       "required": false

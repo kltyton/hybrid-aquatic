@@ -10,19 +10,19 @@ import net.minecraft.world.World
 
 class BettaEntity(entityType: EntityType<out BettaEntity>, world: World) :
     HybridAquaticFishEntity(entityType, world, variants = hashMapOf(
-        "black" to FishVariant.biomeVariant("black", HybridAquaticBiomeTags.BETTA_SPAWN_BIOMES,
+        "black" to FishVariant.biomeVariant("black", HybridAquaticBiomeTags.SWAMPLAND,
             ignore = listOf(FishVariant.Ignore.MODEL, FishVariant.Ignore.ANIMATION)),
-        "blue" to FishVariant.biomeVariant("blue", HybridAquaticBiomeTags.BETTA_SPAWN_BIOMES,
+        "blue" to FishVariant.biomeVariant("blue", HybridAquaticBiomeTags.SWAMPLAND,
             ignore = listOf(FishVariant.Ignore.MODEL, FishVariant.Ignore.ANIMATION)),
-        "blue_yellow" to FishVariant.biomeVariant("blue_yellow", HybridAquaticBiomeTags.BETTA_SPAWN_BIOMES,
+        "blue_yellow" to FishVariant.biomeVariant("blue_yellow", HybridAquaticBiomeTags.SWAMPLAND,
             ignore = listOf(FishVariant.Ignore.MODEL, FishVariant.Ignore.ANIMATION)),
-        "green" to FishVariant.biomeVariant("green", HybridAquaticBiomeTags.BETTA_SPAWN_BIOMES,
+        "green" to FishVariant.biomeVariant("green", HybridAquaticBiomeTags.SWAMPLAND,
             ignore = listOf(FishVariant.Ignore.MODEL, FishVariant.Ignore.ANIMATION)),
-        "pink" to FishVariant.biomeVariant("pink", HybridAquaticBiomeTags.BETTA_SPAWN_BIOMES,
+        "pink" to FishVariant.biomeVariant("pink", HybridAquaticBiomeTags.SWAMPLAND,
             ignore = listOf(FishVariant.Ignore.MODEL, FishVariant.Ignore.ANIMATION)),
-        "red" to FishVariant.biomeVariant("red", HybridAquaticBiomeTags.BETTA_SPAWN_BIOMES,
+        "red" to FishVariant.biomeVariant("red", HybridAquaticBiomeTags.SWAMPLAND,
             ignore = listOf(FishVariant.Ignore.MODEL, FishVariant.Ignore.ANIMATION)),
-        "white" to FishVariant.biomeVariant("white", HybridAquaticBiomeTags.BETTA_SPAWN_BIOMES,
+        "white" to FishVariant.biomeVariant("white", HybridAquaticBiomeTags.SWAMPLAND,
             ignore = listOf(FishVariant.Ignore.MODEL, FishVariant.Ignore.ANIMATION)),
         ),
         HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {

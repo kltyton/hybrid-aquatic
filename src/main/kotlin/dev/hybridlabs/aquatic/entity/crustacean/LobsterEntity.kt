@@ -10,13 +10,13 @@ import net.minecraft.world.World
 
 class LobsterEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>, world: World) :
     HybridAquaticCrustaceanEntity(entityType, world, variants = hashMapOf(
-        "american" to CrustaceanVariant.biomeVariant("american", HybridAquaticBiomeTags.LOBSTER_SPAWN_BIOMES,
+        "american" to CrustaceanVariant.biomeVariant("american", HybridAquaticBiomeTags.REEF,
             ignore = listOf(CrustaceanVariant.Ignore.MODEL, CrustaceanVariant.Ignore.ANIMATION)),
-        "california_spiny" to CrustaceanVariant.biomeVariant("california_spiny", HybridAquaticBiomeTags.LOBSTER_SPAWN_BIOMES,
+        "california_spiny" to CrustaceanVariant.biomeVariant("california_spiny", HybridAquaticBiomeTags.REEF,
             ignore = listOf(CrustaceanVariant.Ignore.MODEL, CrustaceanVariant.Ignore.ANIMATION)),
-        "ornate_spiny" to CrustaceanVariant.biomeVariant("ornate_spiny", HybridAquaticBiomeTags.LOBSTER_SPAWN_BIOMES,
+        "ornate_spiny" to CrustaceanVariant.biomeVariant("ornate_spiny", HybridAquaticBiomeTags.REEF,
             ignore = listOf(CrustaceanVariant.Ignore.MODEL, CrustaceanVariant.Ignore.ANIMATION)),
-        "regal_slipper" to CrustaceanVariant.biomeVariant("regal_slipper", HybridAquaticBiomeTags.LOBSTER_SPAWN_BIOMES,
+        "regal_slipper" to CrustaceanVariant.biomeVariant("regal_slipper", HybridAquaticBiomeTags.REEF,
             ignore = listOf(CrustaceanVariant.Ignore.ANIMATION)),
         ),
         false, false) {
