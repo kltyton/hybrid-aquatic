@@ -9,8 +9,8 @@ abstract class HybridAquaticCritterEntityModel<T: HybridAquaticCritterEntity> (p
     override fun getModelResource(animatable: T?): Identifier {
         val variant = animatable?.variant
         if (variant != null && !variant.ignore.contains(HybridAquaticCritterEntity.CritterVariant.Ignore.MODEL))
-            return Identifier(HybridAquatic.MOD_ID, "geo/${id}_${variant.getProvidedVariant(animatable)}.geo.json")
-        return Identifier(HybridAquatic.MOD_ID, "geo/$id.geo.json")
+            return Identifier(HybridAquatic.MOD_ID, "geo/critter/${id}/${id}_${variant.getProvidedVariant(animatable)}.geo.json")
+        return Identifier(HybridAquatic.MOD_ID, "geo/critter/${id}/$id.geo.json")
     }
 
     override fun getTextureResource(animatable: T?): Identifier {

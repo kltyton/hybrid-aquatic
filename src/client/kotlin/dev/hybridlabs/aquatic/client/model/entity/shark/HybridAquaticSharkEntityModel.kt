@@ -13,7 +13,7 @@ abstract class HybridAquaticSharkEntityModel<T : HybridAquaticSharkEntity> (
     private val id: String
 ) : GeoModel<T>() {
     override fun getModelResource(animatable: T?): Identifier {
-        return Identifier(HybridAquatic.MOD_ID, "geo/$id.geo.json")
+        return Identifier(HybridAquatic.MOD_ID, "geo/shark/$id.geo.json")
     }
 
     override fun getTextureResource(animatable: T?): Identifier {

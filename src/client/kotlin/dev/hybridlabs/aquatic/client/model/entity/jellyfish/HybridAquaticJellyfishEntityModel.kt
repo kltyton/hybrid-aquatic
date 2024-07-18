@@ -7,7 +7,7 @@ import software.bernie.geckolib.model.GeoModel
 
 abstract class HybridAquaticJellyfishEntityModel<T: HybridAquaticJellyfishEntity> (private val id: String) : GeoModel<T>() {
     override fun getModelResource(animatable: T?): Identifier {
-        return Identifier(HybridAquatic.MOD_ID, "geo/$id.geo.json")
+        return Identifier(HybridAquatic.MOD_ID, "geo/jellyfish/$id.geo.json")
     }
 
     override fun getTextureResource(animatable: T?): Identifier {

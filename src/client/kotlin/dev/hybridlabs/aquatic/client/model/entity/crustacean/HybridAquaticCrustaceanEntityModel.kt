@@ -9,8 +9,8 @@ abstract class HybridAquaticCrustaceanEntityModel<T: HybridAquaticCrustaceanEnti
     override fun getModelResource(animatable: T?): Identifier {
         val variant = animatable?.variant
         if (variant != null && !variant.ignore.contains(HybridAquaticCrustaceanEntity.CrustaceanVariant.Ignore.MODEL))
-            return Identifier(HybridAquatic.MOD_ID, "geo/${id}_${variant.getProvidedVariant(animatable)}.geo.json")
-        return Identifier(HybridAquatic.MOD_ID, "geo/$id.geo.json")
+            return Identifier(HybridAquatic.MOD_ID, "geo/crustacean/${id}/${id}_${variant.getProvidedVariant(animatable)}.geo.json")
+        return Identifier(HybridAquatic.MOD_ID, "geo/crustacean/${id}/$id.geo.json")
     }
 
     override fun getTextureResource(animatable: T?): Identifier {
