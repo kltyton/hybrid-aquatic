@@ -270,7 +270,6 @@ object HybridAquaticEntityTypes {
     )
 
     //cephalopods
-
     val FIREFLY_SQUID = registerCephalopod(
         "firefly_squid",
         ::FireflySquidEntity,
@@ -314,7 +313,6 @@ object HybridAquaticEntityTypes {
     )
 
     //crustaceans
-
     val COCONUT_CRAB = registerCrustacean(
         "coconut_crab",
         ::CoconutCrabEntity,
@@ -457,7 +455,6 @@ object HybridAquaticEntityTypes {
     )
 
     //jellyfish
-
     val ATOLLA_JELLYFISH = registerJellyUnderground(
         "atolla_jellyfish",
         ::AtollaJellyfishEntity,
@@ -536,7 +533,6 @@ object HybridAquaticEntityTypes {
     )
 
     //sharks
-
     val BASKING_SHARK = registerShark(
         "basking_shark",
         ::BaskingSharkEntity,

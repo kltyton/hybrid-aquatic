@@ -22,17 +22,12 @@ class BlockTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             .add(Blocks.WATER)
 
         getOrCreateTagBuilder(HybridAquaticBlockTags.TUBE_SPONGE_GENERATE_IN)
+            .add(Blocks.WATER)
 
         getOrCreateTagBuilder(HybridAquaticBlockTags.MESSAGE_IN_A_BOTTLE_SPAWNS_IN)
             .add(Blocks.WATER)
 
         getOrCreateTagBuilder(HybridAquaticBlockTags.CRAB_DIGGABLE_BLOCKS)
-            .addTag(HybridAquaticBlockTags.CRAB_DIGGABLE_TREASURE_BLOCKS)
-            .add(Blocks.DIRT)
-            .add(Blocks.COARSE_DIRT)
-            .add(Blocks.GRASS_BLOCK)
-
-        getOrCreateTagBuilder(HybridAquaticBlockTags.CRAB_DIGGABLE_TREASURE_BLOCKS)
             .add(Blocks.SAND)
             .add(Blocks.SUSPICIOUS_SAND)
             .add(Blocks.GRAVEL)

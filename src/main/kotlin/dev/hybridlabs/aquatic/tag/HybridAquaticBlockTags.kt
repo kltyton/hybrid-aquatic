@@ -20,8 +20,6 @@ object HybridAquaticBlockTags {
 
     val CRAB_DIGGABLE_BLOCKS = create("crab_diggable_blocks")
 
-    val CRAB_DIGGABLE_TREASURE_BLOCKS = create("crab_diggable_treasure_blocks")
-
     val CRABS_SPAWN_ON = create("crabs_spawn_on")
 
     private fun create(id: String): TagKey<Block> {
