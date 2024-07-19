@@ -35,7 +35,7 @@ object EntityBiomeModifications {
         addFish(HybridAquaticEntityTypes.OSCAR, HybridAquaticBiomeTags.TROPICAL_FRESHWATER, 1, 1, 1)
         addFish(HybridAquaticEntityTypes.OARFISH, HybridAquaticBiomeTags.ALL_DEEP_OCEANS, 1, 1, 1)
         addFish(HybridAquaticEntityTypes.PIRANHA, HybridAquaticBiomeTags.TROPICAL_FRESHWATER, 5, 2, 5)
-        addFish(HybridAquaticEntityTypes.ROCKFISH, HybridAquaticBiomeTags.ROCKFISH_SPAWN_BIOMES, 3, 1, 3)
+        addFish(HybridAquaticEntityTypes.ROCKFISH, HybridAquaticBiomeTags.OCEAN, 3, 1, 3)
         addFish(HybridAquaticEntityTypes.SEAHORSE, HybridAquaticBiomeTags.REEF, 1, 1, 2)
         addFish(HybridAquaticEntityTypes.STONEFISH, HybridAquaticBiomeTags.REEF, 1, 1, 1)
         addFish(HybridAquaticEntityTypes.SUNFISH, HybridAquaticBiomeTags.DEEP_WARM_OCEANS, 1, 1, 1)
@@ -92,8 +92,8 @@ object EntityBiomeModifications {
 
         // crustaceans
         addCrustacean(HybridAquaticEntityTypes.DUNGENESS_CRAB, HybridAquaticBiomeTags.DUNGENESS_CRAB_SPAWN_BIOMES, 5, 1, 2)
-        addCrustacean(HybridAquaticEntityTypes.HERMIT_CRAB, HybridAquaticBiomeTags.HERMIT_CRAB_SPAWN_BIOMES, 3, 1, 2)
-        addCrustacean(HybridAquaticEntityTypes.FIDDLER_CRAB, HybridAquaticBiomeTags.FIDDLER_CRAB_SPAWN_BIOMES, 3, 1, 2)
+        addCrustacean(HybridAquaticEntityTypes.HERMIT_CRAB, HybridAquaticBiomeTags.TROPICAL_BEACHES, 3, 1, 2)
+        addCrustacean(HybridAquaticEntityTypes.FIDDLER_CRAB, HybridAquaticBiomeTags.SWAMPLAND, 3, 1, 2)
         addCrustacean(HybridAquaticEntityTypes.GHOST_CRAB, HybridAquaticBiomeTags.GHOST_CRAB_SPAWN_BIOMES, 5, 1, 2)
         addCrustacean(HybridAquaticEntityTypes.HORSESHOE_CRAB, HybridAquaticBiomeTags.ALL_WARM_OCEANS, 1, 1, 2)
         addCrustacean(HybridAquaticEntityTypes.LIGHTFOOT_CRAB, HybridAquaticBiomeTags.LIGHTFOOT_CRAB_SPAWN_BIOMES, 3, 1, 2)
@@ -102,7 +102,7 @@ object EntityBiomeModifications {
         addCrustacean(HybridAquaticEntityTypes.SHRIMP, HybridAquaticBiomeTags.REEF, 5, 1, 2)
         addCrustacean(HybridAquaticEntityTypes.CRAYFISH, HybridAquaticBiomeTags.RIVERS, 5, 1, 2)
         addCrustacean(HybridAquaticEntityTypes.LOBSTER, HybridAquaticBiomeTags.REEF, 3, 1, 1)
-        addCrustacean(HybridAquaticEntityTypes.COCONUT_CRAB, HybridAquaticBiomeTags.COCONUT_CRAB_SPAWN_BIOMES, 3, 1, 1)
+        addCrustacean(HybridAquaticEntityTypes.COCONUT_CRAB, HybridAquaticBiomeTags.TROPICAL_BEACHES, 3, 1, 1)
 
         //underground crustaceans
         addUndergroundCrustacean(HybridAquaticEntityTypes.YETI_CRAB, HybridAquaticBiomeTags.DEEP_COLD_OCEANS, 2, 2, 2)

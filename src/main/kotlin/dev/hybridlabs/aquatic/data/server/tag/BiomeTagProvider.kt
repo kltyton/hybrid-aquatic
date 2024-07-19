@@ -24,15 +24,6 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
         )
             .addOptional(Identifier("regions_unexplored", "rocky_reef"))
 
-        getOrCreateTagBuilder(HybridAquaticBiomeTags.HERMIT_CRAB_SPAWN_BIOMES).add(
-            BiomeKeys.OCEAN,
-            BiomeKeys.WARM_OCEAN,
-            BiomeKeys.LUKEWARM_OCEAN,
-            BiomeKeys.BEACH,
-            BiomeKeys.STONY_SHORE,
-        )
-            .addOptional(Identifier("wythers", "tropical_beach"))
-
         getOrCreateTagBuilder(HybridAquaticBiomeTags.GHOST_CRAB_SPAWN_BIOMES).add(
             BiomeKeys.OCEAN,
             BiomeKeys.WARM_OCEAN,
@@ -60,27 +51,13 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
         )
             .addOptional(Identifier("wythers", "tropical_beach"))
 
-        getOrCreateTagBuilder(HybridAquaticBiomeTags.COCONUT_CRAB_SPAWN_BIOMES).add(
+        getOrCreateTagBuilder(HybridAquaticBiomeTags.TROPICAL_BEACHES).add(
             BiomeKeys.BEACH,
         )
             .addOptional(Identifier("wythers", "tropical_beach"))
             .addOptional(Identifier("regions_unexplored", "rocky_reef"))
 
-        getOrCreateTagBuilder(HybridAquaticBiomeTags.FIDDLER_CRAB_SPAWN_BIOMES)
-            .add(
-                BiomeKeys.MANGROVE_SWAMP,
-                BiomeKeys.BEACH,
-            )
-            .addOptional(Identifier("regions_unexplored", "rocky_reef"))
-
-        getOrCreateTagBuilder(HybridAquaticBiomeTags.ROCKFISH_SPAWN_BIOMES).add(
-            BiomeKeys.WARM_OCEAN,
-            BiomeKeys.OCEAN,
-            BiomeKeys.LUKEWARM_OCEAN,
-            BiomeKeys.BEACH)
-            .addOptional(Identifier("regions_unexplored", "rocky_reef"))
-
-        getOrCreateTagBuilder(HybridAquaticBiomeTags.MESSAGE_IN_A_BOTTLE_SPAWN_BIOMES)
+        getOrCreateTagBuilder(HybridAquaticBiomeTags.BOTTLE_SPAWN_BIOMES)
             .forceAddTag(BiomeTags.IS_OCEAN)
             .forceAddTag(BiomeTags.IS_DEEP_OCEAN)
             .forceAddTag(BiomeTags.IS_BEACH)
