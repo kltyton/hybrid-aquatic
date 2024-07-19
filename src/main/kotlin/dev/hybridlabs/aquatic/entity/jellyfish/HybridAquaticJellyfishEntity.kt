@@ -221,6 +221,17 @@ open class HybridAquaticJellyfishEntity(
         }
     }
 
+    override fun onPlayerCollision(player: PlayerEntity?) {
+        super.onPlayerCollision(player)
+
+        if (player != null) {
+            if (isVenomous && !player.hasVehicle()) {
+                player.addStatusEffect(StatusEffectInstance(StatusEffects.POISON, 100, 0))
+            }
+        }
+    }
+
+
     private fun applyBodyRotations(shootVector: Vec3d): Vec3d {
         if (!isSubmergedInWater) {
             return shootVector
