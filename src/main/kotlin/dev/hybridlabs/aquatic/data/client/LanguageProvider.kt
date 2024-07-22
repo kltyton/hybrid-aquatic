@@ -107,6 +107,8 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             HybridAquaticItems.COOKED_CRAB to "Cooked Crab",
             HybridAquaticItems.RAW_LOBSTER to "Raw Lobster",
             HybridAquaticItems.COOKED_LOBSTER to "Cooked Lobster",
+            HybridAquaticItems.RAW_LOBSTER_TAIL to "Raw Lobster Tail",
+            HybridAquaticItems.COOKED_LOBSTER_TAIL to "Cooked Lobster Tail",
             HybridAquaticItems.RAW_SHRIMP to "Raw Shrimp",
             HybridAquaticItems.COOKED_SHRIMP to "Cooked Shrimp",
             HybridAquaticItems.RAW_CRAYFISH to "Raw Crayfish",
