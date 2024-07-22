@@ -1,6 +1,9 @@
 package dev.hybridlabs.aquatic.entity.crustacean
 
+import dev.hybridlabs.aquatic.entity.cephalopod.HybridAquaticCephalopodEntity
 import dev.hybridlabs.aquatic.entity.fish.HybridAquaticFishEntity
+import dev.hybridlabs.aquatic.entity.fish.ray.HybridAquaticRayEntity
+import dev.hybridlabs.aquatic.entity.shark.HybridAquaticSharkEntity
 import dev.hybridlabs.aquatic.tag.HybridAquaticBlockTags
 import dev.hybridlabs.aquatic.tag.HybridAquaticItemTags
 import net.minecraft.block.Blocks
@@ -298,6 +301,13 @@ private var attemptAttack: Boolean
     }
 
     // endregion
+
+    override fun dropLoot(source: DamageSource, causedByPlayer: Boolean) {
+        val attacker = source.attacker
+        if (attacker !is HybridAquaticFishEntity && attacker !is HybridAquaticSharkEntity && attacker !is HybridAquaticRayEntity && attacker !is HybridAquaticCephalopodEntity) {
+            super.dropLoot(source, causedByPlayer)
+        }
+    }
 
     override fun getLimitPerChunk(): Int {
         return 4

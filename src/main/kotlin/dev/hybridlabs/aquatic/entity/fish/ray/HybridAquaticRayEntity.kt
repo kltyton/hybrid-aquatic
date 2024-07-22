@@ -1,7 +1,10 @@
 package dev.hybridlabs.aquatic.entity.fish.ray
 
+import dev.hybridlabs.aquatic.entity.cephalopod.HybridAquaticCephalopodEntity
+import dev.hybridlabs.aquatic.entity.fish.HybridAquaticFishEntity
 import dev.hybridlabs.aquatic.entity.fish.ray.HybridAquaticRayEntity.VariantCollisionRules.ExclusionStatus.EXCLUSIVE
 import dev.hybridlabs.aquatic.entity.fish.ray.HybridAquaticRayEntity.VariantCollisionRules.ExclusionStatus.INCLUSIVE
+import dev.hybridlabs.aquatic.entity.shark.HybridAquaticSharkEntity
 import net.minecraft.block.Blocks
 import net.minecraft.entity.*
 import net.minecraft.entity.ai.control.AquaticMoveControl
@@ -10,6 +13,7 @@ import net.minecraft.entity.ai.goal.LookAroundGoal
 import net.minecraft.entity.ai.goal.LookAtEntityGoal
 import net.minecraft.entity.ai.goal.SwimAroundGoal
 import net.minecraft.entity.ai.pathing.SwimNavigation
+import net.minecraft.entity.damage.DamageSource
 import net.minecraft.entity.data.DataTracker
 import net.minecraft.entity.data.TrackedData
 import net.minecraft.entity.data.TrackedDataHandlerRegistry
@@ -155,6 +159,13 @@ open class HybridAquaticRayEntity(
                     0.0
                 )
             }
+        }
+    }
+
+    override fun dropLoot(source: DamageSource, causedByPlayer: Boolean) {
+        val attacker = source.attacker
+        if (attacker !is HybridAquaticFishEntity && attacker !is HybridAquaticSharkEntity && attacker !is HybridAquaticRayEntity && attacker !is HybridAquaticCephalopodEntity) {
+            super.dropLoot(source, causedByPlayer)
         }
     }
 

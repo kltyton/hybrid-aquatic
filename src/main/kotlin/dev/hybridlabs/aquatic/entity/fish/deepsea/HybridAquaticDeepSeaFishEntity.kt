@@ -15,7 +15,6 @@ import net.minecraft.util.math.MathHelper
 import net.minecraft.world.World
 import kotlin.math.sqrt
 
-@Suppress("NAME_SHADOWING")
 open class HybridAquaticDeepSeaFishEntity(
     type: EntityType<out HybridAquaticFishEntity>,
     world: World,

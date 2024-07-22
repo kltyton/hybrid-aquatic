@@ -14,6 +14,7 @@ import net.minecraft.entity.data.TrackedDataHandlerRegistry
 import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.entity.effect.StatusEffects
 import net.minecraft.entity.mob.WaterCreatureEntity
+import net.minecraft.entity.passive.TurtleEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.particle.ParticleEffect
@@ -228,6 +229,13 @@ open class HybridAquaticJellyfishEntity(
             if (isVenomous && !player.hasVehicle()) {
                 player.addStatusEffect(StatusEffectInstance(StatusEffects.POISON, 100, 0))
             }
+        }
+    }
+
+    override fun dropLoot(source: DamageSource, causedByPlayer: Boolean) {
+        val attacker = source.attacker
+        if (attacker !is TurtleEntity) {
+            super.dropLoot(source, causedByPlayer)
         }
     }
 
