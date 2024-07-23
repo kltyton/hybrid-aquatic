@@ -19,13 +19,13 @@ enum class HybridAquaticArmorMaterials(
     private val knockbackResistance: Float,
     private val repairIngredient: Supplier<Ingredient>
 ) : ArmorMaterial {
-    DIVING("diving", 15, intArrayOf(2, 3, 4, 2), 9,
+    DIVING("diving", 15, intArrayOf(2, 5, 4, 2), 9,
         SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 0.0f, 0.0f, Supplier<Ingredient> {
             Ingredient.ofItems(
                 Items.COPPER_INGOT
             )
         }),
-    SEASHELL("seashell", 15, intArrayOf(2, 3, 4, 2), 22,
+    SEASHELL("seashell", 15, intArrayOf(2, 4, 3, 2), 22,
         SoundEvents.ITEM_ARMOR_EQUIP_TURTLE, 0.0f, 0.0f, Supplier<Ingredient> {
             Ingredient.ofItems(
                 Items.NAUTILUS_SHELL
