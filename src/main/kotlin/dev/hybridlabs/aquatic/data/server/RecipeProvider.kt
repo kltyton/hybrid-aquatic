@@ -128,6 +128,22 @@ class RecipeProvider(output: FabricDataOutput) : FabricRecipeProvider(output) {
             .criterion("has_shell", InventoryChangedCriterion.Conditions.items(Items.NAUTILUS_SHELL))
             .offerTo(exporter)
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, HybridAquaticItems.NAUTILUS_HELMET,1)
+            .pattern("NNN")
+            .pattern("N N")
+            .pattern("   ")
+            .input('N', Items.NAUTILUS_SHELL)
+            .criterion("has_shell", InventoryChangedCriterion.Conditions.items(Items.NAUTILUS_SHELL))
+            .offerTo(exporter)
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, HybridAquaticItems.NAUTILUS_PAULDRONS,1)
+            .pattern("N N")
+            .pattern("N N")
+            .pattern("   ")
+            .input('N', Items.NAUTILUS_SHELL)
+            .criterion("has_shell", InventoryChangedCriterion.Conditions.items(Items.NAUTILUS_SHELL))
+            .offerTo(exporter)
+
         offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, HybridAquaticBlocks.DRIFTWOOD_SLAB, HybridAquaticBlocks.DRIFTWOOD_PLANKS)
         offerBarkBlockRecipe(exporter, HybridAquaticBlocks.DRIFTWOOD_WOOD, HybridAquaticBlocks.DRIFTWOOD_LOG)
         offerPlanksRecipe(exporter, HybridAquaticBlocks.DRIFTWOOD_PLANKS, HybridAquaticItemTags.DRIFTWOOD_LOG_WOOD, 4)

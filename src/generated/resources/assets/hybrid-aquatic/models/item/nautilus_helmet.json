@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "hybrid-aquatic:item/seashell_pauldrons"
+    "layer0": "hybrid-aquatic:item/nautilus_helmet"
   }
 }
