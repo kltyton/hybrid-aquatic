@@ -52,7 +52,7 @@ object HybridAquaticPotions {
 
     val BLEEDING_POTION = registerPotionWithRecipe(
         "bleeding",
-        Potion(StatusEffectInstance(HybridAquaticStatusEffects.BLEEDING, 3600, 0)),
+        Potion(StatusEffectInstance(HybridAquaticStatusEffects.BLEEDING, 200, 0)),
         Potions.AWKWARD,
         HybridAquaticItems.SHARK_TOOTH
     )
