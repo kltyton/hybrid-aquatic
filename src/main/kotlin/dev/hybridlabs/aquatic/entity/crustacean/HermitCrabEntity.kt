@@ -60,6 +60,10 @@ class HermitCrabEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>
             attributes.getCustomInstance(EntityAttributes.GENERIC_ARMOR_TOUGHNESS)?.baseValue = 50.0
             attributes.getCustomInstance(EntityAttributes.GENERIC_ARMOR)?.baseValue = 50.0
         }
+
+        if (hidingTimer <= 0 && (world.time - lastDamageTime) >= 200) {
+            isHiding = false
+        }
     }
 
     override fun <E : GeoAnimatable> predicate(event: AnimationState<E>): PlayState {
