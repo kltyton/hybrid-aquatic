@@ -16,7 +16,6 @@ import net.minecraft.entity.data.DataTracker
 import net.minecraft.entity.data.TrackedData
 import net.minecraft.entity.data.TrackedDataHandlerRegistry
 import net.minecraft.entity.mob.WaterCreatureEntity
-import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.recipe.Ingredient
 import net.minecraft.registry.tag.TagKey
@@ -94,9 +93,9 @@ private var attemptAttack: Boolean
     override fun initGoals() {
         super.initGoals()
         goalSelector.add(1, TemptGoal(this, 0.5, Ingredient.fromTag(HybridAquaticItemTags.CRUSTACEAN_TEMPT_ITEMS), true))
-        goalSelector.add(5, WanderAroundGoal(this, 0.3))
+        goalSelector.add(2, WanderAroundGoal(this, 0.4))
+        goalSelector.add(2, WanderAroundFarGoal(this, 0.4))
         goalSelector.add(5, LookAroundGoal(this))
-        goalSelector.add(8, LookAtEntityGoal(this, PlayerEntity::class.java, 10.0f))
     }
 
     override fun initialize(
