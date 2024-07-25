@@ -1,22 +1,26 @@
 package dev.hybridlabs.aquatic.entity.crustacean
 
-import dev.hybridlabs.aquatic.entity.ai.goal.CrabDigGoal
+import dev.hybridlabs.aquatic.tag.HybridAquaticBiomeTags
 import net.minecraft.entity.EntityType
-import net.minecraft.entity.EquipmentSlot
 import net.minecraft.entity.attribute.DefaultAttributeContainer
 import net.minecraft.entity.attribute.EntityAttributes
 import net.minecraft.entity.mob.WaterCreatureEntity
-import net.minecraft.item.ItemStack
-import net.minecraft.item.Items
-import net.minecraft.util.math.random.Random
-import net.minecraft.world.LocalDifficulty
 import net.minecraft.world.World
 import software.bernie.geckolib.core.animatable.GeoAnimatable
 import software.bernie.geckolib.core.animation.AnimationState
 import software.bernie.geckolib.core.`object`.PlayState
 
 class HermitCrabEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>, world: World) :
-    HybridAquaticCrustaceanEntity(entityType, world, emptyMap(), true, false) {
+    HybridAquaticCrustaceanEntity(entityType, world, variants = hashMapOf(
+        "shell" to CrustaceanVariant.biomeVariant(
+            "shell", HybridAquaticBiomeTags.TROPICAL_BEACHES,
+            ignore = listOf(CrustaceanVariant.Ignore.ANIMATION)
+        ),
+        "skull" to CrustaceanVariant.biomeVariant(
+            "skull", HybridAquaticBiomeTags.TROPICAL_BEACHES,
+            ignore = listOf(CrustaceanVariant.Ignore.ANIMATION)
+        ),
+    ), true) {
 
     private var isHiding: Boolean = false
     private var hidingTimer: Int = 0
@@ -31,11 +35,6 @@ class HermitCrabEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>
                 .add(EntityAttributes.GENERIC_ARMOR, 5.0)
                 .add(EntityAttributes.GENERIC_ARMOR_TOUGHNESS, 5.0)
         }
-    }
-
-    override fun initGoals() {
-        super.initGoals()
-        goalSelector.add(3, CrabDigGoal(this, 0.05))
     }
 
     override fun getMaxSize(): Int {
@@ -56,19 +55,10 @@ class HermitCrabEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>
 
         if (isHiding) {
             hidingTimer--
-
-            if (hidingTimer <= 0 && (world.time - lastDamageTime) >= 200) {
-                isHiding = false
-                attributes.getCustomInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED)?.baseValue = 0.3
-                attributes.getCustomInstance(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE)?.baseValue = 0.0
-                attributes.getCustomInstance(EntityAttributes.GENERIC_ARMOR_TOUGHNESS)?.baseValue = 5.0
-                attributes.getCustomInstance(EntityAttributes.GENERIC_ARMOR)?.baseValue = 5.0
-            } else {
-                attributes.getCustomInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED)?.baseValue = 0.0
-                attributes.getCustomInstance(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE)?.baseValue = 100.0
-                attributes.getCustomInstance(EntityAttributes.GENERIC_ARMOR_TOUGHNESS)?.baseValue = 50.0
-                attributes.getCustomInstance(EntityAttributes.GENERIC_ARMOR)?.baseValue = 50.0
-            }
+            attributes.getCustomInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED)?.baseValue = 0.0
+            attributes.getCustomInstance(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE)?.baseValue = 100.0
+            attributes.getCustomInstance(EntityAttributes.GENERIC_ARMOR_TOUGHNESS)?.baseValue = 50.0
+            attributes.getCustomInstance(EntityAttributes.GENERIC_ARMOR)?.baseValue = 50.0
         }
     }
 
@@ -77,7 +67,6 @@ class HermitCrabEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>
             event.controller.setAnimation(HIDING_ANIMATION)
             return PlayState.CONTINUE
         }
-
         return super.predicate(event)
     }
 

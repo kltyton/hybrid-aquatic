@@ -10,9 +10,7 @@ import net.minecraft.block.Blocks
 import net.minecraft.entity.*
 import net.minecraft.entity.ai.control.MoveControl
 import net.minecraft.entity.ai.goal.*
-import net.minecraft.entity.ai.pathing.AmphibiousSwimNavigation
 import net.minecraft.entity.ai.pathing.EntityNavigation
-import net.minecraft.entity.ai.pathing.PathNodeType
 import net.minecraft.entity.damage.DamageSource
 import net.minecraft.entity.data.DataTracker
 import net.minecraft.entity.data.TrackedData
@@ -41,7 +39,6 @@ open class HybridAquaticCrustaceanEntity(
     type: EntityType<out HybridAquaticCrustaceanEntity>,
     world: World,
     private val variants: Map<String, CrustaceanVariant> = mutableMapOf(),
-    open val canDig: Boolean,
     open val canDance: Boolean,
     open val assumeDefault: Boolean = false,
     open val collisionRules: List<HybridAquaticFishEntity.VariantCollisionRules> = listOf(),
@@ -50,13 +47,7 @@ open class HybridAquaticCrustaceanEntity(
     private var landNavigation: EntityNavigation = createNavigation(world)
     private var songSource: BlockPos? = null
     private var songPlaying: Boolean = false
-
-    var diggingCooldown: Int = 0
-    var isDigging: Boolean
-        get() = dataTracker.get(IS_DIGGING)
-        set(bool) {
-            dataTracker.set(IS_DIGGING, bool)
-        }
+    private var fromFishingNet = false
 
     var size: Int
         get() = dataTracker.get(CRUSTACEAN_SIZE)
@@ -94,8 +85,6 @@ private var attemptAttack: Boolean
 
     override fun initDataTracker() {
         super.initDataTracker()
-        dataTracker.startTracking(MOISTNESS, getMaxMoistness())
-        dataTracker.startTracking(IS_DIGGING, false)
         dataTracker.startTracking(CRUSTACEAN_SIZE, 0)
         dataTracker.startTracking(ATTEMPT_ATTACK, false)
         dataTracker.startTracking(VARIANT, "")
@@ -104,9 +93,9 @@ private var attemptAttack: Boolean
 
     override fun initGoals() {
         super.initGoals()
-        goalSelector.add(2, WanderAroundGoal(this, 0.3))
-        goalSelector.add(2, LookAroundGoal(this))
-        goalSelector.add(1, TemptGoal(this, 0.5, Ingredient.fromTag(HybridAquaticItemTags.CRUSTACEAN_TEMPT_ITEMS), false))
+        goalSelector.add(1, TemptGoal(this, 0.5, Ingredient.fromTag(HybridAquaticItemTags.CRUSTACEAN_TEMPT_ITEMS), true))
+        goalSelector.add(5, WanderAroundGoal(this, 0.3))
+        goalSelector.add(5, LookAroundGoal(this))
         goalSelector.add(8, LookAtEntityGoal(this, PlayerEntity::class.java, 10.0f))
     }
 
@@ -117,7 +106,6 @@ private var attemptAttack: Boolean
         entityData: EntityData?,
         entityNbt: NbtCompound?
     ): EntityData? {
-        this.air = getMaxMoistness()
         this.size = this.random.nextBetween(getMinSize(),getMaxSize())
 
         if (variants.isNotEmpty()) {
@@ -161,12 +149,7 @@ private var attemptAttack: Boolean
     }
 
     // region movement
-    override fun createNavigation(world: World): EntityNavigation {
-        return AmphibiousSwimNavigation(this, world)
-    }
-
-    init {
-        setPathfindingPenalty(PathNodeType.WATER, 0.0f)
+   init {
         moveControl = MoveControl(this)
         navigation = this.landNavigation
         stepHeight = 1.0F
@@ -183,24 +166,12 @@ private var attemptAttack: Boolean
     override fun shouldSwimInFluids(): Boolean {
         return false
     }
-
     // end region
 
     override fun setNearbySongPlaying(songPosition: BlockPos?, playing: Boolean) {
         songSource = songPosition
         songPlaying = playing
         super.setNearbySongPlaying(songPosition, playing)
-    }
-
-    override fun mobTick() {
-        if (diggingCooldown > 0) {
-            diggingCooldown--
-            if (isDigging) {
-                this.movementSpeed = 0.0F
-            }
-        }
-
-        super.mobTick()
     }
 
 
@@ -218,20 +189,18 @@ private var attemptAttack: Boolean
 
     override fun writeCustomDataToNbt(nbt: NbtCompound) {
         super.writeCustomDataToNbt(nbt)
-        nbt.putInt(MOISTNESS_KEY, moistness)
-        nbt.putInt(DIGGING_COOLDOWN_KEY, diggingCooldown)
         nbt.putString(VARIANT_KEY, variantKey)
         nbt.put(VARIANT_DATA_KEY, variantData)
         nbt.putInt(CRUSTACEAN_SIZE_KEY, size)
+        nbt.putBoolean("FromFishingNet", fromFishingNet)
     }
 
     override fun readCustomDataFromNbt(nbt: NbtCompound) {
         super.readCustomDataFromNbt(nbt)
-        moistness = nbt.getInt(MOISTNESS_KEY)
-        diggingCooldown = nbt.getInt(DIGGING_COOLDOWN_KEY)
         variantKey = nbt.getString(VARIANT_KEY)
         variantData = nbt.getCompound(VARIANT_DATA_KEY)
         size = nbt.getInt(CRUSTACEAN_SIZE_KEY)
+        fromFishingNet = nbt.getBoolean("FromFishingNet")
     }
 
     override fun isPushedByFluids(): Boolean {
@@ -267,38 +236,7 @@ private var attemptAttack: Boolean
         return true
     }
 
-    private var moistness: Int
-        get() = dataTracker.get(MOISTNESS)
-        set(moistness) {
-            dataTracker.set(MOISTNESS, moistness)
-        }
-
-    override fun tick() {
-        super.tick()
-        if (isAiDisabled) {
-            return
-        }
-
-        if (isSubmergedInWater) {
-            moistness = getMaxMoistness()
-        } else if (!isSubmergedInWater) {
-            moistness -= 1
-            if (moistness <= -20) {
-                moistness = 0
-                damage(this.damageSources.dryOut(), 1.0f)
-            }
-        }
-    }
-
-    override fun getNextAirOnLand(air: Int): Int {
-        return this.maxAir
-    }
-
     override fun tickWaterBreathingAir(air: Int) {}
-
-    private fun getMaxMoistness(): Int {
-        return 3000
-    }
 
     // endregion
 
@@ -314,7 +252,7 @@ private var attemptAttack: Boolean
     }
 
     override fun canImmediatelyDespawn(distanceSquared: Double): Boolean {
-        return !hasCustomName()
+        return !hasCustomName() && !fromFishingNet
     }
 
 
@@ -339,9 +277,6 @@ private var attemptAttack: Boolean
         } else {
             event.controller.setAnimation(IDLE_ANIMATION)
         }
-        if (canDig && isDigging) {
-            event.controller.setAnimation(DIG_ANIMATION)
-        }
         if (canDance && songPlaying)
             event.controller.setAnimation(DANCE_ANIMATION)
         return PlayState.CONTINUE
@@ -349,7 +284,6 @@ private var attemptAttack: Boolean
 
 
     internal class AttackGoal(private val crustacean: HybridAquaticCrustaceanEntity) : MeleeAttackGoal(crustacean, 1.0,true) {
-
         override fun attack(target: LivingEntity, squaredDistance: Double) {
             val d = getSquaredMaxAttackDistance(target)
             if (squaredDistance <= d && this.isCooledDown) {
@@ -376,14 +310,12 @@ private var attemptAttack: Boolean
     }
 
     companion object {
-        val MOISTNESS: TrackedData<Int> = DataTracker.registerData(HybridAquaticCrustaceanEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
         val CRUSTACEAN_SIZE: TrackedData<Int> = DataTracker.registerData(HybridAquaticCrustaceanEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
         val ATTEMPT_ATTACK: TrackedData<Boolean> = DataTracker.registerData(HybridAquaticCrustaceanEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
         val VARIANT: TrackedData<String> = DataTracker.registerData(HybridAquaticCrustaceanEntity::class.java, TrackedDataHandlerRegistry.STRING)
         var VARIANT_DATA: TrackedData<NbtCompound> = DataTracker.registerData(HybridAquaticCrustaceanEntity::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
 
         val DANCE_ANIMATION: RawAnimation = RawAnimation.begin().then("dance", Animation.LoopType.LOOP)
-        val DIG_ANIMATION: RawAnimation = RawAnimation.begin().then("dig", Animation.LoopType.LOOP)
         val WALK_ANIMATION: RawAnimation = RawAnimation.begin().then("walk", Animation.LoopType.LOOP)
         val IDLE_ANIMATION: RawAnimation = RawAnimation.begin().then("idle", Animation.LoopType.LOOP)
         val HIDING_ANIMATION: RawAnimation = RawAnimation.begin().then("hide", Animation.LoopType.LOOP)
@@ -424,14 +356,9 @@ private var attemptAttack: Boolean
             return 1.0f + (crustacean.size * adjustment)
         }
 
-        const val MOISTNESS_KEY = "Moistness"
         const val VARIANT_KEY = "Variant"
         const val VARIANT_DATA_KEY = "VariantData"
         const val CRUSTACEAN_SIZE_KEY = "CrustaceanSize"
-
-        val IS_DIGGING: TrackedData<Boolean> =
-            DataTracker.registerData(HybridAquaticCrustaceanEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
-        const val DIGGING_COOLDOWN_KEY = "DiggingCooldown"
     }
 
     @Suppress("UNUSED")
@@ -470,41 +397,17 @@ private var attemptAttack: Boolean
     @Suppress("UNUSED")
     data class VariantCollisionRules(val variants : Set<String>, val collisionHandler: (Set<String>, Random, ServerWorldAccess) -> String, val exclusionStatus: ExclusionStatus = ExclusionStatus.INCLUSIVE) {
 
-        /**
-         * INCLUSIVE - all other variants can exist within this selection swath
-         * <pre> </pre>
-         * EXCLUSIVE - all other variants are excluded from this selection swath
-         */
         enum class ExclusionStatus {
             INCLUSIVE,
             EXCLUSIVE
         }
 
-        /**
-         * <pre></pre>
-         * Example:
-         * ```kotlin
-         * // returns a bluefin or a yellowfin tuna variant
-         * equalDistribution(setOf("bluefin", "yellowfin"))
-         * ```
-         * @return a random variant within the set
-         */
         fun equalDistribution(variants: Set<String>, status : ExclusionStatus = ExclusionStatus.INCLUSIVE) : VariantCollisionRules {
             return VariantCollisionRules(variants, { possibleVariants, _, _ ->
                 possibleVariants.random()
             }, status)
         }
 
-        /**
-         * Example
-         * ```
-         * weightedDistribution(setOf(
-         *  Pair("bluefin", 0.80),
-         *  Pair("yellowfin", 0.20)
-         * ))
-         * ```
-         * @return a premade variant collision rule which allows weighted distribution of variants.
-         */
         fun weightedDistribution(weights: Set<Pair<String, Double>>, status: ExclusionStatus = ExclusionStatus.EXCLUSIVE) : VariantCollisionRules {
             return VariantCollisionRules(weights.map { pair -> pair.first }.toSet(), { _, random, _ ->
                 // sum up weights

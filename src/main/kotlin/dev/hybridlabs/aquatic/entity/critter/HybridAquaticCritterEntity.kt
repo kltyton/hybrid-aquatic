@@ -45,6 +45,7 @@ open class HybridAquaticCritterEntity(
 ) : WaterCreatureEntity(type, world), GeoEntity {
     private val factory = GeckoLibUtil.createInstanceCache(this)
     private var landNavigation: EntityNavigation = createNavigation(world)
+    private var fromFishingNet = false
 
     init {
         stepHeight = 1.0F
@@ -59,8 +60,13 @@ open class HybridAquaticCritterEntity(
     private fun isClimbingWall(): Boolean {
         return ((dataTracker.get(CRITTER_FLAGS) as Byte).toInt() and 1) != 0
     }
+
     override fun createNavigation(world: World): EntityNavigation {
         return SpiderNavigation(this, world)
+    }
+
+    override fun hasNoDrag(): Boolean {
+        return false
     }
 
     override fun tick() {
@@ -159,6 +165,7 @@ open class HybridAquaticCritterEntity(
         nbt.putString(VARIANT_KEY, variantKey)
         nbt.put(VARIANT_DATA_KEY, variantData)
         nbt.putInt(CRITTER_SIZE_KEY, size)
+        nbt.putBoolean("FromFishingNet", fromFishingNet)
     }
 
     override fun readCustomDataFromNbt(nbt: NbtCompound) {
@@ -166,6 +173,7 @@ open class HybridAquaticCritterEntity(
         variantKey = nbt.getString(VARIANT_KEY)
         variantData = nbt.getCompound(VARIANT_DATA_KEY)
         size = nbt.getInt(CRITTER_SIZE_KEY)
+        fromFishingNet = nbt.getBoolean("FromFishingNet")
     }
 
     override fun tickWaterBreathingAir(air: Int) {}
@@ -199,7 +207,7 @@ open class HybridAquaticCritterEntity(
     }
 
     override fun canImmediatelyDespawn(distanceSquared: Double): Boolean {
-        return !hasCustomName()
+        return !hasCustomName() && !fromFishingNet
     }
 
     override fun getLimitPerChunk(): Int {

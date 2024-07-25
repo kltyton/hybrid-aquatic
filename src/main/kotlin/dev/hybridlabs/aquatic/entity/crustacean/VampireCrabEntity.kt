@@ -7,7 +7,7 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
 
 class VampireCrabEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>, world: World) :
-    HybridAquaticCrustaceanEntity(entityType, world, emptyMap(), false, false) {
+    HybridAquaticCrustaceanEntity(entityType, world, emptyMap(), false) {
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

@@ -206,6 +206,10 @@ open class HybridAquaticFishEntity(
         return 600
     }
 
+    open fun shouldFlopOnLand(): Boolean {
+        return true
+    }
+
     override fun writeCustomDataToNbt(nbt: NbtCompound) {
         super.writeCustomDataToNbt(nbt)
         nbt.putInt(MOISTNESS_KEY, moistness)
@@ -214,10 +218,6 @@ open class HybridAquaticFishEntity(
         nbt.putInt(FISH_SIZE_KEY, size)
         nbt.putInt(HUNGER_KEY, hunger)
         nbt.putBoolean("FromFishingNet", fromFishingNet)
-    }
-
-    open fun shouldFlopOnLand(): Boolean {
-        return true
     }
 
     private var fromFishingNet = false

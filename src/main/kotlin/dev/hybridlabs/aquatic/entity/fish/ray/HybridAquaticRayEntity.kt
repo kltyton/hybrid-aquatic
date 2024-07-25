@@ -229,7 +229,7 @@ open class HybridAquaticRayEntity(
     }
 
     override fun canImmediatelyDespawn(distanceSquared: Double): Boolean {
-        return !hasCustomName()
+        return !hasCustomName() && !fromFishingNet
     }
 
     override fun getLimitPerChunk(): Int {
