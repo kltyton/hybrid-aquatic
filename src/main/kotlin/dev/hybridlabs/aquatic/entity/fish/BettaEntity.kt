@@ -22,6 +22,8 @@ class BettaEntity(entityType: EntityType<out BettaEntity>, world: World) :
             ignore = listOf(FishVariant.Ignore.MODEL, FishVariant.Ignore.ANIMATION)),
         "red" to FishVariant.biomeVariant("red", HybridAquaticBiomeTags.SWAMPLAND,
             ignore = listOf(FishVariant.Ignore.MODEL, FishVariant.Ignore.ANIMATION)),
+        "red_blue" to FishVariant.biomeVariant("red_blue    ", HybridAquaticBiomeTags.SWAMPLAND,
+            ignore = listOf(FishVariant.Ignore.MODEL, FishVariant.Ignore.ANIMATION)),
         "white" to FishVariant.biomeVariant("white", HybridAquaticBiomeTags.SWAMPLAND,
             ignore = listOf(FishVariant.Ignore.MODEL, FishVariant.Ignore.ANIMATION)),
         ),
