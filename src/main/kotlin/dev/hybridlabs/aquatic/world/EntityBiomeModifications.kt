@@ -20,7 +20,7 @@ object EntityBiomeModifications {
         addFish(HybridAquaticEntityTypes.CARP, HybridAquaticBiomeTags.CHERRY, 1, 1, 2)
         addFish(HybridAquaticEntityTypes.STINGRAY, HybridAquaticBiomeTags.WARM_OCEANS, 3, 1, 2)
         addFish(HybridAquaticEntityTypes.MANTA_RAY, HybridAquaticBiomeTags.DEEP_WARM_OCEANS, 3, 1, 1)
-        addFish(HybridAquaticEntityTypes.SURGEONFISH, HybridAquaticBiomeTags.REEF, 5, 1, 3)
+        addFish(HybridAquaticEntityTypes.SURGEONFISH, HybridAquaticBiomeTags.WARM_OCEANS, 5, 1, 3)
         addFish(HybridAquaticEntityTypes.CLOWNFISH, HybridAquaticBiomeTags.REEF, 5, 1, 2)
         addFish(HybridAquaticEntityTypes.PARROTFISH, HybridAquaticBiomeTags.REEF, 5, 1, 2)
         addFish(HybridAquaticEntityTypes.COWFISH, HybridAquaticBiomeTags.REEF, 3, 1, 1)
@@ -41,18 +41,18 @@ object EntityBiomeModifications {
         addFish(HybridAquaticEntityTypes.SUNFISH, HybridAquaticBiomeTags.DEEP_WARM_OCEANS, 1, 1, 1)
         addFish(HybridAquaticEntityTypes.TETRA, HybridAquaticBiomeTags.TROPICAL_FRESHWATER, 3, 2, 3)
         addFish(HybridAquaticEntityTypes.TIGER_BARB, HybridAquaticBiomeTags.TROPICAL_FRESHWATER, 3, 2, 3)
-        addFish(HybridAquaticEntityTypes.TOADFISH, HybridAquaticBiomeTags.REEF, 1, 1, 1)
-        addFish(HybridAquaticEntityTypes.TRIGGERFISH, HybridAquaticBiomeTags.REEF, 3, 1, 1)
+        addFish(HybridAquaticEntityTypes.TOADFISH, HybridAquaticBiomeTags.WARM_OCEANS, 1, 1, 1)
+        addFish(HybridAquaticEntityTypes.TRIGGERFISH, HybridAquaticBiomeTags.WARM_OCEANS, 3, 1, 1)
         addFish(HybridAquaticEntityTypes.TUNA, HybridAquaticBiomeTags.ALL_DEEP_OCEANS, 5, 1, 3)
         addFish(HybridAquaticEntityTypes.DANIO, HybridAquaticBiomeTags.TROPICAL_FRESHWATER, 3, 2, 3)
 
 
         // underground fishes
-        addUndergroundFish(HybridAquaticEntityTypes.ANGLERFISH, HybridAquaticBiomeTags.ALL_DEEP_OCEANS, 5, 1, 2)
-        addUndergroundFish(HybridAquaticEntityTypes.BARRELEYE, HybridAquaticBiomeTags.ALL_DEEP_OCEANS, 3, 1, 1)
-        addUndergroundFish(HybridAquaticEntityTypes.DRAGONFISH, HybridAquaticBiomeTags.ALL_DEEP_OCEANS, 5, 1, 1)
+        addUndergroundFish(HybridAquaticEntityTypes.ANGLERFISH, HybridAquaticBiomeTags.ALL_OCEANS, 5, 1, 2)
+        addUndergroundFish(HybridAquaticEntityTypes.BARRELEYE, HybridAquaticBiomeTags.ALL_OCEANS, 3, 1, 1)
+        addUndergroundFish(HybridAquaticEntityTypes.DRAGONFISH, HybridAquaticBiomeTags.ALL_OCEANS, 5, 1, 1)
         addUndergroundFish(HybridAquaticEntityTypes.FRILLED_SHARK, HybridAquaticBiomeTags.DEEP_WARM_OCEANS, 3, 1, 1)
-        addUndergroundFish(HybridAquaticEntityTypes.RATFISH, HybridAquaticBiomeTags.ALL_DEEP_OCEANS, 5, 1, 2)
+        addUndergroundFish(HybridAquaticEntityTypes.RATFISH, HybridAquaticBiomeTags.ALL_OCEANS, 5, 1, 2)
         addUndergroundFish(HybridAquaticEntityTypes.SEA_ANGEL, HybridAquaticBiomeTags.DEEP_COLD_OCEANS, 3, 1, 1)
 
 
