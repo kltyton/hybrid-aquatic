@@ -1,10 +1,13 @@
-package dev.hybridlabs.aquatic.entity.crustacean
+package dev.hybridlabs.aquatic.entity.miniboss
 
 import net.minecraft.enchantment.EnchantmentHelper
 import net.minecraft.enchantment.Enchantments
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.LivingEntity
+import net.minecraft.entity.ai.control.MoveControl
 import net.minecraft.entity.ai.goal.*
+import net.minecraft.entity.ai.pathing.EntityNavigation
+import net.minecraft.entity.ai.pathing.PathNodeType
 import net.minecraft.entity.attribute.DefaultAttributeContainer
 import net.minecraft.entity.attribute.EntityAttributes
 import net.minecraft.entity.boss.BossBar
@@ -15,7 +18,6 @@ import net.minecraft.entity.damage.DamageTypes
 import net.minecraft.entity.data.DataTracker
 import net.minecraft.entity.data.TrackedData
 import net.minecraft.entity.data.TrackedDataHandlerRegistry
-import net.minecraft.entity.mob.Angerable
 import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.nbt.NbtCompound
@@ -24,22 +26,26 @@ import net.minecraft.text.Text
 import net.minecraft.world.Difficulty
 import net.minecraft.world.World
 import software.bernie.geckolib.core.animatable.GeoAnimatable
+import software.bernie.geckolib.core.animation.Animation
 import software.bernie.geckolib.core.animation.AnimationState
+import software.bernie.geckolib.core.animation.RawAnimation
 import software.bernie.geckolib.core.`object`.PlayState
-import java.util.*
 
-class KarkinosEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>, world: World) :
-    HybridAquaticCrustaceanEntity(entityType, world, emptyMap(), false), Angerable {
+class KarkinosEntity(entityType: EntityType<out HybridAquaticMinibossEntity>, world: World) :
+    HybridAquaticMinibossEntity(entityType, world) {
+
+    private var landNavigation: EntityNavigation = createNavigation(world)
 
     init {
+        setPathfindingPenalty(PathNodeType.WATER, 0.0f)
+        moveControl = MoveControl(this)
+        navigation = this.landNavigation
         stepHeight = 2.0F
     }
 
     private var flipTimer: Int = 0
-    private val flipDuration: Int = 40
-    private var angerTime = 0
-    private var angryAt: UUID? = null
-    private var bossBar: ServerBossBar = ServerBossBar(displayName, BossBar.Color.RED, BossBar.Style.NOTCHED_10)
+    private val flipDuration: Int = 60
+    private var bossBar: ServerBossBar = ServerBossBar(displayName, BossBar.Color.RED, BossBar.Style.NOTCHED_20)
     private var attemptAttack: Boolean
         get() = dataTracker.get(ATTEMPT_ATTACK)
         set(attemptAttack) {
@@ -56,13 +62,11 @@ class KarkinosEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>, 
 
     override fun initGoals() {
         goalSelector.add(1, AttackGoal(this))
-        goalSelector.add(3, PounceAtTargetGoal(this, 0.4f))
-        goalSelector.add(5, KarkinosWanderAroundGoal(this, 0.3))
-        goalSelector.add(6, LookAroundGoal(this))
-        goalSelector.add(6, LookAtEntityGoal(this, PlayerEntity::class.java, 6.0f))
+        goalSelector.add(1, LookAtEntityGoal(this, PlayerEntity::class.java, 12.0f))
+        goalSelector.add(4, KarkinosWanderAroundGoal(this, 0.3))
+        goalSelector.add(4, LookAroundGoal(this))
         targetSelector.add(1, RevengeGoal(this))
         targetSelector.add(2, ActiveTargetGoal(this, PlayerEntity::class.java, 10, true, true, null))
-        targetSelector.add(3, UniversalAngerGoal(this, false))
     }
 
     private fun beFlipped() {
@@ -71,16 +75,19 @@ class KarkinosEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>, 
     }
 
     override fun mobTick() {
-        if (!world.isClient && isFlipped) {
-            target = null
 
+        if (isFlipped) {
             flipTimer--
-            attributes.getCustomInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED)?.baseValue = 0.0
-            attributes.getCustomInstance(EntityAttributes.GENERIC_ARMOR_TOUGHNESS)?.baseValue = 0.0
-            attributes.getCustomInstance(EntityAttributes.GENERIC_ARMOR)?.baseValue = 0.0
 
             if (flipTimer <= 0) {
                 isFlipped = false
+                attributes.getCustomInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED)?.baseValue = 0.75
+                attributes.getCustomInstance(EntityAttributes.GENERIC_ARMOR_TOUGHNESS)?.baseValue = 5.0
+                attributes.getCustomInstance(EntityAttributes.GENERIC_ARMOR)?.baseValue = 8.0
+            } else {
+                attributes.getCustomInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED)?.baseValue = 0.0
+                attributes.getCustomInstance(EntityAttributes.GENERIC_ARMOR_TOUGHNESS)?.baseValue = 0.0
+                attributes.getCustomInstance(EntityAttributes.GENERIC_ARMOR)?.baseValue = 0.0
             }
         }
 
@@ -115,6 +122,10 @@ class KarkinosEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>, 
             event.controller.setAnimation(FLIPPED_ANIMATION)
             return PlayState.CONTINUE
         }
+        if (isAttacking) {
+            event.controller.setAnimation(ATTACK_ANIMATION)
+            return PlayState.CONTINUE
+        }
 
         return super.predicate(event)
     }
@@ -145,26 +156,6 @@ class KarkinosEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>, 
         return damaged
     }
 
-    override fun getAngerTime(): Int {
-        return angerTime
-    }
-
-    override fun setAngerTime(angerTime: Int) {
-        this.angerTime = angerTime
-    }
-
-    override fun getAngryAt(): UUID? {
-        return angryAt
-    }
-
-    override fun setAngryAt(angryAt: UUID?) {
-        this.angryAt = angryAt
-    }
-
-    override fun chooseRandomAngerTime() {
-        setAngerTime(random.nextInt(10))
-    }
-
     override fun readCustomDataFromNbt(nbt: NbtCompound) {
         if (hasCustomName()) {
             bossBar.name = this.displayName
@@ -180,19 +171,23 @@ class KarkinosEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>, 
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 100.0)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.8)
-                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 4.0)
-                .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 24.0)
-                .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 10.0)
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 300.0)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.6)
+                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 10.0)
+                .add(EntityAttributes.GENERIC_ATTACK_SPEED, 8.0)
+                .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 32.0)
+                .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 50.0)
                 .add(EntityAttributes.GENERIC_ARMOR_TOUGHNESS, 5.0)
                 .add(EntityAttributes.GENERIC_ARMOR, 8.0)
         }
 
+        val FLIPPED_ANIMATION: RawAnimation = RawAnimation.begin().then("flipped", Animation.LoopType.LOOP)
+        val ATTACK_ANIMATION: RawAnimation = RawAnimation.begin().then("attack", Animation.LoopType.LOOP)
+
         val FLIPPED: TrackedData<Boolean> = DataTracker.registerData(KarkinosEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
     }
 
-    internal open class AttackGoal(private val karkinos: KarkinosEntity) : MeleeAttackGoal(karkinos, 0.6, false) {
+    internal open class AttackGoal(private val karkinos: KarkinosEntity) : MeleeAttackGoal(karkinos, 0.7, false) {
         override fun attack(target: LivingEntity, squaredDistance: Double) {
             val d = getSquaredMaxAttackDistance(target)
             if (squaredDistance <= d && this.isCooledDown) {
@@ -200,10 +195,12 @@ class KarkinosEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>, 
                 mob.tryAttack(target)
                 karkinos.attemptAttack = true
             }
+            if (!this.isCooledDown)
+                karkinos.handSwinging
         }
 
         override fun getSquaredMaxAttackDistance(entity: LivingEntity): Double {
-            return (2.0f + entity.width).toDouble()
+            return (4.0f + entity.width).toDouble()
         }
 
         override fun start() {

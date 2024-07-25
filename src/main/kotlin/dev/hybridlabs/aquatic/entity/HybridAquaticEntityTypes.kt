@@ -12,6 +12,7 @@ import dev.hybridlabs.aquatic.entity.fish.deepsea.*
 import dev.hybridlabs.aquatic.entity.fish.ray.MantaRayEntity
 import dev.hybridlabs.aquatic.entity.fish.ray.StingrayEntity
 import dev.hybridlabs.aquatic.entity.jellyfish.*
+import dev.hybridlabs.aquatic.entity.miniboss.KarkinosEntity
 import dev.hybridlabs.aquatic.entity.shark.*
 import dev.hybridlabs.aquatic.utils.HybridAquaticSpawnGroup
 import net.fabricmc.fabric.api.`object`.builder.v1.entity.FabricDefaultAttributeRegistry

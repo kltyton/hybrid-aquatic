@@ -6,11 +6,12 @@ import net.minecraft.entity.EntityType
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.SpawnReason
 import net.minecraft.entity.ai.goal.ActiveTargetGoal
+import net.minecraft.entity.ai.goal.LookAtEntityGoal
 import net.minecraft.entity.ai.goal.MeleeAttackGoal
+import net.minecraft.entity.ai.goal.RevengeGoal
 import net.minecraft.entity.data.DataTracker
 import net.minecraft.entity.data.TrackedData
 import net.minecraft.entity.data.TrackedDataHandlerRegistry
-import net.minecraft.entity.mob.Angerable
 import net.minecraft.entity.mob.HostileEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.nbt.NbtCompound
@@ -20,22 +21,23 @@ import net.minecraft.util.math.random.Random
 import net.minecraft.world.World
 import net.minecraft.world.WorldAccess
 import software.bernie.geckolib.animatable.GeoEntity
+import software.bernie.geckolib.constant.DefaultAnimations
 import software.bernie.geckolib.core.animatable.GeoAnimatable
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache
-import software.bernie.geckolib.core.animation.*
+import software.bernie.geckolib.core.animation.AnimatableManager.ControllerRegistrar
+import software.bernie.geckolib.core.animation.Animation
+import software.bernie.geckolib.core.animation.AnimationController
+import software.bernie.geckolib.core.animation.AnimationState
+import software.bernie.geckolib.core.animation.RawAnimation
 import software.bernie.geckolib.core.`object`.PlayState
 import software.bernie.geckolib.util.GeckoLibUtil
-import java.util.*
 
 
-@Suppress("LeakingThis")
-open class HybridAquaticMinibossEntity(type: EntityType<out HybridAquaticMinibossEntity>, world: World) : HostileEntity(type, world),
-    Angerable, GeoEntity {
+@Suppress("LeakingThis", "UNUSED_PARAMETER", "DEPRECATION")
+open class HybridAquaticMinibossEntity(type: EntityType<out HostileEntity>, world: World) : HostileEntity(type, world), GeoEntity {
 
     private val factory = GeckoLibUtil.createInstanceCache(this)
     private var attackTick = 0
-    private var angerTime = 0
-    private var angryAt: UUID? = null
     private var attemptAttack: Boolean
         get() = dataTracker.get(ATTEMPT_ATTACK)
         set(attemptAttack) {
@@ -50,7 +52,9 @@ open class HybridAquaticMinibossEntity(type: EntityType<out HybridAquaticMinibos
     override fun initGoals() {
         super.initGoals()
         goalSelector.add(1, AttackGoal(this))
-        targetSelector.add(2, ActiveTargetGoal(this, PlayerEntity::class.java, 10, true, true, null))
+        goalSelector.add(1, LookAtEntityGoal(this, PlayerEntity::class.java, 16.0F))
+        targetSelector.add(1, RevengeGoal(this))
+        targetSelector.add(1, ActiveTargetGoal(this, PlayerEntity::class.java, 10, true, true, null))
     }
 
     override fun writeCustomDataToNbt(nbt: NbtCompound) {
@@ -68,26 +72,6 @@ open class HybridAquaticMinibossEntity(type: EntityType<out HybridAquaticMinibos
         if (isAiDisabled) {
             return
         }
-    }
-
-    override fun getAngerTime(): Int {
-        return angerTime
-    }
-
-    override fun setAngerTime(angerTime: Int) {
-        this.angerTime = angerTime
-    }
-
-    override fun getAngryAt(): UUID? {
-        return angryAt
-    }
-
-    override fun setAngryAt(angryAt: UUID?) {
-        this.angryAt = angryAt
-    }
-
-    override fun chooseRandomAngerTime() {
-        setAngerTime(random.nextInt(10))
     }
 
     override fun tryAttack(target: Entity?): Boolean {
@@ -108,15 +92,9 @@ open class HybridAquaticMinibossEntity(type: EntityType<out HybridAquaticMinibos
         return true
     }
 
-    override fun registerControllers(controllerRegistrar: AnimatableManager.ControllerRegistrar) {
-        controllerRegistrar.add(
-            AnimationController(
-                this,
-                "controller",
-                0,
-                ::predicate
-            )
-        )
+    override fun registerControllers(controllerRegistrar: ControllerRegistrar) {
+        controllerRegistrar.add(AnimationController(this, "controller", ::predicate))
+        controllerRegistrar.add(DefaultAnimations.genericAttackAnimation(this, DefaultAnimations.ATTACK_STRIKE))
     }
 
     open fun <E : GeoAnimatable> predicate(event: AnimationState<E>): PlayState {
@@ -157,11 +135,6 @@ open class HybridAquaticMinibossEntity(type: EntityType<out HybridAquaticMinibos
         }
     }
 
-    private fun shouldProximityAttack(player: PlayerEntity): Boolean {
-
-        return player.squaredDistanceTo(this) <= 24 && !player.isCreative
-    }
-
     override fun isAngryAt(player: PlayerEntity?): Boolean {
         return true
     }
@@ -173,8 +146,6 @@ open class HybridAquaticMinibossEntity(type: EntityType<out HybridAquaticMinibos
 
         val ATTEMPT_ATTACK: TrackedData<Boolean> =
             DataTracker.registerData(HybridAquaticMinibossEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
-
-        val FLIPPED_ANIMATION: RawAnimation = RawAnimation.begin().then("flipped", Animation.LoopType.LOOP)
 
         fun canSpawn(
             type: EntityType<out HostileEntity>,
