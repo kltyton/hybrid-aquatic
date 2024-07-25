@@ -55,14 +55,19 @@ class HermitCrabEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>
 
         if (isHiding) {
             hidingTimer--
-            attributes.getCustomInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED)?.baseValue = 0.0
-            attributes.getCustomInstance(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE)?.baseValue = 100.0
-            attributes.getCustomInstance(EntityAttributes.GENERIC_ARMOR_TOUGHNESS)?.baseValue = 50.0
-            attributes.getCustomInstance(EntityAttributes.GENERIC_ARMOR)?.baseValue = 50.0
-        }
 
-        if (hidingTimer <= 0 && (world.time - lastDamageTime) >= 200) {
-            isHiding = false
+            if (hidingTimer <= 0 && (world.time - lastDamageTime) >= 200) {
+                isHiding = false
+                attributes.getCustomInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED)?.baseValue = 0.3
+                attributes.getCustomInstance(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE)?.baseValue = 0.0
+                attributes.getCustomInstance(EntityAttributes.GENERIC_ARMOR_TOUGHNESS)?.baseValue = 5.0
+                attributes.getCustomInstance(EntityAttributes.GENERIC_ARMOR)?.baseValue = 5.0
+            } else {
+                attributes.getCustomInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED)?.baseValue = 0.0
+                attributes.getCustomInstance(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE)?.baseValue = 100.0
+                attributes.getCustomInstance(EntityAttributes.GENERIC_ARMOR_TOUGHNESS)?.baseValue = 50.0
+                attributes.getCustomInstance(EntityAttributes.GENERIC_ARMOR)?.baseValue = 50.0
+            }
         }
     }
 
