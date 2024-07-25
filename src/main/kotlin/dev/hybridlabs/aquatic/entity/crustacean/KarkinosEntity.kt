@@ -56,10 +56,11 @@ class KarkinosEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>, 
 
     override fun initGoals() {
         goalSelector.add(1, AttackGoal(this))
-        goalSelector.add(1, KarkinosWanderAroundGoal(this, 0.4))
-        goalSelector.add(4, LookAroundGoal(this))
-        goalSelector.add(5, LookAtEntityGoal(this, PlayerEntity::class.java, 6.0f))
-
+        goalSelector.add(3, PounceAtTargetGoal(this, 0.4f))
+        goalSelector.add(5, KarkinosWanderAroundGoal(this, 0.3))
+        goalSelector.add(6, LookAroundGoal(this))
+        goalSelector.add(6, LookAtEntityGoal(this, PlayerEntity::class.java, 6.0f))
+        targetSelector.add(1, RevengeGoal(this))
         targetSelector.add(2, ActiveTargetGoal(this, PlayerEntity::class.java, 10, true, true, null))
         targetSelector.add(3, UniversalAngerGoal(this, false))
     }
