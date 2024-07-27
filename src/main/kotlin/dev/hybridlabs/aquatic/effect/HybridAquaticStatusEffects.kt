@@ -7,11 +7,11 @@ import net.minecraft.registry.Registry
 import net.minecraft.util.Identifier
 
 object HybridAquaticStatusEffects {
-    val BLEEDING = register("bleeding", Bleeding())
-    val CLARITY = register("clarity", Clarity())
-    val THALASSOPHOBIA = register("thalassophobia", Thalassophobia())
-    val BUOYANCY = register("buoyancy", Buoyancy())
-    val SPININESS = register("spininess", Spininess())
+    val BLEEDING = register("bleeding", BleedingStatusEffect())
+    val CLARITY = register("clarity", ClarityStatusEffect())
+    val THALASSOPHOBIA = register("thalassophobia", ThalassophobiaStatusEffect())
+    val BUOYANCY = register("buoyancy", BuoyancyStatusEffect())
+    val SPININESS = register("spininess", SpininessStatusEffect())
     private fun register(id: String, effect: StatusEffect): StatusEffect {
         return Registry.register(Registries.STATUS_EFFECT, Identifier(HybridAquatic.MOD_ID, id), effect)
     }

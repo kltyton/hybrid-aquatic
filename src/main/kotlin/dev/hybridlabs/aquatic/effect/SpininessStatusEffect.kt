@@ -6,7 +6,7 @@ import net.minecraft.entity.effect.StatusEffect
 import net.minecraft.entity.effect.StatusEffectCategory
 import net.minecraft.registry.tag.DamageTypeTags
 
-class Spininess : StatusEffect(StatusEffectCategory.BENEFICIAL, 0x695672) {
+class SpininessStatusEffect : StatusEffect(StatusEffectCategory.BENEFICIAL, 0x695672) {
 
     override fun canApplyUpdateEffect(duration: Int, amplifier: Int): Boolean {
         return duration % 40 == 0

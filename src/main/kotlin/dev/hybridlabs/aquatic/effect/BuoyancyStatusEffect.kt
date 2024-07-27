@@ -5,7 +5,7 @@ import net.minecraft.entity.effect.StatusEffect
 import net.minecraft.entity.effect.StatusEffectCategory
 import net.minecraft.util.math.Vec3d
 
-class Buoyancy : StatusEffect(StatusEffectCategory.BENEFICIAL, 0xffe478) {
+class BuoyancyStatusEffect : StatusEffect(StatusEffectCategory.BENEFICIAL, 0xffe478) {
 
     override fun canApplyUpdateEffect(duration: Int, amplifier: Int): Boolean {
         return duration % 20 == 0
