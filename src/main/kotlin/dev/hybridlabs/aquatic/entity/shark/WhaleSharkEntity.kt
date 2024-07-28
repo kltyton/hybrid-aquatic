@@ -1,10 +1,13 @@
 package dev.hybridlabs.aquatic.entity.shark
 
 import dev.hybridlabs.aquatic.tag.HybridAquaticEntityTags
+import dev.hybridlabs.aquatic.tag.HybridAquaticItemTags
 import net.minecraft.entity.EntityType
+import net.minecraft.entity.ai.goal.TemptGoal
 import net.minecraft.entity.attribute.DefaultAttributeContainer
 import net.minecraft.entity.attribute.EntityAttributes
 import net.minecraft.entity.mob.WaterCreatureEntity
+import net.minecraft.recipe.Ingredient
 import net.minecraft.world.World
 
 class WhaleSharkEntity(entityType: EntityType<out WhaleSharkEntity>, world: World) :
@@ -12,6 +15,11 @@ class WhaleSharkEntity(entityType: EntityType<out WhaleSharkEntity>, world: Worl
 
     override fun getLimitPerChunk(): Int {
         return 1
+    }
+
+    override fun initGoals() {
+        super.initGoals()
+        goalSelector.add(1, TemptGoal(this, 0.8, Ingredient.fromTag(HybridAquaticItemTags.RAW_FISHES), false))
     }
 
     companion object {
