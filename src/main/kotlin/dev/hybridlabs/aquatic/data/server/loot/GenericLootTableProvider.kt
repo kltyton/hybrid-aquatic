@@ -58,6 +58,18 @@ class GenericLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
                             ItemEntry.builder(HybridAquaticItems.FLOWER_CRAB_CLAW)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 3.0f)))
                         )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.RAW_SHRIMP)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 3.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.LOBSTER_CLAW)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 3.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.RAW_LOBSTER_TAIL)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 3.0f)))
+                        )
                 )
         )
 

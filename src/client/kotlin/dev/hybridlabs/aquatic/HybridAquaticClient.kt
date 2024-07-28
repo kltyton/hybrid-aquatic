@@ -83,6 +83,7 @@ object HybridAquaticClient : ClientModInitializer {
         )
         registry.putBlocks(
             RenderLayer.getCutout(),
+            HybridAquaticBlocks.CRAB_POT,
             HybridAquaticBlocks.LOPHELIA_CORAL,
             HybridAquaticBlocks.LOPHELIA_CORAL_FAN,
             HybridAquaticBlocks.LOPHELIA_CORAL_WALL_FAN,

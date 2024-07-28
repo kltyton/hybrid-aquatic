@@ -206,6 +206,7 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             HybridAquaticItems.MAGNETIC_HOOK.translationKey to "Increases treasure chance",
             HybridAquaticItems.CREEPERMAGNET_HOOK.translationKey to "Don't use indoors",
             HybridAquaticItems.OMINOUS_HOOK.translationKey to "Summons Karkinos",
+            HybridAquaticBlocks.CRAB_POT.translationKey to "Break with an axe to open",
             HybridAquaticBlocks.HYBRID_CRATE.translationKey to "Break with an axe to open",
             HybridAquaticBlocks.DRIFTWOOD_CRATE.translationKey to "Break with an axe to open",
             HybridAquaticBlocks.OAK_CRATE.translationKey to "Break with an axe to open",
