@@ -728,6 +728,24 @@ class GenericLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
         )
 
         exporter.accept(
+            HybridAquaticLootTables.HERMIT_CRAB_SKULL,
+            LootTable.builder()
+                .pool(
+                    LootPool.builder()
+                        .with(ItemEntry.builder(Items.SKELETON_SKULL))
+                )
+        )
+
+        exporter.accept(
+            HybridAquaticLootTables.HERMIT_CRAB_SHELL,
+            LootTable.builder()
+                .pool(
+                    LootPool.builder()
+                        .with(ItemEntry.builder(Items.NAUTILUS_SHELL))
+                )
+        )
+
+        exporter.accept(
             HybridAquaticLootTables.CRAB_DIGGING_TREASURE_ID,
             LootTable.builder()
                 .randomSequenceId(HybridAquaticLootTables.CRAB_DIGGING_TREASURE_ID)

@@ -5,6 +5,7 @@ import net.minecraft.entity.EntityType
 import net.minecraft.entity.attribute.DefaultAttributeContainer
 import net.minecraft.entity.attribute.EntityAttributes
 import net.minecraft.entity.mob.WaterCreatureEntity
+import net.minecraft.util.Identifier
 import net.minecraft.world.World
 import software.bernie.geckolib.core.animatable.GeoAnimatable
 import software.bernie.geckolib.core.animation.AnimationState
@@ -21,6 +22,14 @@ class HermitCrabEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>
             ignore = listOf(CrustaceanVariant.Ignore.ANIMATION)
         ),
     ), true) {
+
+    public override fun getLootTableId(): Identifier {
+        return when (this.variant?.variantName) {
+            "skull" -> Identifier("hybrid-aquatic", "gameplay/hermit_crab_skull")
+            "shell" -> Identifier("hybrid-aquatic", "gameplay/hermit_crab_shell")
+            else -> super.getLootTableId()
+        }
+    }
 
     private var isHiding: Boolean = false
     private var hidingTimer: Int = 0

@@ -27,6 +27,8 @@ object HybridAquaticLootTables {
 
     val CLAWED_LOBSTER = Identifier(HybridAquatic.MOD_ID, "gameplay/clawed_lobster")
     val CLAWLESS_LOBSTER = Identifier(HybridAquatic.MOD_ID, "gameplay/clawless_lobster")
+    val HERMIT_CRAB_SKULL = Identifier(HybridAquatic.MOD_ID, "gameplay/hermit_crab_skull")
+    val HERMIT_CRAB_SHELL = Identifier(HybridAquatic.MOD_ID, "gameplay/hermit_crab_shell")
 
     val BLUE_SPOTTED_STINGRAY = Identifier(HybridAquatic.MOD_ID, "gameplay/blue_spotted_stingray")
 
