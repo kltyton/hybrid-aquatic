@@ -21,7 +21,7 @@
         "issues": "https://github.com/hybridlabs/hybrid-aquatic/issues"
     },
 
-    "license": "ARR (Assets), MIT (Code)",
+    "license": "ARR",
     "icon": "assets/hybrid-aquatic/icon.png",
 
     "environment": "*",
