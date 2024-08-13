@@ -45,8 +45,10 @@ object HybridAquaticBlocks {
     val WHALE_SHARK_PLUSHIE = register("whale_shark_plushie", createPlushieBlock(PlushieBlock.Variant.WHALE_SHARK, Blocks.LIGHT_GRAY_WOOL))
 
     val CRAB_POT = register("crab_pot", CrateBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)
+        .nonOpaque()
         .hardness(0.75F)
     ))
+
     val HYBRID_CRATE = register("hybrid_crate", CrateBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)
         .hardness(0.75F)
     ))
