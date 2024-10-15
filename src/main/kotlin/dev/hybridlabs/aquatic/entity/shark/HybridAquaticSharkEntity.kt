@@ -77,8 +77,8 @@ open class HybridAquaticSharkEntity(
 
     init {
         setPathfindingPenalty(PathNodeType.WATER, 0.0f)
-        moveControl = AquaticMoveControl(this, 85, 10, 0.1F, 0.1F, true)
-        lookControl = YawAdjustingLookControl(this, 20)
+        moveControl = AquaticMoveControl(this, 75, 5, movementSpeed, 0.1F, true)
+        lookControl = YawAdjustingLookControl(this, 5)
         navigation = SwimNavigation(this, world)
     }
 
