@@ -12,7 +12,7 @@
 			},
 			"bones": [
 				{
-					"name": "head",
+					"name": "body",
 					"pivot": [0, 1.5, -4],
 					"cubes": [
 						{"origin": [-1.5, 1, -8], "size": [3, 2, 4], "uv": [14, 9]},
@@ -22,7 +22,7 @@
 				},
 				{
 					"name": "mouth",
-					"parent": "head",
+					"parent": "body",
 					"pivot": [0, 1, -4],
 					"rotation": [22.5, 0, 0],
 					"cubes": [
@@ -41,7 +41,7 @@
 				},
 				{
 					"name": "segment_1",
-					"parent": "head",
+					"parent": "body",
 					"pivot": [0, 3, -4],
 					"cubes": [
 						{"origin": [-1, 0, -4], "size": [2, 3, 5], "uv": [0, 0]},

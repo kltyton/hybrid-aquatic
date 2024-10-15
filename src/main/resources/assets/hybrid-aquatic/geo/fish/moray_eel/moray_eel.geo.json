@@ -12,7 +12,7 @@
 			},
 			"bones": [
 				{
-					"name": "moray_eel",
+					"name": "body",
 					"pivot": [0, 2.5, 16],
 					"rotation": [0, 180, 0],
 					"cubes": [
@@ -24,7 +24,7 @@
 				},
 				{
 					"name": "mouth",
-					"parent": "moray_eel",
+					"parent": "body",
 					"pivot": [0, 3, 37],
 					"cubes": [
 						{"origin": [-1.5, 1, 37], "size": [3, 2, 3], "uv": [16, 0]}
@@ -32,7 +32,7 @@
 				},
 				{
 					"name": "body_1",
-					"parent": "moray_eel",
+					"parent": "body",
 					"pivot": [0, 3, 32],
 					"cubes": [
 						{"origin": [-2, 0.5, 24], "size": [4, 5, 8], "inflate": -0.01, "uv": [0, 0]},
