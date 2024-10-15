@@ -35,7 +35,7 @@ object HybridAquaticEntityTypes {
     val BARRELEYE = registerFishUnderground(
         "barreleye",
         ::BarreleyeEntity,
-        EntityDimensions.fixed(0.4f, 0.35f),
+        EntityDimensions.fixed(0.25f, 0.2f),
         BarreleyeEntity.createMobAttributes()
     )
 
