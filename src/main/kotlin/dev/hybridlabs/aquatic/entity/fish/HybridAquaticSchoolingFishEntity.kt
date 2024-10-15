@@ -110,6 +110,7 @@ open class HybridAquaticSchoolingFishEntity(
         entityNbt: NbtCompound?
     ): EntityData? {
         var entityData = entityData
+        pitch = 0.0f
         super.initialize(world, difficulty, spawnReason, entityData, entityNbt)
         if (entityData == null) {
             entityData = FishData(this)

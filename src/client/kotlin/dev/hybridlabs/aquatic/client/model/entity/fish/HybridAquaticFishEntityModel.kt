@@ -3,7 +3,11 @@ package dev.hybridlabs.aquatic.client.model.entity.fish
 import dev.hybridlabs.aquatic.HybridAquatic
 import dev.hybridlabs.aquatic.entity.fish.HybridAquaticFishEntity
 import dev.hybridlabs.aquatic.entity.fish.HybridAquaticFishEntity.FishVariant.Ignore.*
+import net.minecraft.client.MinecraftClient
+import net.minecraft.client.render.entity.model.EntityModelPartNames
 import net.minecraft.util.Identifier
+import net.minecraft.util.math.MathHelper
+import software.bernie.geckolib.core.animation.AnimationState
 import software.bernie.geckolib.model.GeoModel
 
 abstract class HybridAquaticFishEntityModel<T: HybridAquaticFishEntity> (private val id: String) : GeoModel<T>() {
@@ -26,5 +30,17 @@ abstract class HybridAquaticFishEntityModel<T: HybridAquaticFishEntity> (private
         if (variant != null && !variant.ignore.contains(ANIMATION))
             return Identifier(HybridAquatic.MOD_ID, "animations/${id}_${variant.getProvidedVariant(animatable)}.animation.json")
         return Identifier(HybridAquatic.MOD_ID, "animations/$id.animation.json")
+    }
+
+    override fun setCustomAnimations(
+        animatable: T,
+        instanceId: Long,
+        animationState: AnimationState<T>
+    ) {
+        super.setCustomAnimations(animatable, instanceId, animationState)
+        val deltaTime: Float = MinecraftClient.getInstance().tickDelta
+
+        val body = animationProcessor.getBone(EntityModelPartNames.BODY)
+        body.rotX = MathHelper.lerp(deltaTime, animatable.prevPitch, animatable.pitch) * -MathHelper.RADIANS_PER_DEGREE
     }
 }

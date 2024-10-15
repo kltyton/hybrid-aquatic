@@ -8,11 +8,11 @@ import dev.hybridlabs.aquatic.entity.shark.HybridAquaticSharkEntity
 import dev.hybridlabs.aquatic.tag.HybridAquaticEntityTags
 import net.minecraft.block.Blocks
 import net.minecraft.entity.*
-import net.minecraft.entity.ai.control.MoveControl
+import net.minecraft.entity.ai.control.AquaticMoveControl
+import net.minecraft.entity.ai.control.YawAdjustingLookControl
 import net.minecraft.entity.ai.goal.*
 import net.minecraft.entity.ai.pathing.EntityNavigation
 import net.minecraft.entity.ai.pathing.SwimNavigation
-import net.minecraft.entity.attribute.EntityAttributes
 import net.minecraft.entity.damage.DamageSource
 import net.minecraft.entity.data.DataTracker
 import net.minecraft.entity.data.TrackedData
@@ -27,7 +27,6 @@ import net.minecraft.sound.SoundEvent
 import net.minecraft.sound.SoundEvents
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.BlockPos
-import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.Vec3d
 import net.minecraft.util.math.random.Random
 import net.minecraft.world.LocalDifficulty
@@ -42,7 +41,6 @@ import software.bernie.geckolib.core.animation.*
 import software.bernie.geckolib.core.animation.AnimationState
 import software.bernie.geckolib.core.`object`.PlayState
 import software.bernie.geckolib.util.GeckoLibUtil
-import kotlin.math.sqrt
 
 @Suppress("LeakingThis", "UNUSED_PARAMETER")
 open class HybridAquaticFishEntity(
@@ -63,9 +61,9 @@ open class HybridAquaticFishEntity(
         goalSelector.add(1, EscapeDangerGoal(this, 1.25))
         goalSelector.add(2, MoveIntoWaterGoal(this))
         goalSelector.add(2, SwimAroundGoal(this, 0.50, 6))
+        goalSelector.add(4, LookAroundGoal(this))
+        goalSelector.add(5, LookAtEntityGoal(this, PlayerEntity::class.java, 6.0f))
         goalSelector.add(1, AttackGoal(this))
-        goalSelector.add(1, FleeEntityGoal(this, LivingEntity::class.java, 8.0f, 1.2, 1.0) { !fromFishingNet && it.type.isIn(predator) })
-        goalSelector.add(2, FleeEntityGoal(this, PlayerEntity::class.java, 5.0f, 1.0, 1.0) { !fromFishingNet })
         targetSelector.add(1, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) { hunger <= 1200 && it.type.isIn(prey) })
     }
 
@@ -87,6 +85,7 @@ open class HybridAquaticFishEntity(
         entityNbt: NbtCompound?
     ): EntityData? {
         this.air = getMaxMoistness()
+        pitch = 0.0f
         this.size = this.random.nextBetween(getMinSize(),getMaxSize())
 
         if (variants.isNotEmpty()) {
@@ -367,7 +366,9 @@ open class HybridAquaticFishEntity(
     }
 
     init {
-        moveControl = FishMoveControl(this)
+        moveControl = AquaticMoveControl(this, 75, 5, movementSpeed, 0.1f, true)
+        lookControl = YawAdjustingLookControl(this, 10)
+        navigation = SwimNavigation(this, world)
     }
 
     override fun travel(movementInput: Vec3d?) {
@@ -399,38 +400,6 @@ open class HybridAquaticFishEntity(
 
     open fun speedModifier(): Double {
         return 0.0
-    }
-
-    internal class FishMoveControl(private val fish: HybridAquaticFishEntity) : MoveControl(fish) {
-        override fun tick() {
-            if (fish.isSubmergedIn(FluidTags.WATER)) {
-                fish.velocity = fish.velocity.add(0.0, 0.005, 0.0)
-            }
-
-            if (this.state == State.MOVE_TO && !fish.navigation.isIdle) {
-                val f = (this.speed * fish.getAttributeValue(EntityAttributes.GENERIC_MOVEMENT_SPEED)).toFloat()
-                fish.movementSpeed =
-                    MathHelper.lerp(0.125f, fish.movementSpeed, f)
-                val d = this.targetX - fish.x
-                val e = this.targetY - fish.y
-                val g = this.targetZ - fish.z
-                if (e != 0.0) {
-                    val h = sqrt(d * d + e * e + g * g)
-                    fish.velocity = fish.velocity.add(
-                        0.0,
-                        fish.movementSpeed.toDouble() * (e / h) * 0.1, 0.0
-                    )
-                }
-
-                if (d != 0.0 || g != 0.0) {
-                    val i = (MathHelper.atan2(g, d) * 57.2957763671875).toFloat() - 90.0f
-                    fish.yaw = this.wrapDegrees(fish.yaw, i, 90.0f)
-                    fish.bodyYaw = fish.yaw
-                }
-            } else {
-                fish.movementSpeed = 0.0f
-            }
-        }
     }
 
     internal class SwimToRandomPlaceGoal(private val fish: HybridAquaticFishEntity, d: Double, i: Int) : SwimAroundGoal(fish, 1.0, 40) {
