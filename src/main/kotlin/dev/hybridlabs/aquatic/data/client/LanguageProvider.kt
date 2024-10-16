@@ -130,6 +130,8 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             HybridAquaticItems.BARRELEYE to "Barreleye",
             HybridAquaticItems.BLUE_TANG to "Blue Tang",
             HybridAquaticItems.SURGEONFISH_SOHAL to "Sohal Surgeonfish",
+            HybridAquaticItems.YELLOW_TANG to "Yellow Tang",
+            HybridAquaticItems.POWDER_BLUE_TANG to "Powder Blue Tang",
             HybridAquaticItems.SURGEONFISH_ORANGESHOULDER to "Orangeshoulder Surgeonfish",
             HybridAquaticItems.CLOWNFISH to "Clownfish",
             HybridAquaticItems.UNICORNFISH to "Unicornfish",

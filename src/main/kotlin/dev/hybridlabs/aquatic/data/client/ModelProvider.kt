@@ -132,6 +132,8 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
             HybridAquaticItems.BLUE_TANG,
             HybridAquaticItems.SURGEONFISH_SOHAL,
             HybridAquaticItems.SURGEONFISH_ORANGESHOULDER,
+            HybridAquaticItems.YELLOW_TANG,
+            HybridAquaticItems.POWDER_BLUE_TANG,
             HybridAquaticItems.CLOWNFISH,
             HybridAquaticItems.COWFISH,
             HybridAquaticItems.DANIO,

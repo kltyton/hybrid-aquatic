@@ -124,6 +124,8 @@ object  HybridAquaticItemGroups {
             entries.add(HybridAquaticItems.BLUE_TANG)
             entries.add(HybridAquaticItems.SURGEONFISH_SOHAL)
             entries.add(HybridAquaticItems.SURGEONFISH_ORANGESHOULDER)
+            entries.add(HybridAquaticItems.YELLOW_TANG)
+            entries.add(HybridAquaticItems.POWDER_BLUE_TANG)
             entries.add(HybridAquaticItems.BLUE_SPOTTED_STINGRAY)
             entries.add(HybridAquaticItems.UNICORNFISH)
             entries.add(HybridAquaticItems.CLOWNFISH)

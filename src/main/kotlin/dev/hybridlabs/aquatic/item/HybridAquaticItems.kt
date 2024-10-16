@@ -473,6 +473,32 @@ object HybridAquaticItems {
         )
     )
 
+    val YELLOW_TANG = register("yellow_tang",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(1)
+                        .saturationModifier(0.4F)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+
+    val POWDER_BLUE_TANG = register("powder_blue_tang",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(1)
+                        .saturationModifier(0.4F)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+
     val SURGEONFISH_ORANGESHOULDER = register("surgeonfish_orangeshoulder",
         Item(
             FabricItemSettings()
