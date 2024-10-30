@@ -736,6 +736,60 @@ class GenericLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
         )
 
         exporter.accept(
+            HybridAquaticLootTables.SEAHORSE,
+            LootTable.builder()
+                .pool(
+                    LootPool.builder()
+                        .with(ItemEntry.builder(HybridAquaticItems.SEAHORSE))
+                )
+        )
+
+        exporter.accept(
+            HybridAquaticLootTables.SUNFISH,
+            LootTable.builder()
+                .pool(
+                    LootPool.builder()
+                        .with(ItemEntry.builder(HybridAquaticItems.SUNFISH))
+                )
+        )
+
+        exporter.accept(
+            HybridAquaticLootTables.GOLDFISH,
+            LootTable.builder()
+                .pool(
+                    LootPool.builder()
+                        .with(ItemEntry.builder(HybridAquaticItems.GOLDFISH))
+                )
+        )
+
+        exporter.accept(
+            HybridAquaticLootTables.KOI,
+            LootTable.builder()
+                .pool(
+                    LootPool.builder()
+                        .with(ItemEntry.builder(HybridAquaticItems.KOI))
+                )
+        )
+
+        exporter.accept(
+            HybridAquaticLootTables.PARROTFISH,
+            LootTable.builder()
+                .pool(
+                    LootPool.builder()
+                        .with(ItemEntry.builder(HybridAquaticItems.PARROTFISH))
+                )
+        )
+
+        exporter.accept(
+            HybridAquaticLootTables.SPOTTED_EAGLE_RAY,
+            LootTable.builder()
+                .pool(
+                    LootPool.builder()
+                        .with(ItemEntry.builder(HybridAquaticItems.SPOTTED_EAGLE_RAY))
+                )
+        )
+
+        exporter.accept(
             HybridAquaticLootTables.CLAWED_LOBSTER,
             LootTable.builder()
                 .pool(

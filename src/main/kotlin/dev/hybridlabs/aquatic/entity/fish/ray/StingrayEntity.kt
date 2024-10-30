@@ -18,6 +18,7 @@ class StingrayEntity(entityType: EntityType<out StingrayEntity>, world: World) :
     public override fun getLootTableId(): Identifier {
         return when (this.variant?.variantName) {
             "blue_spotted" -> Identifier("hybrid-aquatic", "gameplay/blue_spotted_stingray")
+            "spotted_eagle" -> Identifier("hybrid-aquatic", "gameplay/spotted_eagle_ray")
             else -> super.getLootTableId()
         }
     }

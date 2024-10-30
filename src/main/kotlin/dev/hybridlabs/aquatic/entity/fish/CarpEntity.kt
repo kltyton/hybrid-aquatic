@@ -6,6 +6,7 @@ import net.minecraft.entity.EntityType
 import net.minecraft.entity.attribute.DefaultAttributeContainer
 import net.minecraft.entity.attribute.EntityAttributes
 import net.minecraft.entity.mob.WaterCreatureEntity
+import net.minecraft.util.Identifier
 import net.minecraft.world.World
 
 class CarpEntity(entityType: EntityType<out CarpEntity>, world: World) :
@@ -20,6 +21,16 @@ class CarpEntity(entityType: EntityType<out CarpEntity>, world: World) :
             ignore = listOf(FishVariant.Ignore.MODEL, FishVariant.Ignore.ANIMATION)),
         ),
         HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
+
+    public override fun getLootTableId(): Identifier {
+        return when (this.variant?.variantName) {
+            "koi_ai_goromo" -> Identifier("hybrid-aquatic", "gameplay/koi")
+            "koi_hajiro" -> Identifier("hybrid-aquatic", "gameplay/koi")
+            "koi_platinum" -> Identifier("hybrid-aquatic", "gameplay/koi")
+            "koi_tancho" -> Identifier("hybrid-aquatic", "gameplay/koi")
+            else -> super.getLootTableId()
+        }
+    }
 
     override fun getLimitPerChunk(): Int {
         return 2

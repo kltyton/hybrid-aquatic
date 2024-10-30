@@ -8,6 +8,8 @@ import dev.hybridlabs.aquatic.entity.HybridAquaticEntityTypes
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings
 import net.minecraft.block.Block
 import net.minecraft.entity.EntityType
+import net.minecraft.entity.effect.StatusEffectInstance
+import net.minecraft.entity.effect.StatusEffects
 import net.minecraft.entity.mob.MobEntity
 import net.minecraft.item.*
 import net.minecraft.registry.Registries
@@ -298,6 +300,7 @@ object HybridAquaticItems {
                     FoodComponent.Builder()
                         .hunger(1)
                         .saturationModifier(0.4F)
+                        .statusEffect(StatusEffectInstance(StatusEffects.POISON, 1200, 1), 1.0f)
                         .meat()
                         .build()
                 )
@@ -675,6 +678,114 @@ object HybridAquaticItems {
                     FoodComponent.Builder()
                         .hunger(1)
                         .saturationModifier(0.4F)
+                        .statusEffect(StatusEffectInstance(StatusEffects.POISON, 1200, 1), 1.0f)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+
+    val SUNFISH = register("sunfish",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(1)
+                        .saturationModifier(0.4F)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+
+    val KOI = register("koi",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(1)
+                        .saturationModifier(0.4F)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+
+    val GOLDFISH = register("goldfish",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(1)
+                        .saturationModifier(0.4F)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+
+    val SEAHORSE = register("seahorse",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(1)
+                        .saturationModifier(0.4F)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+
+    val SPOTTED_EAGLE_RAY = register("spotted_eagle_ray",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(1)
+                        .saturationModifier(0.4F)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+
+    val TOADFISH = register("toadfish",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(1)
+                        .saturationModifier(0.4F)
+                        .statusEffect(StatusEffectInstance(StatusEffects.POISON, 1200, 1), 1.0f)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+
+    val PARROTFISH = register("parrotfish",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(1)
+                        .saturationModifier(0.4F)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+
+
+    val STONEFISH = register("stonefish",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(1)
+                        .saturationModifier(0.4F)
+                        .statusEffect(StatusEffectInstance(StatusEffects.POISON, 1200, 1), 1.0f)
                         .meat()
                         .build()
                 )

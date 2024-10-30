@@ -6,6 +6,7 @@ import net.minecraft.entity.EntityType
 import net.minecraft.entity.attribute.DefaultAttributeContainer
 import net.minecraft.entity.attribute.EntityAttributes
 import net.minecraft.entity.mob.WaterCreatureEntity
+import net.minecraft.util.Identifier
 import net.minecraft.world.World
 
 class SeahorseEntity(entityType: EntityType<out SeahorseEntity>, world: World) :
@@ -20,6 +21,16 @@ class SeahorseEntity(entityType: EntityType<out SeahorseEntity>, world: World) :
             ignore = listOf(FishVariant.Ignore.ANIMATION)),
         ),
         HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
+
+    public override fun getLootTableId(): Identifier {
+        return when (this.variant?.variantName) {
+            "common" -> Identifier("hybrid-aquatic", "gameplay/seahorse")
+            "big_belly" -> Identifier("hybrid-aquatic", "gameplay/seahorse")
+            "thorny" -> Identifier("hybrid-aquatic", "gameplay/seahorse")
+            "pygmy" -> Identifier("hybrid-aquatic", "gameplay/seahorse")
+            else -> super.getLootTableId()
+        }
+    }
 
     override fun getLimitPerChunk(): Int {
         return 2

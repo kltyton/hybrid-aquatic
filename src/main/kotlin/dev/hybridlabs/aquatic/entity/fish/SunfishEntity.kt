@@ -6,6 +6,7 @@ import net.minecraft.entity.EntityType
 import net.minecraft.entity.attribute.DefaultAttributeContainer
 import net.minecraft.entity.attribute.EntityAttributes
 import net.minecraft.entity.mob.WaterCreatureEntity
+import net.minecraft.util.Identifier
 import net.minecraft.world.World
 
 class SunfishEntity(entityType: EntityType<out SunfishEntity>, world: World) :
@@ -14,6 +15,15 @@ class SunfishEntity(entityType: EntityType<out SunfishEntity>, world: World) :
         "hoodwinker" to FishVariant.biomeVariant("hoodwinker", HybridAquaticBiomeTags.WARM_OCEANS),
         "sharptail" to FishVariant.biomeVariant("sharptail", HybridAquaticBiomeTags.OCEAN)),
         HybridAquaticEntityTags.SUNFISH_PREY, HybridAquaticEntityTags.SUNFISH_PREDATOR) {
+
+    public override fun getLootTableId(): Identifier {
+        return when (this.variant?.variantName) {
+            "ocean" -> Identifier("hybrid-aquatic", "gameplay/sunfish")
+            "hoodwinker" -> Identifier("hybrid-aquatic", "gameplay/sunfish")
+            "sharptail" -> Identifier("hybrid-aquatic", "gameplay/sunfish")
+            else -> super.getLootTableId()
+        }
+    }
 
     override fun getLimitPerChunk(): Int {
         return 2

@@ -6,12 +6,20 @@ import net.minecraft.entity.EntityType
 import net.minecraft.entity.attribute.DefaultAttributeContainer
 import net.minecraft.entity.attribute.EntityAttributes
 import net.minecraft.entity.mob.WaterCreatureEntity
+import net.minecraft.util.Identifier
 import net.minecraft.world.World
 
 class ParrotfishEntity(entityType: EntityType<out ParrotfishEntity>, world: World) :
     HybridAquaticFishEntity(entityType, world, variants = hashMapOf(
         "humphead" to FishVariant.biomeVariant("humphead", HybridAquaticBiomeTags.REEF),),
         HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
+
+    public override fun getLootTableId(): Identifier {
+        return when (this.variant?.variantName) {
+            "humphead" -> Identifier("hybrid-aquatic", "gameplay/parrotfish")
+            else -> super.getLootTableId()
+        }
+    }
 
     override fun getLimitPerChunk(): Int {
         return 4

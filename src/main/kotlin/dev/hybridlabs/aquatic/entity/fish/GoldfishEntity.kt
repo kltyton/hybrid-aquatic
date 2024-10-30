@@ -6,6 +6,7 @@ import net.minecraft.entity.EntityType
 import net.minecraft.entity.attribute.DefaultAttributeContainer
 import net.minecraft.entity.attribute.EntityAttributes
 import net.minecraft.entity.mob.WaterCreatureEntity
+import net.minecraft.util.Identifier
 import net.minecraft.world.World
 
 class GoldfishEntity(entityType: EntityType<out GoldfishEntity>, world: World) :
@@ -14,6 +15,13 @@ class GoldfishEntity(entityType: EntityType<out GoldfishEntity>, world: World) :
             ignore = listOf(FishVariant.Ignore.MODEL, FishVariant.Ignore.ANIMATION)),
         ),
         HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
+
+    public override fun getLootTableId(): Identifier {
+        return when (this.variant?.variantName) {
+            "shubunkin" -> Identifier("hybrid-aquatic", "gameplay/goldfish")
+            else -> super.getLootTableId()
+        }
+    }
 
     override fun getLimitPerChunk(): Int {
         return 4
