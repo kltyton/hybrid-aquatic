@@ -16,7 +16,6 @@ class WhaleSharkEntity(entityType: EntityType<out WhaleSharkEntity>, world: Worl
                     .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 1.0)
                     .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 2.0)
                     .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 26.0)
-                    .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 100.0)
             }
         }
 

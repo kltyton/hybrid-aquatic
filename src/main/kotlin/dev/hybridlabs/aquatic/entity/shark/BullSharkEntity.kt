@@ -28,7 +28,6 @@ class BullSharkEntity(entityType: EntityType<out BullSharkEntity>, world: World)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 1.6)
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 8.0)
                 .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 26.0)
-                .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 100.0)
         }
     }
 

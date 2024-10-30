@@ -16,7 +16,6 @@ class BaskingSharkEntity(entityType: EntityType<out BaskingSharkEntity>, world: 
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 1.0)
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 3.0)
                 .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 26.0)
-                .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 100.0)
         }
     }
 
