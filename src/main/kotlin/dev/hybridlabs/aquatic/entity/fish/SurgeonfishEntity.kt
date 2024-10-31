@@ -27,6 +27,7 @@ class SurgeonfishEntity(entityType: EntityType<out SurgeonfishEntity>, world: Wo
             "powder_blue_tang" -> Identifier("hybrid-aquatic", "gameplay/powder_blue_tang")
             "sohal" -> Identifier("hybrid-aquatic", "gameplay/sohal")
             "orangeshoulder" -> Identifier("hybrid-aquatic", "gameplay/orangeshoulder")
+            "lined" -> Identifier("hybrid-aquatic", "gameplay/lined")
             "unicornfish" -> Identifier("hybrid-aquatic", "gameplay/unicornfish")
             else -> super.getLootTableId()
         }

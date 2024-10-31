@@ -70,16 +70,16 @@ object EntityBiomeModifications {
         addJelly(HybridAquaticEntityTypes.BARREL_JELLYFISH, HybridAquaticBiomeTags.ALL_OCEANS, 3, 1, 1)
         addJelly(HybridAquaticEntityTypes.MOON_JELLYFISH, HybridAquaticBiomeTags.WARM_OCEANS, 5, 1, 2)
         addJelly(HybridAquaticEntityTypes.MAUVE_STINGER, HybridAquaticBiomeTags.WARM_OCEANS, 3, 1, 2)
-        addJelly(HybridAquaticEntityTypes.FRIED_EGG_JELLYFISH, HybridAquaticBiomeTags.WARM_OCEANS, 3, 1, 1)
-        addJelly(HybridAquaticEntityTypes.CAULIFLOWER_JELLYFISH, HybridAquaticBiomeTags.WARM_OCEANS, 3, 1, 1)
-        addJelly(HybridAquaticEntityTypes.COMPASS_JELLYFISH, HybridAquaticBiomeTags.DEEP_WARM_OCEANS, 3, 1, 1)
-        addJelly(HybridAquaticEntityTypes.BLUE_JELLYFISH, HybridAquaticBiomeTags.DEEP_WARM_OCEANS, 3, 1, 1)
+        addJelly(HybridAquaticEntityTypes.FRIED_EGG_JELLYFISH, HybridAquaticBiomeTags.WARM_OCEANS, 3, 1, 2)
+        addJelly(HybridAquaticEntityTypes.CAULIFLOWER_JELLYFISH, HybridAquaticBiomeTags.WARM_OCEANS, 3, 1, 2)
+        addJelly(HybridAquaticEntityTypes.COMPASS_JELLYFISH, HybridAquaticBiomeTags.DEEP_WARM_OCEANS, 3, 1, 2)
+        addJelly(HybridAquaticEntityTypes.BLUE_JELLYFISH, HybridAquaticBiomeTags.DEEP_WARM_OCEANS, 3, 1, 2)
         addJelly(HybridAquaticEntityTypes.SEA_NETTLE, HybridAquaticBiomeTags.DEEP_WARM_OCEANS, 3, 1, 2)
         addJelly(HybridAquaticEntityTypes.NOMURA_JELLYFISH, HybridAquaticBiomeTags.COLD_OCEANS, 1, 1, 1)
         addJelly(HybridAquaticEntityTypes.LIONS_MANE_JELLYFISH, HybridAquaticBiomeTags.DEEP_COLD_OCEANS, 1, 1, 1)
 
         // underground jellies
-        addUndergroundJelly(HybridAquaticEntityTypes.ATOLLA_JELLYFISH, HybridAquaticBiomeTags.ALL_DEEP_OCEANS, 1, 1, 1)
+        addUndergroundJelly(HybridAquaticEntityTypes.ATOLLA_JELLYFISH, HybridAquaticBiomeTags.ALL_DEEP_OCEANS, 1, 1, 2)
 
         // sharks
         addShark(HybridAquaticEntityTypes.GREAT_WHITE_SHARK, HybridAquaticBiomeTags.DEEP_WARM_OCEANS, 3, 1, 1)

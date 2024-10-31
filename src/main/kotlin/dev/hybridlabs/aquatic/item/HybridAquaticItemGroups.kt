@@ -126,6 +126,7 @@ object  HybridAquaticItemGroups {
             entries.add(HybridAquaticItems.UNICORNFISH)
             entries.add(HybridAquaticItems.SURGEONFISH_SOHAL)
             entries.add(HybridAquaticItems.SURGEONFISH_ORANGESHOULDER)
+            entries.add(HybridAquaticItems.SURGEONFISH_LINED)
             entries.add(HybridAquaticItems.YELLOW_TANG)
             entries.add(HybridAquaticItems.POWDER_BLUE_TANG)
             entries.add(HybridAquaticItems.PARROTFISH)
@@ -154,6 +155,7 @@ object  HybridAquaticItemGroups {
             entries.add(HybridAquaticItems.TOADFISH)
             entries.add(HybridAquaticItems.STONEFISH)
             entries.add(HybridAquaticItems.OPAH)
+            entries.add(HybridAquaticItems.OARFISH)
             entries.add(HybridAquaticItems.SUNFISH)
 
             // miscellaneous items

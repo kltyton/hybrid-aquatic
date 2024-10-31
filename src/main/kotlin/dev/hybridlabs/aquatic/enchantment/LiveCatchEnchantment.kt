@@ -30,6 +30,7 @@ class LiveCatchEnchantment : Enchantment(Rarity.RARE, EnchantmentTarget.FISHING_
             HybridAquaticItems.OPAH to HybridAquaticEntityTypes.OPAH,
             HybridAquaticItems.ROCKFISH to HybridAquaticEntityTypes.ROCKFISH,
             HybridAquaticItems.BLUE_SPOTTED_STINGRAY to HybridAquaticEntityTypes.STINGRAY,
+            HybridAquaticItems.SPOTTED_EAGLE_RAY to HybridAquaticEntityTypes.STINGRAY,
             HybridAquaticItems.MORAY_EEL to HybridAquaticEntityTypes.MORAY_EEL,
             HybridAquaticItems.NEEDLEFISH to HybridAquaticEntityTypes.NEEDLEFISH,
             HybridAquaticItems.PIRANHA to HybridAquaticEntityTypes.PIRANHA,
@@ -39,6 +40,9 @@ class LiveCatchEnchantment : Enchantment(Rarity.RARE, EnchantmentTarget.FISHING_
             HybridAquaticItems.BLUE_TANG to HybridAquaticEntityTypes.SURGEONFISH,
             HybridAquaticItems.SURGEONFISH_SOHAL to HybridAquaticEntityTypes.SURGEONFISH,
             HybridAquaticItems.SURGEONFISH_ORANGESHOULDER to HybridAquaticEntityTypes.SURGEONFISH,
+            HybridAquaticItems.SURGEONFISH_LINED to HybridAquaticEntityTypes.SURGEONFISH,
+            HybridAquaticItems.POWDER_BLUE_TANG to HybridAquaticEntityTypes.SURGEONFISH,
+            HybridAquaticItems.YELLOW_TANG to HybridAquaticEntityTypes.SURGEONFISH,
             HybridAquaticItems.CLOWNFISH to HybridAquaticEntityTypes.CLOWNFISH,
             HybridAquaticItems.COWFISH to HybridAquaticEntityTypes.COWFISH,
             HybridAquaticItems.TRIGGERFISH to HybridAquaticEntityTypes.TRIGGERFISH,
@@ -50,6 +54,14 @@ class LiveCatchEnchantment : Enchantment(Rarity.RARE, EnchantmentTarget.FISHING_
             HybridAquaticItems.RATFISH to HybridAquaticEntityTypes.RATFISH,
             HybridAquaticItems.FLASHLIGHT_FISH to HybridAquaticEntityTypes.FLASHLIGHT_FISH,
             HybridAquaticItems.GOURAMI to HybridAquaticEntityTypes.GOURAMI,
+            HybridAquaticItems.KOI to HybridAquaticEntityTypes.CARP,
+            HybridAquaticItems.GOLDFISH to HybridAquaticEntityTypes.GOLDFISH,
+            HybridAquaticItems.STONEFISH to HybridAquaticEntityTypes.STONEFISH,
+            HybridAquaticItems.SUNFISH to HybridAquaticEntityTypes.SUNFISH,
+            HybridAquaticItems.OARFISH to HybridAquaticEntityTypes.OARFISH,
+            HybridAquaticItems.PARROTFISH to HybridAquaticEntityTypes.PARROTFISH,
+            HybridAquaticItems.SEAHORSE to HybridAquaticEntityTypes.SEAHORSE,
+            HybridAquaticItems.TOADFISH to HybridAquaticEntityTypes.TOADFISH,
         )
     }
 }

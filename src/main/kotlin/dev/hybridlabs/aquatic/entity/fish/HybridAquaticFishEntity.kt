@@ -255,7 +255,7 @@ open class HybridAquaticFishEntity(
     }
 
     override fun canImmediatelyDespawn(distanceSquared: Double): Boolean {
-        return !hasCustomName()
+        return false
     }
 
     override fun getLimitPerChunk(): Int {

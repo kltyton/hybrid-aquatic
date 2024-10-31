@@ -172,6 +172,11 @@ class FishingLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
                                 .conditionally(needsBeach.or(needsWarmOcean))
                         )
                         .with(
+                            ItemEntry.builder(HybridAquaticItems.SPOTTED_EAGLE_RAY)
+                                .weight(5)
+                                .conditionally(needsBeach.or(needsWarmOcean))
+                        )
+                        .with(
                             ItemEntry.builder(HybridAquaticItems.MORAY_EEL)
                                 .weight(5)
                                 .conditionally(needsBeach.or(needsWarmOcean))
@@ -202,7 +207,27 @@ class FishingLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
                                 .conditionally(needsDeepOcean.or(needsDeepLukewarmOcean.or(needsDeepColdOcean.or(needsDeepFrozenOcean))))
                         )
                         .with(
+                            ItemEntry.builder(HybridAquaticItems.OARFISH)
+                                .weight(5)
+                                .conditionally(needsDeepOcean.or(needsDeepLukewarmOcean.or(needsDeepColdOcean.or(needsDeepFrozenOcean))))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.SUNFISH)
+                                .weight(5)
+                                .conditionally(needsDeepOcean.or(needsDeepLukewarmOcean.or(needsLukewarmOcean.or(needsOcean.or(needsDeepOcean)))))
+                        )
+                        .with(
                             ItemEntry.builder(HybridAquaticItems.BLUE_TANG)
+                                .weight(5)
+                                .conditionally(needsBeach.or(needsWarmOcean))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.YELLOW_TANG)
+                                .weight(5)
+                                .conditionally(needsBeach.or(needsWarmOcean))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.POWDER_BLUE_TANG)
                                 .weight(5)
                                 .conditionally(needsBeach.or(needsWarmOcean))
                         )
@@ -213,6 +238,11 @@ class FishingLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
                         )
                         .with(
                             ItemEntry.builder(HybridAquaticItems.SURGEONFISH_ORANGESHOULDER)
+                                .weight(5)
+                                .conditionally(needsWarmOcean.or(needsLukewarmOcean))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.SURGEONFISH_LINED)
                                 .weight(5)
                                 .conditionally(needsWarmOcean.or(needsLukewarmOcean))
                         )
@@ -228,6 +258,16 @@ class FishingLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
                         )
                         .with(
                             ItemEntry.builder(HybridAquaticItems.COWFISH)
+                                .weight(5)
+                                .conditionally(needsBeach.or(needsWarmOcean))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.TOADFISH)
+                                .weight(5)
+                                .conditionally(needsBeach.or(needsWarmOcean))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.PARROTFISH)
                                 .weight(5)
                                 .conditionally(needsBeach.or(needsWarmOcean))
                         )
