@@ -42,6 +42,45 @@ class ItemTagProvider(output: FabricDataOutput, registriesFuture: CompletableFut
             .add(HybridAquaticItems.DRIFTWOOD_WOOD)
             .add(HybridAquaticItems.STRIPPED_DRIFTWOOD_WOOD)
 
+        getOrCreateTagBuilder(ItemTags.WOODEN_FENCES)
+            .add(HybridAquaticBlocks.DRIFTWOOD_FENCE.asItem())
+
+        getOrCreateTagBuilder(ItemTags.FENCE_GATES)
+            .add(HybridAquaticBlocks.DRIFTWOOD_FENCE_GATE.asItem())
+
+        getOrCreateTagBuilder(ItemTags.WOODEN_DOORS)
+            .add(HybridAquaticBlocks.DRIFTWOOD_FENCE_GATE.asItem())
+
+        getOrCreateTagBuilder(ItemTags.WOODEN_BUTTONS)
+            .add(HybridAquaticBlocks.DRIFTWOOD_BUTTON.asItem())
+
+        getOrCreateTagBuilder(ItemTags.WOODEN_PRESSURE_PLATES)
+            .add(HybridAquaticBlocks.DRIFTWOOD_PRESSURE_PLATE.asItem())
+
+        getOrCreateTagBuilder(ItemTags.WOODEN_SLABS)
+            .add(HybridAquaticBlocks.DRIFTWOOD_SLAB.asItem())
+
+        getOrCreateTagBuilder(ItemTags.WOODEN_STAIRS)
+            .add(HybridAquaticBlocks.DRIFTWOOD_STAIRS.asItem())
+
+        getOrCreateTagBuilder(ItemTags.WOODEN_TRAPDOORS)
+            .add(HybridAquaticBlocks.DRIFTWOOD_TRAPDOOR.asItem())
+
+        getOrCreateTagBuilder(ItemTags.SWORDS)
+            .add(HybridAquaticItems.SEASHELL_SPEAR)
+
+        getOrCreateTagBuilder(ItemTags.SHOVELS)
+            .add(HybridAquaticItems.SEASHELL_SHOVEL)
+
+        getOrCreateTagBuilder(ItemTags.AXES)
+            .add(HybridAquaticItems.SEASHELL_AXE)
+
+        getOrCreateTagBuilder(ItemTags.PICKAXES)
+            .add(HybridAquaticItems.SEASHELL_PICKAXE)
+
+        getOrCreateTagBuilder(ItemTags.HOES)
+            .add(HybridAquaticItems.SEASHELL_HOE)
+
         //endregion
 
         listOf(
