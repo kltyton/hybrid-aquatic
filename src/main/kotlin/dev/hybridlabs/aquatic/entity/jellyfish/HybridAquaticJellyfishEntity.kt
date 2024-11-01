@@ -129,8 +129,10 @@ open class HybridAquaticJellyfishEntity(
         }
     }
 
+
+
     override fun canImmediatelyDespawn(distanceSquared: Double): Boolean {
-        return false
+        return !fromFishingNet && !hasCustomName()
     }
 
     override fun tickMovement() {
@@ -378,12 +380,16 @@ open class HybridAquaticJellyfishEntity(
         super.writeCustomDataToNbt(nbt)
         nbt.putInt(MOISTNESS_KEY, moistness)
         nbt.putInt(JELLYFISH_SIZE_KEY, size)
+        nbt.putBoolean("FromFishingNet", fromFishingNet)
     }
+
+    private var fromFishingNet = false
 
     override fun readCustomDataFromNbt(nbt: NbtCompound) {
         super.readCustomDataFromNbt(nbt)
         moistness = nbt.getInt(MOISTNESS_KEY)
         size = nbt.getInt(JELLYFISH_SIZE_KEY)
+        fromFishingNet = nbt.getBoolean("FromFishingNet")
     }
 
     companion object {

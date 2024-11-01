@@ -49,7 +49,6 @@ open class HybridAquaticCrustaceanEntity(
 ) : WaterCreatureEntity(type, world), GeoEntity {
     private val factory = GeckoLibUtil.createInstanceCache(this)
     private var landNavigation: EntityNavigation = createNavigation(world)
-    private var songSource: BlockPos? = null
     private var songPlaying: Boolean = false
     private var fromFishingNet = false
 
@@ -244,7 +243,7 @@ open class HybridAquaticCrustaceanEntity(
     }
 
     override fun canImmediatelyDespawn(distanceSquared: Double): Boolean {
-        return false
+        return !fromFishingNet && !hasCustomName()
     }
 
 

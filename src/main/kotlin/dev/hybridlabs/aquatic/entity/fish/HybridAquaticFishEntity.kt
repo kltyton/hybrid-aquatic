@@ -255,14 +255,18 @@ open class HybridAquaticFishEntity(
     }
 
     override fun canImmediatelyDespawn(distanceSquared: Double): Boolean {
-        return false
+        return !this.fromFishingNet && !this.hasCustomName()
     }
 
     override fun getLimitPerChunk(): Int {
-        return 8
+        return 10
     }
 
     open val flopSound: SoundEvent = SoundEvents.ENTITY_PUFFER_FISH_FLOP
+
+    override fun getSwimSound(): SoundEvent {
+        return SoundEvents.ENTITY_FISH_SWIM
+    }
 
     override fun getHurtSound(source: DamageSource): SoundEvent {
         return SoundEvents.ENTITY_COD_HURT

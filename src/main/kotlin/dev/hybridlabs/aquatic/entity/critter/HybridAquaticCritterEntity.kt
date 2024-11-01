@@ -207,7 +207,7 @@ open class HybridAquaticCritterEntity(
     }
 
     override fun canImmediatelyDespawn(distanceSquared: Double): Boolean {
-        return !hasCustomName() && !fromFishingNet
+        return !fromFishingNet && !hasCustomName()
     }
 
     override fun getLimitPerChunk(): Int {

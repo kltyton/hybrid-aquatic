@@ -15,6 +15,7 @@ import net.minecraft.util.math.MathHelper
 import net.minecraft.world.World
 import kotlin.math.sqrt
 
+@Suppress("DEPRECATION", "LeakingThis")
 open class HybridAquaticDeepSeaFishEntity(
     type: EntityType<out HybridAquaticFishEntity>,
     world: World,

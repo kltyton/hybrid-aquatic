@@ -211,7 +211,7 @@ open class HybridAquaticCephalopodEntity(
     }
 
     override fun canImmediatelyDespawn(distanceSquared: Double): Boolean {
-        return false
+        return !fromFishingNet && !hasCustomName()
     }
 
     init {
