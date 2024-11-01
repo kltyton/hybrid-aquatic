@@ -12,9 +12,9 @@ import net.minecraft.entity.EntityGroup
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.SpawnReason
 import net.minecraft.entity.ai.control.MoveControl
+import net.minecraft.entity.ai.goal.EscapeDangerGoal
 import net.minecraft.entity.ai.goal.LookAroundGoal
 import net.minecraft.entity.ai.goal.TemptGoal
-import net.minecraft.entity.ai.goal.WanderAroundFarGoal
 import net.minecraft.entity.ai.goal.WanderAroundGoal
 import net.minecraft.entity.ai.pathing.EntityNavigation
 import net.minecraft.entity.damage.DamageSource
@@ -90,9 +90,9 @@ open class HybridAquaticCrustaceanEntity(
 
     override fun initGoals() {
         super.initGoals()
+        goalSelector.add(0, EscapeDangerGoal(this, 1.0))
         goalSelector.add(1, TemptGoal(this, 0.5, Ingredient.fromTag(HybridAquaticItemTags.CRUSTACEAN_TEMPT_ITEMS), true))
-        goalSelector.add(2, WanderAroundGoal(this, 0.4))
-        goalSelector.add(2, WanderAroundFarGoal(this, 0.4))
+        goalSelector.add(3, WanderAroundGoal(this, 0.4))
         goalSelector.add(5, LookAroundGoal(this))
     }
 
