@@ -21,7 +21,7 @@ class HermitCrabEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>
             "skull", HybridAquaticBiomeTags.TROPICAL_BEACHES,
             ignore = listOf(CrustaceanVariant.Ignore.ANIMATION)
         ),
-    ), true) {
+    )) {
 
     public override fun getLootTableId(): Identifier {
         return when (this.variant?.variantName) {

@@ -43,13 +43,11 @@ open class HybridAquaticCrustaceanEntity(
     type: EntityType<out HybridAquaticCrustaceanEntity>,
     world: World,
     private val variants: Map<String, CrustaceanVariant> = mutableMapOf(),
-    open val canDance: Boolean,
     open val assumeDefault: Boolean = false,
     open val collisionRules: List<HybridAquaticFishEntity.VariantCollisionRules> = listOf(),
 ) : WaterCreatureEntity(type, world), GeoEntity {
     private val factory = GeckoLibUtil.createInstanceCache(this)
     private var landNavigation: EntityNavigation = createNavigation(world)
-    private var songPlaying: Boolean = false
     private var fromFishingNet = false
 
     var size: Int
@@ -268,8 +266,6 @@ open class HybridAquaticCrustaceanEntity(
         } else {
             event.controller.setAnimation(IDLE_ANIMATION)
         }
-        if (canDance && songPlaying)
-            event.controller.setAnimation(DANCE_ANIMATION)
         return PlayState.CONTINUE
     }
 
@@ -279,7 +275,6 @@ open class HybridAquaticCrustaceanEntity(
         val VARIANT: TrackedData<String> = DataTracker.registerData(HybridAquaticCrustaceanEntity::class.java, TrackedDataHandlerRegistry.STRING)
         var VARIANT_DATA: TrackedData<NbtCompound> = DataTracker.registerData(HybridAquaticCrustaceanEntity::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
 
-        val DANCE_ANIMATION: RawAnimation = RawAnimation.begin().then("dance", Animation.LoopType.LOOP)
         val WALK_ANIMATION: RawAnimation = RawAnimation.begin().then("walk", Animation.LoopType.LOOP)
         val IDLE_ANIMATION: RawAnimation = RawAnimation.begin().then("idle", Animation.LoopType.LOOP)
         val HIDING_ANIMATION: RawAnimation = RawAnimation.begin().then("hide", Animation.LoopType.LOOP)

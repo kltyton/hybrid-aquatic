@@ -14,7 +14,7 @@ class FiddlerCrabEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity
         "red" to CrustaceanVariant.biomeVariant("red", HybridAquaticBiomeTags.SWAMPLAND,
             ignore = listOf(CrustaceanVariant.Ignore.MODEL, CrustaceanVariant.Ignore.ANIMATION)),
         "purple" to CrustaceanVariant.biomeVariant("purple", HybridAquaticBiomeTags.SWAMPLAND,
-            ignore = listOf(CrustaceanVariant.Ignore.MODEL, CrustaceanVariant.Ignore.ANIMATION))), false) {
+            ignore = listOf(CrustaceanVariant.Ignore.MODEL, CrustaceanVariant.Ignore.ANIMATION)))) {
 
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {

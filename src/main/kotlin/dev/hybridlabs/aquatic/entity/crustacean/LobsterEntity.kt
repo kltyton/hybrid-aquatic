@@ -18,8 +18,7 @@ class LobsterEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>, w
             ignore = listOf(CrustaceanVariant.Ignore.MODEL, CrustaceanVariant.Ignore.ANIMATION)),
         "regal_slipper" to CrustaceanVariant.biomeVariant("regal_slipper", HybridAquaticBiomeTags.REEF,
             ignore = listOf(CrustaceanVariant.Ignore.ANIMATION)),
-        ),
-        false) {
+        )) {
 
     public override fun getLootTableId(): Identifier {
         return when (this.variant?.variantName) {
