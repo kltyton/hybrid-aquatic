@@ -14,6 +14,10 @@ class MorayEelEntity(entityType: EntityType<out MorayEelEntity>, world: World) :
         return 2
     }
 
+    override fun shouldFlopOnLand(): Boolean {
+        return false
+    }
+
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
             return WaterCreatureEntity.createMobAttributes()

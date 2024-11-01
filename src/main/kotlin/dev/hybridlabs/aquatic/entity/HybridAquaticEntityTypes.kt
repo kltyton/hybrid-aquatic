@@ -147,7 +147,7 @@ object HybridAquaticEntityTypes {
     val MORAY_EEL = registerFish(
         "moray_eel",
         ::MorayEelEntity,
-        EntityDimensions.fixed(0.8f, 0.5f),
+        EntityDimensions.fixed(0.8f, 0.4f),
         MorayEelEntity.createMobAttributes()
     )
 
