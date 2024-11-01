@@ -129,6 +129,10 @@ open class HybridAquaticJellyfishEntity(
         }
     }
 
+    override fun canImmediatelyDespawn(distanceSquared: Double): Boolean {
+        return false
+    }
+
     override fun tickMovement() {
         super.tickMovement()
         this.prevTiltAngle = this.tiltAngle

@@ -88,7 +88,7 @@ object EntityBiomeModifications {
         addShark(HybridAquaticEntityTypes.THRESHER_SHARK, HybridAquaticBiomeTags.DEEP_WARM_OCEANS, 3, 1, 1)
         addShark(HybridAquaticEntityTypes.BULL_SHARK, HybridAquaticBiomeTags.DEEP_WARM_OCEANS, 3, 1, 2)
         addShark(HybridAquaticEntityTypes.WHALE_SHARK, HybridAquaticBiomeTags.DEEP_WARM_OCEANS, 1, 1, 1)
-        addShark(HybridAquaticEntityTypes.BASKING_SHARK, HybridAquaticBiomeTags.COLD_OCEANS, 1, 1, 1)
+        addShark(HybridAquaticEntityTypes.BASKING_SHARK, HybridAquaticBiomeTags.DEEP_COLD_OCEANS, 1, 1, 1)
 
         // crustaceans
         addCrustacean(HybridAquaticEntityTypes.DUNGENESS_CRAB, HybridAquaticBiomeTags.DUNGENESS_CRAB_SPAWN_BIOMES, 5, 1, 2)
