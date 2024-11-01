@@ -12,9 +12,11 @@ import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder
 import net.minecraft.item.Item
 import net.minecraft.item.Items
+import net.minecraft.predicate.item.ItemPredicate
 import net.minecraft.recipe.RecipeSerializer
 import net.minecraft.recipe.book.RecipeCategory
 import net.minecraft.registry.tag.ItemTags
+import net.minecraft.util.Identifier
 import java.util.function.Consumer
 
 class RecipeProvider(output: FabricDataOutput) : FabricRecipeProvider(output) {
@@ -272,81 +274,38 @@ class RecipeProvider(output: FabricDataOutput) : FabricRecipeProvider(output) {
             .input(HybridAquaticItems.VAMPIRE_CRAB_CLAW)
             .input(HybridAquaticItems.DUNGENESS_CRAB_CLAW)
             .input(HybridAquaticItems.LIGHTFOOT_CRAB_CLAW)
-            .criterion("has_barbed_hook", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.BARBED_HOOK))
-            .criterion("has_dungeness_crab_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.DUNGENESS_CRAB_CLAW))
-            .criterion("has_coconut_crab_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.COCONUT_CRAB_CLAW))
-            .criterion("has_spider_crab_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.SPIDER_CRAB_CLAW))
-            .criterion("has_vampire_crab_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.VAMPIRE_CRAB_CLAW))
-            .criterion("has_yeti_crab_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.YETI_CRAB_CLAW))
-            .criterion("has_ghost_crab_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.GHOST_CRAB_CLAW))
-            .criterion("has_lightfoot_crab_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.LIGHTFOOT_CRAB_CLAW))
-            .criterion("has_flower_crab_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.FLOWER_CRAB_CLAW))
-            .criterion("has_fiddler_crab_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.FIDDLER_CRAB_CLAW))
+            .criterion("has_crab_claw", InventoryChangedCriterion.Conditions.items(
+                ItemPredicate.Builder.create().tag(HybridAquaticItemTags.CRAB_CLAW).build()))
             .offerTo(exporter)
 
         // food items
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, HybridAquaticItems.RAW_CRAB,1)
             .input(HybridAquaticItemTags.CRAB_CLAW)
-            .criterion("has_dungeness_crab_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.DUNGENESS_CRAB_CLAW))
-            .criterion("has_coconut_crab_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.COCONUT_CRAB_CLAW))
-            .criterion("has_spider_crab_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.SPIDER_CRAB_CLAW))
-            .criterion("has_vampire_crab_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.VAMPIRE_CRAB_CLAW))
-            .criterion("has_yeti_crab_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.YETI_CRAB_CLAW))
-            .criterion("has_ghost_crab_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.GHOST_CRAB_CLAW))
-            .criterion("has_lightfoot_crab_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.LIGHTFOOT_CRAB_CLAW))
-            .criterion("has_flower_crab_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.FLOWER_CRAB_CLAW))
-            .criterion("has_fiddler_crab_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.FIDDLER_CRAB_CLAW))
-            .criterion("has_lobster_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.LOBSTER_CLAW))
+            .criterion("has_crab_claw", InventoryChangedCriterion.Conditions.items(
+                ItemPredicate.Builder.create().tag(HybridAquaticItemTags.CRAB_CLAW).build()))
             .offerTo(exporter)
 
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, HybridAquaticItems.RAW_LOBSTER,1)
             .input(HybridAquaticItems.LOBSTER_CLAW)
             .criterion("has_lobster_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.LOBSTER_CLAW))
-            .criterion("has_dungeness_crab_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.DUNGENESS_CRAB_CLAW))
-            .criterion("has_coconut_crab_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.COCONUT_CRAB_CLAW))
-            .criterion("has_spider_crab_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.SPIDER_CRAB_CLAW))
-            .criterion("has_vampire_crab_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.VAMPIRE_CRAB_CLAW))
-            .criterion("has_yeti_crab_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.YETI_CRAB_CLAW))
-            .criterion("has_ghost_crab_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.GHOST_CRAB_CLAW))
-            .criterion("has_lightfoot_crab_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.LIGHTFOOT_CRAB_CLAW))
-            .criterion("has_flower_crab_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.FLOWER_CRAB_CLAW))
-            .criterion("has_fiddler_crab_claw", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.FIDDLER_CRAB_CLAW))
             .offerTo(exporter)
 
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, HybridAquaticItems.RAW_FISH_MEAT, 1)
             .input(HybridAquaticItemTags.SMALL_FISH)
-            .criterion("has_lionfish", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.LIONFISH))
-            .criterion("has_rockfish", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.ROCKFISH))
-            .criterion("has_blue_spotted_stingray", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.BLUE_SPOTTED_STINGRAY))
-            .criterion("has_needlefish", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.NEEDLEFISH))
-            .criterion("has_clownfish", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.CLOWNFISH))
-            .criterion("has_blue_tang", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.BLUE_TANG))
-            .criterion("has_sohal", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.SURGEONFISH_SOHAL))
-            .criterion("has_orangeshoulder", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.SURGEONFISH_ORANGESHOULDER))
-            .criterion("has_barreleye", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.BARRELEYE))
-            .criterion("has_anglerfish", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.ANGLERFISH))
-            .criterion("has_piranha", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.PIRANHA))
-            .criterion("has_unicorn_fish", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.UNICORNFISH))
-            .criterion("has_cowfish", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.COWFISH))
-            .criterion("has_tiger_barb", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.TIGER_BARB))
-            .criterion("has_oscar", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.OSCAR))
-            .criterion("has_flashlight_fish", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.FLASHLIGHT_FISH))
-            .criterion("has_gourami", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.GOURAMI))
-            .criterion("has_betta", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.BETTA))
-            .criterion("has_ratfish", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.RATFISH))
-            .criterion("has_discus", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.DISCUS))
-            .criterion("has_neon_tetra", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.NEON_TETRA))
-            .criterion("has_danio", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.DANIO))
-            .criterion("has_dragonfish", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.DRAGONFISH))
-            .offerTo(exporter)
+            .criterion("has_small_fish", InventoryChangedCriterion.Conditions.items(
+                ItemPredicate.Builder.create().tag(HybridAquaticItemTags.SMALL_FISH).build()))
+            .offerTo(exporter, Identifier("hybrid-aquatic", "raw_fish_meat_small"))
 
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, HybridAquaticItems.RAW_FISH_STEAK, 1)
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, HybridAquaticItems.RAW_FISH_MEAT, 2)
             .input(HybridAquaticItemTags.MEDIUM_FISH)
-            .criterion("has_yellowfin_tuna", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.TUNA))
-            .criterion("has_mahi_mahi", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.MAHI))
-            .criterion("has_opah", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.OPAH))
-            .criterion("has_moray_eel", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.MORAY_EEL))
-            .criterion("has_triggerfish", InventoryChangedCriterion.Conditions.items(HybridAquaticItems.TRIGGERFISH))
+            .criterion("has_medium_fish", InventoryChangedCriterion.Conditions.items(
+                ItemPredicate.Builder.create().tag(HybridAquaticItemTags.MEDIUM_FISH).build()))
+            .offerTo(exporter, Identifier("hybrid-aquatic", "raw_fish_meat_medium"))
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, HybridAquaticItems.RAW_FISH_STEAK, 2)
+            .input(HybridAquaticItemTags.LARGE_FISH)
+            .criterion("has_large_fish", InventoryChangedCriterion.Conditions.items(
+                ItemPredicate.Builder.create().tag(HybridAquaticItemTags.LARGE_FISH).build()))
             .offerTo(exporter)
 
         // cooking recipes

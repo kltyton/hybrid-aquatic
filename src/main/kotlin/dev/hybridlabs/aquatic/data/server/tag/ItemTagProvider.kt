@@ -84,11 +84,9 @@ class ItemTagProvider(output: FabricDataOutput, registriesFuture: CompletableFut
         //endregion
 
         listOf(
-            HybridAquaticItems.LIONFISH,
-            HybridAquaticItems.ROCKFISH,
-            HybridAquaticItems.BLUE_SPOTTED_STINGRAY,
+            HybridAquaticItems.KOI,
+            HybridAquaticItems.GOLDFISH,
             HybridAquaticItems.DRAGONFISH,
-            HybridAquaticItems.NEEDLEFISH,
             HybridAquaticItems.PIRANHA,
             HybridAquaticItems.ANGLERFISH,
             HybridAquaticItems.BARRELEYE,
@@ -99,27 +97,44 @@ class ItemTagProvider(output: FabricDataOutput, registriesFuture: CompletableFut
             HybridAquaticItems.TIGER_BARB,
             HybridAquaticItems.OSCAR,
             HybridAquaticItems.FLASHLIGHT_FISH,
-            HybridAquaticItems.RATFISH,
             HybridAquaticItems.SURGEONFISH_ORANGESHOULDER,
             HybridAquaticItems.SURGEONFISH_SOHAL,
+            HybridAquaticItems.SURGEONFISH_LINED,
+            HybridAquaticItems.POWDER_BLUE_TANG,
+            HybridAquaticItems.YELLOW_TANG,
+            HybridAquaticItems.TOADFISH,
+            HybridAquaticItems.STONEFISH,
             HybridAquaticItems.DISCUS,
             HybridAquaticItems.GOURAMI,
             HybridAquaticItems.BETTA,
             HybridAquaticItems.DANIO,
             HybridAquaticItems.NEON_TETRA,
-            HybridAquaticItems.DRAGONFISH,
         ).forEach { item ->
             getOrCreateTagBuilder(HybridAquaticItemTags.SMALL_FISH).add(item)
         }
 
         listOf(
+            HybridAquaticItems.MORAY_EEL,
+            HybridAquaticItems.TRIGGERFISH,
+            HybridAquaticItems.PARROTFISH,
+            HybridAquaticItems.RATFISH,
+            HybridAquaticItems.BLUE_SPOTTED_STINGRAY,
+            HybridAquaticItems.SPOTTED_EAGLE_RAY,
+            HybridAquaticItems.LIONFISH,
+            HybridAquaticItems.ROCKFISH,
+            HybridAquaticItems.NEEDLEFISH,
+        ).forEach { item ->
+            getOrCreateTagBuilder(HybridAquaticItemTags.MEDIUM_FISH).add(item)
+        }
+
+        listOf(
+            HybridAquaticItems.SUNFISH,
+            HybridAquaticItems.OARFISH,
             HybridAquaticItems.TUNA,
             HybridAquaticItems.MAHI,
             HybridAquaticItems.OPAH,
-            HybridAquaticItems.MORAY_EEL,
-            HybridAquaticItems.TRIGGERFISH,
         ).forEach { item ->
-            getOrCreateTagBuilder(HybridAquaticItemTags.MEDIUM_FISH).add(item)
+            getOrCreateTagBuilder(HybridAquaticItemTags.LARGE_FISH).add(item)
         }
 
         listOf(

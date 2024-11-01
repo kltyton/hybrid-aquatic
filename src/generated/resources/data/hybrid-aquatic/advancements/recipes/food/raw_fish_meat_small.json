@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_crab_claw": {
+    "has_small_fish": {
       "conditions": {
         "items": [
           {
-            "tag": "hybrid-aquatic:claw"
+            "tag": "hybrid-aquatic:small_fish"
           }
         ]
       },
@@ -13,20 +13,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "hybrid-aquatic:raw_crab"
+        "recipe": "hybrid-aquatic:raw_fish_meat_small"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_crab_claw",
+      "has_small_fish",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "hybrid-aquatic:raw_crab"
+      "hybrid-aquatic:raw_fish_meat_small"
     ]
   },
   "sends_telemetry_event": false

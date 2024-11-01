@@ -1,11 +1,9 @@
 {
   "replace": false,
   "values": [
-    "hybrid-aquatic:lionfish",
-    "hybrid-aquatic:rockfish",
-    "hybrid-aquatic:blue_spotted_stingray",
+    "hybrid-aquatic:koi",
+    "hybrid-aquatic:goldfish",
     "hybrid-aquatic:dragonfish",
-    "hybrid-aquatic:needlefish",
     "hybrid-aquatic:piranha",
     "hybrid-aquatic:anglerfish",
     "hybrid-aquatic:barreleye",
@@ -16,14 +14,17 @@
     "hybrid-aquatic:tiger_barb",
     "hybrid-aquatic:oscar",
     "hybrid-aquatic:flashlight_fish",
-    "hybrid-aquatic:ratfish",
     "hybrid-aquatic:surgeonfish_orangeshoulder",
     "hybrid-aquatic:surgeonfish_sohal",
+    "hybrid-aquatic:surgeonfish_lined",
+    "hybrid-aquatic:powder_blue_tang",
+    "hybrid-aquatic:yellow_tang",
+    "hybrid-aquatic:toadfish",
+    "hybrid-aquatic:stonefish",
     "hybrid-aquatic:discus",
     "hybrid-aquatic:gourami",
     "hybrid-aquatic:betta",
     "hybrid-aquatic:danio",
-    "hybrid-aquatic:neon_tetra",
-    "hybrid-aquatic:dragonfish"
+    "hybrid-aquatic:neon_tetra"
   ]
 }

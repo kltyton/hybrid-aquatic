@@ -3,11 +3,11 @@
   "category": "misc",
   "ingredients": [
     {
-      "tag": "hybrid-aquatic:large_fish"
+      "tag": "hybrid-aquatic:medium_fish"
     }
   ],
   "result": {
     "count": 2,
-    "item": "hybrid-aquatic:raw_fish_steak"
+    "item": "hybrid-aquatic:raw_fish_meat"
   }
 }
