@@ -317,63 +317,63 @@ object HybridAquaticEntityTypes {
     val COCONUT_CRAB = registerCrustacean(
         "coconut_crab",
         ::CoconutCrabEntity,
-        EntityDimensions.fixed(0.5f, 0.5f),
+        EntityDimensions.fixed(0.5f, 0.3f),
         CoconutCrabEntity.createMobAttributes()
     )
 
     val DUNGENESS_CRAB = registerCrustacean(
         "dungeness_crab",
         ::DungenessCrabEntity,
-        EntityDimensions.fixed(0.5f, 0.5f),
+        EntityDimensions.fixed(0.5f, 0.25f),
         DungenessCrabEntity.createMobAttributes()
     )
 
     val CRAYFISH = registerCrustacean(
         "crayfish",
         ::CrayfishEntity,
-        EntityDimensions.fixed(0.5f, 0.5f),
+        EntityDimensions.fixed(0.5f, 0.25f),
         CrayfishEntity.createMobAttributes()
     )
 
     val FIDDLER_CRAB = registerCrustacean(
         "fiddler_crab",
         ::FiddlerCrabEntity,
-        EntityDimensions.fixed(0.5f, 0.5f),
+        EntityDimensions.fixed(0.5f, 0.3f),
         FiddlerCrabEntity.createMobAttributes()
     )
 
     val FLOWER_CRAB = registerCrustacean(
         "flower_crab",
         ::FlowerCrabEntity,
-        EntityDimensions.fixed(0.5f, 0.5f),
+        EntityDimensions.fixed(0.5f, 0.25f),
         FlowerCrabEntity.createMobAttributes()
     )
 
     val GHOST_CRAB = registerCrustacean(
         "ghost_crab",
         ::GhostCrabEntity,
-        EntityDimensions.fixed(0.5f, 0.5f),
+        EntityDimensions.fixed(0.5f, 0.3f),
         GhostCrabEntity.createMobAttributes()
     )
 
     val HERMIT_CRAB = registerCrustacean(
         "hermit_crab",
         ::HermitCrabEntity,
-        EntityDimensions.fixed(0.5f, 0.5f),
+        EntityDimensions.fixed(0.5f, 0.3f),
         HermitCrabEntity.createMobAttributes()
     )
 
     val HORSESHOE_CRAB = registerCrustacean(
         "horseshoe_crab",
         ::HorseshoeCrabEntity,
-        EntityDimensions.fixed(0.5f, 0.5f),
+        EntityDimensions.fixed(0.5f, 0.25f),
         HorseshoeCrabEntity.createMobAttributes()
     )
 
     val LIGHTFOOT_CRAB = registerCrustacean(
         "lightfoot_crab",
         ::LightfootCrabEntity,
-        EntityDimensions.fixed(0.5f, 0.5f),
+        EntityDimensions.fixed(0.5f, 0.25f),
         LightfootCrabEntity.createMobAttributes()
     )
 
@@ -387,14 +387,14 @@ object HybridAquaticEntityTypes {
     val SHRIMP = registerCrustacean(
         "shrimp",
         ::ShrimpEntity,
-        EntityDimensions.fixed(0.5f, 0.3f),
+        EntityDimensions.fixed(0.5f, 0.25f),
         ShrimpEntity.createMobAttributes()
     )
 
     val VAMPIRE_CRAB = registerCrustacean(
         "vampire_crab",
         ::VampireCrabEntity,
-        EntityDimensions.fixed(0.5f, 0.5f),
+        EntityDimensions.fixed(0.5f, 0.25f),
         VampireCrabEntity.createMobAttributes()
     )
 
@@ -408,14 +408,14 @@ object HybridAquaticEntityTypes {
     val YETI_CRAB = registerCrustaceanUnderground(
         "yeti_crab",
         ::YetiCrabEntity,
-        EntityDimensions.fixed(0.5f, 0.5f),
+        EntityDimensions.fixed(0.5f, 0.25f),
         YetiCrabEntity.createMobAttributes()
     )
 
     val GIANT_ISOPOD = registerCrustaceanUnderground(
         "giant_isopod",
         ::GiantIsopodEntity,
-        EntityDimensions.fixed(0.5f, 0.5f),
+        EntityDimensions.fixed(0.5f, 0.3f),
         GiantIsopodEntity.createMobAttributes()
     )
 
