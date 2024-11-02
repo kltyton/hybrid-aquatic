@@ -10,7 +10,10 @@ import net.minecraft.block.Blocks
 import net.minecraft.entity.*
 import net.minecraft.entity.ai.control.AquaticMoveControl
 import net.minecraft.entity.ai.control.YawAdjustingLookControl
-import net.minecraft.entity.ai.goal.*
+import net.minecraft.entity.ai.goal.ActiveTargetGoal
+import net.minecraft.entity.ai.goal.EscapeDangerGoal
+import net.minecraft.entity.ai.goal.MeleeAttackGoal
+import net.minecraft.entity.ai.goal.SwimAroundGoal
 import net.minecraft.entity.ai.pathing.EntityNavigation
 import net.minecraft.entity.ai.pathing.SwimNavigation
 import net.minecraft.entity.damage.DamageSource
@@ -18,7 +21,6 @@ import net.minecraft.entity.data.DataTracker
 import net.minecraft.entity.data.TrackedData
 import net.minecraft.entity.data.TrackedDataHandlerRegistry
 import net.minecraft.entity.mob.WaterCreatureEntity
-import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.particle.ParticleTypes
 import net.minecraft.registry.tag.FluidTags
@@ -57,12 +59,8 @@ open class HybridAquaticFishEntity(
 
     override fun initGoals() {
         super.initGoals()
-        goalSelector.add(1, SwimToRandomPlaceGoal(this, 1.0, 40))
-        goalSelector.add(1, EscapeDangerGoal(this, 1.25))
-        goalSelector.add(2, MoveIntoWaterGoal(this))
-        goalSelector.add(2, SwimAroundGoal(this, 0.50, 6))
-        goalSelector.add(4, LookAroundGoal(this))
-        goalSelector.add(5, LookAtEntityGoal(this, PlayerEntity::class.java, 6.0f))
+        goalSelector.add(0, EscapeDangerGoal(this, 1.25))
+        goalSelector.add(4, SwimAroundGoal(this, 1.0, 10))
         goalSelector.add(1, AttackGoal(this))
         targetSelector.add(1, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) { hunger <= 1200 && it.type.isIn(prey) })
     }
