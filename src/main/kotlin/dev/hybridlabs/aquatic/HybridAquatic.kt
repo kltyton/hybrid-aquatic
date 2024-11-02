@@ -1,12 +1,10 @@
 package dev.hybridlabs.aquatic
 
 //import dev.hybridlabs.aquatic.world.biome.HybridAquaticBiomes
-import com.mojang.brigadier.CommandDispatcher
 import dev.hybridlabs.aquatic.block.HybridAquaticBlocks
 import dev.hybridlabs.aquatic.block.PlushieBlock
 import dev.hybridlabs.aquatic.block.SeaMessage
 import dev.hybridlabs.aquatic.block.entity.HybridAquaticBlockEntityTypes
-import dev.hybridlabs.aquatic.command.RandomFishCommand
 import dev.hybridlabs.aquatic.effect.HybridAquaticStatusEffects
 import dev.hybridlabs.aquatic.enchantment.HybridAquaticEnchantments
 import dev.hybridlabs.aquatic.entity.HybridAquaticEntityTypes
@@ -25,16 +23,12 @@ import dev.hybridlabs.aquatic.world.gen.feature.FeatureBiomeModifications
 import dev.hybridlabs.aquatic.world.gen.feature.HybridAquaticFeatures
 import dev.hybridlabs.aquatic.world.gen.feature.HybridAquaticPlacedFeatures
 import net.fabricmc.api.ModInitializer
-import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback
 import net.fabricmc.fabric.api.event.registry.DynamicRegistries
 import net.fabricmc.fabric.api.`object`.builder.v1.trade.TradeOfferHelper
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry
-import net.minecraft.command.CommandRegistryAccess
 import net.minecraft.item.BlockItem
 import net.minecraft.registry.Registries
-import net.minecraft.server.command.CommandManager.RegistrationEnvironment
-import net.minecraft.server.command.ServerCommandSource
 import net.minecraft.village.TradeOffers.SellItemFactory
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -91,8 +85,6 @@ object HybridAquatic : ModInitializer {
         registerDynamicRegistries()
         registerWanderingTraderTrades()
         registerCustomTrades()
-
-        CommandRegistrationCallback.EVENT.register(::registerCommands)
     }
 
     private fun registerDynamicRegistries() {
@@ -108,9 +100,5 @@ object HybridAquatic : ModInitializer {
                     list.add(SellItemFactory(block, 8, 1, 2, 2))
                 }
             }
-    }
-
-    private fun registerCommands(dispatcher: CommandDispatcher<ServerCommandSource>, access: CommandRegistryAccess, environment: RegistrationEnvironment) {
-        RandomFishCommand.register(dispatcher)
     }
 }

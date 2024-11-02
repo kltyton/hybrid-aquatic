@@ -1,18 +1,35 @@
 package dev.hybridlabs.aquatic
 
+import com.mojang.brigadier.CommandDispatcher
 import dev.hybridlabs.aquatic.block.HybridAquaticBlocks
 import dev.hybridlabs.aquatic.block.entity.HybridAquaticBlockEntityTypes
 import dev.hybridlabs.aquatic.client.GeoRenderProviderStorage
+import dev.hybridlabs.aquatic.client.command.RandomFishCommand
 import dev.hybridlabs.aquatic.client.item.tooltip.FishingNetTooltip
 import dev.hybridlabs.aquatic.client.model.HybridAquaticEntityModelLayers
 import dev.hybridlabs.aquatic.client.network.HybridAquaticClientNetworking
-import dev.hybridlabs.aquatic.client.render.armor.*
-import dev.hybridlabs.aquatic.client.render.block.entity.*
+import dev.hybridlabs.aquatic.client.render.armor.DivingArmorRenderer
+import dev.hybridlabs.aquatic.client.render.armor.EelArmorRenderer
+import dev.hybridlabs.aquatic.client.render.armor.ManglerfishArmorRenderer
+import dev.hybridlabs.aquatic.client.render.armor.MoonJellyfishArmorRenderer
+import dev.hybridlabs.aquatic.client.render.armor.SeashellArmorRenderer
+import dev.hybridlabs.aquatic.client.render.armor.TurtleArmorRenderer
+import dev.hybridlabs.aquatic.client.render.block.entity.AnemoneBlockEntityRenderer
+import dev.hybridlabs.aquatic.client.render.block.entity.BuoyBlockEntityRenderer
+import dev.hybridlabs.aquatic.client.render.block.entity.GiantClamBlockEntityRenderer
+import dev.hybridlabs.aquatic.client.render.block.entity.MessageInABottleBlockEntityRenderer
+import dev.hybridlabs.aquatic.client.render.block.entity.TubeSpongeBlockEntityRenderer
 import dev.hybridlabs.aquatic.client.render.entity.HybridAquaticEntityRenderers
-import dev.hybridlabs.aquatic.client.render.item.*
+import dev.hybridlabs.aquatic.client.render.item.AnemoneBlockItemRenderer
+import dev.hybridlabs.aquatic.client.render.item.BuoyBlockItemRenderer
+import dev.hybridlabs.aquatic.client.render.item.GiantClamBlockItemRenderer
+import dev.hybridlabs.aquatic.client.render.item.MessageInABottleBlockItemRenderer
+import dev.hybridlabs.aquatic.client.render.item.TubeSpongeBlockItemRenderer
 import dev.hybridlabs.aquatic.item.HybridAquaticItems
 import net.fabricmc.api.ClientModInitializer
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap
+import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback
+import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry
 import net.minecraft.client.MinecraftClient
@@ -20,6 +37,7 @@ import net.minecraft.client.render.RenderLayer
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory
 import net.minecraft.client.render.entity.model.BipedEntityModel
+import net.minecraft.command.CommandRegistryAccess
 import net.minecraft.entity.EquipmentSlot
 import net.minecraft.entity.LivingEntity
 import net.minecraft.item.ItemStack
@@ -38,6 +56,8 @@ object HybridAquaticClient : ClientModInitializer {
         registerWeatherRenderers()
         registerTooltips()
         registerGeoRenderers()
+
+        ClientCommandRegistrationCallback.EVENT.register(::registerCommands)
     }
 
     private fun registerGeoRenderers() {
@@ -133,5 +153,9 @@ object HybridAquaticClient : ClientModInitializer {
             client.entityModelLoader,
             client.textRenderer
         )
+    }
+
+    private fun registerCommands(dispatcher: CommandDispatcher<FabricClientCommandSource>, access: CommandRegistryAccess) {
+        RandomFishCommand.register(dispatcher)
     }
 }
