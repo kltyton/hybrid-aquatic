@@ -377,6 +377,13 @@ object HybridAquaticEntityTypes {
         LightfootCrabEntity.createMobAttributes()
     )
 
+    val DECORATOR_CRAB = registerCrustacean(
+        "decorator_crab",
+        ::DecoratorCrabEntity,
+        EntityDimensions.fixed(0.5f, 0.25f),
+        DecoratorCrabEntity.createMobAttributes()
+    )
+
     val LOBSTER = registerCrustacean(
         "lobster",
         ::LobsterEntity,
