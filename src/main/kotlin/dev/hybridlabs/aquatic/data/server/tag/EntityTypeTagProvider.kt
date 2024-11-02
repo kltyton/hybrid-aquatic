@@ -33,6 +33,7 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
                 HybridAquaticEntityTypes.GOURAMI,
                 HybridAquaticEntityTypes.CUTTLEFISH,
                 HybridAquaticEntityTypes.DUNGENESS_CRAB,
+                HybridAquaticEntityTypes.DECORATOR_CRAB,
                 HybridAquaticEntityTypes.FIDDLER_CRAB,
                 HybridAquaticEntityTypes.HERMIT_CRAB,
                 HybridAquaticEntityTypes.GHOST_CRAB,
@@ -479,6 +480,7 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
                 HybridAquaticEntityTypes.VAMPIRE_CRAB,
                 HybridAquaticEntityTypes.GIANT_ISOPOD,
                 HybridAquaticEntityTypes.YETI_CRAB,
+                HybridAquaticEntityTypes.DECORATOR_CRAB,
             )
         getOrCreateTagBuilder(HybridAquaticEntityTags.SHRIMP)
             .add(

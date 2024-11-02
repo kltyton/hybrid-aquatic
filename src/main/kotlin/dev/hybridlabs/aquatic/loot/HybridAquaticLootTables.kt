@@ -39,6 +39,13 @@ object HybridAquaticLootTables {
     val CLAWLESS_LOBSTER = Identifier(HybridAquatic.MOD_ID, "gameplay/clawless_lobster")
     val HERMIT_CRAB_SKULL = Identifier(HybridAquatic.MOD_ID, "gameplay/hermit_crab_skull")
     val HERMIT_CRAB_SHELL = Identifier(HybridAquatic.MOD_ID, "gameplay/hermit_crab_shell")
+    val DECORATOR_FIRE = Identifier(HybridAquatic.MOD_ID, "gameplay/decorator_fire")
+    val DECORATOR_BRAIN = Identifier(HybridAquatic.MOD_ID, "gameplay/decorator_brain")
+    val DECORATOR_TUBE = Identifier(HybridAquatic.MOD_ID, "gameplay/decorator_tube")
+    val DECORATOR_BUBBLE = Identifier(HybridAquatic.MOD_ID, "gameplay/decorator_bubble")
+    val DECORATOR_HORN = Identifier(HybridAquatic.MOD_ID, "gameplay/decorator_horn")
+    val DECORATOR_THORN = Identifier(HybridAquatic.MOD_ID, "gameplay/decorator_thorn")
+    val DECORATOR_LOPHELIA = Identifier(HybridAquatic.MOD_ID, "gameplay/decorator_lophelia")
 
     val BLUE_SPOTTED_STINGRAY = Identifier(HybridAquatic.MOD_ID, "gameplay/blue_spotted_stingray")
     val SPOTTED_EAGLE_RAY = Identifier(HybridAquatic.MOD_ID, "gameplay/spotted_eagle_ray")

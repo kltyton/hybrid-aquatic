@@ -5,6 +5,7 @@ import net.minecraft.entity.EntityType
 import net.minecraft.entity.attribute.DefaultAttributeContainer
 import net.minecraft.entity.attribute.EntityAttributes
 import net.minecraft.entity.mob.WaterCreatureEntity
+import net.minecraft.util.Identifier
 import net.minecraft.world.World
 
 class DecoratorCrabEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>, world: World) :
@@ -23,6 +24,19 @@ class DecoratorCrabEntity(entityType: EntityType<out HybridAquaticCrustaceanEnti
             ignore = listOf(CrustaceanVariant.Ignore.MODEL, CrustaceanVariant.Ignore.ANIMATION)),
         "lophelia" to CrustaceanVariant.biomeVariant("lophelia", HybridAquaticBiomeTags.REEF,
             ignore = listOf(CrustaceanVariant.Ignore.MODEL, CrustaceanVariant.Ignore.ANIMATION)),)) {
+
+    public override fun getLootTableId(): Identifier {
+        return when (this.variant?.variantName) {
+            "fire" -> Identifier("hybrid-aquatic", "gameplay/decorator_fire")
+            "tube" -> Identifier("hybrid-aquatic", "gameplay/decorator_tube")
+            "brain" -> Identifier("hybrid-aquatic", "gameplay/decorator_brain")
+            "bubble" -> Identifier("hybrid-aquatic", "gameplay/decorator_bubble")
+            "horn" -> Identifier("hybrid-aquatic", "gameplay/decorator_horn")
+            "thorn" -> Identifier("hybrid-aquatic", "gameplay/decorator_thorn")
+            "lophelia" -> Identifier("hybrid-aquatic", "gameplay/decorator_lophelia")
+            else -> super.getLootTableId()
+        }
+    }
 
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {

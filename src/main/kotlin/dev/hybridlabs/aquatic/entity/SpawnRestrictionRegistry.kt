@@ -131,6 +131,7 @@ object SpawnRestrictionRegistry {
             HybridAquaticEntityTypes.LIGHTFOOT_CRAB,
             HybridAquaticEntityTypes.HORSESHOE_CRAB,
             HybridAquaticEntityTypes.COCONUT_CRAB,
+            HybridAquaticEntityTypes.DECORATOR_CRAB,
             HybridAquaticEntityTypes.SHRIMP,
             HybridAquaticEntityTypes.CRAYFISH,
             HybridAquaticEntityTypes.LOBSTER,

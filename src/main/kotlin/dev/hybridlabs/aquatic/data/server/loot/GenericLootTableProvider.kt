@@ -830,6 +830,69 @@ class GenericLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
         )
 
         exporter.accept(
+            HybridAquaticLootTables.DECORATOR_FIRE,
+            LootTable.builder()
+                .pool(
+                    LootPool.builder()
+                        .with(ItemEntry.builder(Items.FIRE_CORAL))
+                )
+        )
+
+        exporter.accept(
+            HybridAquaticLootTables.DECORATOR_BRAIN,
+            LootTable.builder()
+                .pool(
+                    LootPool.builder()
+                        .with(ItemEntry.builder(Items.BRAIN_CORAL))
+                )
+        )
+
+        exporter.accept(
+            HybridAquaticLootTables.DECORATOR_TUBE,
+            LootTable.builder()
+                .pool(
+                    LootPool.builder()
+                        .with(ItemEntry.builder(Items.TUBE_CORAL))
+                )
+        )
+
+        exporter.accept(
+            HybridAquaticLootTables.DECORATOR_BUBBLE,
+            LootTable.builder()
+                .pool(
+                    LootPool.builder()
+                        .with(ItemEntry.builder(Items.BUBBLE_CORAL))
+                )
+        )
+
+        exporter.accept(
+            HybridAquaticLootTables.DECORATOR_HORN,
+            LootTable.builder()
+                .pool(
+                    LootPool.builder()
+                        .with(ItemEntry.builder(Items.HORN_CORAL))
+                )
+        )
+
+        exporter.accept(
+            HybridAquaticLootTables.DECORATOR_THORN,
+            LootTable.builder()
+                .pool(
+                    LootPool.builder()
+                        .with(ItemEntry.builder(HybridAquaticItems.THORN_CORAL))
+                )
+        )
+
+        exporter.accept(
+            HybridAquaticLootTables.DECORATOR_LOPHELIA,
+            LootTable.builder()
+                .pool(
+                    LootPool.builder()
+                        .with(ItemEntry.builder(HybridAquaticItems.LOPHELIA_CORAL))
+                )
+        )
+
+        exporter.accept(
             HybridAquaticLootTables.CRAB_DIGGING_TREASURE_ID,
             LootTable.builder()
                 .randomSequenceId(HybridAquaticLootTables.CRAB_DIGGING_TREASURE_ID)
