@@ -29,7 +29,7 @@
 				}
 			}
 		},
-		"swim": {
+		"move.swim": {
 			"loop": true,
 			"animation_length": 1,
 			"bones": {

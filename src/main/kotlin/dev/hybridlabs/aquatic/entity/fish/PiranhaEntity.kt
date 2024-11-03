@@ -42,16 +42,6 @@ class PiranhaEntity(entityType: EntityType<out PiranhaEntity>, world: World) :
         targetSelector.add(1, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) { it.hasStatusEffect(HybridAquaticStatusEffects.BLEEDING) && it !is PiranhaEntity })
     }
 
-    override fun <E : GeoAnimatable> predicate(event: AnimationState<E>): PlayState {
-        if (isAttacking) {
-            event.controller.setAnimation(ATTACK_ANIMATION)
-
-        } else if (isSubmergedInWater) {
-            event.controller.setAnimation(SWIM_ANIMATION)
-        }
-        return PlayState.CONTINUE
-    }
-
     override fun tryAttack(target: Entity?): Boolean {
         if (super.tryAttack(target)) {
             if (target is LivingEntity) {

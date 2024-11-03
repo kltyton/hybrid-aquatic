@@ -37,6 +37,7 @@ import net.minecraft.world.World
 import net.minecraft.world.WorldAccess
 import net.minecraft.world.biome.Biome
 import software.bernie.geckolib.animatable.GeoEntity
+import software.bernie.geckolib.constant.DefaultAnimations
 import software.bernie.geckolib.core.animatable.GeoAnimatable
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache
 import software.bernie.geckolib.core.animation.*
@@ -229,25 +230,6 @@ open class HybridAquaticFishEntity(
         fromFishingNet = nbt.getBoolean("FromFishingNet")
     }
 
-    open fun <E : GeoAnimatable> predicate(event: AnimationState<E>): PlayState {
-        if (isSubmergedInWater && event.isMoving) {
-            event.controller.setAnimation(SWIM_ANIMATION)
-            return PlayState.CONTINUE
-
-        }
-
-        if (!isSubmergedInWater && this.moistness < getMaxMoistness()) {
-            event.controller.setAnimation(FLOP_ANIMATION)
-            return PlayState.CONTINUE
-        }
-
-        if (isSubmergedInWater && !event.isMoving) {
-            event.controller.setAnimation(IDLE_ANIMATION)
-            return PlayState.CONTINUE
-        }
-        return PlayState.CONTINUE
-    }
-
     override fun getActiveEyeHeight(pose: EntityPose, dimensions: EntityDimensions): Float {
         return dimensions.height * 0.65f
     }
@@ -356,10 +338,15 @@ open class HybridAquaticFishEntity(
         controllerRegistrar.add(
             AnimationController(
                 this,
-                "controller",
-                5,
-                ::predicate
-            )
+                "Swim/Idle",
+                20
+            ) { state: AnimationState<HybridAquaticFishEntity> ->
+                if (state.isMoving) {
+                    state.setAndContinue(DefaultAnimations.SWIM)
+                } else {
+                    state.setAndContinue(DefaultAnimations.IDLE)
+                }
+            }.setOverrideEasingType(EasingType.EASE_IN_OUT_SINE)
         )
     }
 

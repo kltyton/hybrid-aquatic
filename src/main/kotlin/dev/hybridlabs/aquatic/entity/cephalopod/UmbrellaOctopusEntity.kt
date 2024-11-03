@@ -9,7 +9,13 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
 
 class UmbrellaOctopusEntity(entityType: EntityType<out UmbrellaOctopusEntity>, world: World) :
-    HybridAquaticCephalopodEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.OCTOPUS_PREDATOR, false) {
+    HybridAquaticCephalopodEntity(
+        entityType,
+        world,
+        emptyMap(),
+        HybridAquaticEntityTags.NONE,
+        HybridAquaticEntityTags.OCTOPUS_PREDATOR
+    ) {
 
     override fun initGoals() {
         super.initGoals()

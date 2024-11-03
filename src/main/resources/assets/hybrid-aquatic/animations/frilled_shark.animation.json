@@ -1,7 +1,7 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
-		"swim": {
+		"move.swim": {
 			"loop": true,
 			"animation_length": 4,
 			"bones": {
@@ -57,7 +57,7 @@
 				}
 			}
 		},
-		"rush": {
+		"move.run": {
 			"loop": true,
 			"animation_length": 1,
 			"bones": {
@@ -113,73 +113,11 @@
 				}
 			}
 		},
-		"flop": {
-			"loop": true,
-			"animation_length": 2,
+		"attack.bite": {
+			"animation_length": 0.5,
 			"bones": {
-				"body": {
-					"position": {
-						"vector": [0, -1, 0]
-					}
-				},
-				"body_2": {
-					"rotation": {
-						"vector": [-2.5, 0, 0]
-					}
-				},
-				"body3": {
-					"rotation": {
-						"vector": [-5, 0, 0]
-					}
-				},
-				"tail": {
-					"rotation": {
-						"vector": [-7.5, 0, 0]
-					}
-				},
-				"head": {
-					"rotation": {
-						"vector": [5, 0, 0]
-					}
-				},
 				"mouth": {
-					"rotation": {
-						"0.0": {
-							"vector": [0, 0, 0]
-						},
-						"1.0": {
-							"vector": [5, 0, 0]
-						},
-						"2.0": {
-							"vector": [0, 0, 0]
-						}
-					}
-				},
-				"right_back_fin": {
-					"rotation": {
-						"vector": [0, 0, -7.5]
-					}
-				},
-				"left_back_fin": {
-					"rotation": {
-						"vector": [0, 0, 7.5]
-					}
-				},
-				"right_fin": {
-					"rotation": {
-						"vector": [0, 0, -10]
-					},
-					"position": {
-						"vector": [0, 1, 0]
-					}
-				},
-				"left_fin": {
-					"rotation": {
-						"vector": [0, 0, 10]
-					},
-					"position": {
-						"vector": [0, 1, 0]
-					}
+					"rotation": ["30+Math.cos(query.anim_time * 720)*-30", 0, 0]
 				}
 			}
 		}

@@ -1,7 +1,7 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
-		"idle_swim": {
+		"misc.idle": {
 			"loop": true,
 			"animation_length": 4,
 			"bones": {
@@ -62,7 +62,7 @@
 				}
 			}
 		},
-		"swim": {
+		"move.swim": {
 			"loop": true,
 			"animation_length": 4,
 			"bones": {

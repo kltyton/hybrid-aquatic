@@ -36,7 +36,7 @@
 				}
 			}
 		},
-		"swim": {
+		"move.swim": {
 			"loop": true,
 			"animation_length": 2,
 			"bones": {
@@ -63,7 +63,7 @@
 				}
 			}
 		},
-		"idle": {
+		"misc.idle": {
 			"loop": true,
 			"animation_length": 4,
 			"bones": {

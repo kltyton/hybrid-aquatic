@@ -2,7 +2,6 @@ package dev.hybridlabs.aquatic.entity.shark
 
 import dev.hybridlabs.aquatic.effect.HybridAquaticStatusEffects
 import dev.hybridlabs.aquatic.entity.fish.HybridAquaticFishEntity
-import dev.hybridlabs.aquatic.tag.HybridAquaticEntityTags
 import net.minecraft.block.Blocks
 import net.minecraft.entity.*
 import net.minecraft.entity.ai.control.AquaticMoveControl
@@ -19,7 +18,6 @@ import net.minecraft.entity.mob.Angerable
 import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.nbt.NbtCompound
-import net.minecraft.particle.ParticleTypes
 import net.minecraft.registry.tag.FluidTags
 import net.minecraft.registry.tag.TagKey
 import net.minecraft.sound.SoundEvent
@@ -34,10 +32,12 @@ import net.minecraft.world.ServerWorldAccess
 import net.minecraft.world.World
 import net.minecraft.world.WorldAccess
 import software.bernie.geckolib.animatable.GeoEntity
-import software.bernie.geckolib.core.animatable.GeoAnimatable
+import software.bernie.geckolib.constant.DefaultAnimations
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache
-import software.bernie.geckolib.core.animation.*
+import software.bernie.geckolib.core.animation.AnimatableManager
+import software.bernie.geckolib.core.animation.AnimationController
 import software.bernie.geckolib.core.animation.AnimationState
+import software.bernie.geckolib.core.animation.EasingType
 import software.bernie.geckolib.core.`object`.PlayState
 import software.bernie.geckolib.util.GeckoLibUtil
 import java.util.*
@@ -63,11 +63,6 @@ open class HybridAquaticSharkEntity(
         get() = dataTracker.get(HUNGER)
         set(hunger) {
             dataTracker.set(HUNGER, hunger)
-        }
-    private var attemptAttack: Boolean
-        get() = dataTracker.get(ATTEMPT_ATTACK)
-        set(attemptAttack) {
-            dataTracker.set(ATTEMPT_ATTACK, attemptAttack)
         }
     var size: Int
         get() = dataTracker.get(SHARK_SIZE)
@@ -95,14 +90,7 @@ open class HybridAquaticSharkEntity(
         val HUNGER: TrackedData<Int> =
             DataTracker.registerData(HybridAquaticSharkEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
 
-        val ATTEMPT_ATTACK: TrackedData<Boolean> =
-            DataTracker.registerData(HybridAquaticSharkEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
-
         val ANGER_TIME_RANGE: UniformIntProvider = TimeHelper.betweenSeconds(10, 30)
-
-        val FLOP_ANIMATION: RawAnimation  = RawAnimation.begin().then("flop", Animation.LoopType.LOOP)
-        val SWIM_ANIMATION: RawAnimation  = RawAnimation.begin().then("swim", Animation.LoopType.LOOP)
-        val RUSH_ANIMATION: RawAnimation  = RawAnimation.begin().then("rush", Animation.LoopType.LOOP)
 
 
         fun canSpawn(
@@ -137,7 +125,7 @@ open class HybridAquaticSharkEntity(
         goalSelector.add(4, SwimAroundGoal(this, 1.0, 2))
         goalSelector.add(4, LookAroundGoal(this))
         goalSelector.add(5, LookAtEntityGoal(this, PlayerEntity::class.java, 6.0f))
-        goalSelector.add(1, AttackGoal(this))
+        goalSelector.add(1, MeleeAttackGoal(this, 1.1, false))
         targetSelector.add(2, ActiveTargetGoal(this, PlayerEntity::class.java, 10, true, true) { entity: LivingEntity -> shouldAngerAt(entity) || shouldProximityAttack(entity as PlayerEntity) && !isPassive})
         targetSelector.add(3, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) { hunger <= 100 && it.type.isIn(prey) && !isPassive})
         targetSelector.add(1, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) { it.hasStatusEffect(HybridAquaticStatusEffects.BLEEDING) && it !is HybridAquaticSharkEntity && !isPassive})
@@ -147,7 +135,6 @@ open class HybridAquaticSharkEntity(
         super.initDataTracker()
         dataTracker.startTracking(MOISTNESS, getMaxMoistness())
         dataTracker.startTracking(HUNGER, MAX_HUNGER)
-        dataTracker.startTracking(ATTEMPT_ATTACK, false)
         dataTracker.startTracking(SHARK_SIZE, 0)
     }
 
@@ -169,7 +156,8 @@ open class HybridAquaticSharkEntity(
         if (isAiDisabled) {
             return
         }
-        if (this.isWet) {
+
+    if (this.isWet) {
             moistness = getMaxMoistness()
         } else {
             moistness -= 1
@@ -179,31 +167,12 @@ open class HybridAquaticSharkEntity(
             }
         }
 
+        isSprinting = isAttacking
+
         if (isAttacking) {
             attributes.getCustomInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED)?.baseValue = 3.0
         } else {
             attributes.getCustomInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED)?.baseValue = 1.0
-        }
-
-        if (world.isClient && isTouchingWater && isAttacking) {
-            val rotationVec = getRotationVec(0.0f)
-            val offsetY = 0.0f - random.nextFloat()
-
-            for (i in 0..1) {
-                val particleX = x - rotationVec.x * offsetY
-                val particleY = y - rotationVec.y
-                val particleZ = z - rotationVec.z * offsetY
-
-                world.addParticle(
-                    ParticleTypes.DOLPHIN,
-                    particleX,
-                    particleY,
-                    particleZ,
-                    0.0,
-                    0.0,
-                    0.0
-                )
-            }
         }
         if (hunger > 0) hunger -= 1
     }
@@ -238,18 +207,6 @@ open class HybridAquaticSharkEntity(
         fromFishingNet = nbt.getBoolean("FromFishingNet")
     }
 
-    open fun <E : GeoAnimatable> predicate(event: AnimationState<E>): PlayState {
-        if (!this.isWet) {
-            event.controller.setAnimation(FLOP_ANIMATION)
-
-        } else if (isAttacking) {
-            event.controller.setAnimation(RUSH_ANIMATION)
-
-        } else if (isSubmergedInWater) {
-                event.controller.setAnimation(SWIM_ANIMATION)
-        }
-        return PlayState.CONTINUE
-    }
     protected open fun getMinSize() : Int {
         return 0
     }
@@ -300,10 +257,15 @@ open class HybridAquaticSharkEntity(
         controllerRegistrar.add(
             AnimationController(
                 this,
-                "controller",
-                0,
-                ::predicate
-            )
+                "Swim/Run",
+                20
+            ) { state: AnimationState<HybridAquaticSharkEntity> ->
+                if (state.isMoving) {
+                    state.setAndContinue(if (this.isSprinting) DefaultAnimations.RUN else DefaultAnimations.SWIM)
+                } else {
+                    state.setAndContinue(DefaultAnimations.SWIM)
+                }
+            }.setOverrideEasingType(EasingType.EASE_IN_OUT_SINE)
         )
     }
 
@@ -340,63 +302,10 @@ open class HybridAquaticSharkEntity(
     }
     //#endregion
 
-    private fun getHungerValue(entityType: EntityType<*>): Int {
-        if (entityType.isIn(HybridAquaticEntityTags.CRAB))
-            return 600
-        if (entityType.isIn(HybridAquaticEntityTags.SMALL_PREY))
-            return 600
-        else if (entityType.isIn(HybridAquaticEntityTags.MEDIUM_PREY))
-            return 900
-        else if (entityType.isIn(HybridAquaticEntityTags.LARGE_PREY))
-            return 1200
-
-        return 0
-    }
-
     override fun dropLoot(source: DamageSource, causedByPlayer: Boolean) {
         val attacker = source.attacker
         if (attacker !is HybridAquaticFishEntity && attacker !is HybridAquaticSharkEntity) {
             super.dropLoot(source, causedByPlayer)
-        }
-    }
-
-    open fun eatFish(entityType: EntityType<*>) {
-        hunger += getHungerValue(entityType)
-    }
-
-    internal class AttackGoal(private val shark: HybridAquaticSharkEntity) : MeleeAttackGoal(shark, 1.5, true) {
-        override fun canStart(): Boolean {
-            return !shark.fromFishingNet && super.canStart()
-        }
-
-        override fun attack(target: LivingEntity, squaredDistance: Double) {
-            val d = getSquaredMaxAttackDistance(target)
-            if (squaredDistance <= d && this.isCooledDown) {
-                resetCooldown()
-                mob.tryAttack(target)
-                shark.isSprinting = true
-                shark.attemptAttack = true
-
-                if (target.health <= 0) {
-                    shark.eatFish(target.type)
-                }
-            }
-        }
-
-        override fun getSquaredMaxAttackDistance(entity: LivingEntity): Double {
-            return (7.0f + entity.width).toDouble()
-        }
-
-        override fun start() {
-            super.start()
-            shark.isSprinting = true
-            shark.attemptAttack = false
-        }
-
-        override fun stop() {
-            super.stop()
-            shark.isSprinting = false
-            shark.attemptAttack = false
         }
     }
 }

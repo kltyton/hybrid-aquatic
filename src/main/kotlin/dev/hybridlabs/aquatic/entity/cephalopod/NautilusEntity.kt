@@ -11,7 +11,13 @@ import net.minecraft.sound.SoundEvents
 import net.minecraft.world.World
 
 class NautilusEntity(entityType: EntityType<out NautilusEntity>, world: World) :
-    HybridAquaticCephalopodEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NAUTILUS_PREDATOR, false) {
+    HybridAquaticCephalopodEntity(
+        entityType,
+        world,
+        emptyMap(),
+        HybridAquaticEntityTags.NONE,
+        HybridAquaticEntityTags.NAUTILUS_PREDATOR
+    ) {
 
     override fun initGoals() {
         super.initGoals()

@@ -9,7 +9,13 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
 
 class VampireSquidEntity(entityType: EntityType<out VampireSquidEntity>, world: World) :
-    HybridAquaticCephalopodEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.FIREFLY_SQUID_PREDATOR, false) {
+    HybridAquaticCephalopodEntity(
+        entityType,
+        world,
+        emptyMap(),
+        HybridAquaticEntityTags.NONE,
+        HybridAquaticEntityTags.FIREFLY_SQUID_PREDATOR
+    ) {
 
     override fun initGoals() {
         super.initGoals()

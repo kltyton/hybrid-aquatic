@@ -8,7 +8,13 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
 
 class FireflySquidEntity(entityType: EntityType<out FireflySquidEntity>, world: World) :
-    HybridAquaticCephalopodEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.FIREFLY_SQUID_PREY, HybridAquaticEntityTags.FIREFLY_SQUID_PREDATOR, true) {
+    HybridAquaticCephalopodEntity(
+        entityType,
+        world,
+        emptyMap(),
+        HybridAquaticEntityTags.FIREFLY_SQUID_PREY,
+        HybridAquaticEntityTags.FIREFLY_SQUID_PREDATOR
+    ) {
 
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
