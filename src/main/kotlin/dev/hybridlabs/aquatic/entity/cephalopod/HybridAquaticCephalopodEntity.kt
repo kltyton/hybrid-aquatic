@@ -19,7 +19,6 @@ import net.minecraft.entity.data.TrackedDataHandlerRegistry
 import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.nbt.NbtCompound
-import net.minecraft.particle.ParticleTypes
 import net.minecraft.registry.tag.FluidTags
 import net.minecraft.registry.tag.TagKey
 import net.minecraft.sound.SoundEvent
@@ -102,27 +101,11 @@ open class HybridAquaticCephalopodEntity(
                 damage(this.damageSources.dryOut(), 1.0f)
             }
 
-            if (world.isClient && isTouchingWater && isAttacking) {
-                val rotationVec = getRotationVec(0.0f)
-                val offsetY = 0.0f - random.nextFloat()
-
-                for (i in 0..1) {
-                    val particleX = x - rotationVec.x * offsetY
-                    val particleY = y - rotationVec.y
-                    val particleZ = z - rotationVec.z * offsetY
-
-                    world.addParticle(
-                        ParticleTypes.DOLPHIN,
-                        particleX,
-                        particleY,
-                        particleZ,
-                        0.0,
-                        0.0,
-                        0.0
-                    )
-                }
+            if (!this.isSubmergedInWater) {
+                this.pitch = -90.0f
+                this.yaw = this.prevYaw
+                this.headYaw = this.prevHeadYaw
             }
-
         }
     }
 
@@ -272,12 +255,16 @@ open class HybridAquaticCephalopodEntity(
             AnimationController(
                 this,
                 "Swim/Idle",
-                30
+                20
             ) { state: AnimationState<HybridAquaticCephalopodEntity> ->
-                if (state.isMoving) {
-                    state.setAndContinue(DefaultAnimations.SWIM)
+                if (!this.isSubmergedInWater) {
+                    state.setAndContinue(DefaultAnimations.SIT)
                 } else {
-                    state.setAndContinue(DefaultAnimations.IDLE)
+                    if (state.isMoving) {
+                        state.setAndContinue(DefaultAnimations.SWIM)
+                    } else {
+                        state.setAndContinue(DefaultAnimations.IDLE)
+                    }
                 }
             }.setOverrideEasingType(EasingType.EASE_IN_OUT_SINE)
         )

@@ -1,6 +1,28 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
+		"misc.sit": {
+			"loop": true,
+			"animation_length": 2,
+			"bones": {
+				"body": {
+					"rotation": [2.5, 0, 0],
+					"position": [0, -1, 0]
+				},
+				"head": {
+					"rotation": [-5, 0, 0]
+				},
+				"body_2": {
+					"rotation": [-7.5, 0, 0]
+				},
+				"tail": {
+					"rotation": [-7.5, 0, 0]
+				},
+				"mouth": {
+					"rotation": [0, 0, 0]
+				}
+			}
+		},
 		"move.swim": {
 			"loop": true,
 			"animation_length": 5,
@@ -134,40 +156,6 @@
 						"5.0": {
 							"vector": [0, -2.5, 0]
 						}
-					}
-				}
-			}
-		},
-		"flop": {
-			"loop": true,
-			"animation_length": 2,
-			"bones": {
-				"body": {
-					"rotation": {
-						"vector": [2.5, 0, 0]
-					},
-					"position": {
-						"vector": [0, -2, 0]
-					}
-				},
-				"head": {
-					"rotation": {
-						"vector": [-5, 0, 0]
-					}
-				},
-				"body_2": {
-					"rotation": {
-						"vector": [-7.5, 0, 0]
-					}
-				},
-				"tail": {
-					"rotation": {
-						"vector": [-7.5, 0, 0]
-					}
-				},
-				"mouth": {
-					"rotation": {
-						"vector": [0, 0, 0]
 					}
 				}
 			}

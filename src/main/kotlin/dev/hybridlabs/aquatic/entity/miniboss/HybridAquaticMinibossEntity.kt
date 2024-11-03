@@ -22,14 +22,11 @@ import net.minecraft.world.World
 import net.minecraft.world.WorldAccess
 import software.bernie.geckolib.animatable.GeoEntity
 import software.bernie.geckolib.constant.DefaultAnimations
-import software.bernie.geckolib.core.animatable.GeoAnimatable
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache
-import software.bernie.geckolib.core.animation.AnimatableManager.ControllerRegistrar
-import software.bernie.geckolib.core.animation.Animation
+import software.bernie.geckolib.core.animation.AnimatableManager
 import software.bernie.geckolib.core.animation.AnimationController
 import software.bernie.geckolib.core.animation.AnimationState
-import software.bernie.geckolib.core.animation.RawAnimation
-import software.bernie.geckolib.core.`object`.PlayState
+import software.bernie.geckolib.core.animation.EasingType
 import software.bernie.geckolib.util.GeckoLibUtil
 
 
@@ -74,6 +71,11 @@ open class HybridAquaticMinibossEntity(type: EntityType<out HostileEntity>, worl
         }
     }
 
+    override fun tickMovement() {
+        this.tickHandSwing()
+        super.tickMovement()
+    }
+
     override fun tryAttack(target: Entity?): Boolean {
         this.attackTick = 10
         world.sendEntityStatus(this, 4.toByte())
@@ -92,18 +94,21 @@ open class HybridAquaticMinibossEntity(type: EntityType<out HostileEntity>, worl
         return true
     }
 
-    override fun registerControllers(controllerRegistrar: ControllerRegistrar) {
-        controllerRegistrar.add(AnimationController(this, "controller", ::predicate))
-        controllerRegistrar.add(DefaultAnimations.genericAttackAnimation(this, DefaultAnimations.ATTACK_STRIKE))
-    }
-
-    open fun <E : GeoAnimatable> predicate(event: AnimationState<E>): PlayState {
-        if (event.isMoving) {
-            event.controller.setAnimation(WALK_ANIMATION)
-        } else {
-            event.controller.setAnimation(IDLE_ANIMATION)
-        }
-        return PlayState.CONTINUE
+    override fun registerControllers(controllerRegistrar: AnimatableManager.ControllerRegistrar) {
+        controllerRegistrar.add(
+            AnimationController(
+                this,
+                "Walk/Run",
+                20
+            ) { state: AnimationState<HybridAquaticMinibossEntity> ->
+                if (state.isMoving) {
+                    state.setAndContinue(if (this.isSprinting) DefaultAnimations.RUN else DefaultAnimations.WALK)
+                } else {
+                    state.setAndContinue(DefaultAnimations.IDLE)
+                }
+            }.setOverrideEasingType(EasingType.EASE_IN_OUT_SINE)
+        )
+        controllerRegistrar.add(DefaultAnimations.genericAttackAnimation(this, DefaultAnimations.ATTACK_SWING))
     }
 
     override fun getAnimatableInstanceCache(): AnimatableInstanceCache {
@@ -126,11 +131,13 @@ open class HybridAquaticMinibossEntity(type: EntityType<out HostileEntity>, worl
 
         override fun start() {
             super.start()
+            miniboss.isSprinting = true
             miniboss.attemptAttack = false
         }
 
         override fun stop() {
             super.stop()
+            miniboss.isSprinting = false
             miniboss.attemptAttack = false
         }
     }
@@ -140,9 +147,6 @@ open class HybridAquaticMinibossEntity(type: EntityType<out HostileEntity>, worl
     }
 
     companion object {
-
-        val WALK_ANIMATION: RawAnimation  = RawAnimation.begin().then("walk", Animation.LoopType.LOOP)
-        val IDLE_ANIMATION: RawAnimation  = RawAnimation.begin().then("idle", Animation.LoopType.LOOP)
 
         val ATTEMPT_ATTACK: TrackedData<Boolean> =
             DataTracker.registerData(HybridAquaticMinibossEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)

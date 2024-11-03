@@ -25,11 +25,6 @@ import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.text.Text
 import net.minecraft.world.Difficulty
 import net.minecraft.world.World
-import software.bernie.geckolib.core.animatable.GeoAnimatable
-import software.bernie.geckolib.core.animation.Animation
-import software.bernie.geckolib.core.animation.AnimationState
-import software.bernie.geckolib.core.animation.RawAnimation
-import software.bernie.geckolib.core.`object`.PlayState
 
 class KarkinosEntity(entityType: EntityType<out HybridAquaticMinibossEntity>, world: World) :
     HybridAquaticMinibossEntity(entityType, world) {
@@ -117,19 +112,6 @@ class KarkinosEntity(entityType: EntityType<out HybridAquaticMinibossEntity>, wo
     override fun isPushable(): Boolean =
         this.isFlipped
 
-    override fun <E : GeoAnimatable> predicate(event: AnimationState<E>): PlayState {
-        if (isFlipped) {
-            event.controller.setAnimation(FLIPPED_ANIMATION)
-            return PlayState.CONTINUE
-        }
-        if (isAttacking) {
-            event.controller.setAnimation(ATTACK_ANIMATION)
-            return PlayState.CONTINUE
-        }
-
-        return super.predicate(event)
-    }
-
     override fun getMovementSpeed(): Float {
         return if (isFlipped) 0.0f else super.getMovementSpeed()
     }
@@ -181,9 +163,6 @@ class KarkinosEntity(entityType: EntityType<out HybridAquaticMinibossEntity>, wo
                 .add(EntityAttributes.GENERIC_ARMOR, 8.0)
         }
 
-        val FLIPPED_ANIMATION: RawAnimation = RawAnimation.begin().then("flipped", Animation.LoopType.LOOP)
-        val ATTACK_ANIMATION: RawAnimation = RawAnimation.begin().then("attack", Animation.LoopType.LOOP)
-
         val FLIPPED: TrackedData<Boolean> = DataTracker.registerData(KarkinosEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
     }
 
@@ -205,11 +184,13 @@ class KarkinosEntity(entityType: EntityType<out HybridAquaticMinibossEntity>, wo
 
         override fun start() {
             super.start()
+            karkinos.isSprinting = true
             karkinos.attemptAttack = false
         }
 
         override fun stop() {
             super.stop()
+            karkinos.isSprinting = false
             karkinos.attemptAttack = false
         }
 

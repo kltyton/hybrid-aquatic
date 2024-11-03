@@ -38,7 +38,6 @@ import software.bernie.geckolib.core.animation.AnimatableManager
 import software.bernie.geckolib.core.animation.AnimationController
 import software.bernie.geckolib.core.animation.AnimationState
 import software.bernie.geckolib.core.animation.EasingType
-import software.bernie.geckolib.core.`object`.PlayState
 import software.bernie.geckolib.util.GeckoLibUtil
 import java.util.*
 
@@ -167,6 +166,10 @@ open class HybridAquaticSharkEntity(
             }
         }
 
+        if (!this.isSubmergedInWater) {
+            this.pitch = 0.0f
+        }
+
         isSprinting = isAttacking
 
         if (isAttacking) {
@@ -175,6 +178,11 @@ open class HybridAquaticSharkEntity(
             attributes.getCustomInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED)?.baseValue = 1.0
         }
         if (hunger > 0) hunger -= 1
+    }
+
+    override fun tickMovement() {
+        this.tickHandSwing()
+        super.tickMovement()
     }
 
     override fun tickWaterBreathingAir(air: Int) {}
@@ -260,13 +268,18 @@ open class HybridAquaticSharkEntity(
                 "Swim/Run",
                 20
             ) { state: AnimationState<HybridAquaticSharkEntity> ->
-                if (state.isMoving) {
-                    state.setAndContinue(if (this.isSprinting) DefaultAnimations.RUN else DefaultAnimations.SWIM)
+                if (!this.isSubmergedInWater && isOnGround) {
+                    state.setAndContinue(DefaultAnimations.SIT)
                 } else {
-                    state.setAndContinue(DefaultAnimations.SWIM)
+                    if (state.isMoving) {
+                        state.setAndContinue(if (this.isSprinting) DefaultAnimations.RUN else DefaultAnimations.SWIM)
+                    } else {
+                        state.setAndContinue(DefaultAnimations.SWIM)
+                    }
                 }
             }.setOverrideEasingType(EasingType.EASE_IN_OUT_SINE)
         )
+        controllerRegistrar.add(DefaultAnimations.genericAttackAnimation(this, DefaultAnimations.ATTACK_BITE))
     }
 
     override fun getAnimatableInstanceCache(): AnimatableInstanceCache {
