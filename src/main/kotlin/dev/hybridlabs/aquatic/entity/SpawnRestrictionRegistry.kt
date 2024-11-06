@@ -35,6 +35,7 @@ object SpawnRestrictionRegistry {
             HybridAquaticEntityTypes.OARFISH,
             HybridAquaticEntityTypes.STONEFISH,
             HybridAquaticEntityTypes.ROCKFISH,
+            HybridAquaticEntityTypes.SEA_BASS,
             HybridAquaticEntityTypes.MORAY_EEL,
             HybridAquaticEntityTypes.FLASHLIGHT_FISH,
             HybridAquaticEntityTypes.OPAH,

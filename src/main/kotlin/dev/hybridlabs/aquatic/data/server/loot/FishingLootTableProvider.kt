@@ -167,6 +167,11 @@ class FishingLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
                                 .conditionally(needsBeach.or(needsOcean.or(needsDeepOcean)))
                         )
                         .with(
+                            ItemEntry.builder(HybridAquaticItems.SEA_BASS)
+                                .weight(5)
+                                .conditionally(needsBeach.or(needsOcean.or(needsDeepOcean)))
+                        )
+                        .with(
                             ItemEntry.builder(HybridAquaticItems.BLUE_SPOTTED_STINGRAY)
                                 .weight(5)
                                 .conditionally(needsBeach.or(needsWarmOcean))

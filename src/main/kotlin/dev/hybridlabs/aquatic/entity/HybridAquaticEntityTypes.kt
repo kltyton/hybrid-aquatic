@@ -200,6 +200,13 @@ object HybridAquaticEntityTypes {
         RockfishEntity.createMobAttributes()
     )
 
+    val SEA_BASS = registerFish(
+        "sea_bass",
+        ::SeaBassEntity,
+        EntityDimensions.fixed(0.4f, 0.4f),
+        SeaBassEntity.createMobAttributes()
+    )
+
     val SEA_ANGEL = registerFishUnderground(
         "sea_angel",
         ::SeaAngelEntity,
