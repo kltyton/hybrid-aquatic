@@ -480,6 +480,17 @@ class EntityTypeLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTa
             )
         }
 
+        export(exporter, HybridAquaticEntityTypes.SEA_BASS) {
+            pool(
+                LootPool.builder()
+                    .with(
+                        ItemEntry.builder(HybridAquaticItems.SEA_BASS)
+                            .apply(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0F, 1.0F)))
+                            .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0F, 1.0F)))
+                    )
+            )
+        }
+
         export(exporter, HybridAquaticEntityTypes.CLOWNFISH) {
             pool(
                 LootPool.builder()
