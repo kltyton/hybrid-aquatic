@@ -9,7 +9,7 @@ import net.minecraft.world.World
 class SeaNettleEntity(entityType: EntityType<out SeaNettleEntity>, world: World) : HybridAquaticJellyfishEntity(entityType, world, true) {
 
     override fun getLimitPerChunk(): Int {
-        return 2
+        return 3
     }
 
     companion object {
