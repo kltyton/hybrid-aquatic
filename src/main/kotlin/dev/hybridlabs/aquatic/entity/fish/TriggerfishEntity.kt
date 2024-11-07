@@ -8,7 +8,12 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
 
 class TriggerfishEntity(entityType: EntityType<out TriggerfishEntity>, world: World) :
-    HybridAquaticFishEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.TRIGGERFISH_PREY, HybridAquaticEntityTags.TRIGGERFISH_PREDATOR) {
+    HybridAquaticFishEntity(entityType, world, emptyMap(),
+        listOf(
+            HybridAquaticEntityTags.CRUSTACEAN),
+        listOf(
+            HybridAquaticEntityTags.LARGE_PREY,
+            HybridAquaticEntityTags.SHARK)) {
 
     override fun getLimitPerChunk(): Int {
         return 2

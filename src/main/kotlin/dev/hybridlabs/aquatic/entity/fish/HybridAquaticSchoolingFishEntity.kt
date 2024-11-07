@@ -16,14 +16,14 @@ import java.util.stream.Stream
 open class HybridAquaticSchoolingFishEntity(
     type: EntityType<out HybridAquaticFishEntity>,
     world: World,
-    override val prey: TagKey<EntityType<*>>,
-    override val predator: TagKey<EntityType<*>>,
+    override val prey: List<TagKey<EntityType<*>>>,
+    override val predator: List<TagKey<EntityType<*>>>,
     private var leader: HybridAquaticSchoolingFishEntity? = null,
     private var groupSize: Int = 1,
     private val variants: Map<String, FishVariant> = hashMapOf(),
     override val assumeDefault: Boolean = false,
     override val collisionRules: List<VariantCollisionRules> = listOf()
-) : HybridAquaticFishEntity(type, world, variants, HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
+) : HybridAquaticFishEntity(type, world, variants, listOf(HybridAquaticEntityTags.NONE), listOf(HybridAquaticEntityTags.NONE)) {
 
     override fun initGoals() {
         super.initGoals()

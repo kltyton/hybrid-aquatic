@@ -8,7 +8,15 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
 
 class MorayEelEntity(entityType: EntityType<out MorayEelEntity>, world: World) :
-    HybridAquaticFishEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.MORAY_EEL_PREY, HybridAquaticEntityTags.MORAY_EEL_PREDATOR) {
+    HybridAquaticFishEntity(entityType, world, emptyMap(),
+        listOf(
+            HybridAquaticEntityTags.SMALL_PREY,
+            HybridAquaticEntityTags.MEDIUM_PREY,
+            HybridAquaticEntityTags.CRUSTACEAN,
+            HybridAquaticEntityTags.CEPHALOPOD),
+        listOf(
+            HybridAquaticEntityTags.LARGE_PREY,
+            HybridAquaticEntityTags.SHARK)) {
 
     override fun getLimitPerChunk(): Int {
         return 2

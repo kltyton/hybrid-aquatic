@@ -1,12 +1,15 @@
 {
   "replace": false,
   "values": [
-    "hybrid-aquatic:opah",
-    "hybrid-aquatic:tuna",
-    "hybrid-aquatic:moray_eel",
-    "hybrid-aquatic:mahi",
+    "hybrid-aquatic:ratfish",
+    "hybrid-aquatic:stingray",
     "hybrid-aquatic:triggerfish",
     "hybrid-aquatic:needlefish",
+    "hybrid-aquatic:rockfish",
+    "hybrid-aquatic:sea_bass",
+    "hybrid-aquatic:lionfish",
+    "hybrid-aquatic:parrotfish",
+    "hybrid-aquatic:moray_eel",
     "minecraft:squid",
     "minecraft:glow_squid"
   ]

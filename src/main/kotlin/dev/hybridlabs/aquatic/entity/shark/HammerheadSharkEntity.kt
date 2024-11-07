@@ -15,7 +15,7 @@ import net.minecraft.world.Difficulty
 import net.minecraft.world.World
 
 class HammerheadSharkEntity(entityType: EntityType<out HammerheadSharkEntity>, world: World) :
-    HybridAquaticSharkEntity(entityType, world, HybridAquaticEntityTags.HAMMERHEAD_SHARK_PREY, false, false) {
+    HybridAquaticSharkEntity(entityType, world, listOf(HybridAquaticEntityTags.CRUSTACEAN, HybridAquaticEntityTags.SMALL_PREY), false, false) {
 
     override fun initGoals() {
         super.initGoals()

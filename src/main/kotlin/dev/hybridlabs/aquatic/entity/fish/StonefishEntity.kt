@@ -14,7 +14,13 @@ import net.minecraft.registry.tag.DamageTypeTags
 import net.minecraft.world.World
 
 class StonefishEntity(entityType: EntityType<out StonefishEntity>, world: World) :
-    HybridAquaticFishEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
+    HybridAquaticFishEntity(entityType, world, emptyMap(),
+        listOf(
+        HybridAquaticEntityTags.SMALL_PREY),
+        listOf(
+            HybridAquaticEntityTags.MEDIUM_PREY,
+            HybridAquaticEntityTags.LARGE_PREY,
+            HybridAquaticEntityTags.SHARK)) {
 
     override fun getLimitPerChunk(): Int {
         return 2

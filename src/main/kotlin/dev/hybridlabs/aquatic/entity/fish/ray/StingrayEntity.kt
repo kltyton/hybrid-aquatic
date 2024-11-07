@@ -13,7 +13,7 @@ class StingrayEntity(entityType: EntityType<out StingrayEntity>, world: World) :
     HybridAquaticRayEntity(entityType, world, variants = hashMapOf(
         "spotted_eagle" to RayVariant.biomeVariant("spotted_eagle", HybridAquaticBiomeTags.WARM_OCEANS),
         "blue_spotted" to RayVariant.biomeVariant("blue_spotted", HybridAquaticBiomeTags.REEF),),
-        HybridAquaticEntityTags.STINGRAY_PREY, HybridAquaticEntityTags.STINGRAY_PREDATOR) {
+        HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
 
     public override fun getLootTableId(): Identifier {
         return when (this.variant?.variantName) {

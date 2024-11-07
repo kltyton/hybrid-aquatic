@@ -10,7 +10,12 @@ import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.world.World
 
 class FlashlightFishEntity(entityType: EntityType<out FlashlightFishEntity>, world: World) :
-    HybridAquaticSchoolingFishEntity(entityType, world, HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.FLASHLIGHT_FISH_PREDATOR) {
+    HybridAquaticSchoolingFishEntity(entityType, world,
+        listOf(HybridAquaticEntityTags.NONE),
+        listOf(
+            HybridAquaticEntityTags.MEDIUM_PREY,
+            HybridAquaticEntityTags.LARGE_PREY,
+            HybridAquaticEntityTags.SHARK)) {
 
     var isLightOn: Boolean = true
 

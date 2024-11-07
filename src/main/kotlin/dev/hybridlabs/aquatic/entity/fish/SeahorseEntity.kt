@@ -20,7 +20,14 @@ class SeahorseEntity(entityType: EntityType<out SeahorseEntity>, world: World) :
         "pygmy" to FishVariant.biomeVariant("pygmy", HybridAquaticBiomeTags.REEF,
             ignore = listOf(FishVariant.Ignore.ANIMATION)),
         ),
-        HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
+        listOf(
+            HybridAquaticEntityTags.NONE),
+        listOf(
+            HybridAquaticEntityTags.SMALL_PREY,
+            HybridAquaticEntityTags.MEDIUM_PREY,
+            HybridAquaticEntityTags.LARGE_PREY,
+            HybridAquaticEntityTags.CEPHALOPOD,
+            HybridAquaticEntityTags.SHARK)) {
 
     public override fun getLootTableId(): Identifier {
         return when (this.variant?.variantName) {

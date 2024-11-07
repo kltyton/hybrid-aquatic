@@ -8,7 +8,13 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
 
 class DragonfishEntity(entityType: EntityType<out DragonfishEntity>, world: World) :
-    HybridAquaticDeepSeaFishEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.DRAGONFISH_PREY, HybridAquaticEntityTags.DRAGONFISH_PREDATOR) {
+    HybridAquaticDeepSeaFishEntity(entityType, world, emptyMap(),
+        listOf(
+            HybridAquaticEntityTags.NONE),
+        listOf(
+            HybridAquaticEntityTags.MEDIUM_PREY,
+            HybridAquaticEntityTags.LARGE_PREY,
+            HybridAquaticEntityTags.SHARK)) {
 
     override fun getLimitPerChunk(): Int {
         return 4

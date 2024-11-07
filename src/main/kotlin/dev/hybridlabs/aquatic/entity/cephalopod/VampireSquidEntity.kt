@@ -14,7 +14,7 @@ class VampireSquidEntity(entityType: EntityType<out VampireSquidEntity>, world: 
         world,
         emptyMap(),
         HybridAquaticEntityTags.NONE,
-        HybridAquaticEntityTags.FIREFLY_SQUID_PREDATOR
+        HybridAquaticEntityTags.SHARK
     ) {
 
     override fun initGoals() {

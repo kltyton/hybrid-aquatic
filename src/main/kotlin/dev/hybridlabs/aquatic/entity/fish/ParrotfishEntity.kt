@@ -12,7 +12,11 @@ import net.minecraft.world.World
 class ParrotfishEntity(entityType: EntityType<out ParrotfishEntity>, world: World) :
     HybridAquaticFishEntity(entityType, world, variants = hashMapOf(
         "humphead" to FishVariant.biomeVariant("humphead", HybridAquaticBiomeTags.REEF),),
-        HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
+        listOf(
+            HybridAquaticEntityTags.NONE),
+        listOf(
+            HybridAquaticEntityTags.LARGE_PREY,
+            HybridAquaticEntityTags.SHARK)) {
 
     public override fun getLootTableId(): Identifier {
         return when (this.variant?.variantName) {

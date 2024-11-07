@@ -27,7 +27,12 @@ class BettaEntity(entityType: EntityType<out BettaEntity>, world: World) :
         "white" to FishVariant.biomeVariant("white", HybridAquaticBiomeTags.SWAMPLAND,
             ignore = listOf(FishVariant.Ignore.MODEL, FishVariant.Ignore.ANIMATION)),
         ),
-        HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
+        listOf(
+            HybridAquaticEntityTags.NONE),
+        listOf(
+            HybridAquaticEntityTags.MEDIUM_PREY,
+            HybridAquaticEntityTags.LARGE_PREY,
+            HybridAquaticEntityTags.SHARK)) {
 
     override fun getLimitPerChunk(): Int {
         return 2

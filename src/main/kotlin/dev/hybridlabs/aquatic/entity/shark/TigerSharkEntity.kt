@@ -15,7 +15,7 @@ import net.minecraft.world.Difficulty
 import net.minecraft.world.World
 
 class TigerSharkEntity(entityType: EntityType<out TigerSharkEntity>, world: World) :
-    HybridAquaticSharkEntity(entityType, world, HybridAquaticEntityTags.TIGER_SHARK_PREY, false, true) {
+    HybridAquaticSharkEntity(entityType, world, listOf(HybridAquaticEntityTags.LARGE_PREY, HybridAquaticEntityTags.MEDIUM_PREY), false, true) {
 
     override fun initGoals() {
         super.initGoals()

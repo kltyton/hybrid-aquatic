@@ -10,17 +10,16 @@ import net.minecraft.block.Blocks
 import net.minecraft.entity.*
 import net.minecraft.entity.ai.control.AquaticMoveControl
 import net.minecraft.entity.ai.control.YawAdjustingLookControl
-import net.minecraft.entity.ai.goal.ActiveTargetGoal
-import net.minecraft.entity.ai.goal.EscapeDangerGoal
-import net.minecraft.entity.ai.goal.MeleeAttackGoal
-import net.minecraft.entity.ai.goal.SwimAroundGoal
+import net.minecraft.entity.ai.goal.*
 import net.minecraft.entity.ai.pathing.EntityNavigation
 import net.minecraft.entity.ai.pathing.SwimNavigation
 import net.minecraft.entity.damage.DamageSource
 import net.minecraft.entity.data.DataTracker
 import net.minecraft.entity.data.TrackedData
 import net.minecraft.entity.data.TrackedDataHandlerRegistry
+import net.minecraft.entity.mob.GuardianEntity
 import net.minecraft.entity.mob.WaterCreatureEntity
+import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.particle.ParticleTypes
 import net.minecraft.registry.tag.FluidTags
@@ -38,11 +37,11 @@ import net.minecraft.world.WorldAccess
 import net.minecraft.world.biome.Biome
 import software.bernie.geckolib.animatable.GeoEntity
 import software.bernie.geckolib.constant.DefaultAnimations
-import software.bernie.geckolib.core.animatable.GeoAnimatable
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache
-import software.bernie.geckolib.core.animation.*
+import software.bernie.geckolib.core.animation.AnimatableManager
+import software.bernie.geckolib.core.animation.AnimationController
 import software.bernie.geckolib.core.animation.AnimationState
-import software.bernie.geckolib.core.`object`.PlayState
+import software.bernie.geckolib.core.animation.EasingType
 import software.bernie.geckolib.util.GeckoLibUtil
 
 @Suppress("LeakingThis", "UNUSED_PARAMETER")
@@ -50,8 +49,8 @@ open class HybridAquaticFishEntity(
     type: EntityType<out HybridAquaticFishEntity>,
     world: World,
     private val variants: Map<String, FishVariant> = mutableMapOf(),
-    open val prey: TagKey<EntityType<*>>,
-    open val predator: TagKey<EntityType<*>>,
+    open val prey: List<TagKey<EntityType<*>>>,
+    open val predator: List<TagKey<EntityType<*>>>,
     open val assumeDefault: Boolean = false,
     open val collisionRules: List<VariantCollisionRules> = listOf()
 ) : WaterCreatureEntity(type, world), GeoEntity {
@@ -63,7 +62,10 @@ open class HybridAquaticFishEntity(
         goalSelector.add(0, EscapeDangerGoal(this, 1.25))
         goalSelector.add(4, SwimAroundGoal(this, 1.0, 10))
         goalSelector.add(1, AttackGoal(this))
-        targetSelector.add(1, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) { hunger <= 1200 && it.type.isIn(prey) })
+        goalSelector.add(5, FleeEntityGoal(this, GuardianEntity::class.java, 8.0f, 1.0, 1.0))
+        goalSelector.add(5, FleeEntityGoal(this, PlayerEntity::class.java, 8.0f, 1.0, 1.0))
+        goalSelector.add(5, FleeEntityGoal(this, LivingEntity::class.java, 8.0f, 1.25, 1.5) { entity -> predator.any { entity.type.isIn(it) && this.hunger < 100} })
+        targetSelector.add(1, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) { entity -> prey.any { entity.type.isIn(it) } })
     }
 
     override fun initDataTracker() {
@@ -180,7 +182,7 @@ open class HybridAquaticFishEntity(
     }
 
     private fun getHungerValue(entityType: EntityType<*>): Int {
-        if (entityType.isIn(HybridAquaticEntityTags.CRAB))
+        if (entityType.isIn(HybridAquaticEntityTags.CRUSTACEAN))
             return 150
         if (entityType.isIn(HybridAquaticEntityTags.JELLYFISH))
             return 150
@@ -391,12 +393,6 @@ open class HybridAquaticFishEntity(
         return 0.0
     }
 
-    internal class SwimToRandomPlaceGoal(private val fish: HybridAquaticFishEntity, d: Double, i: Int) : SwimAroundGoal(fish, 1.0, 40) {
-        override fun canStart(): Boolean {
-            return fish.hasSelfControl() && super.canStart()
-        }
-    }
-
     internal class AttackGoal(private val fish: HybridAquaticFishEntity) : MeleeAttackGoal(fish, 1.0,true) {
         override fun canStart(): Boolean {
             return !fish.fromFishingNet && super.canStart()
@@ -455,11 +451,6 @@ open class HybridAquaticFishEntity(
         const val VARIANT_KEY = "Variant"
         const val VARIANT_DATA_KEY = "VariantData"
         const val FISH_SIZE_KEY = "FishSize"
-
-        val ATTACK_ANIMATION: RawAnimation  = RawAnimation.begin().then("attack", Animation.LoopType.LOOP)
-        val IDLE_ANIMATION: RawAnimation  = RawAnimation.begin().then("idle", Animation.LoopType.LOOP)
-        val SWIM_ANIMATION: RawAnimation  = RawAnimation.begin().then("swim", Animation.LoopType.LOOP)
-        val FLOP_ANIMATION: RawAnimation  = RawAnimation.begin().then("flop", Animation.LoopType.LOOP)
 
         @Suppress("UNUSED_PARAMETER", "DEPRECATION")
         fun canSpawn(

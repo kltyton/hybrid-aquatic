@@ -16,7 +16,7 @@ class NautilusEntity(entityType: EntityType<out NautilusEntity>, world: World) :
         world,
         emptyMap(),
         HybridAquaticEntityTags.NONE,
-        HybridAquaticEntityTags.NAUTILUS_PREDATOR
+        HybridAquaticEntityTags.SHARK
     ) {
 
     override fun initGoals() {

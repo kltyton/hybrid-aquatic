@@ -51,6 +51,7 @@ object SpawnRestrictionRegistry {
             HybridAquaticEntityTypes.BETTA,
             HybridAquaticEntityTypes.TETRA,
             HybridAquaticEntityTypes.NEEDLEFISH,
+            HybridAquaticEntityTypes.MACKEREL,
             HybridAquaticEntityTypes.CARP,
         ).forEach { registerFish(it) }
 

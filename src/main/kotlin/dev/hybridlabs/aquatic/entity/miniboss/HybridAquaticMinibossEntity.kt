@@ -35,7 +35,7 @@ open class HybridAquaticMinibossEntity(type: EntityType<out HostileEntity>, worl
 
     private val factory = GeckoLibUtil.createInstanceCache(this)
     private var attackTick = 0
-    private var attemptAttack: Boolean
+    var attemptAttack: Boolean
         get() = dataTracker.get(ATTEMPT_ATTACK)
         set(attemptAttack) {
             dataTracker.set(ATTEMPT_ATTACK, attemptAttack)
@@ -98,18 +98,38 @@ open class HybridAquaticMinibossEntity(type: EntityType<out HostileEntity>, worl
         controllerRegistrar.add(
             AnimationController(
                 this,
-                "Walk/Run",
+                "Walk/Run/Idle",
                 20
             ) { state: AnimationState<HybridAquaticMinibossEntity> ->
-                if (state.isMoving) {
-                    state.setAndContinue(if (this.isSprinting) DefaultAnimations.RUN else DefaultAnimations.WALK)
-                } else {
-                    state.setAndContinue(DefaultAnimations.IDLE)
+                when {
+                    state.isMoving -> {
+                        state.setAndContinue(if (this.isSprinting) DefaultAnimations.RUN else DefaultAnimations.WALK)
+                    }
+                    else -> {
+                        state.setAndContinue(DefaultAnimations.IDLE)
+                    }
+                }
+            }.setOverrideEasingType(EasingType.EASE_IN_OUT_SINE)
+        )
+        controllerRegistrar.add(
+            AnimationController(
+                this,
+                "Block/Idle",
+                5
+            ) { state: AnimationState<HybridAquaticMinibossEntity> ->
+                when {
+                    this.isBlocking -> {
+                        state.setAndContinue(DefaultAnimations.ATTACK_BLOCK)
+                    }
+                    else -> {
+                        state.setAndContinue(DefaultAnimations.IDLE)
+                    }
                 }
             }.setOverrideEasingType(EasingType.EASE_IN_OUT_SINE)
         )
         controllerRegistrar.add(DefaultAnimations.genericAttackAnimation(this, DefaultAnimations.ATTACK_SWING))
     }
+
 
     override fun getAnimatableInstanceCache(): AnimatableInstanceCache {
         return factory

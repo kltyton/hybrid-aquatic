@@ -8,7 +8,13 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
 
 class NeedlefishEntity(entityType: EntityType<out NeedlefishEntity>, world: World) :
-    HybridAquaticSchoolingFishEntity(entityType, world, HybridAquaticEntityTags.NEEDLEFISH_PREY, HybridAquaticEntityTags.NEEDLEFISH_PREDATOR) {
+    HybridAquaticSchoolingFishEntity(entityType, world,
+        listOf(
+            HybridAquaticEntityTags.SMALL_PREY,
+            HybridAquaticEntityTags.CEPHALOPOD),
+        listOf(
+            HybridAquaticEntityTags.LARGE_PREY,
+            HybridAquaticEntityTags.SHARK)) {
 
     override fun getLimitPerChunk(): Int {
         return 4

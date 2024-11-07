@@ -46,7 +46,7 @@ import java.util.*
 open class HybridAquaticSharkEntity(
     entityType: EntityType<out HybridAquaticSharkEntity>,
     world: World,
-    private val prey: TagKey<EntityType<*>>,
+    private val prey: List<TagKey<EntityType<*>>>,
     private val isPassive: Boolean,
     private val closePlayerAttack: Boolean
 ) : WaterCreatureEntity(entityType, world), Angerable, GeoEntity {
@@ -126,7 +126,7 @@ open class HybridAquaticSharkEntity(
         goalSelector.add(5, LookAtEntityGoal(this, PlayerEntity::class.java, 6.0f))
         goalSelector.add(1, MeleeAttackGoal(this, 1.1, false))
         targetSelector.add(2, ActiveTargetGoal(this, PlayerEntity::class.java, 10, true, true) { entity: LivingEntity -> shouldAngerAt(entity) || shouldProximityAttack(entity as PlayerEntity) && !isPassive})
-        targetSelector.add(3, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) { hunger <= 100 && it.type.isIn(prey) && !isPassive})
+        targetSelector.add(3, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) { entity -> hunger <= 100 && prey.any { entity.type.isIn(it) } && !isPassive })
         targetSelector.add(1, ActiveTargetGoal(this, LivingEntity::class.java, 10, true, true) { it.hasStatusEffect(HybridAquaticStatusEffects.BLEEDING) && it !is HybridAquaticSharkEntity && !isPassive})
         }
 

@@ -31,6 +31,7 @@ object EntityBiomeModifications {
         addFish(HybridAquaticEntityTypes.MAHI, HybridAquaticBiomeTags.DEEP_WARM_OCEANS, 3, 1, 3)
         addFish(HybridAquaticEntityTypes.MORAY_EEL, HybridAquaticBiomeTags.REEF, 1, 1, 1)
         addFish(HybridAquaticEntityTypes.NEEDLEFISH, HybridAquaticBiomeTags.WARM_OCEANS, 3, 1, 3)
+        addFish(HybridAquaticEntityTypes.MACKEREL, HybridAquaticBiomeTags.DEEP_COLD_OCEANS, 5, 3, 5)
         addFish(HybridAquaticEntityTypes.OPAH, HybridAquaticBiomeTags.DEEP_WARM_OCEANS, 3, 1, 1)
         addFish(HybridAquaticEntityTypes.OSCAR, HybridAquaticBiomeTags.TROPICAL_FRESHWATER, 1, 1, 1)
         addFish(HybridAquaticEntityTypes.OARFISH, HybridAquaticBiomeTags.ALL_DEEP_OCEANS, 1, 1, 1)

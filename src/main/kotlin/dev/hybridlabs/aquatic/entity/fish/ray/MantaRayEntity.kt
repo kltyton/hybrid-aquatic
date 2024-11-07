@@ -9,7 +9,7 @@ import net.minecraft.world.World
 
 class MantaRayEntity(entityType: EntityType<out MantaRayEntity>, world: World) :
     HybridAquaticRayEntity(entityType, world, emptyMap(),
-        HybridAquaticEntityTags.STINGRAY_PREY, HybridAquaticEntityTags.STINGRAY_PREDATOR) {
+        HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
 
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {

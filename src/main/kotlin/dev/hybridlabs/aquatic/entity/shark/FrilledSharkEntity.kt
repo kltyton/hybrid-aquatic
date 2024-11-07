@@ -18,7 +18,7 @@ import net.minecraft.world.Difficulty
 import net.minecraft.world.World
 
 class FrilledSharkEntity(entityType: EntityType<out FrilledSharkEntity>, world: World) :
-    HybridAquaticSharkEntity(entityType, world, HybridAquaticEntityTags.FRILLED_SHARK_PREY, false, false) {
+    HybridAquaticSharkEntity(entityType, world, listOf(HybridAquaticEntityTags.CEPHALOPOD), false, false) {
 
     override fun getLimitPerChunk(): Int {
         return 1

@@ -14,7 +14,13 @@ import net.minecraft.registry.tag.DamageTypeTags
 import net.minecraft.world.World
 
 class LionfishEntity(entityType: EntityType<out LionfishEntity>, world: World) :
-    HybridAquaticFishEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.LIONFISH_PREY, HybridAquaticEntityTags.LIONFISH_PREDATOR) {
+    HybridAquaticFishEntity(entityType, world, emptyMap(),
+        listOf(
+            HybridAquaticEntityTags.SMALL_PREY,
+            HybridAquaticEntityTags.CRUSTACEAN),
+        listOf(
+            HybridAquaticEntityTags.LARGE_PREY,
+            HybridAquaticEntityTags.SHARK)) {
 
     override fun getLimitPerChunk(): Int {
         return 2

@@ -32,6 +32,7 @@ object HybridAquaticEntityRenderers {
     val SEA_BASS = EntityRendererRegistry.register(HybridAquaticEntityTypes.SEA_BASS, ::SeaBassEntityRenderer)
     val TIGER_BARB = EntityRendererRegistry.register(HybridAquaticEntityTypes.TIGER_BARB, ::TigerBarbEntityRenderer)
     val NEEDLEFISH = EntityRendererRegistry.register(HybridAquaticEntityTypes.NEEDLEFISH, ::NeedlefishEntityRenderer)
+    val MACKEREL = EntityRendererRegistry.register(HybridAquaticEntityTypes.MACKEREL, ::MackerelEntityRenderer)
     val RATFISH = EntityRendererRegistry.register(HybridAquaticEntityTypes.RATFISH, ::RatfishEntityRenderer)
     val TRIGGERFISH = EntityRendererRegistry.register(HybridAquaticEntityTypes.TRIGGERFISH, ::TriggerfishEntityRenderer)
     val OSCAR = EntityRendererRegistry.register(HybridAquaticEntityTypes.OSCAR, ::OscarEntityRenderer)

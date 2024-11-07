@@ -20,11 +20,11 @@ open class HybridAquaticDeepSeaFishEntity(
     type: EntityType<out HybridAquaticFishEntity>,
     world: World,
     private val variants: Map<String, FishVariant> = mutableMapOf(),
-    override val prey: TagKey<EntityType<*>>,
-    override val predator: TagKey<EntityType<*>>,
+    override val prey: List<TagKey<EntityType<*>>>,
+    override val predator: List<TagKey<EntityType<*>>>,
     override val assumeDefault: Boolean = false,
     override val collisionRules: List<VariantCollisionRules> = listOf()
-) : HybridAquaticFishEntity(type, world, variants, HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
+) : HybridAquaticFishEntity(type, world, variants, listOf(HybridAquaticEntityTags.NONE), listOf(HybridAquaticEntityTags.NONE)) {
 
     init {
         moveControl = DeepSeaFishMoveControl(this)

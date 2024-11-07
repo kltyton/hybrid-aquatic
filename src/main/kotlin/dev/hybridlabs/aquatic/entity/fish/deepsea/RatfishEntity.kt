@@ -8,7 +8,12 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
 
 class RatfishEntity(entityType: EntityType<out RatfishEntity>, world: World) :
-    HybridAquaticDeepSeaFishEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
+    HybridAquaticDeepSeaFishEntity(entityType, world, emptyMap(),
+        listOf(
+            HybridAquaticEntityTags.CRUSTACEAN),
+        listOf(
+            HybridAquaticEntityTags.LARGE_PREY,
+            HybridAquaticEntityTags.SHARK)) {
 
     override fun getLimitPerChunk(): Int {
         return 4

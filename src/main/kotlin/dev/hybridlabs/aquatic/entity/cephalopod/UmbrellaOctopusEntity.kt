@@ -14,7 +14,7 @@ class UmbrellaOctopusEntity(entityType: EntityType<out UmbrellaOctopusEntity>, w
         world,
         emptyMap(),
         HybridAquaticEntityTags.NONE,
-        HybridAquaticEntityTags.OCTOPUS_PREDATOR
+        HybridAquaticEntityTags.SHARK
     ) {
 
     override fun initGoals() {

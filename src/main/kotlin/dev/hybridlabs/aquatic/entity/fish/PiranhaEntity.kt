@@ -13,12 +13,14 @@ import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.Difficulty
 import net.minecraft.world.World
-import software.bernie.geckolib.core.animatable.GeoAnimatable
-import software.bernie.geckolib.core.animation.AnimationState
-import software.bernie.geckolib.core.`object`.PlayState
 
 class PiranhaEntity(entityType: EntityType<out PiranhaEntity>, world: World) :
-    HybridAquaticSchoolingFishEntity(entityType, world, HybridAquaticEntityTags.PIRANHA_PREY, HybridAquaticEntityTags.PIRANHA_PREDATOR) {
+    HybridAquaticSchoolingFishEntity(entityType, world,
+        listOf(HybridAquaticEntityTags.SMALL_PREY),
+        listOf(
+            HybridAquaticEntityTags.MEDIUM_PREY,
+            HybridAquaticEntityTags.LARGE_PREY,
+            HybridAquaticEntityTags.SHARK)) {
 
     override fun getLimitPerChunk(): Int {
         return 4

@@ -12,8 +12,8 @@ class CuttlefishEntity(entityType: EntityType<out CuttlefishEntity>, world: Worl
         entityType,
         world,
         emptyMap(),
-        HybridAquaticEntityTags.CUTTLEFISH_PREY,
-        HybridAquaticEntityTags.CUTTLEFISH_PREDATOR
+        HybridAquaticEntityTags.CRUSTACEAN,
+        HybridAquaticEntityTags.SHARK
     ) {
 
     companion object {

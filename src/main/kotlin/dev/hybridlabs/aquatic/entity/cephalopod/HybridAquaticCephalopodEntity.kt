@@ -110,7 +110,7 @@ open class HybridAquaticCephalopodEntity(
     }
 
     private fun getHungerValue(entityType: EntityType<*>): Int {
-        if (entityType.isIn(HybridAquaticEntityTags.CRAB))
+        if (entityType.isIn(HybridAquaticEntityTags.CRUSTACEAN))
             return 150
         if (entityType.isIn(HybridAquaticEntityTags.JELLYFISH))
             return 150

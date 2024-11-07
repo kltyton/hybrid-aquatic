@@ -15,7 +15,7 @@ import net.minecraft.world.Difficulty
 import net.minecraft.world.World
 
 class GreatWhiteSharkEntity(entityType: EntityType<out GreatWhiteSharkEntity>, world: World) :
-    HybridAquaticSharkEntity(entityType, world, HybridAquaticEntityTags.GREAT_WHITE_SHARK_PREY, false, true) {
+    HybridAquaticSharkEntity(entityType, world, listOf(HybridAquaticEntityTags.LARGE_PREY), false, true) {
 
     override fun initGoals() {
         super.initGoals()

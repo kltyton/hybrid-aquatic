@@ -18,7 +18,12 @@ class SurgeonfishEntity(entityType: EntityType<out SurgeonfishEntity>, world: Wo
         "powder_blue_tang" to FishVariant.biomeVariant("powder_blue_tang", HybridAquaticBiomeTags.REEF),
         "yellow_tang" to FishVariant.biomeVariant("yellow_tang", HybridAquaticBiomeTags.REEF),
         "blue_tang" to FishVariant.biomeVariant("blue_tang", HybridAquaticBiomeTags.REEF)),
-        HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.SURGEONFISH_PREDATOR) {
+        listOf(
+            HybridAquaticEntityTags.NONE),
+        listOf(
+            HybridAquaticEntityTags.MEDIUM_PREY,
+            HybridAquaticEntityTags.LARGE_PREY,
+            HybridAquaticEntityTags.SHARK)) {
 
     public override fun getLootTableId(): Identifier {
         return when (this.variant?.variantName) {

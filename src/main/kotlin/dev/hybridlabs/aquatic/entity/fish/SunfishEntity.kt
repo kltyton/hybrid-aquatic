@@ -14,7 +14,10 @@ class SunfishEntity(entityType: EntityType<out SunfishEntity>, world: World) :
         "ocean" to FishVariant.biomeVariant("ocean", HybridAquaticBiomeTags.DEEP_WARM_OCEANS),
         "hoodwinker" to FishVariant.biomeVariant("hoodwinker", HybridAquaticBiomeTags.WARM_OCEANS),
         "sharptail" to FishVariant.biomeVariant("sharptail", HybridAquaticBiomeTags.OCEAN)),
-        HybridAquaticEntityTags.SUNFISH_PREY, HybridAquaticEntityTags.SUNFISH_PREDATOR) {
+        listOf(
+            HybridAquaticEntityTags.JELLYFISH),
+        listOf(
+            HybridAquaticEntityTags.SHARK)) {
 
     public override fun getLootTableId(): Identifier {
         return when (this.variant?.variantName) {

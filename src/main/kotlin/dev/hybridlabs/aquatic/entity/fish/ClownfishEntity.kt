@@ -30,7 +30,12 @@ class ClownfishEntity(entityType: EntityType<out ClownfishEntity>, world: World)
         "orange_skunk" to FishVariant.biomeVariant("orange_skunk", HybridAquaticBiomeTags.REEF,
             ignore = listOf(FishVariant.Ignore.ANIMATION)),
         ),
-        HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.CLOWNFISH_PREDATOR) {
+        listOf(
+            HybridAquaticEntityTags.NONE),
+        listOf(
+            HybridAquaticEntityTags.MEDIUM_PREY,
+            HybridAquaticEntityTags.LARGE_PREY,
+            HybridAquaticEntityTags.SHARK)) {
 
     override fun getLimitPerChunk(): Int {
         return 2

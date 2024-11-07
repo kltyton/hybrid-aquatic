@@ -8,8 +8,13 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
 
 class WhaleSharkEntity(entityType: EntityType<out WhaleSharkEntity>, world: World) :
-    HybridAquaticSharkEntity(entityType, world, HybridAquaticEntityTags.NONE, true, false) {
-        companion object {
+    HybridAquaticSharkEntity(entityType, world, listOf(HybridAquaticEntityTags.NONE), true, false) {
+
+    override fun getLimitPerChunk(): Int {
+        return 1
+    }
+
+    companion object {
             fun createMobAttributes(): DefaultAttributeContainer.Builder {
                 return WaterCreatureEntity.createMobAttributes()
                     .add(EntityAttributes.GENERIC_MAX_HEALTH, 60.0)

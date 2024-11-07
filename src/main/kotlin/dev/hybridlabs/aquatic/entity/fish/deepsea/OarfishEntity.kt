@@ -8,7 +8,12 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
 
 class OarfishEntity(entityType: EntityType<out OarfishEntity>, world: World) :
-    HybridAquaticDeepSeaFishEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.OARFISH_PREY, HybridAquaticEntityTags.OARFISH_PREDATOR) {
+    HybridAquaticDeepSeaFishEntity(entityType, world, emptyMap(),
+        listOf(
+            HybridAquaticEntityTags.CEPHALOPOD,
+            HybridAquaticEntityTags.SMALL_PREY),
+        listOf(
+            HybridAquaticEntityTags.SHARK)) {
 
     override fun getLimitPerChunk(): Int {
         return 2

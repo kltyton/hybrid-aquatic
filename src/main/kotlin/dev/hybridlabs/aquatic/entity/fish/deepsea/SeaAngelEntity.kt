@@ -8,7 +8,11 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
 
 class SeaAngelEntity(entityType: EntityType<out SeaAngelEntity>, world: World) :
-    HybridAquaticDeepSeaFishEntity(entityType, world, emptyMap(), HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
+    HybridAquaticDeepSeaFishEntity(entityType, world, emptyMap(),
+        listOf(
+            HybridAquaticEntityTags.NONE),
+        listOf(
+            HybridAquaticEntityTags.NONE)) {
 
     override fun getLimitPerChunk(): Int {
         return 2

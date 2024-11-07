@@ -15,7 +15,7 @@ import net.minecraft.world.Difficulty
 import net.minecraft.world.World
 
 class ThresherSharkEntity(entityType: EntityType<out ThresherSharkEntity>, world: World) :
-    HybridAquaticSharkEntity(entityType, world, HybridAquaticEntityTags.THRESHER_SHARK_PREY, false, false) {
+    HybridAquaticSharkEntity(entityType, world, listOf(HybridAquaticEntityTags.SMALL_PREY, HybridAquaticEntityTags.MEDIUM_PREY), false, false) {
 
     override fun initGoals() {
         super.initGoals()

@@ -16,7 +16,11 @@ class MahiEntity(entityType: EntityType<out MahiEntity>, world: World) :
         "pompano" to FishVariant.biomeVariant("pompano", HybridAquaticBiomeTags.DEEP_WARM_OCEANS,
             ignore = listOf(FishVariant.Ignore.ANIMATION)),
         ),
-        HybridAquaticEntityTags.MAHI_PREY, HybridAquaticEntityTags.MAHI_PREDATOR) {
+        listOf(
+            HybridAquaticEntityTags.SMALL_PREY,
+            HybridAquaticEntityTags.CEPHALOPOD),
+        listOf(
+            HybridAquaticEntityTags.SHARK)) {
 
     override fun getLimitPerChunk(): Int {
         return 2

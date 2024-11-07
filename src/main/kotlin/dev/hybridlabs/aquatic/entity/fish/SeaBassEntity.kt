@@ -12,8 +12,13 @@ class SeaBassEntity(entityType: EntityType<out SeaBassEntity>, world: World) :
     HybridAquaticFishEntity(entityType, world, variants = hashMapOf(
         "black" to FishVariant.biomeVariant("black", HybridAquaticBiomeTags.OCEAN,
             ignore = listOf(FishVariant.Ignore.ANIMATION, FishVariant.Ignore.MODEL)),
-    ),
-        HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.ROCKFISH_PREDATOR) {
+        ),
+        listOf(
+            HybridAquaticEntityTags.NONE),
+        listOf(
+            HybridAquaticEntityTags.LARGE_PREY,
+            HybridAquaticEntityTags.SHARK)) {
+
     override fun getLimitPerChunk(): Int {
         return 2
     }

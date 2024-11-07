@@ -10,7 +10,13 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
 
 class TunaEntity(entityType: EntityType<out TunaEntity>, world: World) :
-    HybridAquaticSchoolingFishEntity(entityType, world, HybridAquaticEntityTags.TUNA_PREY, HybridAquaticEntityTags.TUNA_PREDATOR, variants = hashMapOf(
+    HybridAquaticSchoolingFishEntity(entityType, world,
+        listOf(
+            HybridAquaticEntityTags.SMALL_PREY,
+            HybridAquaticEntityTags.CEPHALOPOD,),
+        listOf(
+            HybridAquaticEntityTags.SHARK),
+        variants = hashMapOf(
         "bluefin" to FishVariant.biomeVariant("bluefin", HybridAquaticBiomeTags.ALL_OCEANS,
             ignore = listOf(FishVariant.Ignore.ANIMATION)),
         "yellowfin" to FishVariant.biomeVariant("yellowfin", HybridAquaticBiomeTags.ALL_WARM_OCEANS,

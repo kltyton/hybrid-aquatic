@@ -14,7 +14,12 @@ class GoldfishEntity(entityType: EntityType<out GoldfishEntity>, world: World) :
         "shubunkin" to FishVariant.biomeVariant("shubunkin", HybridAquaticBiomeTags.CHERRY,
             ignore = listOf(FishVariant.Ignore.MODEL, FishVariant.Ignore.ANIMATION)),
         ),
-        HybridAquaticEntityTags.NONE, HybridAquaticEntityTags.NONE) {
+        listOf(
+            HybridAquaticEntityTags.NONE),
+        listOf(
+            HybridAquaticEntityTags.MEDIUM_PREY,
+            HybridAquaticEntityTags.LARGE_PREY,
+            HybridAquaticEntityTags.SHARK)) {
 
     public override fun getLootTableId(): Identifier {
         return when (this.variant?.variantName) {
