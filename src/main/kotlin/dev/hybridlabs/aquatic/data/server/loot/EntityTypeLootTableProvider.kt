@@ -742,6 +742,17 @@ class EntityTypeLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTa
             )
         }
 
+        export(exporter, HybridAquaticEntityTypes.MACKEREL) {
+            pool(
+                LootPool.builder()
+                    .with(
+                        ItemEntry.builder(HybridAquaticItems.MACKEREL)
+                            .apply(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0F, 1.0F)))
+                            .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0F, 1.0F)))
+                    )
+            )
+        }
+
         export(exporter, HybridAquaticEntityTypes.TRIGGERFISH) {
             pool(
                 LootPool.builder()

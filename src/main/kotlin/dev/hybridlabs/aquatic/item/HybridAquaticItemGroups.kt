@@ -151,6 +151,7 @@ object  HybridAquaticItemGroups {
             entries.add(HybridAquaticItems.ROCKFISH)
             entries.add(HybridAquaticItems.SEA_BASS)
             entries.add(HybridAquaticItems.NEEDLEFISH)
+            entries.add(HybridAquaticItems.MACKEREL)
             entries.add(HybridAquaticItems.TUNA)
             entries.add(HybridAquaticItems.MAHI)
             entries.add(HybridAquaticItems.TOADFISH)

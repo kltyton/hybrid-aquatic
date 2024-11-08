@@ -96,8 +96,6 @@ object HybridAquaticItems {
         3f,
         FabricItemSettings()))
 
-    val RAW_SHRIMP = register("raw_shrimp", Item(FabricItemSettings()))
-    val RAW_CRAYFISH = register("raw_crayfish", Item(FabricItemSettings()))
     val LOBSTER_CLAW = register("lobster_claw", Item(FabricItemSettings()))
     val DUNGENESS_CRAB_CLAW = register("dungeness_crab_claw", Item(FabricItemSettings()))
     val FIDDLER_CRAB_CLAW = register("fiddler_crab_claw", Item(FabricItemSettings()))
@@ -111,13 +109,65 @@ object HybridAquaticItems {
     val KARKINOS_CLAW = register("karkinos_claw", KarkinosClawItem(FabricItemSettings().maxCount(1)))
 
     // food items
+    val RAW_SHRIMP = register("raw_shrimp",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(2)
+                        .saturationModifier(0.4F)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+
+    val COOKED_SHRIMP = register("cooked_shrimp",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(4)
+                        .saturationModifier(4.0F)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+
+    val RAW_CRAYFISH = register("raw_crayfish",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(2)
+                        .saturationModifier(0.4F)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+
+    val COOKED_CRAYFISH = register("cooked_crayfish",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(4)
+                        .saturationModifier(4.0F)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+
     val RAW_CRAB = register("raw_crab",
         Item(
             FabricItemSettings()
                 .food(
                     FoodComponent.Builder()
                         .hunger(2)
-                        .saturationModifier(0.8F)
+                        .saturationModifier(0.4F)
                         .meat()
                         .build()
                 )
@@ -129,8 +179,8 @@ object HybridAquaticItems {
             FabricItemSettings()
                 .food(
                     FoodComponent.Builder()
-                        .hunger(6)
-                        .saturationModifier(0.8F)
+                        .hunger(5)
+                        .saturationModifier(5.0F)
                         .meat()
                         .build()
                 )
@@ -143,7 +193,7 @@ object HybridAquaticItems {
                 .food(
                     FoodComponent.Builder()
                         .hunger(2)
-                        .saturationModifier(0.8F)
+                        .saturationModifier(0.4F)
                         .meat()
                         .build()
                 )
@@ -155,8 +205,8 @@ object HybridAquaticItems {
             FabricItemSettings()
                 .food(
                     FoodComponent.Builder()
-                        .hunger(8)
-                        .saturationModifier(0.8F)
+                        .hunger(5)
+                        .saturationModifier(6.0F)
                         .meat()
                         .build()
                 )
@@ -169,7 +219,7 @@ object HybridAquaticItems {
                 .food(
                     FoodComponent.Builder()
                         .hunger(2)
-                        .saturationModifier(0.8F)
+                        .saturationModifier(0.4F)
                         .meat()
                         .build()
                 )
@@ -181,34 +231,8 @@ object HybridAquaticItems {
             FabricItemSettings()
                 .food(
                     FoodComponent.Builder()
-                        .hunger(8)
-                        .saturationModifier(0.8F)
-                        .meat()
-                        .build()
-                )
-        )
-    )
-
-    val COOKED_SHRIMP = register("cooked_shrimp",
-        Item(
-            FabricItemSettings()
-                .food(
-                    FoodComponent.Builder()
-                        .hunger(6)
-                        .saturationModifier(0.8F)
-                        .meat()
-                        .build()
-                )
-        )
-    )
-
-    val COOKED_CRAYFISH = register("cooked_crayfish",
-        Item(
-            FabricItemSettings()
-                .food(
-                    FoodComponent.Builder()
-                        .hunger(6)
-                        .saturationModifier(0.8F)
+                        .hunger(5)
+                        .saturationModifier(6.0F)
                         .meat()
                         .build()
                 )
@@ -221,7 +245,7 @@ object HybridAquaticItems {
                 .food(
                     FoodComponent.Builder()
                         .hunger(8)
-                        .saturationModifier(0.8F)
+                        .saturationModifier(12.8F)
                         .meat()
                         .build()
                 )
@@ -233,8 +257,8 @@ object HybridAquaticItems {
             FabricItemSettings()
                 .food(
                     FoodComponent.Builder()
-                        .hunger(4)
-                        .saturationModifier(0.4F)
+                        .hunger(3)
+                        .saturationModifier(1.8F)
                         .meat()
                         .build()
                 )
@@ -267,19 +291,6 @@ object HybridAquaticItems {
         )
     )
 
-    val COOKED_TENTACLE = register("cooked_tentacle",
-        Item(
-            FabricItemSettings()
-                .food(
-                    FoodComponent.Builder()
-                        .hunger(4)
-                        .saturationModifier(0.8F)
-                        .meat()
-                        .build()
-                )
-        )
-    )
-
     val RAW_TENTACLE = register("raw_tentacle",
         Item(
             FabricItemSettings()
@@ -293,125 +304,20 @@ object HybridAquaticItems {
         )
     )
 
-    val LIONFISH = register("lionfish",
+    val COOKED_TENTACLE = register("cooked_tentacle",
         Item(
             FabricItemSettings()
                 .food(
                     FoodComponent.Builder()
-                        .hunger(1)
-                        .saturationModifier(0.4F)
-                        .statusEffect(StatusEffectInstance(StatusEffects.POISON, 1200, 1), 1.0f)
+                        .hunger(4)
+                        .saturationModifier(0.8F)
                         .meat()
                         .build()
                 )
         )
     )
 
-    val MAHI = register("mahi",
-        Item(
-            FabricItemSettings()
-                .food(
-                    FoodComponent.Builder()
-                        .hunger(3)
-                        .saturationModifier(0.4F)
-                        .meat()
-                        .build()
-                )
-        )
-    )
-
-    val TUNA = register("tuna",
-        Item(
-            FabricItemSettings()
-                .food(
-                    FoodComponent.Builder()
-                        .hunger(3)
-                        .saturationModifier(0.4F)
-                        .meat()
-                        .build()
-                )
-        )
-    )
-
-    val OPAH = register("opah",
-        Item(
-            FabricItemSettings()
-                .food(
-                    FoodComponent.Builder()
-                        .hunger(3)
-                        .saturationModifier(0.4F)
-                        .meat()
-                        .build()
-                )
-        )
-    )
-
-    val OARFISH = register("oarfish",
-        Item(
-            FabricItemSettings()
-                .food(
-                    FoodComponent.Builder()
-                        .hunger(3)
-                        .saturationModifier(0.4F)
-                        .meat()
-                        .build()
-                )
-        )
-    )
-
-    val ROCKFISH = register("rockfish",
-        Item(
-            FabricItemSettings()
-                .food(
-                    FoodComponent.Builder()
-                        .hunger(1)
-                        .saturationModifier(0.4F)
-                        .meat()
-                        .build()
-                )
-        )
-    )
-
-    val SEA_BASS = register("sea_bass",
-        Item(
-            FabricItemSettings()
-                .food(
-                    FoodComponent.Builder()
-                        .hunger(1)
-                        .saturationModifier(0.4F)
-                        .meat()
-                        .build()
-                )
-        )
-    )
-
-    val BLUE_SPOTTED_STINGRAY = register("blue_spotted_stingray",
-        Item(
-            FabricItemSettings()
-                .food(
-                    FoodComponent.Builder()
-                        .hunger(1)
-                        .saturationModifier(0.4F)
-                        .meat()
-                        .build()
-                )
-        )
-    )
-
-    val MORAY_EEL = register("moray_eel",
-        Item(
-            FabricItemSettings()
-                .food(
-                    FoodComponent.Builder()
-                        .hunger(3)
-                        .saturationModifier(0.4F)
-                        .meat()
-                        .build()
-                )
-        )
-    )
-
-    val NEEDLEFISH = register("needlefish",
+    val MACKEREL = register("mackerel",
         Item(
             FabricItemSettings()
                 .food(
@@ -430,7 +336,7 @@ object HybridAquaticItems {
                 .food(
                     FoodComponent.Builder()
                         .hunger(1)
-                        .saturationModifier(0.4F)
+                        .saturationModifier(0.2F)
                         .meat()
                         .build()
                 )
@@ -443,7 +349,7 @@ object HybridAquaticItems {
                 .food(
                     FoodComponent.Builder()
                         .hunger(1)
-                        .saturationModifier(0.4F)
+                        .saturationModifier(0.2F)
                         .meat()
                         .build()
                 )
@@ -456,7 +362,7 @@ object HybridAquaticItems {
                 .food(
                     FoodComponent.Builder()
                         .hunger(1)
-                        .saturationModifier(0.4F)
+                        .saturationModifier(0.2F)
                         .meat()
                         .build()
                 )
@@ -469,7 +375,7 @@ object HybridAquaticItems {
                 .food(
                     FoodComponent.Builder()
                         .hunger(1)
-                        .saturationModifier(0.4F)
+                        .saturationModifier(0.2F)
                         .meat()
                         .build()
                 )
@@ -482,7 +388,7 @@ object HybridAquaticItems {
                 .food(
                     FoodComponent.Builder()
                         .hunger(1)
-                        .saturationModifier(0.4F)
+                        .saturationModifier(0.2F)
                         .meat()
                         .build()
                 )
@@ -495,7 +401,7 @@ object HybridAquaticItems {
                 .food(
                     FoodComponent.Builder()
                         .hunger(1)
-                        .saturationModifier(0.4F)
+                        .saturationModifier(0.2F)
                         .meat()
                         .build()
                 )
@@ -508,33 +414,7 @@ object HybridAquaticItems {
                 .food(
                     FoodComponent.Builder()
                         .hunger(1)
-                        .saturationModifier(0.4F)
-                        .meat()
-                        .build()
-                )
-        )
-    )
-
-    val YELLOW_TANG = register("yellow_tang",
-        Item(
-            FabricItemSettings()
-                .food(
-                    FoodComponent.Builder()
-                        .hunger(1)
-                        .saturationModifier(0.4F)
-                        .meat()
-                        .build()
-                )
-        )
-    )
-
-    val POWDER_BLUE_TANG = register("powder_blue_tang",
-        Item(
-            FabricItemSettings()
-                .food(
-                    FoodComponent.Builder()
-                        .hunger(1)
-                        .saturationModifier(0.4F)
+                        .saturationModifier(0.2F)
                         .meat()
                         .build()
                 )
@@ -547,7 +427,33 @@ object HybridAquaticItems {
                 .food(
                     FoodComponent.Builder()
                         .hunger(1)
-                        .saturationModifier(0.4F)
+                        .saturationModifier(0.2F)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+
+    val YELLOW_TANG = register("yellow_tang",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(1)
+                        .saturationModifier(0.2F)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+
+    val POWDER_BLUE_TANG = register("powder_blue_tang",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(1)
+                        .saturationModifier(0.2F)
                         .meat()
                         .build()
                 )
@@ -560,7 +466,7 @@ object HybridAquaticItems {
                 .food(
                     FoodComponent.Builder()
                         .hunger(1)
-                        .saturationModifier(0.4F)
+                        .saturationModifier(0.2F)
                         .meat()
                         .build()
                 )
@@ -573,7 +479,7 @@ object HybridAquaticItems {
                 .food(
                     FoodComponent.Builder()
                         .hunger(1)
-                        .saturationModifier(0.4F)
+                        .saturationModifier(0.2F)
                         .meat()
                         .build()
                 )
@@ -586,7 +492,7 @@ object HybridAquaticItems {
                 .food(
                     FoodComponent.Builder()
                         .hunger(1)
-                        .saturationModifier(0.4F)
+                        .saturationModifier(0.2F)
                         .meat()
                         .build()
                 )
@@ -599,7 +505,7 @@ object HybridAquaticItems {
                 .food(
                     FoodComponent.Builder()
                         .hunger(1)
-                        .saturationModifier(0.4F)
+                        .saturationModifier(0.2F)
                         .meat()
                         .build()
                 )
@@ -612,7 +518,7 @@ object HybridAquaticItems {
                 .food(
                     FoodComponent.Builder()
                         .hunger(1)
-                        .saturationModifier(0.4F)
+                        .saturationModifier(0.2F)
                         .meat()
                         .build()
                 )
@@ -625,20 +531,7 @@ object HybridAquaticItems {
                 .food(
                     FoodComponent.Builder()
                         .hunger(1)
-                        .saturationModifier(0.4F)
-                        .meat()
-                        .build()
-                )
-        )
-    )
-
-    val RATFISH = register("ratfish",
-        Item(
-            FabricItemSettings()
-                .food(
-                    FoodComponent.Builder()
-                        .hunger(1)
-                        .saturationModifier(0.4F)
+                        .saturationModifier(0.2F)
                         .meat()
                         .build()
                 )
@@ -651,7 +544,7 @@ object HybridAquaticItems {
                 .food(
                     FoodComponent.Builder()
                         .hunger(1)
-                        .saturationModifier(0.4F)
+                        .saturationModifier(0.2F)
                         .meat()
                         .build()
                 )
@@ -664,7 +557,7 @@ object HybridAquaticItems {
                 .food(
                     FoodComponent.Builder()
                         .hunger(1)
-                        .saturationModifier(0.4F)
+                        .saturationModifier(0.2F)
                         .meat()
                         .build()
                 )
@@ -677,20 +570,7 @@ object HybridAquaticItems {
                 .food(
                     FoodComponent.Builder()
                         .hunger(1)
-                        .saturationModifier(0.4F)
-                        .meat()
-                        .build()
-                )
-        )
-    )
-
-    val TRIGGERFISH = register("triggerfish",
-        Item(
-            FabricItemSettings()
-                .food(
-                    FoodComponent.Builder()
-                        .hunger(3)
-                        .saturationModifier(0.4F)
+                        .saturationModifier(0.2F)
                         .meat()
                         .build()
                 )
@@ -716,21 +596,8 @@ object HybridAquaticItems {
                 .food(
                     FoodComponent.Builder()
                         .hunger(1)
-                        .saturationModifier(0.4F)
+                        .saturationModifier(0.2F)
                         .statusEffect(StatusEffectInstance(StatusEffects.POISON, 1200, 1), 1.0f)
-                        .meat()
-                        .build()
-                )
-        )
-    )
-
-    val SUNFISH = register("sunfish",
-        Item(
-            FabricItemSettings()
-                .food(
-                    FoodComponent.Builder()
-                        .hunger(1)
-                        .saturationModifier(0.4F)
                         .meat()
                         .build()
                 )
@@ -743,7 +610,7 @@ object HybridAquaticItems {
                 .food(
                     FoodComponent.Builder()
                         .hunger(1)
-                        .saturationModifier(0.4F)
+                        .saturationModifier(0.2F)
                         .meat()
                         .build()
                 )
@@ -756,7 +623,7 @@ object HybridAquaticItems {
                 .food(
                     FoodComponent.Builder()
                         .hunger(1)
-                        .saturationModifier(0.4F)
+                        .saturationModifier(0.2F)
                         .meat()
                         .build()
                 )
@@ -769,20 +636,7 @@ object HybridAquaticItems {
                 .food(
                     FoodComponent.Builder()
                         .hunger(1)
-                        .saturationModifier(0.4F)
-                        .meat()
-                        .build()
-                )
-        )
-    )
-
-    val SPOTTED_EAGLE_RAY = register("spotted_eagle_ray",
-        Item(
-            FabricItemSettings()
-                .food(
-                    FoodComponent.Builder()
-                        .hunger(1)
-                        .saturationModifier(0.4F)
+                        .saturationModifier(0.2F)
                         .meat()
                         .build()
                 )
@@ -803,20 +657,6 @@ object HybridAquaticItems {
         )
     )
 
-    val PARROTFISH = register("parrotfish",
-        Item(
-            FabricItemSettings()
-                .food(
-                    FoodComponent.Builder()
-                        .hunger(1)
-                        .saturationModifier(0.4F)
-                        .meat()
-                        .build()
-                )
-        )
-    )
-
-
     val STONEFISH = register("stonefish",
         Item(
             FabricItemSettings()
@@ -825,6 +665,202 @@ object HybridAquaticItems {
                         .hunger(1)
                         .saturationModifier(0.4F)
                         .statusEffect(StatusEffectInstance(StatusEffects.POISON, 1200, 1), 1.0f)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+
+    val LIONFISH = register("lionfish",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(2)
+                        .saturationModifier(0.4F)
+                        .statusEffect(StatusEffectInstance(StatusEffects.POISON, 1200, 0), 1.0f)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+
+    val ROCKFISH = register("rockfish",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(2)
+                        .saturationModifier(0.4F)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+
+    val SEA_BASS = register("sea_bass",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(2)
+                        .saturationModifier(0.4F)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+
+    val BLUE_SPOTTED_STINGRAY = register("blue_spotted_stingray",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(2)
+                        .saturationModifier(0.4F)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+
+    val SPOTTED_EAGLE_RAY = register("spotted_eagle_ray",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(2)
+                        .saturationModifier(0.4F)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+
+    val MORAY_EEL = register("moray_eel",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(2)
+                        .saturationModifier(0.4F)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+
+    val NEEDLEFISH = register("needlefish",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(2)
+                        .saturationModifier(0.4F)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+
+    val RATFISH = register("ratfish",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(2)
+                        .saturationModifier(0.4F)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+
+    val TRIGGERFISH = register("triggerfish",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(2)
+                        .saturationModifier(0.4F)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+
+    val PARROTFISH = register("parrotfish",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(2)
+                        .saturationModifier(0.4F)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+
+    val MAHI = register("mahi",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(3)
+                        .saturationModifier(1.8F)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+
+    val TUNA = register("tuna",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(3)
+                        .saturationModifier(1.8F)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+
+    val OPAH = register("opah",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(3)
+                        .saturationModifier(1.8F)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+
+    val OARFISH = register("oarfish",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(3)
+                        .saturationModifier(1.8F)
+                        .meat()
+                        .build()
+                )
+        )
+    )
+
+    val SUNFISH = register("sunfish",
+        Item(
+            FabricItemSettings()
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(3)
+                        .saturationModifier(1.8F)
                         .meat()
                         .build()
                 )

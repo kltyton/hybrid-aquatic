@@ -109,6 +109,7 @@ class ItemTagProvider(output: FabricDataOutput, registriesFuture: CompletableFut
             HybridAquaticItems.BETTA,
             HybridAquaticItems.DANIO,
             HybridAquaticItems.NEON_TETRA,
+            HybridAquaticItems.MACKEREL,
         ).forEach { item ->
             getOrCreateTagBuilder(HybridAquaticItemTags.SMALL_FISH).add(item)
         }

@@ -134,6 +134,7 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             HybridAquaticItems.GOLDFISH to "Goldfish",
             HybridAquaticItems.MORAY_EEL to "Moray Eel",
             HybridAquaticItems.NEEDLEFISH to "Needlefish",
+            HybridAquaticItems.MACKEREL to "Mackerel",
             HybridAquaticItems.PIRANHA to "Piranha",
             HybridAquaticItems.ANGLERFISH to "Anglerfish",
             HybridAquaticItems.BARRELEYE to "Barreleye",

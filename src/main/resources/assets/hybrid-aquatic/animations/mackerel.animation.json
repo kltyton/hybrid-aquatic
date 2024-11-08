@@ -5,11 +5,6 @@
 			"loop": true,
 			"animation_length": 2,
 			"bones": {
-				"dorsal_fin": {
-					"rotation": {
-						"vector": [0, 0, "Math.sin(query.anim_time * 180)*10"]
-					}
-				},
 				"body": {
 					"rotation": {
 						"vector": ["Math.cos(query.anim_time * 180)*2.5", 0, 0]
@@ -67,16 +62,6 @@
 				"right_fin": {
 					"rotation": {
 						"vector": [0, "Math.cos(query.anim_time * 360)*15", 0]
-					}
-				},
-				"left_pelvic_fin": {
-					"rotation": {
-						"vector": ["Math.cos(query.anim_time * 360)*5", 0, "Math.cos(query.anim_time * 360)*5"]
-					}
-				},
-				"right_pelvic_fin": {
-					"rotation": {
-						"vector": ["Math.cos(query.anim_time * 360)*5 ", 0, "Math.cos(query.anim_time * 360)*5"]
 					}
 				}
 			}
