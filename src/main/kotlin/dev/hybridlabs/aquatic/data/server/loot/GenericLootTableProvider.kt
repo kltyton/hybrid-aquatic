@@ -162,76 +162,28 @@ class GenericLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
                 .pool(
                     LootPool.builder()
                         .with(
+                            ItemEntry.builder(Items.IRON_INGOT)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(3.0f, 9.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.EMERALD)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(3.0f, 5.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_HORSE_ARMOR)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.EXPERIENCE_BOTTLE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.MAP)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 16.0f)))
+                        )
+                        .with(
                             ItemEntry.builder(Items.OAK_SAPLING)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.OAK_LOG)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.ROSE_BUSH)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.LILAC)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.PEONY)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.LILY_OF_THE_VALLEY)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 8.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.ALLIUM)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 8.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.POPPY)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 8.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.DANDELION)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 8.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.AZURE_BLUET)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 8.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_HELMET)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_CHESTPLATE)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_LEGGINGS)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_BOOTS)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_SWORD)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_AXE)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_PICKAXE)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.COOKED_BEEF)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
                         )
                 )
         )
@@ -243,64 +195,28 @@ class GenericLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
                 .pool(
                     LootPool.builder()
                         .with(
+                            ItemEntry.builder(Items.IRON_INGOT)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(3.0f, 9.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.EMERALD)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(3.0f, 5.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_HORSE_ARMOR)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.EXPERIENCE_BOTTLE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.MAP)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 16.0f)))
+                        )
+                        .with(
                             ItemEntry.builder(Items.SPRUCE_SAPLING)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.SPRUCE_LOG)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.LARGE_FERN)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.FERN)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 8.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.RED_MUSHROOM)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 8.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.BROWN_MUSHROOM)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 8.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.SWEET_BERRIES)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 8.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_HELMET)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_CHESTPLATE)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_LEGGINGS)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_BOOTS)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_SWORD)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_AXE)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_PICKAXE)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.COOKED_BEEF)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
                         )
                 )
         )
@@ -312,64 +228,28 @@ class GenericLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
                 .pool(
                     LootPool.builder()
                         .with(
+                            ItemEntry.builder(Items.IRON_INGOT)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(3.0f, 9.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.EMERALD)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(3.0f, 5.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_HORSE_ARMOR)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.EXPERIENCE_BOTTLE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.MAP)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 16.0f)))
+                        )
+                        .with(
                             ItemEntry.builder(Items.BIRCH_SAPLING)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.BIRCH_LOG)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.ROSE_BUSH)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.PEONY)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.LILAC)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.LILY_OF_THE_VALLEY)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 8.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.BROWN_MUSHROOM)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 8.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_HELMET)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_CHESTPLATE)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_LEGGINGS)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_BOOTS)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_SWORD)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_AXE)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_PICKAXE)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.COOKED_RABBIT)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
                         )
                 )
         )
@@ -381,44 +261,28 @@ class GenericLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
                 .pool(
                     LootPool.builder()
                         .with(
+                            ItemEntry.builder(Items.IRON_INGOT)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(3.0f, 9.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.EMERALD)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(3.0f, 5.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_HORSE_ARMOR)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.EXPERIENCE_BOTTLE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.MAP)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 16.0f)))
+                        )
+                        .with(
                             ItemEntry.builder(Items.ACACIA_SAPLING)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.ACACIA_LOG)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_HELMET)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_CHESTPLATE)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_LEGGINGS)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_BOOTS)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_SWORD)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_AXE)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_PICKAXE)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.COOKED_PORKCHOP)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 8.0f)))
                         )
                 )
         )
@@ -430,68 +294,28 @@ class GenericLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
                 .pool(
                     LootPool.builder()
                         .with(
+                            ItemEntry.builder(Items.IRON_INGOT)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(3.0f, 9.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.EMERALD)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(3.0f, 5.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_HORSE_ARMOR)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.EXPERIENCE_BOTTLE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.MAP)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 16.0f)))
+                        )
+                        .with(
                             ItemEntry.builder(Items.DARK_OAK_SAPLING)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.DARK_OAK_LOG)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.ROSE_BUSH)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.PEONY)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.LILAC)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.LILY_OF_THE_VALLEY)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 8.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.BROWN_MUSHROOM)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 8.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.RED_MUSHROOM)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 8.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_HELMET)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_CHESTPLATE)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_LEGGINGS)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_BOOTS)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_SWORD)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_AXE)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_PICKAXE)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.COOKED_BEEF)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
                         )
                 )
         )
@@ -503,56 +327,28 @@ class GenericLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
                 .pool(
                     LootPool.builder()
                         .with(
+                            ItemEntry.builder(Items.IRON_INGOT)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(3.0f, 9.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.EMERALD)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(3.0f, 5.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_HORSE_ARMOR)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.EXPERIENCE_BOTTLE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.MAP)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 16.0f)))
+                        )
+                        .with(
                             ItemEntry.builder(Items.MANGROVE_PROPAGULE)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.MANGROVE_LOG)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.LILY_PAD)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.FERN)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 8.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.MOSS_BLOCK)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 8.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_HELMET)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_CHESTPLATE)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_LEGGINGS)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_BOOTS)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_SWORD)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_AXE)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_PICKAXE)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.TROPICAL_FISH)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
                         )
                 )
         )
@@ -564,16 +360,28 @@ class GenericLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
                 .pool(
                     LootPool.builder()
                         .with(
+                            ItemEntry.builder(Items.IRON_INGOT)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(3.0f, 9.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.EMERALD)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(3.0f, 5.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_HORSE_ARMOR)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.EXPERIENCE_BOTTLE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.MAP)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 16.0f)))
+                        )
+                        .with(
                             ItemEntry.builder(Items.CHERRY_SAPLING)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.CHERRY_LOG)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.PINK_PETALS)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 8.0f)))
                         )
                 )
         )
@@ -585,64 +393,28 @@ class GenericLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
                 .pool(
                     LootPool.builder()
                         .with(
+                            ItemEntry.builder(Items.IRON_INGOT)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(3.0f, 9.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.EMERALD)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(3.0f, 5.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.IRON_HORSE_ARMOR)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.EXPERIENCE_BOTTLE)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.MAP)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 16.0f)))
+                        )
+                        .with(
                             ItemEntry.builder(Items.JUNGLE_SAPLING)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.JUNGLE_LOG)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.VINE)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.FERN)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 8.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.COCOA_BEANS)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 8.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.BAMBOO)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 8.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.MELON_SLICE)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 8.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_HELMET)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_CHESTPLATE)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_LEGGINGS)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_BOOTS)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_SWORD)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_AXE)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.IRON_PICKAXE)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
-                        )
-                        .with(
-                            ItemEntry.builder(Items.COOKED_CHICKEN)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 16.0f)))
                         )
                 )
         )
