@@ -182,6 +182,14 @@ class GenericLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 16.0f)))
                         )
                         .with(
+                            ItemEntry.builder(Items.FISHING_ROD)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.FISHING_NET)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
                             ItemEntry.builder(Items.OAK_SAPLING)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 8.0f)))
                         )
@@ -213,6 +221,14 @@ class GenericLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
                         .with(
                             ItemEntry.builder(Items.MAP)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.FISHING_ROD)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.FISHING_NET)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
                         )
                         .with(
                             ItemEntry.builder(Items.SPRUCE_SAPLING)
@@ -248,6 +264,14 @@ class GenericLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 16.0f)))
                         )
                         .with(
+                            ItemEntry.builder(Items.FISHING_ROD)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.FISHING_NET)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
                             ItemEntry.builder(Items.BIRCH_SAPLING)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 8.0f)))
                         )
@@ -279,6 +303,14 @@ class GenericLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
                         .with(
                             ItemEntry.builder(Items.MAP)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.FISHING_ROD)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.FISHING_NET)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
                         )
                         .with(
                             ItemEntry.builder(Items.ACACIA_SAPLING)
@@ -314,6 +346,14 @@ class GenericLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 16.0f)))
                         )
                         .with(
+                            ItemEntry.builder(Items.FISHING_ROD)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.FISHING_NET)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
                             ItemEntry.builder(Items.DARK_OAK_SAPLING)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 8.0f)))
                         )
@@ -345,6 +385,14 @@ class GenericLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
                         .with(
                             ItemEntry.builder(Items.MAP)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.FISHING_ROD)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.FISHING_NET)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
                         )
                         .with(
                             ItemEntry.builder(Items.MANGROVE_PROPAGULE)
@@ -380,6 +428,14 @@ class GenericLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 16.0f)))
                         )
                         .with(
+                            ItemEntry.builder(Items.FISHING_ROD)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.FISHING_NET)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
                             ItemEntry.builder(Items.CHERRY_SAPLING)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 8.0f)))
                         )
@@ -411,6 +467,14 @@ class GenericLootTableProvider(output: FabricDataOutput) : SimpleFabricLootTable
                         .with(
                             ItemEntry.builder(Items.MAP)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(4.0f, 16.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(Items.FISHING_ROD)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
+                        )
+                        .with(
+                            ItemEntry.builder(HybridAquaticItems.FISHING_NET)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)))
                         )
                         .with(
                             ItemEntry.builder(Items.JUNGLE_SAPLING)

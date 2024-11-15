@@ -33,11 +33,12 @@ import net.minecraft.world.World
 import net.minecraft.world.WorldAccess
 import net.minecraft.world.biome.Biome
 import software.bernie.geckolib.animatable.GeoEntity
-import software.bernie.geckolib.core.animatable.GeoAnimatable
+import software.bernie.geckolib.constant.DefaultAnimations
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache
-import software.bernie.geckolib.core.animation.*
+import software.bernie.geckolib.core.animation.AnimatableManager
+import software.bernie.geckolib.core.animation.AnimationController
 import software.bernie.geckolib.core.animation.AnimationState
-import software.bernie.geckolib.core.`object`.PlayState
+import software.bernie.geckolib.core.animation.EasingType
 import software.bernie.geckolib.util.GeckoLibUtil
 
 @Suppress("LeakingThis")
@@ -55,7 +56,7 @@ open class HybridAquaticRayEntity(
 
     init {
         moveControl = AquaticMoveControl(this, 85, 10, 0.1F, 0.1F, true)
-        lookControl = YawAdjustingLookControl(this, 20)
+        lookControl = YawAdjustingLookControl(this, 10)
         navigation = SwimNavigation(this, world)
     }
 
@@ -205,23 +206,20 @@ open class HybridAquaticRayEntity(
         fromFishingNet = nbt.getBoolean("FromFishingNet")
     }
 
-    open fun <E : GeoAnimatable> predicate(event: AnimationState<E>): PlayState {
-        if (isSubmergedInWater && event.isMoving) {
-            event.controller.setAnimation(SWIM_ANIMATION)
-            return PlayState.CONTINUE
-
-        }
-
-        if (!isSubmergedInWater && this.moistness < getMaxMoistness()) {
-            event.controller.setAnimation(FLOP_ANIMATION)
-            return PlayState.CONTINUE
-        }
-
-        if (isSubmergedInWater && !event.isMoving) {
-            event.controller.setAnimation(IDLE_ANIMATION)
-            return PlayState.CONTINUE
-        }
-        return PlayState.CONTINUE
+    override fun registerControllers(controllerRegistrar: AnimatableManager.ControllerRegistrar) {
+        controllerRegistrar.add(
+            AnimationController(
+                this,
+                "Swim/Idle",
+                20
+            ) { state: AnimationState<HybridAquaticRayEntity> ->
+                if (state.isMoving) {
+                    state.setAndContinue(DefaultAnimations.SWIM)
+                } else {
+                    state.setAndContinue(DefaultAnimations.IDLE)
+                }
+            }.setOverrideEasingType(EasingType.EASE_IN_OUT_SINE)
+        )
     }
 
     override fun getActiveEyeHeight(pose: EntityPose, dimensions: EntityDimensions): Float {
@@ -295,17 +293,6 @@ open class HybridAquaticRayEntity(
         return 0
     }
 
-    override fun registerControllers(controllerRegistrar: AnimatableManager.ControllerRegistrar) {
-        controllerRegistrar.add(
-            AnimationController(
-                this,
-                "controller",
-                5,
-                ::predicate
-            )
-        )
-    }
-
     override fun getAnimatableInstanceCache(): AnimatableInstanceCache {
         return factory
     }
@@ -332,10 +319,6 @@ open class HybridAquaticRayEntity(
         const val VARIANT_KEY = "Variant"
         const val VARIANT_DATA_KEY = "VariantData"
         const val FISH_SIZE_KEY = "FishSize"
-
-        val IDLE_ANIMATION: RawAnimation = RawAnimation.begin().then("idle", Animation.LoopType.LOOP)
-        val SWIM_ANIMATION: RawAnimation = RawAnimation.begin().then("swim", Animation.LoopType.LOOP)
-        val FLOP_ANIMATION: RawAnimation = RawAnimation.begin().then("flop", Animation.LoopType.LOOP)
 
         @Suppress("UNUSED_PARAMETER", "DEPRECATION")
         fun canSpawn(

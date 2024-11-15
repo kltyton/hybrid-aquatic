@@ -28,7 +28,6 @@ import net.minecraft.sound.SoundEvent
 import net.minecraft.sound.SoundEvents
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.BlockPos
-import net.minecraft.util.math.Vec3d
 import net.minecraft.util.math.random.Random
 import net.minecraft.world.LocalDifficulty
 import net.minecraft.world.ServerWorldAccess
@@ -164,6 +163,20 @@ open class HybridAquaticFishEntity(
                 )
             }
         }
+    }
+
+    override fun tickMovement() {
+        if (!this.isTouchingWater && this.isOnGround && this.verticalCollision) {
+            this.velocity = velocity.add(
+                ((random.nextFloat() * 2.0f - 1.0f) * 0.05f).toDouble(), 0.4000000059604645,
+                ((random.nextFloat() * 2.0f - 1.0f) * 0.05f).toDouble()
+            )
+            this.isOnGround = false
+            this.velocityDirty = true
+            this.playSound(this.flopSound, this.soundVolume, this.soundPitch)
+        }
+
+        super.tickMovement()
     }
 
     override fun dropLoot(source: DamageSource, causedByPlayer: Boolean) {
@@ -336,6 +349,8 @@ open class HybridAquaticFishEntity(
         return 0
     }
 
+    // region Animations
+
     override fun registerControllers(controllerRegistrar: AnimatableManager.ControllerRegistrar) {
         controllerRegistrar.add(
             AnimationController(
@@ -356,37 +371,12 @@ open class HybridAquaticFishEntity(
         return factory
     }
 
+    // endregion
+
     init {
         moveControl = AquaticMoveControl(this, 75, 5, movementSpeed, 0.1f, true)
         lookControl = YawAdjustingLookControl(this, 10)
         navigation = SwimNavigation(this, world)
-    }
-
-    override fun travel(movementInput: Vec3d?) {
-        if (this.canMoveVoluntarily() && this.isTouchingWater) {
-            this.updateVelocity(0.01f, movementInput)
-            this.move(MovementType.SELF, this.velocity)
-            this.velocity = velocity.multiply(0.9)
-            if (this.target == null) {
-                this.velocity = velocity.add(0.0, -0.005, 0.0)
-            }
-        } else {
-            super.travel(movementInput)
-        }
-    }
-
-    override fun tickMovement() {
-        if (!this.isTouchingWater && this.isOnGround && this.verticalCollision) {
-            this.velocity = velocity.add(
-                ((random.nextFloat() * 2.0f - 1.0f) * 0.05f).toDouble(), 0.4000000059604645,
-                ((random.nextFloat() * 2.0f - 1.0f) * 0.05f).toDouble()
-            )
-            this.isOnGround = false
-            this.velocityDirty = true
-            this.playSound(this.flopSound, this.soundVolume, this.soundPitch)
-        }
-
-        super.tickMovement()
     }
 
     open fun speedModifier(): Double {
@@ -423,17 +413,6 @@ open class HybridAquaticFishEntity(
         override fun stop() {
             super.stop()
             fish.attemptAttack = false
-        }
-    }
-
-    override fun tryAttack(target: Entity?): Boolean {
-        if (super.tryAttack(target)) {
-
-            playSound(SoundEvents.ENTITY_FOX_EAT,1.0F,0.0F)
-
-            return true
-        } else {
-            return false
         }
     }
 
@@ -484,10 +463,6 @@ open class HybridAquaticFishEntity(
         fun getScaleAdjustment(fish: HybridAquaticFishEntity, adjustment: Float): Float {
             return 1.0f + (fish.size * adjustment)
         }
-    }
-
-    override fun getMaxHeadRotation(): Int {
-        return 1
     }
 
     override fun getMaxLookPitchChange(): Int {

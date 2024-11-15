@@ -7,9 +7,6 @@ import net.minecraft.entity.attribute.EntityAttributes
 import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.util.Identifier
 import net.minecraft.world.World
-import software.bernie.geckolib.core.animatable.GeoAnimatable
-import software.bernie.geckolib.core.animation.AnimationState
-import software.bernie.geckolib.core.`object`.PlayState
 
 class HermitCrabEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>, world: World) :
     HybridAquaticCrustaceanEntity(entityType, world, variants = hashMapOf(
@@ -78,14 +75,6 @@ class HermitCrabEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>
                 attributes.getCustomInstance(EntityAttributes.GENERIC_ARMOR)?.baseValue = 50.0
             }
         }
-    }
-
-    override fun <E : GeoAnimatable> predicate(event: AnimationState<E>): PlayState {
-        if (isHiding) {
-            event.controller.setAnimation(HIDING_ANIMATION)
-            return PlayState.CONTINUE
-        }
-        return super.predicate(event)
     }
 
     override fun damage(source: net.minecraft.entity.damage.DamageSource?, amount: Float): Boolean {

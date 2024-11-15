@@ -32,10 +32,9 @@ import net.minecraft.util.math.random.Random
 import net.minecraft.world.*
 import net.minecraft.world.biome.Biome
 import software.bernie.geckolib.animatable.GeoEntity
-import software.bernie.geckolib.core.animatable.GeoAnimatable
+import software.bernie.geckolib.constant.DefaultAnimations
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache
 import software.bernie.geckolib.core.animation.*
-import software.bernie.geckolib.core.`object`.PlayState
 import software.bernie.geckolib.util.GeckoLibUtil
 
 @Suppress("DEPRECATION", "LeakingThis", "UNUSED_PARAMETER")
@@ -244,29 +243,24 @@ open class HybridAquaticCrustaceanEntity(
         return !fromFishingNet && !hasCustomName()
     }
 
+    override fun getAnimatableInstanceCache(): AnimatableInstanceCache {
+        return factory
+    }
 
     override fun registerControllers(controllerRegistrar: AnimatableManager.ControllerRegistrar) {
         controllerRegistrar.add(
             AnimationController(
                 this,
-                "controller",
-                0,
-                ::predicate
-            )
+                "Swim/Idle",
+                20
+            ) { state: AnimationState<HybridAquaticCrustaceanEntity> ->
+                if (state.isMoving) {
+                    state.setAndContinue(DefaultAnimations.WALK)
+                } else {
+                    state.setAndContinue(DefaultAnimations.IDLE)
+                }
+            }.setOverrideEasingType(EasingType.EASE_IN_OUT_SINE)
         )
-    }
-
-    override fun getAnimatableInstanceCache(): AnimatableInstanceCache {
-        return factory
-    }
-
-    open fun <E : GeoAnimatable> predicate(event: AnimationState<E>): PlayState {
-        if (event.isMoving) {
-            event.controller.setAnimation(WALK_ANIMATION)
-        } else {
-            event.controller.setAnimation(IDLE_ANIMATION)
-        }
-        return PlayState.CONTINUE
     }
 
     companion object {
@@ -275,8 +269,6 @@ open class HybridAquaticCrustaceanEntity(
         val VARIANT: TrackedData<String> = DataTracker.registerData(HybridAquaticCrustaceanEntity::class.java, TrackedDataHandlerRegistry.STRING)
         var VARIANT_DATA: TrackedData<NbtCompound> = DataTracker.registerData(HybridAquaticCrustaceanEntity::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
 
-        val WALK_ANIMATION: RawAnimation = RawAnimation.begin().then("walk", Animation.LoopType.LOOP)
-        val IDLE_ANIMATION: RawAnimation = RawAnimation.begin().then("idle", Animation.LoopType.LOOP)
         val HIDING_ANIMATION: RawAnimation = RawAnimation.begin().then("hide", Animation.LoopType.LOOP)
 
         fun canSpawn(
