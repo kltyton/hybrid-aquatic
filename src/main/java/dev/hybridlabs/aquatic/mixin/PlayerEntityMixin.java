@@ -25,8 +25,6 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import java.util.Map;
-
 @Mixin(PlayerEntity.class)
 public abstract class PlayerEntityMixin implements CustomPlayerEntityData {
 
@@ -85,7 +83,7 @@ public abstract class PlayerEntityMixin implements CustomPlayerEntityData {
             if (foundEntity != null) hybrid_aquatic$setHurtTime(200);
         }
     }
-
+    
     @Inject(method = "tick", at = @At("TAIL"))
     private void tickDownCustomHurtTime(CallbackInfo ci) {
         int cHurtTime = hybrid_aquatic$getHurtTime();
@@ -99,7 +97,7 @@ public abstract class PlayerEntityMixin implements CustomPlayerEntityData {
         // Gives Resistance and Slowness if player has Turtle chestplate equipped
         updateTurtleChestplate();
         // Repairs coral tools in the water
-        repairCoralTools();
+        repairCoralTools(10);
     }
 
     @Unique
@@ -139,14 +137,24 @@ public abstract class PlayerEntityMixin implements CustomPlayerEntityData {
     }
     
     @Unique
-    private void repairCoralTools() {
+    int coralRepairTick = 0;
+    @Unique
+    private void repairCoralTools(int tickDelay) {
         var player = (PlayerEntity)(Object)this;
+        
         if (player.isSubmergedIn(FluidTags.WATER)) {
-            player.getItemsEquipped().forEach(itemStack -> {
-                if (itemStack.getItem() instanceof ToolItem tool && tool.getMaterial() == HybridAquaticToolMaterials.CORAL) {
-                    itemStack.setDamage(itemStack.getDamage() - 1);
-                }
-            });
+            if (coralRepairTick > tickDelay) {
+                player.getItemsEquipped().forEach(itemStack -> {
+                    if (itemStack.getItem() instanceof ToolItem tool &&
+                            tool.getMaterial() == HybridAquaticToolMaterials.CORAL &&
+                            itemStack.isDamaged()) {
+                        itemStack.setDamage(itemStack.getDamage() - 1);
+                    }
+                });
+                coralRepairTick = 0;
+            }
+            
+            coralRepairTick++;
         }
     }
 }
