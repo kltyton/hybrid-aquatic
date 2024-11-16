@@ -1,4 +1,4 @@
-package dev.hybridlabs.aquatic.entity.fish.deepsea
+package dev.hybridlabs.aquatic.entity.fish
 
 import dev.hybridlabs.aquatic.tag.HybridAquaticEntityTags
 import net.minecraft.entity.EntityType
@@ -8,7 +8,7 @@ import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
 
 class OarfishEntity(entityType: EntityType<out OarfishEntity>, world: World) :
-    HybridAquaticDeepSeaFishEntity(entityType, world, emptyMap(),
+    HybridAquaticFishEntity(entityType, world, emptyMap(),
         listOf(
             HybridAquaticEntityTags.CEPHALOPOD,
             HybridAquaticEntityTags.SMALL_PREY),
