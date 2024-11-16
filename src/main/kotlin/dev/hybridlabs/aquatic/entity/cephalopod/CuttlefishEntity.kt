@@ -6,6 +6,7 @@ import net.minecraft.entity.attribute.DefaultAttributeContainer
 import net.minecraft.entity.attribute.EntityAttributes
 import net.minecraft.entity.mob.WaterCreatureEntity
 import net.minecraft.world.World
+import kotlin.random.Random
 
 class CuttlefishEntity(entityType: EntityType<out CuttlefishEntity>, world: World) :
     HybridAquaticCephalopodEntity(
@@ -15,6 +16,20 @@ class CuttlefishEntity(entityType: EntityType<out CuttlefishEntity>, world: Worl
         HybridAquaticEntityTags.CRUSTACEAN,
         HybridAquaticEntityTags.SHARK
     ) {
+
+    private var tickCounter = 0
+    var randomValue = Random.nextInt(0, 9)
+
+    override fun tick() {
+        super.tick()
+
+        tickCounter++
+
+        if (tickCounter >= 3600) {
+            randomValue = Random.nextInt(0, 12)
+            tickCounter = 0
+        }
+    }
 
     companion object {
         fun createMobAttributes(): DefaultAttributeContainer.Builder {
