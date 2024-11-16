@@ -17,9 +17,9 @@ class TunaEntity(entityType: EntityType<out TunaEntity>, world: World) :
         listOf(
             HybridAquaticEntityTags.SHARK),
         variants = hashMapOf(
-        "bluefin" to FishVariant.biomeVariant("bluefin", listOf(HybridAquaticBiomeTags.ALL_OCEANS),
+        "bluefin" to FishVariant.biomeVariant("bluefin", listOf(HybridAquaticBiomeTags.TEMPERATE_OCEANS),
             ignore = listOf(FishVariant.Ignore.ANIMATION)),
-        "yellowfin" to FishVariant.biomeVariant("yellowfin", listOf(HybridAquaticBiomeTags.ALL_WARM_OCEANS),
+        "yellowfin" to FishVariant.biomeVariant("yellowfin", listOf(HybridAquaticBiomeTags.TROPICAL_OCEANS, HybridAquaticBiomeTags.TEMPERATE_OCEANS),
             ignore = listOf(FishVariant.Ignore.ANIMATION)))) {
 
     override fun getLimitPerChunk(): Int {

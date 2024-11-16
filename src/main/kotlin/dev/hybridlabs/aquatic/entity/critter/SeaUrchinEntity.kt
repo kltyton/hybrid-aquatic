@@ -10,30 +10,32 @@ import net.minecraft.entity.attribute.EntityAttributes
 import net.minecraft.entity.damage.DamageSource
 import net.minecraft.entity.damage.DamageTypes
 import net.minecraft.entity.mob.PathAwareEntity
+import net.minecraft.registry.tag.BiomeTags
 import net.minecraft.registry.tag.DamageTypeTags
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
+import net.minecraft.world.biome.Biome
 import software.bernie.geckolib.core.animatable.GeoAnimatable
 import software.bernie.geckolib.core.animation.AnimationState
 import software.bernie.geckolib.core.`object`.PlayState
 
 class SeaUrchinEntity(entityType: EntityType<out SeaUrchinEntity>, world: World) :
     HybridAquaticCritterEntity(entityType, world, variants = hashMapOf(
-        "black" to CritterVariant.biomeVariant("black", HybridAquaticBiomeTags.ALL_OCEANS,
+        "black" to CritterVariant.biomeVariant("black", listOf(BiomeTags.IS_OCEAN, BiomeTags.IS_DEEP_OCEAN),
             ignore = listOf(CritterVariant.Ignore.MODEL, CritterVariant.Ignore.ANIMATION)),
-        "blue" to CritterVariant.biomeVariant("blue", HybridAquaticBiomeTags.ALL_OCEANS,
+        "blue" to CritterVariant.biomeVariant("blue", listOf(BiomeTags.IS_OCEAN, BiomeTags.IS_DEEP_OCEAN),
             ignore = listOf(CritterVariant.Ignore.MODEL, CritterVariant.Ignore.ANIMATION)),
-        "purple" to CritterVariant.biomeVariant("purple", HybridAquaticBiomeTags.ALL_OCEANS,
+        "purple" to CritterVariant.biomeVariant("purple", listOf(BiomeTags.IS_OCEAN, BiomeTags.IS_DEEP_OCEAN),
             ignore = listOf(CritterVariant.Ignore.MODEL, CritterVariant.Ignore.ANIMATION)),
-        "red" to CritterVariant.biomeVariant("red", HybridAquaticBiomeTags.ALL_OCEANS,
+        "red" to CritterVariant.biomeVariant("red", listOf(BiomeTags.IS_OCEAN, BiomeTags.IS_DEEP_OCEAN),
             ignore = listOf(CritterVariant.Ignore.MODEL, CritterVariant.Ignore.ANIMATION)),
-        "long_black" to CritterVariant.biomeVariant("long_black", HybridAquaticBiomeTags.ALL_OCEANS,
+        "long_black" to CritterVariant.biomeVariant("long_black", listOf(BiomeTags.IS_OCEAN, BiomeTags.IS_DEEP_OCEAN),
             ignore = listOf(CritterVariant.Ignore.MODEL, CritterVariant.Ignore.ANIMATION)),
-        "long_blue" to CritterVariant.biomeVariant("long_blue", HybridAquaticBiomeTags.ALL_OCEANS,
+        "long_blue" to CritterVariant.biomeVariant("long_blue", listOf(BiomeTags.IS_OCEAN, BiomeTags.IS_DEEP_OCEAN),
             ignore = listOf(CritterVariant.Ignore.MODEL, CritterVariant.Ignore.ANIMATION)),
-        "long_purple" to CritterVariant.biomeVariant("long_purple", HybridAquaticBiomeTags.ALL_OCEANS,
+        "long_purple" to CritterVariant.biomeVariant("long_purple", listOf(BiomeTags.IS_OCEAN, BiomeTags.IS_DEEP_OCEAN),
             ignore = listOf(CritterVariant.Ignore.MODEL, CritterVariant.Ignore.ANIMATION)),
-        "long_red" to CritterVariant.biomeVariant("long_red", HybridAquaticBiomeTags.ALL_OCEANS,
+        "long_red" to CritterVariant.biomeVariant("long_red", listOf(BiomeTags.IS_OCEAN, BiomeTags.IS_DEEP_OCEAN),
             ignore = listOf(CritterVariant.Ignore.MODEL, CritterVariant.Ignore.ANIMATION)),)) {
 
     private var timeUntilNextBreak = 0

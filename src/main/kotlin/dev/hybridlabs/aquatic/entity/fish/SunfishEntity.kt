@@ -11,9 +11,9 @@ import net.minecraft.world.World
 
 class SunfishEntity(entityType: EntityType<out SunfishEntity>, world: World) :
     HybridAquaticFishEntity(entityType, world, variants = hashMapOf(
-        "ocean" to FishVariant.biomeVariant("ocean", listOf(HybridAquaticBiomeTags.DEEP_WARM_OCEANS)),
-        "hoodwinker" to FishVariant.biomeVariant("hoodwinker", listOf(HybridAquaticBiomeTags.REEF)),
-        "sharptail" to FishVariant.biomeVariant("sharptail", listOf(HybridAquaticBiomeTags.OCEAN))),
+        "ocean" to FishVariant.biomeVariant("ocean", listOf(HybridAquaticBiomeTags.TEMPERATE_OCEANS, HybridAquaticBiomeTags.TROPICAL_OCEANS)),
+        "hoodwinker" to FishVariant.biomeVariant("hoodwinker", listOf(HybridAquaticBiomeTags.TROPICAL_OCEANS)),
+        "sharptail" to FishVariant.biomeVariant("sharptail", listOf(HybridAquaticBiomeTags.TEMPERATE_OCEANS))),
         listOf(
             HybridAquaticEntityTags.JELLYFISH),
         listOf(

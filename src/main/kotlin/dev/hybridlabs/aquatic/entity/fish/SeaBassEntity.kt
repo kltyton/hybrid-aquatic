@@ -10,7 +10,7 @@ import net.minecraft.world.World
 
 class SeaBassEntity(entityType: EntityType<out SeaBassEntity>, world: World) :
     HybridAquaticFishEntity(entityType, world, variants = hashMapOf(
-        "black" to FishVariant.biomeVariant("black", listOf(HybridAquaticBiomeTags.OCEAN),
+        "black" to FishVariant.biomeVariant("black", listOf(HybridAquaticBiomeTags.TEMPERATE_OCEANS),
             ignore = listOf(FishVariant.Ignore.ANIMATION, FishVariant.Ignore.MODEL)),
         ),
         listOf(

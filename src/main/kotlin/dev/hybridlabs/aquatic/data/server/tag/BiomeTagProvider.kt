@@ -34,30 +34,19 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             .forceAddTag(BiomeTags.IS_DEEP_OCEAN)
             .forceAddTag(BiomeTags.IS_BEACH)
 
-        getOrCreateTagBuilder(HybridAquaticBiomeTags.OCEAN)
-            .add(BiomeKeys.OCEAN)
-
-        getOrCreateTagBuilder(HybridAquaticBiomeTags.DEEP_OCEAN)
-            .add(BiomeKeys.DEEP_OCEAN)
+        getOrCreateTagBuilder(HybridAquaticBiomeTags.ARCTIC_OCEANS)
+            .add(BiomeKeys.FROZEN_OCEAN,
+                BiomeKeys.DEEP_FROZEN_OCEAN)
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.COLD_OCEANS)
             .add(BiomeKeys.COLD_OCEAN,
-                BiomeKeys.FROZEN_OCEAN)
+                BiomeKeys.DEEP_COLD_OCEAN)
 
-            getOrCreateTagBuilder(HybridAquaticBiomeTags.DEEP_COLD_OCEANS)
-            .add(BiomeKeys.DEEP_COLD_OCEAN,
-                BiomeKeys.DEEP_FROZEN_OCEAN)
+        getOrCreateTagBuilder(HybridAquaticBiomeTags.TEMPERATE_OCEANS)
+            .add(BiomeKeys.OCEAN)
+            .add(BiomeKeys.DEEP_OCEAN)
 
-        getOrCreateTagBuilder(HybridAquaticBiomeTags.ALL_COLD_OCEANS)
-            .add(BiomeKeys.COLD_OCEAN,
-                BiomeKeys.FROZEN_OCEAN,
-                BiomeKeys.DEEP_COLD_OCEAN,
-                BiomeKeys.DEEP_FROZEN_OCEAN)
-
-        getOrCreateTagBuilder(HybridAquaticBiomeTags.DEEP_WARM_OCEANS)
-            .add(BiomeKeys.DEEP_LUKEWARM_OCEAN)
-
-        getOrCreateTagBuilder(HybridAquaticBiomeTags.ALL_WARM_OCEANS)
+        getOrCreateTagBuilder(HybridAquaticBiomeTags.TROPICAL_OCEANS)
             .add(BiomeKeys.LUKEWARM_OCEAN,
                 BiomeKeys.DEEP_LUKEWARM_OCEAN)
 

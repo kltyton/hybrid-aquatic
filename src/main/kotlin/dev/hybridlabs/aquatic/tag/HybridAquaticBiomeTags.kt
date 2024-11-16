@@ -10,15 +10,10 @@ object HybridAquaticBiomeTags {
 
     val BOTTLE_SPAWN_BIOMES = create("bottle_spawn_biomes")
 
-    val OCEAN = create("ocean")
-    val DEEP_OCEAN = create("deep_ocean")
-    val ALL_OCEANS = create("all_oceans")
-    val ALL_DEEP_OCEANS = create("deep_oceans")
+    val ARCTIC_OCEANS = create("arctic_oceans")
     val COLD_OCEANS = create("cold_oceans")
-    val DEEP_COLD_OCEANS = create("deep_cold_oceans")
-    val ALL_COLD_OCEANS = create("all_cold_oceans")
-    val DEEP_WARM_OCEANS = create("deep_warm_oceans")
-    val ALL_WARM_OCEANS = create("all_warm_oceans")
+    val TEMPERATE_OCEANS = create("temperate_oceans")
+    val TROPICAL_OCEANS = create("tropical_oceans")
     val REEF = create("reef")
     val JUNGLE = create("jungle")
     val CHERRY = create("cherry")

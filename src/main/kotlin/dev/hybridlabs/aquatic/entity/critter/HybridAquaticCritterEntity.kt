@@ -2,6 +2,7 @@ package dev.hybridlabs.aquatic.entity.critter
 
 import dev.hybridlabs.aquatic.entity.critter.HybridAquaticCritterEntity.VariantCollisionRules.ExclusionStatus.EXCLUSIVE
 import dev.hybridlabs.aquatic.entity.critter.HybridAquaticCritterEntity.VariantCollisionRules.ExclusionStatus.INCLUSIVE
+import dev.hybridlabs.aquatic.entity.fish.HybridAquaticFishEntity
 import net.minecraft.entity.EntityData
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.SpawnReason
@@ -327,9 +328,9 @@ open class HybridAquaticCritterEntity(
         }
 
         companion object {
-            fun biomeVariant(variantName: String, biomes : TagKey<Biome>, ignore : List<Ignore> = emptyList()): CritterVariant {
+            fun biomeVariant(variantName: String, biomes : List<TagKey<Biome>>, ignore : List<CritterVariant.Ignore> = emptyList()): CritterVariant {
                 return CritterVariant(variantName, { world, _, pos, _ ->
-                    world.getBiome(pos).isIn(biomes)
+                    biomes.any { tag -> world.getBiome(pos).isIn(tag) }
                 }, ignore)
             }
         }

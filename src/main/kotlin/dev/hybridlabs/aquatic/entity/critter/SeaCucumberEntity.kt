@@ -12,11 +12,11 @@ import software.bernie.geckolib.core.`object`.PlayState
 
 class SeaCucumberEntity(entityType: EntityType<out SeaCucumberEntity>, world: World) :
     HybridAquaticCritterEntity(entityType, world, variants = hashMapOf(
-        "sea_pig" to CritterVariant.biomeVariant("sea_pig", HybridAquaticBiomeTags.ALL_DEEP_OCEANS,
+        "sea_pig" to CritterVariant.biomeVariant("sea_pig", listOf(HybridAquaticBiomeTags.ARCTIC_OCEANS, HybridAquaticBiomeTags.COLD_OCEANS, HybridAquaticBiomeTags.COLD_OCEANS),
             ignore = listOf(CritterVariant.Ignore.ANIMATION)),
-        "black" to CritterVariant.biomeVariant("black", HybridAquaticBiomeTags.ALL_OCEANS,
+        "black" to CritterVariant.biomeVariant("black", listOf(HybridAquaticBiomeTags.TROPICAL_OCEANS, HybridAquaticBiomeTags.TEMPERATE_OCEANS),
             ignore = listOf(CritterVariant.Ignore.MODEL, CritterVariant.Ignore.ANIMATION)),
-        "red" to CritterVariant.biomeVariant("red", HybridAquaticBiomeTags.ALL_OCEANS,
+        "red" to CritterVariant.biomeVariant("red", listOf(HybridAquaticBiomeTags.TROPICAL_OCEANS, HybridAquaticBiomeTags.TEMPERATE_OCEANS),
             ignore = listOf(CritterVariant.Ignore.MODEL, CritterVariant.Ignore.ANIMATION)),
         )) {
 
