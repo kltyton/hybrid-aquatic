@@ -193,6 +193,11 @@ object  HybridAquaticItemGroups {
             entries.add(HybridAquaticItems.SEASHELL_AXE)
             entries.add(HybridAquaticItems.SEASHELL_SHOVEL)
             entries.add(HybridAquaticItems.SEASHELL_HOE)
+            entries.add(HybridAquaticItems.CORAL_BLADE)
+            entries.add(HybridAquaticItems.CORAL_PICKAXE)
+            entries.add(HybridAquaticItems.CORAL_AXE)
+            entries.add(HybridAquaticItems.CORAL_SHOVEL)
+            entries.add(HybridAquaticItems.CORAL_HOE)
             entries.add(HybridAquaticItems.FISHING_NET)
 
             entries.add(HybridAquaticItems.DIVING_HELMET)
