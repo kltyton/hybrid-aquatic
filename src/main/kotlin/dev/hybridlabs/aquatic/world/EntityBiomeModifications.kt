@@ -16,13 +16,13 @@ object EntityBiomeModifications {
     init {
         // fish
         addFish(HybridAquaticEntityTypes.AFRICAN_BUTTERFLY, listOf(HybridAquaticBiomeTags.JUNGLE, HybridAquaticBiomeTags.MARSHES), 1, 1, 1)
-        addFish(HybridAquaticEntityTypes.TETRA, listOf(HybridAquaticBiomeTags.JUNGLE, HybridAquaticBiomeTags.MARSHES), 3, 2, 3)
-        addFish(HybridAquaticEntityTypes.TIGER_BARB, listOf(HybridAquaticBiomeTags.JUNGLE, HybridAquaticBiomeTags.MARSHES), 3, 2, 3)
-        addFish(HybridAquaticEntityTypes.GOURAMI, listOf(HybridAquaticBiomeTags.JUNGLE, HybridAquaticBiomeTags.MARSHES), 3, 1, 1)
-        addFish(HybridAquaticEntityTypes.DISCUS, listOf(HybridAquaticBiomeTags.JUNGLE), 3, 1, 1)
-        addFish(HybridAquaticEntityTypes.PIRANHA, listOf(HybridAquaticBiomeTags.JUNGLE), 5, 2, 5)
-        addFish(HybridAquaticEntityTypes.OSCAR, listOf(HybridAquaticBiomeTags.JUNGLE), 1, 1, 1)
-        addFish(HybridAquaticEntityTypes.DANIO, listOf(HybridAquaticBiomeTags.JUNGLE, HybridAquaticBiomeTags.MARSHES), 3, 2, 3)
+        addFish(HybridAquaticEntityTypes.TETRA, listOf(HybridAquaticBiomeTags.JUNGLE, HybridAquaticBiomeTags.MARSHES, HybridAquaticBiomeTags.TROPICAL_RIVERS), 3, 2, 3)
+        addFish(HybridAquaticEntityTypes.TIGER_BARB, listOf(HybridAquaticBiomeTags.JUNGLE, HybridAquaticBiomeTags.SWAMP,  HybridAquaticBiomeTags.MARSHES, HybridAquaticBiomeTags.TROPICAL_RIVERS), 3, 2, 3)
+        addFish(HybridAquaticEntityTypes.GOURAMI, listOf(HybridAquaticBiomeTags.JUNGLE, HybridAquaticBiomeTags.MARSHES, HybridAquaticBiomeTags.TROPICAL_RIVERS), 3, 1, 1)
+        addFish(HybridAquaticEntityTypes.DISCUS, listOf(HybridAquaticBiomeTags.JUNGLE, HybridAquaticBiomeTags.TROPICAL_RIVERS), 3, 1, 1)
+        addFish(HybridAquaticEntityTypes.PIRANHA, listOf(HybridAquaticBiomeTags.JUNGLE, HybridAquaticBiomeTags.TROPICAL_RIVERS), 5, 2, 5)
+        addFish(HybridAquaticEntityTypes.OSCAR, listOf(HybridAquaticBiomeTags.JUNGLE, HybridAquaticBiomeTags.TROPICAL_RIVERS), 1, 1, 1)
+        addFish(HybridAquaticEntityTypes.DANIO, listOf(HybridAquaticBiomeTags.JUNGLE, HybridAquaticBiomeTags.MARSHES, HybridAquaticBiomeTags.TROPICAL_RIVERS), 3, 2, 3)
         addFish(HybridAquaticEntityTypes.BETTA, listOf(HybridAquaticBiomeTags.SWAMP, HybridAquaticBiomeTags.MARSHES), 1, 1, 1)
         addFish(HybridAquaticEntityTypes.GOLDFISH, listOf(HybridAquaticBiomeTags.CHERRY), 1, 1, 2)
         addFish(HybridAquaticEntityTypes.CARP, listOf(HybridAquaticBiomeTags.CHERRY, HybridAquaticBiomeTags.RIVERS), 1, 1, 2)
@@ -58,7 +58,6 @@ object EntityBiomeModifications {
         addUndergroundFish(HybridAquaticEntityTypes.RATFISH, listOf(HybridAquaticBiomeTags.ALL_OCEANS), 5, 1, 2)
         addUndergroundFish(HybridAquaticEntityTypes.SEA_ANGEL, listOf(HybridAquaticBiomeTags.DEEP_COLD_OCEANS), 3, 1, 1)
 
-
         // cephalopods
         addCephalopod(HybridAquaticEntityTypes.FIREFLY_SQUID, listOf(HybridAquaticBiomeTags.ALL_WARM_OCEANS), 3, 1, 2)
         addCephalopod(HybridAquaticEntityTypes.CUTTLEFISH, listOf(HybridAquaticBiomeTags.REEF), 3, 1, 1)
@@ -67,8 +66,7 @@ object EntityBiomeModifications {
         addUndergroundCephalopod(HybridAquaticEntityTypes.VAMPIRE_SQUID, listOf(HybridAquaticBiomeTags.DEEP_WARM_OCEANS), 3, 1, 1)
         addUndergroundCephalopod(HybridAquaticEntityTypes.NAUTILUS, listOf(HybridAquaticBiomeTags.ALL_DEEP_OCEANS), 3, 1, 1)
         addUndergroundCephalopod(HybridAquaticEntityTypes.UMBRELLA_OCTOPUS, listOf(HybridAquaticBiomeTags.ALL_DEEP_OCEANS), 1, 1, 1)
-        addUndergroundCephalopod(HybridAquaticEntityTypes.GLOWING_SUCKER_OCTOPUS, listOf(HybridAquaticBiomeTags.DEEP_WARM_OCEANS), 3, 1, 1
-       )
+        addUndergroundCephalopod(HybridAquaticEntityTypes.GLOWING_SUCKER_OCTOPUS, listOf(HybridAquaticBiomeTags.DEEP_WARM_OCEANS), 3, 1, 1)
 
         // jellies
         addJelly(HybridAquaticEntityTypes.BARREL_JELLYFISH, listOf(HybridAquaticBiomeTags.ALL_OCEANS), 3, 1, 1)
@@ -101,7 +99,7 @@ object EntityBiomeModifications {
         addCrustacean(HybridAquaticEntityTypes.HORSESHOE_CRAB, listOf(HybridAquaticBiomeTags.ALL_WARM_OCEANS), 1, 1, 2)
         addCrustacean(HybridAquaticEntityTypes.LIGHTFOOT_CRAB, listOf(HybridAquaticBiomeTags.ROCKY_BEACHES), 3, 1, 2)
         addCrustacean(HybridAquaticEntityTypes.FLOWER_CRAB, listOf(HybridAquaticBiomeTags.REEF, HybridAquaticBiomeTags.MANGROVES, HybridAquaticBiomeTags.MARSHES), 5, 1, 2)
-        addCrustacean(HybridAquaticEntityTypes.VAMPIRE_CRAB, listOf(HybridAquaticBiomeTags.JUNGLE), 3, 1, 2)
+        addCrustacean(HybridAquaticEntityTypes.VAMPIRE_CRAB, listOf(HybridAquaticBiomeTags.JUNGLE, HybridAquaticBiomeTags.TROPICAL_RIVERS), 3, 1, 2)
         addCrustacean(HybridAquaticEntityTypes.SHRIMP, listOf(HybridAquaticBiomeTags.REEF), 5, 1, 2)
         addCrustacean(HybridAquaticEntityTypes.LOBSTER, listOf(HybridAquaticBiomeTags.REEF), 3, 1, 1)
         addCrustacean(HybridAquaticEntityTypes.DECORATOR_CRAB, listOf(HybridAquaticBiomeTags.REEF), 3, 1, 2)

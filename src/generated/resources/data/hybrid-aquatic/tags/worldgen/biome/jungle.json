@@ -3,14 +3,6 @@
   "values": [
     "#minecraft:is_jungle",
     {
-      "id": "wythers:jungle_river",
-      "required": false
-    },
-    {
-      "id": "wythers:tropical_forest_river",
-      "required": false
-    },
-    {
       "id": "wythers:flooded_jungle",
       "required": false
     },

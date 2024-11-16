@@ -68,8 +68,6 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.JUNGLE)
             .forceAddTag(BiomeTags.IS_JUNGLE)
-            .addOptional(Identifier("wythers", "jungle_river"))
-            .addOptional(Identifier("wythers", "tropical_forest_river"))
             .addOptional(Identifier("wythers", "flooded_jungle"))
             .addOptional(Identifier("biomesoplenty", "rainforest"))
             .addOptional(Identifier("biomesoplenty", "rocky_rainforest"))
@@ -108,6 +106,12 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             .addOptional(Identifier("terralith", "warm_river"))
             .addOptional(Identifier("regions_unexplored", "tropical_river"))
             .addOptional(Identifier("regions_unexplored", "muddy_river"))
+
+        getOrCreateTagBuilder(HybridAquaticBiomeTags.TROPICAL_RIVERS)
+            .addOptional(Identifier("wythers", "jungle_river"))
+            .addOptional(Identifier("wythers", "tropical_forest_river"))
+            .addOptional(Identifier("terralith", "warm_river"))
+            .addOptional(Identifier("regions_unexplored", "tropical_river"))
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.CHERRY)
             .add(BiomeKeys.CHERRY_GROVE)
