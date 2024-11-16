@@ -312,9 +312,9 @@ class RecipeProvider(output: FabricDataOutput) : FabricRecipeProvider(output) {
         offerCookingRecipes(exporter, HybridAquaticItems.RAW_CRAB, HybridAquaticItems.COOKED_CRAB, 0.15f)
         offerCookingRecipes(exporter, HybridAquaticItems.RAW_SHRIMP, HybridAquaticItems.COOKED_SHRIMP, 0.15f)
         offerCookingRecipes(exporter, HybridAquaticItems.RAW_CRAYFISH, HybridAquaticItems.COOKED_CRAYFISH, 0.15f)
-        offerCookingRecipes(exporter, HybridAquaticItems.RAW_LOBSTER, HybridAquaticItems.COOKED_LOBSTER, 0.15f)
-        offerCookingRecipes(exporter, HybridAquaticItems.RAW_LOBSTER_TAIL, HybridAquaticItems.COOKED_LOBSTER_TAIL, 0.15f)
-        offerCookingRecipes(exporter, HybridAquaticItems.RAW_FISH_STEAK, HybridAquaticItems.COOKED_FISH_STEAK, 0.15f)
+        offerCookingRecipes(exporter, HybridAquaticItems.RAW_LOBSTER, HybridAquaticItems.COOKED_LOBSTER, 0.3f)
+        offerCookingRecipes(exporter, HybridAquaticItems.RAW_LOBSTER_TAIL, HybridAquaticItems.COOKED_LOBSTER_TAIL, 0.3f)
+        offerCookingRecipes(exporter, HybridAquaticItems.RAW_FISH_STEAK, HybridAquaticItems.COOKED_FISH_STEAK, 0.3f)
         offerCookingRecipes(exporter, HybridAquaticItems.RAW_FISH_MEAT, HybridAquaticItems.COOKED_FISH_MEAT, 0.15f)
         offerCookingRecipes(exporter, HybridAquaticItems.RAW_TENTACLE, HybridAquaticItems.COOKED_TENTACLE, 0.15f)
     }
