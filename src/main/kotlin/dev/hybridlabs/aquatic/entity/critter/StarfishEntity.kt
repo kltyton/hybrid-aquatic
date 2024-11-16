@@ -49,9 +49,9 @@ class StarfishEntity(entityType: EntityType<out StarfishEntity>, world: World) :
         "medium_knobbed_yellow" to CritterVariant.biomeVariant("medium_knobbed_yellow", listOf(HybridAquaticBiomeTags.TROPICAL_OCEANS, HybridAquaticBiomeTags.REEF),
             ignore = listOf(CritterVariant.Ignore.MODEL, CritterVariant.Ignore.ANIMATION)),
         "crown_of_thorns" to CritterVariant.biomeVariant("crown_of_thorns", listOf(HybridAquaticBiomeTags.REEF)),
-        "brittlestar_black" to CritterVariant.biomeVariant("brittlestar_black", listOf(HybridAquaticBiomeTags.TROPICAL_OCEANS, HybridAquaticBiomeTags.REEF)),
-        "brittlestar_yellow" to CritterVariant.biomeVariant("brittlestar_yellow", listOf(HybridAquaticBiomeTags.TROPICAL_OCEANS, HybridAquaticBiomeTags.REEF)),
-        "brittlestar_white" to CritterVariant.biomeVariant("brittlestar_white", listOf(HybridAquaticBiomeTags.TROPICAL_OCEANS)),)) {
+        "brittlestar_black" to CritterVariant.biomeVariant("brittlestar_black", listOf(HybridAquaticBiomeTags.ARCTIC_OCEANS, HybridAquaticBiomeTags.COLD_OCEANS, HybridAquaticBiomeTags.TEMPERATE_OCEANS, HybridAquaticBiomeTags.TROPICAL_OCEANS, HybridAquaticBiomeTags.REEF)),
+        "brittlestar_yellow" to CritterVariant.biomeVariant("brittlestar_yellow", listOf(HybridAquaticBiomeTags.ARCTIC_OCEANS, HybridAquaticBiomeTags.COLD_OCEANS, HybridAquaticBiomeTags.TEMPERATE_OCEANS, HybridAquaticBiomeTags.TROPICAL_OCEANS, HybridAquaticBiomeTags.REEF)),
+        "brittlestar_white" to CritterVariant.biomeVariant("brittlestar_white", listOf(HybridAquaticBiomeTags.ARCTIC_OCEANS, HybridAquaticBiomeTags.COLD_OCEANS, HybridAquaticBiomeTags.TEMPERATE_OCEANS, HybridAquaticBiomeTags.TROPICAL_OCEANS, HybridAquaticBiomeTags.REEF)),)) {
 
         companion object {
             fun createMobAttributes(): DefaultAttributeContainer.Builder {

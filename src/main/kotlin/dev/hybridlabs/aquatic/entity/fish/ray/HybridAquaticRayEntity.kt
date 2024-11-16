@@ -371,9 +371,10 @@ open class HybridAquaticRayEntity(
         }
 
         companion object {
-            fun biomeVariant(variantName: String, biomes : List<TagKey<Biome>>, ignore : List<RayVariant.Ignore> = emptyList()): RayVariant {
+            fun biomeVariant(variantName: String, biomes : List<TagKey<Biome>>, ignore : List<Ignore> = emptyList()): RayVariant {
                 return RayVariant(variantName, { world, _, pos, _ ->
-                    biomes.any { tag -> world.getBiome(pos).isIn(tag) }
+                    val biome = world.getBiome(pos)
+                    biomes.any { biome.isIn(it) }
                 }, ignore)
             }
         }

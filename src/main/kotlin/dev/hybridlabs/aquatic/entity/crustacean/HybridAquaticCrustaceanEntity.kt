@@ -269,8 +269,6 @@ open class HybridAquaticCrustaceanEntity(
         val VARIANT: TrackedData<String> = DataTracker.registerData(HybridAquaticCrustaceanEntity::class.java, TrackedDataHandlerRegistry.STRING)
         var VARIANT_DATA: TrackedData<NbtCompound> = DataTracker.registerData(HybridAquaticCrustaceanEntity::class.java, TrackedDataHandlerRegistry.NBT_COMPOUND)
 
-        val HIDING_ANIMATION: RawAnimation = RawAnimation.begin().then("hide", Animation.LoopType.LOOP)
-
         fun canSpawn(
             type: EntityType<out WaterCreatureEntity?>?,
             world: WorldAccess,
@@ -327,9 +325,6 @@ open class HybridAquaticCrustaceanEntity(
         }
 
         companion object {
-            /**
-             * Creates a biome variant of a fish
-             */
             fun biomeVariant(variantName: String, biomes : TagKey<Biome>, ignore : List<Ignore> = emptyList()): CrustaceanVariant {
                 return CrustaceanVariant(variantName, { world, _, pos, _ ->
                     world.getBiome(pos).isIn(biomes)

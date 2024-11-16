@@ -24,7 +24,7 @@ object FeatureBiomeModifications {
         )
 
         BiomeModifications.addFeature(
-            BiomeSelectors.tag(HybridAquaticBiomeTags.ARCTIC_OCEANS),
+            BiomeSelectors.tag(BiomeTags.IS_OCEAN),
             GenerationStep.Feature.VEGETAL_DECORATION,
             HybridAquaticPlacedFeatures.TUBE_SPONGE_PATCH
         )
