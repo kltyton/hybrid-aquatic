@@ -29,6 +29,7 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
                 HybridAquaticEntityTypes.CUTTLEFISH,
                 HybridAquaticEntityTypes.DRAGONFISH,
                 HybridAquaticEntityTypes.ANGLERFISH,
+                HybridAquaticEntityTypes.AFRICAN_BUTTERFLY,
                 EntityType.SALMON,
                 EntityType.COD,
                 EntityType.TROPICAL_FISH
