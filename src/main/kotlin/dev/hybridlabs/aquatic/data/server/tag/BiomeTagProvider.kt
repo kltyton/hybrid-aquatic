@@ -21,6 +21,7 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             .addOptional(Identifier("biomesoplenty", "dune_beach"))
             .addOptional(Identifier("biomeswevegone", "rainbow_beach"))
             .addOptional(Identifier("terrestria", "volcanic_island_beach"))
+            .addOptional(Identifier("mysticsbiomes", "lagoon"))
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.ROCKY_BEACHES)
             .add(BiomeKeys.STONY_SHORE)
@@ -57,10 +58,8 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             .add(BiomeKeys.DEEP_LUKEWARM_OCEAN)
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.ALL_WARM_OCEANS)
-            .add(BiomeKeys.WARM_OCEAN,
-                BiomeKeys.LUKEWARM_OCEAN,
+            .add(BiomeKeys.LUKEWARM_OCEAN,
                 BiomeKeys.DEEP_LUKEWARM_OCEAN)
-            .addOptional(Identifier("regions_unexplored", "rocky_reef"))
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.REEF)
             .add(BiomeKeys.WARM_OCEAN)
