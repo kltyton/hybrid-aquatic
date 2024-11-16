@@ -19,6 +19,8 @@ class CarpEntity(entityType: EntityType<out CarpEntity>, world: World) :
             ignore = listOf(FishVariant.Ignore.MODEL, FishVariant.Ignore.ANIMATION)),
         "koi_tancho" to FishVariant.biomeVariant("koi_tancho", HybridAquaticBiomeTags.CHERRY,
             ignore = listOf(FishVariant.Ignore.MODEL, FishVariant.Ignore.ANIMATION)),
+        "common" to FishVariant.biomeVariant("common", HybridAquaticBiomeTags.RIVERS,
+            ignore = listOf(FishVariant.Ignore.MODEL, FishVariant.Ignore.ANIMATION)),
         ),
         listOf(
             HybridAquaticEntityTags.NONE),
