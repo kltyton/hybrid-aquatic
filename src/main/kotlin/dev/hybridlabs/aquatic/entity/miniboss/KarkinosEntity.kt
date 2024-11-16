@@ -41,11 +41,7 @@ class KarkinosEntity(entityType: EntityType<out HybridAquaticMinibossEntity>, wo
     private var flipTimer: Int = 0
     private val flipDuration: Int = 60
     private var bossBar: ServerBossBar = ServerBossBar(displayName, BossBar.Color.RED, BossBar.Style.NOTCHED_20)
-    private var attemptAttack: Boolean
-        get() = dataTracker.get(ATTEMPT_ATTACK)
-        set(attemptAttack) {
-            dataTracker.set(ATTEMPT_ATTACK, attemptAttack)
-        }
+
     var isFlipped: Boolean
         get() = dataTracker.get(FLIPPED)
         set(bool) = dataTracker.set(FLIPPED, bool)
