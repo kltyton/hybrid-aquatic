@@ -11,7 +11,6 @@ class MorayEelEntity(entityType: EntityType<out MorayEelEntity>, world: World) :
     HybridAquaticFishEntity(entityType, world, emptyMap(),
         listOf(
             HybridAquaticEntityTags.SMALL_PREY,
-            HybridAquaticEntityTags.MEDIUM_PREY,
             HybridAquaticEntityTags.CRUSTACEAN,
             HybridAquaticEntityTags.CEPHALOPOD),
         listOf(
