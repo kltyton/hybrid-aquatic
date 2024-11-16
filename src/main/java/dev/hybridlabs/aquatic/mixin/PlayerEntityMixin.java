@@ -1,5 +1,6 @@
 package dev.hybridlabs.aquatic.mixin;
 
+import com.google.common.collect.ImmutableList;
 import dev.hybridlabs.aquatic.access.CustomPlayerEntityData;
 import dev.hybridlabs.aquatic.effect.HybridAquaticStatusEffects;
 import dev.hybridlabs.aquatic.entity.shark.HybridAquaticSharkEntity;
@@ -17,6 +18,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolItem;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.tag.FluidTags;
+import net.minecraft.util.collection.DefaultedList;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
@@ -24,6 +26,9 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Mixin(PlayerEntity.class)
 public abstract class PlayerEntityMixin implements CustomPlayerEntityData {
@@ -97,7 +102,7 @@ public abstract class PlayerEntityMixin implements CustomPlayerEntityData {
         // Gives Resistance and Slowness if player has Turtle chestplate equipped
         updateTurtleChestplate();
         // Repairs coral tools in the water
-        repairCoralTools(10);
+        repairCoralTools(5);
     }
 
     @Unique
@@ -141,16 +146,27 @@ public abstract class PlayerEntityMixin implements CustomPlayerEntityData {
     @Unique
     private void repairCoralTools(int tickDelay) {
         var player = (PlayerEntity)(Object)this;
+        var inventory = player.getInventory();
         
         if (player.isSubmergedIn(FluidTags.WATER)) {
             if (coralRepairTick > tickDelay) {
-                player.getItemsEquipped().forEach(itemStack -> {
-                    if (itemStack.getItem() instanceof ToolItem tool &&
-                            tool.getMaterial() == HybridAquaticToolMaterials.CORAL &&
-                            itemStack.isDamaged()) {
-                        itemStack.setDamage(itemStack.getDamage() - 1);
-                    }
-                });
+                List<DefaultedList<ItemStack>> combinedInventory = ImmutableList.of(inventory.main, inventory.offHand);
+                List<ItemStack> coralItems = new ArrayList<>();
+                for(List<ItemStack> list: combinedInventory) {
+	                for (ItemStack itemStack: list) {
+		                if (itemStack.getItem() instanceof ToolItem tool &&
+				                    tool.getMaterial() == HybridAquaticToolMaterials.CORAL &&
+				                    itemStack.isDamaged()) {
+                        coralItems.add(itemStack);
+		                }
+	                }
+                }
+                
+                if(!coralItems.isEmpty()) {
+                    ItemStack item = coralItems.get(player.getRandom().nextInt(coralItems.size()));
+                    item.setDamage(item.getDamage() - 1);
+                    inventory.markDirty();
+                }
                 coralRepairTick = 0;
             }
             
