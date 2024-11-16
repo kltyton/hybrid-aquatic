@@ -4,6 +4,7 @@ import dev.hybridlabs.aquatic.access.CustomPlayerEntityData;
 import dev.hybridlabs.aquatic.effect.HybridAquaticStatusEffects;
 import dev.hybridlabs.aquatic.entity.shark.HybridAquaticSharkEntity;
 import dev.hybridlabs.aquatic.item.HybridAquaticItems;
+import dev.hybridlabs.aquatic.item.HybridAquaticToolMaterials;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -13,6 +14,7 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ToolItem;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.tag.FluidTags;
 import org.spongepowered.asm.mixin.Mixin;
@@ -22,6 +24,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import java.util.Map;
 
 @Mixin(PlayerEntity.class)
 public abstract class PlayerEntityMixin implements CustomPlayerEntityData {
@@ -88,12 +92,14 @@ public abstract class PlayerEntityMixin implements CustomPlayerEntityData {
         if (cHurtTime > 0) {
             hybrid_aquatic$setHurtTime(cHurtTime - 1);
         }
-        // Call updateDivingHelmet method
+        // Gives Water Breathing/Clarity if player has Diving Helmet equipped
         updateDivingHelmet();
-        //Call updateTurtleChestplate method
-        updateTurtleChestplate();
-        //Call updateDivingBoots method
+        // Allows player to walk in the water without jumping
         updateDivingBoots();
+        // Gives Resistance and Slowness if player has Turtle chestplate equipped
+        updateTurtleChestplate();
+        // Repairs coral tools in the water
+        repairCoralTools();
     }
 
     @Unique
@@ -130,5 +136,15 @@ public abstract class PlayerEntityMixin implements CustomPlayerEntityData {
             player.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 200, 0, false, false, true));
             player.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 200, 0, false, false, true));
         }
+    }
+    
+    @Unique
+    private void repairCoralTools() {
+        var player = (PlayerEntity)(Object)this;
+        player.getItemsEquipped().forEach(itemStack -> {
+            if (itemStack.getItem() instanceof ToolItem tool && tool.getMaterial() == HybridAquaticToolMaterials.CORAL) {
+                itemStack.setDamage(itemStack.getDamage() - 1);
+            }
+        });
     }
 }
