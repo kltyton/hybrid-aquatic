@@ -141,10 +141,12 @@ public abstract class PlayerEntityMixin implements CustomPlayerEntityData {
     @Unique
     private void repairCoralTools() {
         var player = (PlayerEntity)(Object)this;
-        player.getItemsEquipped().forEach(itemStack -> {
-            if (itemStack.getItem() instanceof ToolItem tool && tool.getMaterial() == HybridAquaticToolMaterials.CORAL) {
-                itemStack.setDamage(itemStack.getDamage() - 1);
-            }
-        });
+        if (player.isSubmergedIn(FluidTags.WATER)) {
+            player.getItemsEquipped().forEach(itemStack -> {
+                if (itemStack.getItem() instanceof ToolItem tool && tool.getMaterial() == HybridAquaticToolMaterials.CORAL) {
+                    itemStack.setDamage(itemStack.getDamage() - 1);
+                }
+            });
+        }
     }
 }
