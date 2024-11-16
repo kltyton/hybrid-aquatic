@@ -18,6 +18,7 @@ class CuttlefishEntity(entityType: EntityType<out CuttlefishEntity>, world: Worl
     ) {
 
     private var tickCounter = 0
+    private var sprintCounter = 0
     var randomValue = Random.nextInt(0, 9)
 
     override fun tick() {
@@ -25,9 +26,17 @@ class CuttlefishEntity(entityType: EntityType<out CuttlefishEntity>, world: Worl
 
         tickCounter++
 
-        if (tickCounter >= 3600) {
-            randomValue = Random.nextInt(0, 12)
-            tickCounter = 0
+        if (this.isSprinting) {
+            sprintCounter++
+            if (sprintCounter >= 5) {
+                randomValue = if (randomValue == 3) 4 else 3
+                sprintCounter = 0
+            }
+        } else {
+            if (tickCounter >= 3600) {
+                randomValue = Random.nextInt(0, 12)
+                tickCounter = 0
+            }
         }
     }
 

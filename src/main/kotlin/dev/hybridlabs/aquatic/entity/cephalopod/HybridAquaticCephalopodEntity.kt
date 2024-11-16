@@ -107,6 +107,8 @@ open class HybridAquaticCephalopodEntity(
                 this.headYaw = this.prevHeadYaw
             }
         }
+
+        isSprinting = isAttacking
     }
 
     private fun getHungerValue(entityType: EntityType<*>): Int {
@@ -254,16 +256,16 @@ open class HybridAquaticCephalopodEntity(
         controllerRegistrar.add(
             AnimationController(
                 this,
-                "Swim/Idle",
+                "Swim/Run",
                 20
             ) { state: AnimationState<HybridAquaticCephalopodEntity> ->
-                if (!this.isSubmergedInWater) {
+                if (!this.isSubmergedInWater && isOnGround) {
                     state.setAndContinue(DefaultAnimations.SIT)
                 } else {
                     if (state.isMoving) {
-                        state.setAndContinue(DefaultAnimations.SWIM)
+                        state.setAndContinue(if (this.isSprinting) DefaultAnimations.RUN else DefaultAnimations.SWIM)
                     } else {
-                        state.setAndContinue(DefaultAnimations.IDLE)
+                        state.setAndContinue(DefaultAnimations.SWIM)
                     }
                 }
             }.setOverrideEasingType(EasingType.EASE_IN_OUT_SINE)
