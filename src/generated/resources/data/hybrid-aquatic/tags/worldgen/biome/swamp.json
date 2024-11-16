@@ -1,9 +1,7 @@
 {
   "replace": false,
   "values": [
-    "#minecraft:has_structure/swamp_hut",
     "minecraft:swamp",
-    "minecraft:mangrove_swamp",
     {
       "id": "wythers:waterlily_swamp",
       "required": false
@@ -13,11 +11,19 @@
       "required": false
     },
     {
-      "id": "regions_unexplored:marsh",
+      "id": "biomesoplenty:bayou",
       "required": false
     },
     {
-      "id": "regions_unexplored:muddy_river",
+      "id": "biomeswevegone:cypress_swamplands",
+      "required": false
+    },
+    {
+      "id": "biomeswevegone:bayou",
+      "required": false
+    },
+    {
+      "id": "terrestria:cypress_swamp",
       "required": false
     }
   ]

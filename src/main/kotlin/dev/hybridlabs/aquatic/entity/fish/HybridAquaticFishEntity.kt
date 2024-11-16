@@ -488,9 +488,9 @@ open class HybridAquaticFishEntity(
             /**
              * Creates a biome variant of a fish
              */
-            fun biomeVariant(variantName: String, biomes : TagKey<Biome>, ignore : List<Ignore> = emptyList()): FishVariant {
+            fun biomeVariant(variantName: String, biomes : List<TagKey<Biome>>, ignore : List<Ignore> = emptyList()): FishVariant {
                 return FishVariant(variantName, { world, _, pos, _ ->
-                    world.getBiome(pos).isIn(biomes)
+                    biomes.any { tag -> world.getBiome(pos).isIn(tag) }
                 }, ignore)
             }
         }

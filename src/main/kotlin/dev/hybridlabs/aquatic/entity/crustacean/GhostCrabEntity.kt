@@ -9,13 +9,13 @@ import net.minecraft.world.World
 
 class GhostCrabEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>, world: World) :
     HybridAquaticCrustaceanEntity(entityType, world, variants = hashMapOf(
-        "purple" to CrustaceanVariant.biomeVariant("purple", HybridAquaticBiomeTags.TROPICAL_BEACHES,
+        "purple" to CrustaceanVariant.biomeVariant("purple", HybridAquaticBiomeTags.SANDY_BEACHES,
             ignore = listOf(CrustaceanVariant.Ignore.MODEL, CrustaceanVariant.Ignore.ANIMATION)),
-        "yellow" to CrustaceanVariant.biomeVariant("yellow", HybridAquaticBiomeTags.TROPICAL_BEACHES,
+        "yellow" to CrustaceanVariant.biomeVariant("yellow", HybridAquaticBiomeTags.SANDY_BEACHES,
             ignore = listOf(CrustaceanVariant.Ignore.MODEL, CrustaceanVariant.Ignore.ANIMATION)),
-        "red" to CrustaceanVariant.biomeVariant("red", HybridAquaticBiomeTags.TROPICAL_BEACHES,
+        "red" to CrustaceanVariant.biomeVariant("red", HybridAquaticBiomeTags.SANDY_BEACHES,
             ignore = listOf(CrustaceanVariant.Ignore.MODEL, CrustaceanVariant.Ignore.ANIMATION)),
-        "white" to CrustaceanVariant.biomeVariant("white", HybridAquaticBiomeTags.TROPICAL_BEACHES,
+        "white" to CrustaceanVariant.biomeVariant("white", HybridAquaticBiomeTags.SANDY_BEACHES,
             ignore = listOf(CrustaceanVariant.Ignore.MODEL, CrustaceanVariant.Ignore.ANIMATION)))) {
 
     companion object {

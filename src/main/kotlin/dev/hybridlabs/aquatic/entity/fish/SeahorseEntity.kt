@@ -11,13 +11,13 @@ import net.minecraft.world.World
 
 class SeahorseEntity(entityType: EntityType<out SeahorseEntity>, world: World) :
     HybridAquaticFishEntity(entityType, world, variants = hashMapOf(
-        "common" to FishVariant.biomeVariant("common", HybridAquaticBiomeTags.REEF,
+        "common" to FishVariant.biomeVariant("common", listOf(HybridAquaticBiomeTags.REEF),
             ignore = listOf(FishVariant.Ignore.ANIMATION)),
-        "big_belly" to FishVariant.biomeVariant("big_belly", HybridAquaticBiomeTags.REEF,
+        "big_belly" to FishVariant.biomeVariant("big_belly", listOf(HybridAquaticBiomeTags.REEF),
             ignore = listOf(FishVariant.Ignore.ANIMATION)),
-        "thorny" to FishVariant.biomeVariant("thorny", HybridAquaticBiomeTags.REEF,
+        "thorny" to FishVariant.biomeVariant("thorny", listOf(HybridAquaticBiomeTags.REEF),
             ignore = listOf(FishVariant.Ignore.ANIMATION)),
-        "pygmy" to FishVariant.biomeVariant("pygmy", HybridAquaticBiomeTags.REEF,
+        "pygmy" to FishVariant.biomeVariant("pygmy", listOf(HybridAquaticBiomeTags.REEF),
             ignore = listOf(FishVariant.Ignore.ANIMATION)),
         ),
         listOf(

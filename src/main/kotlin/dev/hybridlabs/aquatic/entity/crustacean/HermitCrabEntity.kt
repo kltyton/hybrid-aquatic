@@ -11,11 +11,11 @@ import net.minecraft.world.World
 class HermitCrabEntity(entityType: EntityType<out HybridAquaticCrustaceanEntity>, world: World) :
     HybridAquaticCrustaceanEntity(entityType, world, variants = hashMapOf(
         "shell" to CrustaceanVariant.biomeVariant(
-            "shell", HybridAquaticBiomeTags.TROPICAL_BEACHES,
+            "shell", HybridAquaticBiomeTags.SANDY_BEACHES,
             ignore = listOf(CrustaceanVariant.Ignore.ANIMATION)
         ),
         "skull" to CrustaceanVariant.biomeVariant(
-            "skull", HybridAquaticBiomeTags.TROPICAL_BEACHES,
+            "skull", HybridAquaticBiomeTags.SANDY_BEACHES,
             ignore = listOf(CrustaceanVariant.Ignore.ANIMATION)
         ),
     )) {

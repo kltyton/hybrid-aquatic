@@ -11,7 +11,7 @@ import net.minecraft.world.World
 
 class ParrotfishEntity(entityType: EntityType<out ParrotfishEntity>, world: World) :
     HybridAquaticFishEntity(entityType, world, variants = hashMapOf(
-        "humphead" to FishVariant.biomeVariant("humphead", HybridAquaticBiomeTags.REEF),),
+        "humphead" to FishVariant.biomeVariant("humphead", listOf(HybridAquaticBiomeTags.REEF)),),
         listOf(
             HybridAquaticEntityTags.NONE),
         listOf(

@@ -11,13 +11,13 @@ import net.minecraft.world.World
 
 class SurgeonfishEntity(entityType: EntityType<out SurgeonfishEntity>, world: World) :
     HybridAquaticFishEntity(entityType, world, variants = hashMapOf(
-        "sohal" to FishVariant.biomeVariant("sohal", HybridAquaticBiomeTags.WARM_OCEANS),
-        "lined" to FishVariant.biomeVariant("lined", HybridAquaticBiomeTags.WARM_OCEANS),
-        "orangeshoulder" to FishVariant.biomeVariant("orangeshoulder", HybridAquaticBiomeTags.WARM_OCEANS),
-        "unicornfish" to FishVariant.biomeVariant("unicornfish", HybridAquaticBiomeTags.WARM_OCEANS),
-        "powder_blue_tang" to FishVariant.biomeVariant("powder_blue_tang", HybridAquaticBiomeTags.REEF),
-        "yellow_tang" to FishVariant.biomeVariant("yellow_tang", HybridAquaticBiomeTags.REEF),
-        "blue_tang" to FishVariant.biomeVariant("blue_tang", HybridAquaticBiomeTags.REEF)),
+        "sohal" to FishVariant.biomeVariant("sohal", listOf(HybridAquaticBiomeTags.REEF)),
+        "lined" to FishVariant.biomeVariant("lined", listOf(HybridAquaticBiomeTags.REEF)),
+        "orangeshoulder" to FishVariant.biomeVariant("orangeshoulder", listOf(HybridAquaticBiomeTags.REEF)),
+        "unicornfish" to FishVariant.biomeVariant("unicornfish", listOf(HybridAquaticBiomeTags.REEF)),
+        "powder_blue_tang" to FishVariant.biomeVariant("powder_blue_tang", listOf(HybridAquaticBiomeTags.REEF)),
+        "yellow_tang" to FishVariant.biomeVariant("yellow_tang", listOf(HybridAquaticBiomeTags.REEF)),
+        "blue_tang" to FishVariant.biomeVariant("blue_tang", listOf(HybridAquaticBiomeTags.REEF))),
         listOf(
             HybridAquaticEntityTags.NONE),
         listOf(

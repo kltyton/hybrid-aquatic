@@ -18,7 +18,7 @@ object FeatureBiomeModifications {
         )
 
         BiomeModifications.addFeature(
-            BiomeSelectors.tag(HybridAquaticBiomeTags.WARM_OCEANS),
+            BiomeSelectors.tag(HybridAquaticBiomeTags.REEF),
             GenerationStep.Feature.VEGETAL_DECORATION,
             HybridAquaticPlacedFeatures.GIANT_CLAM_PATCH
         )

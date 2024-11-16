@@ -11,15 +11,15 @@ import net.minecraft.world.World
 
 class CarpEntity(entityType: EntityType<out CarpEntity>, world: World) :
     HybridAquaticFishEntity(entityType, world, variants = hashMapOf(
-        "koi_ai_goromo" to FishVariant.biomeVariant("koi_ai_goromo", HybridAquaticBiomeTags.CHERRY,
+        "koi_ai_goromo" to FishVariant.biomeVariant("koi_ai_goromo", listOf(HybridAquaticBiomeTags.CHERRY),
             ignore = listOf(FishVariant.Ignore.MODEL, FishVariant.Ignore.ANIMATION)),
-        "koi_hajiro" to FishVariant.biomeVariant("koi_hajiro", HybridAquaticBiomeTags.CHERRY,
+        "koi_hajiro" to FishVariant.biomeVariant("koi_hajiro", listOf(HybridAquaticBiomeTags.CHERRY),
             ignore = listOf(FishVariant.Ignore.MODEL, FishVariant.Ignore.ANIMATION)),
-        "koi_platinum" to FishVariant.biomeVariant("koi_platinum", HybridAquaticBiomeTags.CHERRY,
+        "koi_platinum" to FishVariant.biomeVariant("koi_platinum", listOf(HybridAquaticBiomeTags.CHERRY),
             ignore = listOf(FishVariant.Ignore.MODEL, FishVariant.Ignore.ANIMATION)),
-        "koi_tancho" to FishVariant.biomeVariant("koi_tancho", HybridAquaticBiomeTags.CHERRY,
+        "koi_tancho" to FishVariant.biomeVariant("koi_tancho", listOf(HybridAquaticBiomeTags.CHERRY),
             ignore = listOf(FishVariant.Ignore.MODEL, FishVariant.Ignore.ANIMATION)),
-        "common" to FishVariant.biomeVariant("common", HybridAquaticBiomeTags.RIVERS,
+        "common" to FishVariant.biomeVariant("common", listOf(HybridAquaticBiomeTags.RIVERS),
             ignore = listOf(FishVariant.Ignore.MODEL, FishVariant.Ignore.ANIMATION)),
         ),
         listOf(
