@@ -4,15 +4,24 @@ import net.minecraft.entity.SpawnGroup;
 
 public enum HybridAquaticSpawnGroup {
     FISH("ha_fish", 20, true, false, 64),
-    FISH_UNDERGROUND("ha_fish_underground", 10, true, false, 64),
+
+    FISH_UNDERGROUND("ha_fish_underground", 10, true, false, 128),
+
     CEPHALOPOD("ha_cephalopod", 6, true, false, 64),
-    CEPHALOPOD_UNDERGROUND("ha_cephalopod_underground", 6, true, false, 64),
+
+    CEPHALOPOD_UNDERGROUND("ha_cephalopod_underground", 6, true, true, 128),
+
     JELLY("ha_jelly", 6, true, false, 64),
-    JELLY_UNDERGROUND("ha_jelly_underground", 3, true, false, 64),
-    SHARK("ha_shark", 5, true, false, 64),
-    CRUSTACEAN("crustacean", 12, true, false, 64),
-    CRUSTACEAN_UNDERGROUND("crustacean_underground", 8, true, false, 64),
-    CRITTER("ha_critter", 12, true, false, 64);
+
+    JELLY_UNDERGROUND("ha_jelly_underground", 3, true, true, 128),
+
+    SHARK("ha_shark", 4, true, true, 128),
+
+    CRUSTACEAN("crustacean", 10, true, false, 64),
+
+    CRUSTACEAN_UNDERGROUND("crustacean_underground", 5, true, false, 128),
+
+    CRITTER("ha_critter", 10, true, false, 64);
 
     public SpawnGroup spawnGroup;
     public final String name;
