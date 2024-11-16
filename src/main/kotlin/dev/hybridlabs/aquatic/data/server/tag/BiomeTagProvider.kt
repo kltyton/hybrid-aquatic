@@ -31,7 +31,6 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.BOTTLE_SPAWN_BIOMES)
             .forceAddTag(BiomeTags.IS_OCEAN)
-            .forceAddTag(BiomeTags.IS_DEEP_OCEAN)
             .forceAddTag(BiomeTags.IS_BEACH)
 
         getOrCreateTagBuilder(HybridAquaticBiomeTags.ARCTIC_OCEANS)
